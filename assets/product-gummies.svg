@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Dandy Mixed Berry Kratom Gummies pouch">
+  <rect width="600" height="600" fill="#eaf2ee"/>
+  <!-- pouch -->
+  <path d="M185 150 L415 150 L435 200 L435 480 Q435 500 415 500 L185 500 Q165 500 165 480 L165 200 Z" fill="#ffffff" stroke="#d8dfd9" stroke-width="3"/>
+  <rect x="185" y="162" width="230" height="16" rx="8" fill="#c9d8cf"/>
+  <!-- label area -->
+  <rect x="195" y="215" width="210" height="240" rx="12" fill="#faf8f3" stroke="#e4e0d5" stroke-width="2"/>
+  <text x="300" y="262" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="800" fill="#14432f">Dandy</text>
+  <text x="300" y="292" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="15" letter-spacing="3" fill="#55635b">KRATOM GUMMIES</text>
+  <!-- berry dots -->
+  <circle cx="262" cy="340" r="20" fill="#7b4b6e"/>
+  <circle cx="300" cy="332" r="20" fill="#a3556a"/>
+  <circle cx="338" cy="340" r="20" fill="#5c4a7d"/>
+  <text x="300" y="398" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#24312a">Mixed Berry</text>
+  <text x="300" y="424" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#55635b">35mg mitragynine per gummy</text>
+  <text x="300" y="530" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="14" letter-spacing="2" fill="#8b988f">10 &#183; 30 COUNT</text>
+</svg>

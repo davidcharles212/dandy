@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Dandy Kratom Leaf Powder pouch">
+  <rect width="600" height="600" fill="#eaf2ee"/>
+  <!-- gusseted pouch -->
+  <path d="M175 170 L425 170 L445 230 L445 490 Q445 510 425 510 L175 510 Q155 510 155 490 L155 230 Z" fill="#ffffff" stroke="#d8dfd9" stroke-width="3"/>
+  <rect x="175" y="182" width="250" height="16" rx="8" fill="#c9d8cf"/>
+  <!-- label -->
+  <rect x="190" y="235" width="220" height="230" rx="12" fill="#faf8f3" stroke="#e4e0d5" stroke-width="2"/>
+  <text x="300" y="284" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="34" font-weight="800" fill="#14432f">Dandy</text>
+  <text x="300" y="312" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="14" letter-spacing="3" fill="#55635b">KRATOM LEAF POWDER</text>
+  <!-- leaf icon -->
+  <path d="M300 336 C 268 352 262 388 300 404 C 338 388 332 352 300 336 Z" fill="#1e5c45"/>
+  <path d="M300 340 L300 400" stroke="#eaf2ee" stroke-width="4" stroke-linecap="round"/>
+  <text x="300" y="440" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="14" fill="#55635b">Finely ground &#183; Single-origin &#183; Lab tested</text>
+  <text x="300" y="545" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="14" letter-spacing="2" fill="#8b988f">250g &#183; 500g &#183; 750g &#183; 1kg</text>
+</svg>

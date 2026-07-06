@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Results — Dandy</title>
+  <meta name="description" content="Every Dandy batch is third-party lab tested for alkaloid content, heavy metals, microbials, and pesticides. Certificates of Analysis available by batch number.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Dandy</a>
+      <nav class="site-nav" aria-label="Main">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="lab-results.html">Lab Results</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="cart-link" href="cart.html">Cart <span class="cart-count" data-cart-count>0</span></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container container--narrow">
+      <h1 class="page-title">Lab results</h1>
+      <p class="page-intro">Every batch we sell is tested by an independent, third-party laboratory before release. Not a sample of batches — every batch.</p>
+
+      <div class="prose">
+        <h2>What we test for</h2>
+        <ul>
+          <li><strong>Alkaloid content</strong> — mitragynine and 7-hydroxymitragynine, so the label matches what's inside.</li>
+          <li><strong>Heavy metals</strong> — lead, arsenic, cadmium, and mercury, against USP limits.</li>
+          <li><strong>Microbials</strong> — total plate count, yeast and mold, E. coli, and salmonella.</li>
+          <li><strong>Pesticides</strong> — a broad residue panel appropriate for botanical raw materials.</li>
+        </ul>
+        <p>A batch that fails any panel is rejected and never enters our inventory. Test results are tied to the batch number printed on every pouch and bottle.</p>
+
+        <h2>Get the Certificate of Analysis for your batch</h2>
+        <p>Certificates of Analysis (COAs) are available on request for any batch, current or past. Find the batch number printed on your product label and look it up below, or request the COA for a product's current batch.</p>
+      </div>
+
+      <div class="info-card">
+        <h2>Batch lookup</h2>
+        <form class="batch-lookup" data-batch-lookup>
+          <label class="visually-hidden" for="batch">Batch number</label>
+          <input id="batch" name="batch" type="text" placeholder="e.g. DND-24117-G">
+          <button class="btn" type="submit">Look up batch</button>
+        </form>
+        <div class="alert alert--success" data-batch-result hidden></div>
+      </div>
+
+      <h2>Request a COA by product</h2>
+      <div class="coa-grid">
+        <div class="coa-card">
+          <h3>Mixed Berry Kratom Gummies</h3>
+          <p>35mg mitragynine per gummy · 10 &amp; 30 count</p>
+          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
+        </div>
+        <div class="coa-card">
+          <h3>Kratom Extract Capsules – 45mg</h3>
+          <p>45mg mitragynine per capsule · 5 &amp; 10 count</p>
+          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
+        </div>
+        <div class="coa-card">
+          <h3>Kratom Extract Capsules – 90mg</h3>
+          <p>90mg mitragynine per capsule · 5 &amp; 10 count</p>
+          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
+        </div>
+        <div class="coa-card">
+          <h3>Kratom Leaf Powder</h3>
+          <p>Finely ground raw leaf · 250g–1kg</p>
+          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
+        </div>
+      </div>
+
+      <p>You can also email us at <span class="placeholder">[FILL IN - support email]</span> with your batch number and we'll send the COA directly, usually within one business day.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Shop</h3>
+          <ul>
+            <li><a href="shop.html">All products</a></li>
+            <li><a href="product-gummies.html">Kratom Gummies</a></li>
+            <li><a href="product-capsules-45.html">Extract Capsules – 45mg</a></li>
+            <li><a href="product-capsules-90.html">Extract Capsules – 90mg</a></li>
+            <li><a href="product-powder.html">Kratom Leaf Powder</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="lab-results.html">Lab Results</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Policies</h3>
+          <ul>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="refund-policy.html">Refund &amp; Return Policy</a></li>
+            <li><a href="shipping-policy.html">Shipping Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <address>
+            Ollie Botanical Group LLC<br>
+            <span class="placeholder">[FILL IN - registered business address]</span><br>
+            <span class="placeholder">[FILL IN - support email]</span><br>
+            <span class="placeholder">[FILL IN - support phone]</span><br>
+            Mon–Fri, 9am–5pm CT
+          </address>
+        </div>
+      </div>
+      <div class="footer-disclaimers">
+        <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+        <p>Must be 21 or older to purchase. Not for use by those who are pregnant or nursing. Keep out of reach of children.</p>
+        <p>Kratom is not a controlled substance under U.S. federal law. Legal status varies by state and locality. We do not ship to jurisdictions where kratom is prohibited.</p>
+        <p class="footer-copyright">© 2026 Ollie Botanical Group LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Dandy Kratom Extract Capsules 90mg bottle">
+  <rect width="600" height="600" fill="#eaf2ee"/>
+  <!-- cap -->
+  <rect x="240" y="128" width="120" height="46" rx="10" fill="#24312a"/>
+  <!-- bottle -->
+  <rect x="200" y="174" width="200" height="330" rx="24" fill="#ffffff" stroke="#d8dfd9" stroke-width="3"/>
+  <!-- label -->
+  <rect x="214" y="228" width="172" height="230" rx="10" fill="#faf8f3" stroke="#e4e0d5" stroke-width="2"/>
+  <text x="300" y="274" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="32" font-weight="800" fill="#14432f">Dandy</text>
+  <text x="300" y="302" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="13" letter-spacing="2.5" fill="#55635b">KRATOM EXTRACT</text>
+  <!-- capsule icon -->
+  <g transform="rotate(-35 300 352)">
+    <rect x="270" y="338" width="60" height="28" rx="14" fill="#14432f"/>
+    <rect x="270" y="338" width="30" height="28" rx="14" fill="#1e5c45"/>
+  </g>
+  <text x="300" y="410" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="26" font-weight="700" fill="#24312a">90mg</text>
+  <text x="300" y="434" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="13" fill="#55635b">mitragynine per capsule</text>
+  <text x="300" y="540" text-anchor="middle" font-family="Inter, -apple-system, Segoe UI, sans-serif" font-size="14" letter-spacing="2" fill="#8b988f">5 &#183; 10 COUNT</text>
+</svg>
