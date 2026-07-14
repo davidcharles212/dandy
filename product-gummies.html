@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  <div class="announce-bar">Free shipping on orders $50+<span>&middot;</span>Same-day dispatch before 2pm CT<span>&middot;</span>Every batch lab tested</div>
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="index.html">Dandy</a>
@@ -31,8 +32,21 @@
   <main>
     <div class="container">
       <div class="product-layout">
-        <div class="product-media">
-          <img src="assets/product-gummies.svg" alt="Dandy Mixed Berry Kratom Gummies pouch" width="600" height="600">
+        <div>
+          <div class="product-media">
+            <img src="assets/product-gummies.svg" alt="Dandy Mixed Berry Kratom Gummies pouch" width="600" height="600" data-gallery-main>
+          </div>
+          <div class="gallery-thumbs" role="group" aria-label="Product images">
+            <button type="button" class="is-active" data-gallery-thumb="assets/product-gummies.svg" data-gallery-alt="Dandy Mixed Berry Kratom Gummies pouch">
+              <img src="assets/product-gummies.svg" alt="View: pouch front" width="76" height="76">
+            </button>
+            <button type="button" data-gallery-thumb="assets/gummies-detail.svg" data-gallery-alt="Close-up of mixed berry kratom gummies">
+              <img src="assets/gummies-detail.svg" alt="View: gummies close-up" width="76" height="76">
+            </button>
+            <button type="button" data-gallery-thumb="assets/gummies-label.svg" data-gallery-alt="Back label with supplement facts and batch number">
+              <img src="assets/gummies-label.svg" alt="View: back label" width="76" height="76">
+            </button>
+          </div>
         </div>
 
         <div class="product-info">
@@ -62,6 +76,14 @@
 
             <button class="btn btn--block" type="submit">Add to cart</button>
             <p class="add-confirm" data-add-confirm hidden></p>
+            <p class="stock-note">In stock — orders before 2pm CT ship today</p>
+            <div class="payment-strip" aria-label="Accepted payment methods">
+              <svg class="card-mark" width="38" height="24" viewBox="0 0 42 26" role="img" aria-label="Visa"><rect width="42" height="26" rx="4" fill="#1a1f71"/><text x="21" y="17.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" font-style="italic" fill="#fff">VISA</text></svg>
+              <svg class="card-mark" width="38" height="24" viewBox="0 0 42 26" role="img" aria-label="Mastercard"><rect width="42" height="26" rx="4" fill="#252525"/><circle cx="17" cy="13" r="7" fill="#eb001b"/><circle cx="25" cy="13" r="7" fill="#f79e1b" fill-opacity="0.9"/></svg>
+              <svg class="card-mark" width="38" height="24" viewBox="0 0 42 26" role="img" aria-label="American Express"><rect width="42" height="26" rx="4" fill="#2e77bc"/><text x="21" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" font-weight="bold" fill="#fff">AMEX</text></svg>
+              <svg class="card-mark" width="38" height="24" viewBox="0 0 42 26" role="img" aria-label="Discover"><rect width="42" height="26" rx="4" fill="#f4f0e6"/><text x="17" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="6.5" font-weight="bold" fill="#231f20">DISCOVER</text><circle cx="33" cy="13" r="4.5" fill="#f48120"/></svg>
+              <span>Secure encrypted checkout</span>
+            </div>
           </form>
 
           <div class="product-desc">
@@ -91,17 +113,69 @@
 
           <p class="ingredients-line"><strong>Ingredients:</strong> Cane sugar, tapioca syrup, purified water, pectin, kratom (Mitragyna speciosa) leaf extract, citric acid, natural mixed berry flavor, natural color (fruit and vegetable juice).</p>
 
+          <div class="product-accordions">
+            <details>
+              <summary>Shipping &amp; returns</summary>
+              <div class="accordion-body">
+                <p>Orders before 2pm CT ship the same business day via USPS or UPS. Standard shipping is $6.95, free on orders of $50+. Unopened products can be returned within 30 days for a full refund. See our <a href="shipping-policy.html">Shipping Policy</a> and <a href="refund-policy.html">Refund &amp; Return Policy</a>.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Lab testing &amp; COA</summary>
+              <div class="accordion-body">
+                <p>The current batch (RD8221-B) was independently tested in July 2026 and verified at 34.0mg total mitragynine per gummy against a 35mg label claim. <a href="assets/coa/coa-mixed-berry-gummies-RD8221-B.pdf" target="_blank" rel="noopener">View the Certificate of Analysis (PDF)</a> or visit our <a href="lab-results.html">Lab Results</a> page.</p>
+              </div>
+            </details>
+            <details>
+              <summary>Storage &amp; handling</summary>
+              <div class="accordion-body">
+                <p>Store cool and dry, out of direct sunlight, with the pouch resealed. Keep out of reach of children. 21+ only.</p>
+              </div>
+            </details>
+          </div>
+
           <div class="disclaimer-box">
             <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
             <p>Must be 21 or older to purchase. Not for use by those who are pregnant or nursing. Keep out of reach of children. Consult your physician before use if you have a medical condition or are taking any medication.</p>
           </div>
         </div>
       </div>
+
+      <section class="cross-sell" aria-label="You may also like">
+        <div class="section-head">
+          <h2>You may also like</h2>
+        </div>
+        <div class="product-grid">
+          <article class="product-card">
+            <a class="product-card__media" href="product-powder.html" tabindex="-1" aria-hidden="true">
+              <span class="tag tag--kraft">Single-origin</span>
+              <img src="assets/product-powder.svg" alt="Dandy Kratom Leaf Powder pouch" width="600" height="600">
+            </a>
+            <div class="product-card__body">
+              <h3 class="product-card__title"><a href="product-powder.html">Kratom Leaf Powder</a></h3>
+              <p class="product-card__meta">Finely ground raw leaf · 250g to 1kg</p>
+              <p class="product-card__price">$24.99 – $69.99</p>
+              <a class="btn btn--outline" href="product-powder.html">View</a>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
+      <div class="footer-newsletter">
+        <div>
+          <h3>Get batch updates</h3>
+          <p>New drops, restocks, and fresh COAs. One email now and then &mdash; no spam, 21+ only.</p>
+        </div>
+        <form data-newsletter-form>
+          <label class="visually-hidden" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn" type="submit">Sign up</button>
+        </form>
+      </div>
       <div class="footer-grid">
         <div class="footer-col">
           <h3>Shop</h3>
@@ -144,6 +218,13 @@
         <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
         <p>Must be 21 or older to purchase. Not for use by those who are pregnant or nursing. Keep out of reach of children.</p>
         <p>Kratom is not a controlled substance under U.S. federal law. Legal status varies by state and locality. We do not ship to jurisdictions where kratom is prohibited.</p>
+        <div class="footer-payments" aria-label="Accepted payment methods">
+          <svg class="card-mark" width="42" height="26" viewBox="0 0 42 26" role="img" aria-label="Visa"><rect width="42" height="26" rx="4" fill="#1a1f71"/><text x="21" y="17.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" font-style="italic" fill="#fff">VISA</text></svg>
+          <svg class="card-mark" width="42" height="26" viewBox="0 0 42 26" role="img" aria-label="Mastercard"><rect width="42" height="26" rx="4" fill="#252525"/><circle cx="17" cy="13" r="7" fill="#eb001b"/><circle cx="25" cy="13" r="7" fill="#f79e1b" fill-opacity="0.9"/></svg>
+          <svg class="card-mark" width="42" height="26" viewBox="0 0 42 26" role="img" aria-label="American Express"><rect width="42" height="26" rx="4" fill="#2e77bc"/><text x="21" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="7.5" font-weight="bold" fill="#fff">AMEX</text></svg>
+          <svg class="card-mark" width="42" height="26" viewBox="0 0 42 26" role="img" aria-label="Discover"><rect width="42" height="26" rx="4" fill="#f4f0e6"/><text x="17" y="16.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="6.5" font-weight="bold" fill="#231f20">DISCOVER</text><circle cx="33" cy="13" r="4.5" fill="#f48120"/></svg>
+          <span class="payments-note">Secure 256-bit encrypted checkout &middot; 21+ only</span>
+        </div>
         <p class="footer-copyright">© 2026 Ollie Botanical Group LLC. All rights reserved.</p>
       </div>
     </div>

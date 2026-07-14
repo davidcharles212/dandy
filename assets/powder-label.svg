@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Back label of Dandy kratom leaf powder pouch showing supplement facts">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe4"/>
+      <stop offset="1" stop-color="#e9e2d0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <ellipse cx="300" cy="524" rx="200" ry="24" fill="#3a3325" opacity="0.15"/>
+
+  <!-- pouch back -->
+  <path d="M175 96 L425 96 L448 160 L450 470 Q450 506 414 506 L186 506 Q150 506 150 470 L152 160 Z" fill="#b08d5f"/>
+  <rect x="171" y="104" width="258" height="16" rx="4" fill="#8a6238"/>
+
+  <!-- facts panel -->
+  <rect x="186" y="140" width="228" height="290" rx="8" fill="#faf6ec"/>
+  <text x="300" y="172" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="21" font-weight="800" fill="#1c1a14">Supplement Facts</text>
+  <rect x="200" y="182" width="200" height="7" fill="#1c1a14"/>
+  <text x="202" y="206" font-family="Inter, -apple-system, sans-serif" font-size="11.5" fill="#1c1a14">Serving size: 2g (approx. 1 tsp)</text>
+  <text x="202" y="222" font-family="Inter, -apple-system, sans-serif" font-size="11.5" fill="#1c1a14">Servings per container: varies by size</text>
+  <rect x="200" y="232" width="200" height="2.5" fill="#1c1a14"/>
+  <text x="202" y="252" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1c1a14">Amount per serving</text>
+  <text x="398" y="252" text-anchor="end" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1c1a14">% DV</text>
+  <rect x="200" y="260" width="200" height="1.5" fill="#1c1a14"/>
+  <text x="202" y="280" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#1c1a14">Kratom leaf powder — 2g</text>
+  <text x="202" y="295" font-family="Inter, -apple-system, sans-serif" font-size="10" fill="#55524a">(Mitragyna speciosa, raw leaf)</text>
+  <text x="398" y="280" text-anchor="end" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#1c1a14">†</text>
+  <rect x="200" y="306" width="200" height="4" fill="#1c1a14"/>
+  <text x="202" y="322" font-family="Inter, -apple-system, sans-serif" font-size="9.5" fill="#55524a">† Daily Value (DV) not established.</text>
+  <text x="202" y="344" font-family="Inter, -apple-system, sans-serif" font-size="9.5" fill="#55524a">Ingredients: 100% kratom (Mitragyna</text>
+  <text x="202" y="357" font-family="Inter, -apple-system, sans-serif" font-size="9.5" fill="#55524a">speciosa) leaf powder.</text>
+  <rect x="200" y="370" width="200" height="1.5" fill="#1c1a14"/>
+  <text x="202" y="388" font-family="Inter, -apple-system, sans-serif" font-size="9" fill="#55524a">Store cool and dry. Reseal after opening.</text>
+  <text x="202" y="402" font-family="Inter, -apple-system, sans-serif" font-size="9" fill="#55524a">21+ only. Keep out of reach of children.</text>
+
+  <!-- batch strip -->
+  <rect x="186" y="444" width="228" height="34" rx="8" fill="#5a3d1f"/>
+  <text x="300" y="465" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="12" letter-spacing="1.5" fill="#f0e2cc">LOT 041726 · LAB TESTED</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Bowl of finely ground kratom leaf powder with wooden scoop">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe4"/>
+      <stop offset="1" stop-color="#e7dfcc"/>
+    </linearGradient>
+    <linearGradient id="bowl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8a6238"/>
+      <stop offset="1" stop-color="#6b4a28"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <circle cx="120" cy="130" r="120" fill="#e3dcc7" opacity="0.55"/>
+
+  <ellipse cx="300" cy="486" rx="230" ry="30" fill="#3a3325" opacity="0.15"/>
+
+  <!-- bowl of powder -->
+  <path d="M140 340 L460 340 Q470 460 300 468 Q130 460 140 340 Z" fill="url(#bowl)"/>
+  <ellipse cx="300" cy="340" rx="160" ry="44" fill="#5a3d1f"/>
+  <ellipse cx="300" cy="336" rx="148" ry="38" fill="#4c7a45"/>
+  <path d="M180 322 Q240 292 300 316 Q360 338 420 314 L420 336 Q360 356 300 338 Q240 322 180 340 Z" fill="#5c8c52" opacity="0.9"/>
+  <!-- powder texture dots -->
+  <g fill="#3f6a3a" opacity="0.6">
+    <circle cx="240" cy="326" r="2"/><circle cx="282" cy="334" r="2.4"/><circle cx="330" cy="330" r="2"/><circle cx="372" cy="322" r="2.2"/><circle cx="212" cy="336" r="1.8"/><circle cx="308" cy="320" r="1.8"/>
+  </g>
+
+  <!-- scoop resting on bowl -->
+  <g transform="rotate(-14 430 300)">
+    <ellipse cx="430" cy="300" rx="40" ry="26" fill="#d8b98c"/>
+    <ellipse cx="430" cy="296" rx="32" ry="18" fill="#5c8c52"/>
+    <rect x="462" y="292" width="78" height="14" rx="7" fill="#c9a876"/>
+  </g>
+
+  <!-- dusting -->
+  <path d="M170 470 Q210 452 250 470 Z" fill="#5c8c52" opacity="0.8"/>
+  <path d="M360 476 Q396 460 432 476 Z" fill="#4c7a45" opacity="0.8"/>
+
+  <!-- leaf accents -->
+  <path d="M472 130 C 446 148 444 180 476 190 C 506 178 500 144 472 130 Z" fill="#1e5c45"/>
+  <path d="M474 136 L474 184" stroke="#f4efe4" stroke-width="3" stroke-linecap="round"/>
+  <path d="M520 176 C 502 188 501 210 523 217 C 544 209 540 186 520 176 Z" fill="#2e7a5d" opacity="0.85"/>
+
+  <text x="300" y="556" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="15" letter-spacing="2.5" fill="#7a7360">FINELY GROUND · SINGLE-ORIGIN · LOT 041726</text>
+</svg>

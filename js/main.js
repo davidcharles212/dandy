@@ -503,6 +503,46 @@
   }
 
   /* ------------------------------------------------------------------
+     Product image gallery (thumbnail swap)
+     ------------------------------------------------------------------ */
+
+  function initGallery() {
+    var main = document.querySelector("[data-gallery-main]");
+    var thumbs = document.querySelectorAll("[data-gallery-thumb]");
+    if (!main || thumbs.length === 0) return;
+    for (var i = 0; i < thumbs.length; i++) {
+      thumbs[i].addEventListener("click", function () {
+        main.src = this.getAttribute("data-gallery-thumb");
+        main.alt = this.getAttribute("data-gallery-alt") || main.alt;
+        var all = document.querySelectorAll("[data-gallery-thumb]");
+        for (var j = 0; j < all.length; j++) all[j].classList.remove("is-active");
+        this.classList.add("is-active");
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Footer newsletter (demo — acknowledges the signup)
+     ------------------------------------------------------------------ */
+
+  function initNewsletter() {
+    var forms = document.querySelectorAll("[data-newsletter-form]");
+    for (var i = 0; i < forms.length; i++) {
+      forms[i].addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!this.checkValidity()) {
+          this.reportValidity();
+          return;
+        }
+        var thanks = document.createElement("p");
+        thanks.className = "newsletter-thanks";
+        thanks.textContent = "You're on the list — welcome to Dandy.";
+        this.replaceWith(thanks);
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------ */
 
@@ -515,5 +555,7 @@
     initCheckoutPage();
     initContactForm();
     initLabResults();
+    initGallery();
+    initNewsletter();
   });
 })();
