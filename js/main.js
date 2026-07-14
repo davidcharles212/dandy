@@ -13,14 +13,20 @@
      Product catalog
      ------------------------------------------------------------------ */
 
+  /* Subscription pricing: 20% off retail, free shipping on every delivery. */
+  var SUB_DISCOUNT = 0.2;
+  var SHIPPING_FLAT = 5.95;
+  var FREE_SHIPPING_MIN = 50;
+
   var PRODUCTS = {
     gummies: {
       name: "Mixed Berry Kratom Gummies",
       strength: "35mg mitragynine per gummy",
       url: "product-gummies.html",
+      subscribable: true,
       variants: [
-        { id: "gummies-10", label: "10-count", price: 19.99 },
-        { id: "gummies-30", label: "30-count", price: 49.99 }
+        { id: "gummies-10", label: "10-count", price: 28.99, subPrice: 23.19 },
+        { id: "gummies-30", label: "30-count", price: 64.99, subPrice: 51.99 }
       ]
     },
     powder: {
@@ -28,10 +34,8 @@
       strength: "Finely ground raw leaf",
       url: "product-powder.html",
       variants: [
-        { id: "powder-250", label: "250g", price: 24.99 },
-        { id: "powder-500", label: "500g", price: 39.99 },
-        { id: "powder-750", label: "750g", price: 54.99 },
-        { id: "powder-1000", label: "1kg", price: 69.99 }
+        { id: "powder-100", label: "100g", price: 12.99 },
+        { id: "powder-250", label: "250g", price: 24.99 }
       ]
     }
   };
@@ -85,10 +89,19 @@
       var cart = raw ? JSON.parse(raw) : [];
       return Array.isArray(cart) ? cart.filter(function (item) {
         return item && findVariant(item.variantId) && item.qty > 0;
+      }).map(function (item) {
+        item.sub = !!item.sub;
+        return item;
       }) : [];
     } catch (e) {
       return [];
     }
+  }
+
+  function itemPrice(item) {
+    var found = findVariant(item.variantId);
+    if (!found) return 0;
+    return item.sub && found.variant.subPrice ? found.variant.subPrice : found.variant.price;
   }
 
   function saveCart(cart) {
@@ -100,25 +113,29 @@
     updateCartCount();
   }
 
-  function addToCart(variantId, qty) {
+  function addToCart(variantId, qty, sub) {
     var cart = getCart();
     var existing = null;
     for (var i = 0; i < cart.length; i++) {
-      if (cart[i].variantId === variantId) existing = cart[i];
+      if (cart[i].variantId === variantId && cart[i].sub === !!sub) existing = cart[i];
     }
     if (existing) {
       existing.qty += qty;
     } else {
-      cart.push({ variantId: variantId, qty: qty });
+      cart.push({ variantId: variantId, qty: qty, sub: !!sub });
     }
     saveCart(cart);
   }
 
-  function setQty(variantId, qty) {
+  function lineKey(item) {
+    return item.variantId + (item.sub ? ":sub" : "");
+  }
+
+  function setQty(key, qty) {
     var cart = getCart();
     var next = [];
     for (var i = 0; i < cart.length; i++) {
-      if (cart[i].variantId === variantId) {
+      if (lineKey(cart[i]) === key) {
         if (qty > 0) {
           cart[i].qty = qty;
           next.push(cart[i]);
@@ -138,9 +155,17 @@
 
   function cartSubtotal() {
     return getCart().reduce(function (sum, item) {
-      var found = findVariant(item.variantId);
-      return found ? sum + found.variant.price * item.qty : sum;
+      return sum + itemPrice(item) * item.qty;
     }, 0);
+  }
+
+  /* Subscriptions always ship free; one-time portions ship free at $50+. */
+  function cartShipping() {
+    var oneTime = getCart().reduce(function (sum, item) {
+      return item.sub ? sum : sum + itemPrice(item) * item.qty;
+    }, 0);
+    if (oneTime === 0 || oneTime >= FREE_SHIPPING_MIN) return 0;
+    return SHIPPING_FLAT;
   }
 
   function updateCartCount() {
@@ -236,14 +261,31 @@
       return checked ? findVariant(checked.value) : null;
     }
 
-    function refreshPrice() {
-      var found = selectedVariant();
-      if (found && priceEl) priceEl.textContent = formatPrice(found.variant.price);
+    function isSubscription() {
+      var checked = form.querySelector('input[name="purchase-type"]:checked');
+      return !!(checked && checked.value === "subscribe");
     }
 
-    var radios = form.querySelectorAll('input[name="variant"]');
-    for (var i = 0; i < radios.length; i++) {
-      radios[i].addEventListener("change", refreshPrice);
+    function refreshPrice() {
+      var found = selectedVariant();
+      if (!found) return;
+      var sub = isSubscription() && found.variant.subPrice;
+      if (priceEl) {
+        priceEl.textContent = sub
+          ? formatPrice(found.variant.subPrice) + " / delivery"
+          : formatPrice(found.variant.price);
+      }
+      var oneTimeEl = form.querySelector("[data-price-onetime]");
+      var subPriceEl = form.querySelector("[data-price-sub]");
+      if (oneTimeEl) oneTimeEl.textContent = formatPrice(found.variant.price);
+      if (subPriceEl && found.variant.subPrice) {
+        subPriceEl.textContent = formatPrice(found.variant.subPrice) + " / delivery";
+      }
+    }
+
+    var inputs = form.querySelectorAll('input[name="variant"], input[name="purchase-type"]');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener("change", refreshPrice);
     }
     refreshPrice();
 
@@ -251,13 +293,17 @@
       event.preventDefault();
       var found = selectedVariant();
       if (!found) return;
+      var sub = isSubscription() && !!found.variant.subPrice;
       var qtyInput = form.querySelector('input[name="qty"]');
       var qty = Math.max(1, Math.min(20, parseInt(qtyInput && qtyInput.value, 10) || 1));
-      addToCart(found.variant.id, qty);
+      addToCart(found.variant.id, qty, sub);
       if (confirmEl) {
-        confirmEl.innerHTML =
-          "Added " + qty + " × " + product.name + " (" + found.variant.label + ") to your cart. " +
-          '<a href="cart.html">View cart</a>';
+        confirmEl.innerHTML = sub
+          ? "Added " + qty + " × " + product.name + " (" + found.variant.label + ") as a subscription — " +
+            "20% off, free shipping, delivered every 30 days, cancel anytime. " +
+            '<a href="cart.html">View cart</a>'
+          : "Added " + qty + " × " + product.name + " (" + found.variant.label + ") to your cart. " +
+            '<a href="cart.html">View cart</a>';
         confirmEl.hidden = false;
       }
     });
@@ -287,15 +333,21 @@
       for (var i = 0; i < cart.length; i++) {
         var found = findVariant(cart[i].variantId);
         if (!found) continue;
+        var key = lineKey(cart[i]);
+        var domId = key.replace(":", "-");
+        var price = itemPrice(cart[i]);
+        var subNote = cart[i].sub
+          ? '<span class="cart-sub-note">Subscribe &amp; Save · 20% off · free shipping · every 30 days · cancel anytime</span>'
+          : "";
         rows +=
           "<tr>" +
           '<td><span class="cart-item-name"><a href="' + found.product.url + '">' + found.product.name + "</a></span><br>" +
-          '<span class="cart-item-variant">' + found.variant.label + " · " + found.product.strength + "</span></td>" +
-          "<td>" + formatPrice(found.variant.price) + "</td>" +
-          '<td><label class="visually-hidden" for="qty-' + found.variant.id + '">Quantity for ' + found.product.name + " " + found.variant.label + "</label>" +
-          '<input class="cart-qty" id="qty-' + found.variant.id + '" type="number" min="0" max="20" value="' + cart[i].qty + '" data-qty="' + found.variant.id + '"></td>' +
-          "<td>" + formatPrice(found.variant.price * cart[i].qty) + "</td>" +
-          '<td><button type="button" class="link-btn" data-remove="' + found.variant.id + '">Remove</button></td>' +
+          '<span class="cart-item-variant">' + found.variant.label + " · " + found.product.strength + "</span>" + subNote + "</td>" +
+          "<td>" + formatPrice(price) + "</td>" +
+          '<td><label class="visually-hidden" for="qty-' + domId + '">Quantity for ' + found.product.name + " " + found.variant.label + "</label>" +
+          '<input class="cart-qty" id="qty-' + domId + '" type="number" min="0" max="20" value="' + cart[i].qty + '" data-qty="' + key + '"></td>' +
+          "<td>" + formatPrice(price * cart[i].qty) + "</td>" +
+          '<td><button type="button" class="link-btn" data-remove="' + key + '">Remove</button></td>' +
           "</tr>";
       }
 
@@ -349,23 +401,31 @@
     }
 
     var lines = "";
+    var hasSub = false;
     for (var i = 0; i < cart.length; i++) {
       var found = findVariant(cart[i].variantId);
       if (!found) continue;
+      if (cart[i].sub) hasSub = true;
+      var label = found.product.name + " (" + found.variant.label + ")" +
+        (cart[i].sub ? " — Subscription" : "") + " × " + cart[i].qty;
       lines +=
-        "<li><span>" + found.product.name + " (" + found.variant.label + ") × " + cart[i].qty + "</span>" +
-        "<span>" + formatPrice(found.variant.price * cart[i].qty) + "</span></li>";
+        "<li><span>" + label + "</span>" +
+        "<span>" + formatPrice(itemPrice(cart[i]) * cart[i].qty) + "</span></li>";
     }
 
+    var shipping = cartShipping();
     summary.innerHTML =
       "<h2>Order summary</h2>" +
       '<ul class="summary-lines">' + lines + "</ul>" +
       '<ul class="summary-lines">' +
-      "<li><span>Shipping</span><span>FREE (orders $50+) or $6.95</span></li>" +
+      "<li><span>Shipping</span><span>" + (shipping === 0 ? "FREE" : formatPrice(shipping)) + "</span></li>" +
       "</ul>" +
       '<div class="summary-total"><span>Order total</span><span>' +
-      formatPrice(cartSubtotal() + (cartSubtotal() >= 50 ? 0 : 6.95)) +
-      "</span></div>";
+      formatPrice(cartSubtotal() + shipping) +
+      "</span></div>" +
+      (hasSub
+        ? '<p class="secure-note">Subscription items renew every 30 days at the same price with free shipping. Pause, skip, or cancel anytime.</p>'
+        : "");
   }
 
   function initCheckoutPage() {
@@ -432,6 +492,7 @@
       }
 
       /* "Place" the order: clear cart, show confirmation */
+      var hadSubscription = getCart().some(function (item) { return item.sub; });
       var orderNumber =
         "DND-" +
         new Date().getFullYear() +
@@ -449,6 +510,10 @@
           "<p>We’ve received your order and sent a confirmation to the email address you provided. " +
           "Orders placed before 2pm CT ship the same business day; otherwise they ship the next business day. " +
           "You’ll receive tracking as soon as your package is on its way.</p>" +
+          (hadSubscription
+            ? "<p>Your subscription is active: the same order ships every 30 days with free shipping. " +
+              "Pause, skip, or cancel anytime by emailing <a href=\"mailto:hello@foreverdandy.com\">hello@foreverdandy.com</a> — no fees, no questions.</p>"
+            : "") +
           '<p><a class="btn" href="shop.html">Continue shopping</a></p>' +
           "</div>";
         window.scrollTo({ top: 0, behavior: "smooth" });
