@@ -23,24 +23,6 @@
         { id: "gummies-30", label: "30-count", price: 49.99 }
       ]
     },
-    "capsules-45": {
-      name: "Kratom Extract Capsules – 45mg",
-      strength: "45mg mitragynine per capsule",
-      url: "product-capsules-45.html",
-      variants: [
-        { id: "capsules-45-5", label: "5-count", price: 17.99 },
-        { id: "capsules-45-10", label: "10-count", price: 29.99 }
-      ]
-    },
-    "capsules-90": {
-      name: "Kratom Extract Capsules – 90mg",
-      strength: "90mg mitragynine per capsule",
-      url: "product-capsules-90.html",
-      variants: [
-        { id: "capsules-90-5", label: "5-count", price: 26.99 },
-        { id: "capsules-90-10", label: "10-count", price: 49.99 }
-      ]
-    },
     powder: {
       name: "Kratom Leaf Powder",
       strength: "Finely ground raw leaf",
@@ -497,7 +479,7 @@
   }
 
   /* ------------------------------------------------------------------
-     Lab results: batch lookup + COA request (non-functional placeholders)
+     Lab results: batch lookup (demo — acknowledges the request)
      ------------------------------------------------------------------ */
 
   function initLabResults() {
@@ -516,14 +498,6 @@
             : "Please enter the batch number printed on your product label.";
           result.hidden = false;
         }
-      });
-    }
-
-    var coaButtons = document.querySelectorAll("[data-request-coa]");
-    for (var i = 0; i < coaButtons.length; i++) {
-      coaButtons[i].addEventListener("click", function () {
-        this.textContent = "Request received ✓";
-        this.disabled = true;
       });
     }
   }

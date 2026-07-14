@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab Results — Dandy</title>
-  <meta name="description" content="Every Dandy batch is third-party lab tested for alkaloid content, heavy metals, microbials, and pesticides. Certificates of Analysis available by batch number.">
+  <meta name="description" content="Every Dandy batch is third-party lab tested for alkaloid content. Download current Certificates of Analysis or request one by batch number.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -36,52 +36,40 @@
       <div class="prose">
         <h2>What we test for</h2>
         <ul>
-          <li><strong>Alkaloid content</strong> — mitragynine and 7-hydroxymitragynine, so the label matches what's inside.</li>
-          <li><strong>Heavy metals</strong> — lead, arsenic, cadmium, and mercury, against USP limits.</li>
-          <li><strong>Microbials</strong> — total plate count, yeast and mold, E. coli, and salmonella.</li>
-          <li><strong>Pesticides</strong> — a broad residue panel appropriate for botanical raw materials.</li>
+          <li><strong>Alkaloid content</strong> — mitragynine and 7-hydroxymitragynine, quantified by an independent laboratory so the milligrams on the label match the milligrams in the product.</li>
+          <li><strong>Full alkaloid profile</strong> — including paynantheine, speciogynine, and speciociliatine on raw leaf material.</li>
         </ul>
-        <p>A batch that fails any panel is rejected and never enters our inventory. Test results are tied to the batch number printed on every pouch and bottle.</p>
+        <p>A batch that fails testing is rejected and never enters our inventory. Test results are tied to the batch number printed on every pouch.</p>
 
-        <h2>Get the Certificate of Analysis for your batch</h2>
-        <p>Certificates of Analysis (COAs) are available on request for any batch, current or past. Find the batch number printed on your product label and look it up below, or request the COA for a product's current batch.</p>
+        <h2>Download current Certificates of Analysis</h2>
+        <p>The COAs for our current batches are available right here — no request needed. COAs for past batches are available by email.</p>
+      </div>
+
+      <div class="coa-grid">
+        <div class="coa-card">
+          <h3>Mixed Berry Kratom Gummies</h3>
+          <p>35mg mitragynine per gummy · Batch RD8221-B · Independent potency report, verified 34.0mg total mitragynine per gummy. Tested July 2026.</p>
+          <a class="btn btn--outline btn--sm" href="assets/coa/coa-mixed-berry-gummies-RD8221-B.pdf" target="_blank" rel="noopener">View COA (PDF)</a>
+        </div>
+        <div class="coa-card">
+          <h3>Kratom Leaf Powder</h3>
+          <p>Raw leaf · Lot 041726 (Sample I19552) · Full Mitragyna alkaloid panel by Cora Science (UHPLC-DAD): 1.43% mitragynine w/w. Issued May 2026.</p>
+          <a class="btn btn--outline btn--sm" href="assets/coa/coa-kratom-leaf-powder-I19552.pdf" target="_blank" rel="noopener">View COA (PDF)</a>
+        </div>
       </div>
 
       <div class="info-card">
         <h2>Batch lookup</h2>
+        <p>Find the batch or lot number printed on your product label and look it up here. If it isn't one of the current batches above, we'll email you the COA for your batch.</p>
         <form class="batch-lookup" data-batch-lookup>
           <label class="visually-hidden" for="batch">Batch number</label>
-          <input id="batch" name="batch" type="text" placeholder="e.g. DND-24117-G">
+          <input id="batch" name="batch" type="text" placeholder="e.g. RD8221-B or 041726">
           <button class="btn" type="submit">Look up batch</button>
         </form>
         <div class="alert alert--success" data-batch-result hidden></div>
       </div>
 
-      <h2>Request a COA by product</h2>
-      <div class="coa-grid">
-        <div class="coa-card">
-          <h3>Mixed Berry Kratom Gummies</h3>
-          <p>35mg mitragynine per gummy · 10 &amp; 30 count</p>
-          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
-        </div>
-        <div class="coa-card">
-          <h3>Kratom Extract Capsules – 45mg</h3>
-          <p>45mg mitragynine per capsule · 5 &amp; 10 count</p>
-          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
-        </div>
-        <div class="coa-card">
-          <h3>Kratom Extract Capsules – 90mg</h3>
-          <p>90mg mitragynine per capsule · 5 &amp; 10 count</p>
-          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
-        </div>
-        <div class="coa-card">
-          <h3>Kratom Leaf Powder</h3>
-          <p>Finely ground raw leaf · 250g–1kg</p>
-          <button class="btn btn--outline btn--sm" type="button" data-request-coa>Request COA</button>
-        </div>
-      </div>
-
-      <p>You can also email us at <span class="placeholder">[FILL IN - support email]</span> with your batch number and we'll send the COA directly, usually within one business day.</p>
+      <p>You can also email us at <a href="mailto:hello@foreverdandy.com">hello@foreverdandy.com</a> with your batch number and we'll send the COA directly, usually within one business day.</p>
     </div>
   </main>
 
@@ -93,8 +81,6 @@
           <ul>
             <li><a href="shop.html">All products</a></li>
             <li><a href="product-gummies.html">Kratom Gummies</a></li>
-            <li><a href="product-capsules-45.html">Extract Capsules – 45mg</a></li>
-            <li><a href="product-capsules-90.html">Extract Capsules – 90mg</a></li>
             <li><a href="product-powder.html">Kratom Leaf Powder</a></li>
           </ul>
         </div>
@@ -120,9 +106,9 @@
           <h3>Contact</h3>
           <address>
             Ollie Botanical Group LLC<br>
-            <span class="placeholder">[FILL IN - registered business address]</span><br>
-            <span class="placeholder">[FILL IN - support email]</span><br>
-            <span class="placeholder">[FILL IN - support phone]</span><br>
+            30 North Gould Street, Sheridan, Wyoming 82801<br>
+            <a href="mailto:hello@foreverdandy.com">hello@foreverdandy.com</a><br>
+            xxx-xxx-xxxx<br>
             Mon–Fri, 9am–5pm CT
           </address>
         </div>
