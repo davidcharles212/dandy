@@ -1,0 +1,38 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "dandy_footer": {
+      "type": "dandy-footer",
+      "blocks": {
+        "gummies": { "type": "link", "settings": { "group": "shop", "label": "Gummies", "link": "/products/mixed-berry-kratom-gummies" } },
+        "powder": { "type": "link", "settings": { "group": "shop", "label": "Powder", "link": "/collections/all" } },
+        "capsules": { "type": "link", "settings": { "group": "shop", "label": "Capsules", "link": "/collections/all" } },
+        "all_products": { "type": "link", "settings": { "group": "shop", "label": "All products", "link": "shopify://collections/all" } },
+        "what_is": { "type": "link", "settings": { "group": "learn", "label": "What is kratom?", "link": "/learn" } },
+        "quality": { "type": "link", "settings": { "group": "learn", "label": "Quality & testing", "link": "/COA" } },
+        "batch": { "type": "link", "settings": { "group": "learn", "label": "Batch reports", "link": "/COA" } },
+        "faq": { "type": "link", "settings": { "group": "learn", "label": "FAQ", "link": "/pages/faq" } },
+        "about": { "type": "link", "settings": { "group": "company", "label": "About Dandy", "link": "/about" } },
+        "contact": { "type": "link", "settings": { "group": "company", "label": "Contact", "link": "mailto:hello@foreverdandy.com" } },
+        "shipping": { "type": "link", "settings": { "group": "company", "label": "Shipping", "link": "/pages/shipping" } },
+        "returns": { "type": "link", "settings": { "group": "company", "label": "Returns", "link": "/pages/returns" } },
+        "subscription": { "type": "link", "settings": { "group": "company", "label": "Subscription policy", "link": "/pages/subscription-policy" } },
+        "accessibility": { "type": "link", "settings": { "group": "company", "label": "Accessibility", "link": "/pages/accessibility" } }
+      },
+      "block_order": ["gummies", "powder", "capsules", "all_products", "what_is", "quality", "batch", "faq", "about", "contact", "shipping", "returns", "subscription", "accessibility"],
+      "settings": {
+        "tagline": "Good energy. Easy unwinding. Kratom made fine and Dandy.",
+        "support_email": "hello@foreverdandy.com",
+        "shop_heading": "Shop",
+        "learn_heading": "Learn",
+        "company_heading": "Company",
+        "newsletter_heading": "Keep it Dandy",
+        "newsletter_text": "New drops, useful kratom education, and the occasional bright idea.",
+        "disclaimer": "For adults 21+. Read and follow the product label. Availability varies by location.",
+        "copy_status": "draft"
+      }
+    }
+  },
+  "order": ["dandy_footer"]
+}

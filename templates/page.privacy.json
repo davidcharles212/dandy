@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "hero": { "type": "dandy-page-hero", "settings": { "eyebrow": "Privacy", "heading": "Privacy policy", "text": "The published policy must match the actual storefront, analytics, marketing, consent, payment, and fulfillment data flows.", "claim_ids": "", "copy_status": "missing-final-legal" } },
+    "content": { "type": "dandy-page-content", "settings": { "fallback_content": "<p>[FINAL PRIVACY POLICY REQUIRED: publish the counsel-approved Shopify policy and verify every app, analytics, email/SMS, consent, payment, fulfillment, retention, rights-request, contact, and effective-date statement against actual configuration.]</p>", "copy_status": "missing-final-copy" } }
+  },
+  "order": ["hero", "content"]
+}

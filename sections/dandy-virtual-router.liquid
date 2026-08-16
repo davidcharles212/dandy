@@ -1,0 +1,33 @@
+<dandy-virtual-router>
+  <div data-virtual-page="learn" data-page-title="What is Kratom?" data-page-description="A clear introduction to kratom, Dandy gummies, powder, and extract capsule formats." hidden>
+    {% render 'dandy-route-page', route_path: 'learn' %}
+  </div>
+  <div data-virtual-page="coa" data-page-title="COA and Batch Reports" data-page-description="Find and understand Dandy finished-product batch reports at foreverdandy.com/COA." hidden>
+    {% render 'dandy-route-page', route_path: 'coa' %}
+  </div>
+  <div data-virtual-page="faq" data-page-title="Dandy FAQ" data-page-description="Answers about kratom, Dandy formats, use, subscription, shipping, and batch reports." hidden>
+    {% render 'dandy-route-page', route_path: 'faq' %}
+  </div>
+  <div data-virtual-page="about" data-page-title="About Dandy" data-page-description="Why Dandy makes kratom easier to understand, verify, and choose." hidden>
+    {% render 'dandy-route-page', route_path: 'about' %}
+  </div>
+  <section class="dandy-route-hero dandy-route-hero--peach" data-virtual-fallback aria-labelledby="DandyNotFoundHeading">
+    <div class="dandy-container dandy-container--wide dandy-route-hero__inner">
+      <span class="dandy-kicker">404</span>
+      <h1 id="DandyNotFoundHeading" class="dandy-display">THIS PAGE WANDERED OFF.</h1>
+      <p>The address may have changed. Head back to the full Dandy lineup or start with the mixed-berry gummies.</p>
+      <div class="dandy-actions">
+        <a class="dandy-button" href="{{ routes.all_products_collection_url }}">SHOP ALL DANDY</a>
+        <a class="dandy-button dandy-button--secondary" href="{{ routes.root_url }}">GO HOME</a>
+      </div>
+    </div>
+  </section>
+</dandy-virtual-router>
+
+{% schema %}
+{
+  "name": "Dandy route pages",
+  "settings": [],
+  "presets": [{ "name": "Dandy route pages" }]
+}
+{% endschema %}

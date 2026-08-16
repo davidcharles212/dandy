@@ -1,0 +1,262 @@
+{% doc %}
+  Renders Dandy purchase controls. Preview mode is interactive but never submits fixture data;
+  the normal branch posts only genuine Shopify variant, quantity, and selling-plan values.
+
+  @param {product} product - Product used by the genuine purchase form.
+  @param {object} section_settings - Settings from the parent section.
+  @param {string} section_id - Parent section ID used for unique controls.
+  @param {boolean} [show_title] - Whether to render the product heading and facts.
+  @param {string} [heading_level] - Heading level for the product title.
+{% enddoc %}
+
+{% liquid
+  assign active_product = product
+  if active_product == blank
+    assign active_product = collections.all.products.first
+  endif
+  assign variant = active_product.selected_or_first_available_variant
+  assign live_unit_price = variant.price | default: 0
+  assign form_id = 'DandyProductForm-' | append: section_id
+  assign purchase_group = 'DandyPurchaseType-' | append: section_id
+  assign quantity_group = 'DandyQuantity-' | append: section_id
+  assign plan_group = 'DandyPlan-' | append: section_id
+  assign can_add_to_cart = false
+  if variant.available
+    assign can_add_to_cart = true
+  endif
+%}
+
+<dandy-purchase
+  id="DandyBuyBox-{{ section_id }}"
+  class="dandy-buybox dandy-skip-target"
+  data-product-id="{{ active_product.id }}"
+  data-preview-mode="{{ section_settings.design_preview_mode }}"
+  data-copy-status="{{ section_settings.copy_status }}"
+  data-claim-ids="{{ section_settings.claim_ids }}"
+>
+  {% if show_title != false %}
+    <div class="dandy-buybox__header">
+      <span class="dandy-kicker">{{ section_settings.eyebrow }}</span>
+      {% if heading_level == 'h2' %}
+        <h2 class="dandy-buybox__title">{{ section_settings.heading | default: active_product.title }}</h2>
+      {% else %}
+        <h1 class="dandy-buybox__title">{{ section_settings.heading | default: active_product.title }}</h1>
+      {% endif %}
+      <p class="dandy-buybox__tagline">{{ section_settings.tagline }}</p>
+      <ul class="dandy-buybox__facts" role="list">
+        {% if section_settings.highlight_1 != blank %}<li>{% render 'dandy-icon', name: 'check' %}{{ section_settings.highlight_1 }}</li>{% endif %}
+        {% if section_settings.highlight_2 != blank %}<li>{% render 'dandy-icon', name: 'check' %}{{ section_settings.highlight_2 }}</li>{% endif %}
+        {% if section_settings.highlight_3 != blank %}<li>{% render 'dandy-icon', name: 'check' %}{{ section_settings.highlight_3 }}</li>{% endif %}
+        {% if section_settings.highlight_4 != blank %}<li>{% render 'dandy-icon', name: 'check' %}{{ section_settings.highlight_4 }}</li>{% endif %}
+      </ul>
+    </div>
+  {% endif %}
+
+  {% if section_settings.design_preview_mode %}
+    <div class="dandy-buybox__form-area">
+      <fieldset class="dandy-fieldset dandy-size-fieldset">
+        <legend>1. Choose your pouch</legend>
+        <div class="dandy-size-options">
+          <label class="dandy-size-card">
+            <input type="radio" name="DandySize-{{ section_id }}" value="30" data-size-option checked>
+            <img src="{{ 'dandy-gummy-30.png' | asset_url }}" width="100" height="100" alt="">
+            <span><strong>30-count</strong><small>Full-size pouch · best routine</small></span>
+            <b>$59.99</b>
+          </label>
+          <label class="dandy-size-card">
+            <input type="radio" name="DandySize-{{ section_id }}" value="10" data-size-option>
+            <img src="{{ 'dandy-gummy-10.png' | asset_url }}" width="100" height="100" alt="">
+            <span><strong>10-count</strong><small>Trial pouch · one-time only</small></span>
+            <b>$24.99</b>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="dandy-fieldset dandy-quantity-fieldset">
+        <legend>2. Choose how many pouches</legend>
+        <div class="dandy-offer-stack dandy-offer-stack--visual">
+          <label class="dandy-offer-card dandy-offer-card--visual">
+            <input
+              type="radio"
+              name="{{ quantity_group }}"
+              value="1"
+              data-quantity-option
+              data-one-30-price="$59.99"
+              data-sub-30-price="$47.99"
+              data-one-30-unit="$59.99 / pouch"
+              data-sub-30-unit="$47.99 / pouch"
+              data-one-10-price="$24.99"
+              data-one-10-unit="$24.99 / pouch"
+              checked
+            >
+            <span class="dandy-radio" aria-hidden="true"></span>
+            <span class="dandy-offer-card__copy"><strong>1 pouch</strong><small data-offer-count>30 gummies total</small></span>
+            <span class="dandy-offer-card__totals"><s data-offer-compare>$59.99</s><strong data-offer-price>$47.99</strong><small data-offer-unit>$47.99 / pouch</small></span>
+          </label>
+          <label class="dandy-offer-card dandy-offer-card--visual">
+            <input
+              type="radio"
+              name="{{ quantity_group }}"
+              value="3"
+              data-quantity-option
+              data-one-30-price="$119.98"
+              data-sub-30-price="$95.98"
+              data-one-30-unit="$39.99 / pouch"
+              data-sub-30-unit="$31.99 / pouch"
+              data-one-10-price="$74.97"
+              data-one-10-unit="$24.99 / pouch"
+            >
+            <span class="dandy-radio" aria-hidden="true"></span>
+            <span class="dandy-offer-card__copy"><strong>3 pouches</strong><small data-offer-count>90 gummies total</small></span>
+            <span class="dandy-offer-card__totals"><s data-offer-compare>$119.98</s><strong data-offer-price>$95.98</strong><small data-offer-unit>$31.99 / pouch</small></span>
+            <span class="dandy-offer-card__badge">MOST POPULAR</span>
+          </label>
+          <label class="dandy-offer-card dandy-offer-card--visual">
+            <input
+              type="radio"
+              name="{{ quantity_group }}"
+              value="5"
+              data-quantity-option
+              data-one-30-price="$179.97"
+              data-sub-30-price="$143.98"
+              data-one-30-unit="$35.99 / pouch"
+              data-sub-30-unit="$28.80 / pouch"
+              data-one-10-price="$124.95"
+              data-one-10-unit="$24.99 / pouch"
+            >
+            <span class="dandy-radio" aria-hidden="true"></span>
+            <span class="dandy-offer-card__copy"><strong>5 pouches</strong><small data-offer-count>150 gummies total</small></span>
+            <span class="dandy-offer-card__totals"><s data-offer-compare>$179.97</s><strong data-offer-price>$143.98</strong><small data-offer-unit>$28.80 / pouch</small></span>
+            <span class="dandy-offer-card__badge">BEST VALUE</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset class="dandy-fieldset dandy-subscription-fieldset" data-subscription-panel>
+        <legend>3. Make it a routine <span>optional</span></legend>
+        <label class="dandy-subscription-switch">
+          <input type="checkbox" data-subscription-toggle checked>
+          <span class="dandy-switch" aria-hidden="true"><i></i></span>
+          <span class="dandy-subscription-switch__copy">
+            <strong>Subscribe &amp; save 20%</strong>
+            <small data-subscription-mode>Selected · every 30 days</small>
+          </span>
+          <span class="dandy-subscription-switch__price">
+            <s data-subscription-compare>$59.99</s>
+            <strong data-subscription-price>$47.99</strong>
+          </span>
+          <span class="dandy-subscription-switch__badge">SAVE 20%</span>
+        </label>
+        <ul class="dandy-subscription-benefits" data-subscription-benefits role="list">
+          <li>{% render 'dandy-icon', name: 'check' %}<span>20% off every delivery</span></li>
+          <li>{% render 'dandy-icon', name: 'package' %}<span>Free standard shipping</span></li>
+          <li>{% render 'dandy-icon', name: 'calendar' %}<span>Ships every 30 days</span></li>
+        </ul>
+        <p class="dandy-subscription-unavailable" data-subscription-unavailable hidden>The 10-count trial pouch is a one-time purchase. Choose 30-count to subscribe and save.</p>
+      </fieldset>
+
+      <input type="hidden" value="1" data-form-quantity>
+      <div class="dandy-buybox__summary" aria-live="polite">
+        <span><small>YOUR DANDY</small><strong data-selection-summary-label>1 pouch · 30-count · subscription</strong></span>
+        <strong data-selection-price>$47.99</strong>
+      </div>
+      <button type="button" class="dandy-button dandy-button--full" data-primary-submit data-preview-submit data-can-add="true">
+        <span data-primary-submit-text>SUBSCRIBE — $47.99</span>
+      </button>
+      <div class="dandy-preview-notice" data-preview-notice role="status" tabindex="-1" hidden>
+        <strong>YOUR DANDY IS SAVED FOR NOW.</strong>
+        <span>Online checkout isn’t open yet, so nothing was added to your cart.</span>
+      </div>
+    </div>
+  {% else %}
+    <div class="dandy-buybox__form-area">
+      {% if active_product.variants.size > 1 %}
+        <div class="dandy-select">
+          <label for="DandyVariant-{{ section_id }}">Choose an option</label>
+          <select id="DandyVariant-{{ section_id }}" data-variant-select>
+            {% for product_variant in active_product.variants %}
+              <option value="{{ product_variant.id }}" data-price-label="{{ product_variant.price | money }}" {% if product_variant.id == variant.id %}selected{% endif %} {% unless product_variant.available %}disabled{% endunless %}>
+                {{ product_variant.title }} — {{ product_variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
+
+      {% if variant.selling_plan_allocations.size > 0 %}
+        <fieldset class="dandy-fieldset">
+          <legend>Choose your purchase</legend>
+          <div class="dandy-purchase-types">
+            <label class="dandy-purchase-card">
+              <input type="radio" name="{{ purchase_group }}" value="subscription" data-purchase-type>
+              <span class="dandy-radio" aria-hidden="true"></span><span class="dandy-purchase-card__copy"><strong>Subscribe</strong><small>See the genuine plan terms below</small></span>
+            </label>
+            <label class="dandy-purchase-card">
+              <input type="radio" name="{{ purchase_group }}" value="one-time" data-purchase-type checked>
+              <span class="dandy-radio" aria-hidden="true"></span><span class="dandy-purchase-card__copy"><strong>One-time purchase</strong><small>{{ live_unit_price | money }}</small></span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="dandy-fieldset dandy-offer-panel" data-offer-panel="subscription" hidden>
+          <legend>Delivery plan</legend>
+          {% for allocation in variant.selling_plan_allocations %}
+            <label class="dandy-offer-card">
+              <input type="radio" name="{{ plan_group }}" value="{{ allocation.selling_plan.id }}" data-selling-plan data-offer-option data-selection-label="{{ allocation.selling_plan.name | escape }}" data-price-label="{{ allocation.price | money }}" data-cta-label="SUBSCRIBE — {{ allocation.price | money }}" {% if forloop.first %}checked{% endif %}>
+              <span class="dandy-radio" aria-hidden="true"></span><span class="dandy-offer-card__copy"><strong>{{ allocation.selling_plan.name }}</strong><small>{{ allocation.price | money }}</small></span>
+            </label>
+          {% endfor %}
+        </fieldset>
+      {% endif %}
+
+      <fieldset class="dandy-fieldset dandy-offer-panel" data-offer-panel="one-time">
+        <legend>Choose a quantity</legend>
+        <div class="dandy-offer-stack">
+          {% assign quantities = '1,3,5' | split: ',' %}
+          {% for quantity_string in quantities %}
+            {% assign quantity = quantity_string | plus: 0 %}
+            {% assign total_price = live_unit_price | times: quantity %}
+            <label class="dandy-offer-card">
+              <input type="radio" name="{{ quantity_group }}" value="{{ quantity }}" data-quantity-option data-offer-option data-offer-purchase="one-time" data-selection-label="{{ quantity }} {% if quantity == 1 %}pack{% else %}packs{% endif %}" data-price-label="{{ total_price | money }}" data-cta-label="ADD TO CART — {{ total_price | money }}" {% if forloop.first %}checked{% endif %}>
+              <span class="dandy-radio" aria-hidden="true"></span>
+              <span class="dandy-offer-card__copy"><strong>{{ quantity }} {% if quantity == 1 %}pack{% else %}packs{% endif %}</strong><small>{{ live_unit_price | money }} / pack</small></span>
+              <span class="dandy-offer-card__totals"><strong>{{ total_price | money }}</strong></span>
+            </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <div class="dandy-buybox__summary" aria-live="polite">
+        <span><small>YOUR DANDY</small><strong data-selection-summary-label>1 pack</strong></span>
+        <strong data-selection-price>{{ live_unit_price | money }}</strong>
+      </div>
+      <product-form-component id="{{ form_id }}-component" data-section-id="{{ section_id }}" data-product-id="{{ active_product.id }}" data-product-url="{{ active_product.url }}" data-quantity-default="1" data-quantity-error-max="{{ 'products.product.quantity_error_max' | t }}" on:submit="/handleSubmit">
+        <div class="dandy-visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+        {% form 'product', active_product, id: form_id, data-type: 'add-to-cart-form' %}
+          <input type="hidden" name="id" value="{{ variant.id }}" ref="variantId" data-form-variant>
+          <input type="hidden" name="quantity" value="1" data-form-quantity>
+          <input type="hidden" name="selling_plan" value="" data-form-selling-plan disabled>
+          {% # theme-check-disable ValidScopedCSSClass %}
+          <span class="product-form-text__error hidden" ref="addToCartTextError" aria-live="polite"></span>
+          {% # theme-check-enable ValidScopedCSSClass %}
+          <add-to-cart-component ref="addToCartButtonContainer">
+            <button type="submit" name="add" class="dandy-button dandy-button--full" ref="addToCartButton" on:click="/handleClick" data-primary-submit data-can-add="{{ can_add_to_cart }}" {% unless can_add_to_cart %}disabled{% endunless %}>
+              <span data-primary-submit-text>{% if can_add_to_cart %}ADD TO CART — {{ live_unit_price | money }}{% else %}UNAVAILABLE{% endif %}</span>
+              <span class="add-to-cart__added" aria-hidden="true">✓</span>
+            </button>
+          </add-to-cart-component>
+        {% endform %}
+      </product-form-component>
+    </div>
+  {% endif %}
+
+  <ul class="dandy-reassurance" role="list">
+    <li>{% render 'dandy-icon', name: 'check' %}{{ section_settings.reassurance_1 }}</li>
+    <li>{% render 'dandy-icon', name: 'package' %}{{ section_settings.reassurance_2 }}</li>
+    <li>{% render 'dandy-icon', name: 'check' %}{{ section_settings.reassurance_3 }}</li>
+  </ul>
+
+  <div class="dandy-sticky-purchase" data-sticky-purchase aria-label="Product purchase shortcut">
+    <div class="dandy-sticky-purchase__summary"><strong data-sticky-label>Mixed Berry · 30-count · 1 pouch</strong><span data-sticky-price>{% if section_settings.design_preview_mode %}$47.99{% else %}{{ live_unit_price | money }}{% endif %}</span></div>
+    <button type="button" class="dandy-button" data-sticky-submit>CHOOSE YOUR DANDY</button>
+  </div>
+</dandy-purchase>

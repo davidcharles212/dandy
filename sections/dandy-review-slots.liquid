@@ -1,0 +1,48 @@
+<section class="dandy-section" data-development-marker="review-slots" aria-labelledby="DandyReviewsHeading-{{ section.id }}">
+  <div class="dandy-container dandy-container--wide">
+    <div class="dandy-section__intro">
+      <div>
+        <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+        <h2 id="DandyReviewsHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="dandy-body">{{ section.settings.text }}</p>
+    </div>
+    <div class="dandy-review-grid">
+      {% for block in section.blocks %}
+        <article class="dandy-review-slot" {{ block.shopify_attributes }}>
+          <span class="dandy-review-slot__label">{{ block.settings.slot_id }} · {{ block.settings.objection }}</span>
+          <p>{{ block.settings.placeholder }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy review slots",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real voices, when they're ready" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Proof we won't make up." },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "These development slots define the objection each permissioned review should answer. No invented names, ratings, avatars, or verification badges."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_slot",
+      "name": "Review slot",
+      "settings": [
+        { "type": "text", "id": "slot_id", "label": "Slot ID", "default": "REV-01" },
+        { "type": "text", "id": "objection", "label": "Objection", "default": "First-time understanding" },
+        { "type": "textarea", "id": "placeholder", "label": "Development placeholder", "default": "[REAL REVIEW NEEDED — first-time understanding — 30–60 words]" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Dandy review slots" }]
+}
+{% endschema %}

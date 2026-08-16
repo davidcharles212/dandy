@@ -1,0 +1,44 @@
+<section class="dandy-value-strip" aria-label="{{ section.settings.accessible_label }}" {{ section.shopify_attributes }}>
+  <div class="dandy-container dandy-container--wide dandy-value-strip__grid">
+    {% for block in section.blocks %}
+      <div class="dandy-value-strip__item" {{ block.shopify_attributes }}>
+        {% render 'dandy-icon', name: block.settings.icon %}
+        <span>{{ block.settings.text }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy value strip",
+  "settings": [
+    { "type": "text", "id": "accessible_label", "label": "Accessible label", "default": "Dandy product highlights" }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "check", "label": "Check" },
+            { "value": "berry", "label": "Berry" },
+            { "value": "package", "label": "Package" },
+            { "value": "lab", "label": "Lab" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "calendar", "label": "Calendar" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "text", "label": "Text", "default": "Precisely portioned" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Dandy value strip" }]
+}
+{% endschema %}

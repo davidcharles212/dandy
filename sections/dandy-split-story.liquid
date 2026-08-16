@@ -1,0 +1,86 @@
+{% liquid
+  case section.settings.asset
+    when 'use'
+      assign image_jpg = 'dandy-gummy-use-1200.jpg'
+      assign image_webp_small = 'dandy-gummy-use-720.webp'
+      assign image_webp_large = 'dandy-gummy-use-1200.webp'
+    when 'format'
+      assign image_jpg = 'dandy-compare-hero-2200.jpg'
+      assign image_webp_small = 'dandy-compare-hero-720.webp'
+      assign image_webp_large = 'dandy-compare-hero-1280.webp'
+    else
+      assign image_jpg = 'dandy-gummy-closeup-1200.jpg'
+      assign image_webp_small = 'dandy-gummy-closeup-720.webp'
+      assign image_webp_large = 'dandy-gummy-closeup-1200.webp'
+  endcase
+%}
+<section class="dandy-split-story dandy-split-story--{{ section.settings.tone }} dandy-split-story--image-{{ section.settings.image_position }}" aria-labelledby="DandySplitHeading-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="dandy-split-story__media">
+    <picture>
+      <source type="image/webp" srcset="{{ image_webp_small | asset_url }} 720w, {{ image_webp_large | asset_url }} 1200w" sizes="(min-width: 750px) 50vw, 100vw">
+      <img src="{{ image_jpg | asset_url }}" width="1200" height="1200" loading="lazy" alt="{{ section.settings.image_alt | escape }}">
+    </picture>
+  </div>
+  <div class="dandy-split-story__copy">
+    <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+    <h2 id="DandySplitHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+    <div class="dandy-split-story__text rte">{{ section.settings.text }}</div>
+    {% if section.blocks.size > 0 %}
+      <ul class="dandy-check-list" role="list">
+        {% for block in section.blocks %}<li {{ block.shopify_attributes }}>{% render 'dandy-icon', name: 'check' %}<span>{{ block.settings.text }}</span></li>{% endfor %}
+      </ul>
+    {% endif %}
+    {% if section.settings.link_label != blank %}<a class="dandy-button {% if section.settings.tone == 'orange' %}dandy-button--secondary{% endif %}" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>{% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy split story",
+  "settings": [
+    {
+      "type": "select",
+      "id": "asset",
+      "label": "Image",
+      "options": [
+        { "value": "closeup", "label": "Gummy closeup" },
+        { "value": "use", "label": "Gummy in use" },
+        { "value": "format", "label": "Gummy and powder" }
+      ],
+      "default": "closeup"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "tone",
+      "label": "Color",
+      "options": [
+        { "value": "orange", "label": "Orange" },
+        { "value": "peach", "label": "Peach" },
+        { "value": "cream", "label": "Cream" }
+      ],
+      "default": "orange"
+    },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "A Dandy mixed berry gummy and pouch" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "WHY GUMMIES" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "THE GUMMY THAT MAKES KRATOM EASY." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Open the pouch, take the labeled serving, and get on with your day. No scale. No scoop. No green cloud in the kitchen.</p>" },
+    { "type": "text", "id": "link_label", "label": "Link label" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "blocks": [
+    { "type": "fact", "name": "Fact", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Pre-portioned" }] }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Dandy split story" }]
+}
+{% endschema %}

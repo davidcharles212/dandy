@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Quality + testing",
+        "heading": "No badge wall. Show the work.",
+        "text": "Dandy's frontend is built to connect the selected product and lot to an actual finished-product report, its lab, dates, and real test scope.",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "timeline": {
+      "type": "dandy-timeline",
+      "blocks": {
+        "source": { "type": "step", "settings": { "heading": "1. Document the source", "text": "[FINAL PROCESS FACT REQUIRED: actual material source, botanical identity, and incoming controls]" } },
+        "make": { "type": "step", "settings": { "heading": "2. Make the finished product", "text": "[FINAL PROCESS FACT REQUIRED: actual manufacturer, facility role, formula, and controls]" } },
+        "test": { "type": "step", "settings": { "heading": "3. Test the finished lot", "text": "[FINAL COA REQUIRED: actual lab, methods, analytes, specifications, dates, and product/lot identity]" } },
+        "publish": { "type": "step", "settings": { "heading": "4. Publish what the report proves", "text": "[FINAL COA REQUIRED: stable public file, approved redactions, plain-language scope, and product-to-lot mapping]" } }
+      },
+      "block_order": ["source", "make", "test", "publish"],
+      "settings": {
+        "eyebrow": "Batch to bag",
+        "heading": "Trust should have a trail.",
+        "text": "The timeline stays explicitly incomplete until documentation supports every step.",
+        "link_label": "Open the batch-report library",
+        "link": "/COA",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "missing-final-proof"
+      }
+    },
+    "visual_v05": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-05",
+        "status": "Production needed",
+        "heading": "How to read a Dandy report",
+        "conversion_job": "Make batch proof understandable and clickable.",
+        "composition": "A real redacted finished-product report with callouts for product, batch, assay value, test and report dates, lab, methods, and actual scope.",
+        "ratios": "4:3 desktop · 1:1 mobile",
+        "dependencies": "Final finished-product reports, public redactions, exact product-to-lot mapping, and approved scope explanation.",
+        "alt_intent": "Summarize where the actual report identifies product, lot, lab, dates, result, and scope.",
+        "owner": "Quality + production",
+        "due_date": "Before any testing claim goes live"
+      }
+    },
+    "proof_rules": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "lot": { "type": "card", "settings": { "icon": "package", "heading": "Match the lot", "text": "<p>The report must map to the finished product and batch a shopper can identify.</p>" } },
+        "scope": { "type": "card", "settings": { "icon": "lab", "heading": "Name the scope", "text": "<p>Say what was actually measured; do not turn a partial panel into a universal safety claim.</p>" } },
+        "date": { "type": "card", "settings": { "icon": "calendar", "heading": "Show the dates", "text": "<p>Manufactured, received, tested, and reported dates belong beside the result when available.</p>" } },
+        "file": { "type": "card", "settings": { "icon": "check", "heading": "Open the source", "text": "<p>The public record should be readable, accessible, stable, and linked directly.</p>" } }
+      },
+      "block_order": ["lot", "scope", "date", "file"],
+      "settings": {
+        "eyebrow": "What proof looks like",
+        "heading": "Specific beats reassuring.",
+        "text": "A decorative checkmark is not evidence. These modules are data seams, not substitute reports.",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "current": { "type": "question", "settings": { "question": "Are final Dandy reports available?", "answer": "<p>Not yet. The supplied gummy PDF is a signature page and cannot substantiate testing claims. Finished-product, lot-linked reports are required before production claims publish.</p>", "open": true } },
+        "scope": { "type": "question", "settings": { "question": "What will each report show?", "answer": "<p>[FINAL COA REQUIRED: exact lab, methods, analytes, specifications, results, dates, and approved public redactions for that lot.]</p>" } },
+        "lookup": { "type": "question", "settings": { "question": "How will I find my lot?", "answer": "<p>[FINAL OPERATIONS FACT REQUIRED: exact package lot identifier, lookup method, fallback support path, and archival policy.]</p>" } }
+      },
+      "block_order": ["current", "scope", "lookup"],
+      "settings": {
+        "eyebrow": "Proof status",
+        "heading": "Clear about what is missing.",
+        "text": "Development placeholders must never be mistaken for a live quality claim.",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "missing-final-legal"
+      }
+    }
+  },
+  "order": ["hero", "timeline", "visual_v05", "proof_rules", "faq"]
+}

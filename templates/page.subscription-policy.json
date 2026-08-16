@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Subscriptions",
+        "heading": "Recurring should never be a surprise.",
+        "text": "Dandy only enables a subscription when a genuine Shopify selling plan exists and its charge, renewal, cadence, shipping, and cancellation path can be shown together.",
+        "claim_ids": "C-13 C-14 C-15",
+        "copy_status": "missing-final-legal"
+      }
+    },
+    "principles": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "choice": { "type": "card", "settings": { "icon": "check", "heading": "Explicit choice", "text": "<p>One-time remains the genuine fallback until a supported plan is connected and tested.</p>" } },
+        "charge": { "type": "card", "settings": { "icon": "package", "heading": "Charge beside the choice", "text": "<p>Show today's total, renewal amount, discount, shipping, and cadence before add to cart.</p>" } },
+        "control": { "type": "card", "settings": { "icon": "calendar", "heading": "A real control path", "text": "<p>Edit, skip, pause, cancel, and support instructions must match the selected app and account flow.</p>" } }
+      },
+      "block_order": ["choice", "charge", "control"],
+      "settings": {
+        "eyebrow": "Purchase terms",
+        "heading": "Consent you can see.",
+        "text": "The current store has no selling plans, so the development buy box does not fabricate one.",
+        "claim_ids": "C-13 C-14 C-15",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "content": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<h2>Final subscription policy required</h2><p>[FINAL POLICY + INTEGRATION REQUIRED: eligible products, discount, charge today, renewal amount and cadence, shipping, taxes, payment failures, inventory changes, edits, skips, pauses, cancellations, cutoff timing, refunds, notifications, account access, and support path.]</p><p>[FINAL TESTING REQUIRED: gateway eligibility, selling-plan IDs, cart behavior, initial order, renewal, failed payment, edit, cancel, and transactional messaging.]</p>",
+        "copy_status": "missing-final-copy"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "automatic": { "type": "question", "settings": { "question": "Am I enrolled automatically?", "answer": "<p>No. Subscription must be an explicit, available choice backed by a real Shopify selling plan.</p>", "open": true } },
+        "charge": { "type": "question", "settings": { "question": "What will I be charged?", "answer": "<p>The live choice must show today's total and the real renewal amount and cadence. [FINAL TERMS REQUIRED: tax and shipping treatment.]</p>" } },
+        "cancel": { "type": "question", "settings": { "question": "How do I cancel or edit?", "answer": "<p>[FINAL APP + POLICY REQUIRED: exact portal, authentication, cutoff, edit/skip/pause/cancel steps, and support fallback.]</p>" } },
+        "stock": { "type": "question", "settings": { "question": "What happens if an item is unavailable?", "answer": "<p>[FINAL OPERATIONS REQUIRED: inventory, substitution, delay, notification, charge, and cancellation rules.]</p>" } }
+      },
+      "block_order": ["automatic", "charge", "cancel", "stock"],
+      "settings": {
+        "eyebrow": "Recurring questions",
+        "heading": "Every renewal deserves a clear answer.",
+        "text": "Final language must match the selected app, gateway, and tested customer workflow.",
+        "claim_ids": "C-13 C-14 C-15",
+        "copy_status": "missing-final-legal"
+      }
+    }
+  },
+  "order": ["hero", "principles", "content", "faq"]
+}

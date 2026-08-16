@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Dandy",
+        "heading": "",
+        "text": "",
+        "claim_ids": "",
+        "copy_status": "approved"
+      }
+    },
+    "content": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<p>[COPY NEEDED: replace this development page content before release.]</p>",
+        "copy_status": "missing-final-copy"
+      }
+    }
+  },
+  "order": ["hero", "content"]
+}

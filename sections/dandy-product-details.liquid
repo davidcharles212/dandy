@@ -1,0 +1,112 @@
+{% liquid
+  assign facts_panel = product.metafields.dandy.facts_panel.value
+  assign ingredients = product.metafields.dandy.ingredients.value
+  assign directions = product.metafields.dandy.directions.value
+  assign warnings = product.metafields.dandy.warnings.value
+%}
+
+<section
+  class="dandy-section"
+  data-copy-status="{{ section.settings.copy_status }}"
+  data-claim-ids="{{ section.settings.claim_ids }}"
+  aria-labelledby="DandyDetailsHeading-{{ section.id }}"
+>
+  <div class="dandy-container dandy-container--wide">
+    <div class="dandy-section__intro">
+      <div>
+        <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+        <h2 id="DandyDetailsHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="dandy-body">{{ section.settings.text }}</p>
+    </div>
+
+    <div class="dandy-editorial">
+      <div>
+        {% if facts_panel != blank %}
+          {{
+            facts_panel
+            | image_url: width: 1400
+            | image_tag: widths: '480, 720, 1000, 1400', sizes: '(min-width: 768px) 50vw, 100vw', loading: 'lazy', alt: section.settings.facts_alt
+          }}
+        {% else %}
+          <div class="dandy-visual-brief" data-development-marker="final-label">
+            <span class="dandy-visual-brief__id">ASSET V-08</span>
+            <h3>Final label and facts panel required</h3>
+            <p>{{ section.settings.facts_placeholder }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="dandy-faq-list">
+        <details class="dandy-faq-item" open>
+          <summary>Ingredients</summary>
+          <div class="dandy-faq-item__answer">
+            {% if ingredients != blank %}
+              {{ product.metafields.dandy.ingredients | metafield_tag }}
+            {% else %}
+              <p data-development-marker="final-label">{{ section.settings.ingredients_placeholder }}</p>
+            {% endif %}
+          </div>
+        </details>
+        <details class="dandy-faq-item">
+          <summary>Directions and suggested use</summary>
+          <div class="dandy-faq-item__answer">
+            {% if directions != blank %}
+              {{ product.metafields.dandy.directions | metafield_tag }}
+            {% else %}
+              <p data-development-marker="final-label">{{ section.settings.directions_placeholder }}</p>
+            {% endif %}
+          </div>
+        </details>
+        <details class="dandy-faq-item">
+          <summary>Warnings</summary>
+          <div class="dandy-faq-item__answer">
+            {% if warnings != blank %}
+              {{ product.metafields.dandy.warnings | metafield_tag }}
+            {% else %}
+              <p data-development-marker="final-label">{{ section.settings.warnings_placeholder }}</p>
+            {% endif %}
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy product details",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Know what's in the serving" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The label should answer the question." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Approved product data will flow from structured metafields into this facts, ingredients, directions, and warnings module." },
+    { "type": "text", "id": "facts_alt", "label": "Facts panel alt text", "default": "Dandy product facts panel" },
+    {
+      "type": "textarea",
+      "id": "facts_placeholder",
+      "label": "Facts placeholder",
+      "default": "[FINAL LABEL REQUIRED: approved facts panel, count or net weight, serving, amount, ingredients, allergens, and exact product identity]"
+    },
+    { "type": "textarea", "id": "ingredients_placeholder", "label": "Ingredients placeholder", "default": "[FINAL LABEL REQUIRED: complete ingredients and allergen text]" },
+    { "type": "textarea", "id": "directions_placeholder", "label": "Directions placeholder", "default": "[FINAL LABEL REQUIRED: exact suggested-use text and labeled interval]" },
+    {
+      "type": "textarea",
+      "id": "warnings_placeholder",
+      "label": "Warnings placeholder",
+      "default": "[FINAL LABEL REQUIRED: age, interactions, impairment, pregnancy/nursing, medical conditions, medications, dependence, adverse-event, and storage warnings]"
+    },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-09 C-12" },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "missing-final-label", "label": "Missing final label" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "missing-final-label"
+    }
+  ],
+  "presets": [{ "name": "Dandy product details" }]
+}
+{% endschema %}

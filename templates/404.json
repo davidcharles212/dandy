@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "router": {
+      "type": "dandy-virtual-router",
+      "settings": {}
+    }
+  },
+  "order": ["router"]
+}

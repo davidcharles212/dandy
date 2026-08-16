@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "What is kratom?",
+        "heading": "A tropical leaf with a complicated reputation.",
+        "text": "Start with what kratom is, what can change the experience, and why the exact product label matters more than category shorthand.",
+        "claim_ids": "C-01 C-02 C-03 C-04 C-05",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "origin": {
+      "type": "dandy-editorial",
+      "settings": {
+        "fallback_media": "gummy",
+        "image_alt": "A person holding a Dandy mixed berry gummy pouch and gummy",
+        "image_position": "right",
+        "eyebrow": "The botanical",
+        "heading": "Coffee's more interesting botanical cousin.",
+        "text": "<p>Kratom comes from the leaves of <em>Mitragyna speciosa</em>, a tropical tree in the same plant family as coffee. Its naturally occurring alkaloids include mitragynine.</p><p>That family relationship is taxonomy, not a promise that kratom acts like coffee. Product, serving, individual sensitivity, food, and context can all matter.</p>",
+        "link_label": "See how Dandy explains use",
+        "link": "/pages/how-it-works",
+        "claim_ids": "C-01",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "visual_v01": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-01",
+        "status": "Production needed",
+        "heading": "Leaf to format, in one minute",
+        "conversion_job": "Make the category legible without using a fake science graphic.",
+        "composition": "Kratom leaf, botanical name, coffee-family relationship, and a claim-neutral path to gummy, powder, and capsule formats.",
+        "ratios": "4:3 desktop · 1:1 mobile",
+        "dependencies": "Approved taxonomy source and counsel-reviewed category language.",
+        "alt_intent": "Explain the path from kratom leaf to product formats without duplicating adjacent copy.",
+        "owner": "Production + editorial",
+        "due_date": "Before production release"
+      }
+    },
+    "experience": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "product": { "type": "card", "settings": { "icon": "package", "heading": "The product matters", "text": "<p>Format, composition, concentration, and serving can differ. Labels are not interchangeable.</p>" } },
+        "person": { "type": "card", "settings": { "icon": "leaf", "heading": "The person matters", "text": "<p>Sensitivity, experience, food, and context can change how someone responds.</p>" } },
+        "time": { "type": "card", "settings": { "icon": "calendar", "heading": "Time matters", "text": "<p>Follow the full labeled interval. Do not stack servings while waiting.</p>" } },
+        "proof": { "type": "card", "settings": { "icon": "lab", "heading": "Proof matters", "text": "<p>A real lot-linked report should identify the finished product, batch, lab, date, and actual scope.</p>", "link_label": "See the quality architecture", "link": "/COA" } }
+      },
+      "block_order": ["product", "person", "time", "proof"],
+      "settings": {
+        "eyebrow": "Four useful anchors",
+        "heading": "What changes the experience?",
+        "text": "No page can promise exactly what you will feel. The exact approved product label controls serving and warning language.",
+        "claim_ids": "C-02 C-03 C-04 C-05 C-09 C-10",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "coffee": { "type": "question", "settings": { "question": "Is kratom the same as coffee?", "answer": "<p>No. They share a botanical family; that does not make them the same plant or guarantee a coffee-like experience.</p>", "open": true } },
+        "feel": { "type": "question", "settings": { "question": "What might it feel like?", "answer": "<p>People use varied language, including lift, focus, ease, warmth, sociability, and euphoria. Those are experience descriptions, not guarantees. Product, serving, sensitivity, and context matter.</p>" } },
+        "safe": { "type": "question", "settings": { "question": "Is kratom risk-free?", "answer": "<p>No. Do not assume it is non-addictive, side-effect free, or safe to mix. [FINAL LABEL REQUIRED: counsel-approved risk, interaction, impairment, dependence, adverse-effect, and medical-help language.]</p>" } },
+        "amount": { "type": "question", "settings": { "question": "How much should I use?", "answer": "<p>Follow the exact label for the product in your hand, start with the smallest labeled serving, and wait the full labeled interval.</p>" } },
+        "age": { "type": "question", "settings": { "question": "Who is Dandy for?", "answer": "<p>Dandy's current company policy is adults 21+ where sale and delivery are approved. Checkout eligibility remains the final enforcement point.</p>" } }
+      },
+      "block_order": ["coffee", "feel", "safe", "amount", "age"],
+      "settings": {
+        "eyebrow": "The short answers",
+        "heading": "Curious is good. Careful is better.",
+        "text": "Final safety and product language remains subject to label and counsel review.",
+        "claim_ids": "C-01 C-02 C-03 C-04 C-05 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Keep learning",
+        "heading": "Now see the exact product.",
+        "text": "Move from category language to the real format, label, price, availability, and purchase controls.",
+        "primary_label": "Shop Dandy",
+        "primary_link": "/collections/all",
+        "secondary_label": "Read responsible-use guidance",
+        "secondary_link": "/pages/how-it-works",
+        "claim_ids": "C-09 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["hero", "origin", "visual_v01", "experience", "faq", "final_cta"]
+}

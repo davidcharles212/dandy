@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Accessibility",
+        "heading": "Dandy should work for more people.",
+        "text": "The storefront foundation includes keyboard-visible controls, semantic headings and forms, reduced-motion behavior, high-contrast states, and responsive layouts — with a final audit still required before release.",
+        "claim_ids": "",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "commitments": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "keyboard": { "type": "card", "settings": { "icon": "check", "heading": "Keyboard operation", "text": "<p>Navigation, galleries, selectors, disclosures, forms, and purchase controls use native interactive elements.</p>" } },
+        "contrast": { "type": "card", "settings": { "icon": "berry", "heading": "Readable contrast", "text": "<p>Dark brown on Dandy orange replaces failing normal-size white-on-orange combinations.</p>" } },
+        "motion": { "type": "card", "settings": { "icon": "calendar", "heading": "Motion preferences", "text": "<p>Reduced-motion settings remove smooth scrolling and nonessential transitions.</p>" } },
+        "feedback": { "type": "card", "settings": { "icon": "package", "heading": "A support route", "text": "<p>Final contact, response, remediation, and compatibility language belongs in the published statement.</p>" } }
+      },
+      "block_order": ["keyboard", "contrast", "motion", "feedback"],
+      "settings": {
+        "eyebrow": "Frontend foundation",
+        "heading": "Built in, then verified.",
+        "text": "These implementation notes are not a substitute for assistive-technology testing or a final accessibility statement.",
+        "claim_ids": "",
+        "copy_status": "approved"
+      }
+    },
+    "content": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<h2>Final accessibility statement required</h2><p>[FINAL POLICY REQUIRED: standard or goal, audit date and method, known limitations, supported browsers and assistive technologies, feedback method, response target, remediation process, and last-updated date.]</p><p>If you encounter a barrier in this development preview, contact hello@foreverdandy.com with the page, task, device, browser, and assistive technology involved.</p>",
+        "copy_status": "missing-final-copy"
+      }
+    }
+  },
+  "order": ["hero", "commitments", "content"]
+}

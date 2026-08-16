@@ -1,0 +1,55 @@
+<section class="dandy-two-gears dandy-section" aria-labelledby="DandyGearsHeading-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="dandy-container">
+    <div class="dandy-two-gears__header">
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h2 id="DandyGearsHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      <p class="dandy-lede">{{ section.settings.text }}</p>
+    </div>
+    <div class="dandy-two-gears__grid">
+      <article class="dandy-gear dandy-gear--bright">
+        <div class="dandy-gear__asset" role="img" aria-label="Bright daytime lifestyle image or motion asset needed">
+          <span>IMAGE / MOTION PLACEHOLDER · V-02A</span>
+          <strong>BRIGHT GEAR</strong>
+          <p>Daylight movement, music, or a lively social moment with product naturally in frame.</p>
+        </div>
+        <div class="dandy-gear__copy">
+          <span class="dandy-label">{{ section.settings.bright_label }}</span>
+          <h3>{{ section.settings.bright_heading }}</h3>
+          <p>{{ section.settings.bright_text }}</p>
+        </div>
+      </article>
+      <article class="dandy-gear dandy-gear--warm">
+        <div class="dandy-gear__asset" role="img" aria-label="Warm evening lifestyle image or motion asset needed">
+          <span>IMAGE / MOTION PLACEHOLDER · V-02B</span>
+          <strong>WARM GEAR</strong>
+          <p>Golden-hour unwinding, softened posture, and a quiet social ritual with product in frame.</p>
+        </div>
+        <div class="dandy-gear__copy">
+          <span class="dandy-label">{{ section.settings.warm_label }}</span>
+          <h3>{{ section.settings.warm_heading }}</h3>
+          <p>{{ section.settings.warm_text }}</p>
+        </div>
+      </article>
+    </div>
+    {% if section.settings.note != blank %}<p class="dandy-two-gears__note">{{ section.settings.note }}</p>{% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy two gears",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "HOW PEOPLE TALK ABOUT KRATOM" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "ONE PLANT. TWO GEARS." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "The experience can shift with product, serving, sensitivity, food, and context. Think direction, not a guaranteed destination." },
+    { "type": "text", "id": "bright_label", "label": "Bright label", "default": "BRIGHT GEAR" },
+    { "type": "text", "id": "bright_heading", "label": "Bright heading", "default": "CLEAR. UPBEAT. SWITCHED ON." },
+    { "type": "textarea", "id": "bright_text", "label": "Bright text", "default": "The get-moving side of the conversation: clear focus, good energy, and an easier social rhythm." },
+    { "type": "text", "id": "warm_label", "label": "Warm label", "default": "WARM GEAR" },
+    { "type": "text", "id": "warm_heading", "label": "Warm heading", "default": "WARM. LOOSE. SETTLED." },
+    { "type": "textarea", "id": "warm_text", "label": "Warm text", "default": "The shoulders-down side: body ease, a softer edge, and a smooth sense of unwinding." },
+    { "type": "textarea", "id": "note", "label": "Context note", "default": "Experiences vary. Follow the exact product label and do not drive or operate machinery if impaired." }
+  ],
+  "presets": [{ "name": "Dandy two gears" }]
+}
+{% endschema %}

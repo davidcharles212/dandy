@@ -1,0 +1,172 @@
+{% doc %}
+  Renders development-theme frontend pages for documented routes that do not yet have
+  Shopify Page records. This keeps preview navigation reviewable without mutating backend data.
+
+  @param {string} route_path - Lowercase request path.
+{% enddoc %}
+
+{% liquid
+  assign is_learn = false
+  assign is_coa = false
+  assign is_faq = false
+  assign is_about = false
+  if route_path == 'learn' or route_path == '/learn' or route_path == '/what-is-kratom' or route_path == '/pages/what-is-kratom'
+    assign is_learn = true
+  elsif route_path == 'coa' or route_path == '/coa' or route_path == '/quality' or route_path == '/pages/quality-and-testing' or route_path == '/pages/batch-reports'
+    assign is_coa = true
+  elsif route_path == 'faq' or route_path == '/faq' or route_path == '/pages/faq'
+    assign is_faq = true
+  elsif route_path == 'about' or route_path == '/about' or route_path == '/pages/about-dandy'
+    assign is_about = true
+  endif
+%}
+
+{% if is_learn %}
+  <div class="dandy-route-page dandy-route-page--learn" data-copy-status="aggressive-draft">
+    <section class="dandy-route-hero dandy-route-hero--blue" aria-labelledby="DandyLearnHeading">
+      <div class="dandy-container dandy-container--wide dandy-route-hero__inner">
+        <span class="dandy-kicker">WHAT IS KRATOM?</span>
+        <h1 id="DandyLearnHeading" class="dandy-display">START WITH THE PLANT.</h1>
+        <p>Kratom is the common name for products made from <em>Mitragyna speciosa</em>, a tropical tree in the coffee plant family. Dandy makes the category easier to understand without pretending it is the same as coffee.</p>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-route-split-section" aria-labelledby="DandyLearnPlant">
+      <div class="dandy-container dandy-container--wide dandy-route-split">
+        <div class="dandy-route-placeholder" role="img" aria-label="Illustrated leaf-to-format explainer asset needed">
+          <span>VIDEO / INFOGRAPHIC PLACEHOLDER · V-01</span>
+          <strong>LEAF → FORMAT</strong>
+          <p>An illustrated 45–60 second explainer should show the tropical leaf, botanical name, and the path to gummies, powder, and capsules.</p>
+        </div>
+        <div class="dandy-route-copy">
+          <span class="dandy-kicker">THE BOTANICAL</span>
+          <h2 id="DandyLearnPlant" class="dandy-heading">COFFEE-FAMILY COUSINS. VERY DIFFERENT CONVERSATIONS.</h2>
+          <p>Kratom leaves contain naturally occurring alkaloids, including mitragynine. The exact product, concentration, serving, personal sensitivity, food, and context can all change the experience.</p>
+          <p>That is why Dandy starts with the exact product label—not a generic internet dose chart or a promise that everyone will feel the same thing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-route-formats" aria-labelledby="DandyLearnFormats">
+      <div class="dandy-container dandy-container--wide">
+        <div class="dandy-section__intro">
+          <div><span class="dandy-kicker">THREE DANDY FORMATS</span><h2 id="DandyLearnFormats" class="dandy-heading">CHOOSE THE RITUAL, THEN READ ITS LABEL.</h2></div>
+          <p>Formats are not interchangeable. Compare how each one is prepared, portioned, and labeled before choosing.</p>
+        </div>
+        <div class="dandy-route-card-grid dandy-route-card-grid--three">
+          <article class="dandy-route-card dandy-route-card--orange">{% render 'dandy-icon', name: 'berry' %}<span>01 · GUMMIES</span><h3>PRE-PORTIONED + PORTABLE</h3><p>Mixed-berry gummies in 10- or 30-count pouches. No scoop, scale, or mixing.</p><a href="/products/mixed-berry-kratom-gummies">Shop gummies →</a></article>
+          <article class="dandy-route-card dandy-route-card--blue">{% render 'dandy-icon', name: 'leaf' %}<span>02 · POWDER</span><h3>MEASURED + MIXABLE</h3><p>100 g or 250 g pouches for people who prefer a flexible powder ritual.</p><a href="{{ routes.all_products_collection_url }}#powder">See powder →</a></article>
+          <article class="dandy-route-card dandy-route-card--peach">{% render 'dandy-icon', name: 'package' %}<span>03 · EXTRACT CAPSULES</span><h3>NO TASTE. NO MIXING.</h3><p>50 mg or 90 mg options in 10- or 30-count packages, each with its own exact label.</p><a href="{{ routes.all_products_collection_url }}#capsules">See capsules →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-route-experience" aria-labelledby="DandyLearnExperience">
+      <div class="dandy-container dandy-container--wide">
+        <span class="dandy-kicker">HOW PEOPLE DESCRIBE IT</span>
+        <h2 id="DandyLearnExperience" class="dandy-heading">BRIGHTER OR WARMER—NEVER GUARANTEED.</h2>
+        <div class="dandy-route-experience__grid">
+          <article><strong>BRIGHT</strong><h3>CLEAR. UPBEAT. SOCIAL.</h3><p>People may describe lift, focus, energy, or an easier social rhythm.</p></article>
+          <article><strong>WARM</strong><h3>SOFTER. LOOSER. SETTLED.</h3><p>People may describe body ease, unwinding, warmth, or euphoria.</p></article>
+        </div>
+        <p class="dandy-route-note">Experiences vary. Follow the exact product label. Do not drive or operate machinery if impaired.</p>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-route-faq" aria-labelledby="DandyLearnFaq">
+      <div class="dandy-container dandy-container--narrow">
+        <span class="dandy-kicker">THE USEFUL SHORT VERSION</span>
+        <h2 id="DandyLearnFaq" class="dandy-heading">CURIOUS IS GOOD. CAREFUL IS BETTER.</h2>
+        <div class="dandy-faq-list">
+          <details class="dandy-faq-item" open><summary>Is kratom the same as coffee?</summary><div class="dandy-faq-item__answer"><p>No. They share a botanical family, but contain different compounds and can produce very different experiences.</p></div></details>
+          <details class="dandy-faq-item"><summary>How much should I use?</summary><div class="dandy-faq-item__answer"><p>Follow the exact label for the product in your hand. Start with the smallest labeled serving and wait the full labeled interval.</p></div></details>
+          <details class="dandy-faq-item"><summary>Are gummies, powder, and capsules interchangeable?</summary><div class="dandy-faq-item__answer"><p>No. Formats and concentrations differ. Never carry directions from one product over to another.</p></div></details>
+          <details class="dandy-faq-item"><summary>Is the experience guaranteed?</summary><div class="dandy-faq-item__answer"><p>No. Product, serving, sensitivity, food, and context can all matter.</p></div></details>
+        </div>
+      </div>
+    </section>
+  </div>
+{% elsif is_coa %}
+  <div class="dandy-route-page dandy-route-page--coa" data-copy-status="missing-final-proof">
+    <section class="dandy-route-hero dandy-route-hero--orange" aria-labelledby="DandyCoaHeading">
+      <div class="dandy-container dandy-container--wide dandy-route-hero__inner">
+        <span class="dandy-kicker">COA + BATCH REPORTS</span>
+        <h1 id="DandyCoaHeading" class="dandy-display">YOUR BAG. YOUR BATCH. THE RECEIPTS.</h1>
+        <p>This is the permanent QR-code destination for matching a Dandy package to its finished-product report and understanding exactly what that report covers.</p>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-coa-path" aria-labelledby="DandyCoaPath">
+      <div class="dandy-container dandy-container--wide">
+        <div class="dandy-section__intro"><div><span class="dandy-kicker">HOW IT SHOULD WORK</span><h2 id="DandyCoaPath" class="dandy-heading">THREE STEPS. NO BADGE WALL.</h2></div><p>A trustworthy result connects the package, product, lot, lab, date, and actual scope in one readable trail.</p></div>
+        <div class="dandy-route-card-grid dandy-route-card-grid--three">
+          <article class="dandy-route-card"><span>01</span><h3>FIND YOUR LOT</h3><p>Use the lot code printed on the exact pouch or package in your hand.</p></article>
+          <article class="dandy-route-card"><span>02</span><h3>MATCH THE PRODUCT</h3><p>Confirm format, strength, count or weight, and finished-product identity.</p></article>
+          <article class="dandy-route-card"><span>03</span><h3>READ THE SCOPE</h3><p>Check the lab, dates, methods, analytes, results, and what was—or was not—measured.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-coa-proof" aria-labelledby="DandyCoaProof">
+      <div class="dandy-container dandy-container--wide dandy-route-split">
+        <div class="dandy-route-placeholder dandy-route-placeholder--document" role="img" aria-label="Annotated finished-product certificate of analysis visual needed">
+          <span>COA VISUAL PLACEHOLDER · V-05</span>
+          <strong>HOW TO READ A DANDY REPORT</strong>
+          <p>A real redacted report should be annotated with product, lot, lab, test date, report date, result, method, and actual test scope.</p>
+        </div>
+        <div class="dandy-route-copy">
+          <span class="dandy-kicker">CURRENT REPORT STATUS</span>
+          <h2 id="DandyCoaProof" class="dandy-heading">NO SUBSTITUTE DOCUMENTS.</h2>
+          <p>A Dandy report belongs here only when the finished product, lot code, lab, and test date all match the package in your hand. A signature page, raw-material report, or another product’s document is never a substitute.</p>
+          <div class="dandy-coa-status"><strong>BATCH REPORT LOOKUP</strong><span>Match the exact product and printed lot code</span></div>
+          <a class="dandy-button" href="mailto:hello@foreverdandy.com?subject=Dandy%20batch%20report%20question">ASK ABOUT A BATCH</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="dandy-section dandy-route-faq" aria-labelledby="DandyCoaFaq">
+      <div class="dandy-container dandy-container--narrow">
+        <span class="dandy-kicker">COA QUESTIONS</span><h2 id="DandyCoaFaq" class="dandy-heading">PROOF SHOULD BE SPECIFIC.</h2>
+        <div class="dandy-faq-list">
+          <details class="dandy-faq-item" open><summary>What does COA mean?</summary><div class="dandy-faq-item__answer"><p>Certificate of analysis. The useful version identifies the exact product and lot, the laboratory, dates, methods, test scope, and results.</p></div></details>
+          <details class="dandy-faq-item"><summary>Where do I find my lot code?</summary><div class="dandy-faq-item__answer"><p>Look for the printed lot code on your Dandy package. If you need help locating it, send support a clear photo of the front and back.</p></div></details>
+          <details class="dandy-faq-item"><summary>Why is there no report to open yet?</summary><div class="dandy-faq-item__answer"><p>A report appears only when its product, lot, lab, and date all match. If your batch is not listed, contact support rather than relying on a document for another item.</p></div></details>
+          <details class="dandy-faq-item"><summary>Does one test prove every Dandy product?</summary><div class="dandy-faq-item__answer"><p>No. A report must map to its exact product and lot, and its claims cannot extend beyond what the report actually measured.</p></div></details>
+        </div>
+      </div>
+    </section>
+  </div>
+{% elsif is_faq %}
+  <div class="dandy-route-page dandy-route-page--faq" data-copy-status="aggressive-draft">
+    <section class="dandy-route-hero dandy-route-hero--peach" aria-labelledby="DandyFaqPageHeading"><div class="dandy-container dandy-container--wide dandy-route-hero__inner"><span class="dandy-kicker">THE DANDY FAQ</span><h1 id="DandyFaqPageHeading" class="dandy-display">ASK THE OBVIOUS QUESTIONS.</h1><p>Clear answers about the plant, formats, use, 35 mg gummies, subscription, shipping, and batch reports—before you choose.</p></div></section>
+    <section class="dandy-section dandy-route-faq" aria-labelledby="DandyFaqMain">
+      <div class="dandy-container dandy-container--narrow">
+        <span class="dandy-kicker">START HERE</span><h2 id="DandyFaqMain" class="dandy-heading">THE ANSWER SHOULD NEVER BE HARD TO FIND.</h2>
+        <div class="dandy-faq-list">
+          <details class="dandy-faq-item" open><summary>What is kratom?</summary><div class="dandy-faq-item__answer"><p>Kratom comes from <em>Mitragyna speciosa</em>, a tropical tree in the coffee plant family. <a href="/learn">Read the full introduction.</a></p></div></details>
+          <details class="dandy-faq-item"><summary>What might it feel like?</summary><div class="dandy-faq-item__answer"><p>People use language such as lift, clear focus, warmth, ease, sociability, and euphoria. No experience is guaranteed; product, serving, sensitivity, food, and context matter.</p></div></details>
+          <details class="dandy-faq-item"><summary>How strong are the gummies?</summary><div class="dandy-faq-item__answer"><p>The current gummy packaging identifies 35 mg mitragynine per gummy. Choose a 10-count trial pouch or a 30-count full-size pouch on the same product page.</p></div></details>
+          <details class="dandy-faq-item"><summary>How do gummies, powder, and capsules differ?</summary><div class="dandy-faq-item__answer"><p>Gummies are pre-portioned, powder is measured and mixed, and capsules are concentrated no-mix formats. Counts, strengths, directions, and warnings are product-specific.</p></div></details>
+          <details class="dandy-faq-item"><summary>How much should I use?</summary><div class="dandy-faq-item__answer"><p>Follow the exact product label. Begin with the smallest labeled serving and wait the full labeled interval.</p></div></details>
+          <details class="dandy-faq-item"><summary>Can I mix it with alcohol or other substances?</summary><div class="dandy-faq-item__answer"><p>Do not treat Dandy as something to stack casually. Follow the final product warnings and ask a qualified clinician about medications or health conditions.</p></div></details>
+          <details class="dandy-faq-item"><summary>How does Subscribe &amp; Save work?</summary><div class="dandy-faq-item__answer"><p>Choose Subscribe &amp; Save on the 30-count pouch for 20% savings, free standard shipping, and delivery every 30 days. The 10-count trial remains a one-time purchase.</p></div></details>
+          <details class="dandy-faq-item"><summary>Where are the batch reports?</summary><div class="dandy-faq-item__answer"><p>Use the permanent <a href="/COA">foreverdandy.com/COA</a> destination. Final finished-lot reports will appear there when supplied and approved.</p></div></details>
+          <details class="dandy-faq-item"><summary>Can Dandy ship to me?</summary><div class="dandy-faq-item__answer"><p>Availability varies by location, and checkout remains the final eligibility check.</p></div></details>
+          <details class="dandy-faq-item"><summary>Still need a person?</summary><div class="dandy-faq-item__answer"><p>Email <a href="mailto:hello@foreverdandy.com">hello@foreverdandy.com</a> with your product or order question.</p></div></details>
+        </div>
+      </div>
+    </section>
+  </div>
+{% elsif is_about %}
+  <div class="dandy-route-page dandy-route-page--about" data-copy-status="aggressive-draft">
+    <section class="dandy-route-hero dandy-route-hero--brown" aria-labelledby="DandyAboutHeading"><div class="dandy-container dandy-container--wide dandy-route-hero__inner"><span class="dandy-kicker">ABOUT DANDY</span><h1 id="DandyAboutHeading" class="dandy-display">A BRIGHTER WAY THROUGH A COMPLICATED CATEGORY.</h1><p>Dandy exists to make kratom easier to understand, easier to verify, and much less intimidating to choose.</p></div></section>
+    <section class="dandy-section dandy-about-story" aria-labelledby="DandyAboutStory">
+      <div class="dandy-container dandy-container--wide dandy-route-split dandy-route-split--image">
+        <picture class="dandy-route-image"><source type="image/webp" srcset="{{ 'dandy-format-960.webp' | asset_url }} 960w, {{ 'dandy-format-1600.webp' | asset_url }} 1600w"><img src="{{ 'dandy-format-1400.jpg' | asset_url }}" width="1400" height="788" loading="eager" alt="Dandy gummy and powder pouches held against a blue sky"></picture>
+        <div class="dandy-route-copy"><span class="dandy-kicker">WHY DANDY</span><h2 id="DandyAboutStory" class="dandy-heading">CLARITY CAN HAVE A PERSONALITY.</h2><p>Too much of the category forces a choice between sterile jargon and vague promises. Dandy’s answer is straightforward: explain the plant, show the exact format and label, make the offer legible, and keep the visual world joyful.</p><p>That means gummies for a familiar pre-portioned start, powder for a measured ritual, and extract capsules for concentrated convenience—each explained on its own terms.</p></div>
+      </div>
+    </section>
+    <section class="dandy-section dandy-about-principles" aria-labelledby="DandyAboutPrinciples"><div class="dandy-container dandy-container--wide"><div class="dandy-section__intro"><div><span class="dandy-kicker">HOW THE BRAND BEHAVES</span><h2 id="DandyAboutPrinciples" class="dandy-heading">CHEERFUL. DIRECT. NEVER CARELESS.</h2></div><p>A good-looking pouch is not enough. Dandy should help someone understand what they are choosing at every step.</p></div><div class="dandy-route-card-grid dandy-route-card-grid--four"><article class="dandy-route-card"><span>01</span><h3>PLAIN BEFORE CLEVER</h3><p>Say what it is, what arrives, what it costs, and what the shopper selected.</p></article><article class="dandy-route-card"><span>02</span><h3>PROOF BEFORE BADGES</h3><p>Connect the real lot and report instead of asking a decorative icon to stand in for evidence.</p></article><article class="dandy-route-card"><span>03</span><h3>JOY WITHOUT EVASION</h3><p>Use bold color and human language while keeping uncertainty and exact labels visible.</p></article><article class="dandy-route-card"><span>04</span><h3>A CLEAN DECISION</h3><p>Keep format, size, quantity, subscription, price, and availability distinct.</p></article></div></div></section>
+    <section class="dandy-section dandy-about-founder" aria-labelledby="DandyAboutFounder"><div class="dandy-container dandy-container--wide dandy-route-split"><div class="dandy-route-placeholder" role="img" aria-label="Founder portrait and origin-story video needed"><span>FOUNDER PHOTO / VIDEO PLACEHOLDER</span><strong>THE PEOPLE BEHIND DANDY</strong><p>A candid founder portrait plus a short origin-story film should introduce the real people, motivation, and product philosophy.</p></div><div class="dandy-route-copy"><span class="dandy-kicker">THE HUMAN STORY</span><h2 id="DandyAboutFounder" class="dandy-heading">MEET THE PEOPLE MAKING IT CLEARER.</h2><p>Dandy is being built by people who believe a complicated category can still feel human. Their job is to keep the product, label, proof, and shopping decision connected—then explain it all in plain English.</p><a class="dandy-button" href="mailto:hello@foreverdandy.com">CONTACT DANDY</a></div></div></section>
+  </div>
+{% endif %}

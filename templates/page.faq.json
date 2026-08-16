@@ -1,0 +1,52 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Dandy FAQ",
+        "heading": "Ask the obvious questions.",
+        "text": "Category, product, use, batch, purchase, shipping, and policy answers belong in the open.",
+        "claim_ids": "C-01 C-02 C-03 C-04 C-05 C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "what": { "type": "question", "settings": { "question": "What is kratom?", "answer": "<p>Kratom comes from the leaves of <em>Mitragyna speciosa</em>, a tropical tree in the coffee plant family. That taxonomy does not make kratom the same as coffee.</p>", "open": true } },
+        "feel": { "type": "question", "settings": { "question": "What might it feel like?", "answer": "<p>People use varied language, including lift, focus, ease, warmth, sociability, and euphoria. No experience is guaranteed; product, serving, sensitivity, food, and context can matter.</p>" } },
+        "amount": { "type": "question", "settings": { "question": "How much should I use?", "answer": "<p>Follow the exact product label, begin with the smallest labeled serving, and wait the full labeled interval. Do not treat formats or concentrations as interchangeable.</p>" } },
+        "mix": { "type": "question", "settings": { "question": "Can I mix it with alcohol, medication, or other substances?", "answer": "<p>Do not treat Dandy as something to stack casually. [FINAL LABEL REQUIRED: exact counsel-approved interaction, medication, and health-condition warnings.]</p>" } },
+        "risk": { "type": "question", "settings": { "question": "Can kratom cause dependence or unwanted effects?", "answer": "<p>Do not assume kratom is non-addictive or side-effect free. [FINAL LABEL REQUIRED: approved tolerance, dependence, impairment, interaction, adverse-effect, and medical-help language.]</p>" } },
+        "formats": { "type": "question", "settings": { "question": "How do gummies, powder, and capsules differ?", "answer": "<p>They differ in preparation, portioning, available variants, and label facts. That is a factual format comparison, not an effect ladder.</p>" } },
+        "reports": { "type": "question", "settings": { "question": "Where are the batch reports?", "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked reports and stable public URLs.] The development theme contains only report architecture and explicit placeholders.</p>" } },
+        "subscription": { "type": "question", "settings": { "question": "Will I be subscribed automatically?", "answer": "<p>No. A recurring purchase can only be selected when Shopify exposes a genuine selling plan, and the charge, cadence, renewal, shipping, and cancellation terms must appear beside that choice.</p>" } },
+        "shipping": { "type": "question", "settings": { "question": "Can Dandy ship to me?", "answer": "<p>Rules vary and can change. A current counsel-approved eligibility matrix must drive the experience, and checkout remains the final enforcement point.</p>" } },
+        "returns": { "type": "question", "settings": { "question": "What if it isn't for me?", "answer": "<p>[FINAL POLICY REQUIRED: approved return or guarantee window, condition rules, exclusions, method, refund timing, and support path.]</p>" } }
+      },
+      "block_order": ["what", "feel", "amount", "mix", "risk", "formats", "reports", "subscription", "shipping", "returns"],
+      "settings": {
+        "eyebrow": "No mystery answers",
+        "heading": "Start here. Verify on the exact label.",
+        "text": "Aggressive draft claims and missing legal language remain visibly governed in this development theme.",
+        "claim_ids": "C-01 C-02 C-03 C-04 C-05 C-09 C-10 C-13 C-16",
+        "copy_status": "missing-final-legal"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Still curious?",
+        "heading": "Ask a real person.",
+        "text": "Product and order questions should have a clear support path; medical emergencies require appropriate professional help.",
+        "primary_label": "Contact Dandy",
+        "primary_link": "/pages/contact",
+        "secondary_label": "Shop products",
+        "secondary_link": "/collections/all",
+        "claim_ids": "",
+        "copy_status": "approved"
+      }
+    }
+  },
+  "order": ["hero", "faq", "final_cta"]
+}

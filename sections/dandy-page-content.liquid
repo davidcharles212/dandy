@@ -1,0 +1,32 @@
+<section class="dandy-page-content" data-copy-status="{{ section.settings.copy_status }}">
+  {% if page.content != blank %}
+    {{ page.content }}
+  {% else %}
+    <div data-development-marker="page-copy">{{ section.settings.fallback_content }}</div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Dandy page content",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "fallback_content",
+      "label": "Development fallback",
+      "default": "<p>[COPY NEEDED: replace this development page content with the approved policy or editorial copy before release.]</p>"
+    },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "missing-final-copy", "label": "Missing final copy" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "missing-final-copy"
+    }
+  ],
+  "presets": [{ "name": "Dandy page content" }]
+}
+{% endschema %}

@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Batch reports",
+        "heading": "Find the report behind the lot.",
+        "text": "The library UI is ready for real product, SKU, lot, dates, lab, test scope, results, and an accessible public report file.",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "lookup_brief": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-16",
+        "status": "Data and UI integration needed",
+        "heading": "Batch lookup and report library",
+        "conversion_job": "Let a shopper move from a package lot code to its exact finished-product report.",
+        "composition": "Accessible lot search; product and SKU; manufactured, tested, and reported dates; lab; analyte/scope summary; report status; direct PDF link; no fabricated rows.",
+        "ratios": "Responsive table desktop · stacked records mobile",
+        "dependencies": "Final lot-code format, product-to-batch mapping, public files, redaction rules, report status, and archive policy.",
+        "alt_intent": "Each linked report must have a descriptive name containing product and lot; table headers must expose field relationships.",
+        "owner": "Quality + ecommerce",
+        "due_date": "Before production release"
+      }
+    },
+    "empty_state": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<h2>Final report records are not connected.</h2><p>[FINAL COA REQUIRED: do not populate this library with the supplied gummy signature page or a report for a different product or lot.]</p><p>[FINAL SUPPORT PATH REQUIRED: approved instructions when a shopper cannot find a lot.]</p>",
+        "copy_status": "missing-final-copy"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "lot": { "type": "question", "settings": { "question": "Where is my lot code?", "answer": "<p>[FINAL PACKAGING REQUIRED: identify the exact location and format of the printed lot code on each package.]</p>", "open": true } },
+        "missing": { "type": "question", "settings": { "question": "What if my report is missing?", "answer": "<p>[FINAL OPERATIONS REQUIRED: approved support contact, response time, escalation, and product-hold policy.]</p>" } },
+        "read": { "type": "question", "settings": { "question": "How do I read the report?", "answer": "<p>The quality page will explain product and lot identity, lab, dates, methods, results, and the actual test scope using a real redacted example.</p>" } }
+      },
+      "block_order": ["lot", "missing", "read"],
+      "settings": {
+        "eyebrow": "Lookup help",
+        "heading": "The lot should lead somewhere.",
+        "text": "Final operational answers are still required.",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "missing-final-legal"
+      }
+    }
+  },
+  "order": ["hero", "lookup_brief", "empty_state", "faq"]
+}

@@ -1,0 +1,94 @@
+<section
+  class="dandy-section"
+  data-copy-status="{{ section.settings.copy_status }}"
+  data-claim-ids="{{ section.settings.claim_ids }}"
+  aria-labelledby="DandyEditorialHeading-{{ section.id }}"
+>
+  <div class="dandy-container dandy-container--wide dandy-editorial{% if section.settings.image_position == 'right' %} dandy-editorial--reverse{% endif %}">
+    <div class="dandy-editorial__media">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag: widths: '480, 720, 1000, 1400, 1800', sizes: '(min-width: 768px) 50vw, 100vw', loading: 'lazy', alt: section.settings.image_alt
+        }}
+      {% elsif section.settings.fallback_media == 'powder' %}
+        <picture>
+          <source type="image/webp" srcset="{{ 'dandy-powder-product-720.webp' | asset_url }} 720w, {{ 'dandy-powder-product-1200.webp' | asset_url }} 1200w">
+          <img src="{{ 'dandy-powder-product-1000.jpg' | asset_url }}" width="1000" height="1000" loading="lazy" alt="{{ section.settings.image_alt | escape }}">
+        </picture>
+      {% elsif section.settings.fallback_media == 'format' %}
+        <picture>
+          <source type="image/webp" srcset="{{ 'dandy-format-960.webp' | asset_url }} 960w, {{ 'dandy-format-1600.webp' | asset_url }} 1600w">
+          <img src="{{ 'dandy-format-1400.jpg' | asset_url }}" width="1400" height="788" loading="lazy" alt="{{ section.settings.image_alt | escape }}">
+        </picture>
+      {% else %}
+        <picture>
+          <source type="image/webp" srcset="{{ 'dandy-gummy-lifestyle-720.webp' | asset_url }} 720w, {{ 'dandy-gummy-lifestyle-1200.webp' | asset_url }} 1200w">
+          <img src="{{ 'dandy-gummy-lifestyle-1000.jpg' | asset_url }}" width="1000" height="1000" loading="lazy" alt="{{ section.settings.image_alt | escape }}">
+        </picture>
+      {% endif %}
+    </div>
+    <div class="dandy-editorial__content">
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h2 id="DandyEditorialHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      <div class="dandy-body">{{ section.settings.text }}</div>
+      {% if section.settings.link_label != blank %}
+        <a class="dandy-button" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy editorial split",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "select",
+      "id": "fallback_media",
+      "label": "Fallback media",
+      "options": [
+        { "value": "gummy", "label": "Gummy lifestyle" },
+        { "value": "powder", "label": "Powder product" },
+        { "value": "format", "label": "Gummy and powder" }
+      ],
+      "default": "gummy"
+    },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "A person holding a Dandy mixed berry gummy pouch" },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position on desktop",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Kratom in one minute" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Coffee's more interesting botanical cousin." },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Kratom comes from the leaves of <em>Mitragyna speciosa</em>, a tropical tree in the same plant family as coffee. Product, serving, individual sensitivity, and context can all change the experience.</p>"
+    },
+    { "type": "text", "id": "link_label", "label": "Optional link label", "default": "Learn what kratom is" },
+    { "type": "url", "id": "link", "label": "Optional link" },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-01" },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "aggressive-draft", "label": "Aggressive draft" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "aggressive-draft"
+    }
+  ],
+  "presets": [{ "name": "Dandy editorial split" }]
+}
+{% endschema %}

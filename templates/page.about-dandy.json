@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "About Dandy",
+        "heading": "A brighter way to explain a complicated plant.",
+        "text": "Dandy is being built around a simple idea: grown-up products can feel joyful without hiding the facts that help people choose responsibly.",
+        "claim_ids": "",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "story": {
+      "type": "dandy-editorial",
+      "settings": {
+        "fallback_media": "format",
+        "image_alt": "Dandy gummy and powder pouches held against a blue sky",
+        "image_position": "right",
+        "eyebrow": "The point",
+        "heading": "Clarity can have a personality.",
+        "text": "<p>The category often asks shoppers to choose between sterile jargon and vague promises. Dandy's job is to make the product, format, label, offer, and evidence understandable — while still feeling warm, human, and unmistakably alive.</p><p>[FINAL FOUNDER STORY REQUIRED: approved origin, people, dates, motivations, and photography. Do not invent a founder narrative.]</p>",
+        "link_label": "See how proof is built",
+        "link": "/COA",
+        "claim_ids": "",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "principles": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "plain": { "type": "card", "settings": { "icon": "check", "heading": "Plain before clever", "text": "<p>Say what the product is, what arrives, what it costs, and what the shopper agreed to.</p>" } },
+        "proof": { "type": "card", "settings": { "icon": "lab", "heading": "Evidence before badges", "text": "<p>Link the real lot and report; never let iconography impersonate proof.</p>" } },
+        "joy": { "type": "card", "settings": { "icon": "berry", "heading": "Joy without evasion", "text": "<p>Use bold color and candid language while keeping risks, warnings, and uncertainty visible.</p>" } },
+        "choice": { "type": "card", "settings": { "icon": "package", "heading": "A clean decision", "text": "<p>Keep format, variant, quantity, subscription, charge, and availability distinct.</p>" } }
+      },
+      "block_order": ["plain", "proof", "joy", "choice"],
+      "settings": {
+        "eyebrow": "How Dandy behaves",
+        "heading": "Cheerful, not careless.",
+        "text": "These are product and communication principles, not substantiation for a health, safety, or quality claim.",
+        "claim_ids": "",
+        "copy_status": "approved"
+      }
+    },
+    "content": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<h2>The people behind Dandy</h2><p>[FINAL FOUNDER STORY REQUIRED: approved biography, company origin, real team/facility relationships, image permissions, and support details.]</p>",
+        "copy_status": "missing-final-copy"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "See it in practice",
+        "heading": "Start with the exact product.",
+        "text": "The label, offer, availability, and proof state should be as clear as the brand is bright.",
+        "primary_label": "Shop Dandy",
+        "primary_link": "/collections/all",
+        "secondary_label": "Contact us",
+        "secondary_link": "/pages/contact",
+        "claim_ids": "C-09 C-10 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["hero", "story", "principles", "content", "final_cta"]
+}

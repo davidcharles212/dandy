@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Returns + guarantee",
+        "heading": "Make the promise precise.",
+        "text": "A final policy needs the window, condition rules, exclusions, steps, refund timing, and support path in plain language.",
+        "claim_ids": "C-15",
+        "copy_status": "missing-final-legal"
+      }
+    },
+    "content": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<h2>Final return or guarantee policy required</h2><p>[FINAL POLICY REQUIRED: eligibility window, opened/unopened and consumable-product rules, trial-product treatment, damaged/incorrect orders, subscription orders, exclusions, return authorization, return shipping, refund method and timing, chargebacks, contact method, and governing jurisdiction.]</p><p>No guarantee badge or frictionless-refund promise may publish until the policy and operating workflow are approved and tested.</p>",
+        "copy_status": "missing-final-copy"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "window": { "type": "question", "settings": { "question": "What is the return window?", "answer": "<p>[FINAL POLICY REQUIRED: exact number of calendar days and the event that starts the clock.]</p>", "open": true } },
+        "opened": { "type": "question", "settings": { "question": "Can an opened product be returned?", "answer": "<p>[FINAL POLICY REQUIRED: exact consumable-product condition rules and any guarantee terms.]</p>" } },
+        "damaged": { "type": "question", "settings": { "question": "What if my order is damaged or wrong?", "answer": "<p>[FINAL OPERATIONS REQUIRED: photo/documentation, notice window, replacement/refund path, and response target.]</p>" } },
+        "refund": { "type": "question", "settings": { "question": "When will I receive a refund?", "answer": "<p>[FINAL POLICY REQUIRED: review time, original-payment-method timing, and bank processing caveat.]</p>" } }
+      },
+      "block_order": ["window", "opened", "damaged", "refund"],
+      "settings": {
+        "eyebrow": "Policy questions",
+        "heading": "The exact terms belong here.",
+        "text": "Development copy cannot create a guarantee that operations and legal have not approved.",
+        "claim_ids": "C-15",
+        "copy_status": "missing-final-legal"
+      }
+    }
+  },
+  "order": ["hero", "content", "faq"]
+}

@@ -1,0 +1,173 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-hero",
+      "settings": {
+        "eyebrow": "BRIGHT ENERGY. EASY UNWINDING.",
+        "heading": "KRATOM, MADE EASY.",
+        "text": "Precisely portioned mixed-berry gummies for clear focus, warm body ease, and a smooth social glow—without pouring another drink.",
+        "primary_label": "SHOP GUMMIES",
+        "primary_link": "/products/mixed-berry-kratom-gummies",
+        "secondary_label": "WHAT IS KRATOM?",
+        "secondary_link": "/learn",
+        "claim_ids": "C-02 C-04 C-05 C-09",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "value_strip": {
+      "type": "dandy-value-strip",
+      "blocks": {
+        "portion": { "type": "value", "settings": { "icon": "package", "text": "Gummies, powder + caps" } },
+        "berry": { "type": "value", "settings": { "icon": "check", "text": "Clearly labeled formats" } },
+        "count": { "type": "value", "settings": { "icon": "berry", "text": "No-mix options" } },
+        "tested": { "type": "value", "settings": { "icon": "check", "text": "For adults 21+" } }
+      },
+      "block_order": ["portion", "berry", "count", "tested"],
+      "settings": { "accessible_label": "Dandy format highlights" }
+    },
+    "lineup": {
+      "type": "dandy-lineup",
+      "blocks": {
+        "gummy10": {
+          "type": "product_card",
+          "settings": { "asset": "gummy10", "tone": "cream", "format": "GUMMIES", "heading": "10 GUMMIES", "detail": "Mixed berry · pocket size", "price": "$24.99", "image_alt": "Dandy 10-count mixed berry gummy pouch", "link": "/products/mixed-berry-kratom-gummies" }
+        },
+        "gummy30": {
+          "type": "product_card",
+          "settings": { "asset": "gummy30", "tone": "orange", "format": "GUMMIES", "heading": "30 GUMMIES", "detail": "Mixed berry · full size", "price": "$59.99", "image_alt": "Dandy 30-count mixed berry gummy pouch", "link": "/products/mixed-berry-kratom-gummies" }
+        },
+        "powder100": {
+          "type": "product_card",
+          "settings": { "asset": "powder100", "tone": "blue", "format": "POWDER", "heading": "100G POWDER", "detail": "Flexible measured ritual", "price": "$34.99", "image_alt": "Dandy 100 gram kratom leaf powder pouch", "link": "/collections/all#powder" }
+        },
+        "powder250": {
+          "type": "product_card",
+          "settings": { "asset": "powder250", "tone": "peach", "format": "POWDER", "heading": "250G POWDER", "detail": "The pantry-size pouch", "price": "$54.99", "image_alt": "Dandy 250 gram kratom leaf powder pouch", "link": "/collections/all#powder" }
+        },
+        "capsule50": {
+          "type": "product_card",
+          "settings": { "asset": "capsule50", "tone": "cream", "format": "EXTRACT CAPSULES", "heading": "50 MG CAPS", "detail": "10 or 30 count · no mixing", "price": "FROM $28.99", "image_alt": "Production placeholder for Dandy 50 milligram extract capsules in 10- and 30-count packages", "link": "/collections/all#capsules" }
+        },
+        "capsule90": {
+          "type": "product_card",
+          "settings": { "asset": "capsule90", "tone": "blue", "format": "EXTRACT CAPSULES", "heading": "90 MG CAPS", "detail": "10 or 30 count · no mixing", "price": "FROM $44.99", "image_alt": "Production placeholder for Dandy 90 milligram extract capsules in 10- and 30-count packages", "link": "/collections/all#capsules" }
+        }
+      },
+      "block_order": ["gummy10", "gummy30", "powder100", "powder250", "capsule50", "capsule90"],
+      "settings": {
+        "eyebrow": "THE WHOLE DANDY LINEUP",
+        "heading": "PICK YOUR DANDY.",
+        "text": "Pre-portioned gummies, flexible powder, or concentrated no-mix capsules. Start with the format and exact label that fit your ritual."
+      }
+    },
+    "intro": {
+      "type": "dandy-kratom-intro",
+      "settings": {
+        "eyebrow": "WHAT IS KRATOM?",
+        "heading": "START WITH THE PLANT.",
+        "text": "<p>Kratom comes from the leaves of <em>Mitragyna speciosa</em>, a tropical tree in the coffee family. Its naturally occurring alkaloids include mitragynine.</p><p>Dandy turns that unfamiliar category into three clearly explained formats: gummies, powder, and extract capsules.</p>",
+        "link_label": "WHAT IS KRATOM?",
+        "link": "/learn"
+      }
+    },
+    "gears": {
+      "type": "dandy-two-gears",
+      "settings": {
+        "eyebrow": "HOW PEOPLE TALK ABOUT KRATOM",
+        "heading": "ONE PLANT. TWO GEARS.",
+        "text": "The experience can shift with product, serving, sensitivity, food, and context. Think direction, not a guaranteed destination.",
+        "bright_label": "BRIGHT GEAR",
+        "bright_heading": "CLEAR. UPBEAT. SWITCHED ON.",
+        "bright_text": "The get-moving side of the conversation: clear focus, good energy, and an easier social rhythm.",
+        "warm_label": "WARM GEAR",
+        "warm_heading": "WARM. LOOSE. SETTLED.",
+        "warm_text": "The shoulders-down side: body ease, a softer edge, and a smooth sense of unwinding.",
+        "note": "Experiences vary. Follow the exact product label and do not drive or operate machinery if impaired."
+      }
+    },
+    "gummy_story": {
+      "type": "dandy-split-story",
+      "blocks": {
+        "portion": { "type": "fact", "settings": { "text": "Pre-portioned" } },
+        "portable": { "type": "fact", "settings": { "text": "Pocket-friendly" } },
+        "mixing": { "type": "fact", "settings": { "text": "No measuring or mixing" } }
+      },
+      "block_order": ["portion", "portable", "mixing"],
+      "settings": {
+        "asset": "closeup",
+        "image_position": "right",
+        "tone": "orange",
+        "image_alt": "A mixed berry gummy above an open Dandy pouch",
+        "eyebrow": "WHY GUMMIES",
+        "heading": "THE GUMMY THAT MAKES KRATOM EASY.",
+        "text": "<p>Open the pouch, take the labeled serving, and get on with your day. No scale. No scoop. No green cloud in the kitchen.</p>",
+        "link_label": "SHOP GUMMIES",
+        "link": "/products/mixed-berry-kratom-gummies"
+      }
+    },
+    "use_guide": {
+      "type": "dandy-use-guide",
+      "blocks": {
+        "read": { "type": "step", "settings": { "icon": "package", "heading": "READ THE LABEL", "text": "Check the exact serving and directions on the pouch in your hand." } },
+        "low": { "type": "step", "settings": { "icon": "leaf", "heading": "START WITH THE SMALLEST LABELED SERVING", "text": "Sensitivity varies. More is not a shortcut to a better experience." } },
+        "wait": { "type": "step", "settings": { "icon": "calendar", "heading": "GIVE IT TIME", "text": "Wait the full labeled interval before deciding what comes next." } }
+      },
+      "block_order": ["read", "low", "wait"],
+      "settings": {
+        "eyebrow": "A SIMPLE START",
+        "heading": "START LOW. FIND YOUR DANDY.",
+        "text": "Use the label in your hand as the source of truth. Formats and concentrations are not interchangeable.",
+        "show_placeholder": true
+      }
+    },
+    "quality": {
+      "type": "dandy-quality",
+      "blocks": {
+        "batch": { "type": "step", "settings": { "heading": "FIND THE BATCH", "text": "The bag and its paperwork should share an identity." } },
+        "report": { "type": "step", "settings": { "heading": "OPEN THE REPORT", "text": "Dates, lab, and product identity belong in one clear path." } },
+        "scope": { "type": "step", "settings": { "heading": "READ THE SCOPE", "text": "See what was measured instead of trusting a decorative badge." } }
+      },
+      "block_order": ["batch", "report", "scope"],
+      "settings": {
+        "eyebrow": "BATCH TO BAG",
+        "heading": "KNOW WHAT'S IN THE BAG.",
+        "text": "Good proof should be simple to follow. Find the batch on the bag, match it to the report, and see what the report actually covers.",
+        "link_label": "QUALITY & TESTING",
+        "link": "/COA"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "what": { "type": "question", "settings": { "question": "What is kratom?", "answer": "<p>Kratom comes from <em>Mitragyna speciosa</em>, a tropical tree in the coffee family. It contains naturally occurring alkaloids and is not the same as coffee.</p>", "open": true } },
+        "feel": { "type": "question", "settings": { "question": "What might it feel like?", "answer": "<p>People describe both brighter and warmer experiences. Product, serving, sensitivity, food, and context all matter, so no specific experience is guaranteed.</p>" } },
+        "use": { "type": "question", "settings": { "question": "How do I use Dandy gummies?", "answer": "<p>Follow the exact label on the pouch. Start with the smallest labeled serving and wait the full labeled interval.</p>" } },
+        "format": { "type": "question", "settings": { "question": "Why gummies instead of powder?", "answer": "<p>Gummies are pre-portioned, portable, and need no measuring or mixing. Powder is a more flexible ritual for people who prefer that format.</p>" } },
+        "mix": { "type": "question", "settings": { "question": "Can I mix it with alcohol?", "answer": "<p>Do not treat Dandy as something to stack with alcohol. Read the full product label and speak with a qualified clinician if you have questions about medicines or health conditions.</p>" } },
+        "ship": { "type": "question", "settings": { "question": "Where does Dandy ship?", "answer": "<p>Availability varies by location and checkout is the final eligibility check.</p>" } }
+      },
+      "block_order": ["what", "feel", "use", "format", "mix", "ship"],
+      "settings": {
+        "eyebrow": "GOOD QUESTIONS",
+        "heading": "THE DANDY FAQ.",
+        "text": "The short answers, before you choose.",
+        "claim_ids": "C-01 C-02 C-03 C-04 C-05 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "final_banner": {
+      "type": "dandy-image-banner",
+      "settings": {
+        "asset": "final",
+        "eyebrow": "YOUR NEW GO-TO",
+        "heading": "GOOD DAYS LOOK DANDY.",
+        "text": "Mixed berry, precisely portioned, and ready when you are.",
+        "primary_label": "SHOP GUMMIES",
+        "primary_link": "/products/mixed-berry-kratom-gummies",
+        "secondary_label": "WHAT IS KRATOM?",
+        "secondary_link": "/learn"
+      }
+    }
+  },
+  "order": ["hero", "value_strip", "lineup", "intro", "gears", "gummy_story", "use_guide", "quality", "faq", "final_banner"]
+}

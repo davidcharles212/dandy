@@ -1,0 +1,61 @@
+<section
+  class="dandy-section"
+  data-copy-status="{{ section.settings.copy_status }}"
+  data-claim-ids="{{ section.settings.claim_ids }}"
+  aria-labelledby="DandyTimelineHeading-{{ section.id }}"
+>
+  <div class="dandy-container dandy-container--wide dandy-editorial">
+    <div class="dandy-editorial__content">
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h2 id="DandyTimelineHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      <p class="dandy-body">{{ section.settings.text }}</p>
+      {% if section.settings.link_label != blank %}<a class="dandy-text-link" href="{{ section.settings.link }}">{{ section.settings.link_label }} →</a>{% endif %}
+    </div>
+    <ol class="dandy-steps">
+      {% for block in section.blocks %}
+        <li class="dandy-step" {{ block.shopify_attributes }}>
+          <div>
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy timeline",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Batch to bag" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trust should have a trail." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "This module is ready to show the actual partners, checkpoints, lot identity, and finished-product report behind each batch." },
+    { "type": "text", "id": "link_label", "label": "Optional link label", "default": "See quality and testing" },
+    { "type": "url", "id": "link", "label": "Optional link" },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-10 C-11" },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "missing-final-proof", "label": "Missing final proof" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "missing-final-proof"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Document the source" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "[FINAL PROCESS FACT REQUIRED: actual partner, control, and evidence]" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Dandy timeline" }]
+}
+{% endschema %}

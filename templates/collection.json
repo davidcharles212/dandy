@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "catalog": {
+      "type": "dandy-catalog",
+      "settings": {
+        "design_preview_mode": true,
+        "eyebrow": "THE COMPLETE DANDY LINEUP",
+        "heading": "SHOP EVERY FORMAT.",
+        "text": "Choose the ritual first: pre-portioned gummies, flexible powder, or concentrated no-mix capsules. Every option shows its strength, size, and price clearly."
+      }
+    },
+    "format_chooser": {
+      "type": "dandy-format-chooser",
+      "blocks": {
+        "gummies": { "type": "format", "settings": { "icon": "berry", "heading": "Gummies", "text": "Pre-portioned and portable, with the exact label tied to the selected product.", "link_label": "Shop gummies", "link": "/products/mixed-berry-kratom-gummies" } },
+        "powder": { "type": "format", "settings": { "icon": "leaf", "heading": "Powder", "text": "A measured, mixable ritual for shoppers who prefer the classic format.", "link_label": "See powder options", "link": "#powder" } },
+        "capsules": { "type": "format", "settings": { "icon": "package", "heading": "Capsules", "text": "Concentrated convenience in 50 mg or 90 mg, with 10- and 30-count choices tied to the exact label.", "link_label": "See capsule options", "link": "#capsules" } }
+      },
+      "block_order": ["gummies", "powder", "capsules"],
+      "settings": {
+        "image_alt": "Dandy gummy and powder pouches held against a blue sky",
+        "eyebrow": "COMPARE BY RITUAL",
+        "heading": "CHOOSE THE FORMAT THAT FITS.",
+        "text": "Compare preparation, portioning, package size, and the exact product label—without pretending a format guarantees an effect.",
+        "claim_ids": "C-09 C-10",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "format": { "type": "question", "settings": { "question": "Which format should I choose?", "answer": "<p>Choose based on the ritual you prefer and the exact product label: pre-portioned gummy, measured powder, or concentrated no-mix capsule. No format guarantees a particular experience.</p>", "open": true } },
+        "serving": { "type": "question", "settings": { "question": "Are servings interchangeable?", "answer": "<p>No. Product formats, concentrations, and labels are not interchangeable. Follow the exact directions on the item in your hand.</p>" } },
+        "reports": { "type": "question", "settings": { "question": "Where are the batch reports?", "answer": "<p>[FINAL COA REQUIRED: product-to-lot mapping and stable finished-product report links.] The quality architecture is ready to expose the actual batch, lab, date, and test scope.</p>" } }
+      },
+      "block_order": ["format", "serving", "reports"],
+      "settings": {
+        "eyebrow": "Compare clearly",
+        "heading": "Three questions before you choose.",
+        "text": "The selected product record remains the source of truth.",
+        "claim_ids": "C-09 C-10",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Start simple",
+        "heading": "Meet the mixed-berry gummy.",
+        "text": "See its actual price, availability, purchase type, and label requirements in one decision path.",
+        "primary_label": "View gummies",
+        "primary_link": "/products/mixed-berry-kratom-gummies",
+        "secondary_label": "What is kratom?",
+        "secondary_link": "/learn",
+        "claim_ids": "C-09 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["catalog", "format_chooser", "faq", "final_cta"]
+}

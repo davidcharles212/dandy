@@ -1,0 +1,34 @@
+{% doc %}
+  Renders a non-transactional development catalog card from documented launch merchandising.
+
+  @param {string} format - Product format label.
+  @param {string} heading - Product title.
+  @param {string} detail - Short product description.
+  @param {string} price - Preview price or price range.
+  @param {string} meta - Strength, count, or weight choices.
+  @param {string} tone - Dandy color tone.
+  @param {string} [asset_name] - Existing theme asset.
+  @param {string} [asset_brief] - Concise missing-asset description.
+  @param {string} [link] - Safe destination.
+{% enddoc %}
+
+<article class="dandy-catalog-card dandy-catalog-card--{{ tone }}">
+  <a class="dandy-catalog-card__media" href="{{ link | default: routes.all_products_collection_url }}">
+    {% if asset_name != blank %}
+      <img src="{{ asset_name | asset_url }}" width="1000" height="1000" loading="eager" alt="{{ heading | escape }}">
+    {% else %}
+      <div class="dandy-catalog-card__placeholder" role="img" aria-label="{{ asset_brief | escape }}">
+        <span>PRODUCT RENDER PLACEHOLDER · V-12</span>
+        <strong>{{ heading }}</strong>
+        <p>{{ asset_brief }}</p>
+      </div>
+    {% endif %}
+  </a>
+  <div class="dandy-catalog-card__copy">
+    <span class="dandy-label">{{ format }}</span>
+    <h2><a href="{{ link | default: routes.all_products_collection_url }}">{{ heading }}</a></h2>
+    <p>{{ detail }}</p>
+    <div class="dandy-catalog-card__meta"><span>{{ meta }}</span><strong>{{ price }}</strong></div>
+    <a class="dandy-button dandy-button--secondary" href="{{ link | default: routes.all_products_collection_url }}">VIEW THIS DANDY</a>
+  </div>
+</article>
