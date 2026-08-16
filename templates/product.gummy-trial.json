@@ -1,0 +1,78 @@
+{
+  "sections": {
+    "product_hero": {
+      "type": "dandy-product-hero",
+      "settings": {
+        "format": "gummy",
+        "fallback_media_alt": "Dandy mixed berry kratom gummy pouch and gummies",
+        "eyebrow": "Mixed berry · 10-count trial path",
+        "heading": "",
+        "tagline": "A smaller hello to Dandy — kept separate from the full-size offer so count, price, and purchase terms stay obvious.",
+        "highlight_1": "[FINAL LABEL REQUIRED: approved mitragynine amount per gummy or serving]",
+        "highlight_2": "10 gummies per trial pack",
+        "highlight_3": "[FINAL LABEL REQUIRED: flavor, ingredient, and serving facts]",
+        "highlight_4": "One-time trial only unless a genuine, approved selling plan says otherwise",
+        "preselect_subscription": false,
+        "enable_quantity_ladder": false,
+        "single_selection_label": "1 trial pack",
+        "one_time_detail": "One 10-count trial pack. Cart pricing follows Shopify's current server-side rules.",
+        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: no recurring trial offer is currently approved]",
+        "reassurance_1": "21+ only",
+        "reassurance_2": "Secure checkout",
+        "reassurance_3": "Eligibility checked at checkout",
+        "development_preview": true,
+        "development_unit_price": "2499",
+        "development_three_pack_price": "0",
+        "development_five_pack_price": "0",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "details": {
+      "type": "dandy-product-details",
+      "settings": {
+        "eyebrow": "Trial does not mean vague",
+        "heading": "The smaller pack needs the full label.",
+        "text": "The 10-count product must have its own approved record, price, inventory, label mapping, and finished-lot report.",
+        "facts_alt": "Dandy 10-count gummy facts panel",
+        "facts_placeholder": "[FINAL LABEL REQUIRED: exact 10-count identity, count, net quantity, serving, amount declarations, and variant mapping]",
+        "ingredients_placeholder": "[FINAL LABEL REQUIRED: complete gummy ingredients and allergen text]",
+        "directions_placeholder": "[FINAL LABEL REQUIRED: exact gummy suggested-use text and labeled interval]",
+        "warnings_placeholder": "[FINAL LABEL REQUIRED: age, interactions, impairment, pregnancy/nursing, medical conditions, medications, dependence, adverse-event, and storage warnings]",
+        "claim_ids": "C-09 C-12",
+        "copy_status": "missing-final-label"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "difference": { "type": "question", "settings": { "question": "How is this different from the 30-count pack?", "answer": "<p>This is a separate 10-count trial path. Final product records must confirm whether the formula, serving, ingredients, and label are otherwise identical.</p>", "open": true } },
+        "subscription": { "type": "question", "settings": { "question": "Is the trial a subscription?", "answer": "<p>No recurring trial offer is currently approved. A subscription can appear only if a genuine Shopify selling plan and complete adjacent terms exist.</p>" } },
+        "report": { "type": "question", "settings": { "question": "Does it have its own batch report?", "answer": "<p>[FINAL COA REQUIRED: product-to-lot mapping and a finished-product report that covers the actual 10-count trial item.]</p>" } }
+      },
+      "block_order": ["difference", "subscription", "report"],
+      "settings": {
+        "eyebrow": "Trial questions",
+        "heading": "Smaller count. Same standard for clarity.",
+        "text": "Every answer remains tied to the exact product record.",
+        "claim_ids": "C-09 C-10 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Want the full size?",
+        "heading": "Compare the 30-count offer.",
+        "text": "Keep the trial and full-size paths distinct, then choose based on real count, price, availability, and terms.",
+        "primary_label": "View 30-count gummies",
+        "primary_link": "/products/mixed-berry-kratom-gummies",
+        "secondary_label": "Shop all products",
+        "secondary_link": "/collections/all",
+        "claim_ids": "C-09 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["product_hero", "details", "faq", "final_cta"]
+}

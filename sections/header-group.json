@@ -1,0 +1,50 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "dandy_announcement": {
+      "type": "dandy-announcement",
+      "settings": {
+        "text": "FREE SHIPPING ON 3+ PACKS · SUBSCRIBE & SAVE 20%",
+        "link": "",
+        "claim_ids": "C-09 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "dandy_header": {
+      "type": "dandy-header",
+      "blocks": {
+        "shop": {
+          "type": "link",
+          "settings": { "label": "Shop", "link": "shopify://collections/all" }
+        },
+        "gummies": {
+          "type": "link",
+          "settings": { "label": "Gummies", "link": "/products/mixed-berry-kratom-gummies" }
+        },
+        "learn": {
+          "type": "link",
+          "settings": { "label": "Learn", "link": "/learn" }
+        },
+        "quality": {
+          "type": "link",
+          "settings": { "label": "COA", "link": "/COA" }
+        },
+        "faq": {
+          "type": "link",
+          "settings": { "label": "FAQ", "link": "/pages/faq" }
+        },
+        "about": {
+          "type": "link",
+          "settings": { "label": "About", "link": "/about" }
+        }
+      },
+      "block_order": ["shop", "gummies", "learn", "quality", "faq", "about"],
+      "settings": {
+        "shop_label": "Shop gummies",
+        "shop_link": "/products/mixed-berry-kratom-gummies"
+      }
+    }
+  },
+  "order": ["dandy_announcement", "dandy_header"]
+}

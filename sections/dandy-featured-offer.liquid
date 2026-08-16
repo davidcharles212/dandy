@@ -1,0 +1,87 @@
+{% assign featured_product = section.settings.product %}
+
+<section class="dandy-section" aria-labelledby="DandyFeaturedOfferHeading-{{ section.id }}">
+  <div class="dandy-container dandy-container--wide">
+    <div class="dandy-section__intro">
+      <div>
+        <span class="dandy-kicker">{{ section.settings.section_eyebrow }}</span>
+        <h2 id="DandyFeaturedOfferHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.section_heading }}</h2>
+      </div>
+      <p class="dandy-body">{{ section.settings.section_text }}</p>
+    </div>
+    <div class="dandy-product-hero__grid">
+      {% render 'dandy-product-gallery',
+        product: featured_product,
+        format: section.settings.format,
+        gallery_id: section.id,
+        fallback_alt: section.settings.fallback_media_alt
+      %}
+      {% render 'dandy-buy-box', product: featured_product, section_settings: section.settings, section_id: section.id, show_title: true, heading_level: 'h2' %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy featured offer",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "section_eyebrow", "label": "Section eyebrow", "default": "Start here" },
+    { "type": "text", "id": "section_heading", "label": "Section heading", "default": "The easy way into Dandy." },
+    {
+      "type": "textarea",
+      "id": "section_text",
+      "label": "Section text",
+      "default": "See the format, the exact offer, and every purchase term before anything goes in your cart."
+    },
+    {
+      "type": "select",
+      "id": "format",
+      "label": "Product format",
+      "options": [
+        { "value": "gummy", "label": "Gummy" },
+        { "value": "powder", "label": "Powder" },
+        { "value": "capsule", "label": "Capsule" }
+      ],
+      "default": "gummy"
+    },
+    { "type": "text", "id": "fallback_media_alt", "label": "Fallback media alt text", "default": "Dandy mixed berry kratom gummy pouch and gummies" },
+    { "type": "text", "id": "eyebrow", "label": "Product eyebrow", "default": "Mixed berry · 30-count format" },
+    { "type": "text", "id": "heading", "label": "Product heading", "default": "Mixed Berry Kratom Gummies" },
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "A little berry. A lot more Dandy." },
+    { "type": "text", "id": "highlight_1", "label": "Product fact 1", "default": "[FINAL LABEL REQUIRED: approved mitragynine amount per gummy or serving]" },
+    { "type": "text", "id": "highlight_2", "label": "Product fact 2", "default": "30 gummies per full-size pack" },
+    { "type": "text", "id": "highlight_3", "label": "Product fact 3", "default": "[FINAL LABEL REQUIRED: flavor and ingredient fact]" },
+    { "type": "text", "id": "highlight_4", "label": "Product fact 4", "default": "Batch report access when the finished-lot report is published" },
+    { "type": "checkbox", "id": "preselect_subscription", "label": "Preselect a real subscription plan", "default": false },
+    { "type": "checkbox", "id": "enable_quantity_ladder", "label": "Enable 1 / 3 / 5 quantity ladder", "default": true },
+    { "type": "text", "id": "single_selection_label", "label": "Single-item selection label", "default": "1 pack" },
+    { "type": "text", "id": "one_time_detail", "label": "One-time purchase detail", "default": "Choose 1, 3, or 5 packs. Cart pricing follows Shopify's current server-side rules." },
+    {
+      "type": "textarea",
+      "id": "subscription_terms",
+      "label": "Subscription terms",
+      "default": "[FINAL SUBSCRIPTION TERMS REQUIRED: charge today, renewal amount and cadence, shipping, edit/skip/cancel path]"
+    },
+    { "type": "text", "id": "reassurance_1", "label": "Reassurance 1", "default": "21+ only" },
+    { "type": "text", "id": "reassurance_2", "label": "Reassurance 2", "default": "Secure checkout" },
+    { "type": "text", "id": "reassurance_3", "label": "Reassurance 3", "default": "Eligibility checked at checkout" },
+    { "type": "checkbox", "id": "development_preview", "label": "Enable development offer fixture", "default": true },
+    { "type": "text", "id": "development_unit_price", "label": "Development unit price in cents", "default": "5999" },
+    { "type": "text", "id": "development_three_pack_price", "label": "Planned 3-pack total in cents", "default": "11998" },
+    { "type": "text", "id": "development_five_pack_price", "label": "Planned 5-pack total in cents", "default": "17997" },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-09 C-10 C-13 C-14 C-15 C-16" },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "aggressive-draft", "label": "Aggressive draft" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "aggressive-draft"
+    }
+  ],
+  "presets": [{ "name": "Dandy featured offer" }]
+}
+{% endschema %}

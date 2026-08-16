@@ -1,0 +1,52 @@
+<section
+  class="dandy-hero"
+  data-copy-status="{{ section.settings.copy_status }}"
+  data-claim-ids="{{ section.settings.claim_ids }}"
+  aria-labelledby="DandyHeroHeading-{{ section.id }}"
+>
+  <div class="dandy-hero__media" aria-hidden="true">
+    {% if section.settings.image != blank %}
+      {{
+        section.settings.image
+        | image_url: width: 2400
+        | image_tag: widths: '720, 1280, 1800, 2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: ''
+      }}
+    {% else %}
+      <picture>
+        <source type="image/avif" srcset="{{ 'dandy-home-hero-1600.avif' | asset_url }}">
+        <source type="image/webp" srcset="{{ 'dandy-home-hero-720.webp' | asset_url }} 720w, {{ 'dandy-home-hero-1280.webp' | asset_url }} 1280w, {{ 'dandy-home-hero-2200.webp' | asset_url }} 2200w" sizes="100vw">
+        <img src="{{ 'dandy-home-hero-2200.jpg' | asset_url }}" width="2200" height="1237" alt="" loading="eager" fetchpriority="high">
+      </picture>
+    {% endif %}
+  </div>
+  <div class="dandy-hero__content-wrap">
+    <div class="dandy-hero__content">
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h1 id="DandyHeroHeading-{{ section.id }}" class="dandy-display">{{ section.settings.heading }}</h1>
+      <p class="dandy-hero__lede">{{ section.settings.text }}</p>
+      <div class="dandy-actions">
+        <a class="dandy-button" href="{{ section.settings.primary_link | default: routes.all_products_collection_url }}">{{ section.settings.primary_label }}</a>
+        <a class="dandy-button dandy-button--secondary" href="{{ section.settings.secondary_link }}">{{ section.settings.secondary_label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy category hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "BRIGHT ENERGY. EASY UNWINDING." },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "KRATOM, MADE FINE AND DANDY." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Precisely portioned mixed-berry gummies for clear focus, warm body ease, and a smooth social glow—without pouring another drink." },
+    { "type": "text", "id": "primary_label", "label": "Primary action", "default": "SHOP GUMMIES" },
+    { "type": "url", "id": "primary_link", "label": "Primary link" },
+    { "type": "text", "id": "secondary_label", "label": "Secondary action", "default": "WHAT IS KRATOM?" },
+    { "type": "url", "id": "secondary_link", "label": "Secondary link" },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-02 C-04 C-05 C-09" },
+    { "type": "text", "id": "copy_status", "label": "Internal copy status", "default": "draft" }
+  ],
+  "presets": [{ "name": "Dandy category hero" }]
+}
+{% endschema %}

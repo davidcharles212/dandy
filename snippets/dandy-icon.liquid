@@ -1,0 +1,23 @@
+{% doc %}
+  Renders one curated Streamline Freehand icon as a decorative current-color asset.
+
+  @param {string} name - Icon name: leaf, lab, package, check, berry, or calendar.
+  @param {string} [class] - Optional additional CSS class.
+{% enddoc %}
+
+<span class="dandy-icon {{ class }}" aria-hidden="true">
+  {% case name %}
+    {% when 'lab' %}
+      {{ 'dandy-icon-lab.svg' | inline_asset_content }}
+    {% when 'package' %}
+      {{ 'dandy-icon-package.svg' | inline_asset_content }}
+    {% when 'check' %}
+      {{ 'dandy-icon-check.svg' | inline_asset_content }}
+    {% when 'berry' %}
+      {{ 'dandy-icon-berry.svg' | inline_asset_content }}
+    {% when 'calendar' %}
+      {{ 'dandy-icon-calendar.svg' | inline_asset_content }}
+    {% else %}
+      {{ 'dandy-icon-leaf.svg' | inline_asset_content }}
+  {% endcase %}
+</span>

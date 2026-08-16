@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "hero": { "type": "dandy-page-hero", "settings": { "eyebrow": "Terms", "heading": "Terms of service", "text": "Final terms must reflect the approved product, age, eligibility, purchase, subscription, intellectual-property, dispute, and support rules.", "claim_ids": "C-13 C-14 C-15 C-16", "copy_status": "missing-final-legal" } },
+    "content": { "type": "dandy-page-content", "settings": { "fallback_content": "<p>[FINAL TERMS REQUIRED: counsel-approved terms covering eligibility, age, acceptable use, product information, orders, pricing, payment, shipping, returns, subscriptions, prohibited jurisdictions, risk disclosures, intellectual property, disclaimers, liability, indemnity, disputes, governing law, changes, contact, and effective date.]</p>", "copy_status": "missing-final-copy" } }
+  },
+  "order": ["hero", "content"]
+}

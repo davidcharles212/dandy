@@ -1,0 +1,47 @@
+<section id="DandyBuyBox" class="dandy-product-hero dandy-skip-target" aria-label="{{ product.title | escape }}" {{ section.shopify_attributes }}>
+  <div class="dandy-container dandy-container--wide dandy-product-hero__grid">
+    {% render 'dandy-product-gallery',
+      product: product,
+      format: section.settings.format,
+      gallery_id: section.id,
+      fallback_alt: section.settings.fallback_media_alt,
+      use_supplied_gallery: section.settings.use_supplied_gallery
+    %}
+    {% render 'dandy-buy-box', product: product, section_settings: section.settings, section_id: section.id, show_title: true %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy product hero",
+  "settings": [
+    {
+      "type": "select",
+      "id": "format",
+      "label": "Product format",
+      "options": [
+        { "value": "gummy", "label": "Gummy" },
+        { "value": "powder", "label": "Powder" },
+        { "value": "capsule", "label": "Capsule" }
+      ],
+      "default": "gummy"
+    },
+    { "type": "checkbox", "id": "use_supplied_gallery", "label": "Use supplied Dandy gummy gallery", "default": false },
+    { "type": "checkbox", "id": "design_preview_mode", "label": "Enable safe design preview", "default": false },
+    { "type": "text", "id": "fallback_media_alt", "label": "Fallback media alt text", "default": "Dandy mixed berry kratom gummy pouch" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "35 MG MITRAGYNINE PER GUMMY · MIXED BERRY" },
+    { "type": "text", "id": "heading", "label": "Heading override", "default": "Mixed Berry Kratom Gummies" },
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "A little berry. A lot more Dandy. Clear focus, warm body ease, and an easy euphoric glow in one deliciously simple format." },
+    { "type": "text", "id": "highlight_1", "label": "Product fact 1", "default": "Bright, clear energy" },
+    { "type": "text", "id": "highlight_2", "label": "Product fact 2", "default": "Warm body ease" },
+    { "type": "text", "id": "highlight_3", "label": "Product fact 3", "default": "Smooth social glow" },
+    { "type": "text", "id": "highlight_4", "label": "Product fact 4", "default": "35 mg mitragynine per gummy" },
+    { "type": "text", "id": "reassurance_1", "label": "Reassurance 1", "default": "Secure checkout" },
+    { "type": "text", "id": "reassurance_2", "label": "Reassurance 2", "default": "Portable pouch" },
+    { "type": "text", "id": "reassurance_3", "label": "Reassurance 3", "default": "For adults 21+" },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-02 C-04 C-05 C-09 C-13 C-15" },
+    { "type": "text", "id": "copy_status", "label": "Internal copy status", "default": "draft" }
+  ],
+  "presets": [{ "name": "Dandy product hero" }]
+}
+{% endschema %}

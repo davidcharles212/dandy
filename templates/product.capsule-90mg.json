@@ -1,0 +1,96 @@
+{
+  "sections": {
+    "product_hero": {
+      "type": "dandy-product-hero",
+      "settings": {
+        "format": "capsule",
+        "fallback_media_alt": "Development brief for Dandy 90 mg capsule packages in 10- and 30-count options",
+        "eyebrow": "Capsules · 90 mg merchandising hypothesis",
+        "heading": "",
+        "tagline": "Nothing to mix. Nothing to taste. Nothing to guess — and no unsupported stronger-is-better story.",
+        "highlight_1": "[FINAL LABEL REQUIRED: define and approve the 90 mg declaration]",
+        "highlight_2": "10- and 30-count options proposed",
+        "highlight_3": "[FINAL LABEL REQUIRED: capsule contents, material, serving, and directions]",
+        "highlight_4": "Batch report access when the finished-lot report is published",
+        "preselect_subscription": false,
+        "enable_quantity_ladder": false,
+        "single_selection_label": "Selected 90 mg capsule count",
+        "one_time_detail": "Choose 10 or 30 capsules from genuine Shopify variants when the final catalog is connected.",
+        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: only a supported 30-count plan may appear after economics, gateway, app, legal, and renewal testing pass]",
+        "reassurance_1": "21+ only",
+        "reassurance_2": "Secure checkout",
+        "reassurance_3": "Eligibility checked at checkout",
+        "development_preview": true,
+        "development_unit_price": "4499",
+        "development_three_pack_price": "0",
+        "development_five_pack_price": "0",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "details": {
+      "type": "dandy-product-details",
+      "settings": {
+        "eyebrow": "Amount and count, separated",
+        "heading": "The selected variant controls every fact.",
+        "text": "The final 10- and 30-count Shopify variants must update SKU, price, inventory, media, facts, directions, warnings, and selling-plan eligibility together.",
+        "facts_alt": "Dandy 90 mg capsule facts panel",
+        "facts_placeholder": "[FINAL LABEL REQUIRED: exact definition of 90 mg, serving, 10/30 count mapping, net quantity, product identity, and variant-specific facts]",
+        "ingredients_placeholder": "[FINAL LABEL REQUIRED: complete capsule fill, capsule material, and allergens]",
+        "directions_placeholder": "[FINAL LABEL REQUIRED: exact suggested use and labeled interval for the selected 90 mg product]",
+        "warnings_placeholder": "[FINAL LABEL REQUIRED: age, interactions, impairment, pregnancy/nursing, medical conditions, medications, dependence, adverse-event, and storage warnings]",
+        "claim_ids": "C-09 C-12",
+        "copy_status": "missing-final-label"
+      }
+    },
+    "visual": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-12B",
+        "status": "Production needed",
+        "heading": "90 mg capsule lineup",
+        "conversion_job": "Show truthful 10- and 30-count package scale without framing 90 mg as advanced or superior.",
+        "composition": "Final 90 mg 10-count and 30-count packages with capsule appearance, label panels, and count comparison; no imagined packaging or effects hierarchy.",
+        "ratios": "4:3 desktop · 1:1 mobile",
+        "dependencies": "Final formulation, approved 90 mg terminology, capsule appearance, labels, dielines, and package dimensions.",
+        "alt_intent": "Identify the two approved count options and visible package-size difference without comparative potency language.",
+        "owner": "Production + regulatory",
+        "due_date": "Before template assignment"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "means": { "type": "question", "settings": { "question": "What does 90 mg mean?", "answer": "<p>[FINAL LABEL REQUIRED: exact approved definition. Do not infer ingredient, alkaloid, extract, serving, or experience meaning from the working product name.]</p>", "open": true } },
+        "compare": { "type": "question", "settings": { "question": "Is 90 mg an advanced or stronger experience?", "answer": "<p>Dandy does not make that claim. The number must be defined by the final label and cannot be translated into a promised effect or customer level.</p>" } },
+        "count": { "type": "question", "settings": { "question": "Should I choose 10 or 30 capsules?", "answer": "<p>Count describes how many capsules are in the package. Compare actual price, label, availability, and intended trial or replenishment use without treating count as an effects claim.</p>" } },
+        "use": { "type": "question", "settings": { "question": "How many capsules should I use?", "answer": "<p>[FINAL LABEL REQUIRED: exact suggested-use text and interval.] Follow the selected product label.</p>" } },
+        "available": { "type": "question", "settings": { "question": "Is this available?", "answer": "<p>Only a published, approved Shopify product with real price, inventory, label, media, eligibility, and lot report may be sold. This template is currently a development surface.</p>" } }
+      },
+      "block_order": ["means", "compare", "count", "use", "available"],
+      "settings": {
+        "eyebrow": "90 mg capsule questions",
+        "heading": "Define the number. Skip the hierarchy.",
+        "text": "The final product record, not the merchandising hypothesis, is authoritative.",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "missing-final-legal"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Launch gate",
+        "heading": "Real variants before real orders.",
+        "text": "Final product records, labels, photos, reports, prices, inventory, and eligibility must all agree.",
+        "primary_label": "Back to the product",
+        "primary_link": "#DandyBuyBox-product_hero",
+        "secondary_label": "Shop available products",
+        "secondary_link": "/collections/all",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["product_hero", "details", "visual", "faq", "final_cta"]
+}

@@ -1,0 +1,74 @@
+{% assign active_collection = collection | default: collections.all %}
+
+<section class="dandy-section" aria-labelledby="DandyCatalogHeading-{{ section.id }}">
+  <div class="dandy-container dandy-container--wide">
+    <div class="dandy-section__intro">
+      <div>
+        <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+        <h1 id="DandyCatalogHeading-{{ section.id }}" class="dandy-heading">
+          {{ section.settings.heading | default: active_collection.title }}
+        </h1>
+      </div>
+      <p class="dandy-body">{{ section.settings.text }}</p>
+    </div>
+
+    {% if section.settings.design_preview_mode %}
+      <div class="dandy-catalog-grid">
+        {% render 'dandy-catalog-card', format: 'GUMMIES', heading: '10-COUNT GUMMIES', detail: 'The smaller mixed-berry trial pouch with the same 35 mg-per-gummy label.', price: '$24.99', meta: '10 gummies · one-time', tone: 'cream', asset_name: 'dandy-gummy-10.png', link: '/products/mixed-berry-kratom-gummies' %}
+        {% render 'dandy-catalog-card', format: 'GUMMIES', heading: '30-COUNT GUMMIES', detail: 'The full-size mixed-berry pouch with the complete quantity and subscription offer.', price: '$59.99 · SUBSCRIBE $47.99', meta: '30 gummies · 35 mg each', tone: 'orange', asset_name: 'dandy-gummy-30.png', link: '/products/mixed-berry-kratom-gummies' %}
+        {% render 'dandy-catalog-card', format: 'POWDER', heading: '100G LEAF POWDER', detail: 'A flexible measured ritual for people who prefer the classic powder format.', price: '$34.99', meta: '100 g pouch', tone: 'blue', asset_name: 'dandy-powder-100.png', link: '#format-guide' %}
+        {% render 'dandy-catalog-card', format: 'POWDER', heading: '250G LEAF POWDER', detail: 'The pantry-size pouch for established powder routines.', price: '$54.99', meta: '250 g pouch', tone: 'peach', asset_name: 'dandy-powder-250.png', link: '#format-guide' %}
+        {% render 'dandy-catalog-card', format: 'EXTRACT CAPSULES', heading: '50 MG CAPSULES', detail: 'Concentrated convenience with nothing to taste or mix. Follow the exact capsule label.', price: '$28.99–$64.99', meta: '10 or 30 count', tone: 'cream', asset_brief: 'Final 50 mg capsule bottle and package render in accurate 10- and 30-count scale.', link: '#capsules' %}
+        {% render 'dandy-catalog-card', format: 'EXTRACT CAPSULES', heading: '90 MG CAPSULES', detail: 'A distinct labeled strength with its own directions, warnings, and count choices.', price: '$44.99–$99.99', meta: '10 or 30 count', tone: 'blue', asset_brief: 'Final 90 mg capsule bottle and package render in accurate 10- and 30-count scale.', link: '#capsules' %}
+      </div>
+    {% else %}
+      {% paginate active_collection.products by 24 %}
+        <div class="dandy-catalog-grid">
+        {% for catalog_product in active_collection.products %}
+          <article class="dandy-card dandy-product-card">
+            <a class="dandy-product-card__media" href="{{ catalog_product.url }}">
+              {% if catalog_product.featured_image != blank %}
+                {{
+                  catalog_product.featured_image
+                  | image_url: width: 1000
+                  | image_tag: widths: '360, 540, 720, 1000', sizes: '(min-width: 1024px) 30vw, (min-width: 768px) 48vw, 100vw', loading: 'lazy', alt: catalog_product.featured_image.alt
+                }}
+              {% else %}
+                <picture>
+                  <source type="image/webp" srcset="{{ 'dandy-gummy-pack-480.webp' | asset_url }} 480w, {{ 'dandy-gummy-pack-900.webp' | asset_url }} 900w">
+                  <img src="{{ 'dandy-gummy-pack-1000.jpg' | asset_url }}" width="1000" height="1000" loading="lazy" alt="{{ catalog_product.title | escape }}">
+                </picture>
+              {% endif %}
+            </a>
+            <h2><a href="{{ catalog_product.url }}">{{ catalog_product.title }}</a></h2>
+            {% if catalog_product.price > 0 %}
+              <span class="dandy-product-card__price">{{ catalog_product.price | money }}</span>
+            {% endif %}
+            <a class="dandy-button" href="{{ catalog_product.url }}">View product</a>
+          </article>
+        {% else %}
+          <div class="dandy-visual-brief" data-development-marker="catalog">
+            <span class="dandy-visual-brief__id">SHOP DANDY</span>
+            <h2>Nothing hiding behind mystery tiles.</h2>
+            <p>Products appear here only when the exact format, size, price, and availability can be shown together.</p>
+          </div>
+        {% endfor %}
+        </div>
+        {{ paginate | default_pagination }}
+      {% endpaginate %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy catalog",
+  "settings": [
+    { "type": "checkbox", "id": "design_preview_mode", "label": "Show documented development catalog", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find your format" },
+    { "type": "text", "id": "heading", "label": "Heading override", "default": "Shop Dandy" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Gummies for pre-portioned simplicity. Powder for a flexible ritual. Capsules for concentrated convenience without mixing." }
+  ],
+  "presets": [{ "name": "Dandy catalog" }]
+}
+{% endschema %}

@@ -1,0 +1,161 @@
+{
+  "sections": {
+    "product_hero": {
+      "type": "dandy-product-hero",
+      "settings": {
+        "format": "powder",
+        "fallback_media_alt": "Dandy kratom leaf powder pouch on a warm orange surface",
+        "eyebrow": "Leaf powder · measured format",
+        "heading": "",
+        "tagline": "The classic kratom ritual, made unmistakably Dandy: bright, direct, and built for people who want to measure their own mix.",
+        "highlight_1": "[FINAL LABEL REQUIRED: exact botanical identity and net weight by variant]",
+        "highlight_2": "Choose the available pouch size above",
+        "highlight_3": "[FINAL LABEL REQUIRED: grind, ingredients, and serving facts]",
+        "highlight_4": "Batch report access when the finished-lot report is published",
+        "preselect_subscription": false,
+        "enable_quantity_ladder": false,
+        "single_selection_label": "Selected pouch",
+        "one_time_detail": "Choose an available pouch size above. Cart pricing follows Shopify's current server-side rules.",
+        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: charge today, renewal amount and cadence, shipping, edit/skip/cancel path]",
+        "reassurance_1": "21+ only",
+        "reassurance_2": "Secure checkout",
+        "reassurance_3": "Eligibility checked at checkout",
+        "development_preview": true,
+        "development_unit_price": "3499",
+        "development_three_pack_price": "0",
+        "development_five_pack_price": "0",
+        "claim_ids": "C-02 C-03 C-04 C-05 C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "powder_story": {
+      "type": "dandy-editorial",
+      "settings": {
+        "fallback_media": "powder",
+        "image_alt": "Dandy kratom leaf powder pouch and loose powder",
+        "image_position": "right",
+        "eyebrow": "Why powder?",
+        "heading": "A measured ritual, on your terms.",
+        "text": "<p>Powder is the direct, mixable format for shoppers who already know the ritual they want. It offers flexibility, but it also asks for careful measuring and full attention to the exact label.</p><p>Final grind, origin, weight, serving, and ingredient language will remain tied to approved product records.</p>",
+        "link_label": "Learn what kratom is",
+        "link": "/learn",
+        "claim_ids": "C-01 C-09",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "product_details": {
+      "type": "dandy-product-details",
+      "settings": {
+        "eyebrow": "Measure what is labeled",
+        "heading": "Powder needs exact instructions.",
+        "text": "Approved product metafields will supply the final facts panel, ingredients, directions, and warnings for each powder variant.",
+        "facts_alt": "Dandy leaf powder facts panel",
+        "facts_placeholder": "[FINAL LABEL REQUIRED: exact botanical identity, net weight, serving size, alkaloid declarations, lot identity, and pouch variant mapping]",
+        "ingredients_placeholder": "[FINAL LABEL REQUIRED: complete powder ingredients and allergen statement]",
+        "directions_placeholder": "[FINAL LABEL REQUIRED: exact measuring method, suggested-use amount, mixing directions, and labeled interval]",
+        "warnings_placeholder": "[FINAL LABEL REQUIRED: age, interactions, impairment, pregnancy/nursing, medical conditions, medications, dependence, adverse-event, and storage warnings]",
+        "claim_ids": "C-09 C-12",
+        "copy_status": "missing-final-label"
+      }
+    },
+    "visual_v07": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-15",
+        "status": "Production needed",
+        "heading": "Powder measure and mix",
+        "conversion_job": "Show the real measuring ritual without inventing serving guidance.",
+        "composition": "Final pouch, approved measuring tool, truthful powder texture, water or approved mixer, and label-controlled step sequence.",
+        "ratios": "4:3 desktop · 1:1 mobile",
+        "dependencies": "Final label, serving directions, measuring tool, powder color and texture, and approved preparation method.",
+        "alt_intent": "Describe the approved measure-and-mix sequence and visible powder texture.",
+        "owner": "Production + regulatory",
+        "due_date": "Before production release"
+      }
+    },
+    "responsible_use": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "measure": { "type": "card", "settings": { "icon": "check", "heading": "Measure, don't guess", "text": "<p>Use the exact tool and amount specified on the final label.</p>" } },
+        "smallest": { "type": "card", "settings": { "icon": "leaf", "heading": "Begin with the smallest labeled serving", "text": "<p>Powder can look deceptively simple; the label still controls.</p>" } },
+        "wait": { "type": "card", "settings": { "icon": "calendar", "heading": "Wait the full labeled interval", "text": "<p>Do not stack servings while waiting for an experience.</p>" } },
+        "mix": { "type": "card", "settings": { "icon": "lab", "heading": "Do not mix casually", "text": "<p>[FINAL LABEL REQUIRED: approved interaction, medication, condition, driving, pregnancy, and age warnings.]</p>" } }
+      },
+      "block_order": ["measure", "smallest", "wait", "mix"],
+      "settings": {
+        "eyebrow": "Use guidance",
+        "heading": "Measure first. Then give it time.",
+        "text": "The exact approved pouch label controls serving and warning language. Formats and concentrations are not interchangeable.",
+        "claim_ids": "",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "quality_timeline": {
+      "type": "dandy-timeline",
+      "blocks": {
+        "source": { "type": "step", "settings": { "heading": "Document the leaf", "text": "[FINAL PROCESS FACT REQUIRED: source, botanical identity, and material controls]" } },
+        "make": { "type": "step", "settings": { "heading": "Prepare the powder", "text": "[FINAL PROCESS FACT REQUIRED: actual processing partner, grind, and controls]" } },
+        "test": { "type": "step", "settings": { "heading": "Test the finished lot", "text": "[FINAL COA REQUIRED: independent lab, methods, analytes, dates, and exact powder lot identity]" } },
+        "share": { "type": "step", "settings": { "heading": "Publish the report", "text": "[FINAL COA REQUIRED: stable report URL and approved explanation of actual test scope]" } }
+      },
+      "block_order": ["source", "make", "test", "share"],
+      "settings": {
+        "eyebrow": "Leaf to lot",
+        "heading": "Trust should have a trail.",
+        "text": "This module is reserved for the actual sourcing, processing, and finished-product evidence behind the selected lot.",
+        "link_label": "See quality and testing",
+        "link": "/COA",
+        "claim_ids": "C-10 C-11 C-12",
+        "copy_status": "missing-final-proof"
+      }
+    },
+    "reviews": {
+      "type": "dandy-review-slots",
+      "blocks": {
+        "review_1": { "type": "review_slot", "settings": { "slot_id": "REV-07", "objection": "Mixability", "placeholder": "[REAL REVIEW NEEDED — powder mixability — 20–45 words]" } },
+        "review_2": { "type": "review_slot", "settings": { "slot_id": "REV-08", "objection": "Measuring clarity", "placeholder": "[REAL REVIEW NEEDED — directions and measuring clarity — 30–60 words]" } },
+        "review_3": { "type": "review_slot", "settings": { "slot_id": "REV-09", "objection": "Taste expectation", "placeholder": "[REAL REVIEW NEEDED — honest powder taste expectation — 20–45 words]" } }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": {
+        "eyebrow": "Real voices, when they're ready",
+        "heading": "Proof we won't make up.",
+        "text": "Permissioned reviews replace these briefs only after source and claim review."
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "measure": { "type": "question", "settings": { "question": "How do I measure it?", "answer": "<p>[FINAL LABEL REQUIRED: exact tool, amount, preparation method, and labeled interval.] Never estimate from marketing photography.</p>", "open": true } },
+        "taste": { "type": "question", "settings": { "question": "What does powder taste like?", "answer": "<p>[FINAL PRODUCT FACT REQUIRED: approved, non-misleading taste and texture description for this exact formula.]</p>" } },
+        "compare": { "type": "question", "settings": { "question": "How is powder different from gummies?", "answer": "<p>Powder is measured and mixed; gummies are pre-portioned. That is a format distinction, not a promised effects ladder. Follow the exact label in your hand.</p>" } },
+        "coa": { "type": "question", "settings": { "question": "Where is the batch report?", "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked powder report and stable public URL.]</p>" } },
+        "shipping": { "type": "question", "settings": { "question": "Can it ship to me?", "answer": "<p>Rules vary and can change. The counsel-approved shipping matrix must drive eligibility, and checkout remains the final enforcement point.</p>" } }
+      },
+      "block_order": ["measure", "taste", "compare", "coa", "shipping"],
+      "settings": {
+        "eyebrow": "Before you add it",
+        "heading": "Powder questions, answered plainly.",
+        "text": "The final label and lot record remain the source of truth.",
+        "claim_ids": "C-09 C-10 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Fine and Dandy",
+        "heading": "Choose the exact pouch above.",
+        "text": "Review its size, label, price, availability, and eligibility before adding it.",
+        "primary_label": "Back to the offer",
+        "primary_link": "#DandyBuyBox-product_hero",
+        "secondary_label": "Compare formats",
+        "secondary_link": "/collections/all",
+        "claim_ids": "C-09 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["product_hero", "powder_story", "product_details", "visual_v07", "responsible_use", "quality_timeline", "reviews", "faq", "final_cta"]
+}

@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "catalog": {
+      "type": "dandy-catalog",
+      "settings": {
+        "eyebrow": "Shop Dandy",
+        "heading": "Choose the format that fits your ritual.",
+        "text": "Real Shopify product records control every price, option, availability state, and add-to-cart path."
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "New here?",
+        "heading": "Kratom, minus the fog.",
+        "text": "Start with the category guide, then come back to compare exact product labels.",
+        "primary_label": "Learn about kratom",
+        "primary_link": "/learn",
+        "secondary_label": "Read the FAQ",
+        "secondary_link": "/pages/faq",
+        "claim_ids": "C-01 C-09",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["catalog", "final_cta"]
+}

@@ -1,0 +1,64 @@
+<section
+  class="dandy-proof-ledger"
+  data-copy-status="{{ section.settings.copy_status }}"
+  data-claim-ids="{{ section.settings.claim_ids }}"
+  aria-label="{{ section.settings.accessible_label }}"
+>
+  <div class="dandy-container dandy-container--wide dandy-proof-ledger__grid">
+    {% for block in section.blocks %}
+      <article class="dandy-proof-item" {{ block.shopify_attributes }}>
+        {% render 'dandy-icon', name: block.settings.icon %}
+        <div>
+          <h2>{{ block.settings.heading }}</h2>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy proof ledger",
+  "settings": [
+    { "type": "text", "id": "accessible_label", "label": "Accessible label", "default": "Why shoppers choose Dandy" },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-09 C-10 C-11 C-16" },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "aggressive-draft", "label": "Aggressive draft" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "aggressive-draft"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Proof fact",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "lab", "label": "Lab" },
+            { "value": "package", "label": "Package" },
+            { "value": "check", "label": "Check" },
+            { "value": "berry", "label": "Berry" },
+            { "value": "calendar", "label": "Calendar" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "A clear product fact" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Connect this line to approved product or process data." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Dandy proof ledger" }]
+}
+{% endschema %}

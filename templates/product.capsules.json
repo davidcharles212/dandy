@@ -1,0 +1,158 @@
+{
+  "sections": {
+    "product_hero": {
+      "type": "dandy-product-hero",
+      "settings": {
+        "format": "capsule",
+        "fallback_media_alt": "Development brief for the Dandy capsule product lineup",
+        "eyebrow": "Capsules · lineup pending",
+        "heading": "",
+        "tagline": "A compact, no-mix format with the details up front — once the final lineup, labels, and lots are real.",
+        "highlight_1": "[FINAL LABEL REQUIRED: exact capsule contents and declared amount by variant]",
+        "highlight_2": "[FINAL CATALOG REQUIRED: approved count options]",
+        "highlight_3": "[FINAL LABEL REQUIRED: ingredients, capsule material, and serving facts]",
+        "highlight_4": "Batch report access when the finished-lot report is published",
+        "preselect_subscription": false,
+        "enable_quantity_ladder": false,
+        "single_selection_label": "Selected capsule option",
+        "one_time_detail": "Choose an approved strength and count above when the final variants are connected.",
+        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: charge today, renewal amount and cadence, shipping, edit/skip/cancel path]",
+        "reassurance_1": "21+ only",
+        "reassurance_2": "Secure checkout",
+        "reassurance_3": "Eligibility checked at checkout",
+        "development_preview": true,
+        "development_unit_price": "2899",
+        "development_three_pack_price": "0",
+        "development_five_pack_price": "0",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "capsule_story": {
+      "type": "dandy-editorial",
+      "settings": {
+        "fallback_media": "format",
+        "image_alt": "Dandy gummy and powder formats against a blue sky; final capsule photography pending",
+        "image_position": "right",
+        "eyebrow": "Why capsules?",
+        "heading": "No scoop. No mix. No mystery math.",
+        "text": "<p>The capsule experience should be compact and legible: exact contents, exact count, exact label, and a lot-linked report. The module is ready; final capsule records and photography are not.</p><p>Strengths and counts must stay separate in the interface so shoppers never confuse an amount declaration with package quantity.</p>",
+        "link_label": "Learn what kratom is",
+        "link": "/learn",
+        "claim_ids": "C-01 C-09",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "product_details": {
+      "type": "dandy-product-details",
+      "settings": {
+        "eyebrow": "Strength and count are different",
+        "heading": "Every capsule fact belongs on the record.",
+        "text": "Approved product metafields will supply the final facts, ingredients, directions, and warnings for the selected capsule variant.",
+        "facts_alt": "Dandy capsule facts panel",
+        "facts_placeholder": "[FINAL LABEL REQUIRED: exact botanical identity, amount declaration, serving, capsule count, net quantity, lot identity, and variant mapping]",
+        "ingredients_placeholder": "[FINAL LABEL REQUIRED: complete fill ingredients, capsule material, and allergens]",
+        "directions_placeholder": "[FINAL LABEL REQUIRED: exact capsule suggested-use text and labeled interval]",
+        "warnings_placeholder": "[FINAL LABEL REQUIRED: age, interactions, impairment, pregnancy/nursing, medical conditions, medications, dependence, adverse-event, and storage warnings]",
+        "claim_ids": "C-09 C-12",
+        "copy_status": "missing-final-label"
+      }
+    },
+    "visual_v12": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-12",
+        "status": "Production needed",
+        "heading": "Capsule lineup at truthful scale",
+        "conversion_job": "Separate strength from count and show what arrives for each option.",
+        "composition": "Final 50 mg and 90 mg packages with 10- and 30-count configurations only if approved product records support them; show package and capsule scale honestly.",
+        "ratios": "4:3 desktop · 1:1 mobile",
+        "dependencies": "Final product lineup, labels, package dielines, capsule appearance, and approved amount terminology.",
+        "alt_intent": "Identify each approved strength and count combination without implying that one produces a stronger experience.",
+        "owner": "Production + regulatory",
+        "due_date": "Before capsule template assignment"
+      }
+    },
+    "variant_logic": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "strength": { "type": "card", "settings": { "icon": "lab", "heading": "Choose the labeled amount", "text": "<p>[FINAL LABEL REQUIRED: define exactly what each amount describes.]</p>" } },
+        "count": { "type": "card", "settings": { "icon": "package", "heading": "Then choose the count", "text": "<p>Package count is a separate decision from the amount declared on each label.</p>" } },
+        "label": { "type": "card", "settings": { "icon": "check", "heading": "Read the selected label", "text": "<p>Variant-specific facts, directions, warnings, and price must update together.</p>" } },
+        "wait": { "type": "card", "settings": { "icon": "calendar", "heading": "Give it the labeled time", "text": "<p>Do not stack servings while waiting for an experience.</p>" } }
+      },
+      "block_order": ["strength", "count", "label", "wait"],
+      "settings": {
+        "eyebrow": "Variant logic",
+        "heading": "Amount first. Count second.",
+        "text": "The finished selector will use genuine Shopify variants and reload the selected record so price, availability, plans, and product facts stay synchronized.",
+        "claim_ids": "C-09 C-13",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "visual_v13": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-13",
+        "status": "Production needed",
+        "heading": "Capsule facts comparison",
+        "conversion_job": "Help shoppers compare approved variants without turning amounts into an effect promise.",
+        "composition": "Side-by-side factual table using final label fields: declared amount terminology, capsule count, serving, ingredients, warnings, price, and lot report link.",
+        "ratios": "16:9 desktop · vertical table mobile",
+        "dependencies": "Final approved labels, prices, variant IDs, inventory state, and finished-lot reports.",
+        "alt_intent": "Summarize the factual differences between available capsule variants.",
+        "owner": "Design + ecommerce",
+        "due_date": "Before capsule launch"
+      }
+    },
+    "reviews": {
+      "type": "dandy-review-slots",
+      "blocks": {
+        "review_1": { "type": "review_slot", "settings": { "slot_id": "REV-10", "objection": "Option clarity", "placeholder": "[REAL REVIEW NEEDED — strength and count clarity — 30–60 words]" } },
+        "review_2": { "type": "review_slot", "settings": { "slot_id": "REV-11", "objection": "Portability", "placeholder": "[REAL REVIEW NEEDED — capsule portability — 20–45 words]" } },
+        "review_3": { "type": "review_slot", "settings": { "slot_id": "REV-12", "objection": "Swallowability", "placeholder": "[REAL REVIEW NEEDED — capsule size and swallowability — 20–45 words]" } }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": {
+        "eyebrow": "Real voices, when they're ready",
+        "heading": "Proof we won't make up.",
+        "text": "No star average, name, avatar, or verified badge appears until permissioned reviews exist."
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "amount": { "type": "question", "settings": { "question": "What do the amount options mean?", "answer": "<p>[FINAL LABEL REQUIRED: exact approved definition for each amount declaration.] The interface will not translate amount into a guaranteed experience.</p>", "open": true } },
+        "count": { "type": "question", "settings": { "question": "What is the difference between strength and count?", "answer": "<p>Strength describes an approved amount declaration; count describes how many capsules are in the package. Final product records must keep them distinct.</p>" } },
+        "directions": { "type": "question", "settings": { "question": "How many capsules should I take?", "answer": "<p>[FINAL LABEL REQUIRED: exact suggested-use text and interval.] Follow the selected product label and do not treat formats or concentrations as interchangeable.</p>" } },
+        "coa": { "type": "question", "settings": { "question": "Where is the batch report?", "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked capsule report and stable public URL.]</p>" } },
+        "available": { "type": "question", "settings": { "question": "Are capsules available now?", "answer": "<p>This template is a development surface. Availability must come from a published Shopify product with approved labels, inventory, pricing, and eligibility.</p>" } }
+      },
+      "block_order": ["amount", "count", "directions", "coa", "available"],
+      "settings": {
+        "eyebrow": "Before you add it",
+        "heading": "Capsule questions, without the guesswork.",
+        "text": "Final records control every strength, count, serving, price, and availability statement.",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "final_cta": {
+      "type": "dandy-final-cta",
+      "settings": {
+        "eyebrow": "Capsule launch gate",
+        "heading": "Connect the real lineup before selling it.",
+        "text": "Approved variants, labels, inventory, prices, media, eligibility, and lot reports are all required before this template leaves development.",
+        "primary_label": "Back to the product",
+        "primary_link": "#DandyBuyBox-product_hero",
+        "secondary_label": "Shop available formats",
+        "secondary_link": "/collections/all",
+        "claim_ids": "C-09 C-10 C-13 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    }
+  },
+  "order": ["product_hero", "capsule_story", "product_details", "visual_v12", "variant_logic", "visual_v13", "reviews", "faq", "final_cta"]
+}

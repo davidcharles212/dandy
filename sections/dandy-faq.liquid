@@ -1,0 +1,60 @@
+<dandy-faq
+  class="dandy-section"
+  data-copy-status="{{ section.settings.copy_status }}"
+  data-claim-ids="{{ section.settings.claim_ids }}"
+  aria-labelledby="DandyFaqHeading-{{ section.id }}"
+>
+  <div class="dandy-container dandy-container--narrow">
+    <div class="dandy-section__intro">
+      <div>
+        <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+        <h2 id="DandyFaqHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      </div>
+      <p class="dandy-body">{{ section.settings.text }}</p>
+    </div>
+    <div class="dandy-faq-list">
+      {% for block in section.blocks %}
+        <details class="dandy-faq-item" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="dandy-faq-item__answer">{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</dandy-faq>
+
+{% schema %}
+{
+  "name": "Dandy FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ask the obvious questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "No mystery answers." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Clear product, use, shipping, subscription, and safety information belongs before checkout." },
+    { "type": "text", "id": "claim_ids", "label": "Internal claim IDs", "default": "C-01 C-02 C-03 C-04 C-05 C-16" },
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "aggressive-draft", "label": "Aggressive draft" },
+        { "value": "missing-final-legal", "label": "Missing final legal" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "aggressive-draft"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What is kratom?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Kratom comes from the leaves of <em>Mitragyna speciosa</em>, a tropical tree in the coffee plant family. It isn't the same as coffee.</p>" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [{ "name": "Dandy FAQ" }]
+}
+{% endschema %}

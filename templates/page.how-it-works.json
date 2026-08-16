@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Experience + use guide",
+        "heading": "Start low. Give it time. Find your Dandy.",
+        "text": "A responsible-use framework for reading the exact label, choosing the smallest labeled serving, and refusing the idea that more automatically means better.",
+        "claim_ids": "C-02 C-03 C-04 C-05",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "steps": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "read": { "type": "card", "settings": { "icon": "check", "heading": "1. Read the exact label", "text": "<p>Confirm format, amount terminology, serving, directions, interval, ingredients, and warnings.</p>" } },
+        "start": { "type": "card", "settings": { "icon": "leaf", "heading": "2. Start with the smallest labeled serving", "text": "<p>A different product, concentration, format, or lot means begin with its own directions.</p>" } },
+        "wait": { "type": "card", "settings": { "icon": "calendar", "heading": "3. Wait the full labeled interval", "text": "<p>Do not add another serving because you are impatient for an experience.</p>" } },
+        "check": { "type": "card", "settings": { "icon": "package", "heading": "4. Check the context", "text": "<p>[FINAL LABEL REQUIRED: approved interaction, medication, health-condition, pregnancy, driving, and age warnings.]</p>" } }
+      },
+      "block_order": ["read", "start", "wait", "check"],
+      "settings": {
+        "eyebrow": "The useful sequence",
+        "heading": "Four steps before the vibe.",
+        "text": "This framework does not replace the approved product label or medical advice.",
+        "claim_ids": "",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "experience": {
+      "type": "dandy-icon-grid",
+      "blocks": {
+        "lift": { "type": "card", "settings": { "icon": "check", "heading": "Lift", "text": "<p>Language people may use for feeling brighter or more upbeat. Not guaranteed.</p>" } },
+        "flow": { "type": "card", "settings": { "icon": "leaf", "heading": "Flow", "text": "<p>Language people may use for calm focus. Not guaranteed.</p>" } },
+        "ease": { "type": "card", "settings": { "icon": "package", "heading": "Ease", "text": "<p>Language people may use for warmth or physical relaxation. Not guaranteed.</p>" } },
+        "glow": { "type": "card", "settings": { "icon": "berry", "heading": "Glow", "text": "<p>Language people may use for sociability or euphoria. Not guaranteed.</p>" } }
+      },
+      "block_order": ["lift", "flow", "ease", "glow"],
+      "settings": {
+        "eyebrow": "Experience language",
+        "heading": "Words, not promises.",
+        "text": "Do not drive or operate machinery if impaired. Product, serving, sensitivity, food, and context can all matter.",
+        "claim_ids": "C-02 C-03 C-04 C-05",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "visual_v04": {
+      "type": "dandy-visual-brief",
+      "settings": {
+        "enabled": true,
+        "asset_id": "V-14",
+        "status": "Production needed",
+        "heading": "Read, start, wait, reassess",
+        "conversion_job": "Turn responsible-use guidance into a memorable sequence.",
+        "composition": "Four-panel illustrated sequence using the final product label, smallest labeled serving, a real interval from approved directions, and a context/warning check.",
+        "ratios": "16:9 desktop · 4:5 mobile",
+        "dependencies": "Final label directions and counsel-approved safety copy for every shown format.",
+        "alt_intent": "State the four-step responsible-use sequence and the label-controlled interval.",
+        "owner": "Design + regulatory",
+        "due_date": "Before production release"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "more": { "type": "question", "settings": { "question": "Does more mean a better experience?", "answer": "<p>No. More is not automatically better. Follow the exact label and do not exceed its directions.</p>", "open": true } },
+        "mix": { "type": "question", "settings": { "question": "Can I mix Dandy with alcohol or other substances?", "answer": "<p>Do not treat Dandy as something to stack casually. [FINAL LABEL REQUIRED: exact counsel-approved interaction warning.]</p>" } },
+        "drive": { "type": "question", "settings": { "question": "Can I drive after using it?", "answer": "<p>Do not drive or operate machinery if impaired. [FINAL LABEL REQUIRED: exact product warning.]</p>" } },
+        "help": { "type": "question", "settings": { "question": "What if I have an unwanted effect?", "answer": "<p>[FINAL LABEL REQUIRED: adverse-event, poison-control, emergency, and customer-support instructions.]</p>" } }
+      },
+      "block_order": ["more", "mix", "drive", "help"],
+      "settings": {
+        "eyebrow": "Use questions",
+        "heading": "The label wins every argument.",
+        "text": "Final answers must match the approved product and counsel language.",
+        "claim_ids": "C-02 C-03 C-04 C-05",
+        "copy_status": "missing-final-legal"
+      }
+    }
+  },
+  "order": ["hero", "steps", "experience", "visual_v04", "faq"]
+}

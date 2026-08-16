@@ -1,0 +1,104 @@
+<section class="dandy-lineup dandy-section" aria-labelledby="DandyLineupHeading-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="dandy-container">
+    <div class="dandy-lineup__header">
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h2 id="DandyLineupHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      <p class="dandy-lede">{{ section.settings.text }}</p>
+    </div>
+    <div class="dandy-lineup__grid">
+      {% for block in section.blocks %}
+        {% liquid
+          case block.settings.asset
+            when 'gummy10'
+              assign asset_name = 'dandy-gummy-10.png'
+            when 'powder100'
+              assign asset_name = 'dandy-powder-100.png'
+            when 'powder250'
+              assign asset_name = 'dandy-powder-250.png'
+            when 'capsule50'
+              assign asset_name = blank
+            when 'capsule90'
+              assign asset_name = blank
+            else
+              assign asset_name = 'dandy-gummy-30.png'
+          endcase
+        %}
+        <a class="dandy-product-card dandy-product-card--{{ block.settings.tone }}" href="{{ block.settings.link | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+          <div class="dandy-product-card__media">
+            {% if asset_name != blank %}
+              <img src="{{ asset_name | asset_url }}" width="1000" height="1000" loading="lazy" alt="{{ block.settings.image_alt | escape }}">
+            {% else %}
+              <div class="dandy-product-card__placeholder" role="img" aria-label="{{ block.settings.image_alt | escape }}">
+                <span>PRODUCT RENDER PLACEHOLDER · V-12</span>
+                <strong>{{ block.settings.heading }}</strong>
+                <p>Final capsule bottle and package render at accurate scale.</p>
+              </div>
+            {% endif %}
+          </div>
+          <div class="dandy-product-card__copy">
+            <span class="dandy-label">{{ block.settings.format }}</span>
+            <h3>{{ block.settings.heading }}</h3>
+            <p>{{ block.settings.detail }}</p>
+            <div class="dandy-product-card__foot">
+              <span>{{ block.settings.price }}</span>
+              <span aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy product lineup",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE WHOLE DANDY LINEUP" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "PICK YOUR DANDY." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Easy gummies or a flexible powder ritual. Start with the format that fits your day." }
+  ],
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "asset",
+          "label": "Product render",
+          "options": [
+            { "value": "gummy10", "label": "10 gummy" },
+            { "value": "gummy30", "label": "30 gummy" },
+            { "value": "powder100", "label": "100g powder" },
+            { "value": "powder250", "label": "250g powder" },
+            { "value": "capsule50", "label": "50mg capsules" },
+            { "value": "capsule90", "label": "90mg capsules" }
+          ],
+          "default": "gummy30"
+        },
+        {
+          "type": "select",
+          "id": "tone",
+          "label": "Card tone",
+          "options": [
+            { "value": "blue", "label": "Blue" },
+            { "value": "orange", "label": "Orange" },
+            { "value": "peach", "label": "Peach" },
+            { "value": "cream", "label": "Cream" }
+          ],
+          "default": "blue"
+        },
+        { "type": "text", "id": "format", "label": "Format", "default": "GUMMIES" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "30 GUMMIES" },
+        { "type": "text", "id": "detail", "label": "Detail", "default": "Mixed berry · full size" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$59.99" },
+        { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "Dandy product pouch" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Dandy product lineup" }]
+}
+{% endschema %}

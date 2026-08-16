@@ -1,0 +1,36 @@
+{% if section.settings.enabled %}
+  <section class="dandy-section" data-development-marker="visual-brief" aria-labelledby="DandyVisualBriefHeading-{{ section.id }}">
+    <div class="dandy-container dandy-container--wide">
+      <div class="dandy-visual-brief">
+        <span class="dandy-visual-brief__id">INFOGRAPHIC PLACEHOLDER · {{ section.settings.asset_id }}</span>
+        <h2 id="DandyVisualBriefHeading-{{ section.id }}">{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.composition }}</p>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Dandy visual brief",
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Show development placeholder", "default": true },
+    { "type": "text", "id": "asset_id", "label": "Asset ID", "default": "V-01" },
+    { "type": "text", "id": "status", "label": "Status", "default": "Production needed" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Kratom in one minute" },
+    { "type": "textarea", "id": "conversion_job", "label": "Conversion job", "default": "Reduce category unfamiliarity." },
+    {
+      "type": "textarea",
+      "id": "composition",
+      "label": "Subject and composition",
+      "default": "Tropical leaf, coffee-family relationship, and a claim-neutral leaf-to-format path."
+    },
+    { "type": "text", "id": "ratios", "label": "Desktop and mobile ratios", "default": "4:3 desktop · 1:1 mobile" },
+    { "type": "textarea", "id": "dependencies", "label": "Proof and copy dependencies", "default": "Approved taxonomy source and counsel-reviewed orientation copy; no decorative fake data." },
+    { "type": "textarea", "id": "alt_intent", "label": "Alt-text intent", "default": "Explain the path from kratom leaf to Dandy product formats without repeating adjacent prose." },
+    { "type": "text", "id": "owner", "label": "Owner", "default": "Production" },
+    { "type": "text", "id": "due_date", "label": "Due date", "default": "Before production release" }
+  ],
+  "presets": [{ "name": "Dandy visual brief" }]
+}
+{% endschema %}

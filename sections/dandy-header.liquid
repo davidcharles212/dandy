@@ -1,0 +1,58 @@
+<dandy-header class="dandy-site-header" {{ section.shopify_attributes }}>
+  <div class="dandy-container dandy-container--wide dandy-site-header__inner">
+    <a class="dandy-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">
+      <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="116" height="43" alt="Dandy">
+    </a>
+
+    <nav class="dandy-site-header__nav" aria-label="Primary navigation">
+      <ul class="dandy-site-header__nav-list" role="list">
+        {% for block in section.blocks %}
+          <li {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="dandy-header-actions">
+      <a class="dandy-button dandy-header-actions__shop" href="{{ section.settings.shop_link | default: routes.all_products_collection_url }}">
+        {{ section.settings.shop_label }}
+      </a>
+      <a class="dandy-cart-link" href="{{ routes.cart_url }}" aria-label="Cart with {{ cart.item_count }} items">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h2l1.4 9h9.9l1.7-6H7.1M9 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span class="dandy-cart-link__count">{{ cart.item_count }}</span>
+      </a>
+      <details class="dandy-menu">
+        <summary aria-label="Open menu"><span class="dandy-menu__icon" aria-hidden="true"></span></summary>
+        <nav class="dandy-menu__panel" aria-label="Mobile navigation">
+          {% for block in section.blocks %}
+            <a href="{{ block.settings.link | default: routes.all_products_collection_url }}">{{ block.settings.label }}</a>
+          {% endfor %}
+          <a class="dandy-button" href="{{ section.settings.shop_link | default: routes.all_products_collection_url }}">{{ section.settings.shop_label }}</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</dandy-header>
+
+{% schema %}
+{
+  "name": "Dandy header",
+  "settings": [
+    { "type": "text", "id": "shop_label", "label": "Shop button label", "default": "Shop gummies" },
+    { "type": "url", "id": "shop_link", "label": "Shop button link" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Navigation link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Shop" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 7,
+  "presets": [{ "name": "Dandy header" }]
+}
+{% endschema %}

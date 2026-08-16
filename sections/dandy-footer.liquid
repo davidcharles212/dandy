@@ -1,0 +1,94 @@
+<div class="dandy-site-footer" {{ section.shopify_attributes }}>
+  <div class="dandy-container dandy-container--wide dandy-footer__main">
+    <div class="dandy-footer__brand">
+      <a class="dandy-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">
+        <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="164" height="61" alt="Dandy">
+      </a>
+      <p>{{ section.settings.tagline }}</p>
+      <a class="dandy-footer__email" href="mailto:{{ section.settings.support_email | escape }}">{{ section.settings.support_email }}</a>
+    </div>
+
+    <div class="dandy-footer__nav">
+      {% assign footer_groups = 'shop,learn,company' | split: ',' %}
+      {% for footer_group in footer_groups %}
+        <div>
+          <h2>
+            {% case footer_group %}
+              {% when 'learn' %}{{ section.settings.learn_heading }}
+              {% when 'company' %}{{ section.settings.company_heading }}
+              {% else %}{{ section.settings.shop_heading }}
+            {% endcase %}
+          </h2>
+          <ul class="dandy-footer__links" role="list">
+            {% for block in section.blocks %}
+              {% if block.settings.group == footer_group %}
+                <li {{ block.shopify_attributes }}><a href="{{ block.settings.link }}">{{ block.settings.label }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="dandy-footer__signup">
+      <span class="dandy-kicker">Stay in the loop</span>
+      <h2>{{ section.settings.newsletter_heading }}</h2>
+      <p>{{ section.settings.newsletter_text }}</p>
+      {% form 'customer', id: 'DandyFooterNewsletter' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="dandy-footer__signup-row">
+          <label class="dandy-visually-hidden" for="DandyFooterEmail">Email address</label>
+          <input id="DandyFooterEmail" type="email" name="contact[email]" autocomplete="email" placeholder="Email address" required>
+          <button class="dandy-button" type="submit">Sign me up</button>
+        </div>
+        {% if form.posted_successfully? %}<p role="status">Thanks. You're on the list.</p>{% endif %}
+        {% if form.errors %}<div role="alert">{{ form.errors | default_errors }}</div>{% endif %}
+      {% endform %}
+    </div>
+  </div>
+
+  <div class="dandy-container dandy-container--wide dandy-footer__legal" data-copy-status="{{ section.settings.copy_status }}">
+    <p>{{ section.settings.disclaimer }}</p>
+    <p>© {{ 'now' | date: '%Y' }} {{ shop.name }} · For adults 21+</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dandy footer",
+  "settings": [
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "Good energy. Easy unwinding. Kratom made fine and Dandy." },
+    { "type": "text", "id": "support_email", "label": "Support email", "default": "hello@foreverdandy.com" },
+    { "type": "text", "id": "shop_heading", "label": "Shop heading", "default": "Shop" },
+    { "type": "text", "id": "learn_heading", "label": "Learn heading", "default": "Learn" },
+    { "type": "text", "id": "company_heading", "label": "Company heading", "default": "Company" },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "KEEP IT DANDY." },
+    { "type": "textarea", "id": "newsletter_text", "label": "Newsletter text", "default": "New drops, useful kratom education, and the occasional bright idea." },
+    { "type": "textarea", "id": "disclaimer", "label": "Legal disclaimer", "default": "For adults 21+. Read and follow the product label. Availability varies by location." },
+    { "type": "text", "id": "copy_status", "label": "Internal copy status", "default": "draft" }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Footer link",
+      "settings": [
+        {
+          "type": "select",
+          "id": "group",
+          "label": "Column",
+          "options": [
+            { "value": "shop", "label": "Shop" },
+            { "value": "learn", "label": "Learn" },
+            { "value": "company", "label": "Company" }
+          ],
+          "default": "shop"
+        },
+        { "type": "text", "id": "label", "label": "Label", "default": "Gummies" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 18,
+  "presets": [{ "name": "Dandy footer" }]
+}
+{% endschema %}

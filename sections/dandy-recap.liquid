@@ -1,0 +1,26 @@
+<section class="dandy-recap dandy-section" aria-labelledby="DandyRecapHeading-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="dandy-container dandy-recap__inner">
+    <div>
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h2 id="DandyRecapHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="dandy-recap__action">
+      <p>{{ section.settings.text }}</p>
+      <a class="dandy-button dandy-button--secondary" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy recap",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "MIXED BERRY · 30 GUMMIES" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A LITTLE BERRY. A LOT MORE DANDY." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Pre-portioned, portable, and ready without measuring or mixing." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "BACK TO THE OFFER" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Dandy recap" }]
+}
+{% endschema %}

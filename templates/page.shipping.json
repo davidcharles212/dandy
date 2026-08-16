@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "dandy-page-hero",
+      "settings": {
+        "eyebrow": "Shipping",
+        "heading": "Where, when, and what it costs — before checkout.",
+        "text": "Final shipping promises must match active Shopify rates, fulfillment operations, and the current counsel-approved jurisdiction matrix.",
+        "claim_ids": "C-15 C-16",
+        "copy_status": "missing-final-legal"
+      }
+    },
+    "content": {
+      "type": "dandy-page-content",
+      "settings": {
+        "fallback_content": "<h2>Final shipping policy required</h2><p>[FINAL POLICY REQUIRED: eligible jurisdictions, order processing cutoff, handling time, transit estimates, carriers, tracking, address changes, lost/damaged packages, weather and holiday exceptions, taxes/duties, and support path.]</p><p>[FINAL SHOPIFY CONFIG REQUIRED: rates and thresholds shown here must exactly match active checkout configuration. The current audit found $8 standard, free standard at $70+, $15 express, and an international zone that must be reviewed before launch.]</p>",
+        "copy_status": "missing-final-copy"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "where": { "type": "question", "settings": { "question": "Where does Dandy ship?", "answer": "<p>[FINAL LEGAL + OPERATIONS REQUIRED: current approved jurisdiction matrix.] Checkout remains the final eligibility check.</p>", "open": true } },
+        "cost": { "type": "question", "settings": { "question": "What will shipping cost?", "answer": "<p>Your cart and checkout must show the current server-configured rate before payment. [FINAL OFFER REQUIRED: reconcile intended and active rates and thresholds.]</p>" } },
+        "time": { "type": "question", "settings": { "question": "When will it arrive?", "answer": "<p>[FINAL OPERATIONS REQUIRED: handling time, transit estimate, cutoff, weekend/holiday behavior, and exceptions.]</p>" } },
+        "tracking": { "type": "question", "settings": { "question": "How do I track my order?", "answer": "<p>[FINAL OPERATIONS REQUIRED: carrier notification and order-status process.]</p>" } }
+      },
+      "block_order": ["where", "cost", "time", "tracking"],
+      "settings": {
+        "eyebrow": "Shipping questions",
+        "heading": "No surprise geography or rates.",
+        "text": "These answers stay blocked until legal, operations, and checkout configuration agree.",
+        "claim_ids": "C-15 C-16",
+        "copy_status": "missing-final-legal"
+      }
+    }
+  },
+  "order": ["hero", "content", "faq"]
+}

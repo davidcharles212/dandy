@@ -1,0 +1,64 @@
+<section class="dandy-use-guide dandy-section" aria-labelledby="DandyUseHeading-{{ section.id }}" {{ section.shopify_attributes }}>
+  <div class="dandy-container">
+    <div class="dandy-use-guide__header">
+      <span class="dandy-kicker">{{ section.settings.eyebrow }}</span>
+      <h2 id="DandyUseHeading-{{ section.id }}" class="dandy-heading">{{ section.settings.heading }}</h2>
+      <p class="dandy-lede">{{ section.settings.text }}</p>
+    </div>
+    <div class="dandy-use-guide__grid">
+      {% for block in section.blocks %}
+        <article class="dandy-use-step" {{ block.shopify_attributes }}>
+          <div class="dandy-use-step__visual">
+            {% render 'dandy-icon', name: block.settings.icon %}
+            <span class="dandy-use-step__number">0{{ forloop.index }}</span>
+          </div>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+      {% if section.settings.show_placeholder %}
+        <div class="dandy-infographic-placeholder">
+          <span>INFOGRAPHIC PLACEHOLDER · V-03</span>
+          <h3>GUMMY USE, AT A GLANCE</h3>
+          <p>A single label-led serving graphic will replace this panel when final directions are approved.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dandy use guide",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "A SIMPLE START" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "START LOW. FIND YOUR DANDY." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Use the label in your hand as the source of truth. Formats and concentrations are not interchangeable." },
+    { "type": "checkbox", "id": "show_placeholder", "label": "Show infographic placeholder", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "package", "label": "Package" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "calendar", "label": "Calendar" },
+            { "value": "check", "label": "Check" }
+          ],
+          "default": "check"
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "READ THE LABEL" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Check the exact serving and directions on your pouch." }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [{ "name": "Dandy use guide" }]
+}
+{% endschema %}
