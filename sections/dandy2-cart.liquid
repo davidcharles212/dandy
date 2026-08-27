@@ -69,7 +69,7 @@
             <div class="cartsum__row"><span>Subtotal</span><b>{{ cart.total_price | money }}</b></div>
             <p class="cartsum__ship">Shipping is $5.95 on a single one-time pack, and <b>free</b> on subscriptions and 3- or 5-packs. Calculated at checkout.</p>
             <form action="{{ routes.cart_url }}" method="post" novalidate>
-              <button type="submit" name="checkout" class="cta">Checkout, {{ cart.total_price | money }}</button>
+              <button type="submit" name="checkout" class="cta">Checkout</button>
             </form>
             <ul class="subhero__list cartsum__list">
               <li>{{ d2_gcheck }} 30-day money-back guarantee</li>
