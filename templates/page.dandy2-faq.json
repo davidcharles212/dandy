@@ -1,0 +1,58 @@
+{
+  "sections": {
+    "main": {
+      "type": "dandy2-doc",
+      "settings": {
+        "eyebrow": "Straight answers",
+        "heading": "The Dandy FAQ.",
+        "lede": "The questions people actually ask, answered without the marketing voice.",
+        "copy_status": "aggressive-draft"
+      },
+      "blocks": {
+        "b1": {
+          "type": "qa",
+          "settings": {
+            "heading": "Before you buy",
+            "q1": "Is kratom legal?",
+            "a1": "It's legal in 34 states. We don't ship to the other 16 — the list is on our shipping page, and checkout blocks those addresses.",
+            "q2": "Will I feel weird?",
+            "a2": "Effects vary by person, food, and amount. That's why every gummy is exactly 35 mg and why we say start with one and wait.",
+            "q3": "Will I fail a drug test?",
+            "a3": "Kratom's alkaloids aren't screened on standard panels, but specialized tests exist. If testing matters in your life, we can't promise a result — nobody honestly can.",
+            "q4": "Is it tested?",
+            "a4": "Every batch is screened by an independent lab for identity, mitragynine potency, heavy metals, and microbials. The batch number is on your pouch.",
+            "q5": "Who shouldn't take Dandy?",
+            "a5": "Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first.",
+            "q6": "Can I become dependent?",
+            "a6": "Regular daily use can build tolerance and habit. That's real, it's on our label, and it's why the guidance says start low and take breaks."
+          }
+        },
+        "b2": {
+          "type": "qa",
+          "settings": {
+            "heading": "Orders & subscriptions",
+            "q1": "How does the subscription work?",
+            "a1": "$47.99 charged today, $47.99 every 30 days — the first charge equals every renewal. Skip, pause, or cancel anytime.",
+            "q2": "Why is there no subscription on powder or capsules?",
+            "a2": "Those economics aren't signed off yet. We'd rather offer no plan than one we can't honour at renewal.",
+            "q3": "What does shipping cost?",
+            "a3": "$5.95 on a single one-time pack. Free on every subscription and every 3- or 5-pack.",
+            "q4": "When does it ship?",
+            "a4": "Order before 1 PM EST on a weekday and it ships the next day.",
+            "q5": "What if it's not for me?",
+            "a5": "30-day money-back guarantee on your first order — no return required.",
+            "q6": "",
+            "a6": ""
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

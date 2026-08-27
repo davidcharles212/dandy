@@ -1,0 +1,335 @@
+{
+  "sections": {
+    "product_hero": {
+      "type": "dandy-product-hero",
+      "settings": {
+        "format": "gummy",
+        "use_supplied_gallery": true,
+        "design_preview_mode": true,
+        "fallback_media_alt": "Dandy mixed berry kratom gummy pouch",
+        "eyebrow": "35 MG MITRAGYNINE PER GUMMY · MIXED BERRY",
+        "heading": "Mixed Berry Kratom Gummies",
+        "tagline": "Bright focus. Warm body ease. A smooth social glow—all in one mixed-berry gummy with no measuring or mixing.",
+        "highlight_1": "Bright, clear energy",
+        "highlight_2": "Warm body ease",
+        "highlight_3": "Smooth social glow",
+        "highlight_4": "35 mg mitragynine per gummy",
+        "reassurance_1": "Secure checkout",
+        "reassurance_2": "Portable pouch",
+        "reassurance_3": "For adults 21+",
+        "claim_ids": "C-02 C-04 C-05 C-09 C-13 C-15",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "value_strip": {
+      "type": "dandy-value-strip",
+      "blocks": {
+        "portion": {
+          "type": "value",
+          "settings": {
+            "icon": "check",
+            "text": "35 mg per gummy"
+          }
+        },
+        "berry": {
+          "type": "value",
+          "settings": {
+            "icon": "berry",
+            "text": "Mixed berry"
+          }
+        },
+        "count": {
+          "type": "value",
+          "settings": {
+            "icon": "package",
+            "text": "10 or 30 count"
+          }
+        },
+        "portable": {
+          "type": "value",
+          "settings": {
+            "icon": "package",
+            "text": "No scoop or mixing"
+          }
+        }
+      },
+      "block_order": [
+        "portion",
+        "berry",
+        "count",
+        "portable"
+      ],
+      "settings": {
+        "accessible_label": "Dandy gummy highlights"
+      }
+    },
+    "format_story": {
+      "type": "dandy-split-story",
+      "blocks": {
+        "portion": {
+          "type": "fact",
+          "settings": {
+            "text": "Pre-portioned"
+          }
+        },
+        "portable": {
+          "type": "fact",
+          "settings": {
+            "text": "Portable"
+          }
+        },
+        "mixing": {
+          "type": "fact",
+          "settings": {
+            "text": "No measuring or mixing"
+          }
+        }
+      },
+      "block_order": [
+        "portion",
+        "portable",
+        "mixing"
+      ],
+      "settings": {
+        "asset": "closeup",
+        "image_position": "right",
+        "tone": "peach",
+        "image_alt": "A mixed berry gummy above an open Dandy pouch",
+        "eyebrow": "WHAT'S A DANDY GUMMY?",
+        "heading": "KRATOM, WITHOUT THE SCOOP-AND-MIX RITUAL.",
+        "text": "<p>Dandy turns the format into something familiar: a mixed-berry gummy that is already portioned, easy to carry, and ready when you are.</p>",
+        "link_label": ""
+      }
+    },
+    "gears": {
+      "type": "dandy-two-gears",
+      "settings": {
+        "eyebrow": "THE EXPERIENCE CONVERSATION",
+        "heading": "ONE PLANT. TWO GEARS.",
+        "text": "Product, serving, sensitivity, food, and context can all shift the experience.",
+        "bright_label": "BRIGHT GEAR",
+        "bright_heading": "CLEAR. UPBEAT. SWITCHED ON.",
+        "bright_text": "Clear focus, good energy, and an easier social rhythm.",
+        "warm_label": "WARM GEAR",
+        "warm_heading": "WARM. LOOSE. SETTLED.",
+        "warm_text": "Body ease, a softer edge, and a smooth sense of unwinding.",
+        "note": "Experiences vary. Follow the exact product label and do not drive or operate machinery if impaired."
+      }
+    },
+    "use_guide": {
+      "type": "dandy-use-guide",
+      "blocks": {
+        "read": {
+          "type": "step",
+          "settings": {
+            "icon": "package",
+            "heading": "READ THE LABEL",
+            "text": "Check the exact serving and directions on your pouch."
+          }
+        },
+        "low": {
+          "type": "step",
+          "settings": {
+            "icon": "leaf",
+            "heading": "START WITH THE SMALLEST LABELED SERVING",
+            "text": "Sensitivity varies. More is not a shortcut to better."
+          }
+        },
+        "wait": {
+          "type": "step",
+          "settings": {
+            "icon": "calendar",
+            "heading": "GIVE IT TIME",
+            "text": "Wait the full labeled interval before deciding what comes next."
+          }
+        }
+      },
+      "block_order": [
+        "read",
+        "low",
+        "wait"
+      ],
+      "settings": {
+        "eyebrow": "A SIMPLE START",
+        "heading": "START LOW. FIND YOUR DANDY.",
+        "text": "Use the label in your hand as the source of truth. Formats and concentrations are not interchangeable.",
+        "show_placeholder": false
+      }
+    },
+    "lifestyle": {
+      "type": "dandy-split-story",
+      "blocks": {
+        "pocket": {
+          "type": "fact",
+          "settings": {
+            "text": "Fits your pocket or bag"
+          }
+        },
+        "berry": {
+          "type": "fact",
+          "settings": {
+            "text": "Mixed-berry format"
+          }
+        },
+        "simple": {
+          "type": "fact",
+          "settings": {
+            "text": "No shaker bottle required"
+          }
+        }
+      },
+      "block_order": [
+        "pocket",
+        "berry",
+        "simple"
+      ],
+      "settings": {
+        "asset": "use",
+        "image_position": "left",
+        "tone": "orange",
+        "image_alt": "A person holding a Dandy mixed berry gummy and pouch",
+        "eyebrow": "MADE FOR REAL LIFE",
+        "heading": "A BETTER WAY TO TAKE THE EDGE OFF.",
+        "text": "<p>A bright little ritual when the day is moving. A warmer one when you are ready to settle in. The same simple pouch goes where you do.</p>",
+        "link_label": "BACK TO THE OFFER",
+        "link": "#DandyBuyBox"
+      }
+    },
+    "quality": {
+      "type": "dandy-quality",
+      "blocks": {
+        "batch": {
+          "type": "step",
+          "settings": {
+            "heading": "FIND THE BATCH",
+            "text": "The bag and its paperwork should share an identity."
+          }
+        },
+        "report": {
+          "type": "step",
+          "settings": {
+            "heading": "OPEN THE REPORT",
+            "text": "Dates, lab, and product identity belong in one clear path."
+          }
+        },
+        "scope": {
+          "type": "step",
+          "settings": {
+            "heading": "READ THE SCOPE",
+            "text": "See what was measured instead of trusting a decorative badge."
+          }
+        }
+      },
+      "block_order": [
+        "batch",
+        "report",
+        "scope"
+      ],
+      "settings": {
+        "eyebrow": "BATCH TO BAG",
+        "heading": "KNOW WHAT'S IN THE BAG.",
+        "text": "Good proof should be simple to follow. Find the batch on the bag, match it to the report, and see what the report actually covers.",
+        "link_label": "QUALITY & TESTING",
+        "link": "/COA"
+      }
+    },
+    "comparison": {
+      "type": "dandy-image-banner",
+      "settings": {
+        "asset": "compare",
+        "eyebrow": "ONE PLANT. TWO FORMATS.",
+        "heading": "GUMMY OR POWDER? PICK YOUR RITUAL.",
+        "text": "Choose a pre-portioned gummy or a flexible powder ritual. The best format is the one you will use as labeled.",
+        "primary_label": "STAY WITH GUMMIES",
+        "primary_link": "#DandyBuyBox",
+        "secondary_label": "EXPLORE POWDER",
+        "secondary_link": "/collections/all"
+      }
+    },
+    "faq": {
+      "type": "dandy-faq",
+      "blocks": {
+        "inside": {
+          "type": "question",
+          "settings": {
+            "question": "Which pouch size should I choose?",
+            "answer": "<p>Choose the 10-count trial pouch for a smaller one-time start or the 30-count full-size pouch for the complete offer and subscription option. Each gummy is labeled at 35 mg mitragynine.</p>",
+            "open": true
+          }
+        },
+        "use": {
+          "type": "question",
+          "settings": {
+            "question": "How do I use them?",
+            "answer": "<p>Follow the exact product label. Start with the smallest labeled serving and wait the full labeled interval.</p>"
+          }
+        },
+        "feel": {
+          "type": "question",
+          "settings": {
+            "question": "What might I feel?",
+            "answer": "<p>People describe both brighter and warmer experiences. Product, serving, sensitivity, food, and context all matter, so no specific experience is guaranteed.</p>"
+          }
+        },
+        "powder": {
+          "type": "question",
+          "settings": {
+            "question": "How are gummies different from powder?",
+            "answer": "<p>Gummies are pre-portioned and need no measuring or mixing. Powder is a flexible, measured ritual. Do not treat the formats as interchangeable.</p>"
+          }
+        },
+        "subscription": {
+          "type": "question",
+          "settings": {
+            "question": "Can I subscribe?",
+            "answer": "<p>Yes. The subscription option shown here renews every 30 days at $47.99 and includes free shipping.</p>"
+          }
+        },
+        "ship": {
+          "type": "question",
+          "settings": {
+            "question": "Where can Dandy ship?",
+            "answer": "<p>Availability varies by location and checkout is the final eligibility check.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "inside",
+        "use",
+        "feel",
+        "powder",
+        "subscription",
+        "ship"
+      ],
+      "settings": {
+        "eyebrow": "BEFORE YOU CHOOSE",
+        "heading": "GUMMY QUESTIONS, ANSWERED.",
+        "text": "The useful short version.",
+        "claim_ids": "C-02 C-03 C-04 C-05 C-09 C-16",
+        "copy_status": "aggressive-draft"
+      }
+    },
+    "recap": {
+      "type": "dandy-recap",
+      "settings": {
+        "eyebrow": "MIXED BERRY · 10 OR 30 COUNT",
+        "heading": "A LITTLE BERRY. A LOT MORE DANDY.",
+        "text": "Pre-portioned, portable, and ready without measuring or mixing.",
+        "link_label": "BACK TO THE OFFER",
+        "link": "#DandyBuyBox"
+      }
+    }
+  },
+  "order": [
+    "product_hero",
+    "value_strip",
+    "format_story",
+    "gears",
+    "use_guide",
+    "lifestyle",
+    "quality",
+    "comparison",
+    "faq",
+    "recap"
+  ]
+}

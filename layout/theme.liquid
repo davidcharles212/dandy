@@ -45,7 +45,9 @@
 
     <div class="page-wrapper">
       <div id="header-group">
-        {% sections 'header-group' %}
+        {%- comment -%} dandy2 templates render their own chrome; skip the legacy groups entirely
+            so their markup and links aren't shipped as hidden dead weight. {%- endcomment -%}
+        {% if template.suffix contains 'legacy' %}{% sections 'header-group' %}{% endif %}
       </div>
 
       <script>
@@ -128,7 +130,7 @@
       </main>
 
       <footer>
-        {% sections 'footer-group' %}
+        {% if template.suffix contains 'legacy' %}{% sections 'footer-group' %}{% endif %}
       </footer>
     </div>
 

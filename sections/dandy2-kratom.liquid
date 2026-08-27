@@ -1,0 +1,59 @@
+{% comment %} DANDY 2026, WHAT IS KRATOM guide. Category education; benefit language
+  carries aggressive-draft status pending legal review. {% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+<div class="dandy2-pdp dandy2-doc" data-copy-status="aggressive-draft">
+  {% render 'dandy2-chrome-header' %}
+  <main class="doc" id="DandyMain">
+    <header class="doc__head">
+      <p class="steplabel steplabel--center">Start here</p>
+      <h1 class="belowfold__title belowfold__title--center">What is kratom?</h1>
+      <p class="doc__lede">A leaf from <i>Mitragyna speciosa</i>, a Southeast Asian tree in the coffee family. Brewed and chewed there for centuries. Here’s the honest version, including the parts that aren’t flattering.</p>
+    </header>
+
+    <section class="doc__block doc__block--split">
+      <img class="halfimg" src="{{ 'dandy2-leaves-wide.webp' | asset_url }}" alt="Fresh kratom leaves" width="1200" height="669" loading="lazy">
+      <div>
+        <h2>Where it comes from</h2>
+        <p>Kratom grows in Thailand, Malaysia, and Indonesia. Workers there have chewed the fresh leaf or brewed it as tea for generations, for steady energy through long days, and for ease afterwards.</p>
+        <p>The leaf contains naturally occurring alkaloids, the most talked-about being <b>mitragynine</b>. That’s the compound we measure, and it’s what “35 mg per gummy” refers to.</p>
+      </div>
+    </section>
+
+    <section class="doc__block doc__block--band">
+      <h2>What people use it for</h2>
+      <p>Reported experiences vary a lot between people, and by amount, food, and context. Commonly described: <b>steady energy, a lifted mood, and physical ease</b>. It is not a medicine and we make no medical claims.</p>
+      <div class="warnbar">How it feels differs person to person. That variability is exactly why every Dandy gummy is portioned to an exact 35&nbsp;mg, and why our guidance is always to start with one and wait.</div>
+    </section>
+
+    <section class="doc__block">
+      <h2>The three formats, plainly</h2>
+      <div class="testgrid">
+        <div class="testcard"><h3>Gummies</h3><p>Pre-portioned at 35 mg each. Easiest place to start, because the amount is decided for you.</p></div>
+        <div class="testcard"><h3>Loose leaf powder</h3><p>Milled leaf, measured by the gram on a scale. Cheapest per gram, most control, most effort.</p></div>
+        <div class="testcard"><h3>Extract capsules</h3><p>Concentrated and encapsulated, measured in milligrams. No taste, no prep.</p></div>
+      </div>
+      <div class="warnbar">These are <b>not interchangeable</b>. Grams of powder, a 35 mg gummy, and an extract capsule are different things, never convert one into another.</div>
+    </section>
+
+    <section class="doc__block">
+      <h2>The honest cautions</h2>
+      <ul class="doclist">
+        <li>{{ d2_gcheck }} <b>Regular daily use can build tolerance and habit.</b> That’s real, it’s on our label, and it’s why we say start low and take breaks.</li>
+        <li>{{ d2_gcheck }} <b>It’s 21+.</b> Not for anyone pregnant or nursing, and not alongside medication without talking to your clinician.</li>
+        <li>{{ d2_gcheck }} <b>It’s restricted in some states.</b> We don’t ship to sixteen, <a href="/pages/contact?view=dandy2-shipping">see the list</a>.</li>
+        <li>{{ d2_gcheck }} <b>Drug tests.</b> Kratom alkaloids aren’t on standard panels, but specialised tests exist. If testing matters in your life, nobody can honestly promise you a result.</li>
+      </ul>
+    </section>
+
+    <section class="doc__block doc__block--cta">
+      <h2>Ready to try it?</h2>
+      <p>Start with the format that decides the amount for you.</p>
+      <a class="cta" href="/products/mixed-berry-kratom-gummies">Shop gummies, $47.99</a>
+    </section>
+  </main>
+  {% render 'dandy2-chrome-footer' %}
+</div>
+{% schema %}
+{ "name": "Dandy 2026 kratom guide", "settings": [], "presets": [{ "name": "Dandy 2026 kratom guide" }] }
+{% endschema %}

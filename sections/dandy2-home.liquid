@@ -1,0 +1,248 @@
+{% comment %}
+  DANDY 2026 REDESIGN, HOME (namespaced; fresh-theme track).
+  Authored MOBILE-FIRST: base CSS is the 390px layout, @media (min-width: 801px)
+  upgrades to desktop. Homepage-native merchandising, routing and offer modules,
+  not PDP education repeats. Wrapper carries .dandy2-pdp for the shared design layer.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Trust-page URLs in ONE place. The real page records don't exist in Shopify yet, so
+  these point at the dandy2 template previews. When David creates pages with handles
+  batch-reports / shipping / what-is-kratom, change these three lines only.
+{%- endcomment -%}
+{%- assign url_coa = '/pages/contact?view=dandy2-coa' -%}
+{%- assign url_ship = '/pages/contact?view=dandy2-shipping' -%}
+{%- assign url_kratom = '/pages/contact?view=dandy2-kratom' -%}
+
+{%- assign pdp = '/products/mixed-berry-kratom-gummies' -%}
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+
+<div class="dandy2-pdp dandy2-home" data-copy-status="{{ section.settings.copy_status }}">
+  {% render 'dandy2-chrome-header' %}
+
+
+  {% comment %} ---------- 1. Hero ---------- {% endcomment %}
+  <section class="hhero" aria-labelledby="d2h-hero-{{ section.id }}">
+    <div class="hhero__art">
+      <img src="{{ 'dandy2-home-hero.webp' | asset_url }}" alt="Two hands holding up the Dandy mixed berry gummy pouch and the leaf powder pouch against a blue sky" width="1800" height="1012" loading="eager" fetchpriority="high">
+    </div>
+    <div class="hhero__copy">
+      <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
+      <h1 class="title" id="d2h-hero-{{ section.id }}">Energy, relief<br>and happiness.</h1>
+      <p class="desc">One plant, three formats, and the amount is always on the label.</p>
+      <ul class="benefits hhero__benefits" data-copy-status="aggressive-draft">
+        <li><i>☀</i><b>Switched-on days</b><span>A clean lift with focus, no jittery espresso stack.</span></li>
+        <li><i>◎</i><b>Lifted mood</b><span>The reason people come back, without checking out.</span></li>
+        <li><i>☾</i><b>Body at ease</b><span>Take more and it settles instead of speeds you up.</span></li>
+      </ul>
+      <a class="cta" href="#shop">Shop the lineup</a>
+      <p class="hhero__sub">Subscribe &amp; save 20% · free shipping · cancel anytime</p>
+      <ul class="hhero__trust">
+        <li>{{ d2_gcheck }} Batch-tested</li>
+        <li>{{ d2_gcheck }} 30-day guarantee</li>
+        <li>{{ d2_gcheck }} Ships free</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee__track">
+    <span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span>
+  </div></div>
+
+  {% comment %} ---------- 3. Pick your format (F1 swipe rail) ----------
+    MOBILE FIRST: a scroll-snap rail with the next card peeking. Desktop upgrades to
+    a 3-up grid. Prices are approved launch figures (handoff §4); only the gummy card
+    links to a live PDP until the real SKUs exist.
+  {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2h-lineup-{{ section.id }}" id="shop">
+    <p class="steplabel steplabel--center">Three formats</p>
+    <h2 class="belowfold__title belowfold__title--center" id="d2h-lineup-{{ section.id }}-h">Pick your format.</h2>
+    <div class="frail" data-d2-frail>
+      <article class="fcard fcard--hero">
+        <a class="fcard__link" href="{{ pdp }}" aria-label="Shop mixed berry gummies"></a>
+        <div class="fcard__img"><img src="{{ 'dandy-gummy-closeup-1200.webp' | asset_url }}" alt="Holding a Dandy mixed berry gummy above the pouch" width="1200" height="1200" loading="lazy"></div>
+        <div class="fcard__bd">
+          <h3>Mixed berry gummies</h3>
+          <p class="fcard__best">Best for starting out</p>
+          <p class="fcard__from"><b>From $24.99</b></p>
+          <span class="cta">Shop gummies</span>
+        </div>
+      </article>
+      <article class="fcard">
+        <a class="fcard__link" href="/products/extract-capsules-50mg" aria-label="See Dandy extract capsules"></a>
+        <div class="fcard__img fcard__img--mg" aria-hidden="true"><b>50<i>mg</i></b><span>&amp;</span><b>90<i>mg</i></b></div>
+        <div class="fcard__bd">
+          <h3>Extract capsules</h3>
+          <p class="fcard__best">Best for strong doses</p>
+          <p class="fcard__from"><b>From $28.99</b></p>
+          <span class="cta cta--ghost">See capsules</span>
+        </div>
+      </article>
+      <article class="fcard">
+        <a class="fcard__link" href="/products/premium-kratom-leaf-powder" aria-label="See Dandy raw leaf powder"></a>
+        <div class="fcard__img"><img src="{{ 'dandy-powder-product-1200.webp' | asset_url }}" alt="Dandy leaf powder pouch beside a mound of loose milled leaf" width="1200" height="1200" loading="lazy"></div>
+        <div class="fcard__bd">
+          <h3>Raw leaf powder</h3>
+          <p class="fcard__best">Best for experienced users</p>
+          <p class="fcard__from"><b>From $34.99</b></p>
+          <span class="cta cta--ghost">See powder</span>
+        </div>
+      </article>
+    </div>
+    <div class="fdots" data-d2-fdots aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
+  </section>
+
+  {% comment %} ---------- 5. Kratom, honestly (category primer) ----------
+    Homepage-native: names the newcomer's fears out loud and answers them, rather
+    than repeating the PDP's explainer paragraph. Collapsed by default so it costs
+    almost no vertical space on mobile. Leads into the comparison below.
+  {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2h-kratom-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner belowfold__inner--narrow">
+      <p class="steplabel steplabel--center">Before you scroll on</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2h-kratom-{{ section.id }}">Kratom, honestly.</h2>
+      <span class="k2tag">No spin, no miracle claims</span>
+      <div class="qa">
+        <details class="qitem" open><summary>So what actually is it?</summary><p>A leaf from <b>Mitragyna speciosa</b>, a Southeast Asian tree in the coffee family. Brewed and chewed there for generations. The alkaloid people talk about is mitragynine, that&rsquo;s what we measure.</p></details>
+        <details class="qitem"><summary>Will it get me high?</summary><p>It isn&rsquo;t THC and we won&rsquo;t pretend it&rsquo;s a substitute for anything. People describe steady energy or physical ease depending on the amount. Effects vary by person, and that&rsquo;s the honest answer.</p></details>
+        <details class="qitem"><summary>Is it legal?</summary><p>In 34 states, yes. We don&rsquo;t ship to the other 16, <a href="{{ url_ship }}">here&rsquo;s the list</a>, and checkout blocks those addresses before you can pay.</p></details>
+        <details class="qitem"><summary>How do I know what I&rsquo;m getting?</summary><p>Every batch is screened by an independent lab for identity, potency, heavy metals and microbials, and the batch number is printed on your pouch. <a href="{{ url_coa }}">Read the reports</a>.</p></details>
+        <details class="qitem"><summary>Who shouldn&rsquo;t take it?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. Regular daily use can build tolerance and habit, start low and take breaks.</p></details>
+      </div>
+      <p class="kcard__more k2more"><a href="{{ url_kratom }}">The full kratom guide →</a></p>
+    </div>
+  </section>
+
+  {% comment %} ---------- 6. How much to take (dose bar chart) ----------
+    Directional only. Answers David's note that "whenever, that's the point" over-promises
+    without explaining the low-dose / high-dose mechanism. Deliberately no claim of a
+    guaranteed effect, and the disclaimer is part of the module, not a footnote.
+  {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2h-dose-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <p class="steplabel steplabel--center">The part nobody explains</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2h-dose-{{ section.id }}">Less lifts you. More settles you.</h2>
+      <p class="dose__lede">Kratom is dose-dependent, that is the whole trick. A small amount tends to read as energy and focus. A larger one leans into body ease. Same leaf, different gear.</p>
+
+      <div class="dose">
+        <div class="dose__legend" aria-hidden="true">
+          <span><i class="dose__key dose__key--e"></i>Energy &amp; focus</span>
+          <span><i class="dose__key dose__key--m"></i>Lifted mood</span>
+          <span><i class="dose__key dose__key--b"></i>Body ease</span>
+        </div>
+
+        <article class="dose__row">
+          <div class="dose__amt"><b>35<i>mg</i></b><span>One gummy</span></div>
+          <div class="dose__bars">
+            <div class="dose__bar"><span class="dose__lbl">Energy &amp; focus</span><i class="dose__fill dose__fill--e" style="--v: 90"></i></div>
+            <div class="dose__bar"><span class="dose__lbl">Lifted mood</span><i class="dose__fill dose__fill--m" style="--v: 55"></i></div>
+            <div class="dose__bar"><span class="dose__lbl">Body ease</span><i class="dose__fill dose__fill--b" style="--v: 25"></i></div>
+          </div>
+          <p class="dose__note">The daytime gear. Where we tell everyone to start.</p>
+        </article>
+
+        <article class="dose__row">
+          <div class="dose__amt"><b>50<i>mg</i></b><span>One capsule</span></div>
+          <div class="dose__bars">
+            <div class="dose__bar"><span class="dose__lbl">Energy &amp; focus</span><i class="dose__fill dose__fill--e" style="--v: 65"></i></div>
+            <div class="dose__bar"><span class="dose__lbl">Lifted mood</span><i class="dose__fill dose__fill--m" style="--v: 80"></i></div>
+            <div class="dose__bar"><span class="dose__lbl">Body ease</span><i class="dose__fill dose__fill--b" style="--v: 55"></i></div>
+          </div>
+          <p class="dose__note">The middle. Mood forward, still functional.</p>
+        </article>
+
+        <article class="dose__row">
+          <div class="dose__amt"><b>90<i>mg</i></b><span>One capsule</span></div>
+          <div class="dose__bars">
+            <div class="dose__bar"><span class="dose__lbl">Energy &amp; focus</span><i class="dose__fill dose__fill--e" style="--v: 30"></i></div>
+            <div class="dose__bar"><span class="dose__lbl">Lifted mood</span><i class="dose__fill dose__fill--m" style="--v: 85"></i></div>
+            <div class="dose__bar"><span class="dose__lbl">Body ease</span><i class="dose__fill dose__fill--b" style="--v: 95"></i></div>
+          </div>
+          <p class="dose__note">The evening end. For an established tolerance only.</p>
+        </article>
+      </div>
+
+      <div class="warnbar">Directional, not a promise. How it lands depends on you, your food, and your tolerance, so start at the bottom of whichever format you pick and wait. Formats are <b>not interchangeable</b>: grams of powder, a 35&nbsp;mg gummy and an extract capsule are different things.</div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 7. Risk reversal ---------- {% endcomment %}
+  <section class="promise" aria-label="Shipping and guarantee">
+    <div class="promise__inner">
+      <img class="promise__truck" src="{{ 'dandy2-truck.webp' | asset_url }}" alt="" width="900" height="600" loading="lazy" aria-hidden="true">
+      <div class="promise__cols">
+        <div><b>Ships next day</b><span>Order before 1 PM EST</span></div>
+        <div><b>30-day guarantee</b><span data-copy-status="pending-legal">Money back if you're not happy</span></div>
+        <div><b>Tested every batch</b><span><a href="{{ url_coa }}">Read the COA</a></span></div>
+        <div><b>21+ only</b><span>We don’t ship to 16 states</span></div>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 8. Finale ---------- {% endcomment %}
+  <section class="belowfold belowfold--finale" aria-labelledby="d2h-end-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow belowfold__inner--center">
+      <p class="steplabel">Still here?</p>
+      <h2 class="belowfold__title" id="d2h-end-{{ section.id }}">Good days look Dandy.</h2>
+      <div class="recapcard">
+        <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy" aria-hidden="true">
+        <div class="recapcard__row"><span>1 pouch · 30-count · subscription</span><b>$47.99</b></div>
+        <a class="cta cta--inline" href="{{ pdp }}">Shop mixed berry →</a>
+        <p class="gseal" data-copy-status="pending-legal"><span class="gseal__mark">30<small>DAY</small></span><span class="gseal__txt"><b>Money-back guarantee</b><span>Don&rsquo;t get on with it? We refund it.</span></span></p>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- sticky mobile CTA ---------- {% endcomment %}
+  <div class="stickybar" data-d2-home-sticky hidden>
+    <div class="stickybar__info"><strong>Mixed berry · 30-count</strong><span>$47.99 subscribed</span></div>
+    <a class="stickybar__btn" href="{{ pdp }}">Shop</a>
+  </div>
+  {% render 'dandy2-emailcapture' %}
+  {% render 'dandy2-chrome-footer' %}
+</div>
+
+<script>
+  (() => {
+    // format rail: keep the dots in step with the swipe
+    const rail = document.querySelector('[data-d2-frail]');
+    const dots = document.querySelector('[data-d2-fdots]');
+    if (rail && dots) {
+      const items = [...rail.children];
+      const marks = [...dots.children];
+      rail.addEventListener('scroll', () => {
+        const mid = rail.scrollLeft + rail.clientWidth / 2;
+        let best = 0, dist = Infinity;
+        items.forEach((el, i) => {
+          const c = el.offsetLeft + el.offsetWidth / 2;
+          if (Math.abs(c - mid) < dist) { dist = Math.abs(c - mid); best = i; }
+        });
+        marks.forEach((m, i) => m.classList.toggle('is-on', i === best));
+      }, { passive: true });
+    }
+    const bar = document.querySelector('[data-d2-home-sticky]');
+    const hero = document.querySelector('.dandy2-home .hhero');
+    if (!bar || !hero || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(([en]) => { bar.hidden = en.isIntersecting; }, { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Dandy 2026 home",
+  "settings": [
+    {
+      "type": "select",
+      "id": "copy_status",
+      "label": "Internal copy status",
+      "options": [
+        { "value": "aggressive-draft", "label": "Aggressive draft" },
+        { "value": "approved", "label": "Approved" }
+      ],
+      "default": "aggressive-draft"
+    }
+  ],
+  "presets": [{ "name": "Dandy 2026 home" }]
+}
+{% endschema %}

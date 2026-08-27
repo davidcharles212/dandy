@@ -1,0 +1,192 @@
+{% comment %}
+  DANDY 2026, COLLECTION / PLP (namespaced; fresh-theme track).
+  Handoff §"Collection": the full eight-configuration matrix, grouped by format,
+  vertical on mobile, real prices and images, each leading to the correct PDP.
+
+  CVR structure: value banner first (the 3-for-2 ladder drives AOV), best seller
+  given hero treatment with real photography, working format filter, per-unit price
+  on every card so the eight configurations are actually comparable, subscription
+  surfaced as a price not a footnote.
+
+  FIXTURE NOTE: the Shopify catalog holds one placeholder product, so cards are
+  hard-coded from approved launch pricing (handoff §4) and route to dandy2 PDP
+  templates. Swap to a product loop once the SKUs exist.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+
+{%- assign pdp_g = '/products/mixed-berry-kratom-gummies' -%}
+{%- assign pdp_p = '/products/premium-kratom-leaf-powder' -%}
+{%- assign pdp_c = '/products/extract-capsules-50mg' -%}
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+
+<div class="dandy2-pdp dandy2-plp" data-copy-status="{{ section.settings.copy_status }}" data-d2-plp>
+  {% render 'dandy2-chrome-header' %}
+
+  <div class="plpbanner">
+    <p><b>Buy 3, pay for 2.</b> Buy 5, pay for 3, on every configuration below. Free shipping on both.</p>
+  </div>
+
+  <header class="plphead">
+    <h1 class="plphead__h1">Shop all Dandy.</h1>
+    <p class="plphead__lede">Three formats, eight ways to buy. Every one carries an exact labeled amount and a lab report for its batch.</p>
+    <ul class="hhero__trust plphead__trust">
+      <li>{{ d2_gcheck }} Batch-tested</li>
+      <li>{{ d2_gcheck }} 30-day guarantee</li>
+      <li>{{ d2_gcheck }} 21+ · not all states</li>
+    </ul>
+  </header>
+
+  <nav class="plpfilter" aria-label="Filter by format">
+    <button type="button" class="is-on" data-d2-filter="all">All <span>8</span></button>
+    <button type="button" data-d2-filter="gummies">Gummies <span>2</span></button>
+    <button type="button" data-d2-filter="powder">Powder <span>2</span></button>
+    <button type="button" data-d2-filter="capsules">Capsules <span>4</span></button>
+  </nav>
+
+  <div class="plpgrid">
+
+    {% comment %} hero: best seller, real photography, subscription priced up front {% endcomment %}
+    <article class="pcard pcard--hero" data-format="gummies">
+      <a class="pcard__link" href="{{ pdp_g }}" aria-label="Shop the 30-count gummy pouch"></a>
+      <div class="pcard__art"><img src="{{ 'dandy2-leaves-wide.webp' | asset_url }}" alt="Dandy mixed berry gummy pouch on a bed of fresh kratom leaves" width="1200" height="669" loading="eager"></div>
+      <div class="pcard__body">
+        <span class="pcard__flag">Best seller</span>
+        <h2>Mixed berry gummies · 30-count</h2>
+        <p class="pcard__meta">35 mg each · pre-portioned · the only format with a live subscription</p>
+        <div class="pcard__prices">
+          <div class="pcard__sub"><b>$47.99</b><span>subscribed · $1.60/gummy · ships free</span></div>
+          <div class="pcard__one"><b>$59.99</b><span>one-time · $2.00/gummy</span></div>
+        </div>
+        <span class="pcard__cta">Shop gummies</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="gummies">
+      <a class="pcard__link" href="{{ pdp_g }}" aria-label="Shop the 10-count gummy trial"></a>
+      <div class="pcard__art pcard__art--photo"><img src="{{ 'dandy-gummy-closeup-1200.webp' | asset_url }}" alt="Holding a Dandy mixed berry gummy above the pouch" width="1200" height="1200" loading="lazy"></div>
+      <div class="pcard__body">
+        <span class="pcard__flag pcard__flag--soft">Try it first</span>
+        <h2>Gummies · 10-count</h2>
+        <p class="pcard__meta">35 mg each · one-time trial</p>
+        <div class="pcard__price"><b>$24.99</b><span>$2.50 / gummy</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="powder">
+      <a class="pcard__link" href="{{ pdp_p }}" aria-label="Shop the 250 gram powder pouch"></a>
+      <div class="pcard__art pcard__art--photo"><img src="{{ 'dandy-powder-product-1200.webp' | asset_url }}" alt="Dandy leaf powder pouch beside a mound of loose powder" width="1200" height="1200" loading="lazy"></div>
+      <div class="pcard__body">
+        <span class="pcard__flag pcard__flag--value">Lowest per gram</span>
+        <h2>Raw leaf powder · 250 g</h2>
+        <p class="pcard__meta">Milled leaf · you set the grams</p>
+        <div class="pcard__price"><b>$54.99</b><span>$0.22 / gram</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="powder">
+      <a class="pcard__link" href="{{ pdp_p }}" aria-label="Shop the 100 gram powder pouch"></a>
+      <div class="pcard__art pcard__art--pack pcard__art--green"><img src="{{ 'dandy-powder-100.png' | asset_url }}" alt="Dandy premium kratom leaf powder, 100 gram pouch" width="600" height="600" loading="lazy"></div>
+      <div class="pcard__body">
+        <h2>Raw leaf powder · 100 g</h2>
+        <p class="pcard__meta">Milled leaf · the smaller pouch</p>
+        <div class="pcard__price"><b>$34.99</b><span>$0.35 / gram</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="capsules">
+      <a class="pcard__link" href="{{ pdp_c }}" aria-label="Shop 50 milligram capsules, 30 count"></a>
+      <div class="pcard__art pcard__art--mg pcard__art--50" aria-hidden="true"><b>50<i>mg</i></b><span>30 capsules</span></div>
+      <div class="pcard__body">
+        <span class="pcard__flag pcard__flag--value">Lowest each</span>
+        <h2>Extract capsules · 50 mg</h2>
+        <p class="pcard__meta">30-count · the starting strength</p>
+        <div class="pcard__price"><b>$64.99</b><span>$2.17 / capsule</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="capsules">
+      <a class="pcard__link" href="{{ pdp_c }}" aria-label="Shop 50 milligram capsules, 10 count"></a>
+      <div class="pcard__art pcard__art--mg pcard__art--50" aria-hidden="true"><b>50<i>mg</i></b><span>10 capsules</span></div>
+      <div class="pcard__body">
+        <span class="pcard__flag pcard__flag--soft">Try it first</span>
+        <h2>Extract capsules · 50 mg</h2>
+        <p class="pcard__meta">10-count · the starting strength</p>
+        <div class="pcard__price"><b>$28.99</b><span>$2.90 / capsule</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="capsules">
+      <a class="pcard__link" href="{{ pdp_c }}" aria-label="Shop 90 milligram capsules, 30 count"></a>
+      <div class="pcard__art pcard__art--mg pcard__art--90" aria-hidden="true"><b>90<i>mg</i></b><span>30 capsules</span></div>
+      <div class="pcard__body">
+        <h2>Extract capsules · 90 mg</h2>
+        <p class="pcard__meta">30-count · established tolerance only</p>
+        <div class="pcard__price"><b>$99.99</b><span>$3.33 / capsule</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+    <article class="pcard" data-format="capsules">
+      <a class="pcard__link" href="{{ pdp_c }}" aria-label="Shop 90 milligram capsules, 10 count"></a>
+      <div class="pcard__art pcard__art--mg pcard__art--90" aria-hidden="true"><b>90<i>mg</i></b><span>10 capsules</span></div>
+      <div class="pcard__body">
+        <h2>Extract capsules · 90 mg</h2>
+        <p class="pcard__meta">10-count · established tolerance only</p>
+        <div class="pcard__price"><b>$44.99</b><span>$4.50 / capsule</span></div>
+        <span class="pcard__cta">Shop</span>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="plpempty" data-d2-plpempty hidden>Nothing in that format yet.</p>
+
+  <section class="belowfold belowfold--band" aria-labelledby="plp-help-h">
+    <div class="belowfold__inner belowfold__inner--center">
+      <p class="steplabel steplabel--center">Not sure which</p>
+      <h2 class="belowfold__title belowfold__title--center" id="plp-help-h">Start with the gummies.</h2>
+      <p class="ladder__note">They decide the amount for you, 35&nbsp;mg exactly, nothing to weigh. Powder is cheapest per gram if you already know your amount; capsules are for when you don’t want to taste it. Only the 30-count gummy pouch has a subscription today.</p>
+      <div class="warnbar">Formats are <b>not interchangeable</b>. Grams of leaf powder, a 35&nbsp;mg gummy, and extract capsules are different things, start at the bottom of whichever one you choose.</div>
+    </div>
+  </section>
+  {% render 'dandy2-emailcapture' %}
+  {% render 'dandy2-chrome-footer' %}
+</div>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-d2-plp]');
+  if (!root) return;
+  const btns = [...root.querySelectorAll('[data-d2-filter]')];
+  const cards = [...root.querySelectorAll('.pcard')];
+  const empty = root.querySelector('[data-d2-plpempty]');
+  btns.forEach(b => b.addEventListener('click', () => {
+    const f = b.dataset.d2Filter;
+    btns.forEach(x => x.classList.toggle('is-on', x === b));
+    let shown = 0;
+    cards.forEach(c => {
+      const on = f === 'all' || c.dataset.format === f;
+      c.hidden = !on;
+      if (on) shown++;
+    });
+    if (empty) empty.hidden = shown > 0;
+  }));
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Dandy 2026 collection",
+  "settings": [
+    { "type": "select", "id": "copy_status", "label": "Internal copy status",
+      "options": [ { "value": "aggressive-draft", "label": "Aggressive draft" }, { "value": "approved", "label": "Approved" } ],
+      "default": "aggressive-draft" }
+  ],
+  "presets": [{ "name": "Dandy 2026 collection" }]
+}
+{% endschema %}

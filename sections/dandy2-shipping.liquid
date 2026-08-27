@@ -1,0 +1,53 @@
+{% comment %}
+  DANDY 2026, SHIPPING & RESTRICTED STATES.
+  The 16 restricted states are the owner-supplied list (handoff §"Shipping").
+  This page is INFORMATIONAL; checkout enforcement is authoritative and must be
+  configured in Shopify shipping profiles, never rely on this page to block an order.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+<div class="dandy2-pdp dandy2-doc">
+  {% render 'dandy2-chrome-header' %}
+  <main class="doc" id="DandyMain">
+    <header class="doc__head">
+      <p class="steplabel steplabel--center">Shipping</p>
+      <h1 class="belowfold__title belowfold__title--center">Where we ship, and what it costs.</h1>
+      <p class="doc__lede">No surprises at checkout. Here are the rates, the cutoff, and the sixteen states we can’t ship to.</p>
+    </header>
+
+    <section class="doc__block">
+      <h2>Rates</h2>
+      <div class="ratecards">
+        <div class="ratecard"><b>$5.95</b><span>Standard shipping on a single one-time pack</span></div>
+        <div class="ratecard ratecard--free"><b>Free</b><span>On every subscription, and every 3- or 5-pack</span></div>
+        <div class="ratecard"><b>1 PM EST</b><span>Order before the weekday cutoff and it ships next day</span></div>
+      </div>
+      <p class="doc__note">We ship within the United States only.</p>
+    </section>
+
+    <section class="doc__block doc__block--band">
+      <h2>The sixteen states we can’t ship to</h2>
+      <p>Kratom is regulated state by state. Where it isn’t permitted, we don’t ship, and we’d rather tell you here than take your money and cancel later. Checkout will block these addresses.</p>
+      <ul class="statelist">
+        <li><b>AL</b> Alabama</li><li><b>AR</b> Arkansas</li><li><b>CA</b> California</li><li><b>CT</b> Connecticut</li>
+        <li><b>IN</b> Indiana</li><li><b>KS</b> Kansas</li><li><b>LA</b> Louisiana</li><li><b>MS</b> Mississippi</li>
+        <li><b>NE</b> Nebraska</li><li><b>ND</b> North Dakota</li><li><b>RI</b> Rhode Island</li><li><b>TN</b> Tennessee</li>
+        <li><b>UT</b> Utah</li><li><b>VT</b> Vermont</li><li><b>WV</b> West Virginia</li><li><b>WI</b> Wisconsin</li>
+      </ul>
+      <div class="warnbar">Some cities and counties restrict kratom even inside permitted states. If a local rule applies where you live, it takes precedence over this list.</div>
+    </section>
+
+    <section class="doc__block">
+      <h2>Also worth knowing</h2>
+      <ul class="doclist">
+        <li>Every order is <b>21+</b>. Age is confirmed at checkout.</li>
+        <li>Tracking is emailed as soon as the label is created.</li>
+        <li>Subscriptions ship on the same 30-day cadence as your first order, skip or pause anytime.</li>
+        <li>Questions about an address? <a href="/pages/contact">Email us</a> before you order and we’ll check it.</li>
+      </ul>
+    </section>
+  </main>
+  {% render 'dandy2-chrome-footer' %}
+</div>
+{% schema %}
+{ "name": "Dandy 2026 shipping", "settings": [], "presets": [{ "name": "Dandy 2026 shipping" }] }
+{% endschema %}

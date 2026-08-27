@@ -1,0 +1,53 @@
+{% comment %}
+  DANDY 2026 chrome, header. Rendered inside each dandy2 section so the new
+  system can ship without touching the legacy header-group (the old theme keeps
+  working). CSS hides the legacy group on any page containing .dandy2-pdp.
+{% endcomment %}
+<header class="d2head">
+  <a class="d2head__skip" href="#DandyMain">Skip to content</a>
+  <div class="d2head__bar">
+    <p class="d2head__ann">Free shipping on 3+ packs · Subscribe &amp; save 20%</p>
+  </div>
+  <div class="d2head__row">
+    <a class="d2head__logo" href="/" aria-label="Dandy home">
+      <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="116" height="43" alt="Dandy">
+    </a>
+    <nav class="d2head__nav" aria-label="Main">
+      <a href="/#shop">Shop</a>
+      <a href="/products/mixed-berry-kratom-gummies">Gummies</a>
+      <a href="/products/premium-kratom-leaf-powder">Powder</a>
+      <a href="/products/extract-capsules-50mg">Capsules</a>
+      <a href="/pages/contact?view=dandy2-coa">Lab reports</a>
+    </nav>
+    <div class="d2head__actions">
+      <a class="d2head__cta" href="/#shop">Shop</a>
+      <a class="d2head__cart" href="{{ routes.cart_url }}" aria-label="Cart">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8Z"/><path d="M9 7V5.6A3 3 0 0 1 12 3a3 3 0 0 1 3 2.6V7"/></svg>
+      </a>
+      <button class="d2head__burger" type="button" data-d2-burger aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="d2head__drawer" data-d2-drawer hidden aria-label="Mobile">
+    <a href="/#shop">Shop all</a>
+    <a href="/products/mixed-berry-kratom-gummies">Gummies</a>
+    <a href="/products/premium-kratom-leaf-powder">Raw leaf powder</a>
+    <a href="/products/extract-capsules-50mg">Extract capsules</a>
+    <a href="/pages/contact?view=dandy2-kratom">What is kratom?</a>
+    <a href="/pages/contact?view=dandy2-coa">Lab reports</a>
+    <a href="/pages/contact?view=dandy2-shipping">Shipping &amp; states</a>
+  </nav>
+</header>
+<script>
+(() => {
+  const b = document.querySelector('[data-d2-burger]');
+  const d = document.querySelector('[data-d2-drawer]');
+  if (!b || !d) return;
+  b.addEventListener('click', () => {
+    const open = d.hasAttribute('hidden');
+    if (open) d.removeAttribute('hidden'); else d.setAttribute('hidden', '');
+    b.setAttribute('aria-expanded', String(open));
+    b.classList.toggle('is-open', open);
+  });
+})();
+</script>
+{% render 'dandy2-cart-drawer' %}

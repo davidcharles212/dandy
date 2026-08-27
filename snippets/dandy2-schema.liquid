@@ -1,0 +1,52 @@
+{% comment %}
+  DANDY 2026, JSON-LD structured data.
+  Params: kind ('product'|'faq'), plus product fields for kind=product.
+  NOTE: prices below are the approved launch figures rendered by the page. When the
+  real SKUs exist, swap these to the product object so schema and cart never diverge.
+{% endcomment %}
+{%- if kind == 'product' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ p_name | json }},
+  "description": {{ p_desc | json }},
+  "brand": { "@type": "Brand", "name": "Dandy" },
+  "image": [{{ p_image | json }}],
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": {{ p_low | json }},
+    "highPrice": {{ p_high | json }},
+    "offerCount": {{ p_count | default: 2 }},
+    "availability": "https://schema.org/InStock",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": { "@type": "MonetaryAmount", "value": "5.95", "currency": "USD" },
+      "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "US",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30
+    }
+  }
+}
+</script>
+{%- endif -%}
+
+{%- if kind == 'faq' -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is kratom legal?", "acceptedAnswer": { "@type": "Answer", "text": "Kratom is legal in 34 states. Dandy does not ship to the other 16, and those addresses are blocked at checkout." } },
+    { "@type": "Question", "name": "Is Dandy tested?", "acceptedAnswer": { "@type": "Answer", "text": "Every batch is screened by an independent lab for identity, mitragynine potency, heavy metals and microbials. The batch number is printed on every pouch." } },
+    { "@type": "Question", "name": "How does the subscription work?", "acceptedAnswer": { "@type": "Answer", "text": "The 30-count mixed berry pouch is $47.99 today and $47.99 at every renewal, every 30 days, with free shipping. Skip, pause or cancel anytime." } },
+    { "@type": "Question", "name": "Who should not take Dandy?", "acceptedAnswer": { "@type": "Answer", "text": "Anyone under 21, anyone pregnant or nursing, and anyone on medication without speaking to their clinician first." } }
+  ]
+}
+</script>
+{%- endif -%}

@@ -1,0 +1,4 @@
+{
+  "sections": { "main": { "type": "dandy2-collection", "settings": { "copy_status": "aggressive-draft" } } },
+  "order": ["main"]
+}

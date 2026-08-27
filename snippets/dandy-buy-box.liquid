@@ -60,13 +60,13 @@
           <label class="dandy-size-card">
             <input type="radio" name="DandySize-{{ section_id }}" value="30" data-size-option checked>
             <img src="{{ 'dandy-gummy-30.png' | asset_url }}" width="100" height="100" alt="">
-            <span><strong>30-count</strong><small>Full-size pouch · best routine</small></span>
+            <span><strong>30-count</strong><small>Full-size · $2.00/gummy</small></span>
             <b>$59.99</b>
           </label>
           <label class="dandy-size-card">
             <input type="radio" name="DandySize-{{ section_id }}" value="10" data-size-option>
             <img src="{{ 'dandy-gummy-10.png' | asset_url }}" width="100" height="100" alt="">
-            <span><strong>10-count</strong><small>Trial pouch · one-time only</small></span>
+            <span><strong>10-count</strong><small>Trial · one-time · $2.50/gummy</small></span>
             <b>$24.99</b>
           </label>
         </div>
@@ -83,15 +83,16 @@
               data-quantity-option
               data-one-30-price="$59.99"
               data-sub-30-price="$47.99"
-              data-one-30-unit="$59.99 / pouch"
-              data-sub-30-unit="$47.99 / pouch"
+              data-one-30-unit="$2.00/gummy"
+              data-sub-30-unit="$1.60/gummy"
               data-one-10-price="$24.99"
-              data-one-10-unit="$24.99 / pouch"
+              data-one-10-unit="$2.50/gummy"
               checked
             >
             <span class="dandy-radio" aria-hidden="true"></span>
-            <span class="dandy-offer-card__copy"><strong>1 pouch</strong><small data-offer-count>30 gummies total</small></span>
-            <span class="dandy-offer-card__totals"><s data-offer-compare>$59.99</s><strong data-offer-price>$47.99</strong><small data-offer-unit>$47.99 / pouch</small></span>
+            <span class="dandy-offer-card__copy"><strong>1 pouch</strong><small data-offer-count>30 gummies</small></span>
+            <span class="dandy-offer-card__totals"><strong data-offer-price>$47.99</strong><small data-offer-unit>$1.60/gummy</small></span>
+            <span class="dandy-offer-card__badge">BEST FOR STARTING OUT</span>
           </label>
           <label class="dandy-offer-card dandy-offer-card--visual">
             <input
@@ -100,16 +101,14 @@
               value="3"
               data-quantity-option
               data-one-30-price="$119.98"
-              data-sub-30-price="$95.98"
-              data-one-30-unit="$39.99 / pouch"
-              data-sub-30-unit="$31.99 / pouch"
+              data-one-30-unit="$39.99/pouch · 1 free"
+              data-one-30-compare="$179.97"
               data-one-10-price="$74.97"
-              data-one-10-unit="$24.99 / pouch"
+              data-one-10-unit="$24.99/pouch"
             >
             <span class="dandy-radio" aria-hidden="true"></span>
-            <span class="dandy-offer-card__copy"><strong>3 pouches</strong><small data-offer-count>90 gummies total</small></span>
-            <span class="dandy-offer-card__totals"><s data-offer-compare>$119.98</s><strong data-offer-price>$95.98</strong><small data-offer-unit>$31.99 / pouch</small></span>
-            <span class="dandy-offer-card__badge">MOST POPULAR</span>
+            <span class="dandy-offer-card__copy"><strong>3 pouches</strong><small data-offer-count>90 gummies</small></span>
+            <span class="dandy-offer-card__totals"><s data-offer-compare>$179.97</s><strong data-offer-price>$119.98</strong><small data-offer-unit>$39.99/pouch · 1 free</small></span>
           </label>
           <label class="dandy-offer-card dandy-offer-card--visual">
             <input
@@ -118,22 +117,21 @@
               value="5"
               data-quantity-option
               data-one-30-price="$179.97"
-              data-sub-30-price="$143.98"
-              data-one-30-unit="$35.99 / pouch"
-              data-sub-30-unit="$28.80 / pouch"
+              data-one-30-unit="$35.99/pouch · 2 free"
+              data-one-30-compare="$299.95"
               data-one-10-price="$124.95"
-              data-one-10-unit="$24.99 / pouch"
+              data-one-10-unit="$24.99/pouch"
             >
             <span class="dandy-radio" aria-hidden="true"></span>
-            <span class="dandy-offer-card__copy"><strong>5 pouches</strong><small data-offer-count>150 gummies total</small></span>
-            <span class="dandy-offer-card__totals"><s data-offer-compare>$179.97</s><strong data-offer-price>$143.98</strong><small data-offer-unit>$28.80 / pouch</small></span>
-            <span class="dandy-offer-card__badge">BEST VALUE</span>
+            <span class="dandy-offer-card__copy"><strong>5 pouches</strong><small data-offer-count>150 gummies</small></span>
+            <span class="dandy-offer-card__totals"><s data-offer-compare>$299.95</s><strong data-offer-price>$179.97</strong><small data-offer-unit>$35.99/pouch · 2 free</small></span>
           </label>
         </div>
+        <p class="dandy-offer-shipnote">Free shipping on subscriptions and multi-pouch packs · single pouch ships for $5.95. Crossed-out prices are the one-time single-pouch price × quantity.</p>
       </fieldset>
 
       <fieldset class="dandy-fieldset dandy-subscription-fieldset" data-subscription-panel>
-        <legend>3. Make it a routine <span>optional</span></legend>
+        <legend>3. Subscribe &amp; save <span>optional</span></legend>
         <label class="dandy-subscription-switch">
           <input type="checkbox" data-subscription-toggle checked>
           <span class="dandy-switch" aria-hidden="true"><i></i></span>
@@ -142,17 +140,17 @@
             <small data-subscription-mode>Selected · every 30 days</small>
           </span>
           <span class="dandy-subscription-switch__price">
-            <s data-subscription-compare>$59.99</s>
             <strong data-subscription-price>$47.99</strong>
           </span>
           <span class="dandy-subscription-switch__badge">SAVE 20%</span>
         </label>
         <ul class="dandy-subscription-benefits" data-subscription-benefits role="list">
-          <li>{% render 'dandy-icon', name: 'check' %}<span>20% off every delivery</span></li>
-          <li>{% render 'dandy-icon', name: 'package' %}<span>Free standard shipping</span></li>
-          <li>{% render 'dandy-icon', name: 'calendar' %}<span>Ships every 30 days</span></li>
+          <li>{% render 'dandy-icon', name: 'check' %}<span>20% off + free shipping, every delivery</span></li>
+          <li>{% render 'dandy-icon', name: 'calendar' %}<span>Never run out — ships every 30 days</span></li>
+          <li>{% render 'dandy-icon', name: 'package' %}<span>Skip, pause, or cancel anytime</span></li>
         </ul>
         <p class="dandy-subscription-unavailable" data-subscription-unavailable hidden>The 10-count trial pouch is a one-time purchase. Choose 30-count to subscribe and save.</p>
+        <p class="dandy-subscription-unavailable" data-subscription-multi hidden>Subscriptions ship one pouch per delivery — the 3- and 5-pouch packs are one-time purchases.</p>
       </fieldset>
 
       <input type="hidden" value="1" data-form-quantity>
@@ -163,6 +161,7 @@
       <button type="button" class="dandy-button dandy-button--full" data-primary-submit data-preview-submit data-can-add="true">
         <span data-primary-submit-text>SUBSCRIBE — $47.99</span>
       </button>
+      {% render 'dandy-guarantee-line', context: 'buy-box' %}
       <div class="dandy-preview-notice" data-preview-notice role="status" tabindex="-1" hidden>
         <strong>YOUR DANDY IS SAVED FOR NOW.</strong>
         <span>Online checkout isn’t open yet, so nothing was added to your cart.</span>
@@ -246,6 +245,7 @@
           </add-to-cart-component>
         {% endform %}
       </product-form-component>
+      {% render 'dandy-guarantee-line', context: 'buy-box' %}
     </div>
   {% endif %}
 

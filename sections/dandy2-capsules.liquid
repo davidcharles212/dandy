@@ -1,0 +1,354 @@
+{% comment %}
+  DANDY 2026, EXTRACT CAPSULES PDP (namespaced; fresh-theme track).
+  Deliberately NOT a copy of the gummy PDP. The capsule buyer's decision is
+  STRENGTH first, then count, so the buy box leads with a 50/90 mg choice and a
+  side-by-side strength comparison rather than a flavour/benefit story. Per handoff
+  §4 no capsule subscription is configured for launch, so no plan UI is rendered.
+  No capsule photography exists yet (Cansu request outstanding), typographic art
+  is used instead of a placeholder box. Mobile-first. Preview-safe.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{%- assign image_url = 'dandy2-leaves-wide.webp' | asset_url | prepend: request.origin -%}
+{%- render 'dandy2-schema', kind: 'product', p_name: 'Dandy Extract Capsules', p_desc: 'Kratom extract capsules in 50 mg and 90 mg strengths, 10 or 30 count. Lab-tested every batch.', p_image: image_url, p_low: '28.99', p_high: '99.99', p_count: 4 -%}
+{%- render 'dandy2-schema', kind: 'faq' -%}
+
+{%- comment -%}
+  Trust-page URLs in ONE place. The real page records don't exist in Shopify yet, so
+  these point at the dandy2 template previews. When David creates pages with handles
+  batch-reports / shipping / what-is-kratom, change these three lines only.
+{%- endcomment -%}
+{%- assign url_coa = '/pages/contact?view=dandy2-coa' -%}
+{%- assign url_ship = '/pages/contact?view=dandy2-shipping' -%}
+{%- assign url_kratom = '/pages/contact?view=dandy2-kratom' -%}
+
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+
+<div class="dandy2-pdp dandy2-alt" data-copy-status="{{ section.settings.copy_status }}" data-d2-caps>
+  {% render 'dandy2-chrome-header' %}
+
+  <main class="dandy2-pdp__grid" id="DandyBuyBox">
+    <section class="gallery" aria-label="Product">
+      <div class="capstage" data-d2-capstage>
+        <span class="capstage__mg" data-d2-capmg>50<i>mg</i></span>
+        <span class="capstage__lbl">Extract capsules</span>
+        <span class="capstage__note">Product photography in production</span>
+      </div>
+      <p class="capstage__honest">We haven’t shot the capsules yet. Rather than mock up a render that isn’t the real pack, we’re showing you the strength you’re buying.</p>
+      <div class="coabox">
+        <p class="coabox__k">Proof, not vibes</p>
+        <ul class="subhero__list">
+          <li>{{ d2_gcheck }} Identity &amp; mitragynine content, per batch</li>
+          <li>{{ d2_gcheck }} Heavy metals and microbials screened</li>
+          <li>{{ d2_gcheck }} Batch number printed on every pack</li>
+        </ul>
+        <a class="coabox__link" href="{{ url_coa }}">Read this batch’s report →</a>
+      </div>
+    </section>
+
+    <section class="offer" aria-label="Purchase options">
+      <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
+      <p class="eyebrow">Extract Capsules · 50 &amp; 90 mg</p>
+      <h1 class="title">Pick your<br>strength.</h1>
+      <p class="desc">Nothing to taste, nothing to measure. Two strengths so you choose the amount once, at the shelf, instead of every single time.</p>
+      <ul class="benefits" data-copy-status="aggressive-draft">
+        <li><i>◎</i><b>No taste</b><span>Swallowed, not chewed. Nothing earthy on the way down.</span></li>
+        <li><i>⚖</i><b>No measuring</b><span>The amount is decided at the shelf, not at the counter.</span></li>
+        <li><i>✈</i><b>Travels flat</b><span>A sealed, countable pack, no scale, no scoop, no jar.</span></li>
+      </ul>
+      <p class="trustline">Every batch lab-tested, <a href="{{ url_coa }}">read the COA</a> · 30-day guarantee · 21+</p>
+
+      <p class="steplabel"><b>01</b> Strength</p>
+      <div class="qgrid qgrid--2">
+        {%- assign is90 = false -%}{%- if product.handle contains '90' -%}{%- assign is90 = true -%}{%- endif -%}
+        <label class="qcard qcard--str"><input type="radio" name="d2cs-{{ section.id }}" value="50" data-d2-cstr {% unless is90 %}checked{% endunless %}><span class="qcard__n">50 mg</span><span class="qcard__m">The starting strength</span></label>
+        <label class="qcard qcard--str"><input type="radio" name="d2cs-{{ section.id }}" value="90" data-d2-cstr {% if is90 %}checked{% endif %}><span class="qcard__n">90 mg</span><span class="qcard__m">For an established tolerance</span></label>
+      </div>
+
+      <p class="steplabel"><b>02</b> Count</p>
+      <div class="qgrid qgrid--2">
+        <label class="qcard"><input type="radio" name="d2cc-{{ section.id }}" value="10" data-d2-ccount checked><span class="qcard__n">10 ct</span><span class="qcard__p" data-d2-c10>$28.99</span><span class="qcard__m" data-d2-c10p>$2.90 each</span></label>
+        <label class="qcard"><input type="radio" name="d2cc-{{ section.id }}" value="30" data-d2-ccount><span class="qcard__free">Lowest each</span><span class="qcard__n">30 ct</span><span class="qcard__p" data-d2-c30>$64.99</span><span class="qcard__m" data-d2-c30p>$2.17 each</span></label>
+      </div>
+
+      <p class="steplabel"><b>03</b> How many packs?</p>
+      <div class="qgrid">
+        <label class="qcard"><input type="radio" name="d2cq-{{ section.id }}" value="1" data-d2-cqty checked><span class="qcard__n">1</span><span class="qcard__p" data-d2-q1>$28.99</span><span class="qcard__m">+ $5.95 shipping</span></label>
+        <label class="qcard"><input type="radio" name="d2cq-{{ section.id }}" value="3" data-d2-cqty><span class="qcard__free">One free</span><span class="qcard__n">3</span><span class="qcard__p" data-d2-q3>$57.98</span><span class="qcard__m">pay for 2 · ships free</span></label>
+        <label class="qcard"><input type="radio" name="d2cq-{{ section.id }}" value="5" data-d2-cqty><span class="qcard__free">Two free</span><span class="qcard__n">5</span><span class="qcard__p" data-d2-q5>$86.97</span><span class="qcard__m">pay for 3 · ships free</span></label>
+      </div>
+
+      {%- comment -%}
+        The two strengths are two Shopify products; one buy box sells both, so the
+        variant map is built from both handles and each entry carries its strength.
+      {%- endcomment -%}
+      {%- assign cap50 = all_products['extract-capsules-50mg'] -%}
+      {%- assign cap90 = all_products['extract-capsules-90mg'] -%}
+      {%- comment -%}
+        all_products only sees products published to the Online Store; fall back to
+        the page's own product so each strength can always sell itself.
+      {%- endcomment -%}
+      {%- if cap50.variants.size == 0 and product.handle == 'extract-capsules-50mg' -%}{%- assign cap50 = product -%}{%- endif -%}
+      {%- if cap90.variants.size == 0 and product.handle == 'extract-capsules-90mg' -%}{%- assign cap90 = product -%}{%- endif -%}
+      <script type="application/json" data-d2-cvariantmap>
+        [{% for v in cap50.variants %}{"strength": 50, "id": {{ v.id }}, "title": {{ v.title | json }}, "available": {{ v.available | default: false }}, "price": {{ v.price | default: 0 }}}{% unless forloop.last %},{% endunless %}{% endfor %}{% if cap50.variants.size > 0 and cap90.variants.size > 0 %},{% endif %}{% for v in cap90.variants %}{"strength": 90, "id": {{ v.id }}, "title": {{ v.title | json }}, "available": {{ v.available | default: false }}, "price": {{ v.price | default: 0 }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
+      </script>
+      <form class="buyform" action="{{ routes.cart_url }}/add" method="post" data-d2-cbuyform data-buyable="false">
+        <input type="hidden" name="id" value="" data-d2-cidfield>
+        <input type="hidden" name="quantity" value="1">
+      <div class="ctawrap" data-copy-status="aggressive-draft">
+        <img class="ctarocky" data-d2-ctarocky src="{{ 'dandy2-rocky-press.webp' | asset_url }}" alt="Rocky the raccoon reaching for the button, if you don’t press it, he will" width="640" height="384" loading="lazy">
+        <button type="submit" class="cta" data-d2-ccta>Add 50 mg · 10 ct · $28.99</button>
+      </div>
+      <p class="buynote" data-d2-cpreviewnote hidden></p>
+      </form>
+      <div class="shiprow" data-copy-status="aggressive-draft">
+        <img class="shiprow__truck" src="{{ 'dandy2-truck.webp' | asset_url }}" alt="Illustration of the Dandy delivery truck" width="900" height="600" loading="lazy">
+        <p class="shiprow__txt">Order before <b>1 PM EST</b>, ships next day</p>
+      </div>
+      <p class="subhero__psst">Capsule subscriptions aren’t live yet. When the economics are signed off we’ll add one, until then this is one-time only.</p>
+      <p class="gseal" data-copy-status="pending-legal"><span class="gseal__mark">30<small>DAY</small></span><span class="gseal__txt"><b>Money-back guarantee</b><span>Don&rsquo;t get on with it? We refund it.</span></span></p>
+      {% render 'dandy2-trustbadges' %}
+    </section>
+  </main>
+
+  {% comment %} ---------- the strength decision (this PDP's core module) ---------- {% endcomment %}
+  <section class="belowfold belowfold--band" aria-labelledby="d2c-which-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <p class="steplabel steplabel--center">50 or 90?</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2c-which-{{ section.id }}">Which strength is yours?</h2>
+      <div class="strengths">
+        <article class="strength">
+          <span class="strength__mg">50<i>mg</i></span>
+          <h3>Start here</h3>
+          <ul>
+            <li>{{ d2_gcheck }}<span>New to capsules, or new to extract</span></li>
+            <li>{{ d2_gcheck }}<span>You want room to take one and reassess</span></li>
+            <li>{{ d2_gcheck }}<span>From <b>$28.99</b> · as low as $1.30 each in a 5-pack</span></li>
+          </ul>
+        </article>
+        <article class="strength strength--alt">
+          <span class="strength__mg">90<i>mg</i></span>
+          <h3>Only if you know</h3>
+          <ul>
+            <li>{{ d2_gcheck }}<span>You already have an established tolerance</span></li>
+            <li>{{ d2_gcheck }}<span>You’d rather take one capsule than two</span></li>
+            <li>{{ d2_gcheck }}<span>From <b>$44.99</b> · as low as $2.00 each in a 5-pack</span></li>
+          </ul>
+        </article>
+      </div>
+      <div class="warnbar">Extract is <b>not</b> leaf powder and <b>not</b> a gummy. Milligrams here don’t convert to grams of powder or to a 35&nbsp;mg gummy, start at the bottom of any format, every time.</div>
+    </div>
+  </section>
+
+  {% comment %} ---------- why capsules ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2c-why-{{ section.id }}">
+    <div class="belowfold__inner">
+      <p class="steplabel steplabel--center">The trade-off, stated plainly</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2c-why-{{ section.id }}">What capsules are good at.</h2>
+      <div class="tradeoff">
+        <div class="tradeoff__col tradeoff__col--yes">
+          <h3>Worth it if</h3>
+          <ul>
+            <li>{{ d2_gcheck }} You can’t stand the taste of leaf</li>
+            <li>{{ d2_gcheck }} You want zero equipment and zero prep</li>
+            <li>{{ d2_gcheck }} You travel and want a sealed, countable pack</li>
+          </ul>
+        </div>
+        <div class="tradeoff__col tradeoff__col--no">
+          <h3>Buy something else if</h3>
+          <ul>
+            <li>Cost per serving is your priority, <a href="/products/premium-kratom-leaf-powder">powder is far cheaper per gram</a></li>
+            <li>You want the lowest, most gradual amount, <a href="/products/mixed-berry-kratom-gummies">35 mg gummies start lower</a></li>
+            <li>You dislike swallowing capsules, no way around that one</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 1b. What is kratom (plain answer card) ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2c-kratom-{{ section.id }}">
+    <div class="kcard" data-copy-status="aggressive-draft">
+      <span class="kcard__pill">Okay, but what is kratom?</span>
+      <h2 class="kcard__title" id="d2c-kratom-{{ section.id }}">A fair question. Here’s the straight answer.</h2>
+      <p class="kcard__lead">Kratom is a leaf from <b>Mitragyna speciosa</b>, a Southeast Asian tree in the coffee family, brewed and chewed there for centuries for <b>steady energy, a lifted mood, and physical ease</b>. How it feels varies person to person. That’s exactly why every capsule is measured to an exact 50 or 90&nbsp;mg, and why we say start with one and wait.</p>
+      <div class="kcard__row">
+        <div class="kcard__facts">
+          <div class="kcard__chips">
+            <span class="kchip">{{ d2_gcheck }}Coffee-family botanical</span>
+            <span class="kchip">{{ d2_gcheck }}Centuries of traditional use</span>
+            <span class="kchip">{{ d2_gcheck }}Lab-screened every batch</span>
+          </div>
+          <p class="kcard__more"><a href="{{ url_kratom }}">The full kratom guide →</a></p>
+        </div>
+        <img class="kcard__plant" src="{{ 'dandy2-kratom-plant.webp' | asset_url }}" alt="Botanical illustration of Mitragyna speciosa, the kratom tree" width="380" height="467" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- proof ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2c-proof-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <p class="steplabel steplabel--center">From our customers</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2c-proof-{{ section.id }}">The numbers came back grinning.</h2>
+      {%- capture d2_i_focus -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.6"/><path d="M12 1.6v3.2M12 19.2v3.2M1.6 12h3.2M19.2 12h3.2"/></svg>{%- endcapture -%}
+      {%- capture d2_i_coffee -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 8.5h12v6.5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8.5Z"/><path d="M16.5 9.5h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M3.8 4.2l16.4 15.6"/></svg>{%- endcapture -%}
+      {%- capture d2_i_happy -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 14c.9 1.2 2.2 1.9 3.8 1.9s2.9-.7 3.8-1.9"/><path d="M9.2 9.6h.02M14.8 9.6h.02"/></svg>{%- endcapture -%}
+      {%- capture d2_i_swap -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5h15M14.5 4.5l4 4-4 4"/><path d="M20.5 15.5h-15M9.5 11.5l-4 4 4 4"/></svg>{%- endcapture -%}
+      <div class="statbars">
+        <div class="statbars__list">
+          <div class="sbar" style="--p: 96"><span class="sbar__ico">{{ d2_i_focus }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Felt an increase in focus</span></div><em class="sbar__n">96%</em></div>
+          <div class="sbar" style="--p: 89"><span class="sbar__ico">{{ d2_i_coffee }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Preferred it over caffeine</span></div><em class="sbar__n">89%</em></div>
+          <div class="sbar" style="--p: 92"><span class="sbar__ico">{{ d2_i_happy }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Felt happier throughout the day</span></div><em class="sbar__n">92%</em></div>
+          <div class="sbar" style="--p: 99"><span class="sbar__ico">{{ d2_i_swap }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Would replace anything with this</span></div><em class="sbar__n">99%</em></div>
+        </div>
+        <img class="statbars__flex" src="{{ 'dandy2-rocky-flex.webp' | asset_url }}" alt="" width="560" height="560" loading="lazy" aria-hidden="true">
+      </div>
+      <p class="statsrc">Self-reported by surveyed Dandy customers · full survey details on request</p>
+    </div>
+  </section>
+
+  {% comment %} ---------- FAQ: capsule-specific ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2c-faq-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow">
+      <p class="steplabel">Straight answers</p>
+      <h2 class="belowfold__title" id="d2c-faq-{{ section.id }}">Capsule questions.</h2>
+      <div class="faq">
+        <details><summary>What does “extract” mean here?</summary><p>It’s concentrated from the leaf rather than milled leaf itself, which is why a capsule is measured in milligrams while powder is measured in grams. The batch report states the identity and the alkaloid content, <a href="{{ url_coa }}">read it before you buy</a>.</p></details>
+        <details><summary>How many should I take?</summary><p>Start with one and wait. That’s the only guidance we’ll give in copy, the label on the pack is the instruction, and it’s deliberately conservative.</p></details>
+        <details><summary>Why are capsules pricier per serving than powder?</summary><p>Because you’re paying for concentration and encapsulation instead of doing it yourself. If cost per gram is what you care about, powder wins and we’d rather you bought that.</p></details>
+        <details><summary>Why is there no subscription?</summary><p>Capsule subscription economics aren’t signed off yet, and a plan we can’t honour at renewal is worse than no plan. Gummies have a live subscription today.</p></details>
+        <details><summary>Where are the product photos?</summary><p>Not shot yet. We’d rather show you a strength panel than a mocked-up render that isn’t the pack you’ll receive.</p></details>
+        <details><summary>Who shouldn’t take them?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. We don’t ship to 16 states, <a href="{{ url_ship }}">check yours</a>.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="belowfold belowfold--finale" aria-labelledby="d2c-end-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow belowfold__inner--center">
+      <p class="steplabel">Decided?</p>
+      <h2 class="belowfold__title" id="d2c-end-{{ section.id }}">One capsule, no ceremony.</h2>
+      <div class="recapcard">
+        <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy" aria-hidden="true">
+        <div class="recapcard__row"><span data-d2-crecap>1 × 50 mg · 10 ct</span><b data-d2-crecap-total>$34.94</b></div>
+        <a class="cta cta--inline" href="#DandyBuyBox">Back to the choice ↑</a>
+        <p class="gseal" data-copy-status="pending-legal"><span class="gseal__mark">30<small>DAY</small></span><span class="gseal__txt"><b>Money-back guarantee</b><span>Don&rsquo;t get on with it? We refund it.</span></span></p>
+      </div>
+    </div>
+  </section>
+  <div class="stickybar" data-d2-csticky hidden>
+    <div class="stickybar__info"><strong data-d2-cstick-label>1 × 50 mg · 10 ct</strong><span data-d2-cstick-total>$34.94</span></div>
+    <a class="stickybar__btn" href="#DandyBuyBox">Choose</a>
+  </div>
+  {% render 'dandy2-emailcapture' %}
+  {% render 'dandy2-chrome-footer' %}
+</div>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-d2-caps]');
+  if (!root) return;
+  const SHIP = 5.95;
+  // handoff §4 + ladder table: pay-for-2 on 3 packs, pay-for-3 on 5 packs
+  const C = {
+    '50': { '10': { unit: 28.99, caps: 10 }, '30': { unit: 64.99, caps: 30 } },
+    '90': { '10': { unit: 44.99, caps: 10 }, '30': { unit: 99.99, caps: 30 } }
+  };
+  const m = (n) => '$' + n.toFixed(2);
+  const strs = [...root.querySelectorAll('[data-d2-cstr]')];
+  const cnts = [...root.querySelectorAll('[data-d2-ccount]')];
+  const qtys = [...root.querySelectorAll('[data-d2-cqty]')];
+  const set = (sel, txt) => { const n = root.querySelector(sel); if (n) n.textContent = txt; };
+  // real add to cart across BOTH strength products (see the dual variant map)
+  const form = root.querySelector('[data-d2-cbuyform]');
+  const idField = root.querySelector('[data-d2-cidfield]');
+  const note = root.querySelector('[data-d2-cpreviewnote]');
+  let vmap = [];
+  try { vmap = JSON.parse(root.querySelector('[data-d2-cvariantmap]')?.textContent || '[]'); } catch {}
+  const findV = (strength, ...tokens) => vmap.find(v => v.strength === strength
+    && tokens.every(t => v.title.toLowerCase().includes(t)) && v.available && v.price > 0);
+  if (form) form.addEventListener('submit', (e) => {
+    if (form.dataset.buyable === 'true') return;
+    e.preventDefault();
+    if (!note) return;
+    note.hidden = false;
+    note.textContent = 'Preview only, this strength has no purchasable variant in Shopify yet.';
+  });
+  const sync = () => {
+    const str = strs.find(i => i.checked)?.value || '50';
+    const cnt = cnts.find(i => i.checked)?.value || '10';
+    const qty = Number(qtys.find(i => i.checked)?.value || 1);
+    const tier = C[str];
+    // count cards reflect the chosen strength
+    set('[data-d2-c10]', m(tier['10'].unit));
+    set('[data-d2-c30]', m(tier['30'].unit));
+    set('[data-d2-c10p]', m(tier['10'].unit / 10) + ' each');
+    set('[data-d2-c30p]', m(tier['30'].unit / 30) + ' each');
+    // pack ladder reflects strength + count
+    const unit = tier[cnt].unit;
+    const packs = { 1: unit, 3: unit * 2, 5: unit * 3 };
+    set('[data-d2-q1]', m(packs[1]));
+    set('[data-d2-q3]', m(packs[3]));
+    set('[data-d2-q5]', m(packs[5]));
+    const product = packs[qty];
+    const freeShip = qty >= 3;
+    const total = freeShip ? product : product + SHIP;
+    const cta = root.querySelector('[data-d2-ccta]');
+    if (cta) cta.textContent = `Add ${qty > 1 ? qty + ' × ' : ''}${str} mg · ${cnt} ct · ${m(product)}`;
+    set('[data-d2-ccharge]', freeShip
+      ? `Charged today: ${m(total)} · free shipping · one-time, nothing renews`
+      : `Charged today: ${m(total)} (${m(product)} + ${m(SHIP)} shipping) · one-time, nothing renews`);
+    set('[data-d2-crecap]', `${qty} × ${str} mg · ${cnt} ct`);
+    set('[data-d2-crecap-total]', m(total));
+    set('[data-d2-cstick-label]', `${qty} × ${str} mg · ${cnt} ct`);
+    set('[data-d2-cstick-total]', m(total));
+    const mg = root.querySelector('[data-d2-capmg]');
+    if (mg) mg.innerHTML = str + '<i>mg</i>';
+    const stage = root.querySelector('[data-d2-capstage]');
+    if (stage) stage.classList.toggle('is-90', str === '90');
+    // variant titles are e.g. "10-count / Single", "30-count / 3-pack"
+    const v = findV(Number(str), `${cnt}-count`, qty === 1 ? 'single' : `${qty}-pack`);
+    if (form && idField && v) {
+      idField.value = v.id;
+      form.dataset.buyable = 'true';
+    } else if (form) {
+      form.dataset.buyable = 'false';
+    }
+    if (note) note.hidden = true;
+  };
+  root.addEventListener('change', sync);
+  sync();
+  const grid = root.querySelector('.dandy2-pdp__grid');
+  const bar = root.querySelector('[data-d2-csticky]');
+  if (grid && bar && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => { bar.hidden = en.isIntersecting; }, { rootMargin: '-120px 0px 0px 0px' }).observe(grid);
+  }
+  const rocky = root.querySelector('[data-d2-ctarocky]');
+  const cta = root.querySelector('[data-d2-ccta]');
+  if (rocky && cta && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let scrolled = false, done = false;
+    addEventListener('scroll', () => { scrolled = true; }, { once: true, passive: true });
+    const io = new IntersectionObserver(([en]) => {
+      if (done || !scrolled || !en.isIntersecting) return;
+      done = true; io.disconnect();
+      rocky.classList.add('is-in');
+      setTimeout(() => rocky.classList.remove('is-in'), 4200);
+    }, { threshold: 0.9 });
+    io.observe(cta);
+    cta.addEventListener('mouseenter', () => rocky.classList.add('is-in'));
+    cta.addEventListener('mouseleave', () => rocky.classList.remove('is-in'));
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Dandy 2026 capsules PDP",
+  "settings": [
+    { "type": "select", "id": "copy_status", "label": "Internal copy status",
+      "options": [ { "value": "aggressive-draft", "label": "Aggressive draft" }, { "value": "approved", "label": "Approved" } ],
+      "default": "aggressive-draft" }
+  ],
+  "presets": [{ "name": "Dandy 2026 capsules PDP" }]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+{
+  "sections": {
+    "main": {
+      "type": "dandy2-doc",
+      "settings": {
+        "eyebrow": "Subscriptions",
+        "heading": "Subscription policy.",
+        "lede": "One pouch, every 30 days, at a price that doesn't change on you.",
+        "copy_status": "aggressive-draft"
+      },
+      "blocks": {
+        "b1": {
+          "type": "prose",
+          "settings": {
+            "heading": "What you're agreeing to",
+            "body": "<p>The 30-count mixed berry pouch is $47.99 today and $47.99 at every renewal, every 30 days, with free shipping. The first charge equals every future charge — no introductory rate that jumps later.</p><p>Subscriptions apply to the single 30-count gummy pouch only. Multi-pouch packs, the 10-count trial, powder, and capsules are one-time purchases.</p>"
+          }
+        },
+        "b2": {
+          "type": "prose",
+          "settings": {
+            "heading": "Changing or cancelling",
+            "body": "<p>Skip, pause, reschedule, or cancel anytime from your account, or email us and we'll do it. There's no minimum number of orders and no cancellation fee. Changes made before your renewal date apply to that renewal.</p>"
+          }
+        },
+        "b3": {
+          "type": "prose",
+          "settings": {
+            "heading": "Renewal reminders",
+            "body": "<p>We email before each renewal with the date and amount, so a charge never arrives unannounced.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
