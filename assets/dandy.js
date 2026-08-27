@@ -47,7 +47,7 @@ class DandyPurchase extends HTMLElement {
     this.subscriptionPanel = this.querySelector('[data-subscription-panel]');
     this.subscriptionMode = this.querySelector('[data-subscription-mode]');
     this.subscriptionPrice = this.querySelector('[data-subscription-price]');
-    this.subscriptionCompare = this.querySelector('[data-subscription-compare]');
+    this.subscriptionMulti = this.querySelector('[data-subscription-multi]');
     this.subscriptionUnavailable = this.querySelector('[data-subscription-unavailable]');
     this.unifiedPreview = this.previewMode && Boolean(this.subscriptionToggle);
 
@@ -105,7 +105,8 @@ class DandyPurchase extends HTMLElement {
   selectedPurchaseType() {
     if (this.unifiedPreview) {
       const size = this.sizeInputs.find((input) => input.checked)?.value;
-      return size === '30' && this.subscriptionToggle.checked ? 'subscription' : 'one-time';
+      const quantity = Number(this.quantityInputs.find((input) => input.checked)?.value || 1);
+      return size === '30' && quantity === 1 && this.subscriptionToggle.checked ? 'subscription' : 'one-time';
     }
     return this.purchaseInputs.find((input) => input.checked)?.value || 'one-time';
   }
@@ -114,42 +115,47 @@ class DandyPurchase extends HTMLElement {
     const size = this.sizeInputs.find((input) => input.checked)?.value || '30';
     const selectedQuantity = this.quantityInputs.find((input) => input.checked) || this.quantityInputs[0];
     const quantity = Number(selectedQuantity?.value || 1);
-    const subscriptionAvailable = size === '30';
-    const subscribed = subscriptionAvailable && this.subscriptionToggle.checked;
-    const mode = subscribed ? 'sub' : 'one';
+    // Subscription applies to the single-pouch 30-count rung only; multi-pouch packs are one-time.
+    const toggleAvailable = size === '30';
+    const subscribed = toggleAvailable && quantity === 1 && this.subscriptionToggle.checked;
+    const multiSelected = toggleAvailable && quantity > 1;
 
-    this.subscriptionToggle.disabled = !subscriptionAvailable;
+    this.subscriptionToggle.disabled = !toggleAvailable;
     this.subscriptionPanel?.setAttribute('data-subscription-active', String(subscribed));
-    this.subscriptionPanel?.toggleAttribute('data-subscription-unavailable-state', !subscriptionAvailable);
-    if (this.subscriptionUnavailable) this.subscriptionUnavailable.hidden = subscriptionAvailable;
+    this.subscriptionPanel?.toggleAttribute('data-subscription-unavailable-state', !toggleAvailable);
+    if (this.subscriptionUnavailable) this.subscriptionUnavailable.hidden = toggleAvailable;
+    if (this.subscriptionMulti) this.subscriptionMulti.hidden = !multiSelected;
     if (this.subscriptionMode) {
-      this.subscriptionMode.textContent = !subscriptionAvailable
+      this.subscriptionMode.textContent = !toggleAvailable
         ? 'Available with the 30-count pouch'
-        : subscribed ? 'Selected · every 30 days' : 'Turn on to save every 30 days';
+        : multiSelected
+          ? 'Applies to the single-pouch option'
+          : subscribed ? '$47.99 today · renews at $47.99 every 30 days' : 'Turn on to save every 30 days';
     }
 
     this.quantityInputs.forEach((input) => {
       const card = input.closest('.dandy-offer-card');
-      const onePrice = input.getAttribute(`data-one-${size}-price`) || '';
-      const price = input.getAttribute(`data-${mode}-${size}-price`) || onePrice;
-      const unit = input.getAttribute(`data-${mode}-${size}-unit`) || input.getAttribute(`data-one-${size}-unit`) || '';
+      const cardQuantity = Number(input.value);
+      const cardMode = subscribed && cardQuantity === 1 ? 'sub' : 'one';
+      const price = input.getAttribute(`data-${cardMode}-${size}-price`) || input.getAttribute(`data-one-${size}-price`) || '';
+      const unit = input.getAttribute(`data-${cardMode}-${size}-unit`) || input.getAttribute(`data-one-${size}-unit`) || '';
+      // Anchors are one-time-vs-one-time only, sourced from their own attributes.
+      const compareValue = input.getAttribute(`data-one-${size}-compare`) || '';
       const compare = card?.querySelector('[data-offer-compare]');
       const priceNode = card?.querySelector('[data-offer-price]');
       const unitNode = card?.querySelector('[data-offer-unit]');
       const countNode = card?.querySelector('[data-offer-count]');
       if (compare) {
-        compare.textContent = onePrice;
-        compare.hidden = !subscribed || onePrice === price;
+        compare.textContent = compareValue;
+        compare.hidden = compareValue === '';
       }
       if (priceNode) priceNode.textContent = price;
       if (unitNode) unitNode.textContent = unit;
-      if (countNode) countNode.textContent = `${Number(input.value) * Number(size)} gummies total`;
+      if (countNode) countNode.textContent = `${cardQuantity * Number(size)} gummies`;
     });
 
-    const onePrice = selectedQuantity?.getAttribute(`data-one-${size}-price`) || '';
-    const price = selectedQuantity?.getAttribute(`data-${mode}-${size}-price`) || onePrice;
-    const subscriptionPrice = selectedQuantity?.getAttribute('data-sub-30-price') || '$47.99';
-    const subscriptionCompare = selectedQuantity?.getAttribute('data-one-30-price') || '$59.99';
+    const mode = subscribed ? 'sub' : 'one';
+    const price = selectedQuantity?.getAttribute(`data-${mode}-${size}-price`) || selectedQuantity?.getAttribute(`data-one-${size}-price`) || '';
     const pouchWord = quantity === 1 ? 'pouch' : 'pouches';
     const label = `${quantity} ${pouchWord} · ${size}-count · ${subscribed ? 'subscription' : 'one-time'}`;
     const ctaVerb = subscribed ? 'SUBSCRIBE' : 'ADD TO CART';
@@ -160,11 +166,7 @@ class DandyPurchase extends HTMLElement {
     if (this.stickyLabel) this.stickyLabel.textContent = `Mixed Berry · ${size}-count · ${quantity} ${pouchWord}`;
     if (this.stickyPrice) this.stickyPrice.textContent = price;
     if (this.primaryButtonText) this.primaryButtonText.textContent = `${ctaVerb} — ${price}`;
-    if (this.subscriptionPrice) this.subscriptionPrice.textContent = subscriptionAvailable ? subscriptionPrice : '30-count only';
-    if (this.subscriptionCompare) {
-      this.subscriptionCompare.textContent = subscriptionCompare;
-      this.subscriptionCompare.hidden = !subscriptionAvailable;
-    }
+    if (this.subscriptionPrice) this.subscriptionPrice.textContent = toggleAvailable ? '$47.99' : '30-count only';
   }
 
   selectedOffer() {

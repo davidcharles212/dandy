@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "main": {
+      "type": "dandy2-doc",
+      "settings": {
+        "eyebrow": "Returns",
+        "heading": "The 30-day guarantee.",
+        "lede": "If your first order isn't for you, tell us within 30 days and we'll refund it.",
+        "copy_status": "aggressive-draft"
+      },
+      "blocks": {
+        "b1": {
+          "type": "prose",
+          "settings": {
+            "heading": "How it works",
+            "body": "<p>Email us within 30 days of delivery on your first order and we'll refund it. No return shipment required — please don't post an opened food product back to us.</p><p><b>This wording is pending final legal sign-off.</b> The terms above are the working version and will be confirmed before launch.</p>"
+          }
+        },
+        "b2": {
+          "type": "prose",
+          "settings": {
+            "heading": "Damaged or wrong item",
+            "body": "<p>Send a photo and your order number and we'll replace it, whichever order it is. That isn't limited to first orders and isn't limited to 30 days.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

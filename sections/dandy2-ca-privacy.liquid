@@ -1,0 +1,168 @@
+{% comment %}
+  DANDY 2026, CALIFORNIA PRIVACY NOTICE (legal page).
+  Text is counsel-supplied (Ollie Botanical Group, 2026-08-26) and rendered
+  VERBATIM, including punctuation; do not copy-edit without legal sign-off.
+  legal_phone: leave blank until the support number exists; phone clauses
+  render only when it is set, so no bracket placeholders ever ship.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{%- assign legal_url = 'https://foreverdandy.com' -%}
+{%- assign legal_email = 'hello@foreverdandy.com' -%}
+{%- assign legal_phone = '+1 844-435-6852' -%}
+{%- assign url_privacy = '/pages/contact?view=dandy2-privacy' -%}
+{%- capture legal_phone_or -%}{%- if legal_phone != blank %} or {{ legal_phone }}{%- endif -%}{%- endcapture -%}
+
+<div class="dandy2-pdp dandy2-doc" data-copy-status="pending-legal">
+  {% render 'dandy2-chrome-header' %}
+  <main class="doc" id="DandyMain">
+    <header class="doc__head">
+      <p class="steplabel steplabel--center">Ollie Botanical Group, LLC</p>
+      <h1 class="belowfold__title belowfold__title--center">California Privacy Notice</h1>
+      <p class="doc__lede">Effective Date: August 26, 2026</p>
+    </header>
+
+    <section class="doc__block"><div class="doc__rte">
+      <p>This California Privacy Notice (&ldquo;Notice&rdquo;) applies to California residents and describes how Ollie Botanical Group, LLC (&ldquo;Ollie Botanical Group, LLC,&rdquo; &ldquo;Ollie Botanical,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) collects, uses, and discloses personal information in connection with our website <a href="{{ legal_url }}">{{ legal_url }}</a> (the &ldquo;Site&rdquo;) and our related sales, customer service, and marketing activities, as required by the California Consumer Privacy Act, as amended by the California Privacy Rights Act (together, the &ldquo;CCPA&rdquo;). This Notice supplements, and should be read together with, our general <a href="{{ url_privacy }}">Privacy Policy</a>. It does not apply to information exempted under the CCPA, such as certain information about our own job applicants, employees, owners, directors, officers, or contractors, or information governed by other federal or state laws to which the CCPA does not apply.</p>
+    </div></section>
+
+    <section class="doc__block">
+      <h2>1. Scope of This Notice</h2>
+      <div class="doc__rte">
+        <p>This Notice applies to personal information about California consumers that we collect through the Site, through your purchases of our products, and through your interactions with our customer service, marketing, and age- or identity-verification processes. &ldquo;Personal information&rdquo; means information that identifies, relates to, describes, is reasonably capable of being associated with, or could reasonably be linked, directly or indirectly, with a particular consumer or household. It does not include publicly available information or de-identified or aggregate information.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>2. Categories of Personal Information We Collect</h2>
+      <div class="doc__rte">
+        <p>In the preceding 12 months, we have collected the following categories of personal information, as defined by the CCPA, from California consumers:</p>
+        <ul>
+          <li><b>Identifiers</b> - such as your name, email address, mailing address, phone number, account username, IP address, and date of birth (collected for age verification)</li>
+          <li><b>Customer records information</b> - such as your billing address and, where applicable, information about the payment card used for your purchase (processed by our payment processor)</li>
+          <li><b>Commercial information</b> - such as products you have purchased, considered, or returned, and your order history</li>
+          <li><b>Internet or other electronic network activity information</b> - such as your browsing and click-stream activity on the Site, and your interactions with our marketing emails</li>
+          <li><b>Geolocation information</b> - such as your shipping address and the general location inferred from your IP address, which we use to automatically screen orders at checkout and to block or restrict purchases and shipments to states or localities where the sale of kratom is not permitted</li>
+          <li><b>Inferences</b> - such as preferences and characteristics we derive from the categories above, used to personalize marketing and improve the Site</li>
+        </ul>
+        <p>We do not knowingly collect biometric information, precise geolocation, professional or employment-related information, education information, or sensory (audio/visual) information about Site visitors or customers. We may collect your date of birth to verify that you meet the minimum age required to purchase our products; we do not use this information for any purpose other than age and eligibility verification, fraud prevention, and legal compliance.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>3. Sources of Personal Information</h2>
+      <div class="doc__rte">
+        <p>We collect personal information from the following sources:</p>
+        <ul>
+          <li><b>Directly from you</b>, such as when you create an account, place an order, sign up for marketing communications, or contact customer service</li>
+          <li><b>Automatically</b>, through your use of the Site, using cookies and similar tracking technologies</li>
+          <li><b>From service providers</b>, including our e-commerce/hosting platform, payment processor, shipping carriers, and age- or identity-verification vendors</li>
+          <li><b>From other third parties</b>, such as marketing and advertising partners and publicly available sources</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>4. How We Use Personal Information</h2>
+      <div class="doc__rte">
+        <p>We use the personal information we collect for the following business and commercial purposes:</p>
+        <ul>
+          <li>Processing, fulfilling, and shipping orders, and communicating with you about them</li>
+          <li>Verifying your age and eligibility to purchase our products, and screening orders to block or restrict shipments to jurisdictions where kratom sale is not permitted</li>
+          <li>Creating and maintaining your account, and providing customer service</li>
+          <li>Sending marketing communications and promotions where you have opted in, and honoring opt-out requests</li>
+          <li>Operating, maintaining, securing, and improving the Site and our products</li>
+          <li>Detecting, investigating, and preventing fraud and other illegal or prohibited activity</li>
+          <li>Complying with applicable laws, regulations, and legal process, and enforcing our agreements and policies</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>5. How We Disclose Personal Information</h2>
+      <div class="doc__rte">
+        <p>For the business purposes described above, we disclose the categories of personal information listed in Section 2 to the following categories of third parties: our e-commerce/hosting platform, payment processors, age- and identity-verification vendors, shipping and fulfillment carriers, email/SMS marketing and customer service platforms, analytics and advertising providers, and professional advisors or government authorities where required by law or necessary to protect our rights. We require these parties to handle personal information consistently with this Notice.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>6. &ldquo;Sale&rdquo; and &ldquo;Sharing&rdquo; of Personal Information</h2>
+      <div class="doc__rte">
+        <p>We do not sell personal information to third parties in exchange for money. However, if we use advertising or analytics cookies, pixels, or similar tools that allow third-party advertising partners (such as social media or search advertising platforms) to receive information about your activity on the Site for purposes of cross-context behavioral advertising, the CCPA may treat that activity as a &ldquo;share&rdquo; of your personal information, even though no money changes hands. We do not sell or share the personal information of consumers we know to be under 16 years of age.</p>
+        <p>You can opt out of this sharing at any time using the link in Section 11 below, through your browser or device privacy settings, or by contacting us using the information in Section 14.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>7. Sensitive Personal Information</h2>
+      <div class="doc__rte">
+        <p>We may collect your date of birth as sensitive personal information under the CCPA, solely to verify your age and eligibility to purchase our products. We do not use or disclose sensitive personal information for any purpose other than those permitted by the CCPA without an opt-out right (such as providing the goods or services you request, and preventing fraud), so no additional action is required to limit our use of it. You may still contact us using the information in Section 14 with any questions about our handling of sensitive personal information.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>8. Retention of Personal Information</h2>
+      <div class="doc__rte">
+        <p>We retain personal information for as long as reasonably necessary to fulfill the purposes described in this Notice, including to provide our products and services, maintain business and tax records, resolve disputes, enforce our agreements, and comply with legal, regulatory, and age-verification recordkeeping obligations. Retention periods vary depending on the type of information and the purpose for which it was collected.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>9. Your California Privacy Rights</h2>
+      <div class="doc__rte">
+        <p>Subject to certain exceptions, California residents have the right to:</p>
+        <ul>
+          <li><b>Know/Access</b> - request that we disclose the categories and specific pieces of personal information we have collected about you, the categories of sources, the purposes for collecting it, and the categories of third parties with whom we have disclosed, sold, or shared it</li>
+          <li><b>Delete</b> - request that we delete personal information we have collected from you, subject to certain exceptions (such as information we must retain for age-verification, security, or legal-compliance purposes)</li>
+          <li><b>Correct</b> - request that we correct inaccurate personal information we maintain about you</li>
+          <li><b>Opt Out of Sale/Sharing</b> - direct us not to sell or share your personal information, as described in Section 6</li>
+          <li><b>Limit Use of Sensitive Personal Information</b> - direct us to limit our use of sensitive personal information to purposes necessary to provide the Services, to the extent we collect any (see Section 7)</li>
+          <li><b>Non-Discrimination</b> - not receive discriminatory treatment for exercising any of your CCPA rights</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>10. How to Submit a Request</h2>
+      <div class="doc__rte">
+        <p>You may submit a request to know, delete, or correct your personal information by contacting us at <a href="mailto:{{ legal_email }}">{{ legal_email }}</a>{{ legal_phone_or }}. You may designate an authorized agent to submit a request on your behalf by providing the agent with written permission signed by you, or as otherwise permitted by law; we may still require you to verify your own identity directly with us.</p>
+        <p>To protect your information, we will take steps to verify your identity before fulfilling a request to know, delete, or correct, which may include matching information you provide to information we already have on file. We will respond to verifiable requests within 45 days, and may extend that period by an additional 45 days when reasonably necessary, with notice to you.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>11. Do Not Sell or Share My Personal Information</h2>
+      <div class="doc__rte">
+        <p>We do not sell personal information to third parties in exchange for money. However, if we use advertising or analytics cookies, pixels, or similar tools that allow third-party advertising partners (such as social media or search advertising platforms) to receive information about your activity on the Site for purposes of cross-context behavioral advertising, the CCPA may treat that activity as a &ldquo;share&rdquo; of your personal information, even though no money changes hands. We do not sell or share the personal information of consumers we know to be under 16 years of age.</p>
+        <p>If you would like to opt out of any such sharing, you may do so using the cookie or ad-preference controls on the Site (where available), your browser or device privacy settings, or by contacting us at <a href="mailto:{{ legal_email }}">{{ legal_email }}</a>.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>12. Shine the Light</h2>
+      <div class="doc__rte">
+        <p>California Civil Code Section 1798.83 (&ldquo;Shine the Light&rdquo;) permits California residents to request certain information about our disclosure, if any, of personal information to third parties for their own direct marketing purposes in the preceding calendar year. We do not currently disclose personal information to third parties for their own direct marketing purposes; if this changes, we will update this Notice and provide the notice and choices required by law.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>13. Changes to This Notice</h2>
+      <div class="doc__rte">
+        <p>We may update this Notice from time to time to reflect changes in our practices or applicable law. We will post the updated Notice on the Site and revise the &ldquo;Effective Date&rdquo; above.</p>
+      </div>
+    </section>
+
+    <section class="doc__block">
+      <h2>14. Contact Us</h2>
+      <div class="doc__rte">
+        <p>If you have questions about this Notice or would like to exercise your California privacy rights, please contact us at:</p>
+        <p>Ollie Botanical Group, LLC<br>
+        30 N. Gould St., STE R, Sheridan, WY 82801<br>
+        Email: <a href="mailto:{{ legal_email }}">{{ legal_email }}</a>{% if legal_phone != blank %}<br>Phone: {{ legal_phone }}{% endif %}</p>
+      </div>
+    </section>
+  </main>
+  {% render 'dandy2-chrome-footer' %}
+</div>
+{% schema %}
+{ "name": "Dandy 2026 CA privacy", "settings": [], "presets": [{ "name": "Dandy 2026 CA privacy" }] }
+{% endschema %}

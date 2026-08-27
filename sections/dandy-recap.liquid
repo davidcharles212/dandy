@@ -7,6 +7,7 @@
     <div class="dandy-recap__action">
       <p>{{ section.settings.text }}</p>
       <a class="dandy-button dandy-button--secondary" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
+      {% render 'dandy-guarantee-line', context: 'recap' %}
     </div>
   </div>
 </section>

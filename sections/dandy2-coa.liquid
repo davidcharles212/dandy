@@ -1,0 +1,55 @@
+{% comment %}
+  DANDY 2026, LAB REPORTS / COA page.
+  Most-linked trust page on the site. Batch numbers and report links are
+  PLACEHOLDERS until David supplies the real COA files and batch records.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+<div class="dandy2-pdp dandy2-doc">
+  {% render 'dandy2-chrome-header' %}
+  <main class="doc" id="DandyMain">
+    <header class="doc__head">
+      <p class="steplabel steplabel--center">Proof, not vibes</p>
+      <h1 class="belowfold__title belowfold__title--center">Every batch, on the record.</h1>
+      <p class="doc__lede">Each production batch is screened by an independent lab before it’s packed. The batch number is printed on your pouch, match it here and read exactly what was measured.</p>
+    </header>
+
+    <section class="doc__block">
+      <h2>What every batch is tested for</h2>
+      <div class="testgrid">
+        <div class="testcard"><h3>Identity</h3><p>Confirms the material is <i>Mitragyna speciosa</i> and not an adulterant or substitute.</p></div>
+        <div class="testcard"><h3>Mitragynine content</h3><p>The actual measured potency, this is what makes “35 mg” a fact rather than a claim.</p></div>
+        <div class="testcard"><h3>Heavy metals</h3><p>Lead, arsenic, cadmium, and mercury, screened against established limits.</p></div>
+        <div class="testcard"><h3>Microbials</h3><p>Total plate count, yeast and mould, E. coli, and salmonella.</p></div>
+      </div>
+    </section>
+
+    <section class="doc__block doc__block--band">
+      <h2>Find your batch</h2>
+      <p>Look for the batch number printed near the seal on the back of your pouch, then open the matching report.</p>
+      <div class="batchtable" data-copy-status="pending-legal">
+        <div class="batchrow batchrow--head"><span>Batch</span><span>Product</span><span>Tested</span><span>Report</span></div>
+        <div class="batchrow"><span>[BATCH_ID]</span><span>Mixed berry gummies · 35 mg</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
+        <div class="batchrow"><span>[BATCH_ID]</span><span>Raw leaf powder</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
+        <div class="batchrow"><span>[BATCH_ID]</span><span>Extract capsules · 50 mg</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
+        <div class="batchrow"><span>[BATCH_ID]</span><span>Extract capsules · 90 mg</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
+      </div>
+      <p class="doc__note">Batch records and report PDFs are pending from production, this table is wired and will populate as each batch is released.</p>
+    </section>
+
+    <section class="doc__block">
+      <h2>How to read a report</h2>
+      <ul class="doclist">
+        <li>{{ d2_gcheck }} <b>Check the product and date match your pouch.</b> A report for a different batch tells you nothing about yours.</li>
+        <li>{{ d2_gcheck }} <b>Find the analyte table.</b> It lists what was measured, the result, and the limit, “ND” means none detected.</li>
+        <li>{{ d2_gcheck }} <b>Look at scope.</b> A report only covers what it says it covers; a certificate that tests one thing isn’t a clean bill of health for everything.</li>
+        <li>{{ d2_gcheck }} <b>Check who issued it.</b> Independent third-party labs only, we don’t self-certify.</li>
+      </ul>
+      <p class="doc__note">Can’t find your batch or think something looks off? <a href="/pages/contact">Email us</a> and we’ll send the report directly.</p>
+    </section>
+  </main>
+  {% render 'dandy2-chrome-footer' %}
+</div>
+{% schema %}
+{ "name": "Dandy 2026 lab reports", "settings": [], "presets": [{ "name": "Dandy 2026 lab reports" }] }
+{% endschema %}

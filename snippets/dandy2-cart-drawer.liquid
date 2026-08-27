@@ -1,0 +1,128 @@
+{% comment %}
+  DANDY 2026, side cart drawer.
+  Rendered once per page via the chrome header. Reads the real Shopify cart and
+  updates through the AJAX cart API. Because the catalog has no purchasable variants
+  yet, append ?cartdemo=1 to any dandy2 URL to preview the populated design.
+{% endcomment %}
+{%- assign demo = false -%}
+{%- if request.get %}{%- endif -%}
+<div class="d2cart" data-d2-cart hidden aria-hidden="true">
+  <div class="d2cart__scrim" data-d2-cart-close></div>
+  <aside class="d2cart__panel" role="dialog" aria-modal="true" aria-label="Your bag">
+    <header class="d2cart__head">
+      <p class="d2cart__title">Your bag <span data-d2-cart-count>{{ cart.item_count }}</span></p>
+      <button type="button" class="d2cart__x" data-d2-cart-close aria-label="Close bag">×</button>
+    </header>
+
+    <div class="d2cart__nudge" data-d2-cart-nudge hidden>
+      <p data-d2-cart-nudge-txt></p>
+      <div class="d2cart__bar"><i data-d2-cart-bar></i></div>
+    </div>
+
+    <div class="d2cart__body" data-d2-cart-body>
+      <div class="d2cart__empty" data-d2-cart-empty>
+        <img src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" aria-hidden="true">
+        <p>Rocky checked. It’s empty.</p>
+        <div class="d2cart__picks">
+          <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $24.99</span></a>
+          <a href="/products/premium-kratom-leaf-powder"><b>Powder</b><span>from $34.99</span></a>
+          <a href="/products/extract-capsules-50mg"><b>Capsules</b><span>from $28.99</span></a>
+        </div>
+      </div>
+      <ul class="d2cart__lines" data-d2-cart-lines hidden></ul>
+    </div>
+
+    <footer class="d2cart__foot" data-d2-cart-foot hidden>
+      <div class="d2cart__row"><span>Subtotal</span><b data-d2-cart-total>$0.00</b></div>
+      <p class="d2cart__ship">Shipping is $5.95 on a single one-time pack, and <b>free</b> on subscriptions and 3- or 5-packs. Calculated at checkout.</p>
+      <a class="cta" href="{{ routes.cart_url }}">Checkout</a>
+      {% render 'dandy2-trustbadges' %}
+      <p class="d2cart__states">21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, NE, ND, RI, TN, UT, VT, WV or WI, <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.</p>
+    </footer>
+  </aside>
+</div>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-d2-cart]');
+  if (!root) return;
+  const money = c => '$' + (c / 100).toFixed(2);
+  const el = s => root.querySelector(s);
+  const lines = el('[data-d2-cart-lines]'), empty = el('[data-d2-cart-empty]'),
+        foot = el('[data-d2-cart-foot]'), nudge = el('[data-d2-cart-nudge]');
+
+  const render = (cart) => {
+    const items = cart.items || [];
+    el('[data-d2-cart-count]').textContent = cart.item_count || 0;
+    const has = items.length > 0;
+    empty.hidden = has; lines.hidden = !has; foot.hidden = !has;
+    if (has) {
+      lines.innerHTML = items.map((i, idx) => `
+        <li class="d2line">
+          <span class="d2line__img">${i.image ? `<img src="${i.image.replace(/(\.[a-z]+)(\?|$)/i, '_160x$1$2')}" alt="">` : ''}</span>
+          <span class="d2line__bd">
+            <span class="d2line__name">${i.product_title}</span>
+            ${i.variant_title && !/default/i.test(i.variant_title) ? `<span class="d2line__var">${i.variant_title}</span>` : ''}
+            ${i.selling_plan_allocation ? `<span class="d2line__plan">✓ ${i.selling_plan_allocation.selling_plan.name}</span>` : ''}
+            <span class="d2line__row">
+              <span class="d2qty">
+                <button type="button" data-d2-dec="${idx + 1}" aria-label="Decrease">−</button>
+                <b>${i.quantity}</b>
+                <button type="button" data-d2-inc="${idx + 1}" aria-label="Increase">+</button>
+              </span>
+              <b class="d2line__price">${money(i.final_line_price)}</b>
+            </span>
+          </span>
+        </li>`).join('');
+      el('[data-d2-cart-total]').textContent = money(cart.total_price);
+    }
+    // 3-for-2 progress in UNITS: a "3-pack" variant counts as 3, a "5-pack" as 5
+    const unitsOf = i => {
+      const t = (i.variant_title || '').toLowerCase();
+      return i.quantity * (t.includes('5-pack') ? 5 : t.includes('3-pack') ? 3 : 1);
+    };
+    const units = (cart.items || []).reduce((n, i) => n + unitsOf(i), 0) || cart.item_count || 0;
+    if (units > 0 && units < 3) {
+      nudge.hidden = false;
+      el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Add ${3 - units} more</b> and the third is free, plus we drop the $5.95 shipping.`;
+      el('[data-d2-cart-bar]').style.width = (units / 3 * 100) + '%';
+    } else if (units >= 3) {
+      nudge.hidden = false;
+      el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Nice.</b> The 3-pack deal is in, a free pouch and free shipping.`;
+      el('[data-d2-cart-bar]').style.width = '100%';
+    } else { nudge.hidden = true; }
+  };
+
+  const load = () => fetch('/cart.js', { headers: { 'Accept': 'application/json' } })
+    .then(r => r.json()).then(render).catch(() => {});
+
+  const open = (refresh = true) => { root.hidden = false; root.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; if (refresh) load(); };
+  const close = () => { root.hidden = true; root.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+  root.querySelectorAll('[data-d2-cart-close]').forEach(b => b.addEventListener('click', close));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !root.hidden) close(); });
+
+  // header cart icon opens the drawer instead of navigating
+  document.querySelectorAll('.d2head__cart').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(); }));
+
+  // quantity controls
+  root.addEventListener('click', e => {
+    const inc = e.target.closest('[data-d2-inc]'), dec = e.target.closest('[data-d2-dec]');
+    if (!inc && !dec) return;
+    const line = Number((inc || dec).dataset.d2Inc || (inc || dec).dataset.d2Dec);
+    const cur = Number((inc || dec).parentElement.querySelector('b').textContent);
+    const qty = inc ? cur + 1 : Math.max(0, cur - 1);
+    fetch('/cart/change.js', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ line, quantity: qty }) })
+      .then(r => r.json()).then(render).catch(() => {});
+  });
+
+  // preview the populated design while the catalog is still empty
+  if (new URLSearchParams(location.search).get('cartdemo') === '1') {
+    render({ item_count: 2, total_price: 10798, items: [
+      { product_title: 'Mixed Berry Gummies', variant_title: '30-count', quantity: 1, final_line_price: 4799,
+        image: null, selling_plan_allocation: { selling_plan: { name: 'Every 30 days · save 20%' } } },
+      { product_title: 'Raw Leaf Powder', variant_title: '250 g', quantity: 1, final_line_price: 5499, image: null }
+    ]});
+    open(false);
+  } else { load(); }
+})();
+</script>

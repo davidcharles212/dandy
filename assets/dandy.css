@@ -1870,6 +1870,21 @@ input:checked + .dandy-radio::after {
 
 .dandy-subscription-unavailable[hidden] { display: none; }
 
+.dandy-guarantee-line {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--dandy-muted);
+  text-align: center;
+}
+
+.dandy-offer-shipnote {
+  margin: 10px 2px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--dandy-muted);
+}
+
 .dandy-buybox__summary {
   min-height: 52px;
   display: flex;
@@ -2404,7 +2419,8 @@ input:checked + .dandy-radio::after {
   .dandy-size-card img { width: 44px; height: 58px; }
   .dandy-size-card strong { font-size: 15px; }
   .dandy-size-card small { font-size: 10px; }
-  .dandy-offer-stack--visual { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; }
+  .dandy-offer-stack--visual { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px; padding-top: 10px; }
+  .dandy-offer-card--visual .dandy-offer-card__badge { font-size: 9px; padding: 3px 8px; letter-spacing: .04em; }
   .dandy-purchase-card,
   .dandy-offer-card { min-height: 76px; padding: 12px; }
   .dandy-offer-card--visual { min-height: 136px; grid-template-columns: 20px 1fr; padding: 11px 9px 9px; }
@@ -2480,4 +2496,14 @@ input:checked + .dandy-radio::after {
   .dandy-buybox__facts { grid-template-columns: 1fr; }
   .dandy-gallery__thumbs { grid-template-columns: repeat(4, 58px); }
   .dandy-gallery__thumb { width: 58px; height: 58px; }
+}
+
+/* ---------- Phase 1: real photography replaces brief placeholders ---------- */
+.dandy-kratom-intro__poster--image { min-height: 0; padding: 0; overflow: hidden; background: var(--dandy-white); }
+.dandy-kratom-intro__poster--image img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--dandy-radius-card) - 2px); }
+.dandy-gear__asset--image { padding: 0; border: 2px solid var(--dandy-brown); overflow: hidden; background: var(--dandy-white); }
+.dandy-gear__asset--image img { display: block; width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; }
+/* keep the product in frame on narrow viewports (was cropping to empty sky) */
+@media (max-width: 800px) {
+  .dandy-image-banner__media img { object-position: 72% 60%; }
 }

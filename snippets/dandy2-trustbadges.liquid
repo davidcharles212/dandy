@@ -1,0 +1,20 @@
+{% comment %}
+  DANDY 2026, trust + payment badges.
+  Card marks come from Shopify's own licensed icon set via payment_type_svg_tag and
+  reflect what this store actually accepts, so they stay correct if the gateway changes.
+  Never hardcode brand art.
+{% endcomment %}
+<div class="trustrow">
+  <p class="trustrow__secure">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg>
+    Secure checkout · SSL encrypted
+  </p>
+  <ul class="trustrow__cards" aria-label="Accepted payment methods">
+    {%- assign d2_skip = 'jcb,diners_club' | split: ',' -%}
+    {%- for type in shop.enabled_payment_types -%}
+      {%- unless d2_skip contains type -%}
+      <li>{{ type | payment_type_svg_tag: class: 'trustrow__icon' }}</li>
+      {%- endunless -%}
+    {%- endfor -%}
+  </ul>
+</div>

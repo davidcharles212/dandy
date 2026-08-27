@@ -1,0 +1,127 @@
+{% comment %}
+  DANDY 2026, email capture (10% off first order).
+  Uses Shopify's real customer form so addresses land in Admin > Customers with the
+  "newsletter" tag. The discount CODE ITSELF must be created in Shopify Admin
+  (Discounts > Amount off order, 10%, one use per customer, first order only), 
+  the code string is set once in `d2_promo_code` below.
+  Renders as an inline footer band plus a one-time modal (scroll-triggered, dismissible).
+{% endcomment %}
+{%- assign d2_promo_code = 'DANDY10' -%}
+{%- comment -%}
+  KLAVIYO (option B): set both IDs and every signup posts straight to the Klaviyo
+  list via their client API, with the Shopify customer form kept as an automatic
+  fallback if the call fails or the IDs are blank.
+    company id: Klaviyo > Settings > Organization > Public API key (6 chars)
+    list id:    Klaviyo > Lists & Segments > your list > Settings
+{%- endcomment -%}
+{%- assign klaviyo_company_id = 'YiLVXU' -%}
+{%- assign klaviyo_list_id = 'SE5gg9' -%}
+
+<section class="d2cap" aria-labelledby="d2cap-h" data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}" data-code="{{ d2_promo_code }}">
+  <div class="d2cap__inner">
+    <div class="d2cap__copy">
+      <p class="d2cap__kick">First order</p>
+      <h2 class="d2cap__h" id="d2cap-h">Take <em>10% off.</em></h2>
+      <p class="d2cap__sub">One email, one code, no spam beyond the occasional batch report and restock note.</p>
+    </div>
+    {%- form 'customer', class: 'd2cap__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off">
+      <label class="d2cap__label" for="d2cap-email">Email address</label>
+      <div class="d2cap__row">
+        <input id="d2cap-email" type="email" name="contact[email]" placeholder="you@email.com" required autocomplete="email">
+        <button type="submit" class="cta">Get 10% off</button>
+      </div>
+      {%- if form.posted_successfully? -%}
+        <p class="d2cap__ok">Thanks, your code is <b>{{ d2_promo_code }}</b>. Use it at checkout on your first order.</p>
+      {%- elsif form.errors -%}
+        <p class="d2cap__err">{{ form.errors.messages.email | default: 'That email didn’t look right, try again.' }}</p>
+      {%- endif -%}
+      <p class="d2cap__fine">21+ only. Unsubscribe anytime. Code applies to your first order.</p>
+    {%- endform -%}
+  </div>
+</section>
+
+<div class="d2modal" data-d2-modal data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}" data-code="{{ d2_promo_code }}" hidden role="dialog" aria-modal="true" aria-labelledby="d2modal-h">
+  <div class="d2modal__box">
+    <button type="button" class="d2modal__x" data-d2-modal-close aria-label="Close">×</button>
+    <img class="d2modal__rocky" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" aria-hidden="true">
+    <p class="d2cap__kick">Before you go</p>
+    <h2 class="d2cap__h" id="d2modal-h"><em>10% off</em> your first order.</h2>
+    <p class="d2cap__sub">Rocky insisted. Drop your email and the code is yours.</p>
+    {%- form 'customer', class: 'd2cap__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off,modal">
+      <label class="d2cap__label" for="d2modal-email">Email address</label>
+      <div class="d2cap__row">
+        <input id="d2modal-email" type="email" name="contact[email]" placeholder="you@email.com" required autocomplete="email">
+        <button type="submit" class="cta">Get the code</button>
+      </div>
+      <p class="d2cap__fine">21+ only. Unsubscribe anytime.</p>
+    {%- endform -%}
+    <button type="button" class="d2modal__no" data-d2-modal-close>No thanks, I’ll pay full price</button>
+  </div>
+</div>
+
+<script>
+(() => {
+  // Klaviyo direct subscribe: intercept both capture forms when IDs are configured
+  document.querySelectorAll('[data-d2-klaviyo]').forEach(scope => {
+    const company = scope.dataset.company, list = scope.dataset.list, code = scope.dataset.code;
+    if (!company || !list) return; // not configured: native Shopify form handles it
+    scope.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = form.querySelector('input[type="email"]')?.value?.trim();
+        if (!email) return;
+        const btn = form.querySelector('.cta');
+        const was = btn ? btn.textContent : '';
+        if (btn) { btn.textContent = 'One sec…'; btn.disabled = true; }
+        const source = scope.hasAttribute('data-d2-modal') ? 'dandy2-modal' : 'dandy2-band';
+        try {
+          const r = await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${company}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
+            body: JSON.stringify({ data: { type: 'subscription',
+              attributes: {
+                custom_source: source,
+                profile: { data: { type: 'profile', attributes: { email, properties: { dandy_signup_source: source } } } },
+              },
+              relationships: { list: { data: { type: 'list', id: list } } },
+            }}),
+          });
+          if (!r.ok && r.status !== 202) throw new Error('klaviyo ' + r.status);
+          let ok = form.querySelector('.d2cap__ok');
+          if (!ok) { ok = document.createElement('p'); ok.className = 'd2cap__ok'; form.appendChild(ok); }
+          ok.innerHTML = `Thanks! Your code is <b>${code}</b>. It's on its way to your inbox too.`;
+          form.querySelector('.d2cap__row')?.setAttribute('hidden', '');
+          try { localStorage.setItem('d2capture', Date.now()); } catch {}
+        } catch {
+          // Klaviyo unreachable: fall back to the native Shopify customer form
+          form.removeEventListener('submit', arguments.callee);
+          form.submit();
+        } finally {
+          if (btn) { btn.textContent = was; btn.disabled = false; }
+        }
+      });
+    });
+  });
+
+  const m = document.querySelector('[data-d2-modal]');
+  if (!m) return;
+  const KEY = 'd2capture';
+  const seen = () => { try { return localStorage.getItem(KEY); } catch { return '1'; } };
+  const mark = () => { try { localStorage.setItem(KEY, Date.now()); } catch {} };
+  if (seen()) return;
+  const open = () => { if (seen()) return; m.hidden = false; mark(); document.body.style.overflow = 'hidden'; };
+  const close = () => { m.hidden = true; document.body.style.overflow = ''; };
+  m.querySelectorAll('[data-d2-modal-close]').forEach(b => b.addEventListener('click', close));
+  m.addEventListener('click', e => { if (e.target === m) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !m.hidden) close(); });
+  // fire once the visitor is genuinely engaged: 45% down the page, or exit intent on desktop
+  const onScroll = () => {
+    const d = (scrollY + innerHeight) / document.body.scrollHeight;
+    if (d > 0.45) { open(); removeEventListener('scroll', onScroll); }
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY < 10) open(); });
+})();
+</script>

@@ -1,0 +1,21 @@
+{% doc %}
+  THE single source of the Dandy guarantee sentence (spec S-07 / E-092 / E-093).
+
+  Rules (enforced by scripts/release-scan.sh):
+  - The sentence text may exist in exactly ONE place: the capture below. Every surface
+    renders this snippet; never retype the sentence anywhere else.
+  - Until David + legal sign the final terms (recommended default: "30-day money-back
+    on your first order — no return required, refund capped at $X."), this renders the
+    placeholder and carries data-copy-status="pending-legal", which the release scan
+    treats as launch-blocking. Signing the sentence = replacing the capture content and
+    the copy status, once, here.
+
+  @param {string} [context] - Optional marker for instrumentation ("buy-box", "recap", "final-cta", "faq").
+{% enddoc %}
+{%- comment -%}
+  Renders the recommended default wording so no raw token is ever shown to a shopper.
+  data-copy-status stays "pending-legal", so the release scan still blocks launch until
+  David + legal sign the final terms here (this capture is the only place to change it).
+{%- endcomment -%}
+{%- capture dandy_guarantee_sentence -%}30-day money-back guarantee on your first order — no return required.{%- endcapture -%}
+<p class="dandy-guarantee-line" data-guarantee-line data-guarantee-context="{{ context | default: 'unset' }}" data-copy-status="pending-legal">{{ dandy_guarantee_sentence | strip }}</p>

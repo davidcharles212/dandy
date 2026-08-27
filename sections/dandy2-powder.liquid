@@ -1,0 +1,333 @@
+{% comment %}
+  DANDY 2026, RAW LEAF POWDER PDP (namespaced; fresh-theme track).
+  Deliberately NOT a copy of the gummy PDP. Different buyer: experienced, measures
+  their own, buys on value per gram. Therefore:
+    - no subscription UI (handoff §4: no launch subscription configured for powder)
+    - value-per-gram ladder instead of a per-gummy price
+    - "how to measure" replaces "what is kratom"
+    - explicit non-interchangeability warning between formats
+  Mobile-first. Preview-safe: the CTA never submits.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{%- assign image_url = 'dandy-powder-product-1200.webp' | asset_url | prepend: request.origin -%}
+{%- render 'dandy2-schema', kind: 'product', p_name: 'Dandy Raw Leaf Kratom Powder', p_desc: 'Milled Mitragyna speciosa leaf, one ingredient, screened per batch. 100 g and 250 g pouches.', p_image: image_url, p_low: '34.99', p_high: '54.99', p_count: 2 -%}
+{%- render 'dandy2-schema', kind: 'faq' -%}
+
+{%- comment -%}
+  Trust-page URLs in ONE place. The real page records don't exist in Shopify yet, so
+  these point at the dandy2 template previews. When David creates pages with handles
+  batch-reports / shipping / what-is-kratom, change these three lines only.
+{%- endcomment -%}
+{%- assign url_coa = '/pages/contact?view=dandy2-coa' -%}
+{%- assign url_ship = '/pages/contact?view=dandy2-shipping' -%}
+{%- assign url_kratom = '/pages/contact?view=dandy2-kratom' -%}
+
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+
+<div class="dandy2-pdp dandy2-alt" data-copy-status="{{ section.settings.copy_status }}" data-d2-powder>
+  {% render 'dandy2-chrome-header' %}
+
+  <main class="dandy2-pdp__grid" id="DandyBuyBox">
+    <section class="gallery" aria-label="Product photos">
+      <div class="gallery__main"><img src="{{ 'dandy2-pw-1.webp' | asset_url }}" alt="Dandy premium kratom leaf powder pouch beside a mound of loose milled leaf" width="1200" height="1200" loading="eager"></div>
+      <div class="gallery__thumbs">
+        <button type="button" class="gallery__thumb" aria-current="true" data-full="{{ 'dandy2-pw-1.webp' | asset_url }}" data-alt="Holding a glass of stirred Dandy leaf powder beside the pouch"><img src="{{ 'dandy2-pw-1-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-pw-2.webp' | asset_url }}" data-alt="Lifting a spoonful of leaf powder from the open pouch"><img src="{{ 'dandy2-pw-2-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-pw-3.webp' | asset_url }}" data-alt="Macro of the fine milled leaf texture"><img src="{{ 'dandy2-pw-3-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-pw-4.webp' | asset_url }}" data-alt="Powder stirred into a glass beside the pouch"><img src="{{ 'dandy2-pw-4-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-fit="contain" data-full="{{ 'dandy2-pw-facts.webp' | asset_url }}" data-alt="Supplement facts panel: serving size 1 teaspoon (2.5 g), 30 mg mitragynine per serving"><img src="{{ 'dandy2-pw-facts-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+      </div>
+    </section>
+
+    <section class="offer" aria-label="Purchase options">
+      <div class="headrow">
+        <div class="headrow__copy">
+          <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
+          <p class="eyebrow">Premium Kratom Leaf Powder</p>
+          <h1 class="title">Measure it<br>your way.</h1>
+        </div>
+        <img class="headrow__rocky headrow__rocky--mix" src="{{ 'dandy2-rocky-mix.webp' | asset_url }}" alt="Rocky the Dandy raccoon stirring leaf powder into a glass" width="614" height="620" loading="eager">
+      </div>
+      <p class="desc">Straight milled leaf, one ingredient, nothing added. For people who already know their amount and would rather own the scale than the schedule.</p>
+      <ul class="benefits" data-copy-status="aggressive-draft">
+        <li><i>⚖</i><b>Your amount</b><span>1 tsp (2.5&nbsp;g) is a serving, scale up or down as the label allows.</span></li>
+        <li><i>☀</i><b>Two gears</b><span>The same leaf that lifts a morning settles an evening.</span></li>
+        <li><i>◎</i><b>Nothing added</b><span>One ingredient. No sweetener, no filler, no binder.</span></li>
+      </ul>
+      <p class="trustline">Every batch lab-tested, <a href="{{ url_coa }}">read the COA</a> · 30-day guarantee · 21+</p>
+
+      <p class="steplabel"><b>01</b> Pouch size</p>
+      <div class="qgrid qgrid--2">
+        <label class="qcard"><input type="radio" name="d2psize-{{ section.id }}" value="100" data-d2-psize checked><span class="qcard__n">100 g</span><span class="qcard__p">$34.99</span><span class="qcard__m">$0.35 per gram</span></label>
+        <label class="qcard"><input type="radio" name="d2psize-{{ section.id }}" value="250" data-d2-psize><span class="qcard__free">Better value</span><span class="qcard__n">250 g</span><span class="qcard__p">$54.99</span><span class="qcard__m">$0.22 per gram</span></label>
+      </div>
+
+      <p class="steplabel"><b>02</b> How many pouches?</p>
+      <div class="qgrid">
+        <label class="qcard"><input type="radio" name="d2pqty-{{ section.id }}" value="1" data-d2-pqty checked><span class="qcard__n">1</span><span class="qcard__p" data-d2-p1>$34.99</span><span class="qcard__m">+ $5.95 shipping</span></label>
+        <label class="qcard"><input type="radio" name="d2pqty-{{ section.id }}" value="3" data-d2-pqty><span class="qcard__free">One free</span><span class="qcard__n">3</span><span class="qcard__p" data-d2-p3>$69.98</span><span class="qcard__m">pay for 2 · ships free</span></label>
+        <label class="qcard"><input type="radio" name="d2pqty-{{ section.id }}" value="5" data-d2-pqty><span class="qcard__free">Two free</span><span class="qcard__n">5</span><span class="qcard__p" data-d2-p5>$104.97</span><span class="qcard__m">pay for 3 · ships free</span></label>
+      </div>
+
+      <script type="application/json" data-d2-pvariantmap>
+        [{% for v in product.variants %}{"id": {{ v.id }}, "title": {{ v.title | json }}, "available": {{ v.available | default: false }}, "price": {{ v.price | default: 0 }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
+      </script>
+      <form class="buyform" action="{{ routes.cart_url }}/add" method="post" data-d2-pbuyform data-buyable="false">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-d2-pidfield>
+        <input type="hidden" name="quantity" value="1">
+      <div class="ctawrap" data-copy-status="aggressive-draft">
+        <img class="ctarocky" data-d2-ctarocky src="{{ 'dandy2-rocky-press.webp' | asset_url }}" alt="Rocky the raccoon reaching for the button, if you don’t press it, he will" width="640" height="384" loading="lazy">
+        <button type="submit" class="cta" data-d2-pcta>Add 100 g · $34.99</button>
+      </div>
+      <p class="buynote" data-d2-ppreviewnote hidden></p>
+      </form>
+      <div class="shiprow" data-copy-status="aggressive-draft">
+        <img class="shiprow__truck" src="{{ 'dandy2-truck.webp' | asset_url }}" alt="Illustration of the Dandy delivery truck" width="900" height="600" loading="lazy">
+        <p class="shiprow__txt">Order before <b>1 PM EST</b>, ships next day</p>
+      </div>
+      <p class="subhero__psst">Powder subscriptions aren’t live yet, this is a one-time order, and we’d rather say so than fake a plan.</p>
+      <p class="gseal" data-copy-status="pending-legal"><span class="gseal__mark">30<small>DAY</small></span><span class="gseal__txt"><b>Money-back guarantee</b><span>Don&rsquo;t get on with it? We refund it.</span></span></p>
+      {% render 'dandy2-trustbadges' %}
+    </section>
+  </main>
+
+  {% comment %} ---------- one ingredient ---------- {% endcomment %}
+  <section class="belowfold" aria-labelledby="d2p-inside-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--split">
+      <img class="halfimg" src="{{ 'dandy-powder-product-1200.webp' | asset_url }}" alt="Dandy leaf powder pouch beside a mound of loose milled leaf" width="1200" height="1200" loading="lazy">
+      <div>
+        <p class="steplabel">What’s in the pouch</p>
+        <h2 class="belowfold__title">One ingredient. That’s the list.</h2>
+        <ul class="subhero__list ilist">
+          <li>{{ d2_gcheck }} 100% Mitragyna speciosa leaf, milled</li>
+          <li>{{ d2_gcheck }} No fillers, flavours, sweeteners, or binders</li>
+          <li>{{ d2_gcheck }} Screened per batch for identity, alkaloids, heavy metals, microbials</li>
+          <li>{{ d2_gcheck }} Resealable pouch, keep it dry, dark, and closed</li>
+        </ul>
+        <p class="kcard__more"><a href="{{ url_coa }}">Read this batch’s report →</a></p>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 1b. What is kratom (plain answer card) ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2p-kratom-{{ section.id }}">
+    <div class="kcard" data-copy-status="aggressive-draft">
+      <span class="kcard__pill">Okay, but what is kratom?</span>
+      <h2 class="kcard__title" id="d2p-kratom-{{ section.id }}">A fair question. Here’s the straight answer.</h2>
+      <p class="kcard__lead">Kratom is a leaf from <b>Mitragyna speciosa</b>, a Southeast Asian tree in the coffee family, brewed and chewed there for centuries for <b>steady energy, a lifted mood, and physical ease</b>. How it feels varies person to person. That’s exactly why we weigh it rather than scoop it, and publish a lab report for every batch, start at the low end of your own experience and wait.</p>
+      <div class="kcard__row">
+        <div class="kcard__facts">
+          <div class="kcard__chips">
+            <span class="kchip">{{ d2_gcheck }}Coffee-family botanical</span>
+            <span class="kchip">{{ d2_gcheck }}Centuries of traditional use</span>
+            <span class="kchip">{{ d2_gcheck }}Lab-screened every batch</span>
+          </div>
+          <p class="kcard__more"><a href="{{ url_kratom }}">The full kratom guide →</a></p>
+        </div>
+        <img class="kcard__plant" src="{{ 'dandy2-kratom-plant.webp' | asset_url }}" alt="Botanical illustration of Mitragyna speciosa, the kratom tree" width="380" height="467" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- proof ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2p-proof-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <p class="steplabel steplabel--center">From our customers</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2p-proof-{{ section.id }}">The numbers came back grinning.</h2>
+      {%- capture d2_i_focus -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.6"/><path d="M12 1.6v3.2M12 19.2v3.2M1.6 12h3.2M19.2 12h3.2"/></svg>{%- endcapture -%}
+      {%- capture d2_i_coffee -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 8.5h12v6.5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8.5Z"/><path d="M16.5 9.5h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M3.8 4.2l16.4 15.6"/></svg>{%- endcapture -%}
+      {%- capture d2_i_happy -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 14c.9 1.2 2.2 1.9 3.8 1.9s2.9-.7 3.8-1.9"/><path d="M9.2 9.6h.02M14.8 9.6h.02"/></svg>{%- endcapture -%}
+      {%- capture d2_i_swap -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5h15M14.5 4.5l4 4-4 4"/><path d="M20.5 15.5h-15M9.5 11.5l-4 4 4 4"/></svg>{%- endcapture -%}
+      <div class="statbars">
+        <div class="statbars__list">
+          <div class="sbar" style="--p: 96"><span class="sbar__ico">{{ d2_i_focus }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Felt an increase in focus</span></div><em class="sbar__n">96%</em></div>
+          <div class="sbar" style="--p: 89"><span class="sbar__ico">{{ d2_i_coffee }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Preferred it over caffeine</span></div><em class="sbar__n">89%</em></div>
+          <div class="sbar" style="--p: 92"><span class="sbar__ico">{{ d2_i_happy }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Felt happier throughout the day</span></div><em class="sbar__n">92%</em></div>
+          <div class="sbar" style="--p: 99"><span class="sbar__ico">{{ d2_i_swap }}</span><div class="sbar__track"><i class="sbar__fill"></i><span class="sbar__lab">Would replace anything with this</span></div><em class="sbar__n">99%</em></div>
+        </div>
+        <img class="statbars__flex" src="{{ 'dandy2-rocky-flex.webp' | asset_url }}" alt="" width="560" height="560" loading="lazy" aria-hidden="true">
+      </div>
+      <p class="statsrc">Self-reported by surveyed Dandy customers · full survey details on request</p>
+    </div>
+  </section>
+
+  {% comment %} ---------- how to use it (video + steps) ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2p-howto-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <p class="steplabel steplabel--center">Ten seconds, start to finish</p>
+      <h2 class="belowfold__title belowfold__title--center" id="d2p-howto-{{ section.id }}">How to use it.</h2>
+      <div class="howto">
+        <div class="howto__media">
+          <video data-d2-howto class="howto__video" playsinline muted loop
+                 preload="none" poster="{{ 'dandy2-powder-howto-poster.webp' | asset_url }}"
+                 width="960" height="540" aria-label="Opening the Dandy powder pouch, pouring leaf powder into a glass of water, and stirring">
+            <source src="{{ 'dandy2-powder-howto.mp4' | asset_url }}" type="video/mp4">
+          </video>
+          <button type="button" class="howto__toggle" data-d2-howto-toggle aria-label="Play or pause the video">Pause</button>
+        </div>
+        <ol class="how howto__steps">
+          <li><b>01</b><strong>Open and keep it dry</strong><span>Peel the seal back, keep the pouch upright, and press it fully closed again afterwards.</span></li>
+          <li><b>02</b><strong>Measure your serving</strong><span>The label serving is <b>1 teaspoon (2.5&nbsp;g)</b>, which carries 30&nbsp;mg of mitragynine. A gram scale is still the most accurate way to hit it, spoons vary, and the label is the guide.</span></li>
+          <li><b>03</b><strong>Stir into something with body</strong><span>Water, juice, or a smoothie, stir until it’s evenly green. It won’t fully dissolve; it’s milled leaf, so it settles. Give it another stir before you finish.</span></li>
+          <li><b>04</b><strong>Start low, then wait</strong><span>Give it time before deciding anything. You can always take more later; you can’t take less.</span></li>
+        </ol>
+      </div>
+      <div class="warnbar">Formats are <b>not interchangeable</b>. Grams of leaf powder, milligrams in a gummy, and extract capsules are different things, never convert one into another.</div>
+    </div>
+  </section>
+
+  {% comment %} ---------- FAQ: powder-specific ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2p-faq-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow">
+      <p class="steplabel">Straight answers</p>
+      <h2 class="belowfold__title" id="d2p-faq-{{ section.id }}">Powder questions.</h2>
+      <div class="faq">
+        <details><summary>How do people take loose powder?</summary><p>Most weigh it and wash it down with water or juice, or stir it into something with body. It does not dissolve, it’s milled leaf, so it will settle. Taste is earthy and bitter; that’s the format, not a flaw.</p></details>
+        <details><summary>Why is there no subscription on powder?</summary><p>Because we haven’t finished the economics on it. Rather than show a plan we can’t honour at renewal, powder is one-time only for now. Gummies have a live subscription today.</p></details>
+        <details><summary>Is powder stronger than the gummies?</summary><p>It isn’t a fair comparison and we won’t pretend otherwise. Powder is whole leaf measured in grams; gummies are a measured 35 mg of mitragynine each; capsules are an extract. Treat each as its own thing and start low on any of them.</p></details>
+        <details><summary>How long does a pouch last?</summary><p>The label serving is 1 teaspoon (2.5&nbsp;g), so the 250&nbsp;g pouch holds <b>100 servings</b> and the 100&nbsp;g pouch holds <b>40</b>. How long that lasts depends on how often you reach for it.</p></details>
+        <details><summary>How should I store it?</summary><p>Sealed, dry, out of sunlight. The pouch is resealable, press the seal fully closed and keep it away from steam and heat.</p></details>
+        <details><summary>Who shouldn’t take it?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. We don’t ship to 16 states, <a href="{{ url_ship }}">check yours</a>.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="belowfold belowfold--finale" aria-labelledby="d2p-end-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow belowfold__inner--center">
+      <p class="steplabel">Know your amount?</p>
+      <h2 class="belowfold__title" id="d2p-end-{{ section.id }}">Then you don’t need convincing.</h2>
+      <div class="recapcard">
+        <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy" aria-hidden="true">
+        <div class="recapcard__row"><span data-d2-precap>1 × 250 g pouch</span><b data-d2-precap-total>$60.94</b></div>
+        <a class="cta cta--inline" href="#DandyBuyBox">Back to the pouch ↑</a>
+        <p class="gseal" data-copy-status="pending-legal"><span class="gseal__mark">30<small>DAY</small></span><span class="gseal__txt"><b>Money-back guarantee</b><span>Don&rsquo;t get on with it? We refund it.</span></span></p>
+      </div>
+    </div>
+  </section>
+  <div class="stickybar" data-d2-psticky hidden>
+    <div class="stickybar__info"><strong data-d2-pstick-label>1 × 100 g pouch</strong><span data-d2-pstick-total>$40.94</span></div>
+    <a class="stickybar__btn" href="#DandyBuyBox">Choose</a>
+  </div>
+  {% render 'dandy2-emailcapture' %}
+  {% render 'dandy2-chrome-footer' %}
+</div>
+
+<script>
+(() => {
+  const root = document.querySelector('[data-d2-powder]');
+  if (!root) return;
+  const SHIP = 5.95;
+  const P = {
+    '100': { unit: 34.99, g: 100, packs: { 1: 34.99, 3: 69.98, 5: 104.97 } },
+    '250': { unit: 54.99, g: 250, packs: { 1: 54.99, 3: 109.98, 5: 164.97 } }
+  };
+  const m = (n) => '$' + n.toFixed(2);
+  const sizes = [...root.querySelectorAll('[data-d2-psize]')];
+  const qtys = [...root.querySelectorAll('[data-d2-pqty]')];
+  const set = (sel, txt) => { const n = root.querySelector(sel); if (n) n.textContent = txt; };
+  // real add to cart: resolve the visible selection to a Shopify variant
+  const form = root.querySelector('[data-d2-pbuyform]');
+  const idField = root.querySelector('[data-d2-pidfield]');
+  const note = root.querySelector('[data-d2-ppreviewnote]');
+  let vmap = [];
+  try { vmap = JSON.parse(root.querySelector('[data-d2-pvariantmap]')?.textContent || '[]'); } catch {}
+  const findV = (...tokens) => vmap.find(v => tokens.every(t => v.title.toLowerCase().includes(t)) && v.available && v.price > 0);
+  if (form) form.addEventListener('submit', (e) => {
+    if (form.dataset.buyable === 'true') return;
+    e.preventDefault();
+    if (!note) return;
+    note.hidden = false;
+    note.textContent = 'Preview only, this size has no purchasable variant in Shopify yet.';
+  });
+  const sync = () => {
+    const size = sizes.find(i => i.checked)?.value || '100';
+    const qty = Number(qtys.find(i => i.checked)?.value || 1);
+    const cfg = P[size];
+    // quantity cards always show this size's real ladder prices
+    set('[data-d2-p1]', m(cfg.packs[1]));
+    set('[data-d2-p3]', m(cfg.packs[3]));
+    set('[data-d2-p5]', m(cfg.packs[5]));
+    const product = cfg.packs[qty];
+    const freeShip = qty >= 3;
+    const total = freeShip ? product : product + SHIP;
+    const cta = root.querySelector('[data-d2-pcta]');
+    if (cta) cta.textContent = `Add ${qty > 1 ? qty + ' × ' : ''}${size} g · ${m(product)}`;
+    set('[data-d2-pcharge]', freeShip
+      ? `Charged today: ${m(total)} · free shipping · one-time, nothing renews`
+      : `Charged today: ${m(total)} (${m(product)} + ${m(SHIP)} shipping) · one-time, nothing renews`);
+    set('[data-d2-precap]', `${qty} × ${size} g pouch`);
+    set('[data-d2-precap-total]', m(total));
+    set('[data-d2-pstick-label]', `${qty} × ${size} g pouch`);
+    set('[data-d2-pstick-total]', m(total));
+    // variant titles are e.g. "100 g / Single", "250 g / 3-pack"
+    const v = findV(`${size} g`, qty === 1 ? 'single' : `${qty}-pack`);
+    if (form && idField && v) {
+      idField.value = v.id;
+      form.dataset.buyable = 'true';
+    } else if (form) {
+      form.dataset.buyable = 'false';
+    }
+    if (note) note.hidden = true;
+  };
+  root.addEventListener('change', sync);
+  sync();
+  // sticky bar once the buy box scrolls away
+  const grid = root.querySelector('.dandy2-pdp__grid');
+  const bar = root.querySelector('[data-d2-psticky]');
+  if (grid && bar && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => { bar.hidden = en.isIntersecting; }, { rootMargin: '-120px 0px 0px 0px' }).observe(grid);
+  }
+  // Rocky lunges at the CTA on scroll-in and on hover
+  const rocky = root.querySelector('[data-d2-ctarocky]');
+  const cta = root.querySelector('[data-d2-pcta]');
+  if (rocky && cta && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let scrolled = false, done = false;
+    addEventListener('scroll', () => { scrolled = true; }, { once: true, passive: true });
+    const io = new IntersectionObserver(([en]) => {
+      if (done || !scrolled || !en.isIntersecting) return;
+      done = true; io.disconnect();
+      rocky.classList.add('is-in');
+      setTimeout(() => rocky.classList.remove('is-in'), 4200);
+    }, { threshold: 0.9 });
+    io.observe(cta);
+    cta.addEventListener('mouseenter', () => rocky.classList.add('is-in'));
+    cta.addEventListener('mouseleave', () => rocky.classList.remove('is-in'));
+  }
+  // how-to video: autoplay the loop unless the visitor prefers reduced motion
+  const vid = root.querySelector('[data-d2-howto]');
+  const tog = root.querySelector('[data-d2-howto-toggle]');
+  if (vid && tog) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setLabel = () => { tog.textContent = vid.paused ? 'Play' : 'Pause'; };
+    if (reduce) { vid.pause(); } else {
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([en]) => { en.isIntersecting ? vid.play().catch(() => {}) : vid.pause(); }, { threshold: 0.4 }).observe(vid);
+      } else { vid.play().catch(() => {}); }
+    }
+    tog.addEventListener('click', () => { vid.paused ? vid.play() : vid.pause(); setLabel(); });
+    vid.addEventListener('play', setLabel); vid.addEventListener('pause', setLabel);
+    setLabel();
+  }
+  // gallery
+  const gmain = root.querySelector('.gallery__main img');
+  const thumbs = [...root.querySelectorAll('.gallery__thumb')];
+  thumbs.forEach(t => t.addEventListener('click', () => {
+    thumbs.forEach(x => x.setAttribute('aria-current', String(x === t)));
+    if (!gmain) return;
+    gmain.src = t.dataset.full; gmain.alt = t.dataset.alt || '';
+    if (t.dataset.fit) gmain.setAttribute('data-fit', t.dataset.fit); else gmain.removeAttribute('data-fit');
+  }));
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Dandy 2026 powder PDP",
+  "settings": [
+    { "type": "select", "id": "copy_status", "label": "Internal copy status",
+      "options": [ { "value": "aggressive-draft", "label": "Aggressive draft" }, { "value": "approved", "label": "Approved" } ],
+      "default": "aggressive-draft" }
+  ],
+  "presets": [{ "name": "Dandy 2026 powder PDP" }]
+}
+{% endschema %}

@@ -1,0 +1,98 @@
+{% comment %}
+  DANDY 2026, CART. Real Shopify cart object; renders the empty state until the
+  catalog exists. Conversion elements: free-shipping progress to the $5.95 threshold
+  (free on subs and 3+ packs), guarantee + shipping reassurance beside checkout,
+  restricted-state notice before the shopper reaches payment, and a lineup cross-sell
+  on the empty state.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+<div class="dandy2-pdp dandy2-cart">
+  {% render 'dandy2-chrome-header' %}
+  <main class="cartwrap" id="DandyMain">
+    <header class="doc__head">
+      <p class="steplabel steplabel--center">Your bag</p>
+      <h1 class="belowfold__title belowfold__title--center">{% if cart.item_count > 0 %}Nearly Dandy.{% else %}Nothing in the bag yet.{% endif %}</h1>
+    </header>
+
+    {% if cart.item_count > 0 %}
+      <div class="cartgrid">
+        <section class="cartlines" aria-label="Items">
+          <form action="{{ routes.cart_url }}" method="post" novalidate>
+            {% for item in cart.items %}
+              <div class="cline">
+                <a class="cline__img" href="{{ item.url }}">
+                  {% if item.image %}<img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.image.alt | escape }}" width="100" height="100" loading="lazy">{% endif %}
+                </a>
+                <div class="cline__body">
+                  <a class="cline__name" href="{{ item.url }}">{{ item.product.title }}</a>
+                  {% unless item.variant.title contains 'Default' %}<p class="cline__var">{{ item.variant.title }}</p>{% endunless %}
+                  {% if item.selling_plan_allocation %}<p class="cline__plan">{{ d2_gcheck }} {{ item.selling_plan_allocation.selling_plan.name }}</p>{% endif %}
+                  <div class="cline__row">
+                    <div class="cqty">
+                      <a href="{{ item.url_to_remove }}" aria-label="Remove">Remove</a>
+                      <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" aria-label="Quantity">
+                    </div>
+                    <b class="cline__price">{{ item.final_line_price | money }}</b>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            <button type="submit" name="update" class="cartupdate">Update bag</button>
+          </form>
+        </section>
+
+        <aside class="cartsum" aria-label="Summary">
+          {%- assign d2_units = 0 -%}
+          {%- for item in cart.items -%}
+            {%- assign vt = item.variant.title | downcase -%}
+            {%- if vt contains '5-pack' -%}{%- assign mult = item.quantity | times: 5 -%}{%- assign d2_units = d2_units | plus: mult -%}
+            {%- elsif vt contains '3-pack' -%}{%- assign mult = item.quantity | times: 3 -%}{%- assign d2_units = d2_units | plus: mult -%}
+            {%- else -%}{%- assign d2_units = d2_units | plus: item.quantity -%}{%- endif -%}
+          {%- endfor -%}
+          {%- assign d2_to3 = 3 | minus: d2_units -%}
+          <div class="cartsum__box">
+            {%- if d2_units > 0 and d2_units < 3 -%}
+              <div class="cartnudge">
+                <p><b>Add {{ d2_to3 }} more</b> and the third is free, plus we drop the $5.95 shipping.</p>
+                <div class="cartnudge__bar"><i style="width: {{ d2_units | times: 33 }}%"></i></div>
+                <a href="/#shop">Keep shopping →</a>
+              </div>
+            {%- elsif d2_units >= 3 -%}
+              <div class="cartnudge cartnudge--won">
+                <p><b>Nice.</b> You’ve hit the 3-pack deal, a free pouch and free shipping are in.</p>
+              </div>
+            {%- endif -%}
+            <div class="cartsum__row"><span>Subtotal</span><b>{{ cart.total_price | money }}</b></div>
+            <p class="cartsum__ship">Shipping is $5.95 on a single one-time pack, and <b>free</b> on subscriptions and 3- or 5-packs. Calculated at checkout.</p>
+            <form action="{{ routes.cart_url }}" method="post" novalidate>
+              <button type="submit" name="checkout" class="cta">Checkout, {{ cart.total_price | money }}</button>
+            </form>
+            <ul class="subhero__list cartsum__list">
+              <li>{{ d2_gcheck }} 30-day money-back guarantee</li>
+              <li>{{ d2_gcheck }} Order before 1 PM EST, ships next day</li>
+              <li>{{ d2_gcheck }} Every batch lab-tested, <a href="/pages/contact?view=dandy2-coa">read the reports</a></li>
+            </ul>
+            {% render 'dandy2-trustbadges' %}
+            <p class="cartsum__states">21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, NE, ND, RI, TN, UT, VT, WV or WI, <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.</p>
+          </div>
+        </aside>
+      </div>
+    {% else %}
+      <section class="cartempty">
+        <img src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy" aria-hidden="true">
+        <p>Rocky checked. It’s empty.</p>
+        <a class="cta" href="/#shop">Shop the lineup</a>
+        <div class="cartempty__picks">
+          <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $24.99</span></a>
+          <a href="/products/premium-kratom-leaf-powder"><b>Powder</b><span>from $34.99</span></a>
+          <a href="/products/extract-capsules-50mg"><b>Capsules</b><span>from $28.99</span></a>
+        </div>
+      </section>
+    {% endif %}
+  </main>
+  {% render 'dandy2-chrome-footer' %}
+</div>
+{% schema %}
+{ "name": "Dandy 2026 cart", "settings": [] }
+{% endschema %}
