@@ -44,7 +44,9 @@
       }));
       // deep link: #just-once opens the one-time door
       if (location.hash === '#just-once') this.doorBtns.find(b => b.dataset.d2Door === 'one')?.click();
-      this.sync();
+      // NOTE: the initial sync() runs at the END of connectedCallback, after the
+      // buy form is wired up; calling it here left the selling_plan field disabled
+      // on a straight page-load-and-click, silently dropping the subscription.
       // Rocky lunges for the CTA once the shopper scrolls to it, holds, then leaves
       const rocky = this.querySelector('[data-d2-ctarocky]');
       const ctaBtn = this.querySelector('[data-d2-cta]');
@@ -116,6 +118,8 @@
       if (grid && bar && 'IntersectionObserver' in window) {
         new IntersectionObserver(([en]) => { bar.hidden = en.isIntersecting; }, { rootMargin: '-120px 0px 0px 0px' }).observe(grid);
       }
+      // initial state, now that the buy form (incl. the selling_plan field) is wired
+      this.sync();
     }
     sync() {
       const key = this.door === 'sub' ? 'sub' : (this.oneInputs.find(i => i.checked)?.value || '3');

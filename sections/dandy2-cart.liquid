@@ -45,10 +45,13 @@
         <aside class="cartsum" aria-label="Summary">
           {%- assign d2_units = 0 -%}
           {%- for item in cart.items -%}
-            {%- assign vt = item.variant.title | downcase -%}
-            {%- if vt contains '5-pack' -%}{%- assign mult = item.quantity | times: 5 -%}{%- assign d2_units = d2_units | plus: mult -%}
-            {%- elsif vt contains '3-pack' -%}{%- assign mult = item.quantity | times: 3 -%}{%- assign d2_units = d2_units | plus: mult -%}
-            {%- else -%}{%- assign d2_units = d2_units | plus: item.quantity -%}{%- endif -%}
+            {%- comment -%} subscription lines renew on their own schedule; the 3-for-2 pack deal never applies to them {%- endcomment -%}
+            {%- unless item.selling_plan_allocation -%}
+              {%- assign vt = item.variant.title | downcase -%}
+              {%- if vt contains '5-pack' -%}{%- assign mult = item.quantity | times: 5 -%}{%- assign d2_units = d2_units | plus: mult -%}
+              {%- elsif vt contains '3-pack' -%}{%- assign mult = item.quantity | times: 3 -%}{%- assign d2_units = d2_units | plus: mult -%}
+              {%- else -%}{%- assign d2_units = d2_units | plus: item.quantity -%}{%- endif -%}
+            {%- endunless -%}
           {%- endfor -%}
           {%- assign d2_to3 = 3 | minus: d2_units -%}
           <div class="cartsum__box">

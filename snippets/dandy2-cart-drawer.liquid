@@ -76,12 +76,14 @@
         </li>`).join('');
       el('[data-d2-cart-total]').textContent = money(cart.total_price);
     }
-    // 3-for-2 progress in UNITS: a "3-pack" variant counts as 3, a "5-pack" as 5
+    // 3-for-2 progress in UNITS: a "3-pack" variant counts as 3, a "5-pack" as 5.
+    // Subscription lines are excluded, the pack deal never applies to them.
     const unitsOf = i => {
+      if (i.selling_plan_allocation) return 0;
       const t = (i.variant_title || '').toLowerCase();
       return i.quantity * (t.includes('5-pack') ? 5 : t.includes('3-pack') ? 3 : 1);
     };
-    const units = (cart.items || []).reduce((n, i) => n + unitsOf(i), 0) || cart.item_count || 0;
+    const units = (cart.items || []).reduce((n, i) => n + unitsOf(i), 0);
     if (units > 0 && units < 3) {
       nudge.hidden = false;
       el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Add ${3 - units} more</b> and the third is free, plus we drop the $5.95 shipping.`;
