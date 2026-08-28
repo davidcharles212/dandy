@@ -1048,7 +1048,8 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 @media (prefers-reduced-motion: reduce) { .dandy2-pdp .d2cart__panel { animation: none; } }
 /* powder hero raccoon is wider than the gummy one (pedestal + glass), so give it room */
 .dandy2-pdp .headrow__rocky--mix { height: auto; width: 190px; margin-bottom: -4px; }
-@media (max-width: 800px) { .dandy2-pdp .headrow__rocky--mix { width: 128px; } }
+.dandy2-pdp .headrow__rocky--caps { height: auto; width: 132px; margin-bottom: -4px; }
+@media (max-width: 800px) { .dandy2-pdp .headrow__rocky--mix { width: 128px; } .dandy2-pdp .headrow__rocky--caps { width: 96px; } }
 
 /* hero: centre the offer line and the three value props under the CTA */
 .dandy2-home .hhero__sub { text-align: center; width: 100%; }

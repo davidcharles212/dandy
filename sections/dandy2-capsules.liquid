@@ -42,9 +42,14 @@
     </section>
 
     <section class="offer" aria-label="Purchase options">
-      <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
-      <p class="eyebrow">Extract Capsules · 50 &amp; 90 mg</p>
-      <h1 class="title">Pick your<br>strength.</h1>
+      <div class="headrow">
+        <div class="headrow__copy">
+          <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
+          <p class="eyebrow">Extract Capsules · 50 &amp; 90 mg</p>
+          <h1 class="title">Pick your<br>strength.</h1>
+        </div>
+        <img class="headrow__rocky headrow__rocky--caps" src="{{ 'dandy2-rocky-caps.webp' | asset_url }}" alt="Rocky the Dandy raccoon holding a capsules jar and a single capsule" width="431" height="620" loading="eager">
+      </div>
       <p class="desc">Nothing to taste, nothing to measure. Two strengths so you choose the amount once, at the shelf, instead of every single time.</p>
       <ul class="benefits" data-copy-status="aggressive-draft">
         <li><i>◎</i><b>No taste</b><span>Swallowed, not chewed. Nothing earthy on the way down.</span></li>
@@ -125,23 +130,6 @@
     </div>
   </section>
 
-  {% comment %} ---------- travels well ---------- {% endcomment %}
-  <section class="belowfold belowfold--band" aria-labelledby="d2c-travel-{{ section.id }}">
-    <div class="belowfold__inner belowfold__inner--split">
-      <div>
-        <p class="steplabel">No scale, no scoop</p>
-        <h2 class="belowfold__title" id="d2c-travel-{{ section.id }}">Goes where you go.</h2>
-        <ul class="subhero__list ilist">
-          <li>{{ d2_gcheck }} A sealed jar, the count printed on the label</li>
-          <li>{{ d2_gcheck }} Nothing to measure, nothing to rinse</li>
-          <li>{{ d2_gcheck }} Fits the pocket of any bag you own</li>
-        </ul>
-        <p class="kcard__more"><a href="#DandyBuyBox">Pick your strength ↑</a></p>
-      </div>
-      <img class="halfimg" src="{{ 'dandy2-cap-tote.webp' | asset_url }}" alt="Dropping a Dandy capsules jar into a tote bag" width="1200" height="1200" loading="lazy">
-    </div>
-  </section>
-
   {% comment %} ---------- 1b. What is kratom (plain answer card) ---------- {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2c-kratom-{{ section.id }}">
     <div class="kcard" data-copy-status="aggressive-draft">
@@ -159,6 +147,23 @@
         </div>
         <img class="kcard__plant" src="{{ 'dandy2-kratom-plant.webp' | asset_url }}" alt="Botanical illustration of Mitragyna speciosa, the kratom tree" width="380" height="467" loading="lazy">
       </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- travels well (DR: consistency) ---------- {% endcomment %}
+  <section class="belowfold belowfold--band" aria-labelledby="d2c-travel-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--split">
+      <div>
+        <p class="steplabel">The honest case for capsules</p>
+        <h2 class="belowfold__title" id="d2c-travel-{{ section.id }}">It only works if it&rsquo;s with you.</h2>
+        <ul class="subhero__list ilist">
+          <li>{{ d2_gcheck }} The same exact 50 or 90&nbsp;mg at your desk, in transit, anywhere</li>
+          <li>{{ d2_gcheck }} No scale, no scoop, no prep &mdash; nothing to skip on a busy day</li>
+          <li>{{ d2_gcheck }} Sealed and countable, so you always know where you stand</li>
+        </ul>
+        <a class="cta cta--inline" href="#DandyBuyBox">Grab a jar &mdash; from $28.99 ↑</a>
+      </div>
+      <img class="halfimg" src="{{ 'dandy2-cap-tote.webp' | asset_url }}" alt="Dropping a Dandy capsules jar into a tote bag" width="1200" height="1200" loading="lazy">
     </div>
   </section>
 
