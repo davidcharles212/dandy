@@ -31,7 +31,7 @@
 .dandy2-pdp .gallery { position: sticky; top: 24px; display: grid; gap: 12px; }
 .dandy2-pdp .gallery__main { border: 2px solid var(--d2-brown); border-radius: var(--d2-r-24); background: var(--d2-orange-5); overflow: hidden; aspect-ratio: 5 / 4; display: grid; place-items: center; }
 .dandy2-pdp .gallery__main img { width: 100%; height: 100%; object-fit: cover; }
-.dandy2-pdp .gallery__main img[data-fit="contain"] { object-fit: contain; width: 78%; height: auto; }
+.dandy2-pdp .gallery__main img[data-fit="contain"] { object-fit: contain; width: 100%; height: 100%; background: var(--d2-white); }
 .dandy2-pdp .gallery__thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
 .dandy2-pdp .gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .dandy2-pdp .gallery__thumb { border: 2px solid var(--d2-brown-50); border-radius: var(--d2-r-16); background: var(--d2-white); aspect-ratio: 1; display: grid; place-items: center; padding: 0; overflow: hidden; cursor: pointer; }
@@ -982,7 +982,8 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 
 /* alt PDPs share the gummy PDP's surface treatment */
 .dandy2-alt { background: var(--d2-white); }
-.dandy2-alt .dandy2-pdp__grid { background: var(--d2-orange-5); }
+/* cream buy-box ground runs full-bleed; the grid itself stays max-width */
+.dandy2-alt .dandy2-pdp__grid { background: var(--d2-orange-5); box-shadow: 0 0 0 100vmax var(--d2-orange-5); clip-path: inset(0 -100vmax); }
 .dandy2-alt .belowfold--rule { background: var(--d2-white); }
 .dandy2-alt .doc__block--band, .dandy2-alt .belowfold--band { background: var(--d2-orange-5); }
 
