@@ -111,7 +111,7 @@
   const seen = () => { try { return localStorage.getItem(KEY); } catch { return '1'; } };
   const mark = () => { try { localStorage.setItem(KEY, Date.now()); } catch {} };
   if (seen()) return;
-  const open = () => { if (seen()) return; m.hidden = false; mark(); document.body.style.overflow = 'hidden'; };
+  const open = () => { if (seen() || document.querySelector('[data-d2-age]')) return; m.hidden = false; mark(); document.body.style.overflow = 'hidden'; };
   const close = () => { m.hidden = true; document.body.style.overflow = ''; };
   m.querySelectorAll('[data-d2-modal-close]').forEach(b => b.addEventListener('click', close));
   m.addEventListener('click', e => { if (e.target === m) close(); });
