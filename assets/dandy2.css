@@ -1139,4 +1139,4 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-alt .tripshots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .dandy2-alt .tripshots img { width: 100%; height: auto; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-24); box-shadow: var(--d2-shadow); }
 .dandy2-alt .tripshots__cap { margin: 16px auto 0; text-align: center; font-size: 14.5px; color: var(--d2-brown-50); max-width: 60ch; }
-@media (max-width: 700px) { .dandy2-alt .tripshots { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .dandy2-alt .tripshots { gap: 10px; } .dandy2-alt .tripshots img { border-radius: var(--d2-r-16); box-shadow: 3px 3px 0 var(--d2-brown); } }
