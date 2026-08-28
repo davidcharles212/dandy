@@ -104,12 +104,28 @@
         };
         tick(); setInterval(tick, 30000);
       }
-      // Order bump: adds the 10-count trial alongside the main line
+      // Order bump: when checked, the add must carry TWO lines (main + 10-count
+      // one-time), which a native single-id form post cannot do — so intercept
+      // and use the AJAX cart, falling back to the plain post (main line only).
       const bump = this.querySelector('[data-d2-bump]');
       if (bump && form) {
-        form.addEventListener('submit', () => {
-          if (form.dataset.buyable !== 'true') return;
-          form.dataset.bump = bump.checked ? '1' : '';
+        form.addEventListener('submit', (e) => {
+          if (form.dataset.buyable !== 'true' || !bump.checked) return;
+          if (bump.closest('.bump')?.hidden) return; // trial door: bump not offered
+          const bf = this.buyform;
+          const trial = bf.findV('10-count', 'single');
+          if (!trial || !bf.idField) return;
+          e.preventDefault();
+          const main = { id: Number(bf.idField.value), quantity: Number(bf.qtyField?.value || 1) };
+          if (bf.planField && !bf.planField.disabled && bf.planField.value) main.selling_plan = Number(bf.planField.value);
+          fetch(form.action.replace(/\/add\/?$/, '/add.js'), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: [main, { id: trial.id, quantity: 1 }] }),
+          }).then((r) => {
+            if (!r.ok) throw new Error('add ' + r.status);
+            window.location.href = form.action.replace(/\/add\/?$/, '');
+          }).catch(() => form.submit());
         });
       }
       // sticky bar: show once the buy box scrolls out of view (mobile only via CSS)
