@@ -871,6 +871,7 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 .dandy2-home .fcard__link { position: absolute; inset: 0; z-index: 3; }
 .dandy2-home .fcard__img { flex: none; aspect-ratio: 16 / 10; border-bottom: 2px solid var(--d2-brown); overflow: hidden; display: grid; place-items: center; background: var(--d2-white); }
 .dandy2-home .fcard__img img { width: 100%; height: 100%; object-fit: cover; }
+.dandy2-home .fcard__img img.fcard__img--high { object-position: 50% 28%; }
 .dandy2-home .fcard__img--mg { display: flex; align-items: baseline; justify-content: center; gap: 8px; background: var(--d2-orange); color: var(--d2-white); }
 .dandy2-home .fcard__img--mg b { font-family: var(--d2-display); font-weight: 900; font-size: 40px; line-height: .9; }
 .dandy2-home .fcard__img--mg b i { font-style: normal; font-size: .36em; }
