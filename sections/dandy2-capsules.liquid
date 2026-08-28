@@ -28,9 +28,16 @@
 
   <main class="dandy2-pdp__grid" id="DandyBuyBox">
     <section class="gallery" aria-label="Product">
-      <div class="capstage" data-d2-capstage>
-        <span class="capstage__mg" data-d2-capmg>50<i>mg</i></span>
-        <span class="capstage__lbl">Extract capsules</span>
+      <div class="gallery__main"><img src="{{ 'dandy2-cap-50.webp' | asset_url }}" alt="Dandy 50 mg extract capsules jar with a pile of capsules in front" width="1200" height="1200" loading="eager"></div>
+      {%- comment -%} jar + facts slots follow the chosen strength (50↔90), see sync() {%- endcomment -%}
+      <div class="gallery__thumbs" data-d2-cgthumbs
+        data-cap50="{{ 'dandy2-cap-50.webp' | asset_url }}" data-cap90="{{ 'dandy2-cap-90.webp' | asset_url }}"
+        data-facts50="{{ 'dandy2-cap-facts-50.webp' | asset_url }}" data-facts90="{{ 'dandy2-cap-facts-90.webp' | asset_url }}">
+        <button type="button" class="gallery__thumb" aria-current="true" data-slot="jar" data-full="{{ 'dandy2-cap-50.webp' | asset_url }}" data-alt="Dandy 50 mg extract capsules jar with a pile of capsules in front"><img src="{{ 'dandy2-cap-50-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-cap-macro.webp' | asset_url }}" data-alt="A single extract capsule held between two fingers"><img src="{{ 'dandy2-cap-macro-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-cap-life.webp' | asset_url }}" data-alt="Taking a capsule from the open jar with a handful poured out"><img src="{{ 'dandy2-cap-life-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-cap-family.webp' | asset_url }}" data-alt="All four Dandy capsule jars, 50 and 90 mg in 10 and 30 counts"><img src="{{ 'dandy2-cap-family-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-fit="contain" data-slot="facts" data-full="{{ 'dandy2-cap-facts-50.webp' | asset_url }}" data-alt="Supplement facts panel: 50 mg mitragynine per capsule"><img src="{{ 'dandy2-cap-facts-50-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
       </div>
       <div class="coabox">
         <p class="coabox__k">Proof, not vibes</p>
@@ -138,6 +145,24 @@
     </div>
   </section>
 
+  {% comment %} ---------- what's in the capsule ---------- {% endcomment %}
+  <section class="belowfold" aria-labelledby="d2c-inside-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--split">
+      <img class="halfimg" src="{{ 'dandy2-cap-macro.webp' | asset_url }}" alt="A Dandy extract capsule held between two fingers" width="1200" height="1200" loading="lazy">
+      <div>
+        <p class="steplabel">What’s in the capsule</p>
+        <h2 class="belowfold__title" id="d2c-inside-{{ section.id }}">Short list. Stated plainly.</h2>
+        <ul class="subhero__list ilist">
+          <li>{{ d2_gcheck }} Kratom extract, standardized to an exact 50 or 90&nbsp;mg mitragynine</li>
+          <li>{{ d2_gcheck }} Other kratom alkaloids, under 1%</li>
+          <li>{{ d2_gcheck }} Microcrystalline cellulose to keep the fill even</li>
+          <li>{{ d2_gcheck }} A vegan capsule shell (HPMC) — end of list</li>
+        </ul>
+        <p class="kcard__more"><a href="{{ url_coa }}">Read this batch’s report →</a></p>
+      </div>
+    </div>
+  </section>
+
   {% comment %} ---------- why capsules ---------- {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2c-why-{{ section.id }}">
     <div class="belowfold__inner">
@@ -216,7 +241,7 @@
         <details><summary>How many should I take?</summary><p>Start with one and wait. That’s the only guidance we’ll give in copy, the label on the pack is the instruction, and it’s deliberately conservative.</p></details>
         <details><summary>Why are capsules pricier per serving than powder?</summary><p>Because you’re paying for concentration and encapsulation instead of doing it yourself. If cost per gram is what you care about, powder wins and we’d rather you bought that.</p></details>
         <details><summary>Why is there no subscription?</summary><p>Capsule subscription economics aren’t signed off yet, and a plan we can’t honour at renewal is worse than no plan. Gummies have a live subscription today.</p></details>
-        <details><summary>Where are the product photos?</summary><p>Not shot yet. We’d rather show you a strength panel than a mocked-up render that isn’t the pack you’ll receive.</p></details>
+        <details><summary>What exactly is in a capsule?</summary><p>Kratom extract standardized to the milligrams on the label, other kratom alkaloids under 1%, microcrystalline cellulose to keep the fill even, and a vegan HPMC shell. The supplement facts panel is in the gallery, and the batch report has the measured numbers, <a href="{{ url_coa }}">read it before you buy</a>.</p></details>
         <details><summary>Who shouldn’t take them?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. We don’t ship to 16 states, <a href="{{ url_ship }}">check yours</a>.</p></details>
       </div>
     </div>
@@ -300,10 +325,25 @@
     set('[data-d2-crecap-total]', m(total));
     set('[data-d2-cstick-label]', `${qty} × ${str} mg · ${cnt} ct`);
     set('[data-d2-cstick-total]', m(total));
-    const mg = root.querySelector('[data-d2-capmg]');
-    if (mg) mg.innerHTML = str + '<i>mg</i>';
-    const stage = root.querySelector('[data-d2-capstage]');
-    if (stage) stage.classList.toggle('is-90', str === '90');
+    // jar + facts gallery slots follow the chosen strength
+    const gwrap = root.querySelector('[data-d2-cgthumbs]');
+    if (gwrap) {
+      const jar = gwrap.querySelector('[data-slot="jar"]');
+      const facts = gwrap.querySelector('[data-slot="facts"]');
+      if (jar) {
+        jar.dataset.full = str === '90' ? gwrap.dataset.cap90 : gwrap.dataset.cap50;
+        jar.dataset.alt = `Dandy ${str} mg extract capsules jar with a pile of capsules in front`;
+      }
+      if (facts) {
+        facts.dataset.full = str === '90' ? gwrap.dataset.facts90 : gwrap.dataset.facts50;
+        facts.dataset.alt = `Supplement facts panel: ${str} mg mitragynine per capsule`;
+      }
+      const cur = gwrap.querySelector('[aria-current="true"]');
+      const gmain = root.querySelector('.gallery__main img');
+      if (gmain && cur && cur.dataset.full && !gmain.src.endsWith(cur.dataset.full)) {
+        gmain.src = cur.dataset.full; gmain.alt = cur.dataset.alt || '';
+      }
+    }
     // variant titles are e.g. "10-count / Single", "30-count / 3-pack"
     const v = findV(Number(str), `${cnt}-count`, qty === 1 ? 'single' : `${qty}-pack`);
     if (form && idField && v) {
@@ -316,6 +356,15 @@
   };
   root.addEventListener('change', sync);
   sync();
+  // gallery
+  const gmain = root.querySelector('.gallery__main img');
+  const thumbs = [...root.querySelectorAll('.gallery__thumb')];
+  thumbs.forEach(t => t.addEventListener('click', () => {
+    thumbs.forEach(x => x.setAttribute('aria-current', String(x === t)));
+    if (!gmain) return;
+    gmain.src = t.dataset.full; gmain.alt = t.dataset.alt || '';
+    if (t.dataset.fit) gmain.setAttribute('data-fit', t.dataset.fit); else gmain.removeAttribute('data-fit');
+  }));
   const grid = root.querySelector('.dandy2-pdp__grid');
   const bar = root.querySelector('[data-d2-csticky]');
   if (grid && bar && 'IntersectionObserver' in window) {
