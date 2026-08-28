@@ -1,0 +1,67 @@
+{% comment %}
+  DANDY 2026, age gate (21+). Kratom is adults-only; regulating states set 21
+  as the floor, so the gate asks 21 everywhere. Rendered from
+  dandy2-chrome-header so every dandy2 page carries it.
+  A "yes" is remembered for 30 days (localStorage). There is deliberately no
+  close button and Escape does nothing — the only way through is an answer.
+  Page content stays in the DOM (legal interstitials don't hurt crawling).
+{% endcomment %}
+{%- unless request.design_mode -%}
+<div class="d2age" data-d2-age role="dialog" aria-modal="true" aria-label="Age verification">
+  <div class="d2age__box" tabindex="-1" data-d2-age-box>
+    <img class="d2age__rocky" src="{{ 'dandy2-rocky-bouncer.webp' | asset_url }}" alt="" width="560" height="560" aria-hidden="true">
+    <img class="d2age__mark" src="{{ 'dandy-wordmark.svg' | asset_url }}" width="96" height="36" alt="Dandy">
+    <div data-d2-age-ask>
+      <h2 class="d2age__h">Are you <em>21</em> or older?</h2>
+      <p class="d2age__sub">Dandy makes kratom products for adults. You have to be 21 or older to come in.</p>
+      <div class="d2age__row">
+        <button type="button" class="d2age__yes" data-d2-age-yes>I&rsquo;m 21 or older</button>
+        <button type="button" class="d2age__no" data-d2-age-no>Not yet</button>
+      </div>
+      <p class="d2age__fine">By entering you confirm you&rsquo;re 21+ and of legal age to buy kratom where you live. We don&rsquo;t ship to <a href="/pages/contact?view=dandy2-shipping">states where kratom is restricted</a>.</p>
+    </div>
+    <div data-d2-age-deny hidden>
+      <h2 class="d2age__h">See you at <em>21</em>.</h2>
+      <p class="d2age__sub">Rocky checks IDs, and he&rsquo;s incorruptible. Come back on the big birthday.</p>
+      <div class="d2age__row">
+        <a class="d2age__yes" href="https://www.google.com" rel="nofollow">Take me somewhere else</a>
+        <button type="button" class="d2age__no" data-d2-age-back>I misclicked &mdash; I&rsquo;m 21+</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(() => {
+  const gate = document.querySelector('[data-d2-age]');
+  if (!gate) return;
+  const KEY = 'd2age21', TTL = 30 * 864e5;
+  let at = 0;
+  try { at = +localStorage.getItem(KEY) || 0; } catch {}
+  if (at && Date.now() - at < TTL) { gate.remove(); return; }
+
+  document.documentElement.classList.add('d2age-lock');
+  const ask = gate.querySelector('[data-d2-age-ask]');
+  const deny = gate.querySelector('[data-d2-age-deny]');
+  const flip = (denied) => {
+    ask.hidden = denied; deny.hidden = !denied;
+    gate.querySelector(denied ? '[data-d2-age-back]' : '[data-d2-age-yes]').focus();
+  };
+  gate.querySelector('[data-d2-age-yes]').addEventListener('click', () => {
+    try { localStorage.setItem(KEY, Date.now()); } catch {}
+    document.documentElement.classList.remove('d2age-lock');
+    gate.remove();
+  });
+  gate.querySelector('[data-d2-age-no]').addEventListener('click', () => flip(true));
+  gate.querySelector('[data-d2-age-back]').addEventListener('click', () => flip(false));
+  // keep Tab inside the dialog; everything behind it is inert by intent
+  gate.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab') return;
+    const f = [...gate.querySelectorAll('button, a')].filter(el => el.offsetParent);
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+    else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+  });
+  gate.querySelector('[data-d2-age-box]').focus({ preventScroll: true });
+})();
+</script>
+{%- endunless -%}

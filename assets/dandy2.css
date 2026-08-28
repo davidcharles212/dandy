@@ -1099,3 +1099,32 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
   .dandy2-home .dose__bar { grid-template-columns: 1fr; gap: 3px; }
   .dandy2-home .dose__lbl { font-size: 12px; color: var(--d2-brown-50); }
 }
+
+/* ---------- age gate (21+) ---------- */
+/* Opaque takeover, not a scrim: a legal gate hides the store until answered.
+   Card follows the promo-modal recipe but inverted (white box, orange shadow)
+   so the two moments never read as the same popup. */
+html.d2age-lock { overflow: hidden; }
+.d2age, .d2age * { box-sizing: border-box; }
+.d2age { position: fixed; inset: 0; z-index: 100; background: var(--d2-brown); display: grid; place-items: center; padding: 214px 18px 24px; overflow: auto; font-family: var(--d2-body); color: var(--d2-brown); text-align: center; }
+.d2age__box { position: relative; width: 100%; max-width: 440px; background: var(--d2-white); border: 3px solid var(--d2-brown); border-radius: var(--d2-r-24); box-shadow: 8px 8px 0 var(--d2-orange); padding: 30px 22px 22px; }
+.d2age__box:focus { outline: none; }
+.d2age__yes:focus-visible { outline: 3px solid var(--d2-orange); outline-offset: 4px; }
+.d2age__no:focus-visible, .d2age__fine a:focus-visible { outline: 2px solid var(--d2-orange); outline-offset: 2px; border-radius: 2px; }
+/* bouncer Rocky stands behind the card, arms resting on its top edge */
+.d2age__rocky { position: absolute; bottom: calc(100% + 3px); left: 50%; transform: translateX(-50%); width: 200px; height: auto; }
+.d2age__mark { display: block; margin: 0 auto 12px; width: 92px; height: auto; }
+.d2age__h { margin: 0 0 8px; font-family: var(--d2-display); font-weight: 900; font-size: clamp(34px, 9vw, 46px); line-height: .95; text-transform: uppercase; }
+.d2age__h em { font-style: normal; color: var(--d2-orange); }
+.d2age__sub { margin: 0 auto; font-size: 15.5px; font-weight: 500; max-width: 34ch; }
+.d2age__row { display: grid; gap: 10px; margin-top: 18px; }
+.d2age__yes { display: inline-flex; width: 100%; justify-content: center; align-items: center; min-height: 58px; padding: 16px 28px 14px; border: 3px solid var(--d2-brown); border-radius: var(--d2-r-pill); background: var(--d2-orange); color: var(--d2-brown); box-shadow: var(--d2-shadow-cta); font-family: var(--d2-display); font-weight: 900; font-size: 21px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: transform .14s ease, box-shadow .14s ease; }
+.d2age__yes:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--d2-brown); }
+.d2age__no { display: block; width: 100%; min-height: 44px; background: none; border: 0; color: var(--d2-brown); font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.d2age__fine { margin: 14px 0 0; font-size: 12.5px; color: var(--d2-brown-50); }
+.d2age__fine a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.d2age [hidden] { display: none; }
+@media (max-width: 480px) {
+  .d2age { padding-top: 178px; }
+  .d2age__rocky { width: 164px; }
+}
