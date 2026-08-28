@@ -39,15 +39,6 @@
         <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-cap-family.webp' | asset_url }}" data-alt="All four Dandy capsule jars, 50 and 90 mg in 10 and 30 counts"><img src="{{ 'dandy2-cap-family-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
         <button type="button" class="gallery__thumb" data-fit="contain" data-slot="facts" data-full="{{ 'dandy2-cap-facts-50.webp' | asset_url }}" data-alt="Supplement facts panel: 50 mg mitragynine per capsule"><img src="{{ 'dandy2-cap-facts-50-thumb.webp' | asset_url }}" alt="" width="80" height="80"></button>
       </div>
-      <div class="coabox">
-        <p class="coabox__k">Proof, not vibes</p>
-        <ul class="subhero__list">
-          <li>{{ d2_gcheck }} Identity &amp; mitragynine content, per batch</li>
-          <li>{{ d2_gcheck }} Heavy metals and microbials screened</li>
-          <li>{{ d2_gcheck }} Batch number printed on every pack</li>
-        </ul>
-        <a class="coabox__link" href="{{ url_coa }}">Read this batch’s report →</a>
-      </div>
     </section>
 
     <section class="offer" aria-label="Purchase options">
@@ -58,7 +49,7 @@
       <ul class="benefits" data-copy-status="aggressive-draft">
         <li><i>◎</i><b>No taste</b><span>Swallowed, not chewed. Nothing earthy on the way down.</span></li>
         <li><i>⚖</i><b>No measuring</b><span>The amount is decided at the shelf, not at the counter.</span></li>
-        <li><i>✈</i><b>Travels flat</b><span>A sealed, countable pack, no scale, no scoop, no jar.</span></li>
+        <li><i>✈</i><b>Travels flat</b><span>A sealed, countable jar, no scale, no scoop, no baggie.</span></li>
       </ul>
       <p class="trustline">Every batch lab-tested, <a href="{{ url_coa }}">read the COA</a> · 30-day guarantee · 21+</p>
 
@@ -75,7 +66,7 @@
         <label class="qcard"><input type="radio" name="d2cc-{{ section.id }}" value="30" data-d2-ccount><span class="qcard__free">Lowest each</span><span class="qcard__n">30 ct</span><span class="qcard__p" data-d2-c30>$64.99</span><span class="qcard__m" data-d2-c30p>$2.17 each</span></label>
       </div>
 
-      <p class="steplabel"><b>03</b> How many packs?</p>
+      <p class="steplabel"><b>03</b> How many jars?</p>
       <div class="qgrid">
         <label class="qcard"><input type="radio" name="d2cq-{{ section.id }}" value="1" data-d2-cqty checked><span class="qcard__n">1</span><span class="qcard__p" data-d2-q1>$28.99</span><span class="qcard__m">+ $5.95 shipping</span></label>
         <label class="qcard"><input type="radio" name="d2cq-{{ section.id }}" value="3" data-d2-cqty><span class="qcard__free">One free</span><span class="qcard__n">3</span><span class="qcard__p" data-d2-q3>$57.98</span><span class="qcard__m">pay for 2 · ships free</span></label>
@@ -116,35 +107,6 @@
     </section>
   </main>
 
-  {% comment %} ---------- the strength decision (this PDP's core module) ---------- {% endcomment %}
-  <section class="belowfold belowfold--band" aria-labelledby="d2c-which-{{ section.id }}" data-copy-status="aggressive-draft">
-    <div class="belowfold__inner">
-      <p class="steplabel steplabel--center">50 or 90?</p>
-      <h2 class="belowfold__title belowfold__title--center" id="d2c-which-{{ section.id }}">Which strength is yours?</h2>
-      <div class="strengths">
-        <article class="strength">
-          <span class="strength__mg">50<i>mg</i></span>
-          <h3>Start here</h3>
-          <ul>
-            <li>{{ d2_gcheck }}<span>New to capsules, or new to extract</span></li>
-            <li>{{ d2_gcheck }}<span>You want room to take one and reassess</span></li>
-            <li>{{ d2_gcheck }}<span>From <b>$28.99</b> · as low as $1.30 each in a 5-pack</span></li>
-          </ul>
-        </article>
-        <article class="strength strength--alt">
-          <span class="strength__mg">90<i>mg</i></span>
-          <h3>Only if you know</h3>
-          <ul>
-            <li>{{ d2_gcheck }}<span>You already have an established tolerance</span></li>
-            <li>{{ d2_gcheck }}<span>You’d rather take one capsule than two</span></li>
-            <li>{{ d2_gcheck }}<span>From <b>$44.99</b> · as low as $2.00 each in a 5-pack</span></li>
-          </ul>
-        </article>
-      </div>
-      <div class="warnbar">Extract is <b>not</b> leaf powder and <b>not</b> a gummy. Milligrams here don’t convert to grams of powder or to a 35&nbsp;mg gummy, start at the bottom of any format, every time.</div>
-    </div>
-  </section>
-
   {% comment %} ---------- what's in the capsule ---------- {% endcomment %}
   <section class="belowfold" aria-labelledby="d2c-inside-{{ section.id }}">
     <div class="belowfold__inner belowfold__inner--split">
@@ -159,32 +121,6 @@
           <li>{{ d2_gcheck }} A vegan capsule shell (HPMC) — end of list</li>
         </ul>
         <p class="kcard__more"><a href="{{ url_coa }}">Read this batch’s report →</a></p>
-      </div>
-    </div>
-  </section>
-
-  {% comment %} ---------- why capsules ---------- {% endcomment %}
-  <section class="belowfold belowfold--rule" aria-labelledby="d2c-why-{{ section.id }}">
-    <div class="belowfold__inner">
-      <p class="steplabel steplabel--center">The trade-off, stated plainly</p>
-      <h2 class="belowfold__title belowfold__title--center" id="d2c-why-{{ section.id }}">What capsules are good at.</h2>
-      <div class="tradeoff">
-        <div class="tradeoff__col tradeoff__col--yes">
-          <h3>Worth it if</h3>
-          <ul>
-            <li>{{ d2_gcheck }} You can’t stand the taste of leaf</li>
-            <li>{{ d2_gcheck }} You want zero equipment and zero prep</li>
-            <li>{{ d2_gcheck }} You travel and want a sealed, countable pack</li>
-          </ul>
-        </div>
-        <div class="tradeoff__col tradeoff__col--no">
-          <h3>Buy something else if</h3>
-          <ul>
-            <li>Cost per serving is your priority, <a href="/products/premium-kratom-leaf-powder">powder is far cheaper per gram</a></li>
-            <li>You want the lowest, most gradual amount, <a href="/products/mixed-berry-kratom-gummies">35 mg gummies start lower</a></li>
-            <li>You dislike swallowing capsules, no way around that one</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>
@@ -238,7 +174,7 @@
       <h2 class="belowfold__title" id="d2c-faq-{{ section.id }}">Capsule questions.</h2>
       <div class="faq">
         <details><summary>What does “extract” mean here?</summary><p>It’s concentrated from the leaf rather than milled leaf itself, which is why a capsule is measured in milligrams while powder is measured in grams. The batch report states the identity and the alkaloid content, <a href="{{ url_coa }}">read it before you buy</a>.</p></details>
-        <details><summary>How many should I take?</summary><p>Start with one and wait. That’s the only guidance we’ll give in copy, the label on the pack is the instruction, and it’s deliberately conservative.</p></details>
+        <details><summary>How many should I take?</summary><p>Start with one and wait. That’s the only guidance we’ll give in copy, the label on the jar is the instruction, and it’s deliberately conservative.</p></details>
         <details><summary>Why are capsules pricier per serving than powder?</summary><p>Because you’re paying for concentration and encapsulation instead of doing it yourself. If cost per gram is what you care about, powder wins and we’d rather you bought that.</p></details>
         <details><summary>Why is there no subscription?</summary><p>Capsule subscription economics aren’t signed off yet, and a plan we can’t honour at renewal is worse than no plan. Gummies have a live subscription today.</p></details>
         <details><summary>What exactly is in a capsule?</summary><p>Kratom extract standardized to the milligrams on the label, other kratom alkaloids under 1%, microcrystalline cellulose to keep the fill even, and a vegan HPMC shell. The supplement facts panel is in the gallery, and the batch report has the measured numbers, <a href="{{ url_coa }}">read it before you buy</a>.</p></details>
