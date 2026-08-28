@@ -126,15 +126,19 @@
   </section>
 
   {% comment %} ---------- travels well ---------- {% endcomment %}
-  <section class="belowfold belowfold--rule" aria-labelledby="d2c-travel-{{ section.id }}">
-    <div class="belowfold__inner">
-      <p class="steplabel steplabel--center">No scale, no scoop</p>
-      <h2 class="belowfold__title belowfold__title--center" id="d2c-travel-{{ section.id }}">Goes where you go.</h2>
-      <div class="tripshots">
-        <img src="{{ 'dandy2-cap-tote.webp' | asset_url }}" alt="Dropping a Dandy capsules jar into a tote bag" width="1200" height="1200" loading="lazy">
-        <img src="{{ 'dandy2-cap-pack.webp' | asset_url }}" alt="Tucking a Dandy capsules jar into a backpack" width="1200" height="1200" loading="lazy">
+  <section class="belowfold belowfold--band" aria-labelledby="d2c-travel-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--split">
+      <div>
+        <p class="steplabel">No scale, no scoop</p>
+        <h2 class="belowfold__title" id="d2c-travel-{{ section.id }}">Goes where you go.</h2>
+        <ul class="subhero__list ilist">
+          <li>{{ d2_gcheck }} A sealed jar, the count printed on the label</li>
+          <li>{{ d2_gcheck }} Nothing to measure, nothing to rinse</li>
+          <li>{{ d2_gcheck }} Fits the pocket of any bag you own</li>
+        </ul>
+        <p class="kcard__more"><a href="#DandyBuyBox">Pick your strength ↑</a></p>
       </div>
-      <p class="tripshots__cap">A sealed jar with the count printed on the label. Toss it in the bag, take one when you mean to.</p>
+      <img class="halfimg" src="{{ 'dandy2-cap-tote.webp' | asset_url }}" alt="Dropping a Dandy capsules jar into a tote bag" width="1200" height="1200" loading="lazy">
     </div>
   </section>
 
