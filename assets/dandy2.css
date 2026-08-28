@@ -871,7 +871,7 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 .dandy2-home .fcard__link { position: absolute; inset: 0; z-index: 3; }
 .dandy2-home .fcard__img { flex: none; aspect-ratio: 16 / 10; border-bottom: 2px solid var(--d2-brown); overflow: hidden; display: grid; place-items: center; background: var(--d2-white); }
 .dandy2-home .fcard__img img { width: 100%; height: 100%; object-fit: cover; }
-.dandy2-home .fcard__img img.fcard__img--high { object-position: 50% 28%; }
+.dandy2-home .fcard__img img.fcard__img--high { object-position: 50% 70%; }
 .dandy2-home .fcard__img--mg { display: flex; align-items: baseline; justify-content: center; gap: 8px; background: var(--d2-orange); color: var(--d2-white); }
 .dandy2-home .fcard__img--mg b { font-family: var(--d2-display); font-weight: 900; font-size: 40px; line-height: .9; }
 .dandy2-home .fcard__img--mg b i { font-style: normal; font-size: .36em; }
@@ -1114,7 +1114,7 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
    so the two moments never read as the same popup. */
 html.d2age-lock { overflow: hidden; }
 .d2age, .d2age * { box-sizing: border-box; }
-.d2age { position: fixed; inset: 0; z-index: 100; background: var(--d2-brown); display: grid; place-items: center; padding: 214px 18px 24px; overflow: auto; font-family: var(--d2-body); color: var(--d2-brown); text-align: center; }
+.d2age { position: fixed; inset: 0; z-index: 100; background: rgb(40 17 12 / 45%); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); display: grid; place-items: center; padding: 214px 18px 24px; overflow: auto; font-family: var(--d2-body); color: var(--d2-brown); text-align: center; }
 .d2age__box { position: relative; width: 100%; max-width: 440px; background: var(--d2-white); border: 3px solid var(--d2-brown); border-radius: var(--d2-r-24); box-shadow: 8px 8px 0 var(--d2-orange); padding: 30px 22px 22px; }
 .d2age__box:focus { outline: none; }
 .d2age__yes:focus-visible { outline: 3px solid var(--d2-orange); outline-offset: 4px; }
@@ -1137,3 +1137,7 @@ html.d2age-lock { overflow: hidden; }
   .d2age__rocky { width: 164px; }
 }
 
+/* age gate: solid fallback where backdrop-filter is unsupported (page must stay obscured) */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .d2age { background: rgb(40 17 12 / 96%); }
+}
