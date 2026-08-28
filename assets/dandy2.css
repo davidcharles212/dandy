@@ -1052,6 +1052,11 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 /* hero: centre the offer line and the three value props under the CTA */
 .dandy2-home .hhero__sub { text-align: center; width: 100%; }
 .dandy2-home .hhero__trust { justify-content: center; width: 100%; }
+/* desktop hero CTA is left-aligned fixed-width; line the sub + trust up under it */
+@media (min-width: 801px) {
+  .dandy2-home .hhero__sub { text-align: left; }
+  .dandy2-home .hhero__trust { justify-content: flex-start; }
+}
 /* eyebrow replaces the pill so it no longer reads as a button */
 .dandy2-pdp .eyebrow { margin: 0; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: var(--d2-brown-50); }
 /* struck prices read red, live prices stay brown */
