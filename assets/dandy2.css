@@ -340,7 +340,7 @@
 .dandy2-pdp .hourswrap__cap { position: absolute; top: 44px; left: 0; right: 0; z-index: 2; }
 .dandy2-pdp .hourswrap__cap .steplabel, .dandy2-pdp .hourswrap__cap .belowfold__title { color: var(--d2-white); text-shadow: 2px 2px 0 rgb(0 0 0 / 45%); }
 .dandy2-pdp .hoursfoot { position: relative; z-index: 4; background: var(--d2-brown); color: var(--d2-white); text-align: center; padding: 16px 20px 14px; font-family: var(--d2-display); font-weight: 900; font-size: 20px; text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--d2-brown); }
-.dandy2-pdp .hoursfoot a { color: var(--d2-orange); text-decoration: underline; text-underline-offset: 4px; }
+.dandy2-pdp .hoursfoot a { color: var(--d2-orange); text-decoration: underline; text-underline-offset: 4px; margin-left: .45em; }
 @media (max-width: 800px) {
   .dandy2-pdp .kbeats { grid-template-columns: 1fr; gap: 20px; }
 }
