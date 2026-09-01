@@ -30,7 +30,7 @@
     "content": {
       "type": "dandy-page-content",
       "settings": {
-        "fallback_content": "<h2>Final accessibility statement required</h2><p>[FINAL POLICY REQUIRED: standard or goal, audit date and method, known limitations, supported browsers and assistive technologies, feedback method, response target, remediation process, and last-updated date.]</p><p>If you encounter a barrier in this development preview, contact hello@foreverdandy.com with the page, task, device, browser, and assistive technology involved.</p>",
+        "fallback_content": "<h2>Final accessibility statement required</h2><p>[FINAL POLICY REQUIRED: standard or goal, audit date and method, known limitations, supported browsers and assistive technologies, feedback method, response target, remediation process, and last-updated date.]</p><p>If you encounter a barrier in this development preview, contact support@foreverdandy.com with the page, task, device, browser, and assistive technology involved.</p>",
         "copy_status": "missing-final-copy"
       }
     }
