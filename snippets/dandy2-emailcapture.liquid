@@ -24,7 +24,12 @@
       <h2 class="d2cap__h" id="d2cap-h">Take <em>10% off.</em></h2>
       <p class="d2cap__sub">One email, one code, no spam beyond the occasional batch report and restock note.</p>
     </div>
-    {%- form 'customer', class: 'd2cap__form' -%}
+    {%- comment -%}
+      Explicit id matters: Shopify's default is id="contact_form", which is also the
+      anchor in the form's post URL — after a native submit the reload jumps to that
+      element at the bottom of the page.
+    {%- endcomment -%}
+    {%- form 'customer', id: 'D2CapBandForm', class: 'd2cap__form' -%}
       <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off">
       <label class="d2cap__label" for="d2cap-email">Email address</label>
       <div class="d2cap__row">
@@ -48,7 +53,7 @@
     <p class="d2cap__kick">Before you go</p>
     <h2 class="d2cap__h" id="d2modal-h"><em>10% off</em> your first order.</h2>
     <p class="d2cap__sub">Rocky insisted. Drop your email and the code is yours.</p>
-    {%- form 'customer', class: 'd2cap__form' -%}
+    {%- form 'customer', id: 'D2CapModalForm', class: 'd2cap__form' -%}
       <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off,modal">
       <label class="d2cap__label" for="d2modal-email">Email address</label>
       <div class="d2cap__row">
@@ -68,7 +73,7 @@
     const company = scope.dataset.company, list = scope.dataset.list, code = scope.dataset.code;
     if (!company || !list) return; // not configured: native Shopify form handles it
     scope.querySelectorAll('form').forEach(form => {
-      form.addEventListener('submit', async (e) => {
+      const onSubmit = async (e) => {
         e.preventDefault();
         const email = form.querySelector('input[type="email"]')?.value?.trim();
         if (!email) return;
@@ -96,12 +101,13 @@
           try { localStorage.setItem('d2capture', Date.now()); } catch {}
         } catch {
           // Klaviyo unreachable: fall back to the native Shopify customer form
-          form.removeEventListener('submit', arguments.callee);
+          form.removeEventListener('submit', onSubmit);
           form.submit();
         } finally {
           if (btn) { btn.textContent = was; btn.disabled = false; }
         }
-      });
+      };
+      form.addEventListener('submit', onSubmit);
     });
   });
 
