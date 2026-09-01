@@ -336,6 +336,106 @@ class DandyVirtualRouter extends HTMLElement {
   }
 }
 
+/* FAQ groups behave as an accordion: opening one question closes the rest of its
+   group, and both directions animate. Covers the dandy2 `.faq` groups and the
+   legacy `.dandy-faq-list` groups, which share the details/summary shape.
+   The `toggle` listeners elsewhere keep firing, so faq_engagement is unaffected. */
+const FAQ_GROUP_SELECTOR = '.faq, .dandy-faq-list';
+const FAQ_DURATION = 260;
+const FAQ_EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
+
+const faqAnimations = new WeakMap();
+const wiredFaqGroups = new WeakSet();
+
+const faqReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const animateFaqItem = (item, from, to, onFinish) => {
+  faqAnimations.get(item)?.cancel();
+  faqAnimations.delete(item);
+
+  if (faqReducedMotion() || typeof item.animate !== 'function') {
+    onFinish?.();
+    return;
+  }
+
+  // border-box keeps the measured offsetHeight and the animated height the same
+  item.style.overflow = 'hidden';
+  item.style.boxSizing = 'border-box';
+
+  const animation = item.animate(
+    { height: [`${from}px`, `${to}px`] },
+    { duration: FAQ_DURATION, easing: FAQ_EASING }
+  );
+  faqAnimations.set(item, animation);
+
+  const reset = () => {
+    item.style.overflow = '';
+    item.style.boxSizing = '';
+    faqAnimations.delete(item);
+  };
+  animation.addEventListener('finish', () => { reset(); onFinish?.(); });
+  animation.addEventListener('cancel', reset);
+};
+
+/* The animated height is border-box, so both ends need the item's own frame added
+   back: offsetHeight of the summary carries neither the details' padding nor its
+   border, and scrollHeight carries the padding but not the border. Without this the
+   animation lands a few pixels short and snaps on the last frame. */
+const faqFrame = (item) => {
+  const styles = window.getComputedStyle(item);
+  const border = parseFloat(styles.borderTopWidth) + parseFloat(styles.borderBottomWidth);
+  const padding = parseFloat(styles.paddingTop) + parseFloat(styles.paddingBottom);
+  return { border, padding };
+};
+
+const collapseFaqItem = (item) => {
+  if (!item.open) return;
+  const summary = item.querySelector('summary');
+  const { border, padding } = faqFrame(item);
+  const collapsed = (summary ? summary.offsetHeight : 0) + border + padding;
+  animateFaqItem(item, item.offsetHeight, collapsed, () => {
+    item.open = false;
+  });
+};
+
+const expandFaqItem = (item) => {
+  if (item.open) return;
+  const start = item.offsetHeight;
+  item.open = true;
+  animateFaqItem(item, start, item.scrollHeight + faqFrame(item).border);
+};
+
+const wireFaqGroup = (group) => {
+  if (wiredFaqGroups.has(group) || !group.querySelector('details')) return;
+  wiredFaqGroups.add(group);
+
+  group.addEventListener('click', (event) => {
+    const summary = event.target.closest('summary');
+    if (!summary) return;
+
+    const item = summary.closest('details');
+    // ignore nested groups: each group only drives its own questions
+    if (!item || item.closest(FAQ_GROUP_SELECTOR) !== group) return;
+
+    event.preventDefault();
+    if (item.open) {
+      collapseFaqItem(item);
+      return;
+    }
+    group.querySelectorAll('details[open]').forEach((other) => {
+      if (other !== item) collapseFaqItem(other);
+    });
+    expandFaqItem(item);
+  });
+};
+
+const wireFaqGroups = (root = document) => {
+  root.querySelectorAll?.(FAQ_GROUP_SELECTOR).forEach(wireFaqGroup);
+};
+
+wireFaqGroups();
+document.addEventListener('shopify:section:load', (event) => wireFaqGroups(event.target));
+
 if (!customElements.get('dandy-gallery')) customElements.define('dandy-gallery', DandyGallery);
 if (!customElements.get('dandy-purchase')) customElements.define('dandy-purchase', DandyPurchase);
 if (!customElements.get('dandy-header')) customElements.define('dandy-header', DandyHeader);

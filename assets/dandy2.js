@@ -124,7 +124,7 @@
             body: JSON.stringify({ items: [main, { id: trial.id, quantity: 1 }] }),
           }).then((r) => {
             if (!r.ok) throw new Error('add ' + r.status);
-            window.location.href = form.action.replace(/\/add\/?$/, '');
+            document.dispatchEvent(new CustomEvent('dandy2:cart:open'));
           }).catch(() => form.submit());
         });
       }

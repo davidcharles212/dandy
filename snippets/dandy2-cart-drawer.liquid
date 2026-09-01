@@ -35,7 +35,7 @@
     <footer class="d2cart__foot" data-d2-cart-foot hidden>
       <div class="d2cart__row"><span>Subtotal</span><b data-d2-cart-total>$0.00</b></div>
       <p class="d2cart__ship">Shipping is $5.95 on a single one-time pack, and <b>free</b> on subscriptions and 3- or 5-packs. Calculated at checkout.</p>
-      <a class="cta" href="{{ routes.cart_url }}">Checkout</a>
+      <a class="cta" href="/checkout">Checkout</a>
       {% render 'dandy2-trustbadges' %}
       <p class="d2cart__states">21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, NE, ND, RI, TN, UT, VT, WV or WI, <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.</p>
     </footer>
@@ -105,6 +105,35 @@
 
   // header cart icon opens the drawer instead of navigating
   document.querySelectorAll('.d2head__cart').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(); }));
+
+  // Two dandy2 sections on one page would render the chrome header twice and run
+  // this script twice. The document-level listeners below must only ever be
+  // installed once, or a single add to cart would post twice.
+  if (window.dandy2CartDelegated) return;
+  window.dandy2CartDelegated = true;
+
+  // anything on the page can ask for the bag
+  document.addEventListener('dandy2:cart:open', () => open());
+
+  // Add to cart opens the bag instead of leaving the page. The section scripts own
+  // the not-buyable and order-bump cases and call preventDefault on those, so any
+  // submit still unhandled here is a plain single-line add.
+  document.addEventListener('submit', (e) => {
+    const form = e.target;
+    if (!(form instanceof HTMLFormElement) || !form.matches('form.buyform')) return;
+    if (e.defaultPrevented || form.dataset.buyable !== 'true') return;
+    e.preventDefault();
+    const button = form.querySelector('[type="submit"]');
+    if (button) button.disabled = true;
+    fetch(form.action.replace(/\/add\/?$/, '/add.js'), {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form),
+    })
+      .then(r => { if (!r.ok) throw new Error('add ' + r.status); return r.json(); })
+      .then(() => { if (button) button.disabled = false; open(); })
+      .catch(() => { form.submit(); }); // fall back to the native post
+  });
 
   // quantity controls
   root.addEventListener('click', e => {
