@@ -92,10 +92,10 @@
 
       <div class="doorpane" data-d2-pane="one" hidden>
         <div class="qrows" role="radiogroup" aria-label="One-time options">
-          <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="1" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Buy 1</b><small class="qrow__sub">1 pouch, plus $5.95 shipping</small></span><span class="qrow__side"><b class="qrow__unit">$59.99<small>/pouch</small></b></span></label>
-          <label class="qrow qrow--anchor"><input type="radio" name="d2one-{{ section.id }}" value="3" data-d2-one checked><span class="qrow__chip">Most popular</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Buy 2, get 1 free</b><small class="qrow__sub">3 pouches, <em class="free">free shipping</em></small></span><span class="qrow__side"><s class="qrow__was">$59.99</s><b class="qrow__unit">$39.99<small>/pouch</small></b><small class="qrow__total">$119.98 total</small></span></label>
-          <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="5" data-d2-one><span class="qrow__chip qrow__chip--best">Best value</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Buy 3, get 2 free</b><small class="qrow__sub">5 pouches, <em class="free">free shipping</em></small></span><span class="qrow__side"><s class="qrow__was">$59.99</s><b class="qrow__unit">$35.99<small>/pouch</small></b><small class="qrow__total">$179.97 total</small></span></label>
-          <label class="qrow qrow--trial"><input type="radio" name="d2one-{{ section.id }}" value="trial" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Sampler</b><small class="qrow__sub">10 gummies, plus $5.95 shipping</small></span><span class="qrow__side"><b class="qrow__unit">$24.99</b></span></label>
+          <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="1" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Buy 1</b><small class="qrow__sub">30 gummies</small></span><span class="qrow__side"><b class="qrow__unit">$59.99</b><small class="qrow__ship">+ $5.95 shipping</small></span></label>
+          <label class="qrow qrow--anchor"><input type="radio" name="d2one-{{ section.id }}" value="3" data-d2-one checked><span class="qrow__chip">Most popular</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Buy 2, get 1 free</b><small class="qrow__sub">90 gummies, <em class="free">free shipping</em></small></span><span class="qrow__side"><b class="qrow__unit">$39.99<small>/pouch</small></b><small class="qrow__total">$119.98 total</small></span></label>
+          <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="5" data-d2-one><span class="qrow__chip qrow__chip--best">Best value</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Buy 3, get 2 free</b><small class="qrow__sub">150 gummies, <em class="free">free shipping</em></small></span><span class="qrow__side"><b class="qrow__unit">$35.99<small>/pouch</small></b><small class="qrow__total">$179.97 total</small></span></label>
+          <label class="qrow qrow--trial"><input type="radio" name="d2one-{{ section.id }}" value="trial" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Sampler</b><small class="qrow__sub">10 gummies</small></span><span class="qrow__side"><b class="qrow__unit">$24.99</b><small class="qrow__ship">+ $5.95 shipping</small></span></label>
         </div>
       </div>
 
@@ -116,12 +116,6 @@
           <button type="submit" class="cta" data-d2-cta>Start monthly · $47.99</button>
           <p class="chargeline" data-d2-chargeline hidden></p>
         </div>
-        <label class="bump" data-copy-status="aggressive-draft">
-          <input type="checkbox" data-d2-bump>
-          <span class="bump__box" aria-hidden="true"></span>
-          <span class="bump__txt"><b>Add a sampler, $24.99</b><span>10 gummies for the bag or desk drawer. One-time add-on.</span></span>
-          <img class="bump__img" src="{{ 'dandy-gummy-10.png' | asset_url }}" alt="" width="120" height="120" loading="lazy">
-        </label>
         <p class="previewnote" data-d2-previewnote hidden></p>
       </form>
       </div>
@@ -144,13 +138,23 @@
   {% comment %} ---------- 1. Four ingredients (photo tiles; images generated 2026-09-01, see workspace/dandy/pdp-redesign/ingredients/audit.md) ---------- {% endcomment %}
   <section class="belowfold belowfold--first" aria-labelledby="d2-inside-{{ section.id }}">
     <div class="belowfold__inner">
-      <h2 class="belowfold__title belowfold__title--center belowfold__title--oneline" id="d2-inside-{{ section.id }}">Our simple ingredients.</h2>
+      <h2 class="belowfold__title belowfold__title--center belowfold__title--oneline" id="d2-inside-{{ section.id }}">Our star ingredients.</h2>
       <div class="tiles" data-copy-status="aggressive-draft">
         <figure class="tile tile--hero"><img src="{{ 'dandy2-ing-kratom.webp' | asset_url }}" alt="Kratom trees growing in a Southeast Asian forest" width="1000" height="750" loading="lazy"><figcaption><b>Natural kratom leaf</b><span>35 mg active alkaloids per gummy</span></figcaption></figure>
-        <figure class="tile"><img src="{{ 'dandy2-ing-berries.webp' | asset_url }}" alt="Fresh mixed berries" width="1000" height="750" loading="lazy"><figcaption><b>Real berry flavor</b><span>Natural fruit extracts, nothing artificial</span></figcaption></figure>
-        <figure class="tile"><img src="{{ 'dandy2-ing-sugar.webp' | asset_url }}" alt="Cut sugarcane and raw cane sugar" width="1000" height="750" loading="lazy"><figcaption><b>Organic cane sugar</b><span>A touch of sweetness, 20 calories per gummy</span></figcaption></figure>
-        <figure class="tile"><img src="{{ 'dandy2-ing-pectin.webp' | asset_url }}" alt="Apples and citrus, the plant sources of pectin" width="1000" height="750" loading="lazy"><figcaption><b>Pectin base</b><span>Natural apple pectin, plant-based</span></figcaption></figure>
+        <figure class="tile"><img src="{{ 'dandy2-ing-berries.webp' | asset_url }}" alt="Fresh mixed berries" width="1000" height="750" loading="lazy"><figcaption><b>Real berry flavor</b><span>Natural flavor, colored with carrot and blueberry</span></figcaption></figure>
+        <figure class="tile"><img src="{{ 'dandy2-ing-tapioca.webp' | asset_url }}" alt="Golden tapioca syrup with cassava root and tapioca pearls" width="1000" height="750" loading="lazy"><figcaption><b>Organic tapioca syrup</b><span>A touch of sweetness, 20 calories per gummy</span></figcaption></figure>
+        <figure class="tile"><img src="{{ 'dandy2-ing-pectin.webp' | asset_url }}" alt="Apples and citrus, the plant sources of pectin" width="1000" height="750" loading="lazy"><figcaption><b>Pectin base</b><span>Plant-based, no gelatin</span></figcaption></figure>
       </div>
+      <details class="inglist">
+        <summary>Full ingredient list</summary>
+        <div class="inglist__body">
+          <p class="inglist__active"><b>Active:</b> Kratom leaf extract (Mitragyna speciosa, leaf), 35 mg mitragynine per gummy.</p>
+          <p class="inglist__label">Other ingredients</p>
+          <ul class="inglist__pills">
+            <li>Organic tapioca syrup</li><li>Organic cane sugar</li><li>Purified water</li><li>Pectin</li><li>Natural flavoring</li><li>Citric acid</li><li>Sucralose</li><li>Sodium citrate</li><li>Natural color (from carrots and blueberry)</li>
+          </ul>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -178,7 +182,7 @@
   {% comment %} ---------- 3. Customer survey + real reviews ---------- {% endcomment %}
   <section class="belowfold belowfold--dark" aria-labelledby="d2-stats-{{ section.id }}" data-copy-status="aggressive-draft">
     <div class="belowfold__inner">
-      <h2 class="belowfold__title belowfold__title--center" id="d2-stats-{{ section.id }}">Real people, real results.</h2>
+      <h2 class="belowfold__title belowfold__title--center belowfold__title--stats" id="d2-stats-{{ section.id }}">Real people, real results.</h2>
       <div class="stats">
         <div class="stats__hero"><em>96%</em><span>felt more focused</span></div>
         <div class="stats__row">

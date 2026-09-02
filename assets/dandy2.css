@@ -1522,3 +1522,37 @@ html.d2age-lock { overflow: hidden; }
 @media (max-width: 800px) { .dandy2-pdp .belowfold.belowfold--first { padding-top: 4px; } }
 .dandy2-pdp .bump__txt span, .dandy2-pdp .tile span, .dandy2-pdp .kcard__intro .kcard__lead { text-wrap: balance; }
 .dandy2-pdp .kcard__intro .kcard__plant { height: 116px; }
+
+/* ==========================================================
+   GUMMY PDP ROUND 4 (2026-09-01): David's third review.
+   ========================================================== */
+/* rows: shipping sits under the price, totals sit a touch lower, no struck prices */
+.dandy2-pdp .qrow__ship { font-size: 12px; font-weight: 600; color: var(--d2-brown); opacity: .7; white-space: nowrap; margin-top: 3px; }
+.dandy2-pdp .qrow__total { margin-top: 4px; }
+.dandy2-pdp .qrow__side { gap: 0; }
+/* kratom card: Read more hugs the lead, chevron instead of a plus */
+.dandy2-pdp .kcard__intro { margin-bottom: 0; }
+.dandy2-pdp .kread { margin: 4px 0 16px; }
+.dandy2-pdp .kread summary::after { content: ''; width: 8px; height: 8px; border-right: 2.5px solid var(--d2-brown); border-bottom: 2.5px solid var(--d2-brown); transform: translateY(-3px) rotate(45deg); transition: transform .18s ease; }
+.dandy2-pdp .kread[open] summary::after { content: ''; transform: translateY(2px) rotate(225deg); }
+/* survey: heading on one line, bigger tile copy */
+.dandy2-pdp .belowfold__title--stats { white-space: nowrap; font-size: clamp(22px, 6.9vw, 40px); }
+.dandy2-pdp .stat span { font-size: 14px; line-height: 1.25; }
+.dandy2-pdp .stat { padding: 14px 6px 12px; }
+/* full ingredient list accordion */
+.dandy2-pdp .inglist { margin-top: 14px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); padding: 0 16px; }
+.dandy2-pdp .inglist summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; cursor: pointer; list-style: none; font-family: var(--d2-display); font-weight: 800; font-size: 16px; letter-spacing: .03em; text-transform: uppercase; }
+.dandy2-pdp .inglist summary::-webkit-details-marker { display: none; }
+.dandy2-pdp .inglist summary::after { content: ''; flex: none; width: 9px; height: 9px; margin-right: 4px; border-right: 2.5px solid var(--d2-brown); border-bottom: 2.5px solid var(--d2-brown); transform: translateY(-2px) rotate(45deg); transition: transform .18s ease; }
+.dandy2-pdp .inglist[open] summary::after { transform: translateY(3px) rotate(225deg); }
+.dandy2-pdp .inglist[open] summary { border-bottom: 1px dashed rgb(40 17 12 / 25%); }
+.dandy2-pdp .inglist__body { padding: 12px 0 14px; }
+.dandy2-pdp .inglist__active { margin: 0 0 12px; font-size: 14.5px; line-height: 1.45; text-wrap: pretty; }
+.dandy2-pdp .inglist__active b { font-family: var(--d2-display); font-weight: 800; text-transform: uppercase; letter-spacing: .03em; font-size: 13px; }
+.dandy2-pdp .inglist__label { margin: 0 0 8px; font-family: var(--d2-display); font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--d2-brown-50); }
+.dandy2-pdp .inglist__pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.dandy2-pdp .inglist__pills li { padding: 6px 11px 5px; border: 1.5px solid rgb(40 17 12 / 30%); border-radius: var(--d2-r-pill); background: var(--d2-orange-5); font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap; }
+@media (min-width: 801px) { .dandy2-pdp .inglist { max-width: 760px; margin-inline: auto; } }
+.dandy2-pdp .belowfold__title--stats, .dandy2-pdp .belowfold__title--oneline { max-width: none; }
+.dandy2-pdp .belowfold__title--stats { font-size: clamp(22px, 7.6vw, 40px); }
+.dandy2-pdp .tile figcaption { background: linear-gradient(180deg, rgb(40 17 12 / 0%), rgb(40 17 12 / 62%) 45%, rgb(40 17 12 / 82%)); }
