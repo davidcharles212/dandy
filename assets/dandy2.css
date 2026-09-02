@@ -280,8 +280,7 @@
 
 /* finale */
 .dandy2-pdp .belowfold--finale { background: var(--d2-orange); border-top: 2px solid var(--d2-brown); border-bottom: 2px solid var(--d2-brown); }
-.dandy2-pdp .belowfold--finale .steplabel, .dandy2-pdp .belowfold--finale .belowfold__title { color: var(--d2-white); }
-.dandy2-pdp .belowfold--finale .steplabel b { background: var(--d2-white); color: var(--d2-orange); }
+.dandy2-pdp .belowfold--finale .belowfold__title { color: var(--d2-white); }
 .dandy2-pdp .belowfold--finale .recapcard { box-shadow: 6px 6px 0 rgb(0 0 0 / 30%); }
 @media (max-width: 800px) {
   .dandy2-pdp .gears { grid-template-columns: 1fr; }
@@ -348,7 +347,6 @@
 .dandy2-pdp .kcard { max-width: 780px; margin: 0 auto; background: var(--d2-white); border: 2px solid var(--d2-brown); border-radius: var(--d2-r-24); padding: 42px 48px; box-shadow: var(--d2-shadow); }
 .dandy2-pdp .kcard__row { display: grid; grid-template-columns: 1fr auto; gap: 12px 24px; align-items: end; }
 .dandy2-pdp .kcard__plant { height: 256px; width: auto; justify-self: end; margin-right: 10px; }
-.dandy2-pdp .kcard__pill { display: inline-flex; align-items: center; padding: 5px 14px 4px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-pill); font-family: var(--d2-display); font-weight: 800; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
 .dandy2-pdp .kcard__title { margin: 0 0 16px; font-family: var(--d2-display); font-weight: 900; font-size: clamp(30px, 3vw, 40px); line-height: .95; text-transform: uppercase; }
 .dandy2-pdp .kcard__lead { margin: 0 0 22px; font-size: 17.5px; line-height: 1.6; font-weight: 500; }
 .dandy2-pdp .kcard__chips { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin: 0 0 20px; }
@@ -897,7 +895,6 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 }
 
 /* ---------- home: "Kratom, honestly" primer (K2) — MOBILE FIRST ---------- */
-.dandy2-home .k2tag { display: block; width: max-content; margin: 12px auto 16px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-pill); padding: 5px 14px 4px; font-family: var(--d2-display); font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
 .dandy2-home .qa { display: grid; gap: 8px; }
 .dandy2-home .qitem { border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: var(--d2-shadow); overflow: hidden; }
 .dandy2-home .qitem[open] { background: var(--d2-orange-5); }
@@ -916,8 +913,7 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
 /* ---------- email capture (10% off) — MOBILE FIRST ---------- */
 .dandy2-pdp .d2cap { border-top: 2px solid var(--d2-brown); background: var(--d2-brown); color: var(--d2-white); padding: 28px 18px 30px; }
 .dandy2-pdp .d2cap__inner { max-width: 1100px; margin: 0 auto; display: grid; gap: 16px; }
-.dandy2-pdp .d2cap__kick { margin: 0 0 2px; font-family: var(--d2-display); font-weight: 800; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
-.dandy2-pdp .d2cap__h { margin: 0 0 6px; font-family: var(--d2-display); font-weight: 900; font-size: clamp(32px, 9vw, 44px); line-height: .95; text-transform: uppercase; }
+.dandy2-pdp .d2cap__h { margin: 22px 0 6px; font-family: var(--d2-display); font-weight: 900; font-size: clamp(32px, 9vw, 44px); line-height: .95; text-transform: uppercase; }
 .dandy2-pdp .d2cap__sub { margin: 0; font-size: 15px; font-weight: 500; max-width: 46ch; }
 .dandy2-pdp .d2cap__label { position: absolute; left: -9999px; }
 .dandy2-pdp .d2cap__row { display: grid; gap: 10px; }
@@ -1059,8 +1055,6 @@ body:has(.dandy2-pdp) .shopify-section-group-footer-group { display: none !impor
   .dandy2-home .hhero__sub { text-align: left; }
   .dandy2-home .hhero__trust { justify-content: flex-start; }
 }
-/* eyebrow replaces the pill so it no longer reads as a button */
-.dandy2-pdp .eyebrow { margin: 0; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .08em; text-transform: uppercase; color: var(--d2-brown-50); }
 /* struck prices read red, live prices stay brown */
 .dandy2-pdp .qcard__p s, .dandy2-pdp .subhero__price s { color: #C0392B; text-decoration-color: #C0392B; }
 .dandy2-pdp .qcard__n { line-height: 1.05; }
@@ -1615,3 +1609,10 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-contact .nb { white-space: nowrap; }
 .dandy2-contact .ccards { padding-top: 90px; }
 .dandy2-contact .ccards__rocky { height: 100px; }
+
+/* ---------- headings that open a section (eyebrow removed 2026-09-02) ----------
+   The section label above these headings was a 23.8px display line with a 6px top margin.
+   The heading keeps the same offset from the section top so section rhythm is unchanged:
+   desktop 6 + 23.8 + the title's own 6px; mobile 6 + 23.8 (title margin is 0 there). */
+.dandy2-pdp .belowfold__title--open { margin-top: 36px; }
+@media (max-width: 800px) { .dandy2-pdp .belowfold__title--open { margin-top: 30px; } }
