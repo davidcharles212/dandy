@@ -1,55 +1,85 @@
-{% comment %} DANDY 2026, WHAT IS KRATOM guide. Category education; benefit language
-  carries aggressive-draft status pending legal review. {% endcomment %}
+{% comment %} DANDY 2026, WHAT IS KRATOM guide. Rebuilt 2026-09-02 from
+  workspace/dandy/pdp-redesign/kratom-guide-review/proposal.md. Category education;
+  reuses the gummy PDP components (kcard, kchip, faq, gcard2, cta). The origin and leaf
+  photographs are generated images (see kratom-guide-review/visuals/audit.md); the
+  pouch photograph is a real product shot. Copy carries aggressive-draft status pending
+  legal review; claims marked in the proposal as "verify" are unchanged here. {% endcomment %}
 {{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{%- assign url_coa = '/pages/contact?view=dandy2-coa' -%}
+{%- assign url_ship = '/pages/contact?view=dandy2-shipping' -%}
+{%- assign url_gummies = '/products/mixed-berry-kratom-gummies' -%}
 {% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
-<div class="dandy2-pdp dandy2-doc" data-copy-status="aggressive-draft">
+<div class="dandy2-pdp dandy2-doc dandy2-guide" data-copy-status="aggressive-draft">
   {% render 'dandy2-chrome-header' %}
   <main class="doc" id="DandyMain">
     <header class="doc__head">
-      <p class="steplabel steplabel--center">Start here</p>
       <h1 class="belowfold__title belowfold__title--center">What is kratom?</h1>
-      <p class="doc__lede">A leaf from <i>Mitragyna speciosa</i>, a Southeast Asian tree in the coffee family. Brewed and chewed there for centuries. Here’s the honest version, including the parts that aren’t flattering.</p>
+      <p class="doc__lede">Kratom is the leaf of Mitragyna speciosa, a tall evergreen in the coffee family native to Southeast Asia. Here is what it is, how Dandy uses it, and what to know before your first gummy.</p>
     </header>
 
-    <section class="doc__block doc__block--split">
-      <img class="halfimg" src="{{ 'dandy2-leaves-wide.webp' | asset_url }}" alt="Fresh kratom leaves" width="1200" height="669" loading="lazy">
+    <img class="halfimg guide__hero" src="{{ 'dandy2-guide-origin.webp' | asset_url }}" alt="Morning light through a misty Southeast Asian rainforest where kratom trees grow" width="1200" height="750" loading="eager">
+
+    <section class="doc__block doc__block--card" aria-labelledby="d2-guide-origin">
+      <div class="kcard">
+        <h2 class="kcard__title" id="d2-guide-origin">Where kratom comes from</h2>
+        <div class="kcard__intro">
+          <p class="kcard__lead">The kratom tree grows wild across Thailand, Malaysia, and Indonesia, in the same botanical family as coffee.</p>
+          <img class="kcard__plant" src="{{ 'dandy2-kratom-plant.webp' | asset_url }}" alt="Botanical illustration of Mitragyna speciosa, the kratom tree" width="380" height="467" loading="lazy">
+        </div>
+        <p class="kcard__body">For thousands of years, people there have brewed and chewed the leaf for a steady lift through long days of work and happy evenings after. Like coffee, it has been part of daily life in the places it grows for a very long time.</p>
+        <div class="kcard__chips">
+          <span class="kchip">{{ d2_gcheck }}Coffee-family botanical</span>
+          <span class="kchip">{{ d2_gcheck }}Thousands of years of use</span>
+          <span class="kchip">{{ d2_gcheck }}Grown in Southeast Asia</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc__block doc__block--split" aria-labelledby="d2-guide-leaf">
+      <img class="halfimg" src="{{ 'dandy2-guide-leaf.webp' | asset_url }}" alt="A single kratom leaf lit from behind, showing its pale midrib and veins" width="1200" height="750" loading="lazy">
       <div>
-        <h2>Where it comes from</h2>
-        <p>Kratom grows in Thailand, Malaysia, and Indonesia. Workers there have chewed the fresh leaf or brewed it as tea for generations, for steady energy through long days, and for ease afterwards.</p>
-        <p>The leaf contains naturally occurring alkaloids, the most talked-about being <b>mitragynine</b>. That’s the compound we measure, and it’s what “35 mg per gummy” refers to.</p>
+        <h2 id="d2-guide-leaf">What&rsquo;s in the leaf</h2>
+        <p>Kratom leaves hold a group of naturally occurring plant compounds called alkaloids. The best known is mitragynine, and it is the one Dandy measures.</p>
+        <p>When you see 35 mg on a Dandy pouch, that means 35 mg of mitragynine in each gummy. That number is what lets you know what you are getting every time, and it is why one Dandy gummy is the same as the next.</p>
       </div>
     </section>
 
-    <section class="doc__block doc__block--band">
-      <h2>What people use it for</h2>
-      <p>Reported experiences vary a lot between people, and by amount, food, and context. Commonly described: <b>steady energy, a lifted mood, and physical ease</b>. It is not a medicine and we make no medical claims.</p>
-      <div class="warnbar">How it feels differs person to person. That variability is exactly why every Dandy gummy is portioned to an exact 35&nbsp;mg, and why our guidance is always to start with one and wait.</div>
-    </section>
-
-    <section class="doc__block">
-      <h2>The three formats, plainly</h2>
-      <div class="testgrid">
-        <div class="testcard"><h3>Gummies</h3><p>Pre-portioned at 35 mg each. Easiest place to start, because the amount is decided for you.</p></div>
-        <div class="testcard"><h3>Loose leaf powder</h3><p>Milled leaf, measured by the gram on a scale. Cheapest per gram, most control, most effort.</p></div>
-        <div class="testcard"><h3>Extract capsules</h3><p>Concentrated and encapsulated, measured in milligrams. No taste, no prep.</p></div>
+    <section class="doc__block doc__block--split" aria-labelledby="d2-guide-gummy">
+      <img class="halfimg" src="{{ 'dandy2-leaves-wide.webp' | asset_url }}" alt="A pouch of Dandy Mixed Berry Kratom Gummies resting on kratom leaves" width="1200" height="669" loading="lazy">
+      <div>
+        <h2 id="d2-guide-gummy">From leaf to gummy</h2>
+        <p>Dandy starts with kratom leaf extract and portions it into a mixed berry gummy that holds 35 mg of mitragynine. Every batch goes to an independent lab before it ships, and every pouch carries its batch number, so you can read the report for the exact pouch in your hand.</p>
+        <div class="kcard__chips guide__facts">
+          <span class="kchip">{{ d2_gcheck }}35 mg per gummy</span>
+          <span class="kchip">{{ d2_gcheck }}Tested every batch</span>
+          <span class="kchip">{{ d2_gcheck }}Batch number on every pouch</span>
+        </div>
+        <p class="guide__link"><a href="{{ url_coa }}">Read the lab reports &rarr;</a></p>
       </div>
-      <div class="warnbar">These are <b>not interchangeable</b>. Grams of powder, a 35 mg gummy, and an extract capsule are different things, never convert one into another.</div>
     </section>
 
-    <section class="doc__block">
-      <h2>The honest cautions</h2>
-      <ul class="doclist">
-        <li>{{ d2_gcheck }} <b>Regular daily use can build tolerance and habit.</b> That’s real, it’s on our label, and it’s why we say start low and take breaks.</li>
-        <li>{{ d2_gcheck }} <b>It’s 21+.</b> Not for anyone pregnant or nursing, and not alongside medication without talking to your clinician.</li>
-        <li>{{ d2_gcheck }} <b>It’s restricted in some states.</b> We don’t ship to eighteen, <a href="/pages/contact?view=dandy2-shipping">see the list</a>.</li>
-        <li>{{ d2_gcheck }} <b>Drug tests.</b> Kratom alkaloids aren’t on standard panels, but specialised tests exist. If testing matters in your life, nobody can honestly promise you a result.</li>
-      </ul>
+    <section class="doc__block doc__block--band" aria-labelledby="d2-guide-first">
+      <h2 id="d2-guide-first">Your first gummy</h2>
+      <p>Everyone feels kratom a little differently, and things like food, timing, and your own body all play a part. That is why every Dandy gummy holds the same 35 mg, and why we suggest starting with one and giving it time before you decide on more.</p>
+      <p class="guide__last">Follow the label, keep it occasional, and take breaks. That is the whole method.</p>
     </section>
 
-    <section class="doc__block doc__block--cta">
-      <h2>Ready to try it?</h2>
-      <p>Start with the format that decides the amount for you.</p>
-      <a class="cta" href="/products/mixed-berry-kratom-gummies">Shop gummies, $47.99</a>
+    <section class="doc__block" aria-labelledby="d2-guide-faq">
+      <h2 id="d2-guide-faq">Good to know</h2>
+      <div class="faq">
+        <details><summary>Is kratom legal?</summary><p>Kratom is legal in 32 states. We don&rsquo;t ship to the other 18, <a href="{{ url_ship }}">here&rsquo;s the list</a>, and checkout checks your address before you pay.</p></details>
+        <details><summary>Who is Dandy for?</summary><p>Adults 21 and over. It is not for anyone pregnant or nursing, and if you take medication, talk with your doctor before trying it.</p></details>
+        <details><summary>Can kratom be habit-forming?</summary><p>With regular daily use, tolerance and habit can build. It&rsquo;s on our label, and it&rsquo;s why we say start low, take breaks, and let the label set the cap.</p></details>
+        <details><summary>Will it show on a drug test?</summary><p>Kratom&rsquo;s alkaloids aren&rsquo;t screened on standard panels, but specialized tests exist. If testing matters in your life, we can&rsquo;t promise a result.</p></details>
+        <details><summary>What else does Dandy make?</summary><p>Yes. Dandy also makes raw leaf powder and extract capsules. They are measured differently, so a gram of powder, a gummy, and a capsule are not the same amount and should not be swapped for one another. If you are new to kratom, the gummy is the easiest place to start, because the amount is decided for you.</p></details>
+      </div>
+    </section>
+
+    <section class="doc__block doc__block--cta" aria-labelledby="d2-guide-cta">
+      <h2 id="d2-guide-cta">Ready when you are.</h2>
+      <p>Start with the gummies. Every pouch holds 30 gummies at 35 mg each, tested every batch, and covered by our 30-day guarantee.</p>
+      {% render 'dandy2-guarantee' %}
+      <a class="cta" href="{{ url_gummies }}">Shop the gummies</a>
     </section>
   </main>
   {% render 'dandy2-chrome-footer' %}

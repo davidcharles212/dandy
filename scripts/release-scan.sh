@@ -15,6 +15,7 @@ patterns=(
   '\[ASSET V-'
   '\[FINAL [A-Z]'
   'data-development-marker='
+  'data-asset-status="placeholder"'
   '"development_preview"[[:space:]]*:[[:space:]]*true'
   '"design_preview_mode"[[:space:]]*:[[:space:]]*true'
   '"copy_status"[[:space:]]*:[[:space:]]*"aggressive-draft"'

@@ -294,7 +294,6 @@
 .dandy2-pdp .benefits i { grid-row: span 2; font-style: normal; font-size: 18px; line-height: 1.1; color: var(--d2-orange); }
 .dandy2-pdp .benefits b { font-family: var(--d2-display); font-weight: 900; font-size: 17px; line-height: 1; text-transform: uppercase; letter-spacing: .02em; }
 .dandy2-pdp .benefits span { font-size: 12.5px; font-weight: 500; line-height: 1.35; }
-.dandy2-pdp .chargeline { margin: 8px 0 0; text-align: center; font-size: 14.5px; color: var(--d2-brown-50); }
 
 /* ---------- V1 anatomy (what's in) ---------- */
 .dandy2-pdp .steplabel--center { text-align: center; }
@@ -1141,3 +1140,478 @@ html.d2age-lock { overflow: hidden; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .d2age { background: rgb(40 17 12 / 96%); }
 }
+
+/* ==========================================================
+   GUMMY PDP CONVERSION PASS (2026-09-01), mobile-first.
+   Appended so it wins by order; every rule stays namespaced.
+   ========================================================== */
+.dandy2-pdp .offer { gap: 12px; }
+.dandy2-pdp__grid { padding-bottom: 40px; }
+
+/* one-line proof: overlapping faces + rating */
+.dandy2-pdp .proofline { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.dandy2-pdp .faces { display: inline-flex; flex: none; }
+.dandy2-pdp .faces img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid var(--d2-white); box-shadow: 0 0 0 1.5px var(--d2-brown); background: var(--d2-orange-5); }
+.dandy2-pdp .faces img + img { margin-left: -8px; }
+.dandy2-pdp .ratingline { margin: 0; white-space: nowrap; font-size: clamp(11.5px, 3.45vw, 14px); letter-spacing: .03em; }
+
+/* benefit-led head */
+.dandy2-pdp .title { font-size: clamp(42px, 5vw, 60px); }
+.dandy2-pdp .desc { font-size: 16px; line-height: 1.45; }
+.dandy2-pdp .benefitrow { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6px; }
+.dandy2-pdp .benefitrow__rocky { height: 126px; width: auto; margin-bottom: -4px; }
+.dandy2-pdp .benefits { gap: 9px; margin: 0; }
+.dandy2-pdp .benefits li { grid-template-columns: 24px 1fr; }
+.dandy2-pdp .benefits i { display: grid; place-items: center; width: 22px; height: 22px; margin-top: -1px; }
+.dandy2-pdp .benefits i svg { width: 21px; height: 21px; }
+.dandy2-pdp .benefits span { font-size: 13px; }
+
+/* doors */
+.dandy2-pdp .door { padding: 10px 8px 8px; }
+
+/* subscription card: pouch first, shorter media */
+.dandy2-pdp .subhero__media { position: relative; height: 176px; overflow: hidden; border-bottom: 2px solid var(--d2-brown); border-radius: 14px 14px 0 0; background: var(--d2-brown); }
+.dandy2-pdp .subhero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: .92; }
+.dandy2-pdp .subhero__pouch { position: relative; display: block; height: 156px; width: auto; margin: 10px auto 0; filter: drop-shadow(0 8px 12px rgb(0 0 0 / 45%)); }
+.dandy2-pdp .subhero__main { padding: 14px 16px 13px; }
+.dandy2-pdp .subhero__name { font-size: 21px; }
+.dandy2-pdp .subhero__meta { margin: 2px 0 9px; font-size: 13.5px; }
+.dandy2-pdp .subhero__list { gap: 5px; }
+.dandy2-pdp .subhero__list b { font-weight: 800; }
+
+/* one-time cards: single-line names, savings */
+.dandy2-pdp .qgrid { margin-bottom: 8px; }
+.dandy2-pdp .qcard__n { white-space: nowrap; }
+.dandy2-pdp .qcard__m .free { font-style: normal; font-weight: 800; color: var(--d2-green-dark); }
+@media (max-width: 800px) {
+  .dandy2-pdp .qgrid { gap: 12px; }
+  .dandy2-pdp .qcard { padding: 12px 14px 10px; }
+  .dandy2-pdp .qcard__n { font-size: 18px; }
+  .dandy2-pdp .qcard__p { font-size: 19px; }
+}
+
+/* CTA + charged-today line (no mascot on the button) */
+.dandy2-pdp .ctawrap { display: grid; gap: 7px; margin-top: 2px; }
+.dandy2-pdp .cta { min-height: 56px; font-size: 20px; }
+.dandy2-pdp .bump { margin-top: 10px; }
+
+/* trust pills (one system, sticker style) */
+.dandy2-pdp .trustpills { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
+.dandy2-pdp .trustpills li, .dandy2-pdp .trustpills a { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 7px 10px 6px; border: 2px solid var(--d2-brown); border-radius: 12px; background: var(--d2-white); box-shadow: 3px 3px 0 var(--d2-brown); font-family: var(--d2-display); font-weight: 800; font-size: 13px; letter-spacing: .03em; line-height: 1.05; text-transform: uppercase; color: var(--d2-brown); text-decoration: none; }
+.dandy2-pdp .trustpills li:has(> a) { padding: 0; border: 0; box-shadow: none; }
+.dandy2-pdp .trustpills a { width: 100%; height: 100%; }
+.dandy2-pdp .trustpills i { flex: none; display: grid; place-items: center; width: 22px; height: 22px; color: var(--d2-orange); }
+.dandy2-pdp .trustpills i svg { width: 21px; height: 21px; }
+.dandy2-pdp .trustrow { margin-top: 10px; }
+.dandy2-pdp .shiprow { margin-top: 6px; gap: 12px; }
+.dandy2-pdp .shiprow__truck { height: 58px; }
+.dandy2-pdp .shiprow__txt { font-size: 15.5px; }
+.dandy2-pdp .utilline { margin: 2px 0 0; text-align: center; font-size: 13px; color: var(--d2-brown-50); }
+.dandy2-pdp .utilline a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* guarantee card: one system, two placements */
+.dandy2-pdp .gcard { position: relative; margin-top: 34px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: var(--d2-shadow); padding: 34px 18px 16px; text-align: center; }
+.dandy2-pdp .gcard__seal { position: absolute; top: -30px; left: 50%; transform: translateX(-50%) rotate(-6deg); display: grid; place-content: center; width: 66px; height: 66px; border-radius: 50%; background: var(--d2-orange); color: var(--d2-white); border: 2px solid var(--d2-brown); box-shadow: 3px 3px 0 var(--d2-brown); font-family: var(--d2-display); line-height: .9; text-transform: uppercase; }
+.dandy2-pdp .gcard__seal b { font-weight: 900; font-size: 24px; }
+.dandy2-pdp .gcard__seal small { font-size: 9px; font-weight: 800; letter-spacing: .1em; }
+.dandy2-pdp .gcard__seal em { font-style: normal; font-size: 7.5px; font-weight: 800; letter-spacing: .06em; margin-top: 2px; }
+.dandy2-pdp .gcard__eyebrow { margin: 0 0 4px; font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--d2-orange); }
+.dandy2-pdp .gcard__title { margin: 0 0 8px; font-family: var(--d2-display); font-weight: 900; font-size: 24px; line-height: .95; text-transform: uppercase; color: var(--d2-brown); }
+.dandy2-pdp .gcard__body { margin: 0 auto 10px; max-width: 40ch; font-size: 14.5px; line-height: 1.45; color: var(--d2-brown); }
+.dandy2-pdp .gcard__body a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-pdp .gcard__proof { display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 6px 12px 5px; border-radius: var(--d2-r-pill); background: var(--d2-orange-5); font-size: 13px; font-weight: 700; color: var(--d2-green-dark); }
+.dandy2-pdp .gcard__proof svg { flex: none; }
+.dandy2-pdp .recapcard .gcard { margin-top: 30px; box-shadow: var(--d2-shadow); text-align: center; }
+
+/* section rhythm: close the dead zones */
+.dandy2-pdp .belowfold--first { padding-top: 24px; }
+.dandy2-pdp .belowfold__title { margin-bottom: 14px; }
+.dandy2-pdp .kcard__title { margin-bottom: 12px; }
+.dandy2-pdp .statbars--solo { grid-template-columns: minmax(0, 720px); margin-top: 26px; }
+.dandy2-pdp .statsrc { margin-top: 14px; }
+.dandy2-pdp .daycheck__head { padding-top: 40px; }
+.dandy2-pdp .daycheck__rows { margin-top: 22px; }
+.dandy2-pdp .dayrow__a { font-size: 24px; }
+.dandy2-pdp .daycheck__punch { padding-bottom: 30px; font-size: 16.5px; font-weight: 600; max-width: 34ch; margin-inline: auto; }
+.dandy2-pdp .recapcard { margin-top: 132px; }
+
+/* real buttons in the sticky bar and recap */
+.dandy2-pdp .stickybar__btn, .dandy2-pdp .cta--inline { cursor: pointer; -webkit-appearance: none; appearance: none; }
+.dandy2-pdp .cta--inline { min-height: 54px; padding-inline: 26px; }
+
+@media (max-width: 800px) {
+  .dandy2-pdp__grid { padding-bottom: 28px; gap: 18px; }
+  .dandy2-pdp .title { font-size: 42px; }
+  .dandy2-pdp .benefits { grid-template-columns: 1fr; gap: 8px; }
+  .dandy2-pdp .benefits span { font-size: 12.5px; }
+  .dandy2-pdp .benefitrow__rocky { height: 118px; }
+  .dandy2-pdp .belowfold--first { padding-top: 22px; }
+  .dandy2-pdp .anatomy { margin-top: 4px; }
+  .dandy2-pdp .recapcard { margin-top: 120px; }
+  .dandy2-pdp .duel__body p { font-size: 13.5px; }
+}
+@media (min-width: 801px) {
+  .dandy2-pdp .subhero__media { height: 200px; }
+  .dandy2-pdp .subhero__pouch { height: 180px; }
+  .dandy2-pdp .trustpills { grid-template-columns: 1fr 1fr; }
+}
+
+/* 2026-09-01 QA fixes: kratom chips wrap on phones; peeking raccoon clipped the recap title */
+@media (max-width: 800px) {
+  .dandy2-pdp .kcard__row { grid-template-columns: 1fr; gap: 12px; }
+  .dandy2-pdp .kcard__chips { flex-direction: row; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .dandy2-pdp .kchip { white-space: nowrap; }
+  .dandy2-pdp .kcard__facts { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+  .dandy2-pdp .kcard__facts .kcard__chips { flex-basis: 100%; }
+  .dandy2-pdp .kcard__plant { height: 132px; justify-self: end; margin-top: -58px; }
+  .dandy2-pdp .recapcard { margin-top: 146px; }
+}
+
+/* 2026-09-01 visual QA round 2 */
+.dandy2-pdp .subhero { margin-top: 10px; }
+.dandy2-pdp .subhero__stamp { z-index: 4; top: -16px; right: 8px; }
+.dandy2-pdp .subhero__list li { gap: 8px; }
+.dandy2-pdp .subhero__list li > span { display: inline; }
+.dandy2-pdp .trialrow { text-wrap: balance; }
+.dandy2-pdp .trustpills li, .dandy2-pdp .trustpills a { min-height: 48px; line-height: 1.1; }
+.dandy2-pdp .trustpills span { display: block; }
+.dandy2-pdp .utilline { line-height: 1.5; }
+.dandy2-pdp .gcard { padding-top: 46px; }
+.dandy2-pdp .gcard__seal { top: -28px; width: 72px; height: 72px; }
+.dandy2-pdp .gcard__seal b { font-size: 25px; }
+.dandy2-pdp .gcard__seal small { font-size: 9.5px; }
+.dandy2-pdp .gcard__seal em { font-size: 8.5px; }
+.dandy2-pdp .gcard__proof { white-space: nowrap; }
+.dandy2-pdp .belowfold__title, .dandy2-pdp .kcard__title { text-wrap: balance; }
+.dandy2-pdp .benefits span, .dandy2-pdp .duel__body p, .dandy2-pdp .faq p, .dandy2-pdp .gcard__body { text-wrap: pretty; }
+.dandy2-pdp .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; list-style: none; }
+.dandy2-pdp .faq summary::-webkit-details-marker { display: none; }
+.dandy2-pdp .faq summary::after { content: '+'; flex: none; width: 26px; height: 26px; display: grid; place-items: center; border: 2px solid var(--d2-brown); border-radius: 50%; font-family: var(--d2-display); font-weight: 900; font-size: 18px; line-height: 1; }
+.dandy2-pdp .faq details[open] summary::after { content: '–'; background: var(--d2-orange); color: var(--d2-white); }
+@media (max-width: 800px) {
+  .dandy2-pdp { padding-bottom: 84px; }
+  .dandy2-pdp .dayrow__q, .dandy2-pdp .dayrow__a { font-size: 19px; white-space: nowrap; }
+  .dandy2-pdp .dayrow__a svg { width: 18px; height: 18px; }
+  .dandy2-pdp .benefitrow__rocky { height: 104px; }
+}
+
+.dandy2-pdp .gcard { padding-top: 52px; }
+
+/* ==========================================================
+   GUMMY PDP ROUND 2 (2026-09-01): David's review round.
+   Appended so it wins by order; every rule stays namespaced.
+   ========================================================== */
+/* doors */
+.dandy2-pdp .door small { font-size: 12px; }
+.dandy2-pdp .doors { scroll-margin-top: 84px; }
+
+/* subscription card: savings tag beside the price, calmer meta line */
+.dandy2-pdp .subhero__row { align-items: center; }
+.dandy2-pdp .subhero__price { display: inline-flex; align-items: center; gap: 8px; }
+.dandy2-pdp .savetag { font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .04em; line-height: 1; text-transform: uppercase; color: var(--d2-green-dark); background: rgb(87 186 79 / 20%); border-radius: var(--d2-r-pill); padding: 5px 9px 4px; white-space: nowrap; }
+.dandy2-pdp .subhero__meta { margin: 3px 0 10px; font-size: 13.5px; font-weight: 500; color: var(--d2-brown); opacity: .72; }
+
+/* charged-today line only when shipping changes the total */
+
+/* one-time door: stacked radio rows, one chip, shipping stated once below */
+.dandy2-pdp .qrows { display: grid; gap: 10px; }
+.dandy2-pdp .qrow { position: relative; display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 12px; padding: 13px 14px 12px; border: 2px solid rgb(40 17 12 / 28%); border-radius: 14px; background: var(--d2-white); cursor: pointer; }
+.dandy2-pdp .qrow input { position: absolute; opacity: 0; pointer-events: none; }
+.dandy2-pdp .qrow__radio { width: 22px; height: 22px; border: 2px solid var(--d2-brown-50); border-radius: 50%; background: var(--d2-white); display: grid; place-items: center; }
+.dandy2-pdp .qrow__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--d2-orange); opacity: 0; }
+.dandy2-pdp .qrow:has(input:checked) { border-color: var(--d2-brown); background: var(--d2-orange-5); box-shadow: var(--d2-shadow); }
+.dandy2-pdp .qrow:has(input:checked) .qrow__radio { border-color: var(--d2-brown); }
+.dandy2-pdp .qrow:has(input:checked) .qrow__radio::after { opacity: 1; }
+.dandy2-pdp .qrow__main { display: grid; gap: 3px; min-width: 0; }
+.dandy2-pdp .qrow__n { font-family: var(--d2-display); font-weight: 900; font-size: 19px; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+.dandy2-pdp .qrow__sub { font-size: 13px; font-weight: 500; color: var(--d2-brown); opacity: .7; white-space: nowrap; }
+.dandy2-pdp .qrow__price { font-family: var(--d2-display); font-weight: 900; font-size: 20px; line-height: 1; white-space: nowrap; text-align: right; }
+.dandy2-pdp .qrow__price s { font-weight: 700; font-size: 13px; color: var(--d2-brown-50); margin-right: 6px; }
+.dandy2-pdp .qrow__chip { position: absolute; top: -12px; right: 12px; z-index: 2; white-space: nowrap; background: var(--d2-green-dark); color: var(--d2-white); font-family: var(--d2-display); font-weight: 800; font-size: 11.5px; letter-spacing: .05em; line-height: 1; text-transform: uppercase; padding: 5px 10px 4px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-pill); }
+.dandy2-pdp .qrow--anchor { margin-top: 6px; }
+.dandy2-pdp .qrow--trial .qrow__n { font-size: 16px; }
+.dandy2-pdp .qrow--trial .qrow__price { font-size: 17px; }
+.dandy2-pdp .qnote { margin: 10px 0 0; text-align: center; font-size: 13px; font-weight: 700; color: var(--d2-green-dark); }
+
+/* payment marks: reassurance, kept small and quiet */
+.dandy2-pdp .trustrow__cards li { height: 26px; padding: 0 4px; border-color: rgb(40 17 12 / 10%); }
+.dandy2-pdp .trustrow__icon { height: 17px; opacity: .8; }
+
+/* ship-by countdown with a live dot */
+.dandy2-pdp .shiprow__txt { display: inline-flex; align-items: center; gap: 8px; }
+.dandy2-pdp .shiprow__dot { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--d2-green); box-shadow: 0 0 0 0 rgb(87 186 79 / 60%); animation: d2pulse 1.6s ease-out infinite; }
+.dandy2-pdp .shiprow__dot[hidden] { display: none; }
+@keyframes d2pulse { 0% { box-shadow: 0 0 0 0 rgb(87 186 79 / 60%); } 100% { box-shadow: 0 0 0 9px rgb(87 186 79 / 0%); } }
+@media (prefers-reduced-motion: reduce) { .dandy2-pdp .shiprow__dot { animation: none; } }
+
+/* guarantee band (replaces the round seal card) */
+.dandy2-pdp .gband { display: grid; grid-template-columns: 62px 1fr; gap: 14px; align-items: center; margin-top: 12px; padding: 14px 16px 14px 14px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-orange-5); box-shadow: var(--d2-shadow); text-align: left; }
+.dandy2-pdp .gband__badge { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: var(--d2-orange); color: var(--d2-white); border: 2px solid var(--d2-brown); box-shadow: 3px 3px 0 var(--d2-brown); }
+.dandy2-pdp .gband__badge svg { width: 34px; height: 34px; }
+.dandy2-pdp .gband__body { min-width: 0; }
+.dandy2-pdp .gband__eyebrow { margin: 0 0 3px; font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--d2-orange); }
+.dandy2-pdp .gband__title { margin: 0 0 5px; font-family: var(--d2-display); font-weight: 900; font-size: 23px; line-height: .95; text-transform: uppercase; color: var(--d2-brown); }
+.dandy2-pdp .gband__text { margin: 0 0 8px; font-size: 14px; line-height: 1.45; color: var(--d2-brown); text-wrap: pretty; }
+.dandy2-pdp .gband__text a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-pdp .gband__proof { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-size: 13px; font-weight: 700; color: var(--d2-green-dark); }
+.dandy2-pdp .recapcard .gband { margin-top: 16px; }
+
+/* certificate of analysis card */
+.dandy2-pdp .labcard { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 10px 12px; border: 2px solid rgb(40 17 12 / 22%); border-radius: 12px; background: var(--d2-white); color: var(--d2-brown); text-decoration: none; }
+.dandy2-pdp .labcard i { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--d2-orange-5); color: var(--d2-orange); }
+.dandy2-pdp .labcard i svg { width: 20px; height: 20px; }
+.dandy2-pdp .labcard b { display: block; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .02em; line-height: 1.1; text-transform: uppercase; }
+.dandy2-pdp .labcard small { display: block; margin-top: 3px; font-size: 13px; font-weight: 600; color: var(--d2-green-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ingredients: four photo tiles, no eyebrow, no dead zone above */
+.dandy2-pdp .belowfold--first { padding-top: 14px; }
+.dandy2-pdp .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+.dandy2-pdp .tile { position: relative; margin: 0; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); overflow: hidden; background: var(--d2-brown); box-shadow: var(--d2-shadow); aspect-ratio: 4 / 5; }
+.dandy2-pdp .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dandy2-pdp .tile figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 44px 12px 12px; background: linear-gradient(180deg, rgb(40 17 12 / 0%), rgb(40 17 12 / 80%) 55%); color: var(--d2-white); }
+.dandy2-pdp .tile b { display: block; font-family: var(--d2-display); font-weight: 900; font-size: 16px; line-height: 1; letter-spacing: .02em; text-transform: uppercase; text-shadow: 1px 1px 0 rgb(0 0 0 / 35%); }
+.dandy2-pdp .tile span { display: block; margin-top: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; color: rgb(255 255 255 / 92%); }
+.dandy2-pdp .tile a { color: #B9F2B2; font-weight: 700; }
+@media (max-width: 800px) {
+  .dandy2-pdp .belowfold--first { padding-top: 10px; }
+  .dandy2-pdp .tiles { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dandy2-pdp .tile { aspect-ratio: 1 / 1.08; }
+}
+
+/* kratom card: plant illustration beside the three chips */
+@media (max-width: 800px) {
+  .dandy2-pdp .kcard__row { grid-template-columns: 1fr auto; gap: 8px; align-items: start; }
+  .dandy2-pdp .kcard__facts { display: block; }
+  .dandy2-pdp .kcard__chips { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+  .dandy2-pdp .kcard__plant { height: 150px; margin-top: -4px; align-self: start; }
+}
+
+/* survey: one hero stat, three tiles, two real quotes */
+.dandy2-pdp .stats { display: grid; gap: 14px; margin-top: 20px; }
+.dandy2-pdp .stats__hero { display: grid; justify-items: center; padding: 18px 16px 16px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-24); background: var(--d2-orange); color: var(--d2-white); box-shadow: var(--d2-shadow); text-align: center; }
+.dandy2-pdp .stats__hero em { font-style: normal; font-family: var(--d2-display); font-weight: 900; font-size: 84px; line-height: .9; letter-spacing: -.02em; }
+.dandy2-pdp .stats__hero span { margin-top: 6px; font-family: var(--d2-display); font-weight: 800; font-size: 20px; letter-spacing: .03em; text-transform: uppercase; }
+.dandy2-pdp .stats__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.dandy2-pdp .stat { display: grid; gap: 5px; align-content: start; padding: 14px 8px 12px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: 3px 3px 0 var(--d2-brown); text-align: center; }
+.dandy2-pdp .stat em { font-style: normal; font-family: var(--d2-display); font-weight: 900; font-size: 34px; line-height: 1; color: var(--d2-orange); }
+.dandy2-pdp .stat span { font-size: 12.5px; font-weight: 600; line-height: 1.25; text-wrap: balance; }
+.dandy2-pdp .quotes { display: grid; gap: 10px; }
+.dandy2-pdp .quote { margin: 0; padding: 14px 16px 12px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); }
+.dandy2-pdp .quote p { margin: 0 0 7px; font-size: 16px; line-height: 1.4; font-weight: 500; text-wrap: pretty; }
+.dandy2-pdp .quote footer { display: inline-flex; align-items: center; gap: 6px; font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--d2-green-dark); }
+.dandy2-pdp .quote footer svg { width: 14px; height: 14px; }
+.dandy2-pdp .statsrc { margin-top: 12px; }
+@media (min-width: 801px) {
+  .dandy2-pdp .stats { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; max-width: 960px; margin-inline: auto; }
+  .dandy2-pdp .stats__hero { grid-row: span 2; align-self: stretch; align-content: center; }
+}
+
+/* footer: raccoon fills the empty half beside the Company column on phones */
+.d2foot__cols { position: relative; }
+.d2foot__rocky { position: absolute; right: 0; bottom: 0; width: 128px; height: auto; pointer-events: none; }
+@media (min-width: 801px) { .d2foot__rocky { display: none; } }
+
+/* round 2 QA fix: check icons in the kratom chips were being squeezed by the nowrap chip */
+.dandy2-pdp .kchip svg { flex: 0 0 15px; width: 15px; height: 15px; }
+@media (max-width: 800px) { .dandy2-pdp .kcard__row { gap: 8px 6px; } .dandy2-pdp .kcard__plant { height: 140px; } }
+
+/* ==========================================================
+   GUMMY PDP ROUND 3 (2026-09-01): David's second review.
+   ========================================================== */
+/* subscription card: both edges line up (name/meta left, price/savings right) */
+.dandy2-pdp .subhero__row { padding-right: 0; align-items: baseline; }
+.dandy2-pdp .subhero__price { display: block; font-size: 25px; }
+.dandy2-pdp .subhero__meta { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 4px 0 11px; opacity: 1; }
+.dandy2-pdp .subhero__meta > span { font-size: 13.5px; font-weight: 500; color: var(--d2-brown); opacity: .72; }
+.dandy2-pdp .savetag { font-style: normal; font-family: var(--d2-display); font-weight: 900; font-size: 13px; letter-spacing: .04em; line-height: 1; text-transform: uppercase; color: var(--d2-white); background: var(--d2-green-dark); border-radius: var(--d2-r-pill); padding: 6px 10px 5px; white-space: nowrap; }
+
+/* one outline around the whole buy box */
+.dandy2-pdp .buybox { border: 2px solid var(--d2-brown); border-radius: 22px; padding: 12px 12px 14px; background: var(--d2-white); box-shadow: var(--d2-shadow); }
+.dandy2-pdp .buybox .doors { box-shadow: none; }
+.dandy2-pdp .buybox .subhero { box-shadow: none; margin-top: 12px; }
+.dandy2-pdp .buybox .subhero__stamp { right: 6px; }
+.dandy2-pdp .buybox .doorpane[data-d2-pane="one"] { margin-top: 14px; }
+.dandy2-pdp .buybox .ctawrap { margin-top: 12px; }
+.dandy2-pdp .buybox .bump { margin-top: 10px; }
+
+/* one-time rows: mechanic in the title, per-pouch price is the anchor, shipping on every row */
+.dandy2-pdp .qrows { gap: 10px; }
+.dandy2-pdp .qrow { grid-template-columns: 20px 1fr auto; gap: 10px; padding: 12px 12px 11px; }
+.dandy2-pdp .qrow--anchor { margin-top: 8px; }
+.dandy2-pdp .qrow__radio { width: 20px; height: 20px; }
+.dandy2-pdp .qrow__radio::after { width: 9px; height: 9px; }
+.dandy2-pdp .qrow__n { font-size: 17px; }
+.dandy2-pdp .qrow__sub { font-size: 12.5px; opacity: .78; }
+.dandy2-pdp .qrow__sub .free { font-style: normal; font-weight: 800; color: var(--d2-green-dark); opacity: 1; }
+.dandy2-pdp .qrow:has(input:checked) { box-shadow: none; border-color: var(--d2-orange); background: var(--d2-orange-5); }
+.dandy2-pdp .qrow:has(input:checked) .qrow__radio { border-color: var(--d2-orange); }
+.dandy2-pdp .qrow__side { display: grid; justify-items: end; gap: 1px; line-height: 1; }
+.dandy2-pdp .qrow__was { font-family: var(--d2-display); font-weight: 700; font-size: 12.5px; color: var(--d2-brown-50); }
+.dandy2-pdp .qrow__unit { font-family: var(--d2-display); font-weight: 900; font-size: 21px; line-height: 1; white-space: nowrap; }
+.dandy2-pdp .qrow__unit small { font-size: 12px; font-weight: 800; letter-spacing: .02em; margin-left: 1px; color: var(--d2-brown); opacity: .7; }
+.dandy2-pdp .qrow__total { font-size: 12px; font-weight: 600; color: var(--d2-brown); opacity: .7; white-space: nowrap; }
+.dandy2-pdp .qrow__chip { top: -11px; right: 10px; font-size: 11px; padding: 4px 9px 3px; }
+.dandy2-pdp .qrow__chip--best { background: var(--d2-orange); color: var(--d2-white); }
+.dandy2-pdp .qrow--trial .qrow__unit { font-size: 18px; }
+
+/* trust pills: three stickers, icon over label */
+.dandy2-pdp .trustpills { grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+.dandy2-pdp .trustpills li, .dandy2-pdp .trustpills a { flex-direction: column; justify-content: center; gap: 5px; min-height: 66px; padding: 9px 6px 7px; text-align: center; font-size: 12.5px; line-height: 1.05; }
+.dandy2-pdp .trustpills span { display: block; }
+
+/* guarantee card: David's reference structure (centered, ribbon on top, proof strip across the bottom) */
+.dandy2-pdp .gcard2 { position: relative; margin-top: 26px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: var(--d2-shadow); padding: 28px 18px 0; text-align: center; overflow: hidden; }
+.dandy2-pdp .gcard2__ribbon { position: absolute; top: 0; left: 50%; transform: translateX(-50%); display: inline-block; padding: 6px 16px 5px; border-radius: 0 0 12px 12px; background: var(--d2-orange); color: var(--d2-white); font-family: var(--d2-display); font-weight: 900; font-size: 13px; letter-spacing: .1em; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+.dandy2-pdp .gcard2__title { margin: 8px 0 8px; font-family: var(--d2-display); font-weight: 900; font-size: 26px; line-height: .95; text-transform: uppercase; color: var(--d2-brown); }
+.dandy2-pdp .gcard2__body { margin: 0 auto 14px; max-width: 40ch; font-size: 14.5px; line-height: 1.45; color: var(--d2-brown); text-wrap: pretty; }
+.dandy2-pdp .gcard2__body a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-pdp .gcard2__proof { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 -18px; padding: 11px 16px 10px; border-top: 2px solid var(--d2-brown); background: rgb(87 186 79 / 14%); font-size: 13px; font-weight: 700; color: var(--d2-green-dark); text-wrap: balance; }
+.dandy2-pdp .gcard2__proof i { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--d2-green); color: var(--d2-white); }
+.dandy2-pdp .recapcard .gcard2 { margin-top: 24px; }
+
+/* ingredients: one-line heading, tighter approach from the COA card */
+.dandy2-pdp .belowfold__title--oneline { white-space: nowrap; font-size: clamp(28px, 7.6vw, 40px); }
+.dandy2-pdp .belowfold--first { padding-top: 6px; }
+.dandy2-pdp .belowfold--first .belowfold__title { margin-bottom: 12px; }
+.dandy2-pdp .tiles { margin-top: 4px; }
+@media (max-width: 800px) { .dandy2-pdp__grid { padding-bottom: 16px; } }
+
+/* kratom card: short lead beside the plant, the rest behind Read more, no skeptical framing */
+.dandy2-pdp .kcard__intro { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; margin-bottom: 8px; }
+.dandy2-pdp .kcard__intro .kcard__lead { margin: 0; }
+.dandy2-pdp .kcard__intro .kcard__plant { height: 150px; width: auto; margin: 0; }
+.dandy2-pdp .kread { margin: 0 0 16px; }
+.dandy2-pdp .kread summary { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; list-style: none; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .05em; text-transform: uppercase; color: var(--d2-brown); text-decoration: underline; text-underline-offset: 4px; }
+.dandy2-pdp .kread summary::-webkit-details-marker { display: none; }
+.dandy2-pdp .kread summary::after { content: '+'; font-size: 17px; line-height: 1; text-decoration: none; }
+.dandy2-pdp .kread[open] summary::after { content: '–'; }
+.dandy2-pdp .kread p { margin: 12px 0 0; font-size: 16.5px; line-height: 1.55; font-weight: 500; }
+.dandy2-pdp .kcard__chips { margin-bottom: 16px; }
+@media (max-width: 800px) {
+  .dandy2-pdp .kcard__intro { gap: 10px; }
+  .dandy2-pdp .kcard__intro .kcard__plant { height: 128px; }
+  .dandy2-pdp .kcard__intro .kcard__lead { font-size: 16.5px; line-height: 1.5; }
+  .dandy2-pdp .kcard__chips { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+}
+
+/* section rhythm: tighter, and the survey becomes a dark band so the page stops reading as one cream run */
+@media (max-width: 800px) { .dandy2-pdp .belowfold { padding: 30px 16px; } .dandy2-pdp .belowfold__title { margin-top: 0; } }
+.dandy2-pdp .belowfold--dark { background: var(--d2-brown); color: var(--d2-white); border-top: 2px solid var(--d2-brown); border-bottom: 2px solid var(--d2-brown); }
+.dandy2-pdp .belowfold--dark .belowfold__title { color: var(--d2-white); }
+.dandy2-pdp .belowfold--dark .stats__hero { border-color: var(--d2-white); box-shadow: 4px 4px 0 rgb(255 255 255 / 25%); }
+.dandy2-pdp .belowfold--dark .stat { background: #F9EBD8; color: var(--d2-brown); border-color: var(--d2-brown); box-shadow: 3px 3px 0 rgb(255 255 255 / 25%); }
+.dandy2-pdp .belowfold--dark .quote { color: var(--d2-brown); }
+.dandy2-pdp .quote footer { align-items: center; gap: 8px; }
+.dandy2-pdp .quote__face { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid var(--d2-white); box-shadow: 0 0 0 1.5px var(--d2-brown); }
+.dandy2-pdp .daycheck__head { padding-top: 34px; }
+/* round 3 self-check: proof strip on one line, tile captions share a two-line height */
+.dandy2-pdp .gcard2__proof { font-size: 12.5px; }
+.dandy2-pdp .tile span { min-height: 2.6em; }
+/* round 3 QA fixes: stamp clears the toggle, no type under 12px, chips clear the row above,
+   tighter COA-to-ingredients gap, no orphaned last words */
+.dandy2-pdp .buybox .subhero { margin-top: 20px; }
+.dandy2-pdp .buybox .subhero__stamp { top: -14px; }
+.dandy2-pdp .subhero__stamp small { font-size: 12px; }
+.dandy2-pdp .qrow__chip { font-size: 12px; }
+.dandy2-pdp .qrows { gap: 14px; }
+.dandy2-pdp .belowfold--first, .dandy2-pdp .belowfold.belowfold--first { padding-top: 6px; }
+@media (max-width: 800px) { .dandy2-pdp .belowfold.belowfold--first { padding-top: 4px; } }
+.dandy2-pdp .bump__txt span, .dandy2-pdp .tile span, .dandy2-pdp .kcard__intro .kcard__lead { text-wrap: balance; }
+.dandy2-pdp .kcard__intro .kcard__plant { height: 116px; }
+
+/* ==========================================================
+   GUMMY PDP ROUND 4 (2026-09-01): David's third review.
+   ========================================================== */
+/* rows: shipping sits under the price, totals sit a touch lower, no struck prices */
+.dandy2-pdp .qrow__ship { font-size: 12px; font-weight: 600; color: var(--d2-brown); opacity: .7; white-space: nowrap; margin-top: 3px; }
+.dandy2-pdp .qrow__total { margin-top: 4px; }
+.dandy2-pdp .qrow__side { gap: 0; }
+/* kratom card: Read more hugs the lead, chevron instead of a plus */
+.dandy2-pdp .kcard__intro { margin-bottom: 0; }
+.dandy2-pdp .kread { margin: 4px 0 16px; }
+.dandy2-pdp .kread summary::after { content: ''; width: 8px; height: 8px; border-right: 2.5px solid var(--d2-brown); border-bottom: 2.5px solid var(--d2-brown); transform: translateY(-3px) rotate(45deg); transition: transform .18s ease; }
+.dandy2-pdp .kread[open] summary::after { content: ''; transform: translateY(2px) rotate(225deg); }
+/* survey: heading on one line, bigger tile copy */
+.dandy2-pdp .belowfold__title--stats { white-space: nowrap; font-size: clamp(22px, 6.9vw, 40px); }
+.dandy2-pdp .stat span { font-size: 14px; line-height: 1.25; }
+.dandy2-pdp .stat { padding: 14px 6px 12px; }
+/* full ingredient list accordion */
+.dandy2-pdp .inglist { margin-top: 14px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); padding: 0 16px; }
+.dandy2-pdp .inglist summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 0; cursor: pointer; list-style: none; font-family: var(--d2-display); font-weight: 800; font-size: 16px; letter-spacing: .03em; text-transform: uppercase; }
+.dandy2-pdp .inglist summary::-webkit-details-marker { display: none; }
+.dandy2-pdp .inglist summary::after { content: ''; flex: none; width: 9px; height: 9px; margin-right: 4px; border-right: 2.5px solid var(--d2-brown); border-bottom: 2.5px solid var(--d2-brown); transform: translateY(-2px) rotate(45deg); transition: transform .18s ease; }
+.dandy2-pdp .inglist[open] summary::after { transform: translateY(3px) rotate(225deg); }
+.dandy2-pdp .inglist[open] summary { border-bottom: 1px dashed rgb(40 17 12 / 25%); }
+.dandy2-pdp .inglist__body { padding: 12px 0 14px; }
+.dandy2-pdp .inglist__line { margin: 0 0 8px; font-size: 14.5px; line-height: 1.5; text-wrap: pretty; }
+.dandy2-pdp .inglist__line:last-child { margin-bottom: 0; }
+.dandy2-pdp .inglist__line--active { font-weight: 700; }
+@media (min-width: 801px) { .dandy2-pdp .inglist { max-width: 760px; margin-inline: auto; } }
+.dandy2-pdp .belowfold__title--stats, .dandy2-pdp .belowfold__title--oneline { max-width: none; }
+.dandy2-pdp .belowfold__title--stats { font-size: clamp(22px, 7.6vw, 40px); }
+.dandy2-pdp .tile figcaption { background: linear-gradient(180deg, rgb(40 17 12 / 0%), rgb(40 17 12 / 62%) 45%, rgb(40 17 12 / 82%)); }
+/* round 4 QA fixes: even row gaps under the chips, footer clears the sticky bar (the wrapper was inline, so its padding never applied) */
+.dandy2-pdp { display: block; }
+.dandy2-pdp .qrows { gap: 18px; }
+.dandy2-pdp .qrow--anchor { margin-top: 0; }
+
+/* ==========================================================
+   GUMMY PDP ROUND 5 (2026-09-02): David's fourth review.
+   ========================================================== */
+/* tapioca tile: "Organic tapioca syrup" is the title; on phones it breaks before "tapioca" (never after it),
+   and every tile title reserves two lines so the four caption blocks stay the same height */
+.dandy2-pdp .tile b .tile__nb { display: inline; font: inherit; color: inherit; white-space: nowrap; margin: 0; min-height: 0; }
+@media (max-width: 800px) {
+  .dandy2-pdp .tile b { display: table-cell; width: 100%; height: 2em; vertical-align: bottom; }
+}
+/* kratom guide rebuild (2026-09-02): PDP components on the doc spine */
+.dandy2-guide .guide__hero { margin: 18px 0 0; }
+.dandy2-guide .doc__block--card { border-top: 0; margin-top: 8px; padding: 8px 0 0; }
+.dandy2-guide .kcard { max-width: none; }
+.dandy2-guide .kcard__body { margin: 14px 0 16px; font-size: 16.5px; line-height: 1.55; font-weight: 500; }
+.dandy2-guide .kcard__chips { margin-bottom: 0; }
+.dandy2-guide .guide__facts { margin: 2px 0 14px; }
+.dandy2-guide .guide__link { margin: 0; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .05em; text-transform: uppercase; }
+.dandy2-guide .guide__link a { color: var(--d2-brown); text-decoration: underline; text-underline-offset: 4px; }
+.dandy2-guide .doc__block--band { margin-top: 26px; }
+.dandy2-guide .doc__block--band .guide__last { margin-bottom: 0; }
+.dandy2-guide .faq { margin-top: 4px; }
+.dandy2-guide .faq p { margin-bottom: 15px; }
+.dandy2-guide .doc__block--cta .gcard2 { max-width: 520px; margin: 18px auto 22px; text-align: center; }
+.dandy2-guide .doc__block--cta .cta { margin-top: 0; }
+@media (max-width: 800px) {
+  .dandy2-guide .doc__block--split .halfimg { margin-bottom: 14px; }
+}
+/* round 5 QA fixes: the guide has no sticky bar, so no bar reserve; the guide CTA matches the PDP button, not the doc link style */
+.dandy2-guide.dandy2-pdp { padding-bottom: 0; }
+.dandy2-guide .doc__block--cta .cta { color: var(--d2-brown); font-weight: 900; text-decoration: none; }
+/* ship row: keep "ships today" together so the countdown never orphans the last word */
+.dandy2-pdp .shiprow__txt .keep { white-space: nowrap; }
+/* buy box round 6 (2026-09-02): rows read in pouches, the first row defines the pouch, the percent leads the subline
+   (dimming moved from opacity to color so the green percent renders at full strength) */
+.dandy2-pdp .qrow__sub { opacity: 1; color: rgb(40 17 12 / 72%); }
+.dandy2-pdp .qrow__sub .pct { font-style: normal; font-weight: 800; color: var(--d2-green-dark); }
+/* contact page (2026-09-02): two tappable cards with the peeking raccoon, an emergency band, site chrome */
+.dandy2-contact .doc__block--cards { border-top: 0; margin-top: 0; padding: 6px 0 0; }
+.dandy2-contact .ccards { position: relative; display: grid; gap: 12px; padding-top: 98px; }
+.dandy2-contact .ccards__rocky { position: absolute; top: 0; right: 14px; height: 108px; width: auto; z-index: 2; pointer-events: none; }
+.dandy2-contact .ccard { position: relative; z-index: 1; display: grid; grid-template-columns: 42px 1fr; gap: 3px 12px; align-items: center; padding: 15px 16px 14px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: var(--d2-shadow); text-decoration: none; color: var(--d2-brown); transition: transform .12s ease, box-shadow .12s ease; }
+.dandy2-contact .ccard:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--d2-brown); }
+.dandy2-contact .ccard i { grid-row: span 2; display: grid; place-items: center; width: 42px; height: 42px; border: 2px solid var(--d2-brown); border-radius: 50%; background: var(--d2-orange-5); }
+.dandy2-contact .ccard i svg { width: 21px; height: 21px; }
+.dandy2-contact .ccard b { display: block; font-family: var(--d2-display); font-weight: 900; font-size: 20px; line-height: 1; letter-spacing: .01em; white-space: nowrap; }
+.dandy2-contact .ccard span { display: block; font-size: 14px; font-weight: 500; line-height: 1.35; color: rgb(40 17 12 / 78%); }
+.dandy2-contact .ccards__note { margin-top: 14px; }
+.dandy2-contact .doc__block--band .doc__last { margin-bottom: 0; }
+.dandy2-contact.dandy2-pdp { padding-bottom: 0; }
+@media (min-width: 801px) {
+  .dandy2-contact .ccards { grid-template-columns: 1fr 1fr; padding-top: 104px; }
+  .dandy2-contact .ccards__rocky { right: 40px; height: 116px; }
+  .dandy2-contact .ccard b { font-size: 24px; }
+}
+/* contact QA fixes: the doc link rule was painting the cards green and underlined; heading keeps "standing by," together */
+.dandy2-contact .doc__block .ccard, .dandy2-contact .doc__block .ccard b, .dandy2-contact .doc__block .ccard span { color: var(--d2-brown); text-decoration: none; }
+.dandy2-contact .doc__block .ccard span { color: rgb(40 17 12 / 78%); font-weight: 500; }
+.dandy2-contact .nb { white-space: nowrap; }
+.dandy2-contact .ccards { padding-top: 90px; }
+.dandy2-contact .ccards__rocky { height: 100px; }
