@@ -20,7 +20,7 @@
 <section class="d2cap" aria-labelledby="d2cap-h" data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}" data-code="{{ d2_promo_code }}">
   <div class="d2cap__inner">
     <div class="d2cap__copy">
-      <h2 class="d2cap__h" id="d2cap-h">Take <em>10% off</em> your first order.</h2>
+      <h2 class="d2cap__h" id="d2cap-h">Take <em>10% off</em> your first&nbsp;order.</h2>
       <p class="d2cap__sub">One email, one code, no spam beyond the occasional batch report and restock note.</p>
     </div>
     {%- comment -%}
@@ -49,7 +49,7 @@
   <div class="d2modal__box">
     <button type="button" class="d2modal__x" data-d2-modal-close aria-label="Close">×</button>
     <img class="d2modal__rocky" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" aria-hidden="true">
-    <h2 class="d2cap__h" id="d2modal-h"><em>10% off</em> your first order.</h2>
+    <h2 class="d2cap__h" id="d2modal-h"><em>10% off</em> your first&nbsp;order.</h2>
     <p class="d2cap__sub">Rocky insisted. Drop your email and the code is yours.</p>
     {%- form 'customer', id: 'D2CapModalForm', class: 'd2cap__form' -%}
       <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off,modal">
