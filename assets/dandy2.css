@@ -1511,3 +1511,14 @@ html.d2age-lock { overflow: hidden; }
 /* round 3 self-check: proof strip on one line, tile captions share a two-line height */
 .dandy2-pdp .gcard2__proof { font-size: 12.5px; }
 .dandy2-pdp .tile span { min-height: 2.6em; }
+/* round 3 QA fixes: stamp clears the toggle, no type under 12px, chips clear the row above,
+   tighter COA-to-ingredients gap, no orphaned last words */
+.dandy2-pdp .buybox .subhero { margin-top: 20px; }
+.dandy2-pdp .buybox .subhero__stamp { top: -14px; }
+.dandy2-pdp .subhero__stamp small { font-size: 12px; }
+.dandy2-pdp .qrow__chip { font-size: 12px; }
+.dandy2-pdp .qrows { gap: 14px; }
+.dandy2-pdp .belowfold--first, .dandy2-pdp .belowfold.belowfold--first { padding-top: 6px; }
+@media (max-width: 800px) { .dandy2-pdp .belowfold.belowfold--first { padding-top: 4px; } }
+.dandy2-pdp .bump__txt span, .dandy2-pdp .tile span, .dandy2-pdp .kcard__intro .kcard__lead { text-wrap: balance; }
+.dandy2-pdp .kcard__intro .kcard__plant { height: 116px; }
