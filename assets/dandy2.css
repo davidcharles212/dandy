@@ -1556,3 +1556,7 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-pdp .belowfold__title--stats, .dandy2-pdp .belowfold__title--oneline { max-width: none; }
 .dandy2-pdp .belowfold__title--stats { font-size: clamp(22px, 7.6vw, 40px); }
 .dandy2-pdp .tile figcaption { background: linear-gradient(180deg, rgb(40 17 12 / 0%), rgb(40 17 12 / 62%) 45%, rgb(40 17 12 / 82%)); }
+/* round 4 QA fixes: even row gaps under the chips, footer clears the sticky bar (the wrapper was inline, so its padding never applied) */
+.dandy2-pdp { display: block; }
+.dandy2-pdp .qrows { gap: 18px; }
+.dandy2-pdp .qrow--anchor { margin-top: 0; }
