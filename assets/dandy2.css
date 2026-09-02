@@ -1609,3 +1609,9 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-contact .ccards__rocky { right: 40px; height: 116px; }
   .dandy2-contact .ccard b { font-size: 24px; }
 }
+/* contact QA fixes: the doc link rule was painting the cards green and underlined; heading keeps "standing by," together */
+.dandy2-contact .doc__block .ccard, .dandy2-contact .doc__block .ccard b, .dandy2-contact .doc__block .ccard span { color: var(--d2-brown); text-decoration: none; }
+.dandy2-contact .doc__block .ccard span { color: rgb(40 17 12 / 78%); font-weight: 500; }
+.dandy2-contact .nb { white-space: nowrap; }
+.dandy2-contact .ccards { padding-top: 90px; }
+.dandy2-contact .ccards__rocky { height: 100px; }
