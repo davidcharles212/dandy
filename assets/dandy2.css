@@ -1547,11 +1547,9 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-pdp .inglist[open] summary::after { transform: translateY(3px) rotate(225deg); }
 .dandy2-pdp .inglist[open] summary { border-bottom: 1px dashed rgb(40 17 12 / 25%); }
 .dandy2-pdp .inglist__body { padding: 12px 0 14px; }
-.dandy2-pdp .inglist__active { margin: 0 0 12px; font-size: 14.5px; line-height: 1.45; text-wrap: pretty; }
-.dandy2-pdp .inglist__active b { font-family: var(--d2-display); font-weight: 800; text-transform: uppercase; letter-spacing: .03em; font-size: 13px; }
-.dandy2-pdp .inglist__label { margin: 0 0 8px; font-family: var(--d2-display); font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--d2-brown-50); }
-.dandy2-pdp .inglist__pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-.dandy2-pdp .inglist__pills li { padding: 6px 11px 5px; border: 1.5px solid rgb(40 17 12 / 30%); border-radius: var(--d2-r-pill); background: var(--d2-orange-5); font-size: 13px; font-weight: 600; line-height: 1; white-space: nowrap; }
+.dandy2-pdp .inglist__line { margin: 0 0 8px; font-size: 14.5px; line-height: 1.5; text-wrap: pretty; }
+.dandy2-pdp .inglist__line:last-child { margin-bottom: 0; }
+.dandy2-pdp .inglist__line--active { font-weight: 700; }
 @media (min-width: 801px) { .dandy2-pdp .inglist { max-width: 760px; margin-inline: auto; } }
 .dandy2-pdp .belowfold__title--stats, .dandy2-pdp .belowfold__title--oneline { max-width: none; }
 .dandy2-pdp .belowfold__title--stats { font-size: clamp(22px, 7.6vw, 40px); }
@@ -1560,3 +1558,31 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-pdp { display: block; }
 .dandy2-pdp .qrows { gap: 18px; }
 .dandy2-pdp .qrow--anchor { margin-top: 0; }
+
+/* ==========================================================
+   GUMMY PDP ROUND 5 (2026-09-02): David's fourth review.
+   ========================================================== */
+/* tapioca tile: "Organic tapioca syrup" is the title; on phones it breaks before "tapioca" (never after it),
+   and every tile title reserves two lines so the four caption blocks stay the same height */
+.dandy2-pdp .tile b .tile__nb { display: inline; font: inherit; color: inherit; white-space: nowrap; margin: 0; min-height: 0; }
+@media (max-width: 800px) {
+  .dandy2-pdp .tile b { display: table-cell; width: 100%; height: 2em; vertical-align: bottom; }
+}
+/* kratom guide rebuild (2026-09-02): PDP components on the doc spine */
+.dandy2-guide .guide__hero { margin: 18px 0 0; }
+.dandy2-guide .doc__block--card { border-top: 0; margin-top: 8px; padding: 8px 0 0; }
+.dandy2-guide .kcard { max-width: none; }
+.dandy2-guide .kcard__body { margin: 14px 0 16px; font-size: 16.5px; line-height: 1.55; font-weight: 500; }
+.dandy2-guide .kcard__chips { margin-bottom: 0; }
+.dandy2-guide .guide__facts { margin: 2px 0 14px; }
+.dandy2-guide .guide__link { margin: 0; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .05em; text-transform: uppercase; }
+.dandy2-guide .guide__link a { color: var(--d2-brown); text-decoration: underline; text-underline-offset: 4px; }
+.dandy2-guide .doc__block--band { margin-top: 26px; }
+.dandy2-guide .doc__block--band .guide__last { margin-bottom: 0; }
+.dandy2-guide .faq { margin-top: 4px; }
+.dandy2-guide .faq p { margin-bottom: 15px; }
+.dandy2-guide .doc__block--cta .gcard2 { max-width: 520px; margin: 18px auto 22px; text-align: center; }
+.dandy2-guide .doc__block--cta .cta { margin-top: 0; }
+@media (max-width: 800px) {
+  .dandy2-guide .doc__block--split .halfimg { margin-bottom: 14px; }
+}
