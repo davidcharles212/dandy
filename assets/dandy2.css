@@ -1257,3 +1257,14 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-pdp .subhero__pouch { height: 180px; }
   .dandy2-pdp .trustpills { grid-template-columns: 1fr 1fr; }
 }
+
+/* 2026-09-01 QA fixes: kratom chips wrap on phones; peeking raccoon clipped the recap title */
+@media (max-width: 800px) {
+  .dandy2-pdp .kcard__row { grid-template-columns: 1fr; gap: 12px; }
+  .dandy2-pdp .kcard__chips { flex-direction: row; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .dandy2-pdp .kchip { white-space: nowrap; }
+  .dandy2-pdp .kcard__facts { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+  .dandy2-pdp .kcard__facts .kcard__chips { flex-basis: 100%; }
+  .dandy2-pdp .kcard__plant { height: 132px; justify-self: end; margin-top: -58px; }
+  .dandy2-pdp .recapcard { margin-top: 146px; }
+}
