@@ -1508,3 +1508,6 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-pdp .quote footer { align-items: center; gap: 8px; }
 .dandy2-pdp .quote__face { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid var(--d2-white); box-shadow: 0 0 0 1.5px var(--d2-brown); }
 .dandy2-pdp .daycheck__head { padding-top: 34px; }
+/* round 3 self-check: proof strip on one line, tile captions share a two-line height */
+.dandy2-pdp .gcard2__proof { font-size: 12.5px; }
+.dandy2-pdp .tile span { min-height: 2.6em; }
