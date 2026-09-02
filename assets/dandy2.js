@@ -95,7 +95,7 @@
           if (shipsToday) {
             const s = Math.max(0, Math.floor((dl - ct) / 1000));
             const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
-            cut.innerHTML = 'Order in the next <b>' + (h ? h + 'h ' : '') + m + 'm ' + pad(sec) + 's</b>, ships today';
+            cut.innerHTML = 'Order in the next <b>' + (h ? h + 'h ' : '') + m + 'm ' + pad(sec) + 's</b>, <span class="keep">ships today</span>';
           } else {
             const next = (day === 6 || day === 0) ? 'Monday' : 'tomorrow';
             cut.innerHTML = 'Order now, <b>ships ' + next + '</b>';

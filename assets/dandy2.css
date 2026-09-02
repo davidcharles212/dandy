@@ -1586,3 +1586,8 @@ html.d2age-lock { overflow: hidden; }
 @media (max-width: 800px) {
   .dandy2-guide .doc__block--split .halfimg { margin-bottom: 14px; }
 }
+/* round 5 QA fixes: the guide has no sticky bar, so no bar reserve; the guide CTA matches the PDP button, not the doc link style */
+.dandy2-guide.dandy2-pdp { padding-bottom: 0; }
+.dandy2-guide .doc__block--cta .cta { color: var(--d2-brown); font-weight: 900; text-decoration: none; }
+/* ship row: keep "ships today" together so the countdown never orphans the last word */
+.dandy2-pdp .shiprow__txt .keep { white-space: nowrap; }
