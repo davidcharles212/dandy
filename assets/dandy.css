@@ -2507,3 +2507,11 @@ input:checked + .dandy-radio::after {
 @media (max-width: 800px) {
   .dandy-image-banner__media img { object-position: 72% 60%; }
 }
+
+/* 404 hero: the "404" kicker (30px line in a 24px gap grid; 28px in a 20px gap on phones) folded into
+   the heading on 2026-09-02. The heading keeps the offset the kicker occupied so the hero's rhythm holds. */
+dandy-virtual-router .dandy-route-hero[data-virtual-fallback] .dandy-display { margin-top: 54px; }
+@media (max-width: 749px) {
+  dandy-virtual-router .dandy-route-hero[data-virtual-fallback] .dandy-display { margin-top: 48px; }
+}
+
