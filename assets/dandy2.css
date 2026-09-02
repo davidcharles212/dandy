@@ -1414,3 +1414,7 @@ html.d2age-lock { overflow: hidden; }
 .d2foot__cols { position: relative; }
 .d2foot__rocky { position: absolute; right: 0; bottom: 0; width: 128px; height: auto; pointer-events: none; }
 @media (min-width: 801px) { .d2foot__rocky { display: none; } }
+
+/* round 2 QA fix: check icons in the kratom chips were being squeezed by the nowrap chip */
+.dandy2-pdp .kchip svg { flex: 0 0 15px; width: 15px; height: 15px; }
+@media (max-width: 800px) { .dandy2-pdp .kcard__row { gap: 8px 6px; } .dandy2-pdp .kcard__plant { height: 140px; } }
