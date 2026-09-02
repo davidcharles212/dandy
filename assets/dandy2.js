@@ -200,22 +200,16 @@
     sync() {
       const key = this.door === 'sub' ? 'sub' : (this.oneInputs.find(i => i.checked)?.value || '3');
       const o = OFFERS[key];
-      const total = o.product + o.ship;
 
       const set = (sel, txt) => { const n = this.querySelector(sel); if (n) n.textContent = txt; };
       set('[data-d2-cta]', this.ctaText(o));
       set('[data-d2-recap-cta]', this.ctaText(o));
-      // charged-today line: only when shipping makes the total differ from the button
-      const charge = this.querySelector('[data-d2-chargeline]');
-      if (charge) {
-        charge.hidden = !(o.ship > 0);
-        charge.textContent = o.ship > 0 ? 'Charged today ' + $(total) + ', includes ' + $(o.ship) + ' shipping' : '';
-      }
-      // recap + sticky echoes always carry the true charged-today total
+      // 2026-09-02: no charged-today line and no shipping in the echoes; the button, the recap and the
+      // sticky bar all show the product price, and shipping is shown in the cart where it belongs
       set('[data-d2-recap-label]', o.label);
-      set('[data-d2-recap-total]', $(total));
+      set('[data-d2-recap-total]', $(o.product));
       set('[data-d2-sticky-label]', o.label);
-      set('[data-d2-sticky-total]', $(total));
+      set('[data-d2-sticky-total]', $(o.product));
       // keep the real cart payload in sync with the visible selection
       // the trial IS the bump product, so never offer both at once
       const bumpWrap = this.querySelector('.bump');

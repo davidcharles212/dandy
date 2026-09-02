@@ -294,7 +294,6 @@
 .dandy2-pdp .benefits i { grid-row: span 2; font-style: normal; font-size: 18px; line-height: 1.1; color: var(--d2-orange); }
 .dandy2-pdp .benefits b { font-family: var(--d2-display); font-weight: 900; font-size: 17px; line-height: 1; text-transform: uppercase; letter-spacing: .02em; }
 .dandy2-pdp .benefits span { font-size: 12.5px; font-weight: 500; line-height: 1.35; }
-.dandy2-pdp .chargeline { margin: 8px 0 0; text-align: center; font-size: 14.5px; color: var(--d2-brown-50); }
 
 /* ---------- V1 anatomy (what's in) ---------- */
 .dandy2-pdp .steplabel--center { text-align: center; }
@@ -1194,7 +1193,6 @@ html.d2age-lock { overflow: hidden; }
 /* CTA + charged-today line (no mascot on the button) */
 .dandy2-pdp .ctawrap { display: grid; gap: 7px; margin-top: 2px; }
 .dandy2-pdp .cta { min-height: 56px; font-size: 20px; }
-.dandy2-pdp .chargeline { margin: 0; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--d2-brown); opacity: .78; }
 .dandy2-pdp .bump { margin-top: 10px; }
 
 /* trust pills (one system, sticker style) */
@@ -1274,7 +1272,6 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-pdp .subhero__stamp { z-index: 4; top: -16px; right: 8px; }
 .dandy2-pdp .subhero__list li { gap: 8px; }
 .dandy2-pdp .subhero__list li > span { display: inline; }
-.dandy2-pdp .chargeline { font-size: 13px; text-wrap: balance; }
 .dandy2-pdp .trialrow { text-wrap: balance; }
 .dandy2-pdp .trustpills li, .dandy2-pdp .trustpills a { min-height: 48px; line-height: 1.1; }
 .dandy2-pdp .trustpills span { display: block; }
@@ -1315,7 +1312,6 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-pdp .subhero__meta { margin: 3px 0 10px; font-size: 13.5px; font-weight: 500; color: var(--d2-brown); opacity: .72; }
 
 /* charged-today line only when shipping changes the total */
-.dandy2-pdp .chargeline[hidden] { display: none; }
 
 /* one-time door: stacked radio rows, one chip, shipping stated once below */
 .dandy2-pdp .qrows { display: grid; gap: 10px; }
@@ -1595,3 +1591,21 @@ html.d2age-lock { overflow: hidden; }
    (dimming moved from opacity to color so the green percent renders at full strength) */
 .dandy2-pdp .qrow__sub { opacity: 1; color: rgb(40 17 12 / 72%); }
 .dandy2-pdp .qrow__sub .pct { font-style: normal; font-weight: 800; color: var(--d2-green-dark); }
+/* contact page (2026-09-02): two tappable cards with the peeking raccoon, an emergency band, site chrome */
+.dandy2-contact .doc__block--cards { border-top: 0; margin-top: 0; padding: 6px 0 0; }
+.dandy2-contact .ccards { position: relative; display: grid; gap: 12px; padding-top: 98px; }
+.dandy2-contact .ccards__rocky { position: absolute; top: 0; right: 14px; height: 108px; width: auto; z-index: 2; pointer-events: none; }
+.dandy2-contact .ccard { position: relative; z-index: 1; display: grid; grid-template-columns: 42px 1fr; gap: 3px 12px; align-items: center; padding: 15px 16px 14px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: var(--d2-shadow); text-decoration: none; color: var(--d2-brown); transition: transform .12s ease, box-shadow .12s ease; }
+.dandy2-contact .ccard:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--d2-brown); }
+.dandy2-contact .ccard i { grid-row: span 2; display: grid; place-items: center; width: 42px; height: 42px; border: 2px solid var(--d2-brown); border-radius: 50%; background: var(--d2-orange-5); }
+.dandy2-contact .ccard i svg { width: 21px; height: 21px; }
+.dandy2-contact .ccard b { display: block; font-family: var(--d2-display); font-weight: 900; font-size: 20px; line-height: 1; letter-spacing: .01em; white-space: nowrap; }
+.dandy2-contact .ccard span { display: block; font-size: 14px; font-weight: 500; line-height: 1.35; color: rgb(40 17 12 / 78%); }
+.dandy2-contact .ccards__note { margin-top: 14px; }
+.dandy2-contact .doc__block--band .doc__last { margin-bottom: 0; }
+.dandy2-contact.dandy2-pdp { padding-bottom: 0; }
+@media (min-width: 801px) {
+  .dandy2-contact .ccards { grid-template-columns: 1fr 1fr; padding-top: 104px; }
+  .dandy2-contact .ccards__rocky { right: 40px; height: 116px; }
+  .dandy2-contact .ccard b { font-size: 24px; }
+}

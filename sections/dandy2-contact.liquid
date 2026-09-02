@@ -1,0 +1,46 @@
+{% comment %}
+  DANDY 2026, CONTACT. Rebuilt 2026-09-02 on the dandy2 doc spine so the page carries the
+  same header and footer as the rest of the site. Support details supplied by David
+  (Slack, 2026-09-01): support@foreverdandy.com with a 24-hour reply target, 844-435-6852,
+  Monday to Friday 9am to 5pm CST. Emergency block: 911 and the US Poison Control line,
+  1-800-222-1222 (free, confidential, 24 hours). No contact form by design.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{% capture d2_i_mail %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>{% endcapture %}
+{% capture d2_i_headset %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13.5V12a8 8 0 0 1 16 0v1.5"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19v.5a2.5 2.5 0 0 1-2.5 2.5H13"/></svg>{% endcapture %}
+<div class="dandy2-pdp dandy2-doc dandy2-contact" data-copy-status="approved">
+  {% render 'dandy2-chrome-header' %}
+  <main class="doc" id="DandyMain">
+    <header class="doc__head">
+      <h1 class="belowfold__title belowfold__title--center">We&rsquo;re standing by, ready to help.</h1>
+      <p class="doc__lede">Product, order, accessibility, or batch-report questions: email or call, and a real person answers.</p>
+    </header>
+
+    <section class="doc__block doc__block--cards" aria-label="Ways to reach Dandy">
+      <div class="ccards">
+        <img class="ccards__rocky" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="550" height="460" loading="eager" aria-hidden="true">
+        <a class="ccard" href="mailto:support@foreverdandy.com">
+          <i>{{ d2_i_mail }}</i>
+          <b>support@foreverdandy.com</b>
+          <span>We reply within 24 hours.</span>
+        </a>
+        <a class="ccard" href="tel:+18444356852">
+          <i>{{ d2_i_headset }}</i>
+          <b>844-435-6852</b>
+          <span>Monday to Friday, 9am to 5pm CST.</span>
+        </a>
+      </div>
+      <p class="doc__note ccards__note">Include your order number and the product. For a batch question, add the lot number printed on your pouch.</p>
+    </section>
+
+    <section class="doc__block doc__block--band" aria-labelledby="d2-contact-emergency">
+      <h2 id="d2-contact-emergency">In an emergency</h2>
+      <p>In a medical emergency, call 911.</p>
+      <p class="doc__last">If you think someone has taken too much, or a child or pet has gotten into a pouch, call Poison Control at <a href="tel:+18002221222">1-800-222-1222</a>. The line is free, confidential, and open 24 hours a day.</p>
+    </section>
+  </main>
+  {% render 'dandy2-chrome-footer' %}
+</div>
+{% schema %}
+{ "name": "Dandy 2026 contact", "settings": [], "presets": [{ "name": "Dandy 2026 contact" }] }
+{% endschema %}
