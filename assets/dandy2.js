@@ -2,22 +2,29 @@
    the approved pricing (test doc Appendix B). Honest rules: subscription applies only
    to the single 30-count pouch; multi-pouch packs and the 10-count trial = one-time;
    anchors are one-time × quantity; CHARGED TODAY always includes shipping.
-   Preview-safe: never submits. */
+   2026-09-01: mascot removed from the CTA, charged-today line, sticky/recap buttons
+   submit the real form, shipping cutoff is 2 PM Central (same-day ship). */
 (() => {
   const SHIP = 5.95;
+  const $ = (n) => '$' + n.toFixed(2);
   // Every offer is a complete, self-contained decision, no cross-state collisions.
   const OFFERS = {
-    sub:     { cta: 'START SUBSCRIPTION', label: '1 pouch · 30-count · subscription', product: 47.99, ship: 0, renews: true },
-    '1':     { cta: 'ADD 1 POUCH', label: 'Single pouch · one-time', product: 59.99, ship: SHIP },
-    '3':     { cta: 'ADD 3-PACK', label: '3-pack · one-time', product: 119.98, ship: 0 },
-    '5':     { cta: 'ADD 5-PACK', label: '5-pack · one-time', product: 179.97, ship: 0 },
-    'trial': { cta: 'ADD 10-COUNT TRIAL', label: '10-count trial · one-time', product: 24.99, ship: SHIP }
+    sub:     { cta: 'Start monthly',  label: 'Monthly supply · 30-count', product: 47.99, ship: 0, renews: true,
+               charge: 'Charged today $47.99 · free shipping · renews every 30 days, cancel anytime' },
+    '1':     { cta: 'Get 1 pouch',    label: '1 pouch · one-time',        product: 59.99, ship: SHIP,
+               charge: 'Charged today $65.94, includes $5.95 shipping' },
+    '3':     { cta: 'Get 3 pouches',  label: '3 pouches · one-time',      product: 119.98, ship: 0,
+               charge: 'Charged today $119.98 · free shipping · you save $59.99' },
+    '5':     { cta: 'Get 5 pouches',  label: '5 pouches · one-time',      product: 179.97, ship: 0,
+               charge: 'Charged today $179.97 · free shipping · you save $119.98' },
+    'trial': { cta: 'Get the trial',  label: '10-count trial · one-time', product: 24.99, ship: SHIP,
+               charge: 'Charged today $30.94, includes $5.95 shipping' }
   };
-  const $ = (n) => '$' + n.toFixed(2);
 
   class Dandy2Pdp extends HTMLElement {
     connectedCallback() {
       this.door = 'sub';
+      this.ctaStyle = this.dataset.ctaStyle === 'plain' ? 'plain' : 'offer';
       this.doorBtns = [...this.querySelectorAll('[data-d2-door]')];
       this.oneInputs = [...this.querySelectorAll('[data-d2-one]')];
       this.doorBtns.forEach(btn => btn.addEventListener('click', () => {
@@ -44,26 +51,6 @@
       }));
       // deep link: #just-once opens the one-time door
       if (location.hash === '#just-once') this.doorBtns.find(b => b.dataset.d2Door === 'one')?.click();
-      // NOTE: the initial sync() runs at the END of connectedCallback, after the
-      // buy form is wired up; calling it here left the selling_plan field disabled
-      // on a straight page-load-and-click, silently dropping the subscription.
-      // Rocky lunges for the CTA once the shopper scrolls to it, holds, then leaves
-      const rocky = this.querySelector('[data-d2-ctarocky]');
-      const ctaBtn = this.querySelector('[data-d2-cta]');
-      if (rocky && ctaBtn && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        let scrolled = false, done = false;
-        addEventListener('scroll', () => { scrolled = true; }, { once: true, passive: true });
-        const io = new IntersectionObserver(([en]) => {
-          if (done || !scrolled || !en.isIntersecting) return;
-          done = true; io.disconnect();
-          rocky.classList.add('is-in');
-          setTimeout(() => rocky.classList.remove('is-in'), 4200);
-        }, { threshold: 0.9 });
-        io.observe(ctaBtn);
-        // ...and any time the button is hovered
-        ctaBtn.addEventListener('mouseenter', () => rocky.classList.add('is-in'));
-        ctaBtn.addEventListener('mouseleave', () => rocky.classList.remove('is-in'));
-      }
       // Add to cart: submits for real the moment Shopify has a purchasable variant.
       // Until then the button explains itself instead of silently doing nothing.
       const form = this.querySelector('[data-d2-buyform]');
@@ -86,16 +73,25 @@
             ? 'Preview only, no subscription plan exists in Shopify yet, so there is nothing to start. This button will check out for real once the SKUs and selling plans are created.'
             : 'Preview only, this product has no purchasable variant in Shopify yet. This button will check out for real once the SKUs are created.';
         });
+        // sticky bar + recap buttons submit the same form (they used to only scroll up)
+        this.querySelectorAll('[data-d2-submit]').forEach(btn => btn.addEventListener('click', () => {
+          if (form.dataset.buyable !== 'true') {
+            document.getElementById('DandyBuyBox')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            form.dispatchEvent(new Event('submit', { cancelable: true }));
+            return;
+          }
+          if (typeof form.requestSubmit === 'function') form.requestSubmit(); else form.submit();
+        }));
       }
-      // Live shipping cutoff, real 1 PM ET weekday deadline, never a fake timer
+      // Live shipping cutoff: orders in by 2 PM Central on a weekday ship the same day.
       const cut = this.querySelector('[data-d2-cutoff]');
       if (cut) {
         const tick = () => {
-          const et = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-          const dl = new Date(et); dl.setHours(13, 0, 0, 0);
-          const weekday = et.getDay() >= 1 && et.getDay() <= 5;
-          if (weekday && et < dl) {
-            const mins = Math.floor((dl - et) / 60000);
+          const ct = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+          const dl = new Date(ct); dl.setHours(14, 0, 0, 0);
+          const weekday = ct.getDay() >= 1 && ct.getDay() <= 5;
+          if (weekday && ct < dl) {
+            const mins = Math.floor((dl - ct) / 60000);
             const h = Math.floor(mins / 60), m = mins % 60;
             cut.innerHTML = 'Order within <b>' + (h ? h + 'h ' : '') + m + 'm</b>, ships today';
           } else {
@@ -137,14 +133,18 @@
       // initial state, now that the buy form (incl. the selling_plan field) is wired
       this.sync();
     }
+    ctaText(o) {
+      return (this.ctaStyle === 'plain' ? 'Add to cart' : o.cta) + ' · ' + $(o.product);
+    }
     sync() {
       const key = this.door === 'sub' ? 'sub' : (this.oneInputs.find(i => i.checked)?.value || '3');
       const o = OFFERS[key];
       const total = o.product + o.ship;
 
       const set = (sel, txt) => { const n = this.querySelector(sel); if (n) n.textContent = txt; };
-      const cta = this.querySelector('[data-d2-cta]');
-      if (cta) cta.textContent = `${o.cta} · ${$(o.product)}`;
+      set('[data-d2-cta]', this.ctaText(o));
+      set('[data-d2-chargeline]', o.charge);
+      set('[data-d2-recap-cta]', this.ctaText(o));
       // recap + sticky echoes always carry the true charged-today total
       set('[data-d2-recap-label]', o.label);
       set('[data-d2-recap-total]', $(total));

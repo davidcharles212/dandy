@@ -1141,3 +1141,119 @@ html.d2age-lock { overflow: hidden; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .d2age { background: rgb(40 17 12 / 96%); }
 }
+
+/* ==========================================================
+   GUMMY PDP CONVERSION PASS (2026-09-01), mobile-first.
+   Appended so it wins by order; every rule stays namespaced.
+   ========================================================== */
+.dandy2-pdp .offer { gap: 12px; }
+.dandy2-pdp__grid { padding-bottom: 40px; }
+
+/* one-line proof: overlapping faces + rating */
+.dandy2-pdp .proofline { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.dandy2-pdp .faces { display: inline-flex; flex: none; }
+.dandy2-pdp .faces img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 2px solid var(--d2-white); box-shadow: 0 0 0 1.5px var(--d2-brown); background: var(--d2-orange-5); }
+.dandy2-pdp .faces img + img { margin-left: -8px; }
+.dandy2-pdp .ratingline { margin: 0; white-space: nowrap; font-size: clamp(11.5px, 3.45vw, 14px); letter-spacing: .03em; }
+
+/* benefit-led head */
+.dandy2-pdp .title { font-size: clamp(42px, 5vw, 60px); }
+.dandy2-pdp .desc { font-size: 16px; line-height: 1.45; }
+.dandy2-pdp .benefitrow { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6px; }
+.dandy2-pdp .benefitrow__rocky { height: 126px; width: auto; margin-bottom: -4px; }
+.dandy2-pdp .benefits { gap: 9px; margin: 0; }
+.dandy2-pdp .benefits li { grid-template-columns: 24px 1fr; }
+.dandy2-pdp .benefits i { display: grid; place-items: center; width: 22px; height: 22px; margin-top: -1px; }
+.dandy2-pdp .benefits i svg { width: 21px; height: 21px; }
+.dandy2-pdp .benefits span { font-size: 13px; }
+
+/* doors */
+.dandy2-pdp .door { padding: 10px 8px 8px; }
+
+/* subscription card: pouch first, shorter media */
+.dandy2-pdp .subhero__media { position: relative; height: 176px; overflow: hidden; border-bottom: 2px solid var(--d2-brown); border-radius: 14px 14px 0 0; background: var(--d2-brown); }
+.dandy2-pdp .subhero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: .92; }
+.dandy2-pdp .subhero__pouch { position: relative; display: block; height: 156px; width: auto; margin: 10px auto 0; filter: drop-shadow(0 8px 12px rgb(0 0 0 / 45%)); }
+.dandy2-pdp .subhero__main { padding: 14px 16px 13px; }
+.dandy2-pdp .subhero__name { font-size: 21px; }
+.dandy2-pdp .subhero__meta { margin: 2px 0 9px; font-size: 13.5px; }
+.dandy2-pdp .subhero__list { gap: 5px; }
+.dandy2-pdp .subhero__list b { font-weight: 800; }
+
+/* one-time cards: single-line names, savings */
+.dandy2-pdp .qgrid { margin-bottom: 8px; }
+.dandy2-pdp .qcard__n { white-space: nowrap; }
+.dandy2-pdp .qcard__m .free { font-style: normal; font-weight: 800; color: var(--d2-green-dark); }
+@media (max-width: 800px) {
+  .dandy2-pdp .qgrid { gap: 12px; }
+  .dandy2-pdp .qcard { padding: 12px 14px 10px; }
+  .dandy2-pdp .qcard__n { font-size: 18px; }
+  .dandy2-pdp .qcard__p { font-size: 19px; }
+}
+
+/* CTA + charged-today line (no mascot on the button) */
+.dandy2-pdp .ctawrap { display: grid; gap: 7px; margin-top: 2px; }
+.dandy2-pdp .cta { min-height: 56px; font-size: 20px; }
+.dandy2-pdp .chargeline { margin: 0; text-align: center; font-size: 13.5px; font-weight: 600; color: var(--d2-brown); opacity: .78; }
+.dandy2-pdp .bump { margin-top: 10px; }
+
+/* trust pills (one system, sticker style) */
+.dandy2-pdp .trustpills { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
+.dandy2-pdp .trustpills li, .dandy2-pdp .trustpills a { display: flex; align-items: center; gap: 8px; min-height: 42px; padding: 7px 10px 6px; border: 2px solid var(--d2-brown); border-radius: 12px; background: var(--d2-white); box-shadow: 3px 3px 0 var(--d2-brown); font-family: var(--d2-display); font-weight: 800; font-size: 13px; letter-spacing: .03em; line-height: 1.05; text-transform: uppercase; color: var(--d2-brown); text-decoration: none; }
+.dandy2-pdp .trustpills li:has(> a) { padding: 0; border: 0; box-shadow: none; }
+.dandy2-pdp .trustpills a { width: 100%; height: 100%; }
+.dandy2-pdp .trustpills i { flex: none; display: grid; place-items: center; width: 22px; height: 22px; color: var(--d2-orange); }
+.dandy2-pdp .trustpills i svg { width: 21px; height: 21px; }
+.dandy2-pdp .trustrow { margin-top: 10px; }
+.dandy2-pdp .shiprow { margin-top: 6px; gap: 12px; }
+.dandy2-pdp .shiprow__truck { height: 58px; }
+.dandy2-pdp .shiprow__txt { font-size: 15.5px; }
+.dandy2-pdp .utilline { margin: 2px 0 0; text-align: center; font-size: 13px; color: var(--d2-brown-50); }
+.dandy2-pdp .utilline a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* guarantee card: one system, two placements */
+.dandy2-pdp .gcard { position: relative; margin-top: 34px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: var(--d2-shadow); padding: 34px 18px 16px; text-align: center; }
+.dandy2-pdp .gcard__seal { position: absolute; top: -30px; left: 50%; transform: translateX(-50%) rotate(-6deg); display: grid; place-content: center; width: 66px; height: 66px; border-radius: 50%; background: var(--d2-orange); color: var(--d2-white); border: 2px solid var(--d2-brown); box-shadow: 3px 3px 0 var(--d2-brown); font-family: var(--d2-display); line-height: .9; text-transform: uppercase; }
+.dandy2-pdp .gcard__seal b { font-weight: 900; font-size: 24px; }
+.dandy2-pdp .gcard__seal small { font-size: 9px; font-weight: 800; letter-spacing: .1em; }
+.dandy2-pdp .gcard__seal em { font-style: normal; font-size: 7.5px; font-weight: 800; letter-spacing: .06em; margin-top: 2px; }
+.dandy2-pdp .gcard__eyebrow { margin: 0 0 4px; font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--d2-orange); }
+.dandy2-pdp .gcard__title { margin: 0 0 8px; font-family: var(--d2-display); font-weight: 900; font-size: 24px; line-height: .95; text-transform: uppercase; color: var(--d2-brown); }
+.dandy2-pdp .gcard__body { margin: 0 auto 10px; max-width: 40ch; font-size: 14.5px; line-height: 1.45; color: var(--d2-brown); }
+.dandy2-pdp .gcard__body a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-pdp .gcard__proof { display: inline-flex; align-items: center; gap: 6px; margin: 0; padding: 6px 12px 5px; border-radius: var(--d2-r-pill); background: var(--d2-orange-5); font-size: 13px; font-weight: 700; color: var(--d2-green-dark); }
+.dandy2-pdp .gcard__proof svg { flex: none; }
+.dandy2-pdp .recapcard .gcard { margin-top: 30px; box-shadow: var(--d2-shadow); text-align: center; }
+
+/* section rhythm: close the dead zones */
+.dandy2-pdp .belowfold--first { padding-top: 24px; }
+.dandy2-pdp .belowfold__title { margin-bottom: 14px; }
+.dandy2-pdp .kcard__title { margin-bottom: 12px; }
+.dandy2-pdp .statbars--solo { grid-template-columns: minmax(0, 720px); margin-top: 26px; }
+.dandy2-pdp .statsrc { margin-top: 14px; }
+.dandy2-pdp .daycheck__head { padding-top: 40px; }
+.dandy2-pdp .daycheck__rows { margin-top: 22px; }
+.dandy2-pdp .dayrow__a { font-size: 24px; }
+.dandy2-pdp .daycheck__punch { padding-bottom: 30px; font-size: 16.5px; font-weight: 600; max-width: 34ch; margin-inline: auto; }
+.dandy2-pdp .recapcard { margin-top: 132px; }
+
+/* real buttons in the sticky bar and recap */
+.dandy2-pdp .stickybar__btn, .dandy2-pdp .cta--inline { cursor: pointer; -webkit-appearance: none; appearance: none; }
+.dandy2-pdp .cta--inline { min-height: 54px; padding-inline: 26px; }
+
+@media (max-width: 800px) {
+  .dandy2-pdp__grid { padding-bottom: 28px; gap: 18px; }
+  .dandy2-pdp .title { font-size: 42px; }
+  .dandy2-pdp .benefits { grid-template-columns: 1fr; gap: 8px; }
+  .dandy2-pdp .benefits span { font-size: 12.5px; }
+  .dandy2-pdp .benefitrow__rocky { height: 118px; }
+  .dandy2-pdp .belowfold--first { padding-top: 22px; }
+  .dandy2-pdp .anatomy { margin-top: 4px; }
+  .dandy2-pdp .recapcard { margin-top: 120px; }
+  .dandy2-pdp .duel__body p { font-size: 13.5px; }
+}
+@media (min-width: 801px) {
+  .dandy2-pdp .subhero__media { height: 200px; }
+  .dandy2-pdp .subhero__pouch { height: 180px; }
+  .dandy2-pdp .trustpills { grid-template-columns: 1fr 1fr; }
+}
