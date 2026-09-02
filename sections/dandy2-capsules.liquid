@@ -45,12 +45,11 @@
       <div class="headrow">
         <div class="headrow__copy">
           <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
-          <p class="eyebrow">Extract Capsules · 50 &amp; 90 mg</p>
           <h1 class="title">Pick your<br>strength.</h1>
         </div>
         <img class="headrow__rocky headrow__rocky--caps" src="{{ 'dandy2-rocky-caps.webp' | asset_url }}" alt="Rocky the Dandy raccoon holding a capsules jar and a single capsule" width="431" height="620" loading="eager">
       </div>
-      <p class="desc">Nothing to taste, nothing to measure. Two strengths so you choose the amount once, at the shelf, instead of every single time.</p>
+      <p class="desc">Dandy extract capsules, 50 or 90&nbsp;mg. Nothing to taste, nothing to measure. Two strengths so you choose the amount once, at the shelf, instead of every single time.</p>
       <ul class="benefits" data-copy-status="aggressive-draft">
         <li><i>◎</i><b>No taste</b><span>Swallowed, not chewed. Nothing earthy on the way down.</span></li>
         <li><i>⚖</i><b>No measuring</b><span>The amount is decided at the shelf, not at the counter.</span></li>
@@ -117,8 +116,7 @@
     <div class="belowfold__inner belowfold__inner--split">
       <img class="halfimg" src="{{ 'dandy2-cap-macro.webp' | asset_url }}" alt="A Dandy extract capsule held between two fingers" width="1200" height="1200" loading="lazy">
       <div>
-        <p class="steplabel">What’s in the capsule</p>
-        <h2 class="belowfold__title" id="d2c-inside-{{ section.id }}">Short list. Stated plainly.</h2>
+        <h2 class="belowfold__title belowfold__title--open" id="d2c-inside-{{ section.id }}">Short list. Stated plainly.</h2>
         <ul class="subhero__list ilist">
           <li>{{ d2_gcheck }} Kratom extract, standardized to an exact 50 or 90&nbsp;mg mitragynine</li>
           <li>{{ d2_gcheck }} Other kratom alkaloids, under 1%</li>
@@ -133,9 +131,8 @@
   {% comment %} ---------- 1b. What is kratom (plain answer card) ---------- {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2c-kratom-{{ section.id }}">
     <div class="kcard" data-copy-status="aggressive-draft">
-      <span class="kcard__pill">Okay, but what is kratom?</span>
-      <h2 class="kcard__title" id="d2c-kratom-{{ section.id }}">A fair question. Here’s the straight answer.</h2>
-      <p class="kcard__lead">Kratom is a leaf from <b>Mitragyna speciosa</b>, a Southeast Asian tree in the coffee family, brewed and chewed there for centuries for <b>steady energy, a lifted mood, and physical ease</b>. How it feels varies person to person. That’s exactly why every capsule is measured to an exact 50 or 90&nbsp;mg, and why we say start with one and wait.</p>
+      <h2 class="kcard__title" id="d2c-kratom-{{ section.id }}">Okay, but what is kratom?</h2>
+      <p class="kcard__lead">A fair question. Kratom is a leaf from <b>Mitragyna speciosa</b>, a Southeast Asian tree in the coffee family, brewed and chewed there for centuries for <b>steady energy, a lifted mood, and physical ease</b>. How it feels varies person to person. That’s exactly why every capsule is measured to an exact 50 or 90&nbsp;mg, and why we say start with one and wait.</p>
       <div class="kcard__row">
         <div class="kcard__facts">
           <div class="kcard__chips">
@@ -154,8 +151,7 @@
   <section class="belowfold belowfold--band" aria-labelledby="d2c-travel-{{ section.id }}">
     <div class="belowfold__inner belowfold__inner--split">
       <div>
-        <p class="steplabel">The honest case for capsules</p>
-        <h2 class="belowfold__title" id="d2c-travel-{{ section.id }}">It only works if it&rsquo;s with you.</h2>
+        <h2 class="belowfold__title belowfold__title--open" id="d2c-travel-{{ section.id }}">It only works if it&rsquo;s with you.</h2>
         <ul class="subhero__list ilist">
           <li>{{ d2_gcheck }} The same exact 50 or 90&nbsp;mg at your desk, in transit, anywhere</li>
           <li>{{ d2_gcheck }} No scale, no scoop, no prep &mdash; nothing to skip on a busy day</li>
@@ -170,8 +166,7 @@
   {% comment %} ---------- proof ---------- {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2c-proof-{{ section.id }}" data-copy-status="aggressive-draft">
     <div class="belowfold__inner">
-      <p class="steplabel steplabel--center">From our customers</p>
-      <h2 class="belowfold__title belowfold__title--center" id="d2c-proof-{{ section.id }}">The numbers came back grinning.</h2>
+      <h2 class="belowfold__title belowfold__title--open belowfold__title--center" id="d2c-proof-{{ section.id }}">The numbers came back grinning.</h2>
       {%- capture d2_i_focus -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="2.6"/><path d="M12 1.6v3.2M12 19.2v3.2M1.6 12h3.2M19.2 12h3.2"/></svg>{%- endcapture -%}
       {%- capture d2_i_coffee -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 8.5h12v6.5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8.5Z"/><path d="M16.5 9.5h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M3.8 4.2l16.4 15.6"/></svg>{%- endcapture -%}
       {%- capture d2_i_happy -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.2 14c.9 1.2 2.2 1.9 3.8 1.9s2.9-.7 3.8-1.9"/><path d="M9.2 9.6h.02M14.8 9.6h.02"/></svg>{%- endcapture -%}
@@ -192,8 +187,7 @@
   {% comment %} ---------- FAQ: capsule-specific ---------- {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2c-faq-{{ section.id }}">
     <div class="belowfold__inner belowfold__inner--narrow">
-      <p class="steplabel">Straight answers</p>
-      <h2 class="belowfold__title" id="d2c-faq-{{ section.id }}">Capsule questions.</h2>
+      <h2 class="belowfold__title belowfold__title--open" id="d2c-faq-{{ section.id }}">Capsule questions.</h2>
       <div class="faq">
         <details><summary>What does “extract” mean here?</summary><p>It’s concentrated from the leaf rather than milled leaf itself, which is why a capsule is measured in milligrams while powder is measured in grams. The batch report states the identity and the alkaloid content, <a href="{{ url_coa }}">read it before you buy</a>.</p></details>
         <details><summary>How many should I take?</summary><p>Start with one and wait. That’s the only guidance we’ll give in copy, the label on the jar is the instruction, and it’s deliberately conservative.</p></details>
@@ -207,8 +201,7 @@
 
   <section class="belowfold belowfold--finale" aria-labelledby="d2c-end-{{ section.id }}">
     <div class="belowfold__inner belowfold__inner--narrow belowfold__inner--center">
-      <p class="steplabel">Decided?</p>
-      <h2 class="belowfold__title" id="d2c-end-{{ section.id }}">One capsule, no ceremony.</h2>
+      <h2 class="belowfold__title belowfold__title--open" id="d2c-end-{{ section.id }}">One capsule, no ceremony.</h2>
       <div class="recapcard">
         <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy" aria-hidden="true">
         <div class="recapcard__row"><span data-d2-crecap>1 × 50 mg · 10 ct</span><b data-d2-crecap-total>$34.94</b></div>

@@ -11,8 +11,7 @@
   {% render 'dandy2-chrome-header' %}
   <main class="cartwrap" id="DandyMain">
     <header class="doc__head">
-      <p class="steplabel steplabel--center">Your bag</p>
-      <h1 class="belowfold__title belowfold__title--center">{% if cart.item_count > 0 %}Nearly Dandy.{% else %}Nothing in the bag yet.{% endif %}</h1>
+      <h1 class="belowfold__title belowfold__title--open belowfold__title--center">{% if cart.item_count > 0 %}Your bag. Nearly Dandy.{% else %}Nothing in the bag yet.{% endif %}</h1>
     </header>
 
     {% if cart.item_count > 0 %}

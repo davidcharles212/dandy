@@ -3,7 +3,6 @@
     "main": {
       "type": "dandy2-doc",
       "settings": {
-        "eyebrow": "Subscriptions",
         "heading": "Subscription policy.",
         "lede": "One pouch, every 30 days, at a price that doesn't change on you.",
         "copy_status": "aggressive-draft"

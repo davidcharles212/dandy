@@ -3,7 +3,6 @@
     "main": {
       "type": "dandy2-doc",
       "settings": {
-        "eyebrow": "Who we are",
         "heading": "Kratom, without the games.",
         "lede": "Dandy exists because buying kratom online is mostly awful — vague labels, no lab reports, and wild claims nobody stands behind.",
         "copy_status": "aggressive-draft"

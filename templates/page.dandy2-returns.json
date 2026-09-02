@@ -3,7 +3,6 @@
     "main": {
       "type": "dandy2-doc",
       "settings": {
-        "eyebrow": "Returns",
         "heading": "The 30-day guarantee.",
         "lede": "If your first order isn't for you, tell us within 30 days and we'll refund it.",
         "copy_status": "aggressive-draft"
