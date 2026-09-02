@@ -1299,3 +1299,118 @@ html.d2age-lock { overflow: hidden; }
 }
 
 .dandy2-pdp .gcard { padding-top: 52px; }
+
+/* ==========================================================
+   GUMMY PDP ROUND 2 (2026-09-01): David's review round.
+   Appended so it wins by order; every rule stays namespaced.
+   ========================================================== */
+/* doors */
+.dandy2-pdp .door small { font-size: 12px; }
+.dandy2-pdp .doors { scroll-margin-top: 84px; }
+
+/* subscription card: savings tag beside the price, calmer meta line */
+.dandy2-pdp .subhero__row { align-items: center; }
+.dandy2-pdp .subhero__price { display: inline-flex; align-items: center; gap: 8px; }
+.dandy2-pdp .savetag { font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .04em; line-height: 1; text-transform: uppercase; color: var(--d2-green-dark); background: rgb(87 186 79 / 20%); border-radius: var(--d2-r-pill); padding: 5px 9px 4px; white-space: nowrap; }
+.dandy2-pdp .subhero__meta { margin: 3px 0 10px; font-size: 13.5px; font-weight: 500; color: var(--d2-brown); opacity: .72; }
+
+/* charged-today line only when shipping changes the total */
+.dandy2-pdp .chargeline[hidden] { display: none; }
+
+/* one-time door: stacked radio rows, one chip, shipping stated once below */
+.dandy2-pdp .qrows { display: grid; gap: 10px; }
+.dandy2-pdp .qrow { position: relative; display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 12px; padding: 13px 14px 12px; border: 2px solid rgb(40 17 12 / 28%); border-radius: 14px; background: var(--d2-white); cursor: pointer; }
+.dandy2-pdp .qrow input { position: absolute; opacity: 0; pointer-events: none; }
+.dandy2-pdp .qrow__radio { width: 22px; height: 22px; border: 2px solid var(--d2-brown-50); border-radius: 50%; background: var(--d2-white); display: grid; place-items: center; }
+.dandy2-pdp .qrow__radio::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--d2-orange); opacity: 0; }
+.dandy2-pdp .qrow:has(input:checked) { border-color: var(--d2-brown); background: var(--d2-orange-5); box-shadow: var(--d2-shadow); }
+.dandy2-pdp .qrow:has(input:checked) .qrow__radio { border-color: var(--d2-brown); }
+.dandy2-pdp .qrow:has(input:checked) .qrow__radio::after { opacity: 1; }
+.dandy2-pdp .qrow__main { display: grid; gap: 3px; min-width: 0; }
+.dandy2-pdp .qrow__n { font-family: var(--d2-display); font-weight: 900; font-size: 19px; line-height: 1; text-transform: uppercase; white-space: nowrap; }
+.dandy2-pdp .qrow__sub { font-size: 13px; font-weight: 500; color: var(--d2-brown); opacity: .7; white-space: nowrap; }
+.dandy2-pdp .qrow__price { font-family: var(--d2-display); font-weight: 900; font-size: 20px; line-height: 1; white-space: nowrap; text-align: right; }
+.dandy2-pdp .qrow__price s { font-weight: 700; font-size: 13px; color: var(--d2-brown-50); margin-right: 6px; }
+.dandy2-pdp .qrow__chip { position: absolute; top: -12px; right: 12px; z-index: 2; white-space: nowrap; background: var(--d2-green-dark); color: var(--d2-white); font-family: var(--d2-display); font-weight: 800; font-size: 11.5px; letter-spacing: .05em; line-height: 1; text-transform: uppercase; padding: 5px 10px 4px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-pill); }
+.dandy2-pdp .qrow--anchor { margin-top: 6px; }
+.dandy2-pdp .qrow--trial .qrow__n { font-size: 16px; }
+.dandy2-pdp .qrow--trial .qrow__price { font-size: 17px; }
+.dandy2-pdp .qnote { margin: 10px 0 0; text-align: center; font-size: 13px; font-weight: 700; color: var(--d2-green-dark); }
+
+/* payment marks: reassurance, kept small and quiet */
+.dandy2-pdp .trustrow__cards li { height: 26px; padding: 0 4px; border-color: rgb(40 17 12 / 10%); }
+.dandy2-pdp .trustrow__icon { height: 17px; opacity: .8; }
+
+/* ship-by countdown with a live dot */
+.dandy2-pdp .shiprow__txt { display: inline-flex; align-items: center; gap: 8px; }
+.dandy2-pdp .shiprow__dot { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--d2-green); box-shadow: 0 0 0 0 rgb(87 186 79 / 60%); animation: d2pulse 1.6s ease-out infinite; }
+.dandy2-pdp .shiprow__dot[hidden] { display: none; }
+@keyframes d2pulse { 0% { box-shadow: 0 0 0 0 rgb(87 186 79 / 60%); } 100% { box-shadow: 0 0 0 9px rgb(87 186 79 / 0%); } }
+@media (prefers-reduced-motion: reduce) { .dandy2-pdp .shiprow__dot { animation: none; } }
+
+/* guarantee band (replaces the round seal card) */
+.dandy2-pdp .gband { display: grid; grid-template-columns: 62px 1fr; gap: 14px; align-items: center; margin-top: 12px; padding: 14px 16px 14px 14px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-orange-5); box-shadow: var(--d2-shadow); text-align: left; }
+.dandy2-pdp .gband__badge { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: var(--d2-orange); color: var(--d2-white); border: 2px solid var(--d2-brown); box-shadow: 3px 3px 0 var(--d2-brown); }
+.dandy2-pdp .gband__badge svg { width: 34px; height: 34px; }
+.dandy2-pdp .gband__body { min-width: 0; }
+.dandy2-pdp .gband__eyebrow { margin: 0 0 3px; font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--d2-orange); }
+.dandy2-pdp .gband__title { margin: 0 0 5px; font-family: var(--d2-display); font-weight: 900; font-size: 23px; line-height: .95; text-transform: uppercase; color: var(--d2-brown); }
+.dandy2-pdp .gband__text { margin: 0 0 8px; font-size: 14px; line-height: 1.45; color: var(--d2-brown); text-wrap: pretty; }
+.dandy2-pdp .gband__text a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-pdp .gband__proof { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-size: 13px; font-weight: 700; color: var(--d2-green-dark); }
+.dandy2-pdp .recapcard .gband { margin-top: 16px; }
+
+/* certificate of analysis card */
+.dandy2-pdp .labcard { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding: 10px 12px; border: 2px solid rgb(40 17 12 / 22%); border-radius: 12px; background: var(--d2-white); color: var(--d2-brown); text-decoration: none; }
+.dandy2-pdp .labcard i { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--d2-orange-5); color: var(--d2-orange); }
+.dandy2-pdp .labcard i svg { width: 20px; height: 20px; }
+.dandy2-pdp .labcard b { display: block; font-family: var(--d2-display); font-weight: 800; font-size: 15px; letter-spacing: .02em; line-height: 1.1; text-transform: uppercase; }
+.dandy2-pdp .labcard small { display: block; margin-top: 3px; font-size: 13px; font-weight: 600; color: var(--d2-green-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ingredients: four photo tiles, no eyebrow, no dead zone above */
+.dandy2-pdp .belowfold--first { padding-top: 14px; }
+.dandy2-pdp .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 8px; }
+.dandy2-pdp .tile { position: relative; margin: 0; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); overflow: hidden; background: var(--d2-brown); box-shadow: var(--d2-shadow); aspect-ratio: 4 / 5; }
+.dandy2-pdp .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dandy2-pdp .tile figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 44px 12px 12px; background: linear-gradient(180deg, rgb(40 17 12 / 0%), rgb(40 17 12 / 80%) 55%); color: var(--d2-white); }
+.dandy2-pdp .tile b { display: block; font-family: var(--d2-display); font-weight: 900; font-size: 16px; line-height: 1; letter-spacing: .02em; text-transform: uppercase; text-shadow: 1px 1px 0 rgb(0 0 0 / 35%); }
+.dandy2-pdp .tile span { display: block; margin-top: 4px; font-size: 12.5px; font-weight: 600; line-height: 1.3; color: rgb(255 255 255 / 92%); }
+.dandy2-pdp .tile a { color: #B9F2B2; font-weight: 700; }
+@media (max-width: 800px) {
+  .dandy2-pdp .belowfold--first { padding-top: 10px; }
+  .dandy2-pdp .tiles { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dandy2-pdp .tile { aspect-ratio: 1 / 1.08; }
+}
+
+/* kratom card: plant illustration beside the three chips */
+@media (max-width: 800px) {
+  .dandy2-pdp .kcard__row { grid-template-columns: 1fr auto; gap: 8px; align-items: start; }
+  .dandy2-pdp .kcard__facts { display: block; }
+  .dandy2-pdp .kcard__chips { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+  .dandy2-pdp .kcard__plant { height: 150px; margin-top: -4px; align-self: start; }
+}
+
+/* survey: one hero stat, three tiles, two real quotes */
+.dandy2-pdp .stats { display: grid; gap: 14px; margin-top: 20px; }
+.dandy2-pdp .stats__hero { display: grid; justify-items: center; padding: 18px 16px 16px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-24); background: var(--d2-orange); color: var(--d2-white); box-shadow: var(--d2-shadow); text-align: center; }
+.dandy2-pdp .stats__hero em { font-style: normal; font-family: var(--d2-display); font-weight: 900; font-size: 84px; line-height: .9; letter-spacing: -.02em; }
+.dandy2-pdp .stats__hero span { margin-top: 6px; font-family: var(--d2-display); font-weight: 800; font-size: 20px; letter-spacing: .03em; text-transform: uppercase; }
+.dandy2-pdp .stats__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.dandy2-pdp .stat { display: grid; gap: 5px; align-content: start; padding: 14px 8px 12px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); box-shadow: 3px 3px 0 var(--d2-brown); text-align: center; }
+.dandy2-pdp .stat em { font-style: normal; font-family: var(--d2-display); font-weight: 900; font-size: 34px; line-height: 1; color: var(--d2-orange); }
+.dandy2-pdp .stat span { font-size: 12.5px; font-weight: 600; line-height: 1.25; text-wrap: balance; }
+.dandy2-pdp .quotes { display: grid; gap: 10px; }
+.dandy2-pdp .quote { margin: 0; padding: 14px 16px 12px; border: 2px solid var(--d2-brown); border-radius: var(--d2-r-16); background: var(--d2-white); }
+.dandy2-pdp .quote p { margin: 0 0 7px; font-size: 16px; line-height: 1.4; font-weight: 500; text-wrap: pretty; }
+.dandy2-pdp .quote footer { display: inline-flex; align-items: center; gap: 6px; font-family: var(--d2-display); font-weight: 800; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--d2-green-dark); }
+.dandy2-pdp .quote footer svg { width: 14px; height: 14px; }
+.dandy2-pdp .statsrc { margin-top: 12px; }
+@media (min-width: 801px) {
+  .dandy2-pdp .stats { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; max-width: 960px; margin-inline: auto; }
+  .dandy2-pdp .stats__hero { grid-row: span 2; align-self: stretch; align-content: center; }
+}
+
+/* footer: raccoon fills the empty half beside the Company column on phones */
+.d2foot__cols { position: relative; }
+.d2foot__rocky { position: absolute; right: 0; bottom: 0; width: 128px; height: auto; pointer-events: none; }
+@media (min-width: 801px) { .d2foot__rocky { display: none; } }
