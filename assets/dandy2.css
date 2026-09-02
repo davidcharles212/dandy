@@ -1591,3 +1591,7 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-guide .doc__block--cta .cta { color: var(--d2-brown); font-weight: 900; text-decoration: none; }
 /* ship row: keep "ships today" together so the countdown never orphans the last word */
 .dandy2-pdp .shiprow__txt .keep { white-space: nowrap; }
+/* buy box round 6 (2026-09-02): rows read in pouches, the first row defines the pouch, the percent leads the subline
+   (dimming moved from opacity to color so the green percent renders at full strength) */
+.dandy2-pdp .qrow__sub { opacity: 1; color: rgb(40 17 12 / 72%); }
+.dandy2-pdp .qrow__sub .pct { font-style: normal; font-weight: 800; color: var(--d2-green-dark); }

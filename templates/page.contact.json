@@ -5,7 +5,7 @@
       "settings": {
         "eyebrow": "Contact Dandy",
         "heading": "A real question deserves a real answer.",
-        "text": "Use the form for product, order, accessibility, or batch-report help. Do not use it for a medical emergency.",
+        "text": "Email or call for product, order, accessibility, or batch-report help. Do not use either for a medical emergency.",
         "claim_ids": "",
         "copy_status": "approved"
       }
@@ -13,72 +13,13 @@
     "content": {
       "type": "dandy-page-content",
       "settings": {
-        "fallback_content": "<p>Tell us what you were trying to do and include the relevant order, product, lot, page, or accessibility details. [FINAL SUPPORT POLICY REQUIRED: approved hours, response target, emergency and adverse-event routes, mailing address, and privacy handling.]</p>",
-        "copy_status": "missing-final-copy"
-      }
-    },
-    "form": {
-      "type": "section",
-      "blocks": {
-        "contact_form": {
-          "type": "contact-form",
-          "settings": {
-            "width": "custom",
-            "custom_width": 64,
-            "width_mobile": "custom",
-            "custom_width_mobile": 100,
-            "input_style": "default",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "submit-button": {
-              "type": "contact-form-submit-button",
-              "static": true,
-              "settings": {
-                "label": "Send message",
-                "style_class": "button",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": []
-        }
-      },
-      "block_order": ["contact_form"],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "{{ settings.color_palette.background }}",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 32,
-        "padding-block-end": 84
+        "fallback_content": "<p><strong>Email</strong><br><a href=\"mailto:support@foreverdandy.com\">support@foreverdandy.com</a><br>We reply within 24 hours.</p><p><strong>Phone</strong><br><a href=\"tel:+18444356852\">844-435-6852</a><br>Monday to Friday, 9am to 5pm Central.</p><p>Include your order number and the product. For a batch question, add the lot number printed on your pouch.</p>",
+        "copy_status": "approved"
       }
     }
   },
-  "order": ["hero", "content", "form"]
+  "order": [
+    "hero",
+    "content"
+  ]
 }
