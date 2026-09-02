@@ -1,17 +1,16 @@
 {% comment %}
-  DANDY 2026, guarantee band. ONE guarantee system, rendered in two places on the
+  DANDY 2026, guarantee card. ONE guarantee system, rendered in two places on the
   gummy PDP (under the buy box and in the recap). Change copy here only.
-  2026-09-01 round 2: horizontal band, "make it right" promise (David: the refund
-  process is not a simple email-and-refund, so the page must not promise one).
+  Structure follows David's reference card: a centered card, a horizontal ribbon
+  breaking the top edge, title, one plain sentence, and a full-width proof strip
+  across the bottom. Promise is "make it right" (the refund process is not a simple
+  email-and-refund, so the page must not promise one).
   Claim status: pending legal review. The under-3% figure comes from David
-  (pilot customers, 2026-09-01) and he confirmed it still holds for this wording.
+  (pilot customers, 2026-09-01), confirmed for this wording.
 {% endcomment %}
-<div class="gband" data-copy-status="pending-legal">
-  <span class="gband__badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 7.9-7.5 9.5-4.3-1.6-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.3l2.2 2.2 4.4-4.6"/></svg></span>
-  <div class="gband__body">
-    <p class="gband__eyebrow">30-day satisfaction guarantee</p>
-    <h3 class="gband__title">We&rsquo;ll make it right.</h3>
-    <p class="gband__text">We stand behind every pouch. If Dandy isn&rsquo;t right for you, email <a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a> within 30 days and we&rsquo;ll make it right.</p>
-    <p class="gband__proof"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Fewer than 3% of customers have ever asked.</p>
-  </div>
+<div class="gcard2" data-copy-status="pending-legal">
+  <span class="gcard2__ribbon">Our guarantee</span>
+  <h3 class="gcard2__title">We&rsquo;ll make it right.</h3>
+  <p class="gcard2__body">We stand behind every pouch. If Dandy isn&rsquo;t right for you, email <a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a> within 30 days and we&rsquo;ll make it right.</p>
+  <p class="gcard2__proof"><i aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></i>Fewer than 3% of customers have ever asked.</p>
 </div>
