@@ -81,9 +81,9 @@
             <div class="subhero__row"><span class="subhero__name">Monthly supply</span><span class="subhero__price"><s>$59.99</s>$47.99</span></div>
             <p class="subhero__meta">30 gummies · $1.60 each · you save $12 every month</p>
             <ul class="subhero__list">
-              <li>{{ d2_gcheck }} <b>Free shipping</b>, every order</li>
-              <li>{{ d2_gcheck }} A fresh pouch every 30 days</li>
-              <li>{{ d2_gcheck }} Skip, pause, or cancel anytime</li>
+              <li>{{ d2_gcheck }}<span><b>Free shipping</b>, every order</span></li>
+              <li>{{ d2_gcheck }}<span>A fresh pouch every 30 days</span></li>
+              <li>{{ d2_gcheck }}<span>Skip, pause, or cancel anytime</span></li>
             </ul>
           </div>
         </div>
@@ -95,7 +95,7 @@
           <label class="qcard"><input type="radio" name="d2one-{{ section.id }}" value="3" data-d2-one checked><span class="qcard__free">Most popular</span><span class="qcard__n">Buy 2, get 1 free</span><span class="qcard__p"><s>$179.97</s>$119.98</span><span class="qcard__m">90 gummies · $1.33 each · <em class="free">free shipping</em> · save $59.99</span></label>
           <label class="qcard"><input type="radio" name="d2one-{{ section.id }}" value="5" data-d2-one><span class="qcard__free">Best value</span><span class="qcard__n">Buy 3, get 2 free</span><span class="qcard__p"><s>$299.95</s>$179.97</span><span class="qcard__m">150 gummies · $1.20 each · <em class="free">free shipping</em> · save $119.98</span></label>
         </div>
-        <label class="trialrow"><input type="radio" name="d2one-{{ section.id }}" value="trial" data-d2-one>Just want a taste? <b>10-count trial, $24.99</b> · one-time · + $5.95 shipping</label>
+        <label class="trialrow"><input type="radio" name="d2one-{{ section.id }}" value="trial" data-d2-one>Just want a taste? <b>10-count trial, $24.99</b> one-time, plus $5.95 shipping</label>
       </div>
 
       {%- assign d2_plan_id = '' -%}
@@ -113,7 +113,7 @@
         <input type="hidden" name="selling_plan" value="" data-d2-planfield disabled>
         <div class="ctawrap">
           <button type="submit" class="cta" data-d2-cta>Start monthly · $47.99</button>
-          <p class="chargeline" data-d2-chargeline>Charged today $47.99 · free shipping · renews every 30 days, cancel anytime</p>
+          <p class="chargeline" data-d2-chargeline>Charged today $47.99 · free shipping · renews every 30 days</p>
         </div>
         <label class="bump" data-copy-status="aggressive-draft">
           <input type="checkbox" data-d2-bump>
@@ -125,10 +125,10 @@
       </form>
 
       <ul class="trustpills" aria-label="Shipping, support, and quality">
-        <li><i>{{ d2_i_truck }}</i>Free shipping on monthly &amp; packs</li>
-        <li><i>{{ d2_i_shield }}</i>30-day money back</li>
-        <li><i>{{ d2_i_headset }}</i>Support Mon–Fri, 9–5 CT</li>
-        <li><a href="{{ url_coa }}"><i>{{ d2_i_lab }}</i>Lab-tested every batch</a></li>
+        <li><i>{{ d2_i_truck }}</i><span>Free shipping<br>monthly &amp; packs</span></li>
+        <li><i>{{ d2_i_shield }}</i><span>30-day<br>money back</span></li>
+        <li><i>{{ d2_i_headset }}</i><span>Support<br>Mon–Fri, 9–5 CT</span></li>
+        <li><a href="{{ url_coa }}"><i>{{ d2_i_lab }}</i><span>Lab-tested<br>every batch</span></a></li>
       </ul>
       {% render 'dandy2-trustbadges' %}
       <div class="shiprow">
@@ -136,7 +136,7 @@
         <p class="shiprow__txt" data-d2-cutoff>Order by <b>2 PM Central</b>, ships today</p>
       </div>
       {% render 'dandy2-guarantee' %}
-      <p class="utilline">Mixed Berry Kratom Gummies · 35 mg mitragynine per gummy · <a href="{{ url_coa }}">read this batch&rsquo;s COA</a></p>
+      <p class="utilline">Mixed Berry Kratom Gummies · 35 mg mitragynine per gummy<br><a href="{{ url_coa }}">Lab-tested every batch, read this batch&rsquo;s COA</a></p>
     </section>
   </main>
 

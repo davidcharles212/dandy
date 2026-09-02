@@ -1268,3 +1268,32 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-pdp .kcard__plant { height: 132px; justify-self: end; margin-top: -58px; }
   .dandy2-pdp .recapcard { margin-top: 146px; }
 }
+
+/* 2026-09-01 visual QA round 2 */
+.dandy2-pdp .subhero { margin-top: 10px; }
+.dandy2-pdp .subhero__stamp { z-index: 4; top: -16px; right: 8px; }
+.dandy2-pdp .subhero__list li { gap: 8px; }
+.dandy2-pdp .subhero__list li > span { display: inline; }
+.dandy2-pdp .chargeline { font-size: 13px; text-wrap: balance; }
+.dandy2-pdp .trialrow { text-wrap: balance; }
+.dandy2-pdp .trustpills li, .dandy2-pdp .trustpills a { min-height: 48px; line-height: 1.1; }
+.dandy2-pdp .trustpills span { display: block; }
+.dandy2-pdp .utilline { line-height: 1.5; }
+.dandy2-pdp .gcard { padding-top: 46px; }
+.dandy2-pdp .gcard__seal { top: -28px; width: 72px; height: 72px; }
+.dandy2-pdp .gcard__seal b { font-size: 25px; }
+.dandy2-pdp .gcard__seal small { font-size: 9.5px; }
+.dandy2-pdp .gcard__seal em { font-size: 8.5px; }
+.dandy2-pdp .gcard__proof { white-space: nowrap; }
+.dandy2-pdp .belowfold__title, .dandy2-pdp .kcard__title { text-wrap: balance; }
+.dandy2-pdp .benefits span, .dandy2-pdp .duel__body p, .dandy2-pdp .faq p, .dandy2-pdp .gcard__body { text-wrap: pretty; }
+.dandy2-pdp .faq summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; list-style: none; }
+.dandy2-pdp .faq summary::-webkit-details-marker { display: none; }
+.dandy2-pdp .faq summary::after { content: '+'; flex: none; width: 26px; height: 26px; display: grid; place-items: center; border: 2px solid var(--d2-brown); border-radius: 50%; font-family: var(--d2-display); font-weight: 900; font-size: 18px; line-height: 1; }
+.dandy2-pdp .faq details[open] summary::after { content: '–'; background: var(--d2-orange); color: var(--d2-white); }
+@media (max-width: 800px) {
+  .dandy2-pdp { padding-bottom: 84px; }
+  .dandy2-pdp .dayrow__q, .dandy2-pdp .dayrow__a { font-size: 19px; white-space: nowrap; }
+  .dandy2-pdp .dayrow__a svg { width: 18px; height: 18px; }
+  .dandy2-pdp .benefitrow__rocky { height: 104px; }
+}

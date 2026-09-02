@@ -10,13 +10,13 @@
   // Every offer is a complete, self-contained decision, no cross-state collisions.
   const OFFERS = {
     sub:     { cta: 'Start monthly',  label: 'Monthly supply · 30-count', product: 47.99, ship: 0, renews: true,
-               charge: 'Charged today $47.99 · free shipping · renews every 30 days, cancel anytime' },
+               charge: 'Charged today $47.99 · free shipping · renews every 30 days' },
     '1':     { cta: 'Get 1 pouch',    label: '1 pouch · one-time',        product: 59.99, ship: SHIP,
                charge: 'Charged today $65.94, includes $5.95 shipping' },
     '3':     { cta: 'Get 3 pouches',  label: '3 pouches · one-time',      product: 119.98, ship: 0,
-               charge: 'Charged today $119.98 · free shipping · you save $59.99' },
+               charge: 'Charged today $119.98 · free shipping · save $59.99' },
     '5':     { cta: 'Get 5 pouches',  label: '5 pouches · one-time',      product: 179.97, ship: 0,
-               charge: 'Charged today $179.97 · free shipping · you save $119.98' },
+               charge: 'Charged today $179.97 · free shipping · save $119.98' },
     'trial': { cta: 'Get the trial',  label: '10-count trial · one-time', product: 24.99, ship: SHIP,
                charge: 'Charged today $30.94, includes $5.95 shipping' }
   };
