@@ -67,15 +67,15 @@
 
       <div class="buybox">
       <div class="doors" id="DandyOffer">
-        <button type="button" class="door is-on" data-d2-door="sub" aria-pressed="true">Monthly<small>$47.99/mo, save 20%</small></button>
-        <button type="button" class="door" data-d2-door="one" aria-pressed="false">One-time<small>no subscription</small></button>
+        <button type="button" class="door is-on" data-d2-door="one" aria-pressed="true">One-time<small>no subscription</small></button>
+        <button type="button" class="door" data-d2-door="sub" aria-pressed="false">Monthly<small>$47.99/mo, save 20%</small></button>
       </div>
 
-      <div class="doorpane" data-d2-pane="sub">
+      <div class="doorpane" data-d2-pane="sub" hidden>
         <div class="subhero">
           <span class="subhero__stamp">20%<small>OFF</small></span>
           <div class="subhero__media">
-            <img class="subhero__bg" src="{{ 'dandy2-leaves-wide.webp' | asset_url }}" alt="" width="1200" height="669" loading="lazy" aria-hidden="true">
+            <img class="subhero__bg" src="{{ 'dandy2-leaves-clean.webp' | asset_url }}" alt="" width="1200" height="669" loading="lazy" aria-hidden="true">
             <img class="subhero__pouch" src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" alt="Dandy Mixed Berry Kratom Gummies, 30-count pouch" width="675" height="675" loading="eager">
           </div>
           <div class="subhero__main">
@@ -90,7 +90,7 @@
         </div>
       </div>
 
-      <div class="doorpane" data-d2-pane="one" hidden>
+      <div class="doorpane" data-d2-pane="one">
         <div class="qrows" role="radiogroup" aria-label="One-time options">
           <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="1" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">1 pouch</b><small class="qrow__sub">30 gummies, 35 mg each</small></span><span class="qrow__side"><b class="qrow__unit">$59.99</b><small class="qrow__ship">+ $5.95 shipping</small></span></label>
           <label class="qrow qrow--anchor"><input type="radio" name="d2one-{{ section.id }}" value="3" data-d2-one checked><span class="qrow__chip">Most popular</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">3 pouches</b><small class="qrow__sub"><em class="pct">Save 33%</em> + free shipping</small></span><span class="qrow__side"><b class="qrow__unit">$39.99<small>/pouch</small></b><small class="qrow__total">$119.98 total</small></span></label>
@@ -113,7 +113,7 @@
         <input type="hidden" name="quantity" value="1" data-d2-qtyfield>
         <input type="hidden" name="selling_plan" value="" data-d2-planfield disabled>
         <div class="ctawrap">
-          <button type="submit" class="cta" data-d2-cta>Start monthly · $47.99</button>
+          <button type="submit" class="cta" data-d2-cta>Get 3 pouches · $119.98</button>
         </div>
         <p class="previewnote" data-d2-previewnote hidden></p>
       </form>
@@ -264,8 +264,8 @@
       <h2 class="belowfold__title" id="d2-recap-{{ section.id }}">Still scrolling? That’s a sign.</h2>
       <div class="recapcard">
         <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="Rocky the raccoon peeking over the top of the card" width="560" height="468" loading="lazy">
-        <div class="recapcard__row"><span data-d2-recap-label>Monthly supply · 30-count</span><b data-d2-recap-total>$47.99</b></div>
-        <button type="button" class="cta cta--inline" data-d2-recap-cta data-d2-submit>Start monthly · $47.99</button>
+        <div class="recapcard__row"><span data-d2-recap-label>3 pouches, one-time</span><b data-d2-recap-total>$119.98</b></div>
+        <button type="button" class="cta cta--inline" data-d2-recap-cta data-d2-submit>Get 3 pouches · $119.98</button>
         {% render 'dandy2-guarantee' %}
       </div>
     </div>
@@ -273,7 +273,7 @@
 
   {% comment %} ---------- sticky mobile bar ---------- {% endcomment %}
   <div class="stickybar" data-d2-sticky hidden>
-    <div class="stickybar__info"><strong data-d2-sticky-label>Monthly supply · 30-count</strong><span data-d2-sticky-total>$47.99</span></div>
+    <div class="stickybar__info"><strong data-d2-sticky-label>3 pouches, one-time</strong><span data-d2-sticky-total>$119.98</span></div>
     <button type="button" class="stickybar__btn" data-d2-submit>Add to cart</button>
   </div>
   {% render 'dandy2-emailcapture' %}
