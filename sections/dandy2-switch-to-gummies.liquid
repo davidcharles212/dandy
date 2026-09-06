@@ -1,17 +1,17 @@
 {% comment %}
-  DANDY 2026, LPI: landing page for existing kratom users switching from
+  DANDY 2026, SWITCH TO GUMMIES: landing page for existing kratom users switching from
   powder or capsules to Mixed Berry Gummies. Built 2026-09-06 from David's
   brief (companies/dandy/projects/existing-user-landing-page). Self-contained:
-  own chrome, own CSS (dandy2-lpi.css), own JS. Loads dandy2.css only for the
-  age gate. Rendered by templates/page.lpi.json; every CTA goes to the gummy PDP.
+  own chrome, own CSS (dandy2-switch-to-gummies.css), own JS. Loads dandy2.css only for the
+  age gate. Rendered by templates/page.switch-to-gummies.json; live at /pages/switch-to-gummies; every CTA goes to the gummy PDP.
 {% endcomment %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
 {{ 'dandy2.css' | asset_url | stylesheet_tag }}
-{{ 'dandy2-lpi.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'dandy2-lpi.js' | asset_url }}" defer></script>
-<div class="dandy2-lpi">
+{{ 'dandy2-switch-to-gummies.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dandy2-switch-to-gummies.js' | asset_url }}" defer></script>
+<div class="dandy2-stg">
 <a class="skip" href="#main">Skip to content</a>
 
 <p class="topbar">For people who already use Kratom</p>
@@ -479,5 +479,5 @@
 {% render 'dandy2-agegate' %}
 
 {% schema %}
-{ "name": "Dandy LPI landing page", "settings": [], "presets": [] }
+{ "name": "Dandy: switch to gummies landing page", "settings": [], "presets": [] }
 {% endschema %}

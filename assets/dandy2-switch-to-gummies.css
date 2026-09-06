@@ -33,7 +33,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-body.dandy-theme:has(.dandy2-lpi) {
+body.dandy-theme:has(.dandy2-stg) {
   margin: 0;
   background: var(--white);
   color: var(--brown);
@@ -339,10 +339,10 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ---------- Shopify host: hide the legacy chrome and neutralise base.css on this template ---------- */
-body:has(.dandy2-lpi) .shopify-section-group-header-group,
-body:has(.dandy2-lpi) .shopify-section-group-footer-group,
-body:has(.dandy2-lpi) #header-group, body:has(.dandy2-lpi) #footer-group,
-body:has(.dandy2-lpi) .page-wrapper > .skip-to-content-link { display: none !important; }
-body:has(.dandy2-lpi) .page-wrapper, body:has(.dandy2-lpi) #MainContent, body:has(.dandy2-lpi) main { padding: 0; margin: 0; max-width: none; }
-.dandy2-lpi h1, .dandy2-lpi h2, .dandy2-lpi h3 { margin: 0; }
-.dandy2-lpi img { max-width: 100%; height: auto; display: block; }
+body:has(.dandy2-stg) .shopify-section-group-header-group,
+body:has(.dandy2-stg) .shopify-section-group-footer-group,
+body:has(.dandy2-stg) #header-group, body:has(.dandy2-stg) #footer-group,
+body:has(.dandy2-stg) .page-wrapper > .skip-to-content-link { display: none !important; }
+body:has(.dandy2-stg) .page-wrapper, body:has(.dandy2-stg) #MainContent, body:has(.dandy2-stg) main { padding: 0; margin: 0; max-width: none; }
+.dandy2-stg h1, .dandy2-stg h2, .dandy2-stg h3 { margin: 0; }
+.dandy2-stg img { max-width: 100%; height: auto; display: block; }
