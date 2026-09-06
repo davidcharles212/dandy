@@ -20,7 +20,7 @@
 
   class Dandy2Pdp extends HTMLElement {
     connectedCallback() {
-      this.door = 'sub';
+      this.door = 'one'; // 2026-09-06: one-time is the default door; Monthly sits on the right
       this.ctaStyle = this.dataset.ctaStyle === 'plain' ? 'plain' : 'offer';
       this.doorBtns = [...this.querySelectorAll('[data-d2-door]')];
       this.oneInputs = [...this.querySelectorAll('[data-d2-one]')];
@@ -46,7 +46,8 @@
         if (t.dataset.fit) gmain.setAttribute('data-fit', t.dataset.fit);
         else gmain.removeAttribute('data-fit');
       }));
-      // deep link: #just-once opens the one-time door
+      // deep links: #monthly opens the subscription door; #just-once (legacy) the one-time door
+      if (location.hash === '#monthly') this.doorBtns.find(b => b.dataset.d2Door === 'sub')?.click();
       if (location.hash === '#just-once') this.doorBtns.find(b => b.dataset.d2Door === 'one')?.click();
       // Add to cart: submits for real the moment Shopify has a purchasable variant.
       // Until then the button explains itself instead of silently doing nothing.
