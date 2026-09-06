@@ -1,0 +1,12 @@
+{
+  "layout": "advertorial",
+  "sections": {
+    "main": {
+      "type": "dandy-coffee-advertorial",
+      "settings": {
+        "product_url": "/products/mixed-berry-kratom-gummies"
+      }
+    }
+  },
+  "order": ["main"]
+}
