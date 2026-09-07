@@ -41,11 +41,12 @@
         if (hit !== last) { last = hit; cap.textContent = hit ? hit[2] : ''; cap.classList.toggle('is-on', !!hit); }
       });
     }
+    v.addEventListener('playing', function(){ slot.classList.remove('is-paused'); });
     v.addEventListener('ended', function(){ if (reduce) slot.classList.add('is-paused'); });
     if (!reduce && hasIO) {
       new IntersectionObserver(function(es){ es.forEach(function(e){
-        if (e.isIntersecting && e.intersectionRatio > 0.45) { v.play().catch(function(){ slot.classList.add('is-paused'); }); }
-        else { v.pause(); if (!v.muted) { v.muted = true; snd.setAttribute('aria-pressed','false'); } }
+        if (e.isIntersecting && e.intersectionRatio > 0.45) { v.play().catch(function(err){ if (!err || err.name !== 'AbortError') slot.classList.add('is-paused'); }); }
+        else { v.pause(); if (!v.muted) { v.muted = true; snd.setAttribute('aria-pressed','false'); snd.setAttribute('aria-label','Unmute video'); } }
       }); }, { threshold: [0, .45, .8] }).observe(v);
     }
   });
@@ -73,11 +74,11 @@
   if (stage) {
     var states = stage.querySelectorAll('.state'), row = stage.querySelector('.states'), dots = stage.querySelectorAll('.states__dots i'), mv = stage.querySelector('.mech__loop video');
     var names = ['lift','focus','settle'], seek = [0.3, 3.0, 5.4], bounds = [2.5, 4.9], idx = 0, timer, userPicked = false;
-    function setState(s, seek){
+    function setState(s, doSeek){
       stage.dataset.state = s; idx = names.indexOf(s);
       states.forEach(function(b){ b.setAttribute('aria-checked', b.dataset.state === s ? 'true' : 'false'); });
       dots.forEach(function(d, i){ d.classList.toggle('is-on', i === idx); });
-      if (seek && mv && mv.duration) { mv.currentTime = Math.min(seek[idx], mv.duration - 0.1); if (mv.paused && !reduce) mv.play().catch(function(){}); }
+      if (doSeek && mv && mv.duration) { mv.currentTime = Math.min(seek[idx], mv.duration - 0.1); if (mv.paused && !reduce) mv.play().catch(function(){}); }
     }
     states.forEach(function(b){ b.addEventListener('click', function(){ userPicked = true; clearInterval(timer); setState(b.dataset.state, true); if (window.innerWidth <= 700 && row) row.scrollTo({ left: b.offsetLeft - (row.clientWidth - b.offsetWidth) / 2, behavior: 'smooth' }); }); });
     if (mv) mv.addEventListener('timeupdate', function(){
