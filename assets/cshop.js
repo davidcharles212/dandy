@@ -35,6 +35,22 @@
     if (hasIO) new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting && !v.paused) v.pause(); }); }, { threshold: 0 }).observe(v);
   });
 
+  /* Diagnostic only: ?cshoptest=<slot> scrolls a clip into view, starts it muted, and prints its state so playback can be checked without a tap */
+  var tm = /[?&]cshoptest=([a-z0-9-]+)/.exec(location.search);
+  if (tm) setTimeout(function(){
+    var el = document.getElementById(tm[1]); if (!el) return;
+    el.scrollIntoView({ block: 'center', behavior: 'instant' });
+    var tv = el.querySelector('video'); if (!tv) return;
+    var box = document.createElement('pre'); box.style.cssText = 'position:fixed;left:8px;top:8px;z-index:9999;background:#000;color:#0f0;font:12px/1.3 monospace;padding:8px;max-width:60vw;white-space:pre-wrap'; document.body.appendChild(box);
+    var log = [];
+    ['loadstart','loadedmetadata','loadeddata','canplay','play','playing','pause','waiting','stalled','suspend','error','abort','ended'].forEach(function(n){ tv.addEventListener(n, function(){ log.push(n + '@' + (performance.now()/1000).toFixed(1)); }); });
+    tv.muted = true;
+    var pr = tv.play(); if (pr && pr.then) pr.then(function(){ log.push('play-ok'); }, function(e){ log.push('play-rejected:' + e.name + ':' + e.message); });
+    setInterval(function(){
+      box.textContent = 'ua ' + navigator.userAgent.slice(-60) + '\nsrc ' + tv.currentSrc.split('/').pop().split('?')[0] + '\npaused ' + tv.paused + ' muted ' + tv.muted + ' t ' + tv.currentTime.toFixed(2) + '\nready ' + tv.readyState + ' net ' + tv.networkState + ' vw ' + tv.videoWidth + 'x' + tv.videoHeight + '\nerr ' + (tv.error ? tv.error.code + ' ' + tv.error.message : 'none') + '\ncls ' + el.className + '\ncanPlay mp4 ' + tv.canPlayType('video/mp4; codecs="avc1.640028"') + ' | app/mp4 ' + tv.canPlayType('application/mp4') + '\n' + log.slice(-10).join(' ');
+    }, 500);
+  }, 1200);
+
   /* Motion loops: quiet, muted, play only while on screen; poster under reduced motion or on error */
   var loops = document.querySelectorAll('.loop');
   loops.forEach(function(fig){

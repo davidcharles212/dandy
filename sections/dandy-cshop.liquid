@@ -7,37 +7,53 @@
   assign reviews_url = section.settings.reviews_url | default: '/products/mixed-berry-kratom-gummies#reviews'
   if video_base == blank
     assign v01m = 'cshop-ugc-01.mp4' | asset_url
+    assign v01q = 'cshop-ugc-01.mov' | asset_url
     assign v01w = 'cshop-ugc-01.webm' | asset_url
     assign v02m = 'cshop-ugc-02.mp4' | asset_url
+    assign v02q = 'cshop-ugc-02.mov' | asset_url
     assign v02w = 'cshop-ugc-02.webm' | asset_url
     assign v04m = 'cshop-ugc-04.mp4' | asset_url
+    assign v04q = 'cshop-ugc-04.mov' | asset_url
     assign v04w = 'cshop-ugc-04.webm' | asset_url
     assign v05m = 'cshop-ugc-05.mp4' | asset_url
+    assign v05q = 'cshop-ugc-05.mov' | asset_url
     assign v05w = 'cshop-ugc-05.webm' | asset_url
     assign l_format_m = 'cshop-format-switch-loop.mp4' | asset_url
+    assign l_format_q = 'cshop-format-switch-loop.mov' | asset_url
     assign l_format_w = 'cshop-format-switch-loop.webm' | asset_url
     assign l_mech_m = 'cshop-mechanism-loop.mp4' | asset_url
+    assign l_mech_q = 'cshop-mechanism-loop.mov' | asset_url
     assign l_mech_w = 'cshop-mechanism-loop.webm' | asset_url
     assign l_trans_m = 'cshop-transparency-loop.mp4' | asset_url
+    assign l_trans_q = 'cshop-transparency-loop.mov' | asset_url
     assign l_trans_w = 'cshop-transparency-loop.webm' | asset_url
     assign l_offer_m = 'cshop-offer-loop.mp4' | asset_url
+    assign l_offer_q = 'cshop-offer-loop.mov' | asset_url
     assign l_offer_w = 'cshop-offer-loop.webm' | asset_url
   else
     assign v01m = video_base | append: '/ugc-01.mp4'
+    assign v01q = video_base | append: '/ugc-01.mov'
     assign v01w = video_base | append: '/ugc-01.webm'
     assign v02m = video_base | append: '/ugc-02.mp4'
+    assign v02q = video_base | append: '/ugc-02.mov'
     assign v02w = video_base | append: '/ugc-02.webm'
     assign v04m = video_base | append: '/ugc-04.mp4'
+    assign v04q = video_base | append: '/ugc-04.mov'
     assign v04w = video_base | append: '/ugc-04.webm'
     assign v05m = video_base | append: '/ugc-05.mp4'
+    assign v05q = video_base | append: '/ugc-05.mov'
     assign v05w = video_base | append: '/ugc-05.webm'
     assign l_format_m = video_base | append: '/format-switch-loop.mp4'
+    assign l_format_q = video_base | append: '/format-switch-loop.mov'
     assign l_format_w = video_base | append: '/format-switch-loop.webm'
     assign l_mech_m = video_base | append: '/mechanism-loop.mp4'
+    assign l_mech_q = video_base | append: '/mechanism-loop.mov'
     assign l_mech_w = video_base | append: '/mechanism-loop.webm'
     assign l_trans_m = video_base | append: '/transparency-loop.mp4'
+    assign l_trans_q = video_base | append: '/transparency-loop.mov'
     assign l_trans_w = video_base | append: '/transparency-loop.webm'
     assign l_offer_m = video_base | append: '/offer-loop.mp4'
+    assign l_offer_q = video_base | append: '/offer-loop.mov'
     assign l_offer_w = video_base | append: '/offer-loop.webm'
   endif
 -%}
@@ -126,6 +142,7 @@
     <figure class="ugc" id="ugc-01" data-slot="ugc-01" data-label="UGC-01 | Existing first-bite flavor reaction">
       <div class="ugc__frame">
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-01-poster.jpg' | asset_url }}">
+          <source src="{{ v01q }}" type="video/quicktime">
           <source src="{{ v01m }}" type="video/mp4">
         </video>
         <img class="ugc__fallback" src="{{ 'cshop-ugc-01-poster.jpg' | asset_url }}" alt="" hidden>
@@ -165,6 +182,7 @@
       <figure class="loop loop--wide" data-loop="format">
         <img class="loop__still" src="{{ 'cshop-loop-format-poster.jpg' | asset_url }}" alt="The Dandy pouch and one gummy on a cleared desk" width="720" height="396" loading="lazy">
         <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-loop-format-poster.jpg' | asset_url }}" aria-label="Powder, spoon and glass slide out of a desk scene and the Dandy pouch with one gummy slides in">
+          <source src="{{ l_format_q }}" type="video/quicktime">
           <source src="{{ l_format_m }}" type="video/mp4">
         </video>
       </figure>
@@ -172,6 +190,7 @@
     <figure class="ugc" id="ugc-02" data-slot="ugc-02" data-label="UGC-02 | Existing powder-to-gummy format switch">
       <div class="ugc__frame">
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-02-poster.jpg' | asset_url }}">
+          <source src="{{ v02q }}" type="video/quicktime">
           <source src="{{ v02m }}" type="video/mp4">
         </video>
         <img class="ugc__fallback" src="{{ 'cshop-ugc-02-poster.jpg' | asset_url }}" alt="" hidden>
@@ -194,6 +213,7 @@
       <figure class="mech__loop loop" data-loop="mechanism">
         <img class="loop__still" src="{{ 'cshop-loop-mechanism-poster.jpg' | asset_url }}" alt="One Dandy gummy on a saucer" width="720" height="406" loading="lazy">
         <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-loop-mechanism-poster.jpg' | asset_url }}" aria-label="One Dandy gummy moving through a bright morning, a focused desk and a warm evening">
+          <source src="{{ l_mech_q }}" type="video/quicktime">
           <source src="{{ l_mech_m }}" type="video/mp4">
         </video>
         <span class="mech__label" aria-hidden="true"><b data-for="lift">Lift</b><b data-for="focus">Focus</b><b data-for="settle">Settle</b></span>
@@ -224,6 +244,7 @@
     <figure class="ugc" id="ugc-04" data-slot="ugc-04" data-label="UGC-04 | Existing one-pouch, different-moments story">
       <div class="ugc__frame">
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-04-poster.jpg' | asset_url }}">
+          <source src="{{ v04q }}" type="video/quicktime">
           <source src="{{ v04m }}" type="video/mp4">
         </video>
         <img class="ugc__fallback" src="{{ 'cshop-ugc-04-poster.jpg' | asset_url }}" alt="" hidden>
@@ -253,6 +274,7 @@
         <figure class="trust__pouch loop" data-loop="transparency">
           <img class="loop__still" src="{{ 'cshop-loop-transparency-poster.jpg' | asset_url }}" alt="Close-up of the Dandy pouch label" width="720" height="530" loading="lazy">
           <video class="loop__video" playsinline muted preload="none" poster="{{ 'cshop-loop-transparency-poster.jpg' | asset_url }}" aria-label="The camera moves from the Dandy pouch to the area of the label where the strength and batch number are printed">
+            <source src="{{ l_trans_q }}" type="video/quicktime">
             <source src="{{ l_trans_m }}" type="video/mp4">
           </video>
           <span class="callout callout--a"><i></i>35 mg MIT per gummy</span>
@@ -276,6 +298,7 @@
     <figure class="ugc" id="ugc-05" data-slot="ugc-05" data-label="UGC-05 | Existing unboxing and pouch transparency demo">
       <div class="ugc__frame">
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-05-poster.jpg' | asset_url }}">
+          <source src="{{ v05q }}" type="video/quicktime">
           <source src="{{ v05m }}" type="video/mp4">
         </video>
         <img class="ugc__fallback" src="{{ 'cshop-ugc-05-poster.jpg' | asset_url }}" alt="" hidden>
@@ -333,6 +356,7 @@
       <figure class="offer__visual loop" data-loop="offer">
         <img class="loop__still" src="{{ 'cshop-loop-offer-poster.jpg' | asset_url }}" alt="Dandy Mixed Berry pouches stocked on a wooden shelf" width="720" height="600" loading="lazy">
         <video class="loop__video" playsinline muted preload="none" poster="{{ 'cshop-loop-offer-poster.jpg' | asset_url }}" aria-label="One Dandy pouch on a shelf, then a stocked arrangement of pouches">
+          <source src="{{ l_offer_q }}" type="video/quicktime">
           <source src="{{ l_offer_m }}" type="video/mp4">
         </video>
         {{ sparkles }}
