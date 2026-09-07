@@ -115,6 +115,19 @@
   if (oc && hasIO) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) oc.classList.add('is-inview'); }); }, { threshold: .3 }).observe(oc);
   else if (oc) oc.classList.add('is-inview');
 
+  /* Reveals: words on the tasting board, the strikes on the filmstrip, the gummy rising under the tear, the scrawl in the close */
+  var revs = document.querySelectorAll('[data-reveal]');
+  if (hasIO && !reduce) { var rio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('is-in'); rio.unobserve(e.target); } }); }, { threshold: .3 }); revs.forEach(function(el){ rio.observe(el); }); }
+  else revs.forEach(function(el){ el.classList.add('is-in'); });
+
+  /* Hero: the giant gummy drifts up and straightens over the first 400 px of scroll */
+  var giant = document.querySelector('.hero__giant');
+  if (giant && !reduce) {
+    var gt = false;
+    function drift(){ gt = false; var y = Math.min(window.scrollY, 400) / 400; giant.style.transform = 'translateY(' + (-22 * y) + 'px) rotate(' + (-8 + 5 * y) + 'deg)'; }
+    giant.addEventListener('animationend', function(){ window.addEventListener('scroll', function(){ if (!gt) { gt = true; requestAnimationFrame(drift); } }, { passive: true }); drift(); }, { once: true });
+  }
+
   /* Transparency callouts appear once the pouch is on screen */
   var tp = document.querySelector('.trust__pouch');
   if (tp && hasIO) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) tp.classList.add('is-inview'); }); }, { threshold: .4 }).observe(tp);

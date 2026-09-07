@@ -79,7 +79,7 @@
 
 <main>
 
-<!-- 1. Hero: giant product macro with berry glaze and pouch -->
+<!-- 1. Hero -->
 <section class="hero" id="top">
   <div class="hero__media">
     <picture class="hero__plate">
@@ -99,7 +99,7 @@
   </div>
 </section>
 
-<!-- 2. Flavor proof and the cost of the old ritual -->
+<!-- 2. Flavor: the cost of the old ritual, then the tasting board -->
 <section class="flavor" id="flavor">
   <div class="wrap">
     <div class="flavor__head">
@@ -108,43 +108,48 @@
     </div>
   </div>
 
-  <div class="wrap cost">
+  <div class="cost">
     <figure class="cost__media">
       <img src="{{ 'cshop-old-ritual.webp' | asset_url }}" alt="A kitchen scale, an unwashed scoop, a cloudy glass with green residue and a used napkin on a counter" width="1600" height="1200" loading="lazy">
     </figure>
     <div class="cost__text">
       <h3>The part you learned to tolerate.</h3>
       <p>You’ve got a scale somewhere in a drawer. A scoop that never got washed. And a taste you’ve learned to tolerate.</p>
-      <p class="cost__end">That’s the part that ends.</p>
+      <p class="cost__end" data-reveal>That’s the part <mark class="hi hi--dark">that ends.</mark></p>
     </div>
   </div>
 
-  <div class="wrap">
-    <div class="flavor__grid">
-      <figure class="flavor__cell flavor__cell--big">
-        <img src="{{ 'cshop-loop-flavor-poster.jpg' | asset_url }}" alt="Thick berry glaze meeting the sugar crust of a Dandy gummy" width="720" height="538" loading="lazy">
-        <figcaption>Berry glaze over crunchy sugar. Soft all the way through.</figcaption>
-      </figure>
-      <figure class="flavor__cell">
-        <img src="{{ 'cshop-flavor-cutaway.webp' | asset_url }}" alt="A Dandy gummy cut in half showing its glossy berry-red centre" width="2048" height="1536" loading="lazy">
-        <figcaption>Glossy berry centre. Nothing chalky, nothing to chase.</figcaption>
-      </figure>
-      <figure class="flavor__cell">
-        <img src="{{ 'cshop-flavor-pull.webp' | asset_url }}" alt="Berry syrup stretching between two halves of a Dandy gummy" width="2048" height="1536" loading="lazy">
-        <figcaption>One gummy. 35 mg MIT. Nothing to measure.</figcaption>
-      </figure>
-    </div>
+  <div class="board" aria-label="Three things you notice about the gummy">
+    <figure class="board__frame" data-reveal>
+      <img src="{{ 'cshop-flavor-glaze.webp' | asset_url }}" alt="Thick berry glaze meeting the sugar crust of a Dandy gummy on black wood" width="1400" height="1045" loading="lazy">
+      <b class="board__word">Soft.</b>
+      <figcaption class="caprow">Berry glaze over crunchy sugar.</figcaption>
+    </figure>
+    <figure class="board__frame" data-reveal>
+      <img src="{{ 'cshop-flavor-cutaway.webp' | asset_url }}" alt="A Dandy gummy cut in half showing its glossy berry-red centre" width="2048" height="1536" loading="lazy">
+      <b class="board__word">Glossy.</b>
+      <figcaption class="caprow">Glossy berry centre. Nothing chalky, nothing to chase.</figcaption>
+    </figure>
+    <figure class="board__frame board__frame--light" data-reveal>
+      <img src="{{ 'cshop-flavor-pull.webp' | asset_url }}" alt="Berry syrup stretching between two halves of a Dandy gummy" width="2048" height="1536" loading="lazy">
+      <b class="board__word">Sweet.</b>
+      <figcaption class="caprow">Sugar crust outside, berry jelly inside. No bitter aftertaste.</figcaption>
+    </figure>
   </div>
 
   <div class="wrap ugcrow">
     <div class="ugcrow__aside"><h3>The first bite usually says it.</h3><p>Someone who has used kratom for years, tasting a Mixed Berry gummy for the first time. No chaser in the frame.</p>
       <figure class="ugcrow__still"><img src="{{ 'cshop-flavor-sugar.webp' | asset_url }}" alt="Sugar crystals landing around a Dandy gummy on dark wood" width="1600" height="1195" loading="lazy"></figure></div>
-    <figure class="ugc" id="ugc-01" data-slot="ugc-01" data-label="UGC-01 | Existing first-bite flavor reaction">
+    <figure class="ugc ugc--tilt-l" id="ugc-01" data-slot="ugc-01" data-label="UGC-01 | Existing first-bite flavor reaction">
       <div class="ugc__frame">
+        {%- if section.settings.clip_01 != blank -%}
+        {{ section.settings.clip_01 | video_tag: image_size: '720x', playsinline: true, preload: 'metadata', controls: false, autoplay: false, loop: false, muted: false, class: 'ugc__video' }}
+        {%- else -%}
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-01-poster.jpg' | asset_url }}">
           <source src="{{ v01q }}" type="video/quicktime">
           <source src="{{ v01m }}" type="video/mp4">
         </video>
+        {%- endif -%}
         <img class="ugc__fallback" src="{{ 'cshop-ugc-01-poster.jpg' | asset_url }}" alt="" hidden>
         <p class="ugc__cap" aria-live="off"></p>
         {{ play_button }}
@@ -154,27 +159,32 @@
   </div>
 </section>
 
-<!-- 3. Format switch -->
+<!-- 3. Format: the torn filmstrip -->
 <section class="format" id="format">
   <div class="wrap">
     <div class="format__head">
       <h2>Same plant. Much easier ritual.</h2>
       <p>If you already use kratom, you already know the routine. This is the part that gets easier.</p>
     </div>
-    <div class="format__cols">
-      <article class="fmt fmt--old">
+  </div>
+  <div class="strip">
+    <div class="strip__old">
+      <figure class="strip__frame">
         <img src="{{ 'cshop-powder-column.webp' | asset_url }}" alt="Spilled green kratom powder across a grimy counter with a crusted spoon, a sludge-ringed glass and a stained napkin" width="1280" height="1600" loading="lazy">
-        <h3>Powder</h3><p>Choke it down, then chase it with orange juice.</p>
-      </article>
-      <article class="fmt fmt--old">
+        <b class="strip__word" data-reveal><span>Powder</span><svg class="strike" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 9c38-5 76-4 114-3 46 1 88-4 134-2 22 1 42 2 64 4"/></svg></b>
+        <figcaption class="caprow caprow--onphoto">Choke it down, then chase it with orange juice.</figcaption>
+      </figure>
+      <figure class="strip__frame">
         <img src="{{ 'cshop-format-capsules.webp' | asset_url }}" alt="A grimy hand holding a pile of dusty green kratom capsules, one cracked open" width="1280" height="1600" loading="lazy">
-        <h3>Capsules</h3><p>Hard to swallow. Chalky, dusty, and a lot of them.</p>
-      </article>
-      <article class="fmt fmt--new">
-        <img src="{{ 'cshop-format-gummy.webp' | asset_url }}" alt="A hand holding a Dandy gummy with the pouch in an open desk drawer behind" width="1280" height="1600" loading="lazy">
-        <h3>Gummies</h3><p>Grab one. Enjoy the flavor. Keep moving.</p>
-      </article>
+        <b class="strip__word" data-reveal><span>Capsules</span><svg class="strike" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 9c38-5 76-4 114-3 46 1 88-4 134-2 22 1 42 2 64 4"/></svg></b>
+        <figcaption class="caprow caprow--onphoto">Hard to swallow. Chalky, dusty, and a lot of them.</figcaption>
+      </figure>
     </div>
+    <figure class="strip__new" data-reveal>
+      <img src="{{ 'cshop-format-gummy.webp' | asset_url }}" alt="A hand holding a Dandy gummy with the pouch in an open desk drawer behind" width="1280" height="1600" loading="lazy">
+      <b class="strip__word strip__word--new"><mark class="hi">Gummies</mark></b>
+      <figcaption class="caprow caprow--dark">Grab one. Enjoy the flavor. Keep moving.</figcaption>
+    </figure>
   </div>
   <div class="wrap ugcrow ugcrow--loop">
     <div class="ugcrow__aside">
@@ -187,12 +197,16 @@
         </video>
       </figure>
     </div>
-    <figure class="ugc" id="ugc-02" data-slot="ugc-02" data-label="UGC-02 | Existing powder-to-gummy format switch">
+    <figure class="ugc ugc--tilt-r" id="ugc-02" data-slot="ugc-02" data-label="UGC-02 | Existing powder-to-gummy format switch">
       <div class="ugc__frame">
+        {%- if section.settings.clip_02 != blank -%}
+        {{ section.settings.clip_02 | video_tag: image_size: '720x', playsinline: true, preload: 'metadata', controls: false, autoplay: false, loop: false, muted: false, class: 'ugc__video' }}
+        {%- else -%}
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-02-poster.jpg' | asset_url }}">
           <source src="{{ v02q }}" type="video/quicktime">
           <source src="{{ v02m }}" type="video/mp4">
         </video>
+        {%- endif -%}
         <img class="ugc__fallback" src="{{ 'cshop-ugc-02-poster.jpg' | asset_url }}" alt="" hidden>
         <p class="ugc__cap" aria-live="off"></p>
         {{ play_button }}
@@ -202,51 +216,50 @@
   </div>
 </section>
 
-<!-- 4. Mechanism: LIFT / FOCUS / SETTLE -->
+<!-- 4. Mechanism: LIFT / FOCUS / SETTLE as type -->
 <section class="mech" id="mechanism">
   <div class="wrap">
     <div class="mech__head">
       <h2>The same plant can meet you in more than one place.</h2>
       <p>Kratom is dose-dependent. Smaller amounts tend to produce energy and focus. Larger amounts lean toward body ease and relaxation. The amount is printed on the pouch, so you know what you are taking.</p>
     </div>
-    <div class="mech__stage" data-state="lift">
-      <figure class="mech__loop loop" data-loop="mechanism">
-        <img class="loop__still" src="{{ 'cshop-loop-mechanism-poster.jpg' | asset_url }}" alt="One Dandy gummy on a saucer" width="720" height="406" loading="lazy">
-        <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-loop-mechanism-poster.jpg' | asset_url }}" aria-label="One Dandy gummy moving through a bright morning, a focused desk and a warm evening">
-          <source src="{{ l_mech_q }}" type="video/quicktime">
-          <source src="{{ l_mech_m }}" type="video/mp4">
-        </video>
-        <span class="mech__label" aria-hidden="true"><b data-for="lift">Lift</b><b data-for="focus">Focus</b><b data-for="settle">Settle</b></span>
-        {{ sparkles }}
-      </figure>
-      <div class="belt" aria-hidden="true"><div class="belt__stripes"></div><div class="belt__marker"></div></div>
-      <div class="states" role="tablist" aria-label="Three parts of the day one pouch can fit. An explanation, not a dosing guide.">
-        <button class="state" type="button" role="tab" aria-selected="true" data-state="lift">
-          <img src="{{ 'cshop-day-morning.webp' | asset_url }}" alt="" width="1280" height="1600" loading="lazy">
-          <span class="state__text"><b>Lift</b><small>Smaller amounts</small><p>For the mornings when you want to get moving.</p></span>
-        </button>
-        <button class="state" type="button" role="tab" aria-selected="false" data-state="focus" tabindex="-1">
-          <img src="{{ 'cshop-day-desk.webp' | asset_url }}" alt="" width="1280" height="1600" loading="lazy">
-          <span class="state__text"><b>Focus</b><small>In between</small><p>For the hours when you want to stay with the thing in front of you.</p></span>
-        </button>
-        <button class="state" type="button" role="tab" aria-selected="false" data-state="settle" tabindex="-1">
-          <img src="{{ 'cshop-day-evening.webp' | asset_url }}" alt="" width="1280" height="1600" loading="lazy">
-          <span class="state__text"><b>Settle</b><small>Larger amounts</small><p>For when the day is done and your body knows it.</p></span>
-        </button>
+  </div>
+  <div class="mech__stage" data-state="lift">
+    <figure class="mech__loop loop" data-loop="mechanism">
+      <img class="loop__still" src="{{ 'cshop-loop-mechanism-poster.jpg' | asset_url }}" alt="One Dandy gummy on a saucer" width="720" height="406" loading="lazy">
+      <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-loop-mechanism-poster.jpg' | asset_url }}" aria-label="One Dandy gummy moving through a bright morning, a focused desk and a warm evening">
+        <source src="{{ l_mech_q }}" type="video/quicktime">
+        <source src="{{ l_mech_m }}" type="video/mp4">
+      </video>
+      <span class="mech__label" aria-hidden="true"><b data-for="lift">Lift</b><b data-for="focus">Focus</b><b data-for="settle">Settle</b></span>
+      {{ sparkles }}
+    </figure>
+    <div class="belt" aria-hidden="true"><div class="belt__stripes"></div><div class="belt__marker"></div></div>
+    <div class="wrap">
+      <div class="states states--type" role="tablist" aria-label="Three parts of the day one pouch can fit. An explanation, not a dosing guide.">
+        <button class="state" type="button" role="tab" aria-selected="true" data-state="lift"><b>Lift</b><small>Smaller amounts</small><p>For the mornings when you want to get moving.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="focus" tabindex="-1"><b>Focus</b><small>In between</small><p>For the hours when you want to stay with the thing in front of you.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="settle" tabindex="-1"><b>Settle</b><small>Larger amounts</small><p>For when the day is done and your body knows it.</p></button>
       </div>
     </div>
-    <p class="mech__line">One pouch can fit a brighter morning, a focused afternoon, or a slower evening at home.</p>
+  </div>
+  <div class="wrap">
+    <p class="mech__line"><mark class="hi">One pouch</mark> can fit a brighter morning, a focused afternoon, or a slower evening at home.</p>
     <p class="mech__note">This is an explanation, not a dosing calculator. People respond differently. Start with the amount on the pouch and see how one gummy sits with you.</p>
   </div>
   <div class="wrap ugcrow">
     <div class="ugcrow__aside"><h3>Same pouch. Three different parts of the day.</h3><p>A morning coffee, a working afternoon, an evening on the couch, with one pouch moving between them.</p>
       <figure class="ugcrow__still ugcrow__still--wide"><img src="{{ 'cshop-day-social.webp' | asset_url }}" alt="Dandy pouch on a picnic table in the afternoon sun" width="1600" height="1986" loading="lazy"></figure></div>
-    <figure class="ugc" id="ugc-04" data-slot="ugc-04" data-label="UGC-04 | Existing one-pouch, different-moments story">
+    <figure class="ugc ugc--tilt-l" id="ugc-04" data-slot="ugc-04" data-label="UGC-04 | Existing one-pouch, different-moments story">
       <div class="ugc__frame">
+        {%- if section.settings.clip_04 != blank -%}
+        {{ section.settings.clip_04 | video_tag: image_size: '720x', playsinline: true, preload: 'metadata', controls: false, autoplay: false, loop: false, muted: false, class: 'ugc__video' }}
+        {%- else -%}
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-04-poster.jpg' | asset_url }}">
           <source src="{{ v04q }}" type="video/quicktime">
           <source src="{{ v04m }}" type="video/mp4">
         </video>
+        {%- endif -%}
         <img class="ugc__fallback" src="{{ 'cshop-ugc-04-poster.jpg' | asset_url }}" alt="" hidden>
         <p class="ugc__cap" aria-live="off"></p>
         {{ play_button }}
@@ -256,7 +269,7 @@
   </div>
 </section>
 
-<!-- 5. Transparency and quality -->
+<!-- 5. Transparency -->
 <section class="trust" id="trust">
   <div class="wrap">
     <div class="trust__grid">
@@ -280,14 +293,9 @@
           <span class="callout callout--a"><i></i>35 mg MIT per gummy</span>
           <span class="callout callout--b"><i></i>Batch number on every pouch</span>
         </figure>
-        <div class="trust__pair">
-          <figure class="trust__gummy">
-            <img src="{{ 'cshop-gummy-bite.webp' | asset_url }}" alt="A Dandy gummy bitten in half, glossy berry-red inside with a sugar rim" width="1600" height="1600" loading="lazy">
-          </figure>
-          <div class="labcard">
-            <b>Every batch tested by an independent laboratory.</b>
-            <span>Identity, potency, heavy metals, and microbials. Match the batch number on your pouch to its report.</span>
-          </div>
+        <div class="trust__bite" data-reveal>
+          <img class="trust__cutout" src="{{ 'cshop-bite-cutout.webp' | asset_url }}" alt="A Dandy gummy bitten in half, glossy berry-red inside with a sugar rim" width="1106" height="764" loading="lazy">
+          <p class="caprow caprow--dark">Sugar outside. Berry jelly inside. 35 mg MIT.</p>
         </div>
       </div>
     </div>
@@ -295,12 +303,16 @@
   <div class="wrap ugcrow">
     <div class="ugcrow__aside"><h3>Delicious. Transparent.</h3>
       <figure class="ugcrow__still"><img src="{{ 'cshop-trust-pouch.webp' | asset_url }}" alt="The Dandy Mixed Berry pouch, label forward, with one gummy in front" width="1600" height="1195" loading="lazy"></figure></div>
-    <figure class="ugc" id="ugc-05" data-slot="ugc-05" data-label="UGC-05 | Existing unboxing and pouch transparency demo">
+    <figure class="ugc ugc--tilt-r" id="ugc-05" data-slot="ugc-05" data-label="UGC-05 | Existing unboxing and pouch transparency demo">
       <div class="ugc__frame">
+        {%- if section.settings.clip_05 != blank -%}
+        {{ section.settings.clip_05 | video_tag: image_size: '720x', playsinline: true, preload: 'metadata', controls: false, autoplay: false, loop: false, muted: false, class: 'ugc__video' }}
+        {%- else -%}
         <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-ugc-05-poster.jpg' | asset_url }}">
           <source src="{{ v05q }}" type="video/quicktime">
           <source src="{{ v05m }}" type="video/mp4">
         </video>
+        {%- endif -%}
         <img class="ugc__fallback" src="{{ 'cshop-ugc-05-poster.jpg' | asset_url }}" alt="" hidden>
         <p class="ugc__cap" aria-live="off"></p>
         {{ play_button }}
@@ -314,45 +326,32 @@
 <section class="proof" id="reviews">
   <div class="wrap">
     <div class="proof__head">
-      <h2>What people say after the first pouch.</h2>
-      <a class="proof__strip" href="{{ reviews_url }}"><b>4.8<small>/5</small></b><span class="stars" aria-hidden="true">★★★★★</span><span>{{ review_count }} verified customers</span></a>
+      <h2 class="proof__quote">“Powder, obviously, tastes disgusting. These gummies are <mark class="hi hi--inline">actually pretty tasty.”</mark></h2>
+      <p class="proof__by">Tiffany F., verified customer. Switched from powder.</p>
+      <a class="proof__line" href="{{ reviews_url }}"><span class="stars" aria-hidden="true">★★★★★</span><span>4.8 out of 5</span><span>{{ review_count }} verified customers</span></a>
     </div>
-    <div class="proof__grid">
+    <div class="proof__body">
       <blockquote class="wrapper wrapper--lead">
         <div class="wrapper__media"><img src="{{ 'cshop-proof-still.webp' | asset_url }}" alt="An adult holding a Dandy gummy over a desk with the open pouch beside a phone" width="1600" height="1200" loading="lazy">{{ sparkles }}</div>
         <div class="wrapper__text">
-          <p>Used to take powder. Powder, obviously, tastes disgusting. These gummies are actually pretty tasty.</p>
-          <footer><span>Tiffany F., verified customer</span><span>Switched from powder</span></footer>
+          <p>I hated choking down the kratom capsules. Always made me gag. These gummies are a little bit tangy and go down easily.</p>
+          <footer><span>Josh P., verified customer</span><span>Switched from capsules</span></footer>
         </div>
       </blockquote>
-      <blockquote class="wrapper">
-        <p>I hated choking down the kratom capsules. Always made me gag. These gummies are a little bit tangy and go down easily.</p>
-        <footer><span>Josh P., verified customer</span><span>Switched from capsules</span></footer>
-      </blockquote>
-      <blockquote class="wrapper">
-        <p>Honestly, couldn’t believe it when I first tried it. I thought it was going to be gross, like every other kratom gummy, but it’s actually totally pleasant.</p>
-        <footer><span>Sara H., verified customer</span><span>Flavor</span></footer>
-      </blockquote>
-      <blockquote class="wrapper">
-        <p>Can barely taste the bitterness. Was really easy to get down.</p>
-        <footer><span>Brian L., verified customer</span><span>Easier routine</span></footer>
-      </blockquote>
-      <blockquote class="wrapper">
-        <p>It’s not delicious, but it’s also not offensive. Didn’t make me gag or wince.</p>
-        <footer><span>Jake A., verified customer</span><span>Flavor</span></footer>
-      </blockquote>
-      <blockquote class="wrapper">
-        <p>I’m a believer, customer for life. Just placed my third order.</p>
-        <footer><span>Verified customer</span><span>Keeps it around</span></footer>
-      </blockquote>
+      <ul class="quotes">
+        <li><p>Honestly, couldn’t believe it when I first tried it. I thought it was going to be gross, like every other kratom gummy, but it’s actually totally pleasant.</p><footer><span>Sara H., verified customer</span></footer></li>
+        <li><p>Can barely taste the bitterness. Was really easy to get down.</p><footer><span>Brian L., verified customer</span></footer></li>
+        <li><p>It’s not delicious, but it’s also not offensive. Didn’t make me gag or wince.</p><footer><span>Jake A., verified customer</span></footer></li>
+        <li><p>I’m a believer, customer for life. Just placed my third order.</p><footer><span>Verified customer</span></footer></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- 7. Offer: the stock-up pre-sale -->
+<!-- 7. Offer -->
 <section class="offer" id="offer">
-  <div class="wrap">
-    <div class="offer__layout">
+  <div class="offer__layout">
+    <div class="offer__media">
       <figure class="offer__visual loop" data-loop="offer">
         <img class="loop__still" src="{{ 'cshop-loop-offer-poster.jpg' | asset_url }}" alt="Dandy Mixed Berry pouches stocked on a wooden shelf" width="720" height="600" loading="lazy">
         <video class="loop__video" playsinline muted preload="none" poster="{{ 'cshop-loop-offer-poster.jpg' | asset_url }}" aria-label="One Dandy pouch on a shelf, then a stocked arrangement of pouches">
@@ -361,20 +360,20 @@
         </video>
         {{ sparkles }}
       </figure>
-      <div class="offer__copy">
-        <h2>A 30-day supply for as little as <mark class="hi">$35.99 per pouch.<svg class="scrawl" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></mark></h2>
-        <p class="offer__lede">Get a 30-day supply for as little as $35.99 with free shipping. Save 40%.</p>
-        <ul class="offer__facts">
-          <li><b>30 days</b><span>per pouch</span></li>
-          <li><b>$35.99</b><span>per pouch</span></li>
-          <li><b>Free</b><span>shipping</span></li>
-        </ul>
-        <div class="guarantee">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l7 3v6c0 5-3 9-7 11-4-2-7-6-7-11V5l7-3z"/><path d="M8.5 12.5l2.5 2.5 4.5-5" class="tick"/></svg>
-          <div><b>30-day money-back guarantee</b><p>Try the gummies for 30 days. If Dandy isn’t for you, we’ll refund you.</p></div>
-        </div>
-        <a class="btn btn--lg offer__cta" href="{{ offer_url }}">Try Mixed Berry Gummies</a>
-      </div>
+      <svg class="seal" viewBox="0 0 120 120" aria-label="30-day money-back guarantee" role="img">
+        <defs><path id="sealpath" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+        <circle cx="60" cy="60" r="56" class="seal__ring"/>
+        <circle cx="60" cy="60" r="35" class="seal__inner"/>
+        <text class="seal__text"><textPath href="#sealpath" startOffset="0">30-DAY MONEY-BACK · 30-DAY MONEY-BACK · </textPath></text>
+        <path class="seal__shield" d="M60 42l11 4.5v9c0 8-4.6 14-11 17.5-6.4-3.5-11-9.5-11-17.5v-9L60 42z"/>
+        <path class="seal__tick" d="M54.5 58.5l3.8 3.8 7.2-7.6"/>
+      </svg>
+    </div>
+    <div class="wrap offer__copy">
+      <h2>A 30-day supply for as little as <mark class="hi">$35.99 per pouch.<svg class="scrawl" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></mark></h2>
+      <p class="offer__lede">With free shipping. Save 40%.</p>
+      <p class="offer__guar">Try the gummies for 30 days. If Dandy isn’t for you, we refund you.</p>
+      <a class="btn btn--lg offer__cta" href="{{ offer_url }}">Try Mixed Berry Gummies</a>
     </div>
   </div>
 </section>
@@ -399,8 +398,8 @@
 <!-- 9. Final close -->
 <section class="final" id="final">
   <div class="final__media"><img src="{{ 'cshop-close.webp' | asset_url }}" alt="The Dandy pouch lying on cream linen with a few gummies and blackberries in warm evening light" width="1600" height="2000" loading="lazy">{{ sparkles }}</div>
-  <div class="final__copy">
-    <h2>Good days look Dandy.</h2>
+  <div class="final__copy" data-reveal>
+    <h2>Good days look <span class="scrawled">Dandy.<svg class="scrawl scrawl--blush" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></span></h2>
     <p>A more enjoyable way to keep kratom in your day, with Mixed Berry flavor, a simple gummy format, and the transparency to know what is inside.</p>
     <a class="btn btn--lg" href="{{ offer_url }}">Try Mixed Berry Gummies</a>
   </div>
@@ -429,10 +428,14 @@
   "settings": [
     { "type": "url", "id": "product_url", "label": "Product page", "info": "Defaults to /products/mixed-berry-kratom-gummies" },
     { "type": "text", "id": "offer_url", "label": "Offer CTA destination", "info": "Product page with the stock-up option preselected. Defaults to the 5-pack variant.", "default": "/products/mixed-berry-kratom-gummies?variant=47958360031410" },
-    { "type": "text", "id": "video_base", "label": "External base URL for clips and loops (optional)", "info": "Leave blank to serve the clips and loops from this theme's assets (cshop-ugc-0N and cshop-*-loop as .mp4 and .webm). Set a URL to serve ugc-0N and the loops from another host." },
+    { "type": "text", "id": "video_base", "label": "External base URL for clips and loops (optional)", "info": "Leave blank to serve the clips and loops from this theme's assets (cshop-ugc-0N and cshop-*-loop as .mov and .mp4). Set a URL to serve ugc-0N and the loops from another host." },
+    { "type": "video", "id": "clip_01", "label": "Clip 1: first bite (Shopify Files)", "info": "Optional. Upload the clip under Content > Files and pick it here; Shopify then streams it. Leave empty to use the copy bundled in the theme." },
+    { "type": "video", "id": "clip_02", "label": "Clip 2: powder to gummy (Shopify Files)" },
+    { "type": "video", "id": "clip_04", "label": "Clip 4: three parts of the day (Shopify Files)" },
+    { "type": "video", "id": "clip_05", "label": "Clip 5: unboxing (Shopify Files)" },
     { "type": "text", "id": "coa_url", "label": "Lab reports (COA) page URL", "default": "/pages/contact?view=dandy2-coa" },
-    { "type": "text", "id": "review_count", "label": "Verified customer count shown in the proof strip", "default": "1,477" },
-    { "type": "text", "id": "reviews_url", "label": "Link for the proof strip (full review set)", "default": "/products/mixed-berry-kratom-gummies#reviews" }
+    { "type": "text", "id": "review_count", "label": "Verified customer count shown in the proof line", "default": "1,477" },
+    { "type": "text", "id": "reviews_url", "label": "Link for the proof line (full review set)", "default": "/products/mixed-berry-kratom-gummies#reviews" }
   ]
 }
 {% endschema %}
