@@ -17,6 +17,11 @@
     '5':     { cta: 'Get 5 pouches',  label: '5 pouches, one-time',        product: 179.97, ship: 0 },
     'trial': { cta: 'Get the sampler', label: 'Sampler, 10 gummies',        product: 24.99,  ship: SHIP }
   };
+  const VARIANT_TOKENS = {
+    sub: ['30-count', 'single'], '1': ['30-count', 'single'],
+    '3': ['30-count', '3-pack'], '5': ['30-count', '5-pack'],
+    trial: ['10-count', 'single'],
+  };
 
   class Dandy2Pdp extends HTMLElement {
     connectedCallback() {
@@ -62,6 +67,20 @@
         const resolveV = (...tokens) => vmap.find(v => tokens.every(t => v.title.toLowerCase().includes(t)));
         const findV = (...tokens) => vmap.find(v => tokens.every(t => v.title.toLowerCase().includes(t)) && v.available && v.price > 0);
         this.buyform = { form, note, planField, qtyField, idField, findV, resolveV };
+        // Campaign and cart links must retain the variant the shopper chose.
+        const params = new URLSearchParams(location.search);
+        const linked = vmap.find(v => String(v.id) === params.get('variant'));
+        const linkedOffer = linked && this.oneInputs.find(input =>
+          VARIANT_TOKENS[input.value]?.every(token => linked.title.toLowerCase().includes(token))
+        );
+        if (linkedOffer) {
+          this.oneInputs.forEach(input => { input.checked = input === linkedOffer; });
+          // Legacy campaign links use selling_plan=1 as a monthly intent marker.
+          // The actual Shopify plan always comes from the rendered product form.
+          const monthly = location.hash === '#monthly' ||
+            (linkedOffer.value === '1' && params.get('selling_plan') && location.hash !== '#just-once');
+          this.doorBtns.find(button => button.dataset.d2Door === (monthly ? 'sub' : 'one'))?.click();
+        }
         form.addEventListener('submit', (e) => {
           if (form.dataset.buyable !== 'true') {
             e.preventDefault();
@@ -241,12 +260,7 @@
       const bf = this.buyform;
       if (bf) {
         // Each pack is one native Shopify bundle, linked to its component inventory.
-        const WANT = {
-          sub:   ['30-count', 'single'], '1': ['30-count', 'single'],
-          '3':   ['30-count', '3-pack'], '5': ['30-count', '5-pack'],
-          trial: ['10-count', 'single'],
-        };
-        const v = bf.resolveV ? bf.resolveV(...(WANT[key] || [])) : null;
+        const v = bf.resolveV ? bf.resolveV(...(VARIANT_TOKENS[key] || [])) : null;
         // the sub door is only buyable once a selling plan exists; otherwise a
         // click would add a one-time single at a different price than the CTA shows
         const usable = !!(v && v.available && v.price > 0 && !(key === 'sub' && !bf.form.dataset.plan));
