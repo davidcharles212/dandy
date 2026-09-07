@@ -121,17 +121,35 @@
 
   <div class="board" aria-label="Three things you notice about the gummy">
     <figure class="board__frame" data-reveal>
-      <img src="{{ 'cshop-flavor-glaze.webp' | asset_url }}" alt="Thick berry glaze meeting the sugar crust of a Dandy gummy on black wood" width="1400" height="1045" loading="lazy">
+      <div class="loop board__media" data-loop="board-soft">
+        <img class="loop__still" src="{{ 'cshop-board-soft-poster.jpg' | asset_url }}" alt="A fingertip gently pressing a glazed, sugar-coated Dandy gummy on black wood" width="720" height="900" loading="lazy">
+        <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-board-soft-poster.jpg' | asset_url }}" aria-label="A fingertip gently pressing a glazed, sugar-coated Dandy gummy on black wood">
+          <source src="{{ 'cshop-board-soft.mov' | asset_url }}" type="video/quicktime">
+          <source src="{{ 'cshop-board-soft.mp4' | asset_url }}" type="video/mp4">
+        </video>
+      </div>
       <b class="board__word">Soft.</b>
       <figcaption class="caprow">Berry glaze over crunchy sugar.</figcaption>
     </figure>
     <figure class="board__frame" data-reveal>
-      <img src="{{ 'cshop-flavor-cutaway.webp' | asset_url }}" alt="A Dandy gummy cut in half showing its glossy berry-red centre" width="2048" height="1536" loading="lazy">
+      <div class="loop board__media" data-loop="board-glossy">
+        <img class="loop__still" src="{{ 'cshop-board-glossy-poster.jpg' | asset_url }}" alt="A Dandy gummy cut in half, turned slowly so its glossy berry-red center catches the light" width="720" height="900" loading="lazy">
+        <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-board-glossy-poster.jpg' | asset_url }}" aria-label="A Dandy gummy cut in half, turned slowly so its glossy berry-red center catches the light">
+          <source src="{{ 'cshop-board-glossy.mov' | asset_url }}" type="video/quicktime">
+          <source src="{{ 'cshop-board-glossy.mp4' | asset_url }}" type="video/mp4">
+        </video>
+      </div>
       <b class="board__word">Glossy.</b>
-      <figcaption class="caprow">Glossy berry centre. Nothing chalky, nothing to chase.</figcaption>
+      <figcaption class="caprow">Glossy berry center. Nothing chalky, nothing to chase.</figcaption>
     </figure>
-    <figure class="board__frame board__frame--light" data-reveal>
-      <img src="{{ 'cshop-flavor-pull.webp' | asset_url }}" alt="Berry syrup stretching between two halves of a Dandy gummy" width="2048" height="1536" loading="lazy">
+    <figure class="board__frame" data-reveal>
+      <div class="loop board__media" data-loop="board-sweet">
+        <img class="loop__still" src="{{ 'cshop-board-sweet-poster.jpg' | asset_url }}" alt="Two hands pulling a Dandy gummy apart, berry jelly stretching between the halves" width="720" height="900" loading="lazy">
+        <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'cshop-board-sweet-poster.jpg' | asset_url }}" aria-label="Two hands pulling a Dandy gummy apart, berry jelly stretching between the halves">
+          <source src="{{ 'cshop-board-sweet.mov' | asset_url }}" type="video/quicktime">
+          <source src="{{ 'cshop-board-sweet.mp4' | asset_url }}" type="video/mp4">
+        </video>
+      </div>
       <b class="board__word">Sweet.</b>
       <figcaption class="caprow">Sugar crust outside, berry jelly inside. No bitter aftertaste.</figcaption>
     </figure>
@@ -245,10 +263,9 @@
   </div>
   <div class="wrap">
     <p class="mech__line"><mark class="hi">One pouch</mark> can fit a brighter morning, a focused afternoon, or a slower evening at home.</p>
-    <p class="mech__note">This is an explanation, not a dosing calculator. People respond differently. Start with the amount on the pouch and see how one gummy sits with you.</p>
   </div>
   <div class="wrap ugcrow">
-    <div class="ugcrow__aside"><h3>Same pouch. Three different parts of the day.</h3><p>A morning coffee, a working afternoon, an evening on the couch, with one pouch moving between them.</p>
+    <div class="ugcrow__aside ugcrow__aside--still">
       <figure class="ugcrow__still ugcrow__still--wide"><img src="{{ 'cshop-day-social.webp' | asset_url }}" alt="Dandy pouch on a picnic table in the afternoon sun" width="1600" height="1986" loading="lazy"></figure></div>
     <figure class="ugc ugc--tilt-l" id="ugc-04" data-slot="ugc-04" data-label="UGC-04 | Existing one-pouch, different-moments story">
       <div class="ugc__frame">
@@ -295,7 +312,7 @@
         </figure>
         <div class="trust__bite" data-reveal>
           <img class="trust__cutout" src="{{ 'cshop-bite-cutout.webp' | asset_url }}" alt="A Dandy gummy bitten in half, glossy berry-red inside with a sugar rim" width="1106" height="764" loading="lazy">
-          <p class="caprow caprow--dark">Sugar outside. Berry jelly inside. 35 mg MIT.</p>
+          <p class="caprow caprow--dark caprow--lines"><span>Sugar outside.</span><span>Berry jelly inside.</span><span>35 mg MIT.</span></p>
         </div>
       </div>
     </div>
@@ -356,7 +373,7 @@
       <blockquote class="rev rev--more">
         <span class="rev__stars" aria-label="Five stars">★★★★★</span>
         <p>“I’m a believer, customer for life. Just placed my third order.”</p>
-        <footer><b>Verified customer</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+        <footer><b>Tim S., Portland ME</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
       </blockquote>
       </div>
       <button class="revs__more" type="button" aria-expanded="false" aria-controls="revs">Read more reviews</button>
@@ -376,14 +393,7 @@
         </video>
         {{ sparkles }}
       </figure>
-      <svg class="seal" viewBox="0 0 120 120" aria-label="30-day money-back guarantee" role="img">
-        <defs><path id="sealpath" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
-        <circle cx="60" cy="60" r="56" class="seal__ring"/>
-        <circle cx="60" cy="60" r="35" class="seal__inner"/>
-        <text class="seal__text"><textPath href="#sealpath" startOffset="0">30-DAY MONEY-BACK · 30-DAY MONEY-BACK · </textPath></text>
-        <path class="seal__shield" d="M60 42l11 4.5v9c0 8-4.6 14-11 17.5-6.4-3.5-11-9.5-11-17.5v-9L60 42z"/>
-        <path class="seal__tick" d="M54.5 58.5l3.8 3.8 7.2-7.6"/>
-      </svg>
+      <img class="seal" src="{{ 'cshop-seal.webp' | asset_url }}" alt="30-day money-back guarantee seal" width="559" height="560" loading="lazy">
     </div>
     <div class="wrap offer__copy">
       <h2>A 30-day supply for as little as <mark class="hi">$35.99 per pouch.<svg class="scrawl" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></mark></h2>
@@ -432,8 +442,8 @@
 </footer>
 
 <div class="sticky" aria-hidden="true">
-  <div class="sticky__info"><img src="{{ 'cshop-cta-gummy.webp' | asset_url }}" alt="" width="40" height="40"><span><b>Mixed Berry Gummies</b><small>From $35.99 per pouch · 30-day guarantee</small></span></div>
-  <a class="btn" href="#offer">Try Mixed Berry Gummies</a>
+  <div class="sticky__info"><img src="{{ 'cshop-cta-gummy.webp' | asset_url }}" alt="" width="40" height="40"><span><b>Kratom Gummies</b><small>From $35.99 per pouch · 30-day guarantee</small></span></div>
+  <a class="btn" href="#offer">Get mine now</a>
 </div>
 
 <script type="application/json" id="cshop-captions">{"ugc-01":[[5.57,7.3,"Okay, that actually tastes like candy."]],"ugc-02":[[2.56,4.57,"I got tired of mixing powder every time."],[8.73,10.31,"Now I just keep these here."]],"ugc-04":[[1.08,2.73,"Some days I want a little lift."],[6.65,8.79,"Some days I wanna settle in."],[10.0,12.73,"I like having the same pouch around for both."]],"ugc-05":[[6.11,8.78,"I like that the batch number is right on the pouch."],[8.87,10.02,"You know what you're getting."]]}</script>
