@@ -18,9 +18,10 @@
     v.addEventListener('error', showFallback);
     var src = v.querySelectorAll('source'); if (src.length) src[src.length-1].addEventListener('error', showFallback);
     function start(){ pauseOthers(v); v.muted = false; v.volume = 1; var p = v.play(); if (p && p.catch) p.catch(function(err){ if (err && err.name === 'NotSupportedError') showFallback(); }); }
-    play.addEventListener('click', function(e){ e.preventDefault(); start(); });
-    v.addEventListener('click', function(){ if (v.paused) start(); else v.pause(); });
-    v.addEventListener('playing', function(){ slot.classList.add('is-playing'); play.setAttribute('aria-label', 'Pause video'); });
+    function toggle(){ if (v.paused || v.ended) start(); else v.pause(); }
+    slot.querySelector('.ugc__frame').addEventListener('click', function(e){ e.preventDefault(); toggle(); });
+    v.addEventListener('play', function(){ slot.classList.add('is-playing'); play.setAttribute('aria-label', 'Pause video'); });
+    v.addEventListener('playing', function(){ slot.classList.add('is-playing'); });
     v.addEventListener('pause', function(){ slot.classList.remove('is-playing'); play.setAttribute('aria-label', 'Play video'); });
     v.addEventListener('ended', function(){ slot.classList.remove('is-playing'); v.currentTime = 0; if (cap) { cap.textContent = ''; cap.classList.remove('is-on'); } });
     if (cap && list.length) {
@@ -92,6 +93,11 @@
       }); }, { threshold: .5 }).observe(stage);
     }
   }
+
+  /* The drawn underline on the offer price line starts once the offer copy is on screen */
+  var oc = document.querySelector('.offer__copy');
+  if (oc && hasIO) new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) oc.classList.add('is-inview'); }); }, { threshold: .3 }).observe(oc);
+  else if (oc) oc.classList.add('is-inview');
 
   /* Transparency callouts appear once the pouch is on screen */
   var tp = document.querySelector('.trust__pouch');
