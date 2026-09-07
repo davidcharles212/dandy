@@ -20,7 +20,7 @@
 
   class Dandy2Pdp extends HTMLElement {
     connectedCallback() {
-      this.door = 'sub';
+      this.door = 'one'; // 2026-09-06: one-time is the default door; Monthly sits on the right
       this.ctaStyle = this.dataset.ctaStyle === 'plain' ? 'plain' : 'offer';
       this.doorBtns = [...this.querySelectorAll('[data-d2-door]')];
       this.oneInputs = [...this.querySelectorAll('[data-d2-one]')];
@@ -46,10 +46,10 @@
         if (t.dataset.fit) gmain.setAttribute('data-fit', t.dataset.fit);
         else gmain.removeAttribute('data-fit');
       }));
-      // deep link: #just-once opens the one-time door
+      // deep links: #monthly opens the subscription door; #just-once (legacy) the one-time door
+      if (location.hash === '#monthly') this.doorBtns.find(b => b.dataset.d2Door === 'sub')?.click();
       if (location.hash === '#just-once') this.doorBtns.find(b => b.dataset.d2Door === 'one')?.click();
-      // Add to cart: submits for real the moment Shopify has a purchasable variant.
-      // Until then the button explains itself instead of silently doing nothing.
+      // Resolve the selected offer separately from its current availability.
       const form = this.querySelector('[data-d2-buyform]');
       if (form) {
         const note = form.querySelector('[data-d2-previewnote]');
@@ -57,18 +57,39 @@
         const qtyField = form.querySelector('[data-d2-qtyfield]');
         const idField = form.querySelector('[data-d2-idfield]');
         let vmap = [];
-        try { vmap = JSON.parse(this.querySelector('[data-d2-variantmap]')?.textContent || '[]'); } catch {}
+        try { vmap = JSON.parse(this.querySelector('[data-d2-variantmap]')?.textContent || '[]'); } catch (error) { console.error('Dandy variant data could not be read', error); }
         // find a variant whose title carries the tokens we need, e.g. "30-count / 3-pack"
+        const resolveV = (...tokens) => vmap.find(v => tokens.every(t => v.title.toLowerCase().includes(t)));
         const findV = (...tokens) => vmap.find(v => tokens.every(t => v.title.toLowerCase().includes(t)) && v.available && v.price > 0);
-        this.buyform = { form, note, planField, qtyField, idField, findV };
+        this.buyform = { form, note, planField, qtyField, idField, findV, resolveV };
         form.addEventListener('submit', (e) => {
-          if (form.dataset.buyable === 'true') return; // real add to cart
+          if (form.dataset.buyable !== 'true') {
+            e.preventDefault();
+            if (!note) return;
+            note.hidden = false;
+            note.textContent = form.dataset.unavailableMessage;
+            return;
+          }
+
+          // The bump handler below submits both lines together when selected.
+          const activeBump = this.querySelector('[data-d2-bump]:checked');
+          if (activeBump && !activeBump.closest('.bump')?.hidden) return;
+
           e.preventDefault();
-          if (!note) return;
-          note.hidden = false;
-          note.textContent = this.door === 'sub' && !form.dataset.plan
-            ? 'Preview only, no subscription plan exists in Shopify yet, so there is nothing to start. This button will check out for real once the SKUs and selling plans are created.'
-            : 'Preview only, this product has no purchasable variant in Shopify yet. This button will check out for real once the SKUs are created.';
+          fetch(form.action.replace(/\/add\/?$/, '/add.js'), {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form),
+          }).then(r => {
+            if (!r.ok) throw new Error('add ' + r.status);
+            document.dispatchEvent(new CustomEvent('d2:cart-open'));
+          }).catch(error => {
+            console.error('Dandy add to cart failed', error);
+            if (note) {
+              note.hidden = false;
+              note.textContent = 'We couldn’t add this option to your bag. Please refresh and try again.';
+            }
+          });
         });
         // sticky bar + recap buttons submit the same form (they used to only scroll up)
         this.querySelectorAll('[data-d2-submit]').forEach(btn => btn.addEventListener('click', () => {
@@ -124,8 +145,11 @@
             body: JSON.stringify({ items: [main, { id: trial.id, quantity: 1 }] }),
           }).then((r) => {
             if (!r.ok) throw new Error('add ' + r.status);
-            window.location.href = form.action.replace(/\/add\/?$/, '');
-          }).catch(() => form.submit());
+            document.dispatchEvent(new CustomEvent('d2:cart-open'));
+          }).catch(error => {
+            console.error('Dandy add with order bump failed; using native cart flow', error);
+            form.submit();
+          });
         });
       }
       // Sticky bar: shows once the main buy button has scrolled off the top, hides
@@ -216,30 +240,42 @@
       if (bumpWrap) bumpWrap.hidden = (key === 'trial');
       const bf = this.buyform;
       if (bf) {
-        // prefer a real pack variant (script-created); fall back to qty of the single
+        // Each pack is one native Shopify bundle, linked to its component inventory.
         const WANT = {
           sub:   ['30-count', 'single'], '1': ['30-count', 'single'],
           '3':   ['30-count', '3-pack'], '5': ['30-count', '5-pack'],
           trial: ['10-count', 'single'],
         };
-        const v = bf.findV ? bf.findV(...(WANT[key] || [])) : null;
+        const v = bf.resolveV ? bf.resolveV(...(WANT[key] || [])) : null;
         // the sub door is only buyable once a selling plan exists; otherwise a
         // click would add a one-time single at a different price than the CTA shows
-        const usable = v && !(key === 'sub' && !bf.form.dataset.plan);
+        const usable = !!(v && v.available && v.price > 0 && !(key === 'sub' && !bf.form.dataset.plan));
+        bf.form.dataset.unavailableMessage = v && !v.available
+          ? 'This option is currently sold out. Please choose another available option.'
+          : key === 'sub' && !bf.form.dataset.plan
+            ? 'Monthly delivery is currently unavailable. Please choose a one-time option.'
+            : 'This option is currently unavailable. Please choose another option.';
         if (usable && bf.idField) {
           bf.idField.value = v.id;
           bf.form.dataset.buyable = 'true';
           if (bf.qtyField) bf.qtyField.value = 1;         // packs are one line item
         } else {
           bf.form.dataset.buyable = 'false';
-          if (bf.qtyField) bf.qtyField.value = key === 'sub' || key === 'trial' ? 1 : (Number(key) || 1);
+          if (bf.idField) bf.idField.value = '';
+          if (bf.qtyField) bf.qtyField.value = 1;
         }
         if (bf.planField) {
           const usePlan = o.renews && bf.form.dataset.plan;
           bf.planField.disabled = !usePlan;
           bf.planField.value = usePlan ? bf.form.dataset.plan : '';
         }
-        if (bf.note) bf.note.hidden = true;
+        this.querySelectorAll('[data-d2-cta], [data-d2-submit]').forEach(button => {
+          button.disabled = !usable;
+        });
+        if (bf.note) {
+          bf.note.hidden = usable;
+          bf.note.textContent = usable ? '' : bf.form.dataset.unavailableMessage;
+        }
       }
     }
   }

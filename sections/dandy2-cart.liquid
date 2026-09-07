@@ -67,7 +67,7 @@
               </div>
             {%- endif -%}
             <div class="cartsum__row"><span>Subtotal</span><b>{{ cart.total_price | money }}</b></div>
-            <p class="cartsum__ship">Shipping is $5.95 on a single one-time pack, and <b>free</b> on subscriptions and 3- or 5-packs. Calculated at checkout.</p>
+            <p class="cartsum__ship"><b>Free standard shipping on orders over $99</b>, subscriptions, and 3- or 5-packs. Otherwise $5.95. Calculated at checkout.</p>
             <form action="{{ routes.cart_url }}" method="post" novalidate>
               <button type="submit" name="checkout" class="cta">Checkout</button>
             </form>
