@@ -1040,3 +1040,51 @@ body.cta-on-screen .topbar .btn{opacity:0;transform:translateY(-6px);pointer-eve
 @media (min-width:901px){.revs:not(.is-open) .rev--fade{-webkit-mask-image:none;mask-image:none}}
 .revs:not(.is-open) .rev--fade::after{content:none}
 @media (max-width:900px){.topbar .btn{display:none}}
+
+/* Founder round 4 */
+.caprow--lines span{display:block;white-space:nowrap}
+.trust__bite .caprow--lines{padding-top:48px}
+@media (max-width:900px){.trust__bite{grid-template-columns:48% 1fr}.trust__bite .caprow--lines{padding-top:52px;font-size:14px}}
+.sticky .btn{white-space:nowrap}
+.ugcrow__aside--still .ugcrow__still{margin-top:0}
+.seal{display:block;width:132px;height:auto;left:-14px;bottom:-30px;transform:rotate(-9deg);filter:drop-shadow(0 10px 16px rgba(40,17,12,.35))}
+@media (max-width:900px){.seal{width:112px;right:12px;left:auto;bottom:-32px}}
+/* Founder round 4: whitespace tighten (qa/v5-preview/whitespace) */
+@media (max-width:860px){
+  .ugcrow{margin-top:24px}
+  .flavor .ugcrow{padding-top:24px;padding-bottom:32px}
+  .format .ugcrow{padding-top:20px;padding-bottom:32px}
+  .mech{padding-top:48px}
+  .mech .ugcrow{padding-bottom:40px}
+  .trust{padding-bottom:48px}
+  .proof{padding-top:52px}
+  .offer .offer__layout{padding-top:16px}
+  .faq{padding-bottom:44px}
+  .final__copy{padding-bottom:40px}
+}
+.foot{padding-bottom:48px}
+body:has(.sticky.is-on) .foot{padding-bottom:120px}
+@media (min-width:1024px){
+  .ugcrow{margin-top:32px}
+  .flavor .ugcrow,.format .ugcrow{padding-top:44px;padding-bottom:48px}
+  .format{padding-top:64px}
+  .mech{padding-top:72px}
+  .mech .ugcrow{padding-bottom:48px}
+  .trust{padding-bottom:64px}
+  .proof{padding-top:64px;padding-bottom:64px}
+  .offer .offer__layout{padding-top:32px}
+  .final__copy{padding-bottom:80px}
+}
+@media (max-width:860px){.final__copy{padding-bottom:28px}}
+@media (min-width:1024px){.final__copy{padding-bottom:24px}}
+/* Founder round 4: colour A, poppy CTA + gold stars (design/cta-colour-recommendation.md) */
+:root{--action:#ea4a24;--action-hi:#d43f1c;--gold:#f5b400}
+.btn{box-shadow:0 12px 26px -12px rgba(234,74,36,.8), inset 0 1px 0 rgba(255,255,255,.25)}
+.btn:hover{box-shadow:0 16px 30px -12px rgba(234,74,36,.9), inset 0 1px 0 rgba(255,255,255,.25)}
+.sticky .btn{font-size:19px}
+@media (max-width:400px){.sticky .btn{font-size:19px}}
+.rev__stars,.proof__line .stars,.stars{color:var(--gold)}
+/* Founder round 4: tasting board as motion loops (same frame, media swapped for a loop) */
+.board__media{position:relative;aspect-ratio:4/5;overflow:hidden;background:#120806}
+.board__media .loop__still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;aspect-ratio:auto}
+.board__media .loop__video{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
