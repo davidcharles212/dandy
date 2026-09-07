@@ -527,3 +527,105 @@ body.dev .ugc__meta{display:block}
 
 /* phones: stack both callouts at the bottom-left, off the label */
 @media (max-width:560px){.callout--a{top:auto;bottom:26%}.callout--b{bottom:6%}}
+
+/* ===== PRD v3: owner corrections ===== */
+/* customer clips: poster with one play button, no control cluster, captions low in the frame */
+.ugc__controls{display:none}
+.ugc figcaption{display:none}
+.ugc__play{position:absolute;inset:0;z-index:4;display:grid;place-items:center;border:0;padding:0;margin:0;background:linear-gradient(to top,rgba(40,17,12,.35),rgba(40,17,12,0) 45%);cursor:pointer;color:var(--brown);-webkit-tap-highlight-color:transparent}
+.ugc__play svg{width:88px;height:88px;padding:24px 22px 24px 30px;box-sizing:border-box;border-radius:50%;background:rgba(250,245,240,.96);fill:var(--brown);box-shadow:0 12px 28px rgba(0,0,0,.4),0 0 0 1px rgba(40,17,12,.08);filter:none;transition:transform .2s}
+.ugc__play:hover svg,.ugc__play:focus-visible svg{transform:scale(1.06)}
+.ugc__play:focus-visible{outline:3px solid #fff;outline-offset:-6px}
+.ugc.is-playing .ugc__play,.ugc.is-fallback .ugc__play{display:none}
+.ugc__video{cursor:pointer}
+.ugc__cap{bottom:22px}
+.ugc--inline .ugc__cap{bottom:22px}
+/* less air around the clip rows */
+.ugcrow{margin-top:clamp(44px,5.5vw,72px)}
+.flavor{padding-bottom:clamp(48px,6vw,80px)}
+.format{padding-top:clamp(56px,7vw,96px)}
+@media (max-width:860px){.ugcrow{margin-top:clamp(36px,5vw,52px);gap:18px}.flavor{padding-bottom:40px}.format{padding-top:48px}.ugcrow__still{display:none}}
+
+/* mechanism: the striped belt under the loop, three tabs, one always active */
+.mech__stage{gap:0}
+.mech__loop{border-bottom-left-radius:0;border-bottom-right-radius:0;box-shadow:none}
+.belt{position:relative;height:30px;margin:0;border-radius:0 0 12px 12px;background:var(--brown);box-shadow:0 12px 0 rgba(40,17,12,.14),inset 0 2px 0 rgba(255,255,255,.18);overflow:hidden}
+.belt__stripes{position:absolute;inset:6px 0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 28px,rgba(255,255,255,.08) 28px 56px);background-size:56px 100%;animation:belt 1.2s linear infinite}
+.belt__marker{position:absolute;top:0;bottom:0;left:calc(16.66% - 26px);width:52px;background:#f0b7c6;box-shadow:0 0 0 3px var(--brown) inset;transition:left .6s cubic-bezier(.4,0,.2,1)}
+.mech__stage[data-state="focus"] .belt__marker{left:calc(50% - 26px)}
+.mech__stage[data-state="settle"] .belt__marker{left:calc(83.33% - 26px)}
+@keyframes belt{to{background-position:-56px 0}}
+@media (prefers-reduced-motion:reduce){.belt__stripes{animation:none}}
+.mech__stage[data-state] .states{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px;padding:0;overflow:visible;scroll-snap-type:none}
+.state{flex:none;grid-template-columns:96px 1fr;gap:14px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:12px;cursor:pointer;text-align:left;font-family:var(--body);color:var(--brown);transition:border-color .2s,box-shadow .2s,background .2s;opacity:.72}
+.state img{width:96px;height:96px;object-fit:cover;object-position:center 35%;border-radius:16px;filter:saturate(.75)}
+.state[aria-selected="true"]{opacity:1;background:var(--brown);color:#fff;border-color:var(--brown);box-shadow:var(--shadow)}
+.state[aria-selected="true"] img{filter:none}
+.state[aria-selected="true"] .state__text small{color:#f0b7c6}
+.state[aria-selected="true"] .state__text p{color:rgba(250,245,240,.85)}
+.state:hover{opacity:1}
+.state:focus-visible{outline:3px solid var(--action);outline-offset:3px}
+.states__dots{display:none!important}
+@media (max-width:900px){
+  .mech__loop{aspect-ratio:16/9}
+  .belt{height:24px}
+  .belt__marker{width:40px;left:calc(16.66% - 20px)}
+  .mech__stage[data-state="focus"] .belt__marker{left:calc(50% - 20px)}
+  .mech__stage[data-state="settle"] .belt__marker{left:calc(83.33% - 20px)}
+  .mech__stage[data-state] .states{grid-template-columns:1fr;gap:10px;margin:22px 0 0}
+  .state{grid-template-columns:76px 1fr;padding:10px}
+  .state img{width:76px;height:76px;border-radius:12px}
+  .state__text b{font-size:22px}
+  .state__text p{font-size:15px;margin-top:5px}
+}
+
+/* sparkles reused on the mechanism loop, the lead review, the offer visual and the close */
+.sparkles{position:absolute;inset:0;pointer-events:none;z-index:3}
+.sparkles i{position:absolute;width:10px;height:10px;background:radial-gradient(circle,#fff 0 22%,rgba(255,255,255,0) 60%);border-radius:50%;opacity:0;animation:twinkle 3.6s ease-in-out infinite}
+.sparkles i::before,.sparkles i::after{content:"";position:absolute;left:50%;top:50%;width:26px;height:1.5px;background:linear-gradient(90deg,transparent,#fff,transparent);transform:translate(-50%,-50%)}
+.sparkles i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.sparkles i:nth-child(1){left:12%;top:22%;animation-delay:.2s}.sparkles i:nth-child(2){left:78%;top:18%;animation-delay:1.3s}.sparkles i:nth-child(3){left:88%;top:58%;animation-delay:2.1s}.sparkles i:nth-child(4){left:22%;top:72%;animation-delay:.9s}.sparkles i:nth-child(5){left:56%;top:12%;animation-delay:2.8s}.sparkles i:nth-child(6){left:64%;top:80%;animation-delay:1.8s}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1)}60%{opacity:.6}}
+@media (prefers-reduced-motion:reduce){.sparkles i{animation:none;opacity:.5}}
+.wrapper__media{position:relative;margin:0 -28px 22px;overflow:hidden}
+.wrapper--lead .wrapper__media img{width:100%;max-width:none;margin:0;aspect-ratio:16/10;object-fit:cover}
+@media (max-width:600px){.wrapper--lead .wrapper__media img{aspect-ratio:4/3}}
+.final__media{position:relative}
+
+/* transparency: the real gummy beside the lab statement */
+.trust__pouch .loop__video,.trust__pouch{aspect-ratio:720/530}
+.trust__pouch .loop__still{object-fit:cover}
+.trust__pair{grid-template-columns:1fr 1fr;align-items:stretch}
+.trust__gummy{margin:0;border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.trust__gummy img{width:100%;height:100%;aspect-ratio:1;object-fit:cover}
+.labcard{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:clamp(20px,2.4vw,30px);border-radius:var(--r-lg);background:var(--cream);color:var(--brown);text-decoration:none;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s}
+.labcard:hover{transform:translateY(-3px)}
+.labcard b{font-family:var(--display);font-weight:800;font-size:clamp(24px,2.2vw,30px);line-height:1;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.labcard span{font-size:16px;line-height:1.4;color:var(--ink-2)}
+.labcard em{font-style:normal;font-weight:700;color:var(--action);text-decoration:underline;text-underline-offset:4px;margin-top:4px}
+@media (max-width:560px){.trust__pair{grid-template-columns:1fr}.trust__gummy img{aspect-ratio:4/3}}
+
+/* offer: the pre-sale message, three facts, guarantee, one CTA to the product page */
+.offer__layout{grid-template-columns:minmax(280px,.8fr) 1.2fr;align-items:center;margin-top:0}
+.offer__visual{position:relative;top:auto;aspect-ratio:4/5;border-radius:var(--r-xl);box-shadow:var(--shadow);background:var(--cream-2)}
+.offer__visual::before{content:none}
+.offer__visual .loop__video{aspect-ratio:4/5}
+.offer__copy h2{text-wrap:balance;max-width:16ch}
+.offer__lede{margin-top:18px;font-size:clamp(19px,1.7vw,23px);color:var(--ink-2);max-width:42ch}
+.offer__facts{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,auto);gap:14px 28px;justify-content:start}
+.offer__facts li{display:flex;flex-direction:column;padding-left:16px;border-left:3px solid var(--berry-2)}
+.offer__facts b{font-family:var(--display);font-weight:800;font-size:clamp(30px,3vw,42px);line-height:1;text-transform:uppercase}
+.offer__facts span{margin-top:4px;font-size:15px;color:var(--ink-2)}
+.offer .guarantee{margin-top:26px}
+.offer__cta{margin-top:24px;display:inline-flex}
+@media (max-width:900px){
+  .offer__layout{grid-template-columns:1fr;gap:22px}
+  .offer__visual{aspect-ratio:4/5;max-height:none}
+  .offer__visual .loop__video{aspect-ratio:4/5}
+  .offer__copy h2{max-width:none}
+}
+@media (max-width:560px){
+  .offer__facts{grid-template-columns:1fr 1fr;gap:12px 18px}
+  .offer__facts li:last-child{grid-column:1/3}
+  .offer__cta{width:100%;justify-content:center}
+}
