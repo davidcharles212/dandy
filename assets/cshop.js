@@ -52,31 +52,40 @@
     v.addEventListener('ended', function(){ fig.classList.add('is-held'); });
   });
 
-  /* Mechanism: three tabs. A tap selects a state, holds it, and cues the loop to that part of the day. The loop only drives the label while nobody has picked. */
+  /* Mechanism: three tabs. A tap selects a state, cues the loop to that part of the day, plays that plate through and holds on its last frame. The choice stays until the section leaves the screen. Nobody picked: the loop drives the label. */
   var stage = document.querySelector('.mech__stage');
   if (stage) {
     var states = stage.querySelectorAll('.state'), mv = stage.querySelector('.mech__loop video');
-    var names = ['lift','focus','settle'], seek = [0.3, 3.0, 5.4], bounds = [2.5, 4.9], idx = 0, timer, userPicked = false, holdUntil = 0;
+    var names = ['lift','focus','settle'], seek = [0.3, 3.0, 5.4], ends = [2.35, 4.75, 99], bounds = [2.5, 4.9], idx = 0, timer, userPicked = false, raf = 0;
     function setState(s, doSeek){
       stage.dataset.state = s; idx = names.indexOf(s);
       states.forEach(function(b){ var on = b.dataset.state === s; b.setAttribute('aria-selected', on ? 'true' : 'false'); b.tabIndex = on ? 0 : -1; });
-      if (doSeek && mv && mv.duration) { mv.currentTime = Math.min(seek[idx], mv.duration - 0.1); if (mv.paused && !reduce) mv.play().catch(function(){}); }
+      if (doSeek && mv && mv.duration) { mv.currentTime = Math.min(seek[idx], mv.duration - 0.1); if (!reduce) mv.play().catch(function(){}); }
     }
+    function watchHold(){
+      cancelAnimationFrame(raf);
+      var end = Math.min(ends[idx], (mv.duration || 99) - 0.04);
+      function tick(){ if (!userPicked) return; if (mv.currentTime >= end) { mv.pause(); return; } raf = requestAnimationFrame(tick); }
+      raf = requestAnimationFrame(tick);
+    }
+    function release(){ userPicked = false; cancelAnimationFrame(raf); if (mv) { mv.loop = true; if (!reduce) mv.play().catch(function(){}); } }
     states.forEach(function(b){
-      b.addEventListener('click', function(){ userPicked = true; holdUntil = Date.now() + 6000; clearInterval(timer); setState(b.dataset.state, true); });
+      b.addEventListener('click', function(){ userPicked = true; clearInterval(timer); if (mv) mv.loop = false; setState(b.dataset.state, true); if (mv) watchHold(); });
       b.addEventListener('keydown', function(e){
         var i = Array.prototype.indexOf.call(states, b), n = null;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % 3; else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i + 2) % 3;
         if (n !== null) { e.preventDefault(); states[n].focus(); states[n].click(); }
       });
     });
-    if (mv) mv.addEventListener('timeupdate', function(){
-      if (!mv.duration) return;
-      var t = mv.currentTime, s = t < bounds[0] ? 'lift' : (t < bounds[1] ? 'focus' : 'settle');
-      if (userPicked && Date.now() < holdUntil) return;
-      userPicked = false;
-      if (s !== stage.dataset.state) setState(s, false);
-    });
+    if (mv) {
+      mv.addEventListener('timeupdate', function(){
+        if (!mv.duration || userPicked) return;
+        var t = mv.currentTime, s = t < bounds[0] ? 'lift' : (t < bounds[1] ? 'focus' : 'settle');
+        if (s !== stage.dataset.state) setState(s, false);
+      });
+      mv.addEventListener('ended', function(){ if (!userPicked) { mv.loop = true; mv.play().catch(function(){}); } });
+      if (hasIO) new IntersectionObserver(function(es){ es.forEach(function(e){ if (!e.isIntersecting && userPicked) release(); }); }, { threshold: 0 }).observe(stage);
+    }
     if (!mv || reduce) {
       if (!reduce && hasIO) new IntersectionObserver(function(es){ es.forEach(function(e){
         if (e.isIntersecting) { clearInterval(timer); timer = setInterval(function(){ if (!userPicked) setState(names[(idx + 1) % 3], false); }, 3200); } else clearInterval(timer);

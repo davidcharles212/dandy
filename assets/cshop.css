@@ -629,3 +629,20 @@ body.dev .ugc__meta{display:block}
   .offer__facts li:last-child{grid-column:1/3}
   .offer__cta{width:100%;justify-content:center}
 }
+
+/* ===== QA fixes, v3 preview round 1 ===== */
+/* sticky bar: the label wraps and the small line drops on narrow phones, so nothing runs under the button */
+.sticky__info{flex:1 1 auto}
+.sticky__info b{white-space:normal;line-height:1;font-size:16px}
+.sticky .btn{flex:0 0 auto}
+@media (max-width:480px){.sticky__info small{display:none}.sticky__info img{width:34px;height:34px}}
+/* offer facts sit in one row of three on phones */
+@media (max-width:560px){
+  .offer__facts{grid-template-columns:repeat(3,1fr);gap:10px}
+  .offer__facts li{padding-left:10px}
+  .offer__facts li:last-child{grid-column:auto}
+  .offer__facts b{font-size:24px}
+  .offer__facts span{font-size:13px}
+}
+/* less air between the reviews and the offer on phones */
+@media (max-width:900px){.proof{padding-bottom:48px}.offer{padding-top:48px}}
