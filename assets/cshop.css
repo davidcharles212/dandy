@@ -524,3 +524,6 @@ body.dev .ugc__meta{display:block}
 .faq summary{text-wrap:balance}
 .trust__list li{text-wrap:pretty}
 .offer__ship a,.faq details p a,.trust__text .link{display:inline-block;padding:6px 0}
+
+/* phones: stack both callouts at the bottom-left, off the label */
+@media (max-width:560px){.callout--a{top:auto;bottom:26%}.callout--b{bottom:6%}}
