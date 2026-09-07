@@ -1,0 +1,13 @@
+{
+  "layout": "cshop",
+  "sections": {
+    "main": {
+      "type": "dandy-cshop",
+      "settings": {
+        "product_url": "/products/mixed-berry-kratom-gummies",
+        "video_base": "https://dandy-cshop-media.indigo-hq.com"
+      }
+    }
+  },
+  "order": ["main"]
+}
