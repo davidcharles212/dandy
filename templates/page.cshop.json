@@ -5,9 +5,15 @@
       "type": "dandy-cshop",
       "settings": {
         "product_url": "/products/mixed-berry-kratom-gummies",
-        "video_base": "https://dandy-cshop-media.indigo-hq.com"
+        "video_base": "https://cdn.jsdelivr.net/gh/davidcharles212/dandy@d8b3716faaea4fd098c523f3e263f599960dcce6/cshop",
+        "coa_url": "/pages/contact?view=dandy2-coa",
+        "ship_url": "/pages/contact?view=dandy2-shipping",
+        "review_count": "1,477",
+        "reviews_url": "/products/mixed-berry-kratom-gummies#reviews"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
