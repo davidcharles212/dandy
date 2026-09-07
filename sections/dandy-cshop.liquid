@@ -3,7 +3,7 @@
   assign offer_url = section.settings.offer_url | default: '/products/mixed-berry-kratom-gummies?variant=47958360031410'
   assign video_base = section.settings.video_base
   assign coa_url = section.settings.coa_url | default: '/pages/contact?view=dandy2-coa'
-  assign review_count = section.settings.review_count | default: '1,477'
+  assign review_count = section.settings.review_count | default: '1,400+'
   assign reviews_url = section.settings.reviews_url | default: '/products/mixed-berry-kratom-gummies#reviews'
   if video_base == blank
     assign v01m = 'cshop-ugc-01.mp4' | asset_url
@@ -285,8 +285,8 @@
       </div>
       <div class="trust__media">
         <figure class="trust__pouch loop" data-loop="transparency">
-          <img class="loop__still" src="{{ 'cshop-loop-transparency-poster.jpg' | asset_url }}" alt="Close-up of the Dandy pouch label" width="720" height="530" loading="lazy">
-          <video class="loop__video" playsinline muted preload="none" poster="{{ 'cshop-loop-transparency-poster.jpg' | asset_url }}" aria-label="The camera moves from the Dandy pouch to the area of the label where the strength and batch number are printed">
+          <img class="loop__still" src="{{ 'cshop-loop-transparency-poster.jpg' | asset_url }}" alt="The Dandy Mixed Berry pouch on a wooden shelf" width="720" height="900" loading="lazy">
+          <video class="loop__video" playsinline muted preload="none" poster="{{ 'cshop-loop-transparency-poster.jpg' | asset_url }}" aria-label="The camera pushes in from the whole Dandy pouch to the strength printed on its label">
             <source src="{{ l_trans_q }}" type="video/quicktime">
             <source src="{{ l_trans_m }}" type="video/mp4">
           </video>
@@ -328,22 +328,38 @@
     <div class="proof__head">
       <h2 class="proof__quote">“Powder, obviously, tastes disgusting. These gummies are <mark class="hi hi--inline">actually pretty tasty.”</mark></h2>
       <p class="proof__by">Tiffany F., verified customer. Switched from powder.</p>
-      <a class="proof__line" href="{{ reviews_url }}"><span class="stars" aria-hidden="true">★★★★★</span><span>4.8 out of 5</span><span>{{ review_count }} verified customers</span></a>
+      <a class="proof__line" href="{{ reviews_url }}"><span class="stars" aria-hidden="true">★★★★★</span><span>Rated 4.8/5</span><span class="proof__sep" aria-hidden="true"></span><span>{{ review_count }} happy buyers</span></a>
     </div>
     <div class="proof__body">
-      <blockquote class="wrapper wrapper--lead">
-        <div class="wrapper__media"><img src="{{ 'cshop-proof-still.webp' | asset_url }}" alt="An adult holding a Dandy gummy over a desk with the open pouch beside a phone" width="1600" height="1200" loading="lazy">{{ sparkles }}</div>
-        <div class="wrapper__text">
-          <p>I hated choking down the kratom capsules. Always made me gag. These gummies are a little bit tangy and go down easily.</p>
-          <footer><span>Josh P., verified customer</span><span>Switched from capsules</span></footer>
-        </div>
+      <div class="revs" id="revs">
+      <blockquote class="rev rev--photo">
+        <img class="rev__photo" src="{{ 'cshop-proof-still.webp' | asset_url }}" alt="An adult holding a Dandy gummy over a desk with the open pouch beside a phone" width="1600" height="1200" loading="lazy">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“I hated choking down the kratom capsules. Always made me gag. These gummies are a little bit tangy and go down easily.”</p>
+        <footer><b>Josh P.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
       </blockquote>
-      <ul class="quotes">
-        <li><p>Honestly, couldn’t believe it when I first tried it. I thought it was going to be gross, like every other kratom gummy, but it’s actually totally pleasant.</p><footer><span>Sara H., verified customer</span></footer></li>
-        <li><p>Can barely taste the bitterness. Was really easy to get down.</p><footer><span>Brian L., verified customer</span></footer></li>
-        <li><p>It’s not delicious, but it’s also not offensive. Didn’t make me gag or wince.</p><footer><span>Jake A., verified customer</span></footer></li>
-        <li><p>I’m a believer, customer for life. Just placed my third order.</p><footer><span>Verified customer</span></footer></li>
-      </ul>
+      <blockquote class="rev">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“Honestly, couldn’t believe it when I first tried it. I thought it was going to be gross, like every other kratom gummy, but it’s actually totally pleasant.”</p>
+        <footer><b>Sara H.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--fade">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“Can barely taste the bitterness. Was really easy to get down.”</p>
+        <footer><b>Brian L.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--more">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“It’s not delicious, but it’s also not offensive. Didn’t make me gag or wince.”</p>
+        <footer><b>Jake A.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--more">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“I’m a believer, customer for life. Just placed my third order.”</p>
+        <footer><b>Verified customer</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      </div>
+      <button class="revs__more" type="button" aria-expanded="false" aria-controls="revs">Read more reviews</button>
     </div>
   </div>
 </section>
@@ -434,7 +450,7 @@
     { "type": "video", "id": "clip_04", "label": "Clip 4: three parts of the day (Shopify Files)" },
     { "type": "video", "id": "clip_05", "label": "Clip 5: unboxing (Shopify Files)" },
     { "type": "text", "id": "coa_url", "label": "Lab reports (COA) page URL", "default": "/pages/contact?view=dandy2-coa" },
-    { "type": "text", "id": "review_count", "label": "Verified customer count shown in the proof line", "default": "1,477" },
+    { "type": "text", "id": "review_count", "label": "Buyer count shown in the rating line", "default": "1,400+" },
     { "type": "text", "id": "reviews_url", "label": "Link for the proof line (full review set)", "default": "/products/mixed-berry-kratom-gummies#reviews" }
   ]
 }

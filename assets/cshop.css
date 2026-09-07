@@ -975,3 +975,68 @@ main{overflow-x:clip}
 /* the one-pouch line sits tight */
 .mech__line{line-height:1.02}
 @media (min-width:1024px){.final__media img{object-position:center 30%}}
+
+/* ===== Founder round 3 ===== */
+/* rating line: one line, body type, stars first */
+.proof__line{display:inline-flex;flex-wrap:nowrap;white-space:nowrap;gap:0 10px;align-items:center;margin-top:18px;padding:0;border:0;font-family:var(--body);font-weight:500;font-size:17px;letter-spacing:0;text-transform:none;color:var(--brown)}
+.proof__line .stars{color:var(--red);font-size:20px;letter-spacing:.02em}
+.proof__sep{display:inline-block;width:1px;height:18px;background:var(--brown);opacity:.5}
+@media (max-width:360px){.proof__line{font-size:15px;gap:0 8px}.proof__line .stars{font-size:17px}}
+/* reviews: clean cards, three shown, the third fades into a Read more link that reveals the rest */
+.proof__body{display:block;margin-top:34px}
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.rev{margin:0;padding:22px 24px 20px;background:var(--white);border:1.5px solid rgba(143,29,58,.55);border-radius:18px;box-shadow:none;overflow:hidden;position:relative}
+.rev--photo{padding-top:0}
+.rev__photo{width:calc(100% + 48px);max-width:none;margin:0 -24px 18px;aspect-ratio:16/10;object-fit:cover;display:block}
+.rev__stars{display:block;color:var(--red);font-size:22px;letter-spacing:.06em;line-height:1}
+.rev p{margin-top:14px;font-size:17px;line-height:1.45;color:var(--brown);padding:0}
+.rev p::before{content:none}
+.rev footer{display:flex;flex-direction:column;gap:6px;margin-top:16px;font-family:var(--body);text-transform:none;letter-spacing:0}
+.rev footer b{font-size:17px;font-weight:700;color:var(--brown)}
+.rev footer span{display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--ink-2)}
+.rev footer span::after{content:none}
+.rev__badge{width:18px;height:18px;fill:var(--red)}
+.rev__badge-tick{fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.rev--more{display:none}
+.revs.is-open .rev--more{display:block}
+.revs.is-open .rev--fade::after{content:none}
+.revs__more{display:block;margin:22px auto 0;padding:8px 2px;border:0;background:none;font-family:var(--body);font-weight:600;font-size:17px;color:var(--brown);text-decoration:underline;text-underline-offset:5px;cursor:pointer}
+.revs.is-open + .revs__more{display:none}
+@media (max-width:900px){
+  .revs{grid-template-columns:1fr;gap:12px}
+  .rev{padding:20px 20px 18px}
+  .rev__photo{width:calc(100% + 40px);margin:0 -20px 16px}
+  .rev--fade{max-height:150px}
+  .rev--fade::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(250,245,240,0) 20%,var(--cream) 92%);pointer-events:none}
+  .revs.is-open .rev--fade{max-height:none}
+  .revs__more{margin-top:10px}
+}
+/* transparency: the bite caption starts below the loop, never under it */
+.trust__bite{align-items:start}
+.trust__bite .caprow{padding-top:54px}
+.trust__cutout{position:relative;z-index:3}
+@media (max-width:900px){.trust__bite .caprow{padding-top:60px}}
+/* the new label loop is a full pouch pushing in to the label: callouts move to the empty right side */
+.callout--a{left:auto;right:5%;top:8%}
+.callout--b{left:auto;right:5%;bottom:auto;top:calc(8% + 46px)}
+@media (max-width:560px){.callout--a{top:6%;bottom:auto}.callout--b{top:calc(6% + 40px);bottom:auto}.callout{max-width:60%}}
+@media (max-width:400px){.callout--a{top:6%;bottom:auto}.callout--b{top:calc(6% + 38px);bottom:auto}}
+/* offer to faq: less air; the top bar and sticky bar step aside while an in-page CTA is on screen */
+@media (max-width:900px){.offer{padding-bottom:36px}.faq{padding-top:44px}}
+@media (min-width:1024px){.offer{padding-bottom:64px}.faq{padding-top:64px}}
+.topbar .btn{transition:opacity .25s,transform .25s}
+body.cta-on-screen .topbar .btn{opacity:0;transform:translateY(-6px);pointer-events:none}
+/* label loop is now a portrait push-in on the full pouch; callouts sit on the wall beside the top of the pouch */
+.trust__pouch,.trust__pouch .loop__video{aspect-ratio:4/5}
+.trust__pouch .loop__still{object-fit:cover}
+.callout--a{left:5%;right:auto;top:5%}
+.callout--b{left:5%;right:auto;top:calc(5% + 44px);bottom:auto}
+@media (max-width:560px){.callout--a{left:4%;top:4%}.callout--b{left:4%;top:calc(4% + 40px)}.callout{max-width:62%}}
+@media (max-width:400px){.callout--a{top:4%}.callout--b{top:calc(4% + 38px)}}
+@media (max-width:900px){.trust__bite{margin-top:-56px}}
+/* rating line wraps on the narrowest phones; the faded review card dissolves border and all; phones use the sticky bar only, never the top-bar button as well */
+@media (max-width:340px){.proof__line{white-space:normal;flex-wrap:wrap;gap:4px 8px}}
+.revs:not(.is-open) .rev--fade{-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent 96%);mask-image:linear-gradient(to bottom,#000 30%,transparent 96%)}
+@media (min-width:901px){.revs:not(.is-open) .rev--fade{-webkit-mask-image:none;mask-image:none}}
+.revs:not(.is-open) .rev--fade::after{content:none}
+@media (max-width:900px){.topbar .btn{display:none}}
