@@ -109,7 +109,8 @@
   if (giant && !reduce) {
     var gt = false;
     function drift(){ gt = false; var y = Math.min(window.scrollY, 400) / 400; giant.style.transform = 'translateY(' + (-22 * y) + 'px) rotate(' + (-8 + 5 * y) + 'deg)'; }
-    giant.addEventListener('animationend', function(){ window.addEventListener('scroll', function(){ if (!gt) { gt = true; requestAnimationFrame(drift); } }, { passive: true }); drift(); }, { once: true });
+    /* The finished settle animation (fill-mode both) would outrank the inline transform, so switch it off once it has ended; its end state equals the base state, so nothing jumps */
+    giant.addEventListener('animationend', function(){ giant.style.animation = 'none'; window.addEventListener('scroll', function(){ if (!gt) { gt = true; requestAnimationFrame(drift); } }, { passive: true }); drift(); }, { once: true });
   }
 
   /* Transparency callouts appear once the pouch is on screen */
