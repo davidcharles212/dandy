@@ -1104,3 +1104,4 @@ body:has(.sticky.is-on) .foot{padding-bottom:120px}
   .hero__cta .btn--lg{flex:1}
 }
 @media (max-width:480px){.hero__media{height:50vh}}
+@media (max-width:375px){.hero__plate img{object-position:center 85%}}
