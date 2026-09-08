@@ -45,7 +45,7 @@
         <aside class="cartsum" aria-label="Summary">
           {%- assign d2_units = 0 -%}
           {%- for item in cart.items -%}
-            {%- comment -%} subscription lines renew on their own schedule; the 3-for-2 pack deal never applies to them {%- endcomment -%}
+            {%- comment -%} subscription lines renew on their own schedule; one-time pack pricing never applies to them {%- endcomment -%}
             {%- unless item.selling_plan_allocation -%}
               {%- assign vt = item.variant.title | downcase -%}
               {%- if vt contains '5-pack' -%}{%- assign mult = item.quantity | times: 5 -%}{%- assign d2_units = d2_units | plus: mult -%}
@@ -53,17 +53,16 @@
               {%- else -%}{%- assign d2_units = d2_units | plus: item.quantity -%}{%- endif -%}
             {%- endunless -%}
           {%- endfor -%}
-          {%- assign d2_to3 = 3 | minus: d2_units -%}
           <div class="cartsum__box">
             {%- if d2_units > 0 and d2_units < 3 -%}
               <div class="cartnudge">
-                <p><b>Add {{ d2_to3 }} more</b> and the third is free, plus we drop the $5.95 shipping.</p>
+                <p><b>Save 25%</b> on 3-pouch gummy packs, with free shipping included.</p>
                 <div class="cartnudge__bar"><i style="width: {{ d2_units | times: 33 }}%"></i></div>
                 <a href="/#shop">Keep shopping →</a>
               </div>
             {%- elsif d2_units >= 3 -%}
               <div class="cartnudge cartnudge--won">
-                <p><b>Nice.</b> You’ve hit the 3-pack deal, a free pouch and free shipping are in.</p>
+                <p><b>Bundle savings and free shipping</b> come with every 3- or 5-pouch gummy pack.</p>
               </div>
             {%- endif -%}
             <div class="cartsum__row"><span>Subtotal</span><b>{{ cart.total_price | money }}</b></div>

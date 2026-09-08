@@ -33,7 +33,9 @@
     <footer class="d2cart__foot" data-d2-cart-foot hidden>
       <div class="d2cart__row"><span>Subtotal</span><b data-d2-cart-total>$0.00</b></div>
       <p class="d2cart__ship"><b>Free standard shipping on orders over $99</b>, subscriptions, and 3- or 5-packs. Otherwise $5.95. Calculated at checkout.</p>
-      <a class="cta" href="{{ routes.cart_url }}">Checkout</a>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="cta">Checkout</button>
+      </form>
       {% render 'dandy2-trustbadges' %}
       <p class="d2cart__states">21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, ND, NE, RI, TN, UT, VT, WV or WI, <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.</p>
     </footer>
@@ -86,7 +88,7 @@
         </li>`).join('');
       el('[data-d2-cart-total]').textContent = money(cart.total_price);
     }
-    // 3-for-2 progress in UNITS: a "3-pack" variant counts as 3, a "5-pack" as 5.
+    // Pack progress in UNITS: a "3-pack" variant counts as 3, a "5-pack" as 5.
     // Subscription lines are excluded, the pack deal never applies to them.
     const unitsOf = i => {
       if (i.selling_plan_allocation) return 0;
@@ -96,11 +98,11 @@
     const units = (cart.items || []).reduce((n, i) => n + unitsOf(i), 0);
     if (units > 0 && units < 3) {
       nudge.hidden = false;
-      el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Add ${3 - units} more</b> and the third is free, plus we drop the $5.95 shipping.`;
+      el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Save 25%</b> on 3-pouch gummy packs, with free shipping included.`;
       el('[data-d2-cart-bar]').style.width = (units / 3 * 100) + '%';
     } else if (units >= 3) {
       nudge.hidden = false;
-      el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Nice.</b> The 3-pack deal is in, a free pouch and free shipping.`;
+      el('[data-d2-cart-nudge-txt]').innerHTML = `<b>Bundle savings and free shipping</b> come with every 3- or 5-pouch gummy pack.`;
       el('[data-d2-cart-bar]').style.width = '100%';
     } else { nudge.hidden = true; }
   };
