@@ -93,7 +93,7 @@
       <div class="doorpane" data-d2-pane="one">
         <div class="qrows" role="radiogroup" aria-label="One-time options">
           <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="1" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">1 pouch</b><small class="qrow__sub">30 gummies, 35 mg each</small></span><span class="qrow__side"><b class="qrow__unit">$59.99</b><small class="qrow__ship">+ $5.95 shipping</small></span></label>
-          <label class="qrow qrow--anchor"><input type="radio" name="d2one-{{ section.id }}" value="3" data-d2-one checked><span class="qrow__chip">Most popular</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">3 pouches</b><small class="qrow__sub"><em class="pct">Save 33%</em> + free shipping</small></span><span class="qrow__side"><b class="qrow__unit">$39.99<small>/pouch</small></b><small class="qrow__total">$119.98 total</small></span></label>
+          <label class="qrow qrow--anchor"><input type="radio" name="d2one-{{ section.id }}" value="3" data-d2-one checked><span class="qrow__chip">Most popular</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">3 pouches</b><small class="qrow__sub"><em class="pct">Save 25%</em> + free shipping</small></span><span class="qrow__side"><b class="qrow__unit">$44.99<small>/pouch</small></b><small class="qrow__total">$134.97 total</small></span></label>
           <label class="qrow"><input type="radio" name="d2one-{{ section.id }}" value="5" data-d2-one><span class="qrow__chip qrow__chip--best">Best value</span><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">5 pouches</b><small class="qrow__sub"><em class="pct">Save 40%</em> + free shipping</small></span><span class="qrow__side"><b class="qrow__unit">$35.99<small>/pouch</small></b><small class="qrow__total">$179.97 total</small></span></label>
           <label class="qrow qrow--trial"><input type="radio" name="d2one-{{ section.id }}" value="trial" data-d2-one><span class="qrow__radio" aria-hidden="true"></span><span class="qrow__main"><b class="qrow__n">Sampler</b><small class="qrow__sub">10 gummies</small></span><span class="qrow__side"><b class="qrow__unit">$24.99</b><small class="qrow__ship">+ $5.95 shipping</small></span></label>
         </div>
@@ -113,7 +113,7 @@
         <input type="hidden" name="quantity" value="1" data-d2-qtyfield>
         <input type="hidden" name="selling_plan" value="" data-d2-planfield disabled>
         <div class="ctawrap">
-          <button type="submit" class="cta" data-d2-cta>Get 3 pouches · $119.98</button>
+          <button type="submit" class="cta" data-d2-cta>Get 3 pouches · $134.97</button>
         </div>
         <p class="previewnote" data-d2-previewnote role="status" aria-live="polite" hidden></p>
       </form>
@@ -264,8 +264,8 @@
       <h2 class="belowfold__title" id="d2-recap-{{ section.id }}">Still scrolling? That’s a sign.</h2>
       <div class="recapcard">
         <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="Rocky the raccoon peeking over the top of the card" width="560" height="468" loading="lazy">
-        <div class="recapcard__row"><span data-d2-recap-label>3 pouches, one-time</span><b data-d2-recap-total>$119.98</b></div>
-        <button type="button" class="cta cta--inline" data-d2-recap-cta data-d2-submit>Get 3 pouches · $119.98</button>
+        <div class="recapcard__row"><span data-d2-recap-label>3 pouches, one-time</span><b data-d2-recap-total>$134.97</b></div>
+        <button type="button" class="cta cta--inline" data-d2-recap-cta data-d2-submit>Get 3 pouches · $134.97</button>
         {% render 'dandy2-guarantee' %}
       </div>
     </div>
@@ -273,7 +273,7 @@
 
   {% comment %} ---------- sticky mobile bar ---------- {% endcomment %}
   <div class="stickybar" data-d2-sticky hidden>
-    <div class="stickybar__info"><strong data-d2-sticky-label>3 pouches, one-time</strong><span data-d2-sticky-total>$119.98</span></div>
+    <div class="stickybar__info"><strong data-d2-sticky-label>3 pouches, one-time</strong><span data-d2-sticky-total>$134.97</span></div>
     <button type="button" class="stickybar__btn" data-d2-submit>Add to cart</button>
   </div>
   {% render 'dandy2-emailcapture' %}
@@ -298,7 +298,7 @@
       "type": "select",
       "id": "cta_style",
       "label": "Buy button wording",
-      "info": "Offer-specific restates what you get (Start monthly · $47.99, Get 3 pouches · $119.98). Plain uses Add to cart · price for every option.",
+      "info": "Offer-specific restates what you get (Start monthly · $47.99, Get 3 pouches · $134.97). Plain uses Add to cart · price for every option.",
       "options": [
         { "value": "offer", "label": "Offer-specific" },
         { "value": "plain", "label": "Plain: Add to cart" }

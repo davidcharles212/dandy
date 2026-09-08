@@ -13,7 +13,7 @@
   const OFFERS = {
     sub:     { cta: 'Start monthly',  label: 'Monthly supply, 30 gummies', product: 47.99,  ship: 0,    renews: true },
     '1':     { cta: 'Get 1 pouch',    label: '1 pouch, one-time',          product: 59.99,  ship: SHIP },
-    '3':     { cta: 'Get 3 pouches',  label: '3 pouches, one-time',        product: 119.98, ship: 0 },
+    '3':     { cta: 'Get 3 pouches',  label: '3 pouches, one-time',        product: 134.97, ship: 0 },
     '5':     { cta: 'Get 5 pouches',  label: '5 pouches, one-time',        product: 179.97, ship: 0 },
     'trial': { cta: 'Get the sampler', label: 'Sampler, 10 gummies',        product: 24.99,  ship: SHIP }
   };
