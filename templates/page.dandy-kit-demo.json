@@ -1,0 +1,15 @@
+{
+  "layout": "dandy-kit",
+  "sections": {
+    "main": {
+      "type": "dandy-kit-demo",
+      "settings": {
+        "cta_url": "#offer",
+        "video_base": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

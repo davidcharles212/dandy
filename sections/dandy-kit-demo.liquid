@@ -1,0 +1,273 @@
+{%- liquid
+  assign cta_url = section.settings.cta_url | default: '#offer'
+  assign video_base = section.settings.video_base
+-%}
+{%- comment -%}
+  Dandy premium page kit demo. Every component and motion primitive once, with placeholder copy and the existing cshop assets.
+  Grounds alternate dark and light: ticker brown, top bar cream, hero brown, type cream, band plum, board wood, strip cream,
+  stage cream-2, trust brown, proof cream, offer white, FAQ white, close brown, footer brown.
+{%- endcomment -%}
+
+{%- capture ticker_items -%}<li>Dandy page kit</li><li>Tokens</li><li>Components</li><li>Motion</li><li>Good days look Dandy</li>{%- endcapture -%}
+<div class="ticker" aria-label="Product facts">
+  <div class="ticker__track">
+    <ul class="ticker__list">{{ ticker_items }}</ul>
+    <ul class="ticker__list" aria-hidden="true">{{ ticker_items }}</ul>
+  </div>
+</div>
+
+<header class="topbar">
+  <a class="topbar__brand" href="/" aria-label="Dandy home"><img src="{{ 'dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="96" height="36"></a>
+  <a class="btn btn--sm" href="{{ cta_url }}">Try the kit</a>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="hero__media">
+    <picture class="hero__plate">
+      <source media="(min-width: 1900px)" srcset="{{ 'cshop-hero-wide.webp' | asset_url }}" type="image/webp">
+      <img src="{{ 'cshop-hero-tall.webp' | asset_url }}" alt="Berry syrup dripping down a cream wall behind a Dandy pouch on a candy counter" width="1600" height="1986" fetchpriority="high">
+    </picture>
+    <img class="hero__giant" src="{{ 'cshop-hero-gummy.webp' | asset_url }}" alt="A sugar-coated Dandy gummy" width="1200" height="970" fetchpriority="high">
+    {% render 'dandy-sparkles', variant: 'hero', count: 8 %}
+  </div>
+  <div class="hero__copy">
+    <h1>A hero that settles, then drifts.</h1>
+    <p class="lede lede--hero">Two lines of headline, two lines of lede, one line of button at every phone width.</p>
+    <div class="hero__cta" data-sticky-anchor>
+      <a class="btn btn--lg" href="{{ cta_url }}">Try the kit</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec ground-cream" id="type">
+  <div class="wrap">
+    <div class="head">
+      <h2>Type, buttons, captions and facts.</h2>
+      <p class="lede">Barlow at 17 over 1.5 for body. Barlow Condensed 800 uppercase for headings at .92. Sentence case for questions, sub-lines, the rating line and review footers.</p>
+    </div>
+    <h3>An h3 at clamp(26px, 2.6vw, 34px) with <mark class="hi">one highlighter</mark> inside it.</h3>
+    <p class="lede">A lede paragraph capped at 60ch. Facts that wrap get a drawn dot between them and never start a line with one.</p>
+    <ul class="facts meta row" style="margin-top:18px"><li>Batch tested</li><li>Amount on the pouch</li><li>21+ only</li><li>30-day guarantee</li></ul>
+    <p class="row"><a class="btn" href="{{ cta_url }}">Default button</a></p>
+    <p class="row" style="margin-top:14px"><a class="btn btn--sm" href="{{ cta_url }}">Small button</a></p>
+    <figure class="row" style="margin-top:var(--gap-s)">
+      <img src="{{ 'cshop-flavor-sugar.webp' | asset_url }}" alt="Sugar crystals landing around a Dandy gummy on dark wood" width="1600" height="1195" loading="lazy" style="aspect-ratio:4/3;object-fit:cover;width:100%">
+      <figcaption class="caprow">Captions sit in a row under the frame, never over the render.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="band">
+  <figure class="band__media"><img src="{{ 'cshop-old-ritual.webp' | asset_url }}" alt="A kitchen scale, an unwashed scoop and a cloudy glass on a counter" width="1600" height="1200" loading="lazy"></figure>
+  <div class="band__text">
+    <h3>A plum band that butts straight into the next ground.</h3>
+    <p>The old way is desaturated. The replacement sits in the next frame at full colour, and that contrast is the argument.</p>
+    <p class="band__end" data-reveal>The part <mark class="hi hi--dark">that ends.</mark></p>
+  </div>
+</div>
+
+<div class="board" aria-label="Three things you notice">
+  <figure class="board__frame" data-reveal>
+    {% render 'dandy-loop', name: 'cshop-board-soft', poster: 'cshop-board-soft-poster.jpg', alt: 'A fingertip pressing a glazed Dandy gummy on black wood', loop: true, class: 'board__media', width: 720, height: 900, base: video_base %}
+    <b class="board__word">Soft.</b>
+    <figcaption class="caprow">Berry glaze over crunchy sugar.</figcaption>
+  </figure>
+  <figure class="board__frame" data-reveal>
+    {% render 'dandy-loop', name: 'cshop-board-glossy', poster: 'cshop-board-glossy-poster.jpg', alt: 'A Dandy gummy cut in half, turned so the berry center catches the light', loop: true, class: 'board__media', width: 720, height: 900, base: video_base %}
+    <b class="board__word">Glossy.</b>
+    <figcaption class="caprow">A felt benefit on the photo. The usage fact down here.</figcaption>
+  </figure>
+  <figure class="board__frame" data-reveal>
+    {% render 'dandy-loop', name: 'cshop-board-sweet', poster: 'cshop-board-sweet-poster.jpg', alt: 'Two hands pulling a Dandy gummy apart', loop: true, class: 'board__media', width: 720, height: 900, base: video_base %}
+    <b class="board__word">Sweet.</b>
+    <figcaption class="caprow">Sugar crust outside, berry jelly inside.</figcaption>
+  </figure>
+</div>
+
+<section class="sec sec--flush-bottom ground-cream" id="strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>The torn filmstrip.</h2>
+      <p class="lede">One tear per page, where the reader must feel a replacement rather than a comparison.</p>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="strip__old">
+      <figure class="strip__frame">
+        <img src="{{ 'cshop-powder-column.webp' | asset_url }}" alt="Spilled green powder across a counter" width="1280" height="1600" loading="lazy">
+        <b class="strip__word" data-reveal><span>Powder</span>{% render 'dandy-scrawl', variant: 'strike' %}</b>
+        <figcaption class="caprow caprow--onphoto">Choke it down, then chase it.</figcaption>
+      </figure>
+      <figure class="strip__frame">
+        <img src="{{ 'cshop-format-capsules.webp' | asset_url }}" alt="A hand holding a pile of dusty capsules" width="1280" height="1600" loading="lazy">
+        <b class="strip__word" data-reveal><span>Capsules</span>{% render 'dandy-scrawl', variant: 'strike' %}</b>
+        <figcaption class="caprow caprow--onphoto">Chalky, dusty, and a lot of them.</figcaption>
+      </figure>
+    </div>
+    <figure class="strip__new" data-reveal>
+      <img src="{{ 'cshop-format-gummy.webp' | asset_url }}" alt="A hand holding a Dandy gummy with the pouch in a drawer behind" width="1280" height="1600" loading="lazy">
+      <b class="strip__word strip__word--new"><mark class="hi">Gummies</mark></b>
+      <figcaption class="caprow caprow--dark">Grab one. Enjoy the flavor. Keep moving.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap cliprow">
+    <div class="cliprow__aside">
+      <h3>A clip row: statement beside the phone.</h3>
+      <p>The phone frame is a box because a phone is an object. One play button, tap to play with sound, tilted two degrees and straightening on play.</p>
+      {% render 'dandy-loop', name: 'cshop-format-switch-loop', poster: 'cshop-loop-format-poster.jpg', alt: 'The pouch and one gummy on a cleared desk', loop: true, ratio: '16x9', class: 'cliprow__loop', width: 720, height: 396, base: video_base %}
+    </div>
+    {% render 'dandy-clip', name: 'cshop-ugc-01', poster: 'cshop-ugc-01-poster.jpg', slot: 'clip-01', tilt: 'l', label: 'CLIP-01 | Demo clip', base: video_base %}
+  </div>
+  <div style="height:var(--gap-l)"></div>
+</section>
+
+<section class="sec sec--tight-top sec--flush-bottom ground-cream-2" id="stage">
+  <div class="wrap">
+    <div class="head">
+      <h2>States as type, on a belt.</h2>
+      <p class="lede">Three big words in a row under the loop. Not tabs, not cards. Selection is opacity only and the marker slides.</p>
+    </div>
+  </div>
+  <div class="stage" data-state="lift">
+    {% render 'dandy-loop', name: 'cshop-mechanism-loop', poster: 'cshop-loop-mechanism-poster.jpg', alt: 'One Dandy gummy moving through a morning, a desk and an evening', loop: true, ratio: '16x9', width: 720, height: 406, sparkles: true, words: 'lift:Lift,focus:Focus,settle:Settle', base: video_base %}
+    <div class="belt" aria-hidden="true"><div class="belt__stripes"></div><div class="belt__marker"></div></div>
+    <div class="wrap">
+      <div class="states states--type" role="tablist" aria-label="Three parts of the day">
+        <button class="state" type="button" role="tab" aria-selected="true" data-state="lift" data-seek="0.3" data-end="2.35"><b>Lift</b><small>Smaller amounts</small><p>For the mornings when you want to get moving.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="focus" data-seek="3.0" data-end="4.75" data-bound="2.5" tabindex="-1"><b>Focus</b><small>In between</small><p>For the hours when you want to stay with the thing in front of you.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="settle" data-seek="5.4" data-bound="4.9" tabindex="-1"><b>Settle</b><small>Larger amounts</small><p>For when the day is done and your body knows it.</p></button>
+      </div>
+      <p class="stage__line"><mark class="hi">One pouch</mark> can fit a brighter morning, a focused afternoon, or a slower evening.</p>
+      <p class="stage__note">A note in sentence case under the line. This is an explanation, not a dosing guide.</p>
+    </div>
+  </div>
+  <div style="height:var(--gap-l)"></div>
+</section>
+
+<section class="sec ground-brown" id="trust">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2>A dark section with a loop, callouts and a cutout.</h2>
+        <p class="lede">Copy on brown runs at .86 opacity. Ticks and the belt marker take the blush accent, never the CTA colour.</p>
+        <ul class="checklist">
+          <li>{% render 'dandy-tick' %}Batch tested for identity, potency, heavy metals, and microbials</li>
+          <li>{% render 'dandy-tick' %}Amount printed on the pouch</li>
+          <li>{% render 'dandy-tick' %}21+ only</li>
+        </ul>
+      </div>
+      <div>
+        <div class="bleed bleed--phone" data-inview="0.4" style="position:relative">
+          {% render 'dandy-loop', name: 'cshop-transparency-loop', poster: 'cshop-loop-transparency-poster.jpg', alt: 'The camera pushes in from the whole pouch to the strength on its label', loop: false, ratio: '4x5', width: 720, height: 900, base: video_base %}
+          <span class="callout callout--a">35 mg MIT per gummy</span>
+          <span class="callout callout--b">Batch number on every pouch</span>
+        </div>
+        <div class="cutrow" data-reveal>
+          <img class="cutout" src="{{ 'cshop-bite-cutout.webp' | asset_url }}" alt="A Dandy gummy bitten in half" width="1106" height="764" loading="lazy">
+          <p class="caprow caprow--dark caprow--lines"><span>Sugar outside.</span><span>Berry jelly inside.</span><span>35 mg MIT.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap cliprow">
+    <div class="cliprow__aside"><h3>Delicious. Transparent.</h3>
+      <figure class="cliprow__still"><img src="{{ 'cshop-trust-pouch.webp' | asset_url }}" alt="The Dandy pouch, label forward, with one gummy in front" width="1600" height="1195" loading="lazy"></figure></div>
+    {% render 'dandy-clip', name: 'cshop-ugc-05', poster: 'cshop-ugc-05-poster.jpg', slot: 'clip-05', tilt: 'r', label: 'CLIP-05 | Demo clip', base: video_base %}
+  </div>
+</section>
+
+<section class="sec sec--tight-top ground-cream" id="reviews">
+  <div class="wrap">
+    <h2 class="quote">“A customer line as the headline, with the marker <mark class="hi hi--inline">following the words.”</mark></h2>
+    <p class="meta" style="margin-top:16px">Placeholder F., verified customer.</p>
+    <a class="proof-line" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span>Rated 4.8/5</span><span class="proof-line__sep" aria-hidden="true"></span><span>1,400+ happy buyers</span></a>
+    <div class="revs" id="revs" style="margin-top:34px">
+      <blockquote class="rev rev--photo">
+        <img class="rev__photo" src="{{ 'cshop-proof-still.webp' | asset_url }}" alt="An adult holding a Dandy gummy over a desk" width="1600" height="1200" loading="lazy">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“A review card is a box because a review is a card. Eighteen pixel radius, a berry hairline, no shadow.”</p>
+        <footer><b>Placeholder P.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“Gold stars, sentence-case footer, seventeen pixel body at 1.45.”</p>
+        <footer><b>Placeholder H.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--fade">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“The third card fades on phones into a Read more link that reveals the rest.”</p>
+        <footer><b>Placeholder L.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--more">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“A fourth card, hidden until the link is tapped.”</p>
+        <footer><b>Placeholder A.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
+      </blockquote>
+    </div>
+    <button class="revs__more" type="button" aria-expanded="false" aria-controls="revs">Read more reviews</button>
+  </div>
+</section>
+
+<section class="sec sec--flush-top sec--tight-bottom ground-white" id="offer">
+  <div class="offer__layout">
+    <div class="offer__media">
+      {% render 'dandy-loop', name: 'cshop-offer-loop', poster: 'cshop-loop-offer-poster.jpg', alt: 'Dandy pouches stocked on a wooden shelf', loop: false, ratio: '6x5', width: 720, height: 600, sparkles: true, base: video_base %}
+      <img class="seal" src="{{ 'cshop-seal.webp' | asset_url }}" alt="30-day money-back guarantee seal" width="559" height="560" loading="lazy">
+    </div>
+    <div class="wrap offer__copy" data-inview>
+      <h2>The price said once, with <mark class="hi">the drawn underline.{% render 'dandy-scrawl', variant: 'underline' %}</mark></h2>
+      <p class="offer__lede">With free shipping. Save 40%.</p>
+      <p class="offer__guar">Payoff before obligation. Nothing under the button.</p>
+      <a class="btn btn--lg offer__cta" href="{{ cta_url }}">Try the kit</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight-top faq ground-white" id="faq">
+  <div class="wrap wrap--narrow">
+    <h2>Questions in sentence case on hairlines.</h2>
+    <div class="faq__list">
+      <details><summary>Why hairlines and not cards?</summary><p>Hairlines at the decision point, quieter questions, a white ground so the dark close lands clean.</p></details>
+      <details><summary>Where does the answer measure end?</summary><p>At 68ch. Every measure is explicit and drops to none on phones.</p></details>
+      <details><summary>Are dashes allowed?</summary><p>No. QA checks the rendered text for U+2013 and U+2014. Separators are dots.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="close">
+  <div class="close__media"><img src="{{ 'cshop-close.webp' | asset_url }}" alt="The Dandy pouch on cream linen in warm evening light" width="1600" height="2000" loading="lazy">{% render 'dandy-sparkles' %}</div>
+  <div class="close__copy" data-reveal>
+    <h2>Good days look <span class="scrawled">Dandy.{% render 'dandy-scrawl', variant: 'signature', blush: true %}</span></h2>
+    <p>The close is copy over the photo, with the signature scrawl in blush and one last button.</p>
+    <a class="btn btn--lg" href="{{ cta_url }}">Try the kit</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="{{ 'dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="72" height="27" class="foot__mark">
+    <p class="foot__legal">For adults 21 and older. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p class="facts"><span>© 2026 Dandy</span><span><a href="/pages/contact?view=dandy2-coa">Lab reports</a></span><span><a href="/pages/contact?view=dandy2-returns">Guarantee</a></span><span><a href="/policies/privacy-policy">Privacy</a></span></p>
+  </div>
+</footer>
+
+<div class="sticky" aria-hidden="true">
+  <div class="sticky__info"><img src="{{ 'cshop-cta-gummy.webp' | asset_url }}" alt="" width="40" height="40"><span><b>Dandy page kit</b><small>One CTA on screen at a time</small></span></div>
+  <a class="btn" href="{{ cta_url }}">Get mine now</a>
+</div>
+
+<script type="application/json" id="dandy-captions">{"clip-01":[[5.57,7.3,"Okay, that actually tastes like candy."]],"clip-05":[[6.11,8.78,"I like that the batch number is right on the pouch."],[8.87,10.02,"You know what you're getting."]]}</script>
+
+{% schema %}
+{
+  "name": "Dandy kit demo",
+  "settings": [
+    { "type": "text", "id": "cta_url", "label": "CTA destination", "default": "#offer" },
+    { "type": "text", "id": "video_base", "label": "External base URL for clips and loops (optional)", "info": "Leave blank to serve from theme assets. With a base, files are fetched as <base>/<name>.mov and <name>.mp4 using the theme asset names (cshop-ugc-01, cshop-ugc-05, cshop-board-soft, cshop-board-glossy, cshop-board-sweet, cshop-format-switch-loop, cshop-mechanism-loop, cshop-transparency-loop, cshop-offer-loop). A snippet's file: param names a different external file." }
+  ]
+}
+{% endschema %}

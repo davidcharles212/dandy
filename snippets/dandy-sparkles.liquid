@@ -1,0 +1,7 @@
+{%- comment -%}
+  Sparkles: twinkling points over a loop, an offer visual, a close or the hero. Parent must be position:relative. Aria-hidden, pointer-events none.
+  Params: count (default 6), variant ('hero' for the counter cluster with the faster spark curve; only in .hero__media; removed under reduced motion; use count: 8).
+  Usage: {% render 'dandy-sparkles' %}  or  {% render 'dandy-sparkles', variant: 'hero', count: 8 %}
+{%- endcomment -%}
+{%- assign n = count | default: 6 -%}
+<div class="sparkles{% if variant == 'hero' %} sparkles--hero{% endif %}" aria-hidden="true">{% for i in (1..n) %}<i></i>{% endfor %}</div>

@@ -1,0 +1,736 @@
+{
+  "channel": "chrome",
+  "viewports": {
+    "360": {
+      "width": 360,
+      "height": 780,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 360,
+          "innerWidth": 360,
+          "pass": true,
+          "offenders": []
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "sparkles": {
+          "count": 26,
+          "hero": 8,
+          "changed": 19,
+          "pass": true
+        },
+        "head": {
+          "robots": "noindex",
+          "ogImage": "../../assets/dandy-og.jpg",
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 2,
+          "lineEndDots": [],
+          "pass": true
+        },
+        "reveal": {
+          "total": 9,
+          "missing": [],
+          "inviewMissing": 0,
+          "pass": true
+        },
+        "loop": {
+          "hit": "VIDEO",
+          "playing": true,
+          "still": false,
+          "readyState": 4,
+          "paused": false,
+          "error": null,
+          "loops": [
+            {
+              "name": "cshop-board-soft",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-glossy",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-sweet",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-format-switch-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-mechanism-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-transparency-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-offer-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            }
+          ],
+          "pass": true,
+          "paintsVideo": true
+        },
+        "statesDriven": {
+          "at2": "lift/lift",
+          "at2_6": "focus/focus",
+          "at5": "settle/settle",
+          "held": false,
+          "pass": true
+        },
+        "sticky": {
+          "phone": true,
+          "isOn": true,
+          "display": "flex",
+          "top": 715,
+          "bottom": 780,
+          "innerHeight": 780,
+          "buttonsOnScreen": 0,
+          "heroGone": true,
+          "ariaHidden": "false",
+          "inert": false,
+          "pass": true
+        },
+        "stickyName": {
+          "text": "Dandy page kit",
+          "fontSize": 14,
+          "height": 14,
+          "overlap": -10,
+          "pass": true
+        },
+        "stickyYields": {
+          "isOn": false,
+          "ctaOnScreen": true,
+          "inert": true,
+          "pass": true
+        },
+        "offerWidth": {
+          "offerContent": 320,
+          "heroContent": 320,
+          "pass": true
+        },
+        "btnLg": {
+          "hero": 18,
+          "offer": 18,
+          "close": 18,
+          "want": [
+            18,
+            18,
+            18
+          ],
+          "pass": true
+        },
+        "cliprowLoop": {
+          "display": "block",
+          "left": 0,
+          "width": 360,
+          "pass": true
+        },
+        "scrawlUnderline": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlStrike": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlSignature": {
+          "value": "0px",
+          "pass": true
+        },
+        "heroDrift": {
+          "animationCleared": true,
+          "at0": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+          "at300": "matrix(0.99725, -0.0741085, 0.0741085, 0.99725, 0, -16.5)",
+          "pass": true
+        },
+        "states": {
+          "state": "focus",
+          "before": {
+            "left": 279.984375,
+            "state": "settle"
+          },
+          "markerAfter": 160,
+          "markerCentred": true,
+          "tabs": [
+            "false/-1",
+            "true/0",
+            "false/-1"
+          ],
+          "loopWord": [
+            "focus"
+          ],
+          "held": true,
+          "time": 4.77,
+          "pass": true
+        },
+        "statesRelease": {
+          "away": {
+            "held": false,
+            "paused": true,
+            "loop": true
+          },
+          "backPlaying": true,
+          "pass": true
+        },
+        "clipFallback": {
+          "video": "none",
+          "fallback": "block",
+          "play": "none",
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "a.btn.btn--lg",
+            "a.btn",
+            "a.btn.btn--sm",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "span.callout.callout--a",
+            "span.callout.callout--b",
+            "div.clip__frame",
+            "blockquote.rev.rev--photo",
+            "blockquote.rev",
+            "blockquote.rev.rev--fade",
+            "a.btn.btn--lg",
+            "a.btn.btn--lg",
+            "a.btn"
+          ],
+          "nonButtonPills": [],
+          "pass": true
+        }
+      }
+    },
+    "390": {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "pass": true,
+          "offenders": []
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "sparkles": {
+          "count": 26,
+          "hero": 8,
+          "changed": 20,
+          "pass": true
+        },
+        "head": {
+          "robots": "noindex",
+          "ogImage": "../../assets/dandy-og.jpg",
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 2,
+          "lineEndDots": [],
+          "pass": true
+        },
+        "reveal": {
+          "total": 9,
+          "missing": [],
+          "inviewMissing": 0,
+          "pass": true
+        },
+        "loop": {
+          "hit": "VIDEO",
+          "playing": true,
+          "still": false,
+          "readyState": 4,
+          "paused": false,
+          "error": null,
+          "loops": [
+            {
+              "name": "cshop-board-soft",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-glossy",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-sweet",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-format-switch-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-mechanism-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-transparency-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-offer-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            }
+          ],
+          "pass": true,
+          "paintsVideo": true
+        },
+        "statesDriven": {
+          "at2": "lift/lift",
+          "at2_6": "focus/focus",
+          "at5": "settle/settle",
+          "held": false,
+          "pass": true
+        },
+        "sticky": {
+          "phone": true,
+          "isOn": true,
+          "display": "flex",
+          "top": 779,
+          "bottom": 844,
+          "innerHeight": 844,
+          "buttonsOnScreen": 0,
+          "heroGone": true,
+          "ariaHidden": "false",
+          "inert": false,
+          "pass": true
+        },
+        "stickyName": {
+          "text": "Dandy page kit",
+          "fontSize": 15,
+          "height": 15,
+          "overlap": -10,
+          "pass": true
+        },
+        "stickyYields": {
+          "isOn": false,
+          "ctaOnScreen": true,
+          "inert": true,
+          "pass": true
+        },
+        "offerWidth": {
+          "offerContent": 350,
+          "heroContent": 350,
+          "pass": true
+        },
+        "btnLg": {
+          "hero": 21,
+          "offer": 23,
+          "close": 23,
+          "want": [
+            21,
+            23,
+            23
+          ],
+          "pass": true
+        },
+        "cliprowLoop": {
+          "display": "block",
+          "left": 0,
+          "width": 390,
+          "pass": true
+        },
+        "scrawlUnderline": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlStrike": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlSignature": {
+          "value": "0px",
+          "pass": true
+        },
+        "heroDrift": {
+          "animationCleared": true,
+          "at0": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+          "at300": "matrix(0.99725, -0.0741085, 0.0741085, 0.99725, 0, -16.5)",
+          "pass": true
+        },
+        "states": {
+          "state": "focus",
+          "before": {
+            "left": 304.984375,
+            "state": "settle"
+          },
+          "markerAfter": 175,
+          "markerCentred": true,
+          "tabs": [
+            "false/-1",
+            "true/0",
+            "false/-1"
+          ],
+          "loopWord": [
+            "focus"
+          ],
+          "held": true,
+          "time": 4.77,
+          "pass": true
+        },
+        "statesRelease": {
+          "away": {
+            "held": false,
+            "paused": true,
+            "loop": true
+          },
+          "backPlaying": true,
+          "pass": true
+        },
+        "clipFallback": {
+          "video": "none",
+          "fallback": "block",
+          "play": "none",
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "a.btn.btn--lg",
+            "a.btn",
+            "a.btn.btn--sm",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "span.callout.callout--a",
+            "span.callout.callout--b",
+            "div.clip__frame",
+            "blockquote.rev.rev--photo",
+            "blockquote.rev",
+            "blockquote.rev.rev--fade",
+            "a.btn.btn--lg",
+            "a.btn.btn--lg",
+            "a.btn"
+          ],
+          "nonButtonPills": [],
+          "pass": true
+        }
+      }
+    },
+    "1280": {
+      "width": 1280,
+      "height": 800,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 1280,
+          "innerWidth": 1280,
+          "pass": true,
+          "offenders": []
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "sparkles": {
+          "count": 26,
+          "hero": 8,
+          "changed": 19,
+          "pass": true
+        },
+        "head": {
+          "robots": "noindex",
+          "ogImage": "../../assets/dandy-og.jpg",
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 2,
+          "lineEndDots": [],
+          "pass": true
+        },
+        "reveal": {
+          "total": 9,
+          "missing": [],
+          "inviewMissing": 0,
+          "pass": true
+        },
+        "loop": {
+          "hit": "VIDEO",
+          "playing": true,
+          "still": false,
+          "readyState": 4,
+          "paused": false,
+          "error": null,
+          "loops": [
+            {
+              "name": "cshop-board-soft",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-glossy",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-sweet",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-format-switch-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-mechanism-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-transparency-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-offer-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            }
+          ],
+          "pass": true,
+          "paintsVideo": true
+        },
+        "statesDriven": {
+          "at2": "lift/lift",
+          "at2_6": "focus/focus",
+          "at5": "settle/settle",
+          "held": false,
+          "pass": true
+        },
+        "sticky": {
+          "phone": false,
+          "isOn": true,
+          "display": "none",
+          "top": 0,
+          "bottom": 0,
+          "innerHeight": 800,
+          "buttonsOnScreen": 0,
+          "heroGone": true,
+          "ariaHidden": "false",
+          "inert": false,
+          "pass": true
+        },
+        "stickyName": {
+          "text": "Dandy page kit",
+          "fontSize": 16,
+          "height": 0,
+          "overlap": 0,
+          "pass": true
+        },
+        "stickyYields": {
+          "isOn": false,
+          "ctaOnScreen": true,
+          "inert": true,
+          "pass": true
+        },
+        "offerWidth": {
+          "offerBox": 504.296875,
+          "column": 558.406,
+          "wrapWidth": 430.40599999999995,
+          "pass": true
+        },
+        "btnLg": {
+          "hero": 23,
+          "offer": 23,
+          "close": 23,
+          "want": [
+            23,
+            23,
+            23
+          ],
+          "pass": true
+        },
+        "cliprowLoop": {
+          "display": "block",
+          "left": 56,
+          "width": 704,
+          "pass": true
+        },
+        "scrawlUnderline": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlStrike": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlSignature": {
+          "value": "0px",
+          "pass": true
+        },
+        "heroDrift": {
+          "animationCleared": true,
+          "at0": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+          "at300": "matrix(0.99725, -0.0741085, 0.0741085, 0.99725, 0, -16.5)",
+          "pass": true
+        },
+        "states": {
+          "state": "focus",
+          "before": {
+            "left": 1007.28125,
+            "state": "settle"
+          },
+          "markerAfter": 614,
+          "markerCentred": true,
+          "tabs": [
+            "false/-1",
+            "true/0",
+            "false/-1"
+          ],
+          "loopWord": [
+            "focus"
+          ],
+          "held": true,
+          "time": 4.75,
+          "pass": true
+        },
+        "statesRelease": {
+          "away": {
+            "held": false,
+            "paused": true,
+            "loop": true
+          },
+          "backPlaying": true,
+          "pass": true
+        },
+        "clipFallback": {
+          "video": "none",
+          "fallback": "block",
+          "play": "none",
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "a.btn.btn--sm",
+            "a.btn.btn--lg",
+            "a.btn",
+            "a.btn.btn--sm",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "span.callout.callout--a",
+            "span.callout.callout--b",
+            "div.clip__frame",
+            "blockquote.rev.rev--photo",
+            "blockquote.rev",
+            "blockquote.rev.rev--fade",
+            "a.btn.btn--lg",
+            "a.btn.btn--lg"
+          ],
+          "nonButtonPills": [],
+          "pass": true
+        }
+      }
+    }
+  },
+  "behaviour": {
+    "doubleInit": {
+      "clipMarks": 2,
+      "clips": 2,
+      "paused": false,
+      "playing": true,
+      "muted": false,
+      "error": null,
+      "errors": [],
+      "pass": true
+    },
+    "rafIdle_reduce": {
+      "rafCalls": 0,
+      "paused": true,
+      "still": true,
+      "state": "focus",
+      "pass": true
+    },
+    "rafIdle_paused": {
+      "rafCalls": 0,
+      "paused": true,
+      "still": false,
+      "state": "focus",
+      "pass": true
+    },
+    "heroLate": {
+      "before": {
+        "kit": "undefined",
+        "anim": "settle",
+        "running": 0
+      },
+      "animationCleared": true,
+      "at0": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+      "at300": "matrix(0.99725, -0.0741085, 0.0741085, 0.99725, 0, -16.5)",
+      "pass": true
+    },
+    "sectionLoad": {
+      "beforeMark": false,
+      "revealMark": true,
+      "reviewsOpen": true,
+      "ctaOnScreen": true,
+      "stickyOn": false,
+      "errors": [],
+      "pass": true
+    }
+  }
+}
