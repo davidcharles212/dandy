@@ -1,0 +1,21 @@
+{%- comment -%}
+  Motion loop: poster img under the video, .mov (video/quicktime) first then .mp4, playsinline muted preload=none.
+  Params: name (asset base without extension), poster (asset filename), alt, loop (true|false; false holds the last frame),
+          ratio ('16x9'|'4x5'|'4x3'|'6x5', optional), class (extra classes), width, height, sparkles (true adds six), base (external base URL, optional).
+  Usage: {% render 'dandy-loop', name: 'cshop-mechanism-loop', poster: 'cshop-loop-mechanism-poster.jpg', alt: '...', loop: true, ratio: '16x9', sparkles: true %}
+{%- endcomment -%}
+{%- if base != blank -%}
+  {%- assign mov = base | append: '/' | append: name | append: '.mov' -%}
+  {%- assign mp4 = base | append: '/' | append: name | append: '.mp4' -%}
+{%- else -%}
+  {%- assign mov = name | append: '.mov' | asset_url -%}
+  {%- assign mp4 = name | append: '.mp4' | asset_url -%}
+{%- endif -%}
+<figure class="loop{% if ratio != blank %} loop--{{ ratio }}{% endif %}{% if class != blank %} {{ class }}{% endif %}" data-loop="{{ name }}">
+  <img class="loop__still" src="{{ poster | asset_url }}" alt="{{ alt | escape }}"{% if width %} width="{{ width }}"{% endif %}{% if height %} height="{{ height }}"{% endif %} loading="lazy">
+  <video class="loop__video" playsinline muted{% if loop %} loop{% endif %} preload="none" poster="{{ poster | asset_url }}" aria-label="{{ alt | escape }}">
+    <source src="{{ mov }}" type="video/quicktime">
+    <source src="{{ mp4 }}" type="video/mp4">
+  </video>
+  {%- if sparkles %}{% render 'dandy-sparkles' %}{% endif -%}
+</figure>

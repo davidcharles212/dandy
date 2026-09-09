@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dandy kit demo harness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/dandy-kit.css">
+</head>
+<body class="dandy-kit-body">
+<div class="ticker" aria-label="Product facts">
+  <div class="ticker__track">
+    <ul class="ticker__list"><li>Dandy page kit</li><li>Tokens</li><li>Components</li><li>Motion</li><li>Good days look Dandy</li></ul>
+    <ul class="ticker__list" aria-hidden="true"><li>Dandy page kit</li><li>Tokens</li><li>Components</li><li>Motion</li><li>Good days look Dandy</li></ul>
+  </div>
+</div>
+
+<header class="topbar">
+  <a class="topbar__brand" href="/" aria-label="Dandy home"><img src="../../assets/dandy-wordmark.svg" alt="Dandy" width="96" height="36"></a>
+  <a class="btn btn--sm" href="#offer">Try the kit</a>
+</header>
+
+<main>
+
+<section class="hero" id="top">
+  <div class="hero__media">
+    <picture class="hero__plate">
+      <source media="(min-width: 1900px)" srcset="../../assets/cshop-hero-wide.webp" type="image/webp">
+      <img src="../../assets/cshop-hero-tall.webp" alt="Berry syrup dripping down a cream wall behind a Dandy pouch on a candy counter" width="1600" height="1986" fetchpriority="high">
+    </picture>
+    <img class="hero__giant" src="../../assets/cshop-hero-gummy.webp" alt="A sugar-coated Dandy gummy" width="1200" height="970" fetchpriority="high">
+    <div class="hero-sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+  </div>
+  <div class="hero__copy">
+    <h1>A hero that settles, then drifts.</h1>
+    <p class="lede lede--hero">Two lines of headline, two lines of lede, one line of button at every phone width.</p>
+    <div class="hero__cta" data-sticky-anchor>
+      <a class="btn btn--lg" href="#offer">Try the kit</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec ground-cream" id="type">
+  <div class="wrap">
+    <div class="head">
+      <h2>Type, buttons, captions and facts.</h2>
+      <p class="lede">Barlow at 17 over 1.5 for body. Barlow Condensed 800 uppercase for headings at .92. Sentence case for questions, sub-lines, the rating line and review footers.</p>
+    </div>
+    <h3>An h3 at clamp(26px, 2.6vw, 34px) with <mark class="hi">one highlighter</mark> inside it.</h3>
+    <p class="lede">A lede paragraph capped at 60ch. Facts that wrap get a drawn dot between them and never start a line with one.</p>
+    <ul class="facts meta row" style="margin-top:18px"><li>Batch tested</li><li>Amount on the pouch</li><li>21+ only</li><li>30-day guarantee</li></ul>
+    <p class="row"><a class="btn" href="#offer">Default button</a></p>
+    <p class="row" style="margin-top:14px"><a class="btn btn--sm" href="#offer">Small button</a></p>
+    <figure class="row" style="margin-top:var(--gap-s)">
+      <img src="../../assets/cshop-flavor-sugar.webp" alt="Sugar crystals landing around a Dandy gummy on dark wood" width="1600" height="1195" loading="lazy" style="aspect-ratio:4/3;object-fit:cover;width:100%">
+      <figcaption class="caprow">Captions sit in a row under the frame, never over the render.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="band">
+  <figure class="band__media"><img src="../../assets/cshop-old-ritual.webp" alt="A kitchen scale, an unwashed scoop and a cloudy glass on a counter" width="1600" height="1200" loading="lazy"></figure>
+  <div class="band__text">
+    <h3>A plum band that butts straight into the next ground.</h3>
+    <p>The old way is desaturated. The replacement sits in the next frame at full colour, and that contrast is the argument.</p>
+    <p class="band__end" data-reveal>The part <mark class="hi hi--dark">that ends.</mark></p>
+  </div>
+</div>
+
+<div class="board" aria-label="Three things you notice">
+  <figure class="board__frame" data-reveal>
+    <figure class="loop board__media" data-loop="cshop-board-soft">
+  <img class="loop__still" src="../../assets/cshop-board-soft-poster.jpg" alt="A fingertip pressing a glazed Dandy gummy on black wood" width="720" height="900" loading="lazy">
+  <video class="loop__video" playsinline muted loop preload="none" poster="../../assets/cshop-board-soft-poster.jpg" aria-label="A fingertip pressing a glazed Dandy gummy on black wood">
+    <source src="../../assets/cshop-board-soft.mov" type="video/quicktime">
+    <source src="../../assets/cshop-board-soft.mp4" type="video/mp4">
+  </video></figure>
+
+    <b class="board__word">Soft.</b>
+    <figcaption class="caprow">Berry glaze over crunchy sugar.</figcaption>
+  </figure>
+  <figure class="board__frame" data-reveal>
+    <figure class="loop board__media" data-loop="cshop-board-glossy">
+  <img class="loop__still" src="../../assets/cshop-board-glossy-poster.jpg" alt="A Dandy gummy cut in half, turned so the berry center catches the light" width="720" height="900" loading="lazy">
+  <video class="loop__video" playsinline muted loop preload="none" poster="../../assets/cshop-board-glossy-poster.jpg" aria-label="A Dandy gummy cut in half, turned so the berry center catches the light">
+    <source src="../../assets/cshop-board-glossy.mov" type="video/quicktime">
+    <source src="../../assets/cshop-board-glossy.mp4" type="video/mp4">
+  </video></figure>
+
+    <b class="board__word">Glossy.</b>
+    <figcaption class="caprow">A felt benefit on the photo. The usage fact down here.</figcaption>
+  </figure>
+  <figure class="board__frame" data-reveal>
+    <figure class="loop board__media" data-loop="cshop-board-sweet">
+  <img class="loop__still" src="../../assets/cshop-board-sweet-poster.jpg" alt="Two hands pulling a Dandy gummy apart" width="720" height="900" loading="lazy">
+  <video class="loop__video" playsinline muted loop preload="none" poster="../../assets/cshop-board-sweet-poster.jpg" aria-label="Two hands pulling a Dandy gummy apart">
+    <source src="../../assets/cshop-board-sweet.mov" type="video/quicktime">
+    <source src="../../assets/cshop-board-sweet.mp4" type="video/mp4">
+  </video></figure>
+
+    <b class="board__word">Sweet.</b>
+    <figcaption class="caprow">Sugar crust outside, berry jelly inside.</figcaption>
+  </figure>
+</div>
+
+<section class="sec sec--flush-bottom ground-cream" id="strip">
+  <div class="wrap">
+    <div class="head">
+      <h2>The torn filmstrip.</h2>
+      <p class="lede">One tear per page, where the reader must feel a replacement rather than a comparison.</p>
+    </div>
+  </div>
+  <div class="strip">
+    <div class="strip__old">
+      <figure class="strip__frame">
+        <img src="../../assets/cshop-powder-column.webp" alt="Spilled green powder across a counter" width="1280" height="1600" loading="lazy">
+        <b class="strip__word" data-reveal><span>Powder</span><svg class="scrawl scrawl--strike" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 9c38-5 76-4 114-3 46 1 88-4 134-2 22 1 42 2 64 4"/></svg></b>
+        <figcaption class="caprow caprow--onphoto">Choke it down, then chase it.</figcaption>
+      </figure>
+      <figure class="strip__frame">
+        <img src="../../assets/cshop-format-capsules.webp" alt="A hand holding a pile of dusty capsules" width="1280" height="1600" loading="lazy">
+        <b class="strip__word" data-reveal><span>Capsules</span><svg class="scrawl scrawl--strike" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 9c38-5 76-4 114-3 46 1 88-4 134-2 22 1 42 2 64 4"/></svg></b>
+        <figcaption class="caprow caprow--onphoto">Chalky, dusty, and a lot of them.</figcaption>
+      </figure>
+    </div>
+    <figure class="strip__new" data-reveal>
+      <img src="../../assets/cshop-format-gummy.webp" alt="A hand holding a Dandy gummy with the pouch in a drawer behind" width="1280" height="1600" loading="lazy">
+      <b class="strip__word strip__word--new"><mark class="hi">Gummies</mark></b>
+      <figcaption class="caprow caprow--dark">Grab one. Enjoy the flavor. Keep moving.</figcaption>
+    </figure>
+  </div>
+  <div class="wrap cliprow">
+    <div class="cliprow__aside">
+      <h3>A clip row: statement beside the phone.</h3>
+      <p>The phone frame is a box because a phone is an object. One play button, tap to play with sound, tilted two degrees and straightening on play.</p>
+      <figure class="loop loop--16x9 cliprow__still bleed bleed--phone" data-loop="cshop-format-switch-loop">
+  <img class="loop__still" src="../../assets/cshop-loop-format-poster.jpg" alt="The pouch and one gummy on a cleared desk" width="720" height="396" loading="lazy">
+  <video class="loop__video" playsinline muted loop preload="none" poster="../../assets/cshop-loop-format-poster.jpg" aria-label="The pouch and one gummy on a cleared desk">
+    <source src="../../assets/cshop-format-switch-loop.mov" type="video/quicktime">
+    <source src="../../assets/cshop-format-switch-loop.mp4" type="video/mp4">
+  </video></figure>
+
+    </div>
+    <figure class="clip clip--tilt-l" id="clip-01" data-slot="clip-01">
+  <div class="clip__frame"><video class="clip__video" playsinline preload="metadata" poster="../../assets/cshop-ugc-01-poster.jpg">
+      <source src="../../assets/cshop-ugc-01.mov" type="video/quicktime">
+      <source src="../../assets/cshop-ugc-01.mp4" type="video/mp4">
+    </video><img class="clip__fallback" src="../../assets/cshop-ugc-01-poster.jpg" alt="" hidden>
+    <p class="clip__cap" aria-live="off"></p>
+    <button class="clip__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="clip__meta">CLIP-01 | Demo clip</span></div>
+</figure>
+
+  </div>
+  <div style="height:var(--gap-l)"></div>
+</section>
+
+<section class="sec sec--flush-bottom ground-cream-2" id="stage">
+  <div class="wrap">
+    <div class="head">
+      <h2>States as type, on a belt.</h2>
+      <p class="lede">Three big words in a row under the loop. Not tabs, not cards. Selection is opacity only and the marker slides.</p>
+    </div>
+  </div>
+  <div class="stage" data-state="lift">
+    <figure class="loop loop--16x9" data-loop="cshop-mechanism-loop">
+  <img class="loop__still" src="../../assets/cshop-loop-mechanism-poster.jpg" alt="One Dandy gummy moving through a morning, a desk and an evening" width="720" height="406" loading="lazy">
+  <video class="loop__video" playsinline muted loop preload="none" poster="../../assets/cshop-loop-mechanism-poster.jpg" aria-label="One Dandy gummy moving through a morning, a desk and an evening">
+    <source src="../../assets/cshop-mechanism-loop.mov" type="video/quicktime">
+    <source src="../../assets/cshop-mechanism-loop.mp4" type="video/mp4">
+  </video><div class="sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</figure>
+
+    <div class="belt" aria-hidden="true"><div class="belt__stripes"></div><div class="belt__marker"></div></div>
+    <div class="wrap">
+      <div class="states states--type" role="tablist" aria-label="Three parts of the day">
+        <button class="state" type="button" role="tab" aria-selected="true" data-state="lift" data-seek="0.3" data-end="2.35"><b>Lift</b><small>Smaller amounts</small><p>For the mornings when you want to get moving.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="focus" data-seek="3.0" data-end="4.75" tabindex="-1"><b>Focus</b><small>In between</small><p>For the hours when you want to stay with the thing in front of you.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="settle" data-seek="5.4" tabindex="-1"><b>Settle</b><small>Larger amounts</small><p>For when the day is done and your body knows it.</p></button>
+      </div>
+      <p class="stage__line"><mark class="hi">One pouch</mark> can fit a brighter morning, a focused afternoon, or a slower evening.</p>
+      <p class="stage__note">A note in sentence case under the line. This is an explanation, not a dosing guide.</p>
+    </div>
+  </div>
+  <div style="height:var(--gap-l)"></div>
+</section>
+
+<section class="sec ground-brown" id="trust">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2>A dark section with a loop, callouts and a cutout.</h2>
+        <p class="lede">Copy on brown runs at .86 opacity. Ticks and the belt marker take the blush accent, never the CTA colour.</p>
+        <ul class="checklist">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Batch tested for identity, potency, heavy metals, and microbials</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Amount printed on the pouch</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>21+ only</li>
+        </ul>
+      </div>
+      <div>
+        <div class="bleed bleed--phone" data-inview="0.4" style="position:relative">
+          <figure class="loop loop--4x5" data-loop="cshop-transparency-loop">
+  <img class="loop__still" src="../../assets/cshop-loop-transparency-poster.jpg" alt="The camera pushes in from the whole pouch to the strength on its label" width="720" height="900" loading="lazy">
+  <video class="loop__video" playsinline muted preload="none" poster="../../assets/cshop-loop-transparency-poster.jpg" aria-label="The camera pushes in from the whole pouch to the strength on its label">
+    <source src="../../assets/cshop-transparency-loop.mov" type="video/quicktime">
+    <source src="../../assets/cshop-transparency-loop.mp4" type="video/mp4">
+  </video></figure>
+
+          <span class="callout callout--a">35 mg MIT per gummy</span>
+          <span class="callout callout--b">Batch number on every pouch</span>
+        </div>
+        <div class="cutrow" data-reveal>
+          <img class="cutout" src="../../assets/cshop-bite-cutout.webp" alt="A Dandy gummy bitten in half" width="1106" height="764" loading="lazy">
+          <p class="caprow caprow--dark caprow--lines"><span>Sugar outside.</span><span>Berry jelly inside.</span><span>35 mg MIT.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap cliprow">
+    <div class="cliprow__aside"><h3>Delicious. Transparent.</h3>
+      <figure class="cliprow__still"><img src="../../assets/cshop-trust-pouch.webp" alt="The Dandy pouch, label forward, with one gummy in front" width="1600" height="1195" loading="lazy"></figure></div>
+    <figure class="clip clip--tilt-r" id="clip-05" data-slot="clip-05">
+  <div class="clip__frame"><video class="clip__video" playsinline preload="metadata" poster="../../assets/cshop-ugc-05-poster.jpg">
+      <source src="../../assets/cshop-ugc-05.mov" type="video/quicktime">
+      <source src="../../assets/cshop-ugc-05.mp4" type="video/mp4">
+    </video><img class="clip__fallback" src="../../assets/cshop-ugc-05-poster.jpg" alt="" hidden>
+    <p class="clip__cap" aria-live="off"></p>
+    <button class="clip__play" type="button" aria-label="Play video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button><span class="clip__meta">CLIP-05 | Demo clip</span></div>
+</figure>
+
+  </div>
+</section>
+
+<section class="sec ground-cream" id="reviews">
+  <div class="wrap">
+    <h2 class="quote">“A customer line as the headline, with the marker <mark class="hi hi--inline">following the words.”</mark></h2>
+    <p class="meta" style="margin-top:16px">Placeholder F., verified customer.</p>
+    <a class="proof-line" href="#reviews"><span class="stars" aria-hidden="true">★★★★★</span><span>Rated 4.8/5</span><span class="proof-line__sep" aria-hidden="true"></span><span>1,400+ happy buyers</span></a>
+    <div class="revs" id="revs" style="margin-top:34px">
+      <blockquote class="rev rev--photo">
+        <img class="rev__photo" src="../../assets/cshop-proof-still.webp" alt="An adult holding a Dandy gummy over a desk" width="1600" height="1200" loading="lazy">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“A review card is a box because a review is a card. Eighteen pixel radius, a berry hairline, no shadow.”</p>
+        <footer><b>Placeholder P.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“Gold stars, sentence-case footer, seventeen pixel body at 1.45.”</p>
+        <footer><b>Placeholder H.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--fade">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“The third card fades on phones into a Read more link that reveals the rest.”</p>
+        <footer><b>Placeholder L.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+      <blockquote class="rev rev--more">
+        <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+        <p>“A fourth card, hidden until the link is tapped.”</p>
+        <footer><b>Placeholder A.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+      </blockquote>
+    </div>
+    <button class="revs__more" type="button" aria-expanded="false" aria-controls="revs">Read more reviews</button>
+  </div>
+</section>
+
+<section class="sec sec--flush-top ground-white" id="offer">
+  <div class="offer__layout">
+    <div class="offer__media">
+      <figure class="loop loop--6x5" data-loop="cshop-offer-loop">
+  <img class="loop__still" src="../../assets/cshop-loop-offer-poster.jpg" alt="Dandy pouches stocked on a wooden shelf" width="720" height="600" loading="lazy">
+  <video class="loop__video" playsinline muted preload="none" poster="../../assets/cshop-loop-offer-poster.jpg" aria-label="Dandy pouches stocked on a wooden shelf">
+    <source src="../../assets/cshop-offer-loop.mov" type="video/quicktime">
+    <source src="../../assets/cshop-offer-loop.mp4" type="video/mp4">
+  </video><div class="sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</figure>
+
+      <img class="seal" src="../../assets/cshop-seal.webp" alt="30-day money-back guarantee seal" width="559" height="560" loading="lazy">
+    </div>
+    <div class="wrap offer__copy" data-inview>
+      <h2>The price said once, with <mark class="hi">the drawn underline.<svg class="scrawl scrawl--underline" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></mark></h2>
+      <p class="offer__lede">With free shipping. Save 40%.</p>
+      <p class="offer__guar">Payoff before obligation. Nothing under the button.</p>
+      <a class="btn btn--lg offer__cta" href="#offer">Try the kit</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec faq ground-white" id="faq">
+  <div class="wrap wrap--narrow">
+    <h2>Questions in sentence case on hairlines.</h2>
+    <div class="faq__list">
+      <details><summary>Why hairlines and not cards?</summary><p>Hairlines at the decision point, quieter questions, a white ground so the dark close lands clean.</p></details>
+      <details><summary>Where does the answer measure end?</summary><p>At 68ch. Every measure is explicit and drops to none on phones.</p></details>
+      <details><summary>Are dashes allowed?</summary><p>No. QA checks the rendered text for U+2013 and U+2014. Separators are dots.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="close">
+  <div class="close__media"><img src="../../assets/cshop-close.webp" alt="The Dandy pouch on cream linen in warm evening light" width="1600" height="2000" loading="lazy"><div class="sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+  <div class="close__copy" data-reveal>
+    <h2>Good days look <span class="scrawled">Dandy.<svg class="scrawl scrawl--signature scrawl--blush" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></span></h2>
+    <p>The close is copy over the photo, with the signature scrawl in blush and one last button.</p>
+    <a class="btn btn--lg" href="#offer">Try the kit</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="../../assets/dandy-wordmark.svg" alt="Dandy" width="72" height="27" class="foot__mark">
+    <p class="foot__legal">For adults 21 and older. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p class="facts"><span>© 2026 Dandy</span><span><a href="/pages/contact?view=dandy2-coa">Lab reports</a></span><span><a href="/pages/contact?view=dandy2-returns">Guarantee</a></span><span><a href="/policies/privacy-policy">Privacy</a></span></p>
+  </div>
+</footer>
+
+<div class="sticky" aria-hidden="true">
+  <div class="sticky__info"><img src="../../assets/cshop-cta-gummy.webp" alt="" width="40" height="40"><span><b>Dandy page kit</b><small>One CTA on screen at a time</small></span></div>
+  <a class="btn" href="#offer">Get mine now</a>
+</div>
+
+<script type="application/json" id="dandy-captions">{"clip-01":[[5.57,7.3,"Okay, that actually tastes like candy."]],"clip-05":[[6.11,8.78,"I like that the batch number is right on the pouch."],[8.87,10.02,"You know what you're getting."]]}</script>
+
+
+
+<script src="../../assets/dandy-kit.js" defer data-init></script>
+</body>
+</html>

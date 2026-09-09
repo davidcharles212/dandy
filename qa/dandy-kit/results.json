@@ -1,0 +1,317 @@
+{
+  "channel": "chrome",
+  "viewports": {
+    "390": {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "pass": true,
+          "offenders": []
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "sparkles": {
+          "count": 26,
+          "changed": 19,
+          "pass": true
+        },
+        "reveal": {
+          "total": 9,
+          "missing": [],
+          "inviewMissing": 0,
+          "pass": true
+        },
+        "loop": {
+          "hit": "VIDEO",
+          "playing": true,
+          "still": false,
+          "readyState": 4,
+          "paused": false,
+          "error": null,
+          "loops": [
+            {
+              "name": "cshop-board-soft",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-glossy",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-sweet",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-format-switch-loop",
+              "playing": false,
+              "still": false,
+              "held": false,
+              "preload": "none"
+            },
+            {
+              "name": "cshop-mechanism-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-transparency-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-offer-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            }
+          ],
+          "pass": true,
+          "paintsVideo": true
+        },
+        "sticky": {
+          "phone": true,
+          "isOn": true,
+          "display": "flex",
+          "top": 779,
+          "bottom": 844,
+          "innerHeight": 844,
+          "buttonsOnScreen": 0,
+          "heroGone": true,
+          "ariaHidden": "false",
+          "pass": true
+        },
+        "stickyYields": {
+          "isOn": false,
+          "ctaOnScreen": true,
+          "pass": true
+        },
+        "scrawlUnderline": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlStrike": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlSignature": {
+          "value": "0px",
+          "pass": true
+        },
+        "heroDrift": {
+          "animationCleared": true,
+          "at0": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+          "at300": "matrix(0.99725, -0.0741085, 0.0741085, 0.99725, 0, -16.5)",
+          "pass": true
+        },
+        "states": {
+          "state": "focus",
+          "markerBefore": 45,
+          "markerAfter": 175,
+          "tabs": [
+            "false/-1",
+            "true/0",
+            "false/-1"
+          ],
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "a.btn.btn--lg",
+            "a.btn",
+            "a.btn.btn--sm",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "span.callout.callout--a",
+            "span.callout.callout--b",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "blockquote.rev.rev--photo",
+            "blockquote.rev",
+            "blockquote.rev.rev--fade",
+            "a.btn.btn--lg",
+            "a.btn.btn--lg",
+            "a.btn"
+          ],
+          "nonButtonPills": [],
+          "pass": true
+        }
+      }
+    },
+    "1280": {
+      "width": 1280,
+      "height": 800,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 1280,
+          "innerWidth": 1280,
+          "pass": true,
+          "offenders": []
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "sparkles": {
+          "count": 26,
+          "changed": 19,
+          "pass": true
+        },
+        "reveal": {
+          "total": 9,
+          "missing": [],
+          "inviewMissing": 0,
+          "pass": true
+        },
+        "loop": {
+          "hit": "VIDEO",
+          "playing": true,
+          "still": false,
+          "readyState": 4,
+          "paused": false,
+          "error": null,
+          "loops": [
+            {
+              "name": "cshop-board-soft",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-glossy",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-board-sweet",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-format-switch-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-mechanism-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-transparency-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            },
+            {
+              "name": "cshop-offer-loop",
+              "playing": true,
+              "still": false,
+              "held": false,
+              "preload": "auto"
+            }
+          ],
+          "pass": true,
+          "paintsVideo": true
+        },
+        "sticky": {
+          "phone": false,
+          "isOn": true,
+          "display": "none",
+          "top": 0,
+          "bottom": 0,
+          "innerHeight": 800,
+          "buttonsOnScreen": 0,
+          "heroGone": true,
+          "ariaHidden": "false",
+          "pass": true
+        },
+        "stickyYields": {
+          "isOn": false,
+          "ctaOnScreen": true,
+          "pass": true
+        },
+        "scrawlUnderline": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlStrike": {
+          "value": "0px",
+          "pass": true
+        },
+        "scrawlSignature": {
+          "value": "0px",
+          "pass": true
+        },
+        "heroDrift": {
+          "animationCleared": true,
+          "at0": "matrix(0.990268, -0.139173, 0.139173, 0.990268, 0, 0)",
+          "at300": "matrix(0.99725, -0.0741085, 0.0741085, 0.99725, 0, -16.5)",
+          "pass": true
+        },
+        "states": {
+          "state": "focus",
+          "markerBefore": 221,
+          "markerAfter": 614,
+          "tabs": [
+            "false/-1",
+            "true/0",
+            "false/-1"
+          ],
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "a.btn.btn--sm",
+            "a.btn.btn--lg",
+            "a.btn",
+            "a.btn.btn--sm",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "span.callout.callout--a",
+            "span.callout.callout--b",
+            "div.clip__frame",
+            "svg.[object.SVGAnimatedString]",
+            "blockquote.rev.rev--photo",
+            "blockquote.rev",
+            "blockquote.rev.rev--fade",
+            "a.btn.btn--lg",
+            "a.btn.btn--lg"
+          ],
+          "nonButtonPills": [],
+          "pass": true
+        }
+      }
+    }
+  }
+}
