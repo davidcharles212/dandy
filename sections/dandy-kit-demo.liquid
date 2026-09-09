@@ -8,10 +8,11 @@
   stage cream-2, trust brown, proof cream, offer white, FAQ white, close brown, footer brown.
 {%- endcomment -%}
 
+{%- capture ticker_items -%}<li>Dandy page kit</li><li>Tokens</li><li>Components</li><li>Motion</li><li>Good days look Dandy</li>{%- endcapture -%}
 <div class="ticker" aria-label="Product facts">
   <div class="ticker__track">
-    <ul class="ticker__list"><li>Dandy page kit</li><li>Tokens</li><li>Components</li><li>Motion</li><li>Good days look Dandy</li></ul>
-    <ul class="ticker__list" aria-hidden="true"><li>Dandy page kit</li><li>Tokens</li><li>Components</li><li>Motion</li><li>Good days look Dandy</li></ul>
+    <ul class="ticker__list">{{ ticker_items }}</ul>
+    <ul class="ticker__list" aria-hidden="true">{{ ticker_items }}</ul>
   </div>
 </div>
 
@@ -29,7 +30,7 @@
       <img src="{{ 'cshop-hero-tall.webp' | asset_url }}" alt="Berry syrup dripping down a cream wall behind a Dandy pouch on a candy counter" width="1600" height="1986" fetchpriority="high">
     </picture>
     <img class="hero__giant" src="{{ 'cshop-hero-gummy.webp' | asset_url }}" alt="A sugar-coated Dandy gummy" width="1200" height="970" fetchpriority="high">
-    {% render 'dandy-hero-sparkles' %}
+    {% render 'dandy-sparkles', variant: 'hero', count: 8 %}
   </div>
   <div class="hero__copy">
     <h1>A hero that settles, then drifts.</h1>
@@ -115,14 +116,14 @@
     <div class="cliprow__aside">
       <h3>A clip row: statement beside the phone.</h3>
       <p>The phone frame is a box because a phone is an object. One play button, tap to play with sound, tilted two degrees and straightening on play.</p>
-      {% render 'dandy-loop', name: 'cshop-format-switch-loop', poster: 'cshop-loop-format-poster.jpg', alt: 'The pouch and one gummy on a cleared desk', loop: true, ratio: '16x9', class: 'cliprow__still bleed bleed--phone', width: 720, height: 396, base: video_base %}
+      {% render 'dandy-loop', name: 'cshop-format-switch-loop', poster: 'cshop-loop-format-poster.jpg', alt: 'The pouch and one gummy on a cleared desk', loop: true, ratio: '16x9', class: 'cliprow__loop', width: 720, height: 396, base: video_base %}
     </div>
     {% render 'dandy-clip', name: 'cshop-ugc-01', poster: 'cshop-ugc-01-poster.jpg', slot: 'clip-01', tilt: 'l', label: 'CLIP-01 | Demo clip', base: video_base %}
   </div>
   <div style="height:var(--gap-l)"></div>
 </section>
 
-<section class="sec sec--flush-bottom ground-cream-2" id="stage">
+<section class="sec sec--tight-top sec--flush-bottom ground-cream-2" id="stage">
   <div class="wrap">
     <div class="head">
       <h2>States as type, on a belt.</h2>
@@ -130,13 +131,13 @@
     </div>
   </div>
   <div class="stage" data-state="lift">
-    {% render 'dandy-loop', name: 'cshop-mechanism-loop', poster: 'cshop-loop-mechanism-poster.jpg', alt: 'One Dandy gummy moving through a morning, a desk and an evening', loop: true, ratio: '16x9', width: 720, height: 406, sparkles: true, base: video_base %}
+    {% render 'dandy-loop', name: 'cshop-mechanism-loop', poster: 'cshop-loop-mechanism-poster.jpg', alt: 'One Dandy gummy moving through a morning, a desk and an evening', loop: true, ratio: '16x9', width: 720, height: 406, sparkles: true, words: 'lift:Lift,focus:Focus,settle:Settle', base: video_base %}
     <div class="belt" aria-hidden="true"><div class="belt__stripes"></div><div class="belt__marker"></div></div>
     <div class="wrap">
       <div class="states states--type" role="tablist" aria-label="Three parts of the day">
         <button class="state" type="button" role="tab" aria-selected="true" data-state="lift" data-seek="0.3" data-end="2.35"><b>Lift</b><small>Smaller amounts</small><p>For the mornings when you want to get moving.</p></button>
-        <button class="state" type="button" role="tab" aria-selected="false" data-state="focus" data-seek="3.0" data-end="4.75" tabindex="-1"><b>Focus</b><small>In between</small><p>For the hours when you want to stay with the thing in front of you.</p></button>
-        <button class="state" type="button" role="tab" aria-selected="false" data-state="settle" data-seek="5.4" tabindex="-1"><b>Settle</b><small>Larger amounts</small><p>For when the day is done and your body knows it.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="focus" data-seek="3.0" data-end="4.75" data-bound="2.5" tabindex="-1"><b>Focus</b><small>In between</small><p>For the hours when you want to stay with the thing in front of you.</p></button>
+        <button class="state" type="button" role="tab" aria-selected="false" data-state="settle" data-seek="5.4" data-bound="4.9" tabindex="-1"><b>Settle</b><small>Larger amounts</small><p>For when the day is done and your body knows it.</p></button>
       </div>
       <p class="stage__line"><mark class="hi">One pouch</mark> can fit a brighter morning, a focused afternoon, or a slower evening.</p>
       <p class="stage__note">A note in sentence case under the line. This is an explanation, not a dosing guide.</p>
@@ -152,9 +153,9 @@
         <h2>A dark section with a loop, callouts and a cutout.</h2>
         <p class="lede">Copy on brown runs at .86 opacity. Ticks and the belt marker take the blush accent, never the CTA colour.</p>
         <ul class="checklist">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Batch tested for identity, potency, heavy metals, and microbials</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Amount printed on the pouch</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>21+ only</li>
+          <li>{% render 'dandy-tick' %}Batch tested for identity, potency, heavy metals, and microbials</li>
+          <li>{% render 'dandy-tick' %}Amount printed on the pouch</li>
+          <li>{% render 'dandy-tick' %}21+ only</li>
         </ul>
       </div>
       <div>
@@ -177,7 +178,7 @@
   </div>
 </section>
 
-<section class="sec ground-cream" id="reviews">
+<section class="sec sec--tight-top ground-cream" id="reviews">
   <div class="wrap">
     <h2 class="quote">“A customer line as the headline, with the marker <mark class="hi hi--inline">following the words.”</mark></h2>
     <p class="meta" style="margin-top:16px">Placeholder F., verified customer.</p>
@@ -187,29 +188,29 @@
         <img class="rev__photo" src="{{ 'cshop-proof-still.webp' | asset_url }}" alt="An adult holding a Dandy gummy over a desk" width="1600" height="1200" loading="lazy">
         <span class="rev__stars" aria-label="Five stars">★★★★★</span>
         <p>“A review card is a box because a review is a card. Eighteen pixel radius, a berry hairline, no shadow.”</p>
-        <footer><b>Placeholder P.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+        <footer><b>Placeholder P.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
       </blockquote>
       <blockquote class="rev">
         <span class="rev__stars" aria-label="Five stars">★★★★★</span>
         <p>“Gold stars, sentence-case footer, seventeen pixel body at 1.45.”</p>
-        <footer><b>Placeholder H.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+        <footer><b>Placeholder H.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
       </blockquote>
       <blockquote class="rev rev--fade">
         <span class="rev__stars" aria-label="Five stars">★★★★★</span>
         <p>“The third card fades on phones into a Read more link that reveals the rest.”</p>
-        <footer><b>Placeholder L.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+        <footer><b>Placeholder L.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
       </blockquote>
       <blockquote class="rev rev--more">
         <span class="rev__stars" aria-label="Five stars">★★★★★</span>
         <p>“A fourth card, hidden until the link is tapped.”</p>
-        <footer><b>Placeholder A.</b><span><svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>Verified buyer</span></footer>
+        <footer><b>Placeholder A.</b><span>{% render 'dandy-badge' %}Verified buyer</span></footer>
       </blockquote>
     </div>
     <button class="revs__more" type="button" aria-expanded="false" aria-controls="revs">Read more reviews</button>
   </div>
 </section>
 
-<section class="sec sec--flush-top ground-white" id="offer">
+<section class="sec sec--flush-top sec--tight-bottom ground-white" id="offer">
   <div class="offer__layout">
     <div class="offer__media">
       {% render 'dandy-loop', name: 'cshop-offer-loop', poster: 'cshop-loop-offer-poster.jpg', alt: 'Dandy pouches stocked on a wooden shelf', loop: false, ratio: '6x5', width: 720, height: 600, sparkles: true, base: video_base %}
@@ -224,7 +225,7 @@
   </div>
 </section>
 
-<section class="sec faq ground-white" id="faq">
+<section class="sec sec--tight-top faq ground-white" id="faq">
   <div class="wrap wrap--narrow">
     <h2>Questions in sentence case on hairlines.</h2>
     <div class="faq__list">
@@ -266,7 +267,7 @@
   "name": "Dandy kit demo",
   "settings": [
     { "type": "text", "id": "cta_url", "label": "CTA destination", "default": "#offer" },
-    { "type": "text", "id": "video_base", "label": "External base URL for clips and loops (optional)", "info": "Leave blank to serve from theme assets." }
+    { "type": "text", "id": "video_base", "label": "External base URL for clips and loops (optional)", "info": "Leave blank to serve from theme assets. With a base, files are fetched as <base>/<name>.mov and <name>.mp4 using the theme asset names (cshop-ugc-01, cshop-ugc-05, cshop-board-soft, cshop-board-glossy, cshop-board-sweet, cshop-format-switch-loop, cshop-mechanism-loop, cshop-transparency-loop, cshop-offer-loop). A snippet's file: param names a different external file." }
   ]
 }
 {% endschema %}

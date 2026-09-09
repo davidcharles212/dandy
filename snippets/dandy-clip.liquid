@@ -1,12 +1,14 @@
 {%- comment -%}
   Phone clip: one poster, one round play button, tap to play with sound, tap again to pause; no replay, caption or sound controls.
   Params: name (asset base, e.g. 'cshop-ugc-01'), poster (asset filename), slot (id and caption key), tilt ('l'|'r'),
-          label (dev-only meta), video (optional Shopify video object from a section setting), base (external base URL, optional).
+          label (dev-only meta), video (optional Shopify video object from a section setting),
+          base (external base URL, optional: files are fetched as base/<file>.mov and .mp4), file (external file base, defaults to name).
   Captions: a <script type="application/json" id="dandy-captions"> keyed by slot, each cue [start, end, "verbatim text"].
 {%- endcomment -%}
 {%- if base != blank -%}
-  {%- assign mov = base | append: '/' | append: name | append: '.mov' -%}
-  {%- assign mp4 = base | append: '/' | append: name | append: '.mp4' -%}
+  {%- assign ext_name = file | default: name -%}
+  {%- assign mov = base | append: '/' | append: ext_name | append: '.mov' -%}
+  {%- assign mp4 = base | append: '/' | append: ext_name | append: '.mp4' -%}
 {%- else -%}
   {%- assign mov = name | append: '.mov' | asset_url -%}
   {%- assign mp4 = name | append: '.mp4' | asset_url -%}
