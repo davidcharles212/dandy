@@ -7,7 +7,11 @@
   endcomment
   assign extra_slides = '' | split: ''
   if block.settings.gallery_assets != blank
-    assign extra_slides = block.settings.gallery_assets | strip | newline_to_br | split: '<br />'
+    assign strength_token = '-50'
+    if product.handle contains '90'
+      assign strength_token = '-90'
+    endif
+    assign extra_slides = block.settings.gallery_assets | replace: '{strength}', strength_token | strip | newline_to_br | split: '<br />'
   endif
   assign extra_count = 0
   for line in extra_slides
