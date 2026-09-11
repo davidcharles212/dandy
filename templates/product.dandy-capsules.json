@@ -517,7 +517,7 @@
             "variant": "caffeine",
             "title": "Over-the-counter pills: Mute it",
             "description": "Mutes the symptom for an hour or two and taxes the body to do it.",
-            "items": "Harsh on the stomach lining\nHeavy fog or drowsiness\nWears off, back where you started",
+            "items": "Stomach burn\nFoggy, drowsy\nWears off fast",
             "icon": "",
             "icon_asset": "dandy-cap-icon-x.svg",
             "image": "shopify://shop_images/ede60ddff878a2c3e4aa49ed7cc5f3c0f6dff523.png"
@@ -529,7 +529,7 @@
             "variant": "dandy",
             "title": "Dandy: Move again",
             "description": "Standardized extract that works across multiple natural pathways, so the body eases while the head stays sharp.",
-            "items": "Deep, sustained ease in muscles and joints\nZero grogginess, focus stays sharp\nClean vegan shell, no stomach burn\nA lighter mood on top",
+            "items": "Deep muscle ease\nJoint comfort\nClear head\nLighter mood",
             "icon": "",
             "icon_asset": "dandy-cap-icon-check.svg",
             "image": "shopify://shop_images/285fea2c4b5855d8fffeec7e3a5802a950007970.png"
@@ -606,7 +606,7 @@
         "otc": {
           "type": "item",
           "settings": {
-            "title": "OTC pain relievers",
+            "title": "OTC painkillers",
             "text": "Can take the edge off for an hour or two, but daily use is notorious for wearing on the stomach lining, gut and liver. And zero mood support.",
             "image": "",
             "image_asset": "dandy-cap-compare-otc.png",
@@ -717,7 +717,7 @@
           "settings": {
             "image": "",
             "image_asset": "dandy-cap-moment-1.webp",
-            "title": "Unbind morning stiffness",
+            "title": "Loosen stiff mornings",
             "text": "Get moving without that first creaky half hour of tight joints and a locked lower back."
           }
         },
@@ -768,18 +768,18 @@
       "type": "dandy-pdp-ingredients",
       "name": "Dandy ingredients",
       "settings": {
-        "heading_small": "What's inside every",
-        "heading_large": "Dandy capsule?",
+        "heading_small": "What's in a",
+        "heading_large": "Dandy?",
         "item_1_title": "STANDARDIZED MITRAGYNINE EXTRACT",
-        "item_1_text": "Exactly 50 mg or 90 mg of mitragynine from mature Southeast Asian Mitragyna speciosa leaves. Standardized so every jar delivers the same ease.",
+        "item_1_text": "Exactly 50 mg or 90 mg of mitragynine, standardized so every capsule delivers the same ease.",
         "item_1_image": "",
         "item_1_image_asset": "dandy-cap-ing-extract.png",
         "item_2_title": "MICROCRYSTALLINE CELLULOSE",
-        "item_2_text": "A naturally derived plant fiber that guarantees even dispersion and smooth, predictable absorption.",
+        "item_2_text": "A plant fiber that keeps the dose evenly dispersed and smoothly absorbed.",
         "item_2_image": "",
         "item_2_image_asset": "dandy-cap-ing-cellulose.png",
         "item_3_title": "VEGAN HPMC SHELL",
-        "item_3_text": "A plant-cellulose capsule that dissolves in the stomach within minutes. No gelatin, no dyes, no preservatives.",
+        "item_3_text": "Plant-cellulose capsule that dissolves in minutes. No gelatin, dyes or preservatives.",
         "item_3_image": "",
         "item_3_image_asset": "dandy-cap-ing-shell.png",
         "button_label": "View this batch's lab report",
@@ -804,7 +804,7 @@
             "image": "",
             "image_asset": "dandy-cap-start-1.webp",
             "label": "Start with one 50 mg",
-            "text": "One capsule with a full glass of water, on a light stomach.",
+            "text": "One capsule with a full glass of water.",
             "text_mobile": "",
             "text_width_mobile": 134,
             "overlay": 31,
@@ -817,8 +817,8 @@
             "image": "",
             "image_asset": "dandy-cap-start-2.webp",
             "label": "Give it 45 to 60 minutes",
-            "text": "It passes through digestion first. Let the warm loosening settle in.",
-            "text_mobile": "Let the warm loosening settle in before deciding on more.",
+            "text": "Give it a full hour to settle in.",
+            "text_mobile": "",
             "text_width_mobile": 134,
             "overlay": 36,
             "overlay_mobile": 36
@@ -830,11 +830,11 @@
             "image": "",
             "image_asset": "dandy-cap-start-3.webp",
             "label": "Check in",
-            "text": "Stand, stretch, bend. If 50 mg does it, that's your mark. If not, try 90 mg next time.",
-            "text_mobile": "Stand, stretch, bend. Not enough? Try 90 mg next time.",
+            "text": "Notice how you stand, stretch and bend.",
+            "text_mobile": "",
             "text_width_mobile": 134,
-            "overlay": 31,
-            "overlay_mobile": 0
+            "overlay": 36,
+            "overlay_mobile": 36
           }
         },
         "step_4": {
@@ -843,11 +843,11 @@
             "image": "",
             "image_asset": "dandy-cap-start-4.webp",
             "label": "Use it with intention",
-            "text": "Take Dandy when your body needs it. One or two days off a week keeps one capsule doing the job.",
-            "text_mobile": "One or two days off a week keeps one capsule doing the job.",
+            "text": "Use it when you need it. Take days off.",
+            "text_mobile": "",
             "text_width_mobile": 134,
-            "overlay": 31,
-            "overlay_mobile": 0
+            "overlay": 36,
+            "overlay_mobile": 36
           }
         }
       },
@@ -871,8 +871,8 @@
         "row_1": {
           "type": "row",
           "settings": {
-            "label": "Deep Physical Tension Relief",
-            "label_mobile": "Deep Physical\nTension Relief",
+            "label": "Deep Tension Relief",
+            "label_mobile": "Deep\nTension Relief",
             "dandy": "Yes",
             "val_1": "not_always",
             "val_2": "no",

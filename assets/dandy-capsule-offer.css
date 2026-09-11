@@ -100,3 +100,9 @@
   .co-strength__mg { font-size: 30px; }
 }
 @media (prefers-reduced-motion: reduce) { .co-tier, .co-strength__card { transition: none; } }
+
+/* QA round 1 (2026-09-11): page-scoped fixes. This sheet only loads on capsule templates. */
+.co .co-pack img { max-width: calc(100% - 8px); }
+.co .co-guarantee p { font-size: 13.5px; }
+.co .co-trust small { font-size: 11.5px; }
+.dandy-pdp .dandy-product-header__title, .dpm__title, .dpw__head, .dpi__heading, .dpf__heading { text-wrap: balance; }
