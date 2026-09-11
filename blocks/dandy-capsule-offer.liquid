@@ -1,25 +1,14 @@
 {%- comment -%}
   Dandy capsule offer: port of the gummy "1, 2, 3" offer box (dandy-gummy-offer)
   into the Ecom Landers PDP block system. 30-count jars only, tiers 1 / 2 / 3.
-  Strength is a link between the two capsule products (SEO-clean), never a
-  cross-product cart swap. Prices come from real variants; a tier whose variant
-  is missing or unavailable is hidden rather than faked.
+  Strength is a real link between the two capsule products (SEO-clean, works
+  without JS). With JS, both products' tiers are server-rendered and the link
+  becomes an in-page toggle (history.replaceState keeps the URL bookmarkable).
+  Prices come from real variants; a tier whose variant is missing or
+  unavailable is hidden rather than faked.
 {%- endcomment -%}
 {%- liquid
   assign product = closest.product
-  assign v1 = blank
-  assign v2 = blank
-  assign v3 = blank
-  for v in product.variants
-    if v.title == block.settings.tier_1_variant_title
-      assign v1 = v
-    elsif v.title == block.settings.tier_2_variant_title
-      assign v2 = v
-    elsif v.title == block.settings.tier_3_variant_title
-      assign v3 = v
-    endif
-  endfor
-
   assign caps = block.settings.capsules_per_jar | default: 30
   assign is_90 = false
   if product.handle contains '90'
@@ -29,11 +18,32 @@
   if is_90
     assign strength_label = block.settings.strength_90_label
   endif
-  assign tier_suffix = '-50'
-  if is_90
-    assign tier_suffix = '-90'
-  endif
   assign default_tier = block.settings.default_tier | plus: 0
+
+  assign url_50 = block.settings.strength_50_url
+  assign url_90 = block.settings.strength_90_url
+  assign handle_50 = url_50 | split: '/products/' | last | split: '?' | first | split: '#' | first
+  assign handle_90 = url_90 | split: '/products/' | last | split: '?' | first | split: '#' | first
+  assign sibling = blank
+  if is_90 and handle_50 != blank
+    assign sibling = all_products[handle_50]
+  elsif is_90 == false and handle_90 != blank
+    assign sibling = all_products[handle_90]
+  endif
+  if sibling.handle == blank or sibling.handle == product.handle
+    assign sibling = blank
+  endif
+  assign current_strength = '50'
+  if is_90
+    assign current_strength = '90'
+  endif
+  assign strengths = '50,90' | split: ','
+  assign product_50 = product
+  assign product_90 = sibling
+  if is_90
+    assign product_50 = sibling
+    assign product_90 = product
+  endif
 -%}
 {{ 'dandy-capsule-offer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'dandy-capsule-offer.js' | asset_url }}" defer></script>
@@ -45,19 +55,24 @@
   data-default-tier="{{ block.settings.default_tier }}"
   data-cart-url="{{ routes.cart_url }}"
   data-product-url="{{ product.url }}"
+  data-strength="{{ current_strength }}"
+  data-url-50="{{ url_50 }}"
+  data-url-90="{{ url_90 }}"
+  {%- if product_50 != blank %} data-title-50="{{ product_50.title | escape }}" data-product-url-50="{{ product_50.url }}"{% endif -%}
+  {%- if product_90 != blank %} data-title-90="{{ product_90.title | escape }}" data-product-url-90="{{ product_90.url }}"{% endif -%}
   {{ block.shopify_attributes }}
 >
   {%- if block.settings.show_strength_switch -%}
     <fieldset class="co-strength">
       <legend class="co-strength__legend">{{ block.settings.strength_legend }}</legend>
       <div class="co-strength__grid">
-        <a class="co-strength__card{% unless is_90 %} is-current{% endunless %}" href="{{ block.settings.strength_50_url }}"{% unless is_90 %} aria-current="page"{% endunless %}>
+        <a class="co-strength__card{% unless is_90 %} is-current{% endunless %}" href="{{ url_50 }}" data-co-strength="50"{% unless is_90 %} aria-current="page"{% endunless %}>
           <span class="co-strength__radio" aria-hidden="true"></span>
           <span class="co-strength__mg">50<small>mg</small></span>
           <span class="co-strength__name">{{ block.settings.strength_50_label }}</span>
           <span class="co-strength__desc">{{ block.settings.strength_50_desc }}</span>
         </a>
-        <a class="co-strength__card{% if is_90 %} is-current{% endif %}" href="{{ block.settings.strength_90_url }}"{% if is_90 %} aria-current="page"{% endif %}>
+        <a class="co-strength__card{% if is_90 %} is-current{% endif %}" href="{{ url_90 }}" data-co-strength="90"{% if is_90 %} aria-current="page"{% endif %}>
           <span class="co-strength__radio" aria-hidden="true"></span>
           <span class="co-strength__mg">90<small>mg</small></span>
           <span class="co-strength__name">{{ block.settings.strength_90_label }}</span>
@@ -75,7 +90,32 @@
     </div>
   </div>
 
-  <fieldset class="co-tiers">
+  {%- for strength in strengths -%}
+    {%- liquid
+      if strength == '50'
+        assign sp = product_50
+        assign tier_suffix = '-50'
+      else
+        assign sp = product_90
+        assign tier_suffix = '-90'
+      endif
+      if sp == blank
+        continue
+      endif
+      assign v1 = blank
+      assign v2 = blank
+      assign v3 = blank
+      for v in sp.variants
+        if v.title == block.settings.tier_1_variant_title
+          assign v1 = v
+        elsif v.title == block.settings.tier_2_variant_title
+          assign v2 = v
+        elsif v.title == block.settings.tier_3_variant_title
+          assign v3 = v
+        endif
+      endfor
+    -%}
+  <fieldset class="co-tiers" data-co-tiers="{{ strength }}"{% if strength != current_strength %} hidden{% endif %}>
     <legend class="co-sr-only">{{ block.settings.tiers_legend }}</legend>
     {%- for i in (1..3) -%}
       {%- liquid
@@ -122,7 +162,7 @@
       <label class="co-tier{% if t_hero %} co-tier--hero{% endif %}" data-co-tier-card>
         <input
           type="radio"
-          name="capsule-offer-{{ block.id }}"
+          name="capsule-offer-{{ block.id }}-{{ strength }}"
           value="{{ i }}"
           data-co-tier
           data-variant-id="{{ v.id }}"
@@ -130,6 +170,7 @@
           data-label="{{ t_title | escape }}"
           data-cta="{{ t_cta | escape }}"
           {% if default_tier == i %}checked{% endif %}
+          {% if strength != current_strength %}disabled{% endif %}
         >
         {%- if t_hero and t_ribbon != blank -%}
           <span class="co-ribbon">{{ t_ribbon }}</span>
@@ -138,7 +179,7 @@
           <span class="co-radio" aria-hidden="true"></span>
           <span class="co-pack co-pack--{{ i }}" aria-hidden="true">
             {%- if t_img != blank -%}
-              <img src="{{ t_img | asset_url }}" alt="" width="600" height="600" loading="eager">
+              <img src="{{ t_img | asset_url }}" alt="" width="600" height="600" loading="{% if strength == current_strength %}eager{% else %}lazy{% endif %}">
             {%- endif -%}
           </span>
           <span class="co-title">{{ t_title }}{% if t_badge != blank %}<span class="co-badge">{{ t_badge }}</span>{% endif %}</span>
@@ -152,6 +193,7 @@
       </label>
     {%- endfor -%}
   </fieldset>
+  {%- endfor -%}
 
   <form class="co-form" action="{{ routes.cart_add_url }}" method="post" data-co-form>
     <input type="hidden" name="id" value="" data-co-id>
@@ -200,7 +242,7 @@
   "name": "Dandy capsule offer",
   "tag": null,
   "settings": [
-    { "type": "header", "content": "Strength switch (links to the other strength)" },
+    { "type": "header", "content": "Strength switch (in-page with JS, link without)" },
     { "type": "checkbox", "id": "show_strength_switch", "label": "Show strength switch", "default": true },
     { "type": "text", "id": "strength_legend", "label": "Legend", "default": "1. Pick your strength" },
     { "type": "text", "id": "strength_50_label", "label": "50 mg name", "default": "Everyday ease" },

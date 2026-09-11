@@ -6,12 +6,34 @@
     One per line: "filename.webp|alt text". They render before product media.
   endcomment
   assign extra_slides = '' | split: ''
+  assign raw_lines = '' | split: ''
+  assign strength_token = '-50'
+  assign current_strength = '50'
+  assign other_strength = '90'
+  if product.handle contains '90'
+    assign strength_token = '-90'
+    assign current_strength = '90'
+    assign other_strength = '50'
+  endif
   if block.settings.gallery_assets != blank
-    assign strength_token = '-50'
-    if product.handle contains '90'
-      assign strength_token = '-90'
-    endif
+    assign raw_lines = block.settings.gallery_assets | strip | newline_to_br | split: '<br />'
     assign extra_slides = block.settings.gallery_assets | replace: '{strength}', strength_token | strip | newline_to_br | split: '<br />'
+  endif
+
+  comment
+    Sibling strength (50 mg <-> 90 mg). Its own media is rendered hidden so the
+    buy box can switch strength in place; asset slides carry both filenames.
+  endcomment
+  assign sibling_handle = block.settings.sibling_handle_90
+  if current_strength == '90'
+    assign sibling_handle = block.settings.sibling_handle_50
+  endif
+  assign sibling = blank
+  if sibling_handle != blank
+    assign sibling = all_products[sibling_handle]
+  endif
+  if sibling.handle == blank or sibling.handle == product.handle
+    assign sibling = blank
   endif
   assign extra_count = 0
   for line in extra_slides
@@ -80,8 +102,16 @@
         aria-roledescription="slide"
         aria-label="{{ slide_label | escape }}"
       >
+        {%- assign raw_line = raw_lines[forloop.index0] -%}
         <img
           src="{{ extra_file | asset_url }}"
+          {%- if raw_line contains '{strength}' %}
+          {%- assign raw_file = raw_line | split: '|' | first | strip %}
+          {%- assign src_50 = raw_file | replace: '{strength}', '-50' | asset_url %}
+          {%- assign src_90 = raw_file | replace: '{strength}', '-90' | asset_url %}
+          data-dpg-src-50="{{ src_50 }}"
+          data-dpg-src-90="{{ src_90 }}"
+          {%- endif %}
           alt="{{ extra_alt | escape }}"
           loading="{{ loading }}"
           fetchpriority="{{ priority }}"
@@ -91,14 +121,27 @@
       </div>
     {%- endfor -%}
 
-    {%- for media in product.media -%}
+    {%- for gallery_pass in (1..2) -%}
+    {%- liquid
+      if gallery_pass == 1
+        assign gp = product
+        assign gp_strength = current_strength
+      else
+        assign gp = sibling
+        assign gp_strength = other_strength
+      endif
+      if gp == blank
+        continue
+      endif
+    -%}
+    {%- for media in gp.media -%}
       {%- liquid
         assign slide_index = forloop.index | plus: extra_count
         assign slide_label = 'accessibility.slide_status' | t: index: slide_index, length: media_count
         assign media_alt = media.alt | default: product.title
         assign loading = 'lazy'
         assign priority = 'auto'
-        if forloop.index0 == start_index and extra_count == 0
+        if forloop.index0 == start_index and extra_count == 0 and gallery_pass == 1
           assign loading = 'eager'
           assign priority = 'high'
         endif
@@ -108,6 +151,8 @@
         id="DandyMedia-{{ section.id }}-{{ media.id }}"
         data-dpg-slide
         data-media-id="{{ media.id }}"
+        data-dpg-strength="{{ gp_strength }}"
+        {%- if gallery_pass == 2 %} hidden{% endif %}
         role="group"
         aria-roledescription="slide"
         aria-label="{{ slide_label | escape }}"
@@ -143,6 +188,7 @@
         {%- endcase -%}
       </div>
     {%- endfor -%}
+    {%- endfor -%}
   </div>
 
   {%- if media_count > 1 -%}
@@ -169,8 +215,16 @@
               aria-current="true"
             {% endif %}
           >
+            {%- assign raw_line = raw_lines[forloop.index0] -%}
             <img
               src="{{ extra_file | asset_url }}"
+              {%- if raw_line contains '{strength}' %}
+              {%- assign raw_file = raw_line | split: '|' | first | strip %}
+              {%- assign src_50 = raw_file | replace: '{strength}', '-50' | asset_url %}
+              {%- assign src_90 = raw_file | replace: '{strength}', '-90' | asset_url %}
+              data-dpg-src-50="{{ src_50 }}"
+              data-dpg-src-90="{{ src_90 }}"
+              {%- endif %}
               alt=""
               loading="eager"
               fetchpriority="low"
@@ -179,16 +233,31 @@
             >
           </button>
         {%- endfor -%}
-        {%- for media in product.media -%}
+        {%- for gallery_pass in (1..2) -%}
+        {%- liquid
+          if gallery_pass == 1
+            assign gp = product
+            assign gp_strength = current_strength
+          else
+            assign gp = sibling
+            assign gp_strength = other_strength
+          endif
+          if gp == blank
+            continue
+          endif
+        -%}
+        {%- for media in gp.media -%}
           {%- assign thumb_index = forloop.index | plus: extra_count -%}
           {%- assign thumb_label = 'accessibility.slide_status' | t: index: thumb_index, length: media_count -%}
           <button
             type="button"
             class="dpg__thumb"
             data-dpg-thumb
+            data-dpg-strength="{{ gp_strength }}"
+            {%- if gallery_pass == 2 %} hidden{% endif %}
             aria-controls="DandyMedia-{{ section.id }}-{{ media.id }}"
             aria-label="{{ thumb_label | escape }}"
-            {% if forloop.index0 == start_index and extra_count == 0 %}
+            {% if forloop.index0 == start_index and extra_count == 0 and gallery_pass == 1 %}
               aria-current="true"
             {% endif %}
           >
@@ -204,6 +273,7 @@
                 class: 'dpg__thumb-img'
             -}}
           </button>
+        {%- endfor -%}
         {%- endfor -%}
       </div>
     </div>
@@ -228,8 +298,7 @@
     class DandyPdpGallery extends HTMLElement {
       connectedCallback() {
         this.viewport = this.querySelector('[data-dpg-viewport]');
-        this.slides = [...this.querySelectorAll('[data-dpg-slide]')];
-        this.thumbs = [...this.querySelectorAll('[data-dpg-thumb]')];
+        this.collect();
         this.track = this.querySelector('[data-dpg-track]');
         this.index = -1;
         this.lockUntil = 0;
@@ -260,10 +329,26 @@
           if (i > -1) this.goTo(i);
         };
 
+        this.onStrength = (event) => {
+          const strength = event.detail?.strength;
+          if (!strength) return;
+          this.querySelectorAll('[data-dpg-src-' + strength + ']').forEach((img) => {
+            const src = img.getAttribute('data-dpg-src-' + strength);
+            if (src && img.getAttribute('src') !== src) img.setAttribute('src', src);
+          });
+          this.querySelectorAll('[data-dpg-strength]').forEach((el) => {
+            el.hidden = el.dataset.dpgStrength !== strength;
+          });
+          this.collect();
+          this.index = -1;
+          this.goTo(0, true);
+        };
+
         this.addEventListener('click', this.onClick);
         this.viewport.addEventListener('scroll', this.onScroll, { passive: true });
         this.viewport.addEventListener('keydown', this.onKeydown);
         document.addEventListener('variant:update', this.onVariant);
+        document.addEventListener('dandy:strength-change', this.onStrength);
 
         requestAnimationFrame(() => this.goTo(Number(this.dataset.startIndex) || 0, true));
       }
@@ -273,7 +358,13 @@
         this.viewport?.removeEventListener('scroll', this.onScroll);
         this.viewport?.removeEventListener('keydown', this.onKeydown);
         document.removeEventListener('variant:update', this.onVariant);
+        document.removeEventListener('dandy:strength-change', this.onStrength);
         cancelAnimationFrame(this.raf);
+      }
+
+      collect() {
+        this.slides = [...this.querySelectorAll('[data-dpg-slide]')].filter((el) => !el.hidden);
+        this.thumbs = [...this.querySelectorAll('[data-dpg-thumb]')].filter((el) => !el.hidden);
       }
 
       slideLeft(i) {
@@ -579,8 +670,10 @@
       "type": "textarea",
       "id": "gallery_assets",
       "label": "Extra gallery slides, one per line: filename.webp|alt text",
-      "info": "Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide."
-    }
+      "info": "Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide. {strength} becomes -50 or -90 and switches with the buy box."
+    },
+    { "type": "text", "id": "sibling_handle_50", "label": "50 mg product handle", "default": "extract-capsules-50mg", "info": "The other strength's media renders hidden so the buy box can switch strength in place." },
+    { "type": "text", "id": "sibling_handle_90", "label": "90 mg product handle", "default": "extract-capsules-90mg" }
   ]
 }
 {% endschema %}

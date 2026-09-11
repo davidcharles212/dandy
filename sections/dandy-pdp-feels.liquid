@@ -45,12 +45,33 @@
                 {%- endif -%}
               {%- endfor -%}
             </ul>
+            {%- liquid
+              assign art_class = 'dpf__brain'
+              if block.settings.art_portrait
+                assign art_class = 'dpf__brain dpf__brain--portrait'
+              endif
+            -%}
             {%- if block.settings.image != blank -%}
-              <div class="dpf__brain" aria-hidden="true">
+              <div class="{{ art_class }}" aria-hidden="true">
                 {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 400, 600', sizes: '(min-width: 1024px) 193px, 177px', alt: '', loading: 'lazy' }}
               </div>
+            {%- elsif block.settings.image_asset != blank and block.settings.motion_before_asset != blank -%}
+              {%- comment -%}
+                Micro loop: the "before" frame sits under the "after" frame; a radial mask
+                grows from the core so the eased state washes outward, then the crown pulses.
+                prefers-reduced-motion shows the "after" frame only.
+              {%- endcomment -%}
+              <div
+                class="{{ art_class }} dpf__brain--motion"
+                aria-hidden="true"
+                style="--dpf-pulse-x: {{ block.settings.motion_pulse_x }}%; --dpf-pulse-y: {{ block.settings.motion_pulse_y }}%;"
+              >
+                <img class="dpf__frame dpf__frame--before" src="{{ block.settings.motion_before_asset | asset_url }}" alt="" loading="lazy">
+                <img class="dpf__frame dpf__frame--after" src="{{ block.settings.image_asset | asset_url }}" alt="" loading="lazy">
+                <span class="dpf__pulse"></span>
+              </div>
             {%- elsif block.settings.image_asset != blank -%}
-              <div class="dpf__brain" aria-hidden="true">
+              <div class="{{ art_class }}" aria-hidden="true">
                 <img src="{{ block.settings.image_asset | asset_url }}" sizes="(min-width: 1024px) 193px, 177px" alt="" loading="lazy">
               </div>
             {%- endif -%}
@@ -265,6 +286,94 @@
     filter: drop-shadow(0 4px 20px rgb(255 255 255 / 0.15));
   }
 
+  .dpf__brain--portrait img {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .dpf__card--caffeine .dpf__brain--portrait {
+    top: 12px;
+    right: 22px;
+    width: 124px;
+    height: 156px;
+  }
+
+  .dpf__card--dandy .dpf__brain--portrait {
+    top: 10px;
+    right: 22px;
+    width: 128px;
+    height: 160px;
+    filter: none;
+  }
+
+  .dpf__brain--motion {
+    --dpf-pulse-x: 50%;
+    --dpf-pulse-y: 8%;
+  }
+
+  .dpf__brain--motion .dpf__frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dpf__brain--motion .dpf__frame--after {
+    -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 0, #000 58%, transparent 70%);
+    mask-image: radial-gradient(circle at 50% 46%, #000 0, #000 58%, transparent 70%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center 46%;
+    mask-position: center 46%;
+    -webkit-mask-size: 0% 0%;
+    mask-size: 0% 0%;
+    animation: dpf-wash 6.4s cubic-bezier(0.4, 0, 0.2, 1) infinite, dpf-wash-fade 6.4s linear infinite;
+  }
+
+  .dpf__brain--motion .dpf__pulse {
+    position: absolute;
+    left: var(--dpf-pulse-x);
+    top: var(--dpf-pulse-y);
+    width: 46%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%) scale(0.3);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(255 255 255 / 0.95) 0%, rgb(210 240 200 / 0.55) 35%, rgb(22 64 32 / 0) 70%);
+    opacity: 0;
+    animation: dpf-pulse 6.4s ease-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes dpf-wash {
+    0%, 14% { -webkit-mask-size: 0% 0%; mask-size: 0% 0%; }
+    46%, 100% { -webkit-mask-size: 340% 340%; mask-size: 340% 340%; }
+  }
+
+  @keyframes dpf-wash-fade {
+    0%, 88% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  @keyframes dpf-pulse {
+    0%, 42% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    64%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.25); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dpf__brain--motion .dpf__frame--before,
+    .dpf__brain--motion .dpf__pulse {
+      display: none;
+    }
+
+    .dpf__brain--motion .dpf__frame--after {
+      -webkit-mask-image: none;
+      mask-image: none;
+      animation: none;
+      opacity: 1;
+    }
+  }
+
   .dpf__wedge {
     position: relative;
     z-index: 2;
@@ -407,6 +516,20 @@
       height: 164.06px;
     }
 
+    .dpf__card--caffeine .dpf__brain--portrait {
+      top: 8px;
+      right: 60px;
+      width: 132px;
+      height: 166px;
+    }
+
+    .dpf__card--dandy .dpf__brain--portrait {
+      top: 6px;
+      right: 40px;
+      width: 136px;
+      height: 170px;
+    }
+
     .dpf__wedge {
       height: 63.05px;
       margin-bottom: -2px;
@@ -471,7 +594,12 @@
         { "type": "image_picker", "id": "icon", "label": "List icon" },
         { "type": "text", "id": "icon_asset", "label": "List icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
+        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "checkbox", "id": "art_portrait", "label": "Portrait art slot", "default": false, "info": "Use for a standing figure instead of the landscape brain art." },
+        { "type": "header", "content": "Micro loop (optional)" },
+        { "type": "text", "id": "motion_before_asset", "label": "Before frame (theme asset)", "info": "When set, the image above becomes the after frame and the card plays a before-to-after loop. Respects reduced motion." },
+        { "type": "range", "id": "motion_pulse_x", "label": "Crown pulse x", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+        { "type": "range", "id": "motion_pulse_y", "label": "Crown pulse y", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 8 }
       ]
     }
   ],

@@ -36,13 +36,17 @@
   <dandy-pdp-videos class="dpv__slider">
     <div class="dpv__viewport" data-dpv-viewport tabindex="0" role="region" aria-label="{{ section.settings.heading | escape }}">
       {%- for block in section.blocks -%}
-        <div class="dpv__card" data-dpv-card {{ block.shopify_attributes }}>
-          {%- liquid
-            assign has_video = false
-            if block.settings.video != blank or block.settings.video_asset != blank
-              assign has_video = true
-            endif
-          -%}
+        {%- liquid
+          assign has_video = false
+          if block.settings.video != blank or block.settings.video_asset != blank
+            assign has_video = true
+          endif
+          assign card_tag = 'div'
+          if has_video == false and block.settings.quote != blank
+            assign card_tag = 'figure'
+          endif
+        -%}
+        <{{ card_tag }} class="dpv__card{% if card_tag == 'figure' %} dpv__card--quote{% endif %}" data-dpv-card {{ block.shopify_attributes }}>
           {%- if block.settings.video != blank -%}
             {{ block.settings.video | video_tag: image_size: '1100x', class: 'dpv__video', loop: true, muted: true, playsinline: true, controls: false, preload: 'metadata' }}
           {%- elsif block.settings.video_asset != blank -%}
@@ -67,14 +71,31 @@
           {%- endif -%}
           {%- if has_video -%}
             <button type="button" class="dpv__play" data-dpv-play aria-label="Play video">
-              <svg viewBox="0 0 46.8 46.8" fill="none" aria-hidden="true" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="var(--dandy-accent, #f4512b)"/></svg>
+              <svg viewBox="0 0 46.8 46.8" fill="none" aria-hidden="true" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="var(--dandy-accent, #164020)"/></svg>
             </button>
-          {%- else -%}
-            <span class="dpv__play" aria-hidden="true">
-              <svg viewBox="0 0 46.8 46.8" fill="none" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="var(--dandy-accent, #f4512b)"/></svg>
-            </span>
+          {%- elsif block.settings.quote != blank or block.settings.name != blank -%}
+            <figcaption class="dpv__caption">
+              {%- if block.settings.quote != blank -%}
+                <p class="dpv__quote">{{ block.settings.quote | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.name != blank -%}
+                <p class="dpv__name">
+                  <span>{{ block.settings.name | escape }}</span>
+                  {%- if section.settings.verified_label != blank -%}
+                    <span class="dpv__verified">
+                      {%- if section.settings.verified_icon != blank -%}
+                        {{ section.settings.verified_icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dpv__verified-icon' }}
+                      {%- elsif section.settings.verified_icon_asset != blank -%}
+                        <img src="{{ section.settings.verified_icon_asset | asset_url }}" alt="" width="14" height="14" loading="lazy" class="dpv__verified-icon">
+                      {%- endif -%}
+                      {{ section.settings.verified_label | escape }}
+                    </span>
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+            </figcaption>
           {%- endif -%}
-        </div>
+        </{{ card_tag }}>
       {%- endfor -%}
     </div>
 
@@ -422,6 +443,71 @@
     background: var(--dandy-pdp-cream, #fff9f0);
   }
 
+
+  .dpv__card--quote {
+    margin: 0;
+    cursor: default;
+  }
+
+  .dpv__card--quote::after {
+    content: '';
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(to bottom, rgb(12 42 21 / 0) 0%, rgb(12 42 21 / 0.55) 45%, rgb(12 42 21 / 0.86) 100%);
+    pointer-events: none;
+  }
+
+  .dpv .dpv__caption {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0 14px 16px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+  }
+
+  .dpv .dpv__quote {
+    margin: 0;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 19.5px;
+    letter-spacing: -0.15px;
+    text-wrap: pretty;
+    text-shadow: 0 1px 2px rgb(12 42 21 / 0.35);
+  }
+
+  .dpv .dpv__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 10px;
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .dpv .dpv__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    opacity: 0.92;
+  }
+
+  .dpv .dpv__verified-icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+  }
+
   @media screen and (min-width: 750px) {
     .dpv {
       padding: 38.95px 32px 70.2px;
@@ -524,6 +610,17 @@
     }
   }
 
+  @media screen and (min-width: 1024px) {
+    .dpv .dpv__quote {
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .dpv .dpv__caption {
+      padding: 0 18px 20px;
+    }
+  }
+
   @media screen and (min-width: 1280px) {
     .dpv__card {
       flex-basis: calc((100% - 60px) / 4);
@@ -547,6 +644,10 @@
     },
     { "type": "image_picker", "id": "gummies_image", "label": "Gummies (top right)" },
     { "type": "text", "id": "gummies_image_asset", "label": "Gummies (top right) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "header", "content": "Photo cards (used when a card has no video)" },
+    { "type": "text", "id": "verified_label", "label": "Verified label", "info": "Shown next to the name on photo cards. Leave blank to hide." },
+    { "type": "image_picker", "id": "verified_icon", "label": "Verified icon" },
+    { "type": "text", "id": "verified_icon_asset", "label": "Verified icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" }
   ],
   "blocks": [
@@ -557,7 +658,9 @@
         { "type": "video", "id": "video", "label": "Video" },
         { "type": "text", "id": "video_asset", "label": "Video (theme asset fallback)", "info": "MP4 filename in assets/, used when no video is picked." },
         { "type": "image_picker", "id": "poster", "label": "Image", "info": "Shown when no video is set." },
-        { "type": "text", "id": "poster_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
+        { "type": "text", "id": "poster_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "textarea", "id": "quote", "label": "Quote", "info": "With no video, the card becomes a photo and quote card (no play button)." },
+        { "type": "text", "id": "name", "label": "Name" }
       ]
     }
   ],

@@ -61,12 +61,29 @@
         {%- for block in section.blocks -%}
           <article class="dpr__card" {{ block.shopify_attributes }}>
             <span class="dpr__stars dpr__stars--card" role="img" aria-label="5 / 5">{{ dpr_stars }}</span>
+            {%- if block.settings.headline != blank -%}
+              <h3 class="dpr__headline">{{ block.settings.headline | escape }}</h3>
+            {%- endif -%}
             {%- if block.settings.quote != blank -%}
-              <p class="dpr__quote">{{ block.settings.quote | escape | newline_to_br }}</p>
+              {%- liquid
+                assign quote_words = block.settings.quote | strip | split: ' ' | size
+                assign clamp_words = section.settings.clamp_words | default: 0 | plus: 0
+              -%}
+              {%- if clamp_words > 0 and quote_words > clamp_words -%}
+                <div class="dpr__body" data-dpr-body>
+                  <p class="dpr__quote is-clamped" id="dpr-quote-{{ block.id }}">{{ block.settings.quote | escape | newline_to_br }}</p>
+                  <button type="button" class="dpr__more" data-dpr-more aria-expanded="false" aria-controls="dpr-quote-{{ block.id }}" data-more="{{ section.settings.more_label | escape }}" data-less="{{ section.settings.less_label | escape }}">{{ section.settings.more_label | escape }}</button>
+                </div>
+              {%- else -%}
+                <p class="dpr__quote">{{ block.settings.quote | escape | newline_to_br }}</p>
+              {%- endif -%}
             {%- endif -%}
             <div class="dpr__author">
               {%- if block.settings.author != blank -%}
                 <p class="dpr__name">{{ block.settings.author | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.product != blank -%}
+                <p class="dpr__product">{{ block.settings.product | escape }}</p>
               {%- endif -%}
               {%- if block.settings.show_verified -%}
                 <p class="dpr__verified">
@@ -158,6 +175,16 @@
           this.raf = requestAnimationFrame(() => this.update());
         };
         this.onClick = (event) => {
+          const more = event.target.closest('[data-dpr-more]');
+          if (more && this.contains(more)) {
+            const body = more.closest('[data-dpr-body]');
+            const quote = body?.querySelector('.dpr__quote');
+            if (!quote) return;
+            const open = quote.classList.toggle('is-clamped') === false;
+            more.setAttribute('aria-expanded', open ? 'true' : 'false');
+            more.textContent = open ? more.dataset.less : more.dataset.more;
+            return;
+          }
           const arrow = event.target.closest('[data-dpr-step]');
           if (!arrow || !this.contains(arrow)) return;
           const card = this.viewport.querySelector('.dpr__card');
@@ -409,6 +436,67 @@
   .dpr .dpr__quote {
     font-weight: 400;
     color: #241914;
+  }
+
+  .dpr .dpr__headline {
+    margin: -3px 0 -4px;
+    font-family: var(--dandy-font-body, sans-serif);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 21px;
+    letter-spacing: -0.17px;
+    color: #241914;
+    text-wrap: pretty;
+  }
+
+  .dpr__body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .dpr .dpr__quote {
+    text-wrap: pretty;
+  }
+
+  .dpr .dpr__quote.is-clamped {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+  }
+
+  .dpr .dpr__more {
+    align-self: flex-start;
+    min-height: 0;
+    margin: 0;
+    padding: 2px 0;
+    border: 0;
+    border-bottom: 1.5px solid currentColor;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--dandy-accent, #f4512b);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpr .dpr__more:focus-visible {
+    outline: 2px solid var(--dandy-accent, #f4512b);
+    outline-offset: 3px;
+  }
+
+  .dpr .dpr__product {
+    margin: -4px 0 0;
+    font-size: 13px;
+    line-height: 17px;
+    color: rgb(36 25 20 / 0.6);
   }
 
   .dpr__author {
@@ -730,6 +818,16 @@
       letter-spacing: -0.18px;
     }
 
+    .dpr .dpr__headline {
+      font-size: 19px;
+      line-height: 24px;
+    }
+
+    .dpr .dpr__product {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
     .dpr__author {
       gap: 12px;
     }
@@ -853,6 +951,9 @@
       "info": "The line break only applies on mobile."
     },
     { "type": "header", "content": "Reviews" },
+    { "type": "range", "id": "clamp_words", "label": "Fold reviews longer than (words)", "min": 0, "max": 120, "step": 10, "default": 0, "info": "0 shows every review in full. Longer reviews fold to six lines with a Read more toggle." },
+    { "type": "text", "id": "more_label", "label": "Read more label", "default": "Read more" },
+    { "type": "text", "id": "less_label", "label": "Show less label", "default": "Show less" },
     { "type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified Buyer" },
     { "type": "image_picker", "id": "verified_icon", "label": "Verified icon" },
     { "type": "text", "id": "verified_icon_asset", "label": "Verified icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
@@ -885,7 +986,9 @@
           "label": "Review",
           "default": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”"
         },
+        { "type": "text", "id": "headline", "label": "Headline", "info": "Optional bold line above the review." },
         { "type": "text", "id": "author", "label": "Name", "default": "Marcus T." },
+        { "type": "text", "id": "product", "label": "Product line", "info": "Optional, e.g. 90 mg Heavy-Duty." },
         { "type": "checkbox", "id": "show_verified", "label": "Show verified label", "default": true }
       ]
     }

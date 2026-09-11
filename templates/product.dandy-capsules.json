@@ -429,49 +429,61 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”",
-            "author": "Placeholder A.",
-            "show_verified": true
+            "quote": "“I’ve been framing houses and hanging drywall for over twenty years. By 2 PM my lower back and hips usually feel like they’re locked in a vice. I was taking 600–800 mg of ibuprofen twice a day just to finish the shift, and my stomach was paying for it every night. One 90 mg Dandy capsule with my morning thermos and the ache just drops to the background. No brain fog, no heavy sedative feeling, just smooth physical ease. My crew noticed I stopped limping to the truck at 5 PM.”",
+            "author": "Marcus T.",
+            "show_verified": true,
+            "headline": "Replaced 6 ibuprofen a day. My stomach finally gets a break.",
+            "product": "90 mg Heavy-Duty"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco.”",
-            "author": "Placeholder B.",
-            "show_verified": true
+            "quote": "“Ten hours a day hunched over two monitors turned my neck and trapezius muscles into concrete. By 3 PM every day I’d get that dull tension headache creeping up into my temples. Muscle relaxers knock me out cold, and CBD gummies did nothing. Took one 50 mg capsule around noon with a full glass of water. Forty-five minutes later, my shoulders just dropped two inches away from my ears. My brain stayed totally sharp and clear. I’m already on my third jar.”",
+            "author": "Sarah L.",
+            "show_verified": true,
+            "headline": "The knot between my shoulder blades is finally gone.",
+            "product": "50 mg Everyday Ease"
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit.”",
-            "author": "Placeholder C.",
-            "show_verified": true
+            "quote": "“Years of half-marathons and weekend carpentry caught up to my knees and lower spine. Getting out of bed in the morning used to take 10 minutes of slow stretching just to walk down the stairs normally. A friend recommended Dandy instead of standard joint supplements that take three months to do nothing. Took one capsule right when I woke up. By the time the coffee pot was done, that grinding stiffness was completely dialed down. This is the real deal.”",
+            "author": "David R.",
+            "show_verified": true,
+            "headline": "First time in five years I stood up out of bed without groaning.",
+            "product": "50 mg Everyday Ease"
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident.”",
-            "author": "Placeholder D.",
-            "show_verified": true
+            "quote": "“I’ve used raw kratom powder for workout recovery and sore joints for three years, but the toss-and-wash method was pure torture. Choking down six grams of foul, sandy sludge or swallowing 10 giant horse pills gave me constant nausea. One tiny Dandy capsule is standardized, completely tasteless, and works faster and smoother than raw leaf ever did. Zero stomach burn. Never going back to messy powder.”",
+            "author": "Jason M.",
+            "show_verified": true,
+            "headline": "Finally done choking down green dirt.",
+            "product": "50 mg Everyday Ease"
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt in culpa qui officia deserunt mollit anim id est laborum.”",
-            "author": "Placeholder E.",
-            "show_verified": true
+            "quote": "“Twelve-hour hospital shifts on hard linoleum will destroy your feet and lower spine. Most drugstore pills wear off after three hours and leave you in a daze. The 90 mg capsule carries me through the entire back half of my shift without any drowsiness or jitters. I come home with enough physical ease to actually cook dinner and play with my kids instead of collapsing onto the couch.”",
+            "author": "Elena K.",
+            "show_verified": true,
+            "headline": "Still standing tall at hour eleven.",
+            "product": "90 mg Heavy-Duty"
           }
         },
         "review_6": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit.”",
-            "author": "Placeholder F.",
-            "show_verified": true
+            "quote": "“I had never taken kratom before and was nervous about feeling weird, jittery, or out of control. The 50 mg capsule was exactly as advertised: calm, warm physical loosening without any head fog. It felt like someone simply turned down the volume on all the daily wear-and-tear in my neck and lower back. Subscribed to the 3-jar bundle.”",
+            "author": "Brent W.",
+            "show_verified": true,
+            "headline": "Skeptical first-timer. Completely won over.",
+            "product": "50 mg Everyday Ease"
           }
         }
       },
@@ -505,7 +517,10 @@
         "person_image": "",
         "person_image_asset": "dandy-cap-spotlight.webp",
         "background_color": "#164020",
-        "outside_color": "#fff9f0"
+        "outside_color": "#fff9f0",
+        "clamp_words": 40,
+        "more_label": "Read more",
+        "less_label": "Show less"
       }
     },
     "feels": {
@@ -520,7 +535,9 @@
             "items": "Stomach burn\nFoggy, drowsy\nWears off fast",
             "icon": "",
             "icon_asset": "dandy-cap-icon-x.svg",
-            "image": "shopify://shop_images/ede60ddff878a2c3e4aa49ed7cc5f3c0f6dff523.png"
+            "image": "",
+            "image_asset": "dandy-cap-reframe-otc.webp",
+            "art_portrait": true
           }
         },
         "dandy": {
@@ -532,7 +549,12 @@
             "items": "Deep muscle ease\nJoint comfort\nClear head\nLighter mood",
             "icon": "",
             "icon_asset": "dandy-cap-icon-check.svg",
-            "image": "shopify://shop_images/285fea2c4b5855d8fffeec7e3a5802a950007970.png"
+            "image": "",
+            "image_asset": "dandy-cap-reframe-dandy.webp",
+            "art_portrait": true,
+            "motion_before_asset": "dandy-cap-reframe-otc.webp",
+            "motion_pulse_x": 50,
+            "motion_pulse_y": 12
           }
         }
       },
@@ -542,7 +564,7 @@
       ],
       "name": "Dandy how it feels",
       "settings": {
-        "eyebrow": "How Dandy feels",
+        "eyebrow": "",
         "heading": "When the discomfort stops, you get your day back.",
         "body": "When you're dealing with nagging physical ache, you don't just lose comfort. You lose patience, energy and presence.\n\nMost people settle for options that either burn their stomach lining or numb their brain. Dandy is built to do neither.",
         "background_color": "#fff9f0",
@@ -734,7 +756,7 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-3.webp",
+            "image_asset": "dandy-cap-moment-3.webp",
             "title": "Stand up like it's nothing",
             "text": "Out of the chair, off the floor, up the stairs. The small moves stop being a negotiation."
           }
@@ -743,7 +765,7 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-4.webp",
+            "image_asset": "dandy-cap-moment-4.webp",
             "title": "Clear head, all day",
             "text": "Ease in the body without fog in the mind, whatever the day asks."
           }
@@ -990,28 +1012,36 @@
           "type": "video",
           "settings": {
             "poster_asset": "dandy-cap-videos-1.webp",
-            "video_asset": ""
+            "video_asset": "",
+            "quote": "“Replaced 6 ibuprofen a day. My stomach finally gets a break.”",
+            "name": "Marcus T."
           }
         },
         "video_2": {
           "type": "video",
           "settings": {
             "poster_asset": "dandy-cap-videos-2.webp",
-            "video_asset": ""
+            "video_asset": "",
+            "quote": "“Finally done choking down green dirt.”",
+            "name": "Jason M."
           }
         },
         "video_3": {
           "type": "video",
           "settings": {
             "poster_asset": "dandy-cap-videos-3.webp",
-            "video_asset": ""
+            "video_asset": "",
+            "quote": "“The knot between my shoulder blades is finally gone.”",
+            "name": "Sarah L."
           }
         },
         "video_4": {
           "type": "video",
           "settings": {
             "poster_asset": "dandy-cap-videos-4.webp",
-            "video_asset": ""
+            "video_asset": "",
+            "quote": "“Skeptical first-timer. Completely won over.”",
+            "name": "Brent W."
           }
         }
       },
@@ -1028,7 +1058,10 @@
         "body": "Job sites at 11 AM, post-workout evenings, and the moment you stop noticing your back.",
         "gummies_image": "",
         "gummies_image_asset": "dandy-cap-table-50.png",
-        "background_color": "#164020"
+        "background_color": "#164020",
+        "verified_label": "Verified Buyer",
+        "verified_icon": "",
+        "verified_icon_asset": "dandy-cap-icon-verified.svg"
       }
     },
     "faq": {
@@ -1103,8 +1136,8 @@
       ],
       "name": "Dandy FAQ",
       "settings": {
-        "eyebrow": "FAQs",
-        "eyebrow_mobile": "FAQ’s",
+        "eyebrow": "",
+        "eyebrow_mobile": "",
         "heading": "Everything you need to know before your first jar.",
         "hand_image": "",
         "hand_image_asset": "dandy-cap-guarantee-hand.png",
@@ -1119,57 +1152,50 @@
         "t1": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.”",
-            "name": "Placeholder A."
+            "quote": "“Swallowed one capsule before a 6-hour road trip. Zero lower-back throbbing when I climbed out of the driver’s seat. Unheard of for me.”",
+            "name": "Gary P."
           }
         },
         "t2": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, ut labore et dolore magna aliqua.”",
-            "name": "Placeholder B."
+            "quote": "“CBD did nothing. Prescriptions turned me into a zombie. Dandy takes the sharp edge off my joint stiffness while my brain stays 100% locked in.”",
+            "name": "Karen B."
           }
         },
         "t3": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation ullamco.”",
-            "name": "Placeholder C."
+            "quote": "“The 90 mg is a lifesaver for roofing in 90-degree summer heat. Muscles stay loose, no cramping, and zero stomach burn.”",
+            "name": "Tyler S."
           }
         },
         "t4": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis aute irure dolor in reprehenderit.”",
-            "name": "Placeholder D."
+            "quote": "“I can actually bend down and garden for three hours on Saturday without having to lie flat on an ice pack all Sunday morning.”",
+            "name": "Diane M."
           }
         },
         "t5": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, excepteur sint occaecat cupidatat.”",
-            "name": "Placeholder E."
+            "quote": "“No green powder dusting my kitchen counter. No measuring spoons. Just one clean capsule with water and the physical tension melts away.”",
+            "name": "Chris V."
           }
         },
         "t6": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sunt in culpa qui officia deserunt.”",
-            "name": "Placeholder F."
+            "quote": "“I work 14-hour days on a commercial fishing rig. The 90 mg keeps my hands and back working smoothly without dulling my reflexes.”",
+            "name": "Luke D."
           }
         },
         "t7": {
           "type": "review",
           "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut perspiciatis unde omnis.”",
-            "name": "Placeholder G."
-          }
-        },
-        "t8": {
-          "type": "review",
-          "settings": {
-            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, nemo enim ipsam voluptatem.”",
-            "name": "Placeholder H."
+            "quote": "“Fast shipping, arrived in a plain brown box, and the physical comfort was noticeable within 45 minutes. Already reordered.”",
+            "name": "Rachel H."
           }
         }
       },
@@ -1180,8 +1206,7 @@
         "t4",
         "t5",
         "t6",
-        "t7",
-        "t8"
+        "t7"
       ],
       "name": "Dandy trust",
       "settings": {
