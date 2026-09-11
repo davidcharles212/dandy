@@ -54,8 +54,8 @@
     --dandy-pt-mobile: {{ section.settings.padding_top_mobile }}px;
     --dandy-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
     --dandy-section-bg: {{ section.settings.background_color }};
-    --dandy-icon-info: url('{{ 'dandy-icon-info.svg' | asset_url }}');
-    --dandy-icon-plus: url('{{ 'dandy-icon-plus.svg' | asset_url }}');
+    --dandy-icon-info: url('{{ section.settings.info_icon_asset | default: 'dandy-icon-info.svg' | asset_url }}');
+    --dandy-icon-plus: url('{{ section.settings.plus_icon_asset | default: 'dandy-icon-plus.svg' | asset_url }}');
   "
   data-testid="dandy-product-information"
 >
@@ -92,6 +92,8 @@
     { "type": "color", "id": "accent_grad_a", "label": "Accent gradient start" },
     { "type": "color", "id": "accent_grad_b", "label": "Accent gradient end" },
     { "type": "color", "id": "cream_color", "label": "Canvas cream" },
+    { "type": "text", "id": "plus_icon_asset", "label": "Accordion plus icon (assets/ filename)", "info": "Blank = dandy-icon-plus.svg" },
+    { "type": "text", "id": "info_icon_asset", "label": "Info-link icon (assets/ filename)", "info": "Blank = dandy-icon-info.svg" },
     { "type": "header", "content": "Buy buttons" },
     {
       "type": "checkbox",

@@ -28,12 +28,13 @@
 
 /* tiers */
 .co-tiers { display: grid; gap: 12px; border: 0; padding: 0; margin: 0; }
-.co-tier { position: relative; display: block; border: 2px solid var(--co-line); border-radius: 12px; background: #fff; cursor: pointer; transition: border-color 140ms, background-color 140ms; overflow: hidden; }
+.co .co-tier { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; margin: 0; padding: 0; border: 2px solid var(--co-line); border-radius: 12px; background: #fff; cursor: pointer; transition: border-color 140ms, background-color 140ms; overflow: hidden; font: inherit; }
+.co .co-tier > .co-ribbon, .co .co-tier > .co-tier-body { grid-column: 1; width: 100%; }
 .co-tier > input { position: absolute; top: 50%; left: 12px; opacity: 0; width: 22px; height: 22px; margin: 0; }
 .co-tier:has(input:checked) { border-color: var(--co-accent); box-shadow: 0 0 0 2px var(--co-accent), 0 0 0 5px color-mix(in srgb, var(--co-accent) 14%, transparent); background: var(--co-tint); }
 .co-tier:has(input:focus-visible) { outline: 2px dashed var(--co-ink); outline-offset: 6px; }
 .co-tier:hover { border-color: color-mix(in srgb, var(--co-ink) 55%, transparent); }
-.co-tier-body { display: grid; grid-template-columns: 20px 86px minmax(0, 1fr) auto; grid-template-rows: auto auto auto auto; column-gap: 8px; row-gap: 5px; align-items: center; padding: 12px; }
+.co .co-tier-body { display: grid; grid-template-columns: 20px 86px minmax(0, 1fr) auto; grid-template-rows: auto auto auto auto; column-gap: 8px; row-gap: 5px; align-items: center; padding: 12px; }
 .co-radio { grid-column: 1; grid-row: 1 / 4; width: 20px; height: 20px; border: 2px solid color-mix(in srgb, var(--co-ink) 45%, transparent); border-radius: 50%; background: #fff; display: grid; place-items: center; }
 .co-tier:has(input:checked) .co-radio { border-color: var(--co-ink); }
 .co-tier:has(input:checked) .co-radio::after { content: ''; width: 10px; height: 10px; background: var(--co-ink); border-radius: 50%; }
@@ -50,7 +51,7 @@
 .co-shipping { white-space: nowrap; font-size: 13px; }
 .co-shipping--free { color: var(--co-accent); font-weight: 800; }
 .co-tier--hero { border-color: var(--co-accent-deep); }
-.co-ribbon { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 8px 6px; background: var(--co-ink); color: #fff; font-size: 14px; font-weight: 800; line-height: 1.25; text-align: center; }
+.co .co-ribbon { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 8px 6px; background: var(--co-ink); color: #fff; font-size: 14px; font-weight: 800; line-height: 1.25; text-align: center; }
 .co-tier--hero .co-badge { color: #fff; background: var(--co-accent); }
 .co-tier--hero .co-daily { color: var(--co-accent-deep); font-weight: 800; }
 

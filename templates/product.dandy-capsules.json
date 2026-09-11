@@ -107,7 +107,9 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["content"]
+                  "block_order": [
+                    "content"
+                  ]
                 },
                 "strength_guide": {
                   "type": "popup-link",
@@ -147,10 +149,15 @@
                       "blocks": {}
                     }
                   },
-                  "block_order": ["content"]
+                  "block_order": [
+                    "content"
+                  ]
                 }
               },
-              "block_order": ["what_is_kratom", "strength_guide"]
+              "block_order": [
+                "what_is_kratom",
+                "strength_guide"
+              ]
             },
             "offer": {
               "type": "dandy-capsule-offer",
@@ -225,69 +232,177 @@
               "blocks": {
                 "how_it_feels": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "How it feels", "open_by_default": false, "icon": "none", "width": 20 },
+                  "settings": {
+                    "heading": "How it feels",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
                   "blocks": {
                     "content": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Within 35 to 50 minutes, most people notice a warm, loosening sensation spreading through the lower back, neck and joints. The physical background noise of the day fades. Unlike sedating remedies, your head stays completely clear, sharp and focused.</p>",
-                        "width": "fit-content", "max_width": "normal", "alignment": "left", "type_preset": "rte", "font": "var(--font-body--family)", "font_size": "1rem", "line_height": "normal", "letter_spacing": "normal", "case": "none", "wrap": "pretty", "text_color": "", "background": false, "background_color": "#00000026", "corner_radius": 0, "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
                       },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["content"]
+                  "block_order": [
+                    "content"
+                  ]
                 },
                 "ingredients": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Ingredients & testing", "open_by_default": false, "icon": "none", "width": 20 },
+                  "settings": {
+                    "heading": "Ingredients & testing",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
                   "blocks": {
                     "content": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Each capsule contains pure standardized Mitragyna speciosa leaf extract (50 mg or 90 mg mitragynine), microcrystalline cellulose (a plant fiber for smooth, even absorption) and a vegan HPMC capsule shell. Nothing else.</p><p>Every batch is third-party tested for purity, heavy metals, microbials and precise alkaloid potency. The batch number is printed on the bottom of your jar so you can read its Certificate of Analysis.</p>",
-                        "width": "fit-content", "max_width": "normal", "alignment": "left", "type_preset": "rte", "font": "var(--font-body--family)", "font_size": "1rem", "line_height": "normal", "letter_spacing": "normal", "case": "none", "wrap": "pretty", "text_color": "", "background": false, "background_color": "#00000026", "corner_radius": 0, "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
                       },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["content"]
+                  "block_order": [
+                    "content"
+                  ]
                 },
                 "shipping": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "Shipping and Returns", "open_by_default": false, "icon": "none", "width": 20 },
+                  "settings": {
+                    "heading": "Shipping and Returns",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
                   "blocks": {
                     "content": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Orders placed by 2 PM Central ship the same business day in plain, unmarked packaging. Free shipping on two jars or more.</p><p>Every jar is covered by the 30-Day Physical Relief Guarantee: if it isn't for you, email support@foreverdandy.com within 30 days of delivery for a full refund. No return required.</p>",
-                        "width": "fit-content", "max_width": "normal", "alignment": "left", "type_preset": "rte", "font": "var(--font-body--family)", "font_size": "1rem", "line_height": "normal", "letter_spacing": "normal", "case": "none", "wrap": "pretty", "text_color": "", "background": false, "background_color": "#00000026", "corner_radius": 0, "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
                       },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["content"]
+                  "block_order": [
+                    "content"
+                  ]
                 },
                 "how_to_take": {
                   "type": "_accordion-row",
-                  "settings": { "heading": "How to take it", "open_by_default": false, "icon": "none", "width": 20 },
+                  "settings": {
+                    "heading": "How to take it",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
                   "blocks": {
                     "content": {
                       "type": "text",
                       "settings": {
                         "text": "<p>Swallow one capsule whole with a full glass of water, ideally on an empty or light stomach. Wait a full 60 minutes to see how your body responds before considering another. Adults 21+ only.</p>",
-                        "width": "fit-content", "max_width": "normal", "alignment": "left", "type_preset": "rte", "font": "var(--font-body--family)", "font_size": "1rem", "line_height": "normal", "letter_spacing": "normal", "case": "none", "wrap": "pretty", "text_color": "", "background": false, "background_color": "#00000026", "corner_radius": 0, "padding-block-start": 0, "padding-block-end": 0, "padding-inline-start": 0, "padding-inline-end": 0
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
                       },
                       "blocks": {}
                     }
                   },
-                  "block_order": ["content"]
+                  "block_order": [
+                    "content"
+                  ]
                 }
               },
-              "block_order": ["how_it_feels", "ingredients", "shipping", "how_to_take"]
+              "block_order": [
+                "how_it_feels",
+                "ingredients",
+                "shipping",
+                "how_to_take"
+              ]
             }
           },
-          "block_order": ["rating", "header", "benefits", "info_links", "offer", "accordion"]
+          "block_order": [
+            "rating",
+            "header",
+            "benefits",
+            "info_links",
+            "offer",
+            "accordion"
+          ]
         }
       },
       "settings": {
@@ -303,20 +418,71 @@
         "padding_top": 30,
         "padding_bottom": 70,
         "padding_top_mobile": 4,
-        "padding_bottom_mobile": 0
+        "padding_bottom_mobile": 0,
+        "plus_icon_asset": "dandy-cap-icon-plus.svg",
+        "info_icon_asset": "dandy-cap-icon-info.svg"
       }
     },
     "reviews": {
       "type": "dandy-pdp-reviews",
       "blocks": {
-        "review_1": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”", "author": "Placeholder A.", "show_verified": true } },
-        "review_2": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco.”", "author": "Placeholder B.", "show_verified": true } },
-        "review_3": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit.”", "author": "Placeholder C.", "show_verified": true } },
-        "review_4": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident.”", "author": "Placeholder D.", "show_verified": true } },
-        "review_5": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt in culpa qui officia deserunt mollit anim id est laborum.”", "author": "Placeholder E.", "show_verified": true } },
-        "review_6": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit.”", "author": "Placeholder F.", "show_verified": true } }
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”",
+            "author": "Placeholder A.",
+            "show_verified": true
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco.”",
+            "author": "Placeholder B.",
+            "show_verified": true
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit.”",
+            "author": "Placeholder C.",
+            "show_verified": true
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident.”",
+            "author": "Placeholder D.",
+            "show_verified": true
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sunt in culpa qui officia deserunt mollit anim id est laborum.”",
+            "author": "Placeholder E.",
+            "show_verified": true
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus error sit.”",
+            "author": "Placeholder F.",
+            "show_verified": true
+          }
+        }
       },
-      "block_order": ["review_1", "review_2", "review_3", "review_4", "review_5", "review_6"],
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6"
+      ],
       "name": "Dandy reviews",
       "settings": {
         "rating_text": "Rated 4.9 / 5 | From 1,200+ Reviews",
@@ -370,7 +536,10 @@
           }
         }
       },
-      "block_order": ["otc", "dandy"],
+      "block_order": [
+        "otc",
+        "dandy"
+      ],
       "name": "Dandy how it feels",
       "settings": {
         "eyebrow": "How Dandy feels",
@@ -418,7 +587,11 @@
           }
         }
       },
-      "block_order": ["card_1", "card_2", "card_3"],
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
       "name": "Dandy flavor",
       "settings": {
         "heading": "All the relief. Zero toss-and-wash.",
@@ -438,7 +611,13 @@
             "image": "",
             "image_asset": "dandy-cap-compare-otc.png",
             "desktop_column": "left",
-            "img_width": 115, "img_height": 88, "img_top": 27, "img_right": 29, "img_offset": 14, "peek_height": 51, "peek_offset": 14
+            "img_width": 115,
+            "img_height": 88,
+            "img_top": 27,
+            "img_right": 29,
+            "img_offset": 14,
+            "peek_height": 51,
+            "peek_offset": 14
           }
         },
         "cbd": {
@@ -449,7 +628,13 @@
             "image": "",
             "image_asset": "dandy-cap-compare-cbd.png",
             "desktop_column": "left",
-            "img_width": 124, "img_height": 122, "img_top": 4, "img_right": 29, "img_offset": 0, "peek_height": 63, "peek_offset": 0
+            "img_width": 124,
+            "img_height": 122,
+            "img_top": 4,
+            "img_right": 29,
+            "img_offset": 0,
+            "peek_height": 63,
+            "peek_offset": 0
           }
         },
         "rx": {
@@ -460,7 +645,13 @@
             "image": "",
             "image_asset": "dandy-cap-compare-rx.png",
             "desktop_column": "left",
-            "img_width": 105, "img_height": 93, "img_top": 20, "img_right": 41, "img_offset": 0, "peek_height": 63, "peek_offset": 0
+            "img_width": 105,
+            "img_height": 93,
+            "img_top": 20,
+            "img_right": 41,
+            "img_offset": 0,
+            "peek_height": 63,
+            "peek_offset": 0
           }
         },
         "raw": {
@@ -471,7 +662,13 @@
             "image": "",
             "image_asset": "dandy-cap-compare-raw.png",
             "desktop_column": "right",
-            "img_width": 107, "img_height": 98, "img_top": 13, "img_right": 43, "img_offset": 5, "peek_height": 63, "peek_offset": -5
+            "img_width": 107,
+            "img_height": 98,
+            "img_top": 13,
+            "img_right": 43,
+            "img_offset": 5,
+            "peek_height": 63,
+            "peek_offset": -5
           }
         },
         "difference": {
@@ -495,7 +692,13 @@
           }
         }
       },
-      "block_order": ["otc", "cbd", "rx", "raw", "difference"],
+      "block_order": [
+        "otc",
+        "cbd",
+        "rx",
+        "raw",
+        "difference"
+      ],
       "name": "Dandy comparison",
       "settings": {
         "heading": "Why Dandy isn’t like the rest",
@@ -546,7 +749,12 @@
           }
         }
       },
-      "block_order": ["card_1", "card_2", "card_3", "card_4"],
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
       "name": "Dandy feel good",
       "settings": {
         "heading": "Move freely. Stay in the game.",
@@ -643,7 +851,12 @@
           }
         }
       },
-      "block_order": ["step_1", "step_2", "step_3", "step_4"],
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
       "name": "Dandy start low",
       "settings": {
         "heading_accent": "Start low.",
@@ -655,15 +868,100 @@
     "table": {
       "type": "dandy-pdp-table",
       "blocks": {
-        "row_1": { "type": "row", "settings": { "label": "Deep Physical Tension Relief", "label_mobile": "Deep Physical\nTension Relief", "dandy": "Yes", "val_1": "not_always", "val_2": "no", "val_3": "yes", "val_4": "yes" } },
-        "row_2": { "type": "row", "settings": { "label": "Zero Mental Fog", "label_mobile": "Zero\nMental Fog", "dandy": "Yes", "val_1": "not_always", "val_2": "yes", "val_3": "no", "val_4": "not_always" } },
-        "row_3": { "type": "row", "settings": { "label": "Gentle On The Stomach", "label_mobile": "Gentle On\nThe Stomach", "dandy": "Yes", "val_1": "no", "val_2": "yes", "val_3": "usually", "val_4": "no" } },
-        "row_4": { "type": "row", "settings": { "label": "Clean Mood Lift", "label_mobile": "Clean\nMood Lift", "dandy": "Yes", "val_1": "no", "val_2": "not_always", "val_3": "no", "val_4": "yes" } },
-        "row_5": { "type": "row", "settings": { "label": "Exact Standardized Dose", "label_mobile": "Exact\nStandardized Dose", "dandy": "Yes", "val_1": "yes", "val_2": "usually", "val_3": "yes", "val_4": "no" } },
-        "row_6": { "type": "row", "settings": { "label": "No Foul Taste Or Sludge", "label_mobile": "No Foul Taste\nOr Sludge", "dandy": "Yes", "val_1": "yes", "val_2": "yes", "val_3": "yes", "val_4": "no" } },
-        "row_7": { "type": "row", "settings": { "label": "One Small Capsule", "label_mobile": "One Small\nCapsule", "dandy": "Yes", "val_1": "yes", "val_2": "usually", "val_3": "yes", "val_4": "no" } }
+        "row_1": {
+          "type": "row",
+          "settings": {
+            "label": "Deep Physical Tension Relief",
+            "label_mobile": "Deep Physical\nTension Relief",
+            "dandy": "Yes",
+            "val_1": "not_always",
+            "val_2": "no",
+            "val_3": "yes",
+            "val_4": "yes"
+          }
+        },
+        "row_2": {
+          "type": "row",
+          "settings": {
+            "label": "Zero Mental Fog",
+            "label_mobile": "Zero\nMental Fog",
+            "dandy": "Yes",
+            "val_1": "not_always",
+            "val_2": "yes",
+            "val_3": "no",
+            "val_4": "not_always"
+          }
+        },
+        "row_3": {
+          "type": "row",
+          "settings": {
+            "label": "Gentle On The Stomach",
+            "label_mobile": "Gentle On\nThe Stomach",
+            "dandy": "Yes",
+            "val_1": "no",
+            "val_2": "yes",
+            "val_3": "usually",
+            "val_4": "no"
+          }
+        },
+        "row_4": {
+          "type": "row",
+          "settings": {
+            "label": "Clean Mood Lift",
+            "label_mobile": "Clean\nMood Lift",
+            "dandy": "Yes",
+            "val_1": "no",
+            "val_2": "not_always",
+            "val_3": "no",
+            "val_4": "yes"
+          }
+        },
+        "row_5": {
+          "type": "row",
+          "settings": {
+            "label": "Exact Standardized Dose",
+            "label_mobile": "Exact\nStandardized Dose",
+            "dandy": "Yes",
+            "val_1": "yes",
+            "val_2": "usually",
+            "val_3": "yes",
+            "val_4": "no"
+          }
+        },
+        "row_6": {
+          "type": "row",
+          "settings": {
+            "label": "No Foul Taste Or Sludge",
+            "label_mobile": "No Foul Taste\nOr Sludge",
+            "dandy": "Yes",
+            "val_1": "yes",
+            "val_2": "yes",
+            "val_3": "yes",
+            "val_4": "no"
+          }
+        },
+        "row_7": {
+          "type": "row",
+          "settings": {
+            "label": "One Small Capsule",
+            "label_mobile": "One Small\nCapsule",
+            "dandy": "Yes",
+            "val_1": "yes",
+            "val_2": "usually",
+            "val_3": "yes",
+            "val_4": "no"
+          }
+        }
       },
-      "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5", "row_6", "row_7"],
+      "block_order": [
+        "row_1",
+        "row_2",
+        "row_3",
+        "row_4",
+        "row_5",
+        "row_6",
+        "row_7"
+      ],
       "name": "Dandy comparison table",
       "settings": {
         "heading": "Your daily relief shouldn't come with a catch.",
@@ -688,12 +986,41 @@
     "videos": {
       "type": "dandy-pdp-videos",
       "blocks": {
-        "video_1": { "type": "video", "settings": { "poster_asset": "dandy-cap-videos-1.webp", "video_asset": "" } },
-        "video_2": { "type": "video", "settings": { "poster_asset": "dandy-cap-videos-2.webp", "video_asset": "" } },
-        "video_3": { "type": "video", "settings": { "poster_asset": "dandy-cap-videos-3.webp", "video_asset": "" } },
-        "video_4": { "type": "video", "settings": { "poster_asset": "dandy-cap-videos-4.webp", "video_asset": "" } }
+        "video_1": {
+          "type": "video",
+          "settings": {
+            "poster_asset": "dandy-cap-videos-1.webp",
+            "video_asset": ""
+          }
+        },
+        "video_2": {
+          "type": "video",
+          "settings": {
+            "poster_asset": "dandy-cap-videos-2.webp",
+            "video_asset": ""
+          }
+        },
+        "video_3": {
+          "type": "video",
+          "settings": {
+            "poster_asset": "dandy-cap-videos-3.webp",
+            "video_asset": ""
+          }
+        },
+        "video_4": {
+          "type": "video",
+          "settings": {
+            "poster_asset": "dandy-cap-videos-4.webp",
+            "video_asset": ""
+          }
+        }
       },
-      "block_order": ["video_1", "video_2", "video_3", "video_4"],
+      "block_order": [
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4"
+      ],
       "name": "Dandy videos",
       "settings": {
         "heading": "How people do Dandy.",
@@ -707,16 +1034,73 @@
     "faq": {
       "type": "dandy-pdp-faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "What does taking a Dandy capsule feel like?", "answer": "<p>Most people describe a deep, warm release of physical tension across the lower back, neck and joints, paired with a calm, alert clarity. Within about 45 minutes the nagging physical background noise softens. Unlike sedating remedies or muscle relaxers, there's no brain fog, heavy eyelids or couch-lock. Your head stays sharp while your body feels loose and easy to move in.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "Which strength should I start with, 50 mg or 90 mg?", "answer": "<p>New to kratom, or after everyday relief from desk stiffness, workouts or general wear-and-tear? Start with <strong>50 mg</strong>. One capsule is the ideal baseline.</p><p>Persistent, intense physical discomfort, demanding physical shifts, or an established botanical tolerance? Choose <strong>90 mg</strong>. Either way, start with a single capsule and a full glass of water.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "How quickly does it work, and how long does it last?", "answer": "<p>The vegan HPMC shell breaks down in the stomach within about 10 minutes. Most people feel the physical unwinding within 35 to 50 minutes, a little faster on an empty or light stomach. The ease and clear focus typically last 4 to 6 hours, tapering off gently with no crash or rebound stiffness.</p>" } },
-        "q4": { "type": "question", "settings": { "question": "What's in each capsule, and is it tested?", "answer": "<p>A minimalist formula: pure <em>Mitragyna speciosa</em> leaf extract standardized to an exact 50 mg or 90 mg of mitragynine, microcrystalline cellulose (plant fiber for even dispersion), and a vegan plant-cellulose (HPMC) shell. Zero gelatin, zero sugar, zero fillers, zero calories.</p><p>Every batch is independently third-party tested by an accredited ISO lab for alkaloid potency, heavy metals, pesticides and microbials. The batch number is printed on the bottom of your jar and links to its full Certificate of Analysis.</p>" } },
-        "q5": { "type": "question", "settings": { "question": "Is Dandy legal, and how is it different from 7-OH products?", "answer": "<p>Yes, Dandy is federally legal. It's made exclusively from natural, unadulterated Southeast Asian kratom leaf extract, a botanical in the coffee family with centuries of traditional use for physical endurance and comfort.</p><p>Dandy is fundamentally different from synthetic or hyper-concentrated 7-hydroxymitragynine (7-OH) tablets and gas-station shots, which have faced regulatory bans. Dandy contains only the natural leaf alkaloid profile, dominated by mitragynine with minor alkaloids below 1%, and ships legally to your door in the states where kratom is regulated for adults 21+.</p>" } },
-        "q6": { "type": "question", "settings": { "question": "Is kratom habit-forming? Can I take it every day?", "answer": "<p>Like coffee, tea or any botanical that provides noticeable physical support, kratom can be habit-forming with continuous daily use. That's why we advocate intentional relief: take it on heavy physical days, after hard workouts, or when stiffness flares. One or two days off per week keeps your receptors responsive so a single capsule keeps delivering, without needing more.</p>" } },
-        "q7": { "type": "question", "settings": { "question": "Who are Dandy capsules for, and who should avoid them?", "answer": "<p>Healthy adults 21 and older who need serious physical comfort from joint stiffness, muscular strain or demanding physical lifestyles, without the fog of sedatives or the stomach irritation of daily over-the-counter pills.</p><p>Not for anyone under 21, anyone pregnant or nursing, or anyone taking prescription medication without first consulting their physician.</p>" } },
-        "q8": { "type": "question", "settings": { "question": "What if Dandy doesn't relieve my discomfort?", "answer": "<p>You're covered by the <strong>30-Day Physical Relief Guarantee</strong>. Use the capsules for a full month in your real routine. If your body doesn't feel noticeably looser, lighter and more comfortable, email <a href=\"mailto:support@foreverdandy.com\">support@foreverdandy.com</a> within 30 days of delivery and we refund your purchase. No interrogation, no return shipping, no hard feelings.</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What does taking a Dandy capsule feel like?",
+            "answer": "<p>Most people describe a deep, warm release of physical tension across the lower back, neck and joints, paired with a calm, alert clarity. Within about 45 minutes the nagging physical background noise softens. Unlike sedating remedies or muscle relaxers, there's no brain fog, heavy eyelids or couch-lock. Your head stays sharp while your body feels loose and easy to move in.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Which strength should I start with, 50 mg or 90 mg?",
+            "answer": "<p>New to kratom, or after everyday relief from desk stiffness, workouts or general wear-and-tear? Start with <strong>50 mg</strong>. One capsule is the ideal baseline.</p><p>Persistent, intense physical discomfort, demanding physical shifts, or an established botanical tolerance? Choose <strong>90 mg</strong>. Either way, start with a single capsule and a full glass of water.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "How quickly does it work, and how long does it last?",
+            "answer": "<p>The vegan HPMC shell breaks down in the stomach within about 10 minutes. Most people feel the physical unwinding within 35 to 50 minutes, a little faster on an empty or light stomach. The ease and clear focus typically last 4 to 6 hours, tapering off gently with no crash or rebound stiffness.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "What's in each capsule, and is it tested?",
+            "answer": "<p>A minimalist formula: pure <em>Mitragyna speciosa</em> leaf extract standardized to an exact 50 mg or 90 mg of mitragynine, microcrystalline cellulose (plant fiber for even dispersion), and a vegan plant-cellulose (HPMC) shell. Zero gelatin, zero sugar, zero fillers, zero calories.</p><p>Every batch is independently third-party tested by an accredited ISO lab for alkaloid potency, heavy metals, pesticides and microbials. The batch number is printed on the bottom of your jar and links to its full Certificate of Analysis.</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Is Dandy legal, and how is it different from 7-OH products?",
+            "answer": "<p>Yes, Dandy is federally legal. It's made exclusively from natural, unadulterated Southeast Asian kratom leaf extract, a botanical in the coffee family with centuries of traditional use for physical endurance and comfort.</p><p>Dandy is fundamentally different from synthetic or hyper-concentrated 7-hydroxymitragynine (7-OH) tablets and gas-station shots, which have faced regulatory bans. Dandy contains only the natural leaf alkaloid profile, dominated by mitragynine with minor alkaloids below 1%, and ships legally to your door in the states where kratom is regulated for adults 21+.</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Is kratom habit-forming? Can I take it every day?",
+            "answer": "<p>Like coffee, tea or any botanical that provides noticeable physical support, kratom can be habit-forming with continuous daily use. That's why we advocate intentional relief: take it on heavy physical days, after hard workouts, or when stiffness flares. One or two days off per week keeps your receptors responsive so a single capsule keeps delivering, without needing more.</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Who are Dandy capsules for, and who should avoid them?",
+            "answer": "<p>Healthy adults 21 and older who need serious physical comfort from joint stiffness, muscular strain or demanding physical lifestyles, without the fog of sedatives or the stomach irritation of daily over-the-counter pills.</p><p>Not for anyone under 21, anyone pregnant or nursing, or anyone taking prescription medication without first consulting their physician.</p>"
+          }
+        },
+        "q8": {
+          "type": "question",
+          "settings": {
+            "question": "What if Dandy doesn't relieve my discomfort?",
+            "answer": "<p>You're covered by the <strong>30-Day Physical Relief Guarantee</strong>. Use the capsules for a full month in your real routine. If your body doesn't feel noticeably looser, lighter and more comfortable, email <a href=\"mailto:support@foreverdandy.com\">support@foreverdandy.com</a> within 30 days of delivery and we refund your purchase. No interrogation, no return shipping, no hard feelings.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8"
+      ],
       "name": "Dandy FAQ",
       "settings": {
         "eyebrow": "FAQs",
@@ -732,16 +1116,73 @@
     "trust": {
       "type": "dandy-pdp-trust",
       "blocks": {
-        "t1": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.”", "name": "Placeholder A." } },
-        "t2": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, ut labore et dolore magna aliqua.”", "name": "Placeholder B." } },
-        "t3": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation ullamco.”", "name": "Placeholder C." } },
-        "t4": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis aute irure dolor in reprehenderit.”", "name": "Placeholder D." } },
-        "t5": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, excepteur sint occaecat cupidatat.”", "name": "Placeholder E." } },
-        "t6": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sunt in culpa qui officia deserunt.”", "name": "Placeholder F." } },
-        "t7": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut perspiciatis unde omnis.”", "name": "Placeholder G." } },
-        "t8": { "type": "review", "settings": { "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, nemo enim ipsam voluptatem.”", "name": "Placeholder H." } }
+        "t1": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.”",
+            "name": "Placeholder A."
+          }
+        },
+        "t2": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, ut labore et dolore magna aliqua.”",
+            "name": "Placeholder B."
+          }
+        },
+        "t3": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, quis nostrud exercitation ullamco.”",
+            "name": "Placeholder C."
+          }
+        },
+        "t4": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, duis aute irure dolor in reprehenderit.”",
+            "name": "Placeholder D."
+          }
+        },
+        "t5": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, excepteur sint occaecat cupidatat.”",
+            "name": "Placeholder E."
+          }
+        },
+        "t6": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sunt in culpa qui officia deserunt.”",
+            "name": "Placeholder F."
+          }
+        },
+        "t7": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut perspiciatis unde omnis.”",
+            "name": "Placeholder G."
+          }
+        },
+        "t8": {
+          "type": "review",
+          "settings": {
+            "quote": "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, nemo enim ipsam voluptatem.”",
+            "name": "Placeholder H."
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8"
+      ],
       "name": "Dandy trust",
       "settings": {
         "heading": "Trusted by 1k+ people like you",
