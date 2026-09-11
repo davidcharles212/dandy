@@ -42,7 +42,8 @@
 -%}
 
 {%- if palette_css != blank -%}
-  <style>:root{{ '{' }}{{ palette_css }}{{ '}' }}</style>
+  {%- assign palette_css = palette_css | prepend: ':root{' | append: '}' -%}
+  <style>{{ palette_css }}</style>
 {%- endif -%}
 
 <div
