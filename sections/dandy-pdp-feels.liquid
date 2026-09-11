@@ -1,0 +1,497 @@
+{%- render 'dandy-fonts' -%}
+
+<div
+  class="dpf"
+  style="--dpf-bg: {{ section.settings.background_color }}; --dpf-next: {{ section.settings.next_color }};"
+>
+  <div class="dpf__inner">
+    <div class="dpf__intro">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="dpf__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="dpf__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <p class="dpf__body">{{ section.settings.body | escape | newline_to_br }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="dpf__cards">
+      {%- for block in section.blocks -%}
+        {%- assign items = block.settings.items | newline_to_br | split: '<br />' -%}
+        <div class="dpf__card dpf__card--{{ block.settings.variant }}" {{ block.shopify_attributes }}>
+          <div class="dpf__card-text">
+            {%- if block.settings.title != blank -%}
+              <h3 class="dpf__card-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="dpf__card-desc">{{ block.settings.description | escape }}</p>
+            {%- endif -%}
+          </div>
+          <div class="dpf__card-box">
+            <ul class="dpf__list">
+              {%- for item in items -%}
+                {%- assign label = item | strip -%}
+                {%- if label != blank -%}
+                  <li class="dpf__item">
+                    {%- if block.settings.icon != blank -%}
+                      {{ block.settings.icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dpf__item-icon' }}
+                    {%- endif -%}
+                    <span class="dpf__item-text">{{ label | escape }}</span>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+            {%- if block.settings.image != blank -%}
+              <div class="dpf__brain" aria-hidden="true">
+                {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 400, 600', sizes: '(min-width: 1024px) 193px, 177px', alt: '', loading: 'lazy' }}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.settings.show_wedge -%}
+    <div class="dpf__wedge" aria-hidden="true"></div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .dpf {
+    position: relative;
+    z-index: 1;
+    margin-top: -22px;
+    background: var(--dpf-bg, #fff9f0);
+    color: #241914;
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dpf *,
+  .dpf *::before,
+  .dpf *::after {
+    box-sizing: border-box;
+  }
+
+  .dpf :where(h2, h3, p, ul) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dpf :where(ul) {
+    list-style: none;
+  }
+
+  .dpf__inner {
+    max-width: 592px;
+    margin: 0 auto;
+    padding: 0 16px 23.21px;
+  }
+
+  .dpf__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dpf .dpf__eyebrow {
+    margin: -4.01px 0;
+    color: #f4512b;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+    text-transform: uppercase;
+  }
+
+  .dpf .dpf__heading {
+    margin: -4.57px 0 -5.06px;
+    color: #241914;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dpf .dpf__body {
+    margin: -4.58px 0;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpf__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 41.11px;
+    margin-top: 53px;
+  }
+
+  .dpf__card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dpf__card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dpf .dpf__card-title {
+    margin: -3.65px 0 -4.05px;
+    color: #241914;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35.2px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: pre-wrap;
+  }
+
+  .dpf__card--dandy .dpf__card-title {
+    color: #f4512b;
+  }
+
+  .dpf .dpf__card-desc {
+    margin: -4.58px 0;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpf__card-box {
+    position: relative;
+    width: calc(100% - 4px);
+    height: 180px;
+    border-radius: 8px 8px 32px 8px;
+    background: #ffedd1;
+    box-shadow: 4px 4px 0 #a02508;
+  }
+
+  .dpf__list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .dpf__card--dandy .dpf__list {
+    gap: 16px;
+  }
+
+  .dpf .dpf__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 14px;
+  }
+
+  .dpf .dpf__item-icon {
+    display: block;
+    flex: none;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  .dpf .dpf__item-text {
+    margin: -4.01px 0;
+    color: #241914;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+    white-space: nowrap;
+  }
+
+  .dpf__card--caffeine .dpf__item-text {
+    font-variation-settings: 'opsz' 32;
+  }
+
+  .dpf__card--caffeine .dpf__item-icon {
+    width: 14.05px;
+    height: 14.05px;
+  }
+
+  .dpf__brain {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .dpf__brain img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dpf__card--caffeine .dpf__brain {
+    top: 22.88px;
+    right: 20.37px;
+    width: 157.56px;
+    height: 134.33px;
+  }
+
+  .dpf__card--dandy .dpf__brain {
+    top: 14.69px;
+    right: 9.93px;
+    width: 176.51px;
+    height: 150.64px;
+    filter: drop-shadow(0 4px 20px rgb(255 255 255 / 0.15));
+  }
+
+  .dpf__wedge {
+    position: relative;
+    z-index: 2;
+    height: 49.5px;
+    margin-bottom: -2px;
+    background: var(--dpf-next, #f4512b);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
+    box-shadow: 0 2px 0 var(--dpf-next, #f4512b);
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpf {
+      margin-top: 0;
+    }
+
+    .dpf__inner {
+      max-width: 1472px;
+      padding: 4px 32px 40px;
+    }
+
+    .dpf__intro {
+      gap: 24px;
+      max-width: 456.04px;
+    }
+
+    .dpf .dpf__eyebrow {
+      margin: -5.15px 0;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+    }
+
+    .dpf .dpf__heading {
+      max-width: 454.13px;
+      margin: -5.48px 0 -6.07px;
+      font-size: 48px;
+      line-height: 52.8px;
+    }
+
+    .dpf .dpf__body {
+      max-width: 403.55px;
+      margin: -5.72px 0;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: -0.2px;
+    }
+
+    .dpf__cards {
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .dpf__card {
+      position: relative;
+      display: block;
+      min-height: 180px;
+      border-radius: 8px 8px 32px 8px;
+      background: #ffedd1;
+      box-shadow: 4px 4px 0 #a02508;
+    }
+
+    .dpf__card-text {
+      justify-content: center;
+      min-height: 180px;
+      padding: 24px 0 24px 24px;
+    }
+
+    .dpf__card--caffeine .dpf__card-text {
+      max-width: calc(100% - 475.43px);
+      min-width: 430px;
+    }
+
+    .dpf__card--dandy .dpf__card-text {
+      max-width: calc(100% - 475px);
+      min-width: 422px;
+    }
+
+    .dpf .dpf__card-title {
+      margin: -4.57px 0 -5.06px;
+      font-size: 40px;
+      line-height: 44px;
+    }
+
+    .dpf .dpf__card-desc {
+      margin: -5.72px 0;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: -0.2px;
+    }
+
+    .dpf__card--caffeine .dpf__card-desc {
+      max-width: 406.48px;
+    }
+
+    .dpf__card--dandy .dpf__card-desc {
+      max-width: 398px;
+    }
+
+    .dpf__card-box {
+      position: static;
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+    }
+
+    .dpf__list {
+      left: auto;
+    }
+
+    .dpf__card--caffeine .dpf__list {
+      right: 265.43px;
+      width: 180.01px;
+    }
+
+    .dpf__card--dandy .dpf__list {
+      right: 178px;
+      width: 267px;
+    }
+
+    .dpf .dpf__item-text {
+      margin: -5.15px 0;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+    }
+
+    .dpf__card--caffeine .dpf__brain {
+      top: 11.97px;
+      right: 59.98px;
+      width: 183.16px;
+      height: 156.15px;
+    }
+
+    .dpf__card--dandy .dpf__brain {
+      top: 8.01px;
+      right: 34.58px;
+      width: 192.24px;
+      height: 164.06px;
+    }
+
+    .dpf__wedge {
+      height: 63.05px;
+      margin-bottom: -2px;
+    }
+  }
+
+  @media screen and (min-width: 1472px) {
+    .dpf__inner {
+      display: grid;
+      grid-template-columns: 456.04px minmax(0, 1fr);
+      column-gap: 20px;
+      align-items: start;
+    }
+
+    .dpf__cards {
+      margin-top: 37px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Dandy how it feels",
+  "tag": "section",
+  "class": "dandy-pdp-feels-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How Dandy feels" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The good mood changes everything." },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Text",
+      "default": "Caffeine can make you feel more awake. Dandy can make you feel more into the day.\n\nPeople describe a warm, euphoric lift that makes conversation flow, plans feel more appealing and focus come naturally because everything feels more interesting."
+    },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
+    { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },
+    { "type": "color", "id": "next_color", "label": "Next section color", "default": "#F4512B" }
+  ],
+  "blocks": [
+    {
+      "type": "comparison",
+      "name": "Comparison card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "Style",
+          "options": [
+            { "value": "caffeine", "label": "Caffeine (dark title)" },
+            { "value": "dandy", "label": "Dandy (orange title)" }
+          ],
+          "default": "caffeine"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Caffeine:  More awake" },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Temporarily blocks the signal that tells you you’re tired."
+        },
+        { "type": "textarea", "id": "items", "label": "List", "default": "Alert\nWired\nPotential crash", "info": "One item per line." },
+        { "type": "image_picker", "id": "icon", "label": "List icon" },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Dandy how it feels",
+      "blocks": [
+        {
+          "type": "comparison",
+          "settings": {
+            "variant": "caffeine",
+            "title": "Caffeine:  More awake",
+            "description": "Temporarily blocks the signal that tells you you’re tired.",
+            "items": "Alert\nWired\nPotential crash"
+          }
+        },
+        {
+          "type": "comparison",
+          "settings": {
+            "variant": "dandy",
+            "title": "Dandy: More alive",
+            "description": "Mitragynine works across multiple pathways, creating an experience that goes beyond stimulation alone.",
+            "items": "Better mood\nClear focus\nSocial energy\nPhysical ease"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

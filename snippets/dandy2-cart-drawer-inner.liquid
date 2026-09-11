@@ -1,0 +1,340 @@
+
+{%- liquid
+  assign free_ship_threshold = 9900
+  assign rating_score = '4.8/5'
+  assign rating_label = '1,400+ Happy Buyers'
+  assign sub_card_asset = 'dandy2-cart-sub.png'
+  assign sub_fallback_pct = 20
+  assign show_state_note = false
+
+  assign is_demo = false
+  if demo
+    assign is_demo = true
+  endif
+
+  assign units = 0
+  assign has_sub = false
+  assign compare_total = 0
+  assign upsell_key = ''
+  assign upsell_plan = ''
+  assign upsell_qty = 1
+  assign upsell_pct = 0
+  assign upsell_mode = 'change'
+  assign upsell_variant = ''
+  assign upsell_title = ''
+  assign upsell_img = ''
+-%}
+
+{%- capture lines_html -%}
+  {%- if is_demo -%}
+    {%- liquid
+      assign item_count = 2
+      assign total = 5998
+      assign compare_total = 6498
+      assign units = 2
+      assign demo_img = 'dandy2-cap-macro-thumb.webp' | asset_url
+      assign demo_price_1 = 2499 | money
+      assign demo_compare_1 = 2999 | money
+      assign demo_save_1 = 500 | money
+      assign demo_price_2 = 3499 | money
+      assign upsell_key = 'demo-1'
+      assign upsell_plan = '0'
+      assign upsell_variant = '0'
+      assign upsell_pct = 20
+      assign upsell_title = 'Mixed Berry Kratom Gummies'
+      assign upsell_img = demo_img
+    -%}
+    {%- render 'dandy2-cart-line',
+      key: 'demo-1',
+      url: '/products/mixed-berry-kratom-gummies',
+      image_src: demo_img,
+      title: 'Mixed Berry Kratom Gummies',
+      meta: 'Single pouch',
+      quantity: 1,
+      price: demo_price_1,
+      compare: demo_compare_1,
+      save: demo_save_1,
+      in_stock: true
+    -%}
+    {%- render 'dandy2-cart-line',
+      key: 'demo-2',
+      url: '/products/premium-kratom-leaf-powder',
+      image_src: demo_img,
+      title: 'Premium Kratom Leaf Powder',
+      meta: '250 g',
+      quantity: 1,
+      price: demo_price_2,
+      compare: '',
+      save: '',
+      in_stock: true
+    -%}
+  {%- else -%}
+    {%- assign item_count = cart.item_count -%}
+    {%- assign total = cart.total_price -%}
+    {%- for item in cart.items -%}
+      {%- liquid
+        assign variant_compare = item.variant.compare_at_price | default: 0
+        assign unit_compare = item.original_price | at_least: variant_compare
+
+        assign meta = ''
+        unless item.product.has_only_default_variant
+          assign meta = item.variant.title
+        endunless
+
+        if item.selling_plan_allocation
+          assign has_sub = true
+          assign plan_compare = item.selling_plan_allocation.compare_at_price | default: 0
+          assign unit_compare = unit_compare | at_least: plan_compare
+          if meta != blank
+            assign meta = meta | append: ' · '
+          endif
+          assign meta = meta | append: item.selling_plan_allocation.selling_plan.name
+        else
+          assign variant_words = item.variant.title | downcase | replace: '-', ' ' | replace: '(', ' ' | replace: ',', ' ' | split: ' '
+          assign pack_n = 1
+          for word in variant_words
+            assign word_n = word | plus: 0
+            if word_n > 0
+              assign next_word = variant_words[forloop.index]
+              if next_word contains 'pack' or next_word contains 'pouch'
+                assign pack_n = word_n
+                break
+              endif
+            endif
+          endfor
+          assign line_units = item.quantity | times: pack_n
+          assign units = units | plus: line_units
+          if upsell_key == blank and item.product.selling_plan_groups.size > 0
+            assign target_variant = nil
+            if item.variant.selling_plan_allocations.size > 0
+              assign target_variant = item.variant
+              assign target_mode = 'change'
+              assign target_qty = item.quantity
+            else
+              for v in item.product.variants
+                if v.available and v.selling_plan_allocations.size > 0
+                  assign target_variant = v
+                  break
+                endif
+              endfor
+              assign target_mode = 'swap'
+              assign target_qty = line_units
+            endif
+
+            if target_variant
+              assign best_off = -1
+              assign best_base = target_variant.price
+              for alloc in target_variant.selling_plan_allocations
+                assign plan_base = alloc.compare_at_price | default: target_variant.price
+                assign plan_off = plan_base | minus: alloc.price
+                if plan_off > best_off
+                  assign best_off = plan_off
+                  assign best_base = plan_base
+                  assign best_plan = alloc.selling_plan.id
+                endif
+              endfor
+
+              assign upsell_key = item.key
+              assign upsell_plan = best_plan
+              assign upsell_mode = target_mode
+              assign upsell_variant = target_variant.id
+              assign upsell_qty = target_qty
+              assign upsell_title = item.product.title
+              assign upsell_pct = 0
+              if best_off > 0 and best_base > 0
+                assign upsell_pct = best_off | times: 100.0 | divided_by: best_base | round
+              endif
+              if upsell_pct == 0
+                assign upsell_pct = sub_fallback_pct
+              endif
+              assign upsell_src_img = target_variant.image | default: item.product.featured_image
+              if upsell_src_img
+                assign upsell_img = upsell_src_img | image_url: width: 240
+              elsif item.image
+                assign upsell_img = item.image | image_url: width: 240
+              endif
+            endif
+          endif
+        endif
+
+        assign line_compare = unit_compare | times: item.quantity | at_least: item.original_line_price
+        assign compare_total = compare_total | plus: line_compare
+
+        assign price_str = item.final_line_price | money
+        assign compare_str = ''
+        assign save_str = ''
+        if line_compare > item.final_line_price
+          assign compare_str = line_compare | money
+          assign save_cents = line_compare | minus: item.final_line_price
+          assign save_str = save_cents | money
+        endif
+
+        assign img_src = ''
+        if item.image
+          assign img_src = item.image | image_url: width: 240
+        endif
+      -%}
+      {%- render 'dandy2-cart-line',
+        key: item.key,
+        url: item.url,
+        image_src: img_src,
+        title: item.product.title,
+        meta: meta,
+        quantity: item.quantity,
+        price: price_str,
+        compare: compare_str,
+        save: save_str,
+        in_stock: item.variant.available
+      -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- liquid
+  assign free_ship = false
+  if total >= free_ship_threshold or has_sub or units >= 3
+    assign free_ship = true
+  endif
+  assign ship_remaining = free_ship_threshold | minus: total
+  assign ship_pct = total | times: 100 | divided_by: free_ship_threshold | at_most: 100
+  if free_ship
+    assign ship_pct = 100
+  endif
+  if sub_card_asset != blank
+    assign upsell_img = sub_card_asset | asset_url
+  endif
+-%}
+
+<div
+  class="dcart__inner"
+  data-dcart-inner
+  data-item-count="{{ item_count }}"
+  {% if is_demo %}data-demo{% endif %}
+>
+  <header class="dcart__head">
+    <h2 class="dcart__title" id="DcartTitle">Your cart</h2>
+    <button type="button" class="dcart__close" data-d2-cart-close aria-label="Close cart">
+      <svg viewBox="0 0 10 10" width="10" height="10" aria-hidden="true" focusable="false"><path d="M2.80453 0L5 3.69141L7.23088 0H9.94334L6.66431 5L10 10H7.3017L5 6.39974L2.71955 10H0L3.31445 5L0.0849858 0H2.80453Z" fill="currentColor"/></svg>
+    </button>
+  </header>
+
+  <div class="dcart__rating">
+    <svg class="dcart__stars" viewBox="0 0 80 16" width="80" height="16" aria-hidden="true" focusable="false">
+      {%- for i in (0..4) -%}
+        <path transform="translate({{ i | times: 16 }} 0)" d="M7.49102 0.997349C7.7031 0.581777 8.2969 0.581776 8.50898 0.997348L10.266 4.44028C10.3491 4.60298 10.5049 4.71618 10.6853 4.74487L14.5026 5.35199C14.9634 5.42527 15.1469 5.99001 14.8172 6.32013L12.0857 9.0551C11.9567 9.18435 11.8971 9.36751 11.9256 9.54794L12.5278 13.3661C12.6005 13.827 12.1201 14.176 11.7043 13.9644L8.2591 12.2118C8.09629 12.129 7.90371 12.129 7.7409 12.2118L4.29572 13.9644C3.87987 14.176 3.39948 13.827 3.47217 13.3661L4.0744 9.54794C4.10286 9.36751 4.04334 9.18435 3.91427 9.0551L1.1828 6.32013C0.853103 5.99001 1.0366 5.42527 1.49737 5.35199L5.31475 4.74487C5.49514 4.71618 5.65095 4.60298 5.73398 4.44028L7.49102 0.997349Z" fill="currentColor"/>
+      {%- endfor -%}
+    </svg>
+    <p>{{ rating_score }} <span aria-hidden="true">|</span> {{ rating_label }}</p>
+  </div>
+
+  <p class="dcart__error" data-dcart-error role="alert" hidden></p>
+
+  {%- if item_count > 0 -%}
+    <div class="dcart__ship">
+      <p class="dcart__ship-text">
+        {%- if free_ship -%}
+          You’ve unlocked free shipping
+        {%- else -%}
+          You’re {{ ship_remaining | money }} away from free shipping
+        {%- endif -%}
+      </p>
+      <div
+        class="dcart__bar"
+        role="progressbar"
+        aria-label="Free shipping progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="{{ ship_pct }}"
+      >
+        <i style="width: {{ ship_pct }}%"></i>
+      </div>
+    </div>
+
+    <div class="dcart__scroll" data-dcart-scroll>
+      <ul class="dcart__lines" role="list">
+        {{- lines_html -}}
+      </ul>
+    </div>
+
+    <div class="dcart__foot">
+      {%- if upsell_key != blank -%}
+        <p class="dcart__upsell-label">Change to subscription &amp; save {{ upsell_pct }}%</p>
+        <div class="dcart-sub">
+          <div class="dcart-sub__copy">
+            <p class="dcart-sub__title">Save {{ upsell_pct }}% On Every Order</p>
+            <p class="dcart-sub__desc">Get this order and future orders for less.</p>
+          </div>
+          {%- if upsell_img != blank -%}
+            <img class="dcart-sub__img" src="{{ upsell_img }}" alt="" width="99" height="110" loading="lazy">
+          {%- else -%}
+            <span class="dcart-sub__img" aria-hidden="true"></span>
+          {%- endif -%}
+          <span class="dcart-sub__badge"><span class="dcart-t">Best value</span></span>
+          <button
+            type="button"
+            class="dcart-sub__btn"
+            data-dcart-switch
+            data-dcart-focus="switch"
+            data-key="{{ upsell_key }}"
+            data-plan="{{ upsell_plan }}"
+            data-variant="{{ upsell_variant }}"
+            data-mode="{{ upsell_mode }}"
+            data-quantity="{{ upsell_qty }}"
+            aria-label="Switch {{ upsell_title | escape }} to a subscription and save {{ upsell_pct }}%"
+          >
+            <span class="dcart-t">Switch &amp; save</span>
+          </button>
+        </div>
+      {%- endif -%}
+
+      <div class="dcart__total">
+        <span>Total:</span>
+        <p>
+          <b>{{ total | money }}</b>
+          {%- if compare_total > total -%}
+            <s><span class="dcart-sr">Regular price </span>{{ compare_total | money }}</s>
+          {%- endif -%}
+        </p>
+      </div>
+
+      <form action="{{ routes.cart_url }}" method="post" class="dcart__checkout">
+        <button type="submit" name="checkout" class="dcart__cta"><span class="dcart-t">Checkout</span></button>
+      </form>
+
+      <ul class="dcart__trust" role="list">
+        <li>
+          <svg class="dcart__i-shield" viewBox="-1.65 -0.25 14 14" aria-hidden="true" focusable="false"><path d="M10.3995 1.1567C10.2132 1.02634 9.97601 0.993908 9.75981 1.07276C8.52743 1.5217 7.12276 1.29152 6.09702 0.470565L5.63917 0.103016C5.46938 -0.0343387 5.22775 -0.0343387 5.05796 0.103016L4.60011 0.470565C3.5744 1.29152 2.16964 1.5217 0.937316 1.07276C0.723654 0.993908 0.483912 1.02634 0.297598 1.1567C0.111284 1.28706 0 1.50072 0 1.72901V6.24514C0 9.02219 1.52807 11.5472 3.98837 12.8356L5.13235 13.4359C5.19976 13.4708 5.27416 13.4893 5.34855 13.4893C5.42295 13.4893 5.49735 13.4708 5.56476 13.4359L6.70873 12.8356C9.16899 11.5472 10.6971 9.02138 10.6971 6.24514V1.72901C10.6971 1.50136 10.5852 1.28706 10.3995 1.1567ZM7.56729 5.41465L5.24183 8.2057C5.15344 8.31062 5.02307 8.37293 4.88572 8.37293H4.88318C4.74837 8.37293 4.61801 8.31507 4.52961 8.21014L3.13445 6.58224C2.96721 6.38702 2.9901 6.09386 3.18532 5.92663C3.38054 5.75939 3.67369 5.78228 3.84093 5.9775L4.87808 7.18699L6.84997 4.81952C7.0153 4.62176 7.30782 4.59632 7.50558 4.75911C7.70333 4.92444 7.72878 5.21696 7.56599 5.41472L7.56729 5.41465Z" fill="currentColor"/></svg>
+          30-Day Guarantee
+        </li>
+        <li>
+          <svg class="dcart__i-ship" viewBox="-0.64 -0.15 18 14" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.8612 0.0279906L16.983 2.96933C17.0847 3.01788 17.1441 3.11855 17.1443 3.22346L17.145 10.2458C17.145 10.3652 17.0701 10.4674 16.9643 10.5089L10.8612 13.4413C10.78 13.4801 10.6893 13.4772 10.6137 13.4413L4.4919 10.5C4.3902 10.4514 4.3308 10.3507 4.33057 10.2458V9.65805H1.70235C1.54463 9.65805 1.4166 9.53132 1.4166 9.37519C1.4166 9.21905 1.54463 9.09232 1.70235 9.09232H6.44895H6.45637C6.61072 9.08831 6.7347 8.96314 6.7347 8.80946C6.7347 8.65333 6.60668 8.5266 6.44895 8.5266H4.33035V7.94973H0.28575C0.128025 7.94973 0 7.823 0 7.66687C0 7.51074 0.128025 7.384 0.28575 7.384H5.03235H5.03977C5.19412 7.37999 5.3181 7.25482 5.3181 7.10114C5.3181 6.94501 5.19007 6.81828 5.03235 6.81828H4.33035L4.33012 6.24075H1.70235C1.54463 6.24075 1.4166 6.11401 1.4166 5.95788C1.4166 5.80175 1.54463 5.67502 1.70235 5.67502H6.44895H6.45637C6.61072 5.67101 6.7347 5.54584 6.7347 5.39215C6.7347 5.23602 6.60668 5.10929 6.44895 5.10929H4.33012L4.3299 3.22346C4.3299 3.10408 4.40482 3.00185 4.51057 2.96042L10.6137 0.0279906C10.6949 -0.0107639 10.7856 -0.00786845 10.8612 0.0279906ZM5.54467 3.98318C5.40293 3.9157 5.34352 3.74687 5.4117 3.60655C5.47988 3.46623 5.65042 3.40743 5.79218 3.47492L10.7375 5.8512L15.683 3.47492C15.8247 3.40743 15.9953 3.46623 16.0634 3.60655C16.1316 3.74687 16.0722 3.9157 15.9305 3.98318L11.0147 6.3452C11.0203 6.36725 11.0232 6.3902 11.0232 6.4138V12.1484C11.0232 12.3045 10.8952 12.4312 10.7375 12.4312C10.5797 12.4312 10.4517 12.3045 10.4517 12.1484V6.4138C10.4517 6.3902 10.4546 6.36725 10.4603 6.3452L5.54467 3.98318ZM13.6616 9.17696C13.536 9.08364 13.5104 8.90679 13.6046 8.78251C13.6989 8.65823 13.8776 8.63284 14.0031 8.72616L14.2486 8.90813L14.7229 7.31897C14.7672 7.16952 14.9256 7.08399 15.0766 7.12787C15.2276 7.17175 15.3139 7.32855 15.2696 7.47799L14.6792 9.45626C14.6696 9.48766 14.6547 9.51795 14.6336 9.5458C14.5393 9.67008 14.3606 9.69547 14.2351 9.60215L13.6616 9.17696Z" fill="currentColor"/></svg>
+          Fast Shipping
+        </li>
+      </ul>
+
+      <ul class="dcart__pay" role="list" aria-label="Payment methods">
+        {%- for type in shop.enabled_payment_types -%}
+          <li>{{ type | payment_type_svg_tag }}</li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if show_state_note -%}
+        <p class="dcart__legal">
+          21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, ND, NE, RI, TN, UT, VT, WV or WI,
+          <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.
+        </p>
+      {%- endif -%}
+    </div>
+  {%- else -%}
+    <div class="dcart__empty">
+      <img src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy">
+      <p class="dcart__empty-title">Rocky checked. It’s empty.</p>
+      <a class="dcart__cta" href="{{ routes.root_url }}#shop"><span class="dcart-t">Shop the lineup</span></a>
+      <div class="dcart__picks">
+        <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $24.99</span></a>
+        <a href="/products/premium-kratom-leaf-powder"><b>Powder</b><span>from $34.99</span></a>
+        <a href="/products/extract-capsules-50mg"><b>Capsules</b><span>from $28.99</span></a>
+      </div>
+    </div>
+  {%- endif -%}
+</div>

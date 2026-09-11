@@ -1,0 +1,79 @@
+<script type="application/ld+json">
+  {{ closest.product | structured_data }}
+</script>
+
+{%- render 'dandy-fonts', preload: true -%}
+{{ 'dandy-pdp.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dandy-pdp.js' | asset_url }}" type="module"></script>
+
+{%- liquid
+  assign pdp_class = 'dandy-pdp'
+  if section.settings.show_quantity
+    assign pdp_class = pdp_class | append: ' dandy-pdp--show-qty'
+  endif
+  if section.settings.show_accelerated_checkout
+    assign pdp_class = pdp_class | append: ' dandy-pdp--show-accelerated'
+  endif
+-%}
+
+<div
+  class="{{ pdp_class }}"
+  style="
+    --dandy-pt: {{ section.settings.padding_top }}px;
+    --dandy-pb: {{ section.settings.padding_bottom }}px;
+    --dandy-pt-mobile: {{ section.settings.padding_top_mobile }}px;
+    --dandy-pb-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --dandy-section-bg: {{ section.settings.background_color }};
+    --dandy-icon-info: url('{{ 'dandy-icon-info.svg' | asset_url }}');
+    --dandy-icon-plus: url('{{ 'dandy-icon-plus.svg' | asset_url }}');
+  "
+  data-testid="dandy-product-information"
+>
+  <div class="dandy-pdp__inner">
+    <product-component
+      class="dandy-pdp__grid"
+      data-product-grid-content
+      view-event-payload="{{ closest.product | standard_event_data: 'view' | escape }}"
+    >
+      {% content_for 'block', type: '_dandy-product-gallery', id: 'dandy-gallery', closest.product: closest.product %}
+      {% content_for 'block', type: '_dandy-product-details', id: 'dandy-details', closest.product: closest.product %}
+    </product-component>
+
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dandy product hero",
+  "class": "dandy-pdp-section",
+  "enabled_on": { "templates": ["product"] },
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Product subtitle, benefits and subscription perks come from product metafields: custom.product_subtitle, custom.product_benefits and custom.subscription_benefits."
+    },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
+    { "type": "header", "content": "Buy buttons" },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "Show quantity selector",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_accelerated_checkout",
+      "label": "Show dynamic checkout buttons",
+      "default": false
+    },
+    { "type": "header", "content": "Spacing - desktop (1100px and up)" },
+    { "type": "range", "id": "padding_top", "label": "Top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 30 },
+    { "type": "range", "id": "padding_bottom", "label": "Bottom", "min": 0, "max": 160, "step": 2, "unit": "px", "default": 70 },
+    { "type": "header", "content": "Spacing - mobile and tablet" },
+    { "type": "range", "id": "padding_top_mobile", "label": "Top", "min": 0, "max": 80, "step": 1, "unit": "px", "default": 4 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Bottom", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 48 }
+  ]
+}
+{% endschema %}

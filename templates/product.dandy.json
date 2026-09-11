@@ -1,0 +1,1283 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "dandy_header_announcement_LL9fRE": {
+      "type": "dandy-header-announcement",
+      "name": "Dandy header announcement",
+      "settings": {
+        "text": "Free shipping on 3+ packs",
+        "link": "",
+        "show_default_icon": true,
+        "background_color": "#f4512b",
+        "text_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_header_fpTpd8": {
+      "type": "dandy-pdp-header",
+      "name": "Dandy PDP header",
+      "settings": {
+        "menu": "main-menu",
+        "background_color": "#fff9f0",
+        "icon_color": "#000000"
+      }
+    },
+    "main": {
+      "type": "dandy-product-information",
+      "blocks": {
+        "dandy-gallery": {
+          "type": "_dandy-product-gallery",
+          "static": true,
+          "settings": {},
+          "blocks": {}
+        },
+        "dandy-details": {
+          "type": "_dandy-product-details",
+          "static": true,
+          "settings": {},
+          "blocks": {
+            "dandy_rating_XePdqL": {
+              "type": "dandy-rating",
+              "name": "Dandy rating",
+              "settings": {
+                "text": "Rated 4.8/5 | 1,400+ Happy Buyers",
+                "stars_label": "Rated 4.8 out of 5 stars"
+              },
+              "blocks": {}
+            },
+            "header": {
+              "type": "dandy-product-header",
+              "settings": {},
+              "blocks": {}
+            },
+            "benefits": {
+              "type": "dandy-product-benefits",
+              "settings": {
+                "benefit_icon": "shopify://shop_images/dandy-check-benefit.png"
+              },
+              "blocks": {}
+            },
+            "info_links": {
+              "type": "dandy-info-links",
+              "settings": {
+                "bullet_icon": "shopify://shop_images/dandy-icon-check-red.png"
+              },
+              "blocks": {
+                "what_is_kratom": {
+                  "type": "popup-link",
+                  "settings": {
+                    "behavior": "default",
+                    "heading": "What is Kratom?",
+                    "type_preset": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Kratom is a leaf from a Southeast Asian tree in the coffee family.</p><p>Its primary active compound is called <strong>mitragynine</strong>. People use it for a combination of energy, alertness, positive mood and physical ease.</p><p>Dandy extracts that compound and puts an exact 35 mg serving into one mixed-berry gummy.</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "why_dandy": {
+                  "type": "popup-link",
+                  "settings": {
+                    "behavior": "default",
+                    "heading": "Why Dandy?",
+                    "type_preset": "",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Dandy removes the confusion from trying Kratom:</p><ul><li>35 mg mitragynine in every gummy<br/></li><li>0 mg 7-OH declared on the label<br/></li><li>Independently batch tested<br/></li><li>No caffeine or THC<br/></li><li>Mixed-berry flavor<br/></li><li>No powder, measuring or preparation</li></ul>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                }
+              },
+              "block_order": [
+                "what_is_kratom",
+                "why_dandy"
+              ]
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "option_label_text_color": "",
+                "variant_style_class": "default",
+                "custom_variant_background": "{{ settings.color_palette.background }}",
+                "custom_variant_text": "{{ settings.color_palette.foreground }}",
+                "custom_variant_border": "{{ settings.color_palette.foreground }}",
+                "selected_variant_style_class": "default",
+                "custom_selected_variant_background": "{{ settings.color_palette.foreground }}",
+                "custom_selected_variant_text": "{{ settings.color_palette.background }}",
+                "custom_selected_variant_border": "{{ settings.color_palette.foreground }}",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "purchase_options": {
+              "type": "dandy-purchase-options",
+              "settings": {
+                "default_selection": "subscription",
+                "subscription_title": "Subscribe & Save [discount]",
+                "subscription_description": "One 30-count pouch every 30 days",
+                "one_time_title": "One Time Purchase",
+                "option_default": "2",
+                "option_1_title": "1 Pouch",
+                "option_1_subtitle": "30 gummies",
+                "option_1_price": "$59.99",
+                "option_1_image": "shopify://shop_images/Group_2087330545.png",
+                "option_1_badge": "",
+                "option_1_badge_style": "orange",
+                "option_1_perks": "",
+                "option_1_variant_id": "",
+                "option_2_title": "Buy 2, Get 1 FREE",
+                "option_2_subtitle": "90 gummies",
+                "option_2_price": "$119.98",
+                "option_2_image": "shopify://shop_images/Group_2087330647.png",
+                "option_2_badge": "MOST POPULAR",
+                "option_2_badge_style": "orange",
+                "option_2_perks": "$1.60 per gummy\nFree shipping",
+                "option_2_variant_id": "",
+                "option_3_title": "Buy 3, Get 2 FREE",
+                "option_3_subtitle": "150 gummies",
+                "option_3_price": "$179.97",
+                "option_3_image": "shopify://shop_images/Group_2087330649_1.png",
+                "option_3_badge": "BEST VALUE",
+                "option_3_badge_style": "dark",
+                "option_3_perks": "$1.20 per gummy\nFree shipping",
+                "option_3_variant_id": "",
+                "perk_icon": "shopify://shop_images/dandy-check-perk.png",
+                "legend": "Purchase options"
+              },
+              "blocks": {}
+            },
+            "delivery": {
+              "type": "dandy-delivery-estimate",
+              "settings": {
+                "in_stock_label": "In stock",
+                "separator": "-",
+                "delivery_label": "Delivered to you by",
+                "sold_out_label": "Currently out of stock",
+                "business_days": 3,
+                "skip_weekends": true,
+                "date_format": "short"
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "text_color": "",
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "recipient_button_style": "default",
+                "recipient_button_background": "{{ settings.color_palette.background }}",
+                "recipient_button_text": "{{ settings.color_palette.foreground }}",
+                "recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_style": "default",
+                "selected_recipient_button_background": "{{ settings.color_palette.foreground }}",
+                "selected_recipient_button_text": "{{ settings.color_palette.background }}",
+                "selected_recipient_button_border": "{{ settings.color_palette.foreground }}",
+                "input_style": "default",
+                "input_background_color": "{{ settings.color_palette.background }}",
+                "input_text_color": "{{ settings.color_palette.foreground }}",
+                "input_border_color": "{{ settings.color_palette.foreground }}",
+                "border_width": 1,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {
+                    "input_style": "default",
+                    "input_background_color": "{{ settings.color_palette.background }}",
+                    "input_text_color": "{{ settings.color_palette.foreground }}",
+                    "input_border_color": "{{ settings.color_palette.foreground }}",
+                    "border_width": 1,
+                    "border_radius": 0
+                  },
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button",
+                    "custom_button_background": "{{ settings.color_palette.foreground }}",
+                    "custom_button_text": "{{ settings.color_palette.background }}",
+                    "custom_button_border": "{{ settings.color_palette.background }}"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "trust": {
+              "type": "dandy-trust-badges",
+              "settings": {
+                "item_1_text": "30-Day Guarantee",
+                "item_2_text": "Fast Shipping",
+                "show_payment_icons": true
+              },
+              "blocks": {}
+            },
+            "guarantee": {
+              "type": "dandy-guarantee",
+              "settings": {
+                "heading": "30 day money-back guarantee",
+                "text": "If it doesn’t work for you, you get your money back.",
+                "image": "shopify://shop_images/5c0a77cd2c95a599b0f1a7d3f1de47f3bd824bd5.png"
+              },
+              "blocks": {}
+            },
+            "accordion": {
+              "type": "accordion",
+              "settings": {
+                "icon": "caret",
+                "dividers": false,
+                "divider_color": "",
+                "type_preset": "h6",
+                "background_color": "",
+                "text_color": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "how_it_feels": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "How it feels",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Placeholder content here.</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "ingredients": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Ingredients & testing",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Placeholder content here.</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "shipping": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Shipping and Returns",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Placeholder content here.</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                },
+                "how_to_take": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "How to take it",
+                    "open_by_default": false,
+                    "icon": "none",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "content": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Placeholder content here.</p>",
+                        "width": "fit-content",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "text_color": "",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "content"
+                  ]
+                }
+              },
+              "block_order": [
+                "how_it_feels",
+                "ingredients",
+                "shipping",
+                "how_to_take"
+              ]
+            }
+          },
+          "block_order": [
+            "dandy_rating_XePdqL",
+            "header",
+            "benefits",
+            "info_links",
+            "variant_picker",
+            "purchase_options",
+            "delivery",
+            "buy_buttons",
+            "trust",
+            "guarantee",
+            "accordion"
+          ]
+        }
+      },
+      "settings": {
+        "background_color": "#fff9f0",
+        "show_quantity": false,
+        "show_accelerated_checkout": false,
+        "padding_top": 30,
+        "padding_bottom": 70,
+        "padding_top_mobile": 4,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "dandy_pdp_reviews_zHaAMN": {
+      "type": "dandy-pdp-reviews",
+      "blocks": {
+        "review_wXWzTL": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "author": "Marcus T.",
+            "show_verified": true
+          }
+        },
+        "review_Fbhdkj": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "author": "Marcus T.",
+            "show_verified": true
+          }
+        },
+        "review_Mhjp89": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "author": "Marcus T.",
+            "show_verified": true
+          }
+        },
+        "review_zLDn6M": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "author": "Marcus T.",
+            "show_verified": true
+          }
+        },
+        "review_iaCwEK": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "author": "Marcus T.",
+            "show_verified": true
+          }
+        },
+        "review_Bk8H64": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "author": "Marcus T.",
+            "show_verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_wXWzTL",
+        "review_Fbhdkj",
+        "review_Mhjp89",
+        "review_zLDn6M",
+        "review_iaCwEK",
+        "review_Bk8H64"
+      ],
+      "name": "Dandy reviews",
+      "settings": {
+        "rating_text": "Rated 4.9 / 5 | From 1,400+ Reviews",
+        "rating_value": "4.9",
+        "rating_caption": "From 1,400+ Reviews",
+        "heading": "THE WORD\nON THE STREET.",
+        "verified_label": "Verified Buyer",
+        "verified_icon": "shopify://shop_images/dandy-check-verified.png",
+        "badge_1_value": "20",
+        "badge_1_label": "CALORIES\nPER GUMMY",
+        "badge_2_value": "35mg",
+        "badge_2_label": "PER GUMMY",
+        "pouch_image": "shopify://shop_images/6f2c9101d1136fc2ab480d74ea81275f4ce5c86e.png",
+        "pouch_image_mobile": "shopify://shop_images/source_image.png",
+        "pouch_cutout_mobile": "shopify://shop_images/6f2c9101d1136fc2ab480d74ea81275f4ce5c86e_2.png",
+        "person_image": "shopify://shop_images/f3db8b0a11598554305bb61c681d532c9f510340.png",
+        "background_color": "#f4512b",
+        "outside_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_feels_jBy7Tb": {
+      "type": "dandy-pdp-feels",
+      "blocks": {
+        "comparison_FqCa4G": {
+          "type": "comparison",
+          "settings": {
+            "variant": "caffeine",
+            "title": "Caffeine: More awake",
+            "description": "Temporarily blocks the signal that tells you you’re tired.",
+            "items": "Alert\nWired\nPotential crash",
+            "icon": "shopify://shop_images/dandy-icon-cross.png",
+            "image": "shopify://shop_images/ede60ddff878a2c3e4aa49ed7cc5f3c0f6dff523.png"
+          }
+        },
+        "comparison_cffdcY": {
+          "type": "comparison",
+          "settings": {
+            "variant": "dandy",
+            "title": "Dandy: More alive",
+            "description": "Mitragynine works across multiple pathways, creating an experience that goes beyond stimulation alone.",
+            "items": "Better mood\nClear focus\nSocial energy\nPhysical ease",
+            "icon": "shopify://shop_images/dandy-icon-check-red.png",
+            "image": "shopify://shop_images/285fea2c4b5855d8fffeec7e3a5802a950007970.png"
+          }
+        }
+      },
+      "block_order": [
+        "comparison_FqCa4G",
+        "comparison_cffdcY"
+      ],
+      "name": "Dandy how it feels",
+      "settings": {
+        "eyebrow": "How Dandy feels",
+        "heading": "The good mood changes everything.",
+        "body": "Caffeine can make you feel more awake. Dandy can make you feel more into the day.\n\nPeople describe a warm, euphoric lift that makes conversation flow, plans feel more appealing and focus come naturally because everything feels more interesting.",
+        "background_color": "#fff9f0",
+        "show_wedge": true,
+        "next_color": "#f4512b"
+      }
+    },
+    "dandy_pdp_flavor_gJkJRa": {
+      "type": "dandy-pdp-flavor",
+      "blocks": {
+        "card_q8EtaP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_1000003595.jpg",
+            "title": "Berry to the center",
+            "text": "A rich mixed-berry taste that does not disappear the moment you bite in."
+          }
+        },
+        "card_HQYM7J": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_1000003602.jpg",
+            "title": "35mg, measured",
+            "text": "A precisely portioned serving of mitragynine without forcing down bitter powder."
+          }
+        },
+        "card_BgpFhm": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_1000003603.jpg",
+            "title": "No chaser required",
+            "text": "One glossy gummy. No scoops, scales, capsules, shots or second drink."
+          }
+        }
+      },
+      "block_order": [
+        "card_q8EtaP",
+        "card_HQYM7J",
+        "card_BgpFhm"
+      ],
+      "name": "Dandy flavor",
+      "settings": {
+        "heading": "Kratom without the grimace",
+        "heading_mobile": "KRATOM WITHOUT\nTHE GRIMACE.",
+        "body": "Traditional kratom is famously bitter. Other gummies can hide it beneath a sugary coating, until you bite in.\n\nDandy keeps the mixed-berry flavor going from the first bite to the center, with no bitter powder or foul-tasting core.",
+        "background_color": "#f4512b"
+      }
+    },
+    "dandy_pdp_compare_hhnCTm": {
+      "type": "dandy-pdp-compare",
+      "blocks": {
+        "item_7ANBjk": {
+          "type": "item",
+          "settings": {
+            "title": "Energy gummies",
+            "text": "Usually caffeine in a chewable format. The packaging changes, but the stimulant and its potential drawbacks stay the same.",
+            "image": "shopify://shop_images/8fca96d829e0d66e1b83047c5d94c06221a8c5bf.png",
+            "desktop_column": "left",
+            "img_width": 115,
+            "img_height": 88,
+            "img_top": 27,
+            "img_right": 29,
+            "img_offset": 14,
+            "peek_height": 51,
+            "peek_offset": 14
+          }
+        },
+        "item_UPxpqA": {
+          "type": "item",
+          "settings": {
+            "title": "Calm gummies",
+            "text": "Often built around melatonin or ingredients designed to make you drowsy. Useful for sleep, but less useful when you still want to get things done.",
+            "image": "shopify://shop_images/da24cf10fe024ad3f45382a0187d68f7104d7251.png",
+            "desktop_column": "left",
+            "img_width": 124,
+            "img_height": 122,
+            "img_top": 4,
+            "img_right": 29,
+            "img_offset": 0,
+            "peek_height": 63,
+            "peek_offset": 0
+          }
+        },
+        "item_6VWz8W": {
+          "type": "item",
+          "settings": {
+            "title": "THC gummies",
+            "text": "Can help you switch off, but may also leave you feeling foggy, anxious, hungry or more impaired than intended.",
+            "image": "shopify://shop_images/63fe4c0064ba6c9f6b759185c94da84f432088b9.png",
+            "desktop_column": "left",
+            "img_width": 105,
+            "img_height": 93,
+            "img_top": 20,
+            "img_right": 41,
+            "img_offset": 0,
+            "peek_height": 63,
+            "peek_offset": 0
+          }
+        },
+        "item_WJVmDd": {
+          "type": "item",
+          "settings": {
+            "title": "Traditional kratom powder",
+            "text": "Can be bitter, messy and difficult to portion consistently without using a scale.",
+            "image": "shopify://shop_images/0fbf24594aa6ef344e7a708e9826016acb52b304.png",
+            "desktop_column": "right",
+            "img_width": 107,
+            "img_height": 98,
+            "img_top": 13,
+            "img_right": 43,
+            "img_offset": 5,
+            "peek_height": 63,
+            "peek_offset": -5
+          }
+        },
+        "difference_8LGnUj": {
+          "type": "difference",
+          "settings": {
+            "title": "The Dandy difference",
+            "heading": "A BROADER EXPERIENCE.\nONE MEASURED GUMMY.",
+            "heading_mobile": "A better feeling. A better-tasting gummy.",
+            "text": "Dandy gives you exactly 35 mg of mitragynine in one glossy mixed-berry gummy that tastes good from the first bite to the center.",
+            "points": "Warm mood and clear focus\n35 mg mitragynine\nNo caffeine or THC\nNo Bitter Core",
+            "icon": "shopify://shop_images/dandy-icon-check-orange.png",
+            "image": "shopify://shop_images/dandy-pouch-back.png",
+            "image_2": "shopify://shop_images/dandy-pouch-front.png",
+            "mobile_peek_image": "shopify://shop_images/image_1855116160.png",
+            "mobile_image": "shopify://shop_images/image_1855116188.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_7ANBjk",
+        "item_UPxpqA",
+        "item_6VWz8W",
+        "item_WJVmDd",
+        "difference_8LGnUj"
+      ],
+      "name": "Dandy comparison",
+      "settings": {
+        "heading": "Why Dandy isn’t Like The Rest",
+        "heading_mobile": "Why Dandy isn’t\nlike the rest.",
+        "body": "Most options make you choose between feeling wired, switching off or getting sleepy. Dandy delivers mood, energy, focus and ease in one measured gummy.",
+        "background_color": "#f4512b",
+        "show_wedge": true,
+        "next_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_moments_4pmfjD": {
+      "type": "dandy-pdp-moments",
+      "blocks": {
+        "card_Gjz336": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/13dac6cfe1a3e1f0288ffe1d307686a75d7daf67.png",
+            "title": "Warm, euphoric lift",
+            "text": "Feel lighter, brighter and genuinely excited to get into your day."
+          }
+        },
+        "card_RJtHDa": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/b82c7d86667fa1ba96f19b44c52fba0bc8608aa8.png",
+            "title": "Everything feels\nmore engaging",
+            "text": "Work, workouts, errands and plans become easier to get into."
+          }
+        },
+        "card_jJcdg7": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/08926b4c822e51acd2ab1bafb7799666c137633c.png",
+            "title": "Clearer focus",
+            "text": "When everything feels more interesting, staying locked in comes naturally."
+          }
+        },
+        "card_7qh6yR": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/331b193e5bb5fbc24d5f62c7f24ebd74f127105c.png",
+            "title": "Social energy",
+            "text": "Feel more open, talkative and ready to go do something."
+          }
+        },
+        "card_NtiaRE": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/0db258aab2713a32ab9a7fe5ca3c5f25e8f602a8.png",
+            "title": "Physical ease",
+            "text": "Take some of the edge off while staying awake, clear and present."
+          }
+        }
+      },
+      "block_order": [
+        "card_Gjz336",
+        "card_RJtHDa",
+        "card_jJcdg7",
+        "card_7qh6yR",
+        "card_NtiaRE"
+      ],
+      "name": "Dandy feel good",
+      "settings": {
+        "heading": "Feel good. Get Into Everything",
+        "heading_mobile": "Feel good.\nGet into everything.",
+        "body": "Not a sugar-rush jolt. A more balanced way to bring some momentum to whatever the day has planned.",
+        "body_mobile": "The warm mood lift is what makes the energy, focus and social spark feel different.",
+        "background_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_ingredients_p3ArMH": {
+      "type": "dandy-pdp-ingredients",
+      "name": "Dandy ingredients",
+      "settings": {
+        "heading_small": "What's in a",
+        "heading_large": "Dandy?",
+        "item_1_title": "KRATOM LEAF EXTRACT",
+        "item_1_text": "Exactly 35mg of mitragynine per gummy for a consistent experience.",
+        "item_1_image": "shopify://shop_images/caf1b44516a322b0449ab7e5ddc4f448616889ae.png",
+        "item_2_title": "REAL BERRY FLAVOR",
+        "item_2_text": "Natural mixed berry flavor with color from carrot and blueberry.",
+        "item_2_image": "shopify://shop_images/fbb0670f5334dd305ce177495cc222801a4ebb4f.png",
+        "item_3_title": "PLANT-BASED PECTIN",
+        "item_3_text": "A gelatin-free gummy base made with organic tapioca syrup and cane sugar.",
+        "item_3_image": "shopify://shop_images/a895a49bc9004eeea7430024d5aa90c3bc3bedb2.png",
+        "button_label": "Full ingredients list",
+        "ingredients": "<p>Kratom leaf (Mitragyna speciosa) extract.<br/><br/>Other ingredients: organic tapioca syrup, organic cane sugar, purified water, pectin, natural flavoring, citric acid, sucralose, sodium citrate, natural color from carrots and blueberry.</p>",
+        "button_link": "",
+        "product_image": "shopify://shop_images/9de3ba94165c7c0b5caf73ae3cb4d890268986b3.png",
+        "hand_image": "shopify://shop_images/image_1855116179.png",
+        "card_color": "#f4512b",
+        "background_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_start_4cXteM": {
+      "type": "dandy-pdp-start",
+      "blocks": {
+        "step_MnnCmb": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/a16a16cd964034af4c4682ad5ac01da63aa16d4d.png",
+            "label": "Start with half",
+            "text": "Take half a gummy your first time.",
+            "text_mobile": "",
+            "text_width_mobile": 99,
+            "overlay": 31,
+            "overlay_mobile": 31
+          }
+        },
+        "step_HMgG96": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/3b3ed5c55449eed10cdb8133f5382d7b8559bda0.png",
+            "label": "Wait 45 minutes",
+            "text": "Let it settle in before deciding on more.",
+            "text_mobile": "Give it time to settle before deciding on more.",
+            "text_width_mobile": 134,
+            "overlay": 36,
+            "overlay_mobile": 36
+          }
+        },
+        "step_URFQmq": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/bf4553db2843853326fe964be616ab7fbebe47c6.png",
+            "label": "Check in",
+            "text": "Notice your energy, mood and focus.",
+            "text_mobile": "",
+            "text_width_mobile": 109,
+            "overlay": 31,
+            "overlay_mobile": 0
+          }
+        },
+        "step_8yEX3W": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/da308de641e0da59119f7a090792ed744be0db5d.png",
+            "label": "Make it yours",
+            "text": "Use intentionally and take regular breaks.",
+            "text_mobile": "",
+            "text_width_mobile": 121,
+            "overlay": 31,
+            "overlay_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "step_MnnCmb",
+        "step_HMgG96",
+        "step_URFQmq",
+        "step_8yEX3W"
+      ],
+      "name": "Dandy start low",
+      "settings": {
+        "heading_accent": "Start low.",
+        "heading": "Find your sweet spot.",
+        "body": "Everyone responds differently. Start with half, give it time and only take more if you need it.",
+        "background_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_table_HLteYC": {
+      "type": "dandy-pdp-table",
+      "blocks": {
+        "row_UiiRKp": {
+          "type": "row",
+          "settings": {
+            "label": "Noticeable Energy",
+            "label_mobile": "Noticeable\nEnergy",
+            "dandy": "Yes",
+            "val_1": "yes",
+            "val_2": "yes",
+            "val_3": "no",
+            "val_4": "no"
+          }
+        },
+        "row_VhXn9c": {
+          "type": "row",
+          "settings": {
+            "label": "Caffeine Free",
+            "label_mobile": "Caffeine\nFree",
+            "dandy": "Yes",
+            "val_1": "no",
+            "val_2": "no",
+            "val_3": "usually",
+            "val_4": "yes"
+          }
+        },
+        "row_WJnq8z": {
+          "type": "row",
+          "settings": {
+            "label": "THC Free",
+            "label_mobile": "THC\nFree",
+            "dandy": "Yes",
+            "val_1": "yes",
+            "val_2": "yes",
+            "val_3": "usually",
+            "val_4": "no"
+          }
+        },
+        "row_K3Eiz3": {
+          "type": "row",
+          "settings": {
+            "label": "Supports Focus",
+            "label_mobile": "Supports\nFocus",
+            "dandy": "Yes",
+            "val_1": "yes",
+            "val_2": "yes",
+            "val_3": "no",
+            "val_4": "not_always"
+          }
+        },
+        "row_EDiCLt": {
+          "type": "row",
+          "settings": {
+            "label": "Supports Physical Ease",
+            "label_mobile": "Supports Physical\nEase",
+            "dandy": "Yes",
+            "val_1": "no",
+            "val_2": "no",
+            "val_3": "usually",
+            "val_4": "yes"
+          }
+        },
+        "row_JbQVFK": {
+          "type": "row",
+          "settings": {
+            "label": "Keeps You Present",
+            "label_mobile": "Keeps You\nPresent",
+            "dandy": "Yes",
+            "val_1": "no",
+            "val_2": "no",
+            "val_3": "no",
+            "val_4": "not_always"
+          }
+        },
+        "row_B8gHeJ": {
+          "type": "row",
+          "settings": {
+            "label": "No Drink Or Preperation",
+            "label_mobile": "No Drink Or\nPreperation",
+            "dandy": "Yes",
+            "val_1": "no",
+            "val_2": "no",
+            "val_3": "yes",
+            "val_4": "yes"
+          }
+        }
+      },
+      "block_order": [
+        "row_UiiRKp",
+        "row_VhXn9c",
+        "row_WJnq8z",
+        "row_K3Eiz3",
+        "row_EDiCLt",
+        "row_JbQVFK",
+        "row_B8gHeJ"
+      ],
+      "name": "Dandy comparison table",
+      "settings": {
+        "heading": "Your old pick-me-up looks tired.",
+        "heading_mobile": "Your old pick-me-up\nlooks tired.",
+        "col_1": "Coffee",
+        "col_2": "Energy Gummy",
+        "col_3": "Sleep Gummy",
+        "col_4": "THC Gummy",
+        "text_yes": "Yes",
+        "text_no": "No",
+        "text_usually": "Usually",
+        "text_not_always": "Not Always",
+        "no_icon": "shopify://shop_images/dandy-icon-x-red_2.png",
+        "pouch_image": "shopify://shop_images/image_1855116187.png",
+        "background_color": "#fff9f0",
+        "show_wedge": true,
+        "next_color": "#f4512b"
+      }
+    },
+    "dandy_pdp_videos_3LAppz": {
+      "type": "dandy-pdp-videos",
+      "blocks": {
+        "video_g6jbzB": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_teNj7P": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_6wHzUh": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_YEMzVJ": {
+          "type": "video",
+          "settings": {}
+        },
+        "video_XCymWe": {
+          "type": "video",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "video_g6jbzB",
+        "video_teNj7P",
+        "video_6wHzUh",
+        "video_YEMzVJ",
+        "video_XCymWe"
+      ],
+      "name": "Dandy videos",
+      "settings": {
+        "heading": "How people do Dandy.",
+        "heading_mobile": "How people\ndo Dandy.",
+        "body": "Morning momentum, afternoon second winds and the little rituals in between.",
+        "gummies_image": "shopify://shop_images/c5a4dc589a455df17b62f149a2eafaf4a0b7c402.png",
+        "background_color": "#f4512b"
+      }
+    },
+    "dandy_pdp_faq_VEDxnP": {
+      "type": "dandy-pdp-faq",
+      "blocks": {
+        "question_JEMW6J": {
+          "type": "question",
+          "settings": {
+            "question": "What is Kratom?",
+            "answer": "<p>Placeholder content here.</p>"
+          }
+        },
+        "question_UXt9UC": {
+          "type": "question",
+          "settings": {
+            "question": "How much should I take?",
+            "answer": "<p>Placeholder content here.</p>"
+          }
+        },
+        "question_k4LB36": {
+          "type": "question",
+          "settings": {
+            "question": "Is every batch tested?",
+            "answer": "<p>Every batch is screened by an independent lab for identity, mitragynine potency, heavy metals, and microbials. The batch number is on your pouch.</p>"
+          }
+        },
+        "question_GLgdKW": {
+          "type": "question",
+          "settings": {
+            "question": "How does the subscription work?",
+            "answer": "<p>$47.99 charged today, $47.99 every 30 days — the first charge equals every renewal. Skip, pause, or cancel anytime.</p>"
+          }
+        },
+        "question_CNgx49": {
+          "type": "question",
+          "settings": {
+            "question": "Can Kratom become habit forming?",
+            "answer": "<p>Regular daily use can build tolerance and habit. That's real, it's on our label, and it's why the guidance says start low and take breaks.</p>"
+          }
+        },
+        "question_E8aKNh": {
+          "type": "question",
+          "settings": {
+            "question": "Who should not take Dandy?",
+            "answer": "<p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_JEMW6J",
+        "question_UXt9UC",
+        "question_k4LB36",
+        "question_GLgdKW",
+        "question_CNgx49",
+        "question_E8aKNh"
+      ],
+      "name": "Dandy FAQ",
+      "settings": {
+        "eyebrow": "FAQs",
+        "eyebrow_mobile": "FAQ’s",
+        "heading": "The things you actually want to know.",
+        "hand_image": "shopify://shop_images/image_1855116179_1.png",
+        "background_color": "#f4512b",
+        "show_wedge": true,
+        "next_color": "#fff9f0"
+      }
+    },
+    "dandy_pdp_trust_XEXgBa": {
+      "type": "dandy-pdp-trust",
+      "blocks": {
+        "review_ENtcUR": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_YDAh9k": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_LLwWAD": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_kTGHhU": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_zbzcQa": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_497rfb": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_RrL6i6": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_HPaFMH": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        },
+        "review_Da6pKW": {
+          "type": "review",
+          "settings": {
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
+            "name": "Marcus T."
+          }
+        }
+      },
+      "block_order": [
+        "review_ENtcUR",
+        "review_YDAh9k",
+        "review_LLwWAD",
+        "review_kTGHhU",
+        "review_zbzcQa",
+        "review_497rfb",
+        "review_RrL6i6",
+        "review_HPaFMH",
+        "review_Da6pKW"
+      ],
+      "name": "Dandy trusted reviews",
+      "settings": {
+        "heading": "Trusted by 1k+ people like you",
+        "verified_label": "Verified Buyer",
+        "verified_icon": "shopify://shop_images/dandy-icon-check-orange.png",
+        "link_label": "Read More Reviews",
+        "less_label": "Show Less",
+        "hand_image": "shopify://shop_images/image_1855116177.png",
+        "hand_image_mobile": "shopify://shop_images/image_1855116177_1.png",
+        "background_color": "#fff9f0",
+        "show_wedge": true,
+        "next_color": "#f4512b"
+      }
+    },
+    "dandy_pdp_footer_YRgWGn": {
+      "type": "dandy-pdp-footer",
+      "name": "Dandy footer",
+      "settings": {
+        "tagline": "Kratom made fine and Dandy.",
+        "newsletter_heading": "Stay in the know",
+        "newsletter_text": "Good emails. No inbox nonsense.",
+        "placeholder": "Enter your email",
+        "button_label": "Sign Up",
+        "success_text": "Thanks for signing up!",
+        "menu_1_title": "Shop",
+        "menu_1": "shop",
+        "menu_2_title": "Know",
+        "menu_2": "know",
+        "copyright": "© 2026 DANDY, All rights reserved.",
+        "background_color": "#f4512b"
+      }
+    }
+  },
+  "order": [
+    "dandy_header_announcement_LL9fRE",
+    "dandy_pdp_header_fpTpd8",
+    "main",
+    "dandy_pdp_reviews_zHaAMN",
+    "dandy_pdp_feels_jBy7Tb",
+    "dandy_pdp_flavor_gJkJRa",
+    "dandy_pdp_compare_hhnCTm",
+    "dandy_pdp_moments_4pmfjD",
+    "dandy_pdp_ingredients_p3ArMH",
+    "dandy_pdp_start_4cXteM",
+    "dandy_pdp_table_HLteYC",
+    "dandy_pdp_videos_3LAppz",
+    "dandy_pdp_faq_VEDxnP",
+    "dandy_pdp_trust_XEXgBa",
+    "dandy_pdp_footer_YRgWGn"
+  ]
+}

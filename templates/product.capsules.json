@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product_hero": {
@@ -12,18 +21,9 @@
         "highlight_2": "[FINAL CATALOG REQUIRED: approved count options]",
         "highlight_3": "[FINAL LABEL REQUIRED: ingredients, capsule material, and serving facts]",
         "highlight_4": "Batch report access when the finished-lot report is published",
-        "preselect_subscription": false,
-        "enable_quantity_ladder": false,
-        "single_selection_label": "Selected capsule option",
-        "one_time_detail": "Choose an approved strength and count above when the final variants are connected.",
-        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: charge today, renewal amount and cadence, shipping, edit/skip/cancel path]",
         "reassurance_1": "21+ only",
         "reassurance_2": "Secure checkout",
         "reassurance_3": "Eligibility checked at checkout",
-        "development_preview": true,
-        "development_unit_price": "2899",
-        "development_three_pack_price": "0",
-        "development_five_pack_price": "0",
         "claim_ids": "C-09 C-10 C-13 C-16",
         "copy_status": "aggressive-draft"
       }
@@ -77,12 +77,45 @@
     "variant_logic": {
       "type": "dandy-icon-grid",
       "blocks": {
-        "strength": { "type": "card", "settings": { "icon": "lab", "heading": "Choose the labeled amount", "text": "<p>[FINAL LABEL REQUIRED: define exactly what each amount describes.]</p>" } },
-        "count": { "type": "card", "settings": { "icon": "package", "heading": "Then choose the count", "text": "<p>Package count is a separate decision from the amount declared on each label.</p>" } },
-        "label": { "type": "card", "settings": { "icon": "check", "heading": "Read the selected label", "text": "<p>Variant-specific facts, directions, warnings, and price must update together.</p>" } },
-        "wait": { "type": "card", "settings": { "icon": "calendar", "heading": "Give it the labeled time", "text": "<p>Do not stack servings while waiting for an experience.</p>" } }
+        "strength": {
+          "type": "card",
+          "settings": {
+            "icon": "lab",
+            "heading": "Choose the labeled amount",
+            "text": "<p>[FINAL LABEL REQUIRED: define exactly what each amount describes.]</p>"
+          }
+        },
+        "count": {
+          "type": "card",
+          "settings": {
+            "icon": "package",
+            "heading": "Then choose the count",
+            "text": "<p>Package count is a separate decision from the amount declared on each label.</p>"
+          }
+        },
+        "label": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "heading": "Read the selected label",
+            "text": "<p>Variant-specific facts, directions, warnings, and price must update together.</p>"
+          }
+        },
+        "wait": {
+          "type": "card",
+          "settings": {
+            "icon": "calendar",
+            "heading": "Give it the labeled time",
+            "text": "<p>Do not stack servings while waiting for an experience.</p>"
+          }
+        }
       },
-      "block_order": ["strength", "count", "label", "wait"],
+      "block_order": [
+        "strength",
+        "count",
+        "label",
+        "wait"
+      ],
       "settings": {
         "eyebrow": "Variant logic",
         "heading": "Amount first. Count second.",
@@ -110,11 +143,36 @@
     "reviews": {
       "type": "dandy-review-slots",
       "blocks": {
-        "review_1": { "type": "review_slot", "settings": { "slot_id": "REV-10", "objection": "Option clarity", "placeholder": "[REAL REVIEW NEEDED — strength and count clarity — 30–60 words]" } },
-        "review_2": { "type": "review_slot", "settings": { "slot_id": "REV-11", "objection": "Portability", "placeholder": "[REAL REVIEW NEEDED — capsule portability — 20–45 words]" } },
-        "review_3": { "type": "review_slot", "settings": { "slot_id": "REV-12", "objection": "Swallowability", "placeholder": "[REAL REVIEW NEEDED — capsule size and swallowability — 20–45 words]" } }
+        "review_1": {
+          "type": "review_slot",
+          "settings": {
+            "slot_id": "REV-10",
+            "objection": "Option clarity",
+            "placeholder": "[REAL REVIEW NEEDED — strength and count clarity — 30–60 words]"
+          }
+        },
+        "review_2": {
+          "type": "review_slot",
+          "settings": {
+            "slot_id": "REV-11",
+            "objection": "Portability",
+            "placeholder": "[REAL REVIEW NEEDED — capsule portability — 20–45 words]"
+          }
+        },
+        "review_3": {
+          "type": "review_slot",
+          "settings": {
+            "slot_id": "REV-12",
+            "objection": "Swallowability",
+            "placeholder": "[REAL REVIEW NEEDED — capsule size and swallowability — 20–45 words]"
+          }
+        }
       },
-      "block_order": ["review_1", "review_2", "review_3"],
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
       "settings": {
         "eyebrow": "Real voices, when they're ready",
         "heading": "Proof we won't make up.",
@@ -124,13 +182,50 @@
     "faq": {
       "type": "dandy-faq",
       "blocks": {
-        "amount": { "type": "question", "settings": { "question": "What do the amount options mean?", "answer": "<p>[FINAL LABEL REQUIRED: exact approved definition for each amount declaration.] The interface will not translate amount into a guaranteed experience.</p>", "open": true } },
-        "count": { "type": "question", "settings": { "question": "What is the difference between strength and count?", "answer": "<p>Strength describes an approved amount declaration; count describes how many capsules are in the package. Final product records must keep them distinct.</p>" } },
-        "directions": { "type": "question", "settings": { "question": "How many capsules should I take?", "answer": "<p>[FINAL LABEL REQUIRED: exact suggested-use text and interval.] Follow the selected product label and do not treat formats or concentrations as interchangeable.</p>" } },
-        "coa": { "type": "question", "settings": { "question": "Where is the batch report?", "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked capsule report and stable public URL.]</p>" } },
-        "available": { "type": "question", "settings": { "question": "Are capsules available now?", "answer": "<p>This template is a development surface. Availability must come from a published Shopify product with approved labels, inventory, pricing, and eligibility.</p>" } }
+        "amount": {
+          "type": "question",
+          "settings": {
+            "question": "What do the amount options mean?",
+            "answer": "<p>[FINAL LABEL REQUIRED: exact approved definition for each amount declaration.] The interface will not translate amount into a guaranteed experience.</p>",
+            "open": true
+          }
+        },
+        "count": {
+          "type": "question",
+          "settings": {
+            "question": "What is the difference between strength and count?",
+            "answer": "<p>Strength describes an approved amount declaration; count describes how many capsules are in the package. Final product records must keep them distinct.</p>"
+          }
+        },
+        "directions": {
+          "type": "question",
+          "settings": {
+            "question": "How many capsules should I take?",
+            "answer": "<p>[FINAL LABEL REQUIRED: exact suggested-use text and interval.] Follow the selected product label and do not treat formats or concentrations as interchangeable.</p>"
+          }
+        },
+        "coa": {
+          "type": "question",
+          "settings": {
+            "question": "Where is the batch report?",
+            "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked capsule report and stable public URL.]</p>"
+          }
+        },
+        "available": {
+          "type": "question",
+          "settings": {
+            "question": "Are capsules available now?",
+            "answer": "<p>This template is a development surface. Availability must come from a published Shopify product with approved labels, inventory, pricing, and eligibility.</p>"
+          }
+        }
       },
-      "block_order": ["amount", "count", "directions", "coa", "available"],
+      "block_order": [
+        "amount",
+        "count",
+        "directions",
+        "coa",
+        "available"
+      ],
       "settings": {
         "eyebrow": "Before you add it",
         "heading": "Capsule questions, without the guesswork.",
@@ -154,5 +249,15 @@
       }
     }
   },
-  "order": ["product_hero", "capsule_story", "product_details", "visual_v12", "variant_logic", "visual_v13", "reviews", "faq", "final_cta"]
+  "order": [
+    "product_hero",
+    "capsule_story",
+    "product_details",
+    "visual_v12",
+    "variant_logic",
+    "visual_v13",
+    "reviews",
+    "faq",
+    "final_cta"
+  ]
 }

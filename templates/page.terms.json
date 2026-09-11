@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": { "type": "dandy-page-hero", "settings": { "eyebrow": "Terms", "heading": "Terms of service", "text": "Final terms must reflect the approved product, age, eligibility, purchase, subscription, intellectual-property, dispute, and support rules.", "claim_ids": "C-13 C-14 C-15 C-16", "copy_status": "missing-final-legal" } },

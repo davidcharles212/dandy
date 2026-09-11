@@ -1,0 +1,428 @@
+{%- liquid
+  assign product_url = section.settings.product_url | default: '/products/mixed-berry-kratom-gummies'
+-%}
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__name">The Dandy <span>Daily</span></p>
+    <div class="masthead__meta">Afternoon Edition</div>
+  </div>
+</header>
+<div class="advert-note">Advertisement · Sponsored editorial by Dandy</div>
+
+<main class="page">
+<div class="grid">
+<article class="article">
+
+  <div class="headline">
+    <h1>Why Your 2&nbsp;PM Coffee Gives&nbsp;You<br class="d"> <em>More Edge Than Energy</em></h1>
+    <p class="dek">The afternoon problem was not that you needed more discipline. Coffee kept giving you a lift, then sending you back for another cup when the lift faded.</p>
+    <div class="byline">
+      <img class="byline__photo" src="{{ 'adv-coffee-author-thomas.jpg' | asset_url }}" alt="Thomas Hardwick" width="600" height="600">
+      <div><div class="byline__who">By Thomas Hardwick</div><div class="byline__meta">For The Dandy Daily · 6 minute read</div></div>
+    </div>
+  </div>
+
+  <figure class="hero">
+    <!--HERO-->
+    <picture>
+      <source media="(prefers-reduced-motion: reduce)" srcset="{{ 'adv-coffee-hero-2pm.jpg' | asset_url }}">
+      <source media="(max-width: 1023px)" srcset="{{ 'adv-coffee-hero-2pm-loop.webp' | asset_url }}" type="image/webp">
+      <img src="{{ 'adv-coffee-hero-2pm.jpg' | asset_url }}" alt="A man slumped at a home office desk at 2 PM, a half-written email on the laptop screen, a coffee mug at his hand, a second empty mug pushed aside, and a desk clock reading two o'clock" width="1536" height="1024" fetchpriority="high">
+    </picture>
+    <figcaption>2 PM. Same sentence on the screen. Same half-written email. Same mug.</figcaption>
+  </figure>
+
+  <h2>The same sentence, the same mug, every afternoon</h2>
+  <p>At 2 PM, I would lose the thread of whatever I was doing.</p>
+  <p>The same sentence sat on my screen. The same email stayed half-written. The same task that looked easy in the morning suddenly needed a second coffee before I could finish it.</p>
+  <p>So I made another cup.</p>
+  <p>That worked for a little while.</p>
+  <p>Then the lift faded.</p>
+  <p>The edge stayed.</p>
+  <p>If the coffee made me jittery, I told myself that was normal. If I felt tired after lunch, I blamed my discipline. If I lost focus again, I reached for another drink.</p>
+  <p>Coffee was supposed to fix the afternoon.</p>
+  <p>Instead, it kept me inside the same loop:</p>
+  <div class="loop">Lift. Fade. Reach for more. Repeat.</div>
+
+  <h2>The cup fixed the moment. It kept the loop alive.</h2>
+  <p>Coffee gives you a sharp lift. Then the lift fades.</p>
+  <p>When it fades, another cup looks like the obvious answer. The next dose starts the pattern again.</p>
+  <p>A shorter lift. Another reach. More edge left behind.</p>
+
+  <figure class="chart chart--loop" aria-labelledby="chart-title" data-animate>
+    <svg viewBox="0 0 720 380" role="img" aria-describedby="chart-desc">
+      <title id="chart-title">The coffee loop across a workday</title>
+      <desc id="chart-desc">A sawtooth energy line: each cup lifts, fades, and prompts the next cup, while a dashed edge line climbs after every cup and never comes down. It ends on the words more edge than energy.</desc>
+      <rect x="0" y="0" width="720" height="340" rx="16" fill="#fff8f1" stroke="#28110c" stroke-width="3"/>
+      <g stroke="#ffe8dd" stroke-width="2">
+        <line x1="70" y1="80" x2="680" y2="80"/><line x1="70" y1="150" x2="680" y2="150"/><line x1="70" y1="220" x2="680" y2="220"/>
+      </g>
+      <line x1="70" y1="270" x2="680" y2="270" stroke="#28110c" stroke-width="3"/>
+      <line x1="70" y1="60" x2="70" y2="270" stroke="#28110c" stroke-width="3"/>
+      <g font-family="Barlow, Arial, sans-serif" font-size="18" font-weight="600" fill="#6c5c58" text-anchor="middle">
+        <text x="120" y="298">8 AM</text><text x="290" y="298">11 AM</text><text x="460" y="298">2 PM</text><text x="630" y="298">5 PM</text>
+      </g>
+      <g font-family="Barlow, Arial, sans-serif" font-size="16" font-weight="600" fill="#6c5c58">
+        <text x="62" y="86" text-anchor="end">high</text><text x="62" y="266" text-anchor="end">low</text>
+      </g>
+      <!-- Edge line, three segments, drawn after each cup -->
+      <g fill="none" stroke="#28110c" stroke-width="3.5" stroke-dasharray="7 7" stroke-linecap="round" class="edge">
+        <path class="draw s1" pathLength="1" d="M120 246 C 180 246, 240 244, 288 238"/>
+        <path class="draw s2" pathLength="1" d="M288 238 C 350 232, 410 224, 458 206"/>
+        <path class="draw s3" pathLength="1" d="M458 206 C 530 180, 600 130, 634 68"/>
+      </g>
+      <!-- Energy sawtooth, three segments -->
+      <g fill="none" stroke="#f04b23" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" class="energy">
+        <path class="draw s1" pathLength="1" d="M120 240 C135 150, 140 110, 150 100 C175 130, 220 210, 288 232"/>
+        <path class="draw s2" pathLength="1" d="M288 232 C300 150, 305 125, 312 118 C335 150, 380 220, 458 240"/>
+        <path class="draw s3" pathLength="1" d="M458 240 C470 175, 474 160, 482 152 C505 185, 560 235, 630 250"/>
+      </g>
+      <g fill="#f04b23" stroke="#28110c" stroke-width="3">
+        <circle class="pop c1" cx="120" cy="240" r="9"/><circle class="pop c2" cx="288" cy="232" r="9"/><circle class="pop c3" cx="458" cy="240" r="9"/>
+      </g>
+      <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="20" font-weight="800" fill="#28110c">
+        <text class="pop p1" x="150" y="84" text-anchor="middle" font-size="22">LIFT</text>
+        <text class="pop f1" x="235" y="150" text-anchor="middle" fill="#6c5c58">FADE</text>
+        <text class="pop p2" x="312" y="102" text-anchor="middle" font-size="18" fill="#6c5c58">SHORTER</text>
+        <text class="pop p3" x="482" y="136" text-anchor="middle" font-size="18" fill="#6c5c58">SHORTER</text>
+        <text class="pop c1" x="120" y="262" text-anchor="middle" font-size="16">CUP 1</text>
+        <text class="pop c2" x="288" y="262" text-anchor="middle" font-size="16">CUP 2</text>
+        <text class="pop c3" x="458" y="262" text-anchor="middle" font-size="16">CUP 3</text>
+        <text class="pop e3" x="590" y="90" text-anchor="end" font-size="18">THE EDGE</text>
+      </g>
+      <g font-family="Barlow, Arial, sans-serif" font-size="18" font-weight="600" fill="#28110c">
+        <line x1="360" y1="42" x2="400" y2="42" stroke="#f04b23" stroke-width="6" stroke-linecap="round"/><text x="410" y="47">Energy</text>
+        <line x1="500" y1="42" x2="540" y2="42" stroke="#28110c" stroke-width="3" stroke-dasharray="7 7"/><text x="550" y="47">The edge</text>
+      </g>
+      <g class="pop end">
+        <rect x="70" y="318" width="610" height="48" rx="10" fill="#28110c"/>
+        <text x="375" y="352" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="34" font-weight="800" fill="#fff8f1" letter-spacing=".02em">MORE EDGE THAN ENERGY</text>
+      </g>
+    </svg>
+    <figcaption>Lift. Fade. Reach for more. Repeat.</figcaption>
+  </figure>
+
+  <p>Each cup buys a shorter lift while the edge keeps climbing. By mid-afternoon, you have more edge than energy.</p>
+  <p>That is why the 2 PM slump feels so familiar. The thing you use to escape the crash keeps setting up the next one.</p>
+  <p>I was not looking for another energy drink with a cleaner label.</p>
+  <p class="beat">I was looking for a different pattern.</p>
+
+  <h2>I was not looking for stronger coffee. I was looking for a different range.</h2>
+  <p>Kratom comes from <em>Mitragyna speciosa</em>, a tree in the coffee family that grows in Southeast Asia.</p>
+
+  <figure>
+    <!--LEAVES-->
+    <img src="{{ 'adv-coffee-kratom-leaves.jpg' | asset_url }}" alt="Glossy green leaves of the Mitragyna speciosa tree in dappled forest light" width="1536" height="1024" loading="lazy">
+    <figcaption><em>Mitragyna speciosa.</em> Same botanical family as coffee. Completely different plant.</figcaption>
+  </figure>
+
+  <p>Same botanical family as coffee. Completely different plant.</p>
+  <p>Unlike caffeine, Kratom is dose-dependent. Smaller amounts tend to produce energy and focus. Larger amounts lean toward body ease and relaxation.</p>
+
+  <div class="dose" role="group" aria-label="How the amount changes the experience">
+    <div class="dose__cell"><div class="dose__amt">Smaller amounts</div><p class="dose__what">Tend to produce energy and focus.</p></div>
+    <div class="dose__cell"><div class="dose__amt">Larger amounts</div><p class="dose__what">Lean toward body ease and relaxation.</p></div>
+  </div>
+
+  <p>That dose-dependent range changed the decision for me. I was not choosing between coffee and a different version of coffee. I was choosing a different option for the part of the day when one sharp lift was no longer helping.</p>
+  <ul class="stack">
+    <li>No neon can.</li>
+    <li>No bitter powder ritual.</li>
+    <li>No automatic third drink.</li>
+  </ul>
+  <p>The idea was simple: use a clear starting amount, choose a format that fits a real afternoon, and stop treating the 2 PM slump like a character flaw.</p>
+
+  <div class="panels" role="group" aria-label="Coffee pattern compared with the Dandy starting point">
+    <figure class="panel panel--coffee">
+      <svg viewBox="0 0 340 200" role="img" aria-labelledby="pnl1-t"><title id="pnl1-t">Coffee: repeating lift and fade while the edge climbs</title>
+        <rect x="0" y="0" width="340" height="200" rx="14" fill="#fff" stroke="#28110c" stroke-width="3"/>
+        <line x1="34" y1="160" x2="316" y2="160" stroke="#28110c" stroke-width="2.5"/>
+        <path d="M50 146 C 120 148, 200 134, 260 100 S 296 60, 304 46" fill="none" stroke="#28110c" stroke-width="3" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <path d="M50 146 C58 96, 62 76, 66 70 C82 96, 104 134, 132 148 C140 104, 144 88, 148 84 C164 108, 186 138, 216 152 C224 116, 228 104, 232 100 C248 120, 274 146, 304 156" fill="none" stroke="#f04b23" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#f04b23" stroke="#28110c" stroke-width="2.5"><circle cx="50" cy="146" r="6"/><circle cx="132" cy="148" r="6"/><circle cx="216" cy="152" r="6"/></g>
+        <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="800" fill="#28110c" font-size="15">
+          <text x="66" y="58" text-anchor="middle">LIFT</text><text x="205" y="112" text-anchor="middle" fill="#6c5c58">FADE</text><text x="300" y="38" text-anchor="end">EDGE</text>
+        </g>
+        <text x="34" y="184" font-family="Barlow, Arial, sans-serif" font-size="13" font-weight="600" fill="#6c5c58">Cup 1 · Cup 2 · Cup 3</text>
+      </svg>
+      <figcaption><b>Coffee.</b> One familiar pattern.</figcaption>
+    </figure>
+    <figure class="panel panel--dandy">
+      <svg viewBox="0 0 340 200" role="img" aria-labelledby="pnl2-t"><title id="pnl2-t">Dandy: energy and focus rise together from a half-gummy starting point while the edge stays low</title>
+        <rect x="0" y="0" width="340" height="200" rx="14" fill="#fff" stroke="#28110c" stroke-width="3"/>
+        <line x1="34" y1="160" x2="316" y2="160" stroke="#28110c" stroke-width="2.5"/>
+        <path d="M50 150 L304 150" fill="none" stroke="#28110c" stroke-width="3" stroke-dasharray="6 6" stroke-linecap="round"/>
+        <path d="M50 132 C 80 132, 96 130, 110 124 C 130 110, 140 82, 170 72 C 210 60, 260 58, 304 58" fill="none" stroke="#57ba4f" stroke-width="5" stroke-linecap="round"/>
+        <path d="M50 140 C 80 140, 96 138, 110 132 C 130 118, 140 92, 170 82 C 210 70, 260 68, 304 68" fill="none" stroke="#f04b23" stroke-width="5" stroke-linecap="round"/>
+        <g fill="#f04b23" stroke="#28110c" stroke-width="2.5"><circle cx="110" cy="132" r="6"/></g>
+        <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="800" fill="#28110c" font-size="15">
+          <text x="110" y="182" text-anchor="middle">HALF A GUMMY</text><text x="300" y="50" text-anchor="end" fill="#064c26">FOCUS</text><text x="300" y="88" text-anchor="end" fill="#d93e18">ENERGY</text><text x="300" y="144" text-anchor="end" fill="#6c5c58">EDGE</text>
+        </g>
+      </svg>
+      <figcaption><b>Dandy.</b> A different range, with a clear first step.</figcaption>
+    </figure>
+  </div>
+
+  <p>But there was one problem I expected before I even tried it.</p>
+
+  <h2>Kratom has a taste problem</h2>
+  <p>Kratom has a taste problem. Bitter. Medicinal. The kind of flavor that makes you chase the first sip with water.</p>
+
+  <figure>
+    <!--POWDER-->
+    <img src="{{ 'adv-coffee-bitter-powder.jpg' | asset_url }}" alt="A pile of green herbal powder on a plate beside a scoop and a glass of murky water" width="1536" height="1024" loading="lazy">
+    <figcaption>The usual format: a scoop, a glass, and a taste to get past.</figcaption>
+  </figure>
+
+  <p class="beat">That is where Dandy was different.</p>
+
+  <h2>The first Kratom gummy I did not have to force down</h2>
+  <p>Dandy Mixed Berry Gummies use proprietary nano-emulsion technology to put a real amount of Kratom into a gummy that tastes like mixed berry.</p>
+  <p>Not a bitter gummy pretending to be berry.</p>
+  <p class="beat">A berry gummy with Kratom in it.</p>
+
+  <figure class="seq" data-animate>
+    <div class="seq__stage" aria-hidden="true">
+      <img class="seq__frame f1" src="{{ 'adv-coffee-pouch-front-square.jpg' | asset_url }}" alt="" width="1200" height="1200" loading="lazy">
+      <img class="seq__frame f2" src="{{ 'adv-coffee-gummy-texture.jpg' | asset_url }}" alt="" width="1200" height="1200" loading="lazy">
+      <img class="seq__frame f3" src="{{ 'adv-coffee-gummy-bite-v2.jpg' | asset_url }}" alt="" width="1200" height="1200" loading="lazy">
+    </div>
+    <ol class="seq__strip">
+      <li><img src="{{ 'adv-coffee-pouch-front-square.jpg' | asset_url }}" alt="Front of the Dandy Mixed Berry Gummies pouch" width="1200" height="1200" loading="lazy"><span>The pouch</span></li>
+      <li><img src="{{ 'adv-coffee-gummy-texture.jpg' | asset_url }}" alt="Close-up of a sugar-coated Dandy gummy" width="1200" height="1200" loading="lazy"><span>The coating</span></li>
+      <li><img src="{{ 'adv-coffee-gummy-bite-v2.jpg' | asset_url }}" alt="The gummy bitten in half, showing a glossy dark-red berry center" width="1200" height="1200" loading="lazy"><span>The bite</span></li>
+    </ol>
+    <figcaption>My own photos, at my desk. The pouch, the coating, the bite. A berry gummy with Kratom in it.</figcaption>
+  </figure>
+
+  <p>The first bite removed the biggest obstacle before the experience even began.</p>
+  <p>No scoop. No glass. No bitter powder ritual.</p>
+  <p>Just a mixed-berry gummy that tastes like the product on the front of the pouch says it will taste.</p>
+
+  <div class="cta">
+    <p class="cta__title">Try Dandy Mixed Berry Gummies</p>
+    <a class="btn" href="{{ product_url }}">Try Mixed Berry Gummies <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p class="cta__sub"><span class="nw">From $24.99 ·</span> <span class="nw">30-day money-back guarantee</span></p>
+    <p class="cta__fine">21+ only. Dandy products are for adults.</p>
+  </div>
+
+  <h2>The starting rule fits on one line</h2>
+  <p>The amount of mitragynine is printed on the pouch. Every batch is independently lab-tested for identity, potency, heavy metals, and microbials. The batch number is printed on every pouch too.</p>
+
+  <figure class="evidence">
+    <div class="evidence__grid">
+      <div class="evidence__pouch">
+        <img src="{{ 'adv-coffee-pouch-front.jpg' | asset_url }}" alt="Front of the Dandy Mixed Berry Gummies pouch showing the mitragynine amount per gummy" width="1000" height="1508" loading="lazy">
+        <span class="callout__dot" style="left:27%;top:83%" aria-hidden="true">1</span>
+      </div>
+      <div class="evidence__right">
+        <div class="evidence__coa">
+          <img src="{{ 'adv-coffee-coa-crop.jpg' | asset_url }}" alt="Crop of the independent potency report for this batch: lab header, batch ID, product name, and the total mitragynine result" width="1115" height="475" loading="lazy">
+          <span class="callout__dot" style="left:80%;top:36%" aria-hidden="true">2</span>
+          <span class="callout__dot" style="left:78%;top:71%" aria-hidden="true">3</span>
+        </div>
+        <ol class="callouts">
+          <li><span class="callout__dot">1</span><b>Mitragynine amount printed on pouch</b></li>
+          <li><span class="callout__dot">2</span><b>Batch number printed on pouch</b></li>
+          <li><span class="callout__dot">3</span><b>Independent batch testing</b></li>
+        </ol>
+      </div>
+    </div>
+    <figcaption>The pouch front, and a crop of the batch's independent potency report.</figcaption>
+  </figure>
+
+  <p>The first-use rule is simple:</p>
+  <div class="rule">
+    <p class="rule__big">Start with <span>half a gummy</span>. Give it about <span>45&nbsp;minutes</span>.</p>
+  </div>
+  <p>The gummies are not precisely dosed, so the goal is not to pretend every piece is identical. The goal is to give you a clear first step instead of a mystery scoop or an unclear serving size.</p>
+
+  <h2>The goal was not to feel wired</h2>
+  <p>The goal was to stay upbeat, stay clear, and finish the work without turning the rest of the day into a caffeine recovery plan.</p>
+  <p>Half a gummy after lunch. Energy, focus, and mood come up together and stay up. The edge stays out of the way.</p>
+
+  <figure class="chart" aria-labelledby="chart2-title">
+    <svg viewBox="0 0 720 340" role="img" aria-describedby="chart2-desc">
+      <title id="chart2-title">An afternoon on half a Dandy gummy</title>
+      <desc id="chart2-desc">Three smooth lines for energy, focus, and mood rise after half a gummy after lunch and hold through 5 PM, while a dashed edge line stays flat at low all day. Explanatory, not a measured result.</desc>
+      <rect x="0" y="0" width="720" height="340" rx="16" fill="#fff8f1" stroke="#28110c" stroke-width="3"/>
+      <g stroke="#ffe8dd" stroke-width="2">
+        <line x1="70" y1="80" x2="680" y2="80"/><line x1="70" y1="150" x2="680" y2="150"/><line x1="70" y1="220" x2="680" y2="220"/>
+      </g>
+      <line x1="70" y1="270" x2="680" y2="270" stroke="#28110c" stroke-width="3"/>
+      <line x1="70" y1="60" x2="70" y2="270" stroke="#28110c" stroke-width="3"/>
+      <g font-family="Barlow, Arial, sans-serif" font-size="18" font-weight="600" fill="#6c5c58" text-anchor="middle">
+        <text x="120" y="298">8 AM</text><text x="290" y="298">11 AM</text><text x="460" y="298">2 PM</text><text x="630" y="298">5 PM</text>
+      </g>
+      <g font-family="Barlow, Arial, sans-serif" font-size="16" font-weight="600" fill="#6c5c58">
+        <text x="62" y="86" text-anchor="end">high</text><text x="62" y="266" text-anchor="end">low</text>
+      </g>
+      <path d="M120 252 L634 252" fill="none" stroke="#28110c" stroke-width="3.5" stroke-dasharray="7 7" stroke-linecap="round"/>
+      <text x="634" y="244" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="18" font-weight="800" fill="#28110c" text-anchor="end">EDGE</text>
+      <!-- Mood -->
+      <path d="M120 176 C 250 174, 340 172, 405 168 C 440 160, 462 114, 500 100 C 540 92, 590 90, 630 90" fill="none" stroke="#0875ac" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Focus -->
+      <path d="M120 190 C 250 190, 340 188, 405 184 C 440 174, 462 126, 500 112 C 540 104, 590 102, 630 102" fill="none" stroke="#57ba4f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Energy -->
+      <path d="M120 204 C 250 204, 340 202, 405 198 C 440 188, 462 138, 500 124 C 540 116, 590 114, 630 114" fill="none" stroke="#f04b23" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <g fill="#f04b23" stroke="#28110c" stroke-width="3"><circle cx="405" cy="198" r="9"/></g>
+      <g font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="16" font-weight="800" fill="#28110c">
+        <text x="405" y="226" text-anchor="middle">HALF A GUMMY</text>
+        <text x="405" y="244" text-anchor="middle" font-size="14" fill="#6c5c58">AFTER LUNCH</text>
+        <text x="565" y="74" text-anchor="middle" font-size="22">STAYS UP</text>
+      </g>
+      <g font-family="Barlow, Arial, sans-serif" font-size="18" font-weight="600" fill="#28110c">
+        <line x1="180" y1="42" x2="214" y2="42" stroke="#f04b23" stroke-width="6" stroke-linecap="round"/><text x="222" y="47">Energy</text>
+        <line x1="298" y1="42" x2="332" y2="42" stroke="#57ba4f" stroke-width="6" stroke-linecap="round"/><text x="340" y="47">Focus</text>
+        <line x1="406" y1="42" x2="440" y2="42" stroke="#0875ac" stroke-width="6" stroke-linecap="round"/><text x="448" y="47">Mood</text>
+        <line x1="512" y1="42" x2="546" y2="42" stroke="#28110c" stroke-width="3" stroke-dasharray="7 7"/><text x="554" y="47">Edge</text>
+      </g>
+    </svg>
+    <figcaption>Half a gummy after lunch. A clear starting point for the afternoon.</figcaption>
+  </figure>
+
+  <p>That is the lane Dandy is built for:</p>
+  <div class="loop">A smoother kind of energy for wherever the day goes.</div>
+  <ul class="stack">
+    <li>No coffee costume.</li>
+    <li>No bitter powder ritual.</li>
+    <li>No automatic third drink.</li>
+  </ul>
+
+  <div class="cta">
+    <p class="cta__title">Another option for the 2&nbsp;PM slump</p>
+    <a class="btn" href="{{ product_url }}">Try Mixed Berry Gummies <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <p class="cta__sub"><span class="nw">From $24.99 ·</span> <span class="nw">30-day money-back guarantee</span></p>
+    <p class="cta__fine">21+ only. Dandy products are for adults.</p>
+  </div>
+
+  <h2>Why this is the first Kratom product I would actually try</h2>
+  <ol class="reasons">
+    <li class="reason">
+      <img class="reason__thumb" src="{{ 'adv-coffee-gummy-pinch.jpg' | asset_url }}" alt="" width="1200" height="1200" loading="lazy">
+      <div><h3>The taste is part of the product</h3><p>Dandy tastes like a mixed-berry gummy instead of asking you to force down bitter powder.</p></div>
+    </li>
+    <li class="reason">
+      <img class="reason__thumb" src="{{ 'adv-coffee-pouch-label-35mg.jpg' | asset_url }}" alt="" width="500" height="482" loading="lazy">
+      <div><h3>The amount is printed on the pouch</h3><p>You see the labeled mitragynine amount before you start. The batch number is printed on the pouch too.</p></div>
+    </li>
+    <li class="reason">
+      <img class="reason__thumb" src="{{ 'adv-coffee-coa-crop.jpg' | asset_url }}" alt="" width="1115" height="475" loading="lazy">
+      <div><h3>The batch is tested</h3><p>Every batch is independently lab-tested for identity, potency, heavy metals, and microbials.</p></div>
+    </li>
+    <li class="reason">
+      <img class="reason__thumb" src="{{ 'adv-coffee-pouch-pocket.jpg' | asset_url }}" alt="" width="1400" height="1400" loading="lazy">
+      <div><h3>The format fits a real afternoon</h3><p>The gummies have 20 calories, plant-based ingredients, and no gelatin. They fit in a desk drawer, a bag, or a pocket without bringing a scoop and a mixing ritual with them.</p></div>
+    </li>
+    <li class="reason">
+      <span class="reason__thumb reason__thumb--badge" aria-hidden="true"><b>30</b><small>day<br>refund</small></span>
+      <div><h3>The first try is backed by a guarantee</h3><p>Dandy gives you a 30-day money-back guarantee. Do not get on with it? They refund it.</p></div>
+    </li>
+  </ol>
+
+  <div class="proof">
+    <img class="proof__thumb" src="{{ 'adv-coffee-pouch-30.png' | asset_url }}" alt="" width="700" height="1090" loading="lazy">
+    <div class="proof__txt">
+      <span class="stars" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg>
+      </span>
+      <p class="proof__big"><span class="nw">Rated 4.8/5</span> <span class="nw">by 1,475 verified customers</span></p>
+      <p class="proof__sub">Mixed-berry gummies. Clear starting rule. Independent batch testing.</p>
+    </div>
+  </div>
+
+  <h2>The simple version</h2>
+  <div class="compare">
+    <div class="row row--coffee">
+      <p class="row__title">Coffee</p>
+      <div><p class="row__line">Lift. Fade. Reach for more.</p><p>One familiar pattern. The thing you use to escape the crash keeps setting up the next one.</p></div>
+    </div>
+    <div class="row row--kratom">
+      <p class="row__title">Kratom</p>
+      <div><p class="row__line">A different range.</p><p>Smaller amounts tend to produce energy and focus, while larger amounts lean toward body ease and relaxation.</p></div>
+    </div>
+    <div class="row row--dandy">
+      <p class="row__title">Dandy</p>
+      <div><p class="row__line">The easier first step.</p><p>A mixed-berry gummy, a labeled pouch, independent batch testing, and a clear starting rule.</p></div>
+    </div>
+  </div>
+
+  <h2>Try a different afternoon option</h2>
+  <p>You do not need to give up coffee forever.</p>
+  <p>You need another option for the part of the day when coffee gives you more edge than energy.</p>
+  <p class="beat">Start with half a gummy. Give it about 45 minutes.</p>
+
+  <section class="offer" id="offer">
+    <div class="offer__grid">
+      <img class="offer__img" src="{{ 'adv-coffee-pouch-30.png' | asset_url }}" alt="Dandy Mixed Berry Kratom Gummies pouch" width="700" height="1090" loading="lazy">
+      <div class="offer__txt">
+        <p class="offer__name">Dandy Mixed Berry Gummies</p>
+        <a class="btn" href="{{ product_url }}">Try Mixed Berry Gummies <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <p class="offer__support"><span class="nw">From $24.99 ·</span> <span class="nw">30-day money-back guarantee</span></p>
+        <p class="offer__fine">21+ only. Dandy products are for adults.</p>
+      </div>
+    </div>
+  </section>
+
+</article>
+
+<aside class="side" aria-label="Product summary">
+  <div class="card">
+    <div class="card__rating"><span class="stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21l1.6-7L2 9.3l7.1-.7z"/></svg></span><span>4.8/5 · 1,475 verified customers</span></div>
+    <p class="card__name">Dandy Mixed Berry Kratom Gummies</p>
+    <ul class="card__list">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tastes like mixed berry, not bitter powder</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mitragynine amount printed on the pouch</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Every batch independently lab-tested</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Start with half a gummy, give it 45 minutes</li>
+    </ul>
+    <img class="card__img" src="{{ 'adv-coffee-pouch-30.png' | asset_url }}" alt="" width="700" height="1090">
+    <a class="btn" href="{{ product_url }}">Try Mixed Berry Gummies</a>
+    <p class="card__support"><span class="nw">From $24.99 ·</span> <span class="nw">30-day money-back guarantee</span></p>
+    <p class="card__fine">21+ only. Dandy products are for adults.</p>
+  </div>
+</aside>
+</div>
+</main>
+
+<a class="bar" id="bar" href="{{ product_url }}" aria-hidden="true" tabindex="-1">
+  <img src="{{ 'adv-coffee-pouch-30.png' | asset_url }}" alt="" width="700" height="1090">
+  <span class="bar__txt"><span class="bar__main">Try Dandy · From $24.99</span><span class="bar__sub"><span class="nw">Mixed-berry gummies ·</span> <span class="nw">30-day money-back guarantee</span></span></span>
+  <span class="bar__go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+</a>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <div class="foot__name">The Dandy Daily</div>
+    <p>This page is a sponsored editorial published by Dandy. The narrative reflects an individual experience and is presented for informational purposes; results and experiences vary from person to person. It is not medical advice. Charts are explanatory illustrations of the intended use pattern, not measured results.</p>
+    <p>Dandy products contain kratom (<em>Mitragyna speciosa</em>) and are intended for adults 21 and older. Do not use if you are pregnant or nursing, or if you take medication, without first consulting a healthcare professional. Keep out of reach of children. Check the laws in your state before purchasing.</p>
+    <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <p>© 2026 Dandy. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  var bar=document.getElementById('bar'),hero=document.querySelector('.hero');
+  if(bar&&hero){
+    var tick=function(){
+      var on=window.scrollY>hero.offsetTop+hero.offsetHeight;
+      bar.classList.toggle('is-on',on);bar.setAttribute('aria-hidden',on?'false':'true');bar.tabIndex=on?0:-1;
+    };
+    window.addEventListener('scroll',tick,{passive:true});window.addEventListener('resize',tick);tick();
+  }
+  var targets=document.querySelectorAll('[data-animate]');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){targets.forEach(function(t){t.classList.add('is-in','no-anim');});return;}
+  var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:0.45});
+  targets.forEach(function(t){io.observe(t);});
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Coffee advertorial",
+  "settings": [
+    { "type": "url", "id": "product_url", "label": "Product page the buttons link to", "info": "Defaults to /products/mixed-berry-kratom-gummies" }
+  ]
+}
+{% endschema %}

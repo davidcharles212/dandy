@@ -1,0 +1,29 @@
+{%- assign bullet = block.settings.bullet_icon -%}
+<div
+  class="dandy-info-links{% if bullet != blank %} dandy-info-links--bullets{% endif %}"
+  {% if bullet != blank %}style="--dandy-bullet: url('{{ bullet | image_url: width: 112 }}');"{% endif %}
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Dandy info links",
+  "tag": null,
+  "blocks": [{ "type": "popup-link" }],
+  "settings": [
+    { "type": "image_picker", "id": "bullet_icon", "label": "List checkmark", "info": "Shown in Figma's red (#A02508) next to each bullet point in the popups." }
+  ],
+  "presets": [
+    {
+      "name": "Dandy info links",
+      "blocks": {
+        "link_1": { "type": "popup-link", "settings": { "heading": "What is Kratom?" } },
+        "link_2": { "type": "popup-link", "settings": { "heading": "Why Dandy?" } }
+      },
+      "block_order": ["link_1", "link_2"]
+    }
+  ]
+}
+{% endschema %}

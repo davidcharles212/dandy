@@ -1,0 +1,25 @@
+{%- if preload -%}
+  {{ 'dandy-anton.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+  {{ 'dandy-inter.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{%- endif -%}
+<style>
+  @font-face {
+    font-family: 'Dandy Inter';
+    src: url('{{ 'dandy-inter.woff2' | asset_url }}') format('woff2-variations'),
+      url('{{ 'dandy-inter.woff2' | asset_url }}') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Dandy Anton';
+    src: url('{{ 'dandy-anton.woff2' | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  :root {
+    --dandy-font-body: 'Dandy Inter', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --dandy-font-display: 'Dandy Anton', Anton, Impact, 'Arial Narrow', sans-serif;
+  }
+</style>

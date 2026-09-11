@@ -1,0 +1,78 @@
+
+  <main class="shell">
+    <header class="brand" aria-label="Dandy">
+      <a href="https://foreverdandy.com/" aria-label="Visit Dandy"><img src="{{ 'dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="96" height="36"></a>
+      <span class="brand-note">GOOD ENERGY. EASY UNWINDING.</span>
+    </header>
+
+    <section id="quiz" class="screen active quiz-screen" aria-live="polite">
+      <div class="progress-wrap">
+        <span id="progressLabel">Question 1 of 7</span>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+      <div id="questionPanel">
+        <div id="answerInsight" class="answer-insight" hidden>
+          <span class="insight-check">✓</span>
+          <div><strong id="insightTitle"></strong><p id="insightText"></p></div>
+        </div>
+        <span id="questionKicker" hidden></span>
+        <h2 id="questionText"></h2>
+        <p id="questionSub"></p>
+        <div id="answers" class="answers"></div>
+      </div>
+    </section>
+
+    <section id="result" class="screen result-screen">
+      
+      <div class="result-badge" id="resultBadge">THE STEADY LIFT</div>
+      <h1 id="resultTitle">Feel more switched on, without turning the volume all the way up.</h1>
+      <p class="lede" id="resultCopy"></p>
+      <a class="solution-card solution-link" id="productCardLink" href="https://foreverdandy.com/products/mixed-berry-kratom-gummies?utm_source=meta&utm_medium=paid_social&utm_campaign=dandy_quiz&utm_content=quiz_result" aria-label="Shop Dandy Mixed Berry Gummies">
+        <div class="solution-visual">
+          <img src="{{ 'dandy2-life-bag.webp' | asset_url }}" alt="Dandy Mixed Berry Kratom Gummies" width="1100" height="1100">
+          <span>YOUR MATCH</span>
+        </div>
+        <div class="solution-copy">
+          
+          <h2>DANDY MIXED BERRY GUMMIES</h2>
+          <p id="solutionReason"></p>
+          <ul>
+            <li>35 mg active alkaloids per gummy</li>
+            <li>Plant-based pectin, no gelatin</li>
+            <li>Third-party tested, every batch</li>
+          </ul>
+        </div>
+      </a>
+      <div class="result-card">
+        <div><span>Your moment</span><strong id="resultMoment"></strong></div>
+        <div><span>Your priority</span><strong id="resultPriority"></strong></div>
+        <div><span>Your format</span><strong>Precisely dosed mixed berry gummy</strong></div>
+      </div>
+      <div class="botanical-note">
+        <span class="note-star">✦</span>
+        <p>Dandy is made with <strong>Mitragyna speciosa</strong>, a tropical Southeast Asian botanical in the coffee family, presented in a measured gummy format.</p>
+      </div>
+      <a class="primary link-button" id="shopBtn" href="https://foreverdandy.com/products/mixed-berry-kratom-gummies?utm_source=meta&utm_medium=paid_social&utm_campaign=dandy_quiz&utm_content=quiz_result">Start and Save 20% <span>→</span></a>
+      <button class="text-button" id="restartBtn">Retake the quiz</button>
+      <p class="disclaimer">This quiz is for general product education and does not provide medical advice. Individual experiences vary. Read all product guidance before use. Do not use if pregnant or nursing. Consult a healthcare professional about medications, health conditions, or new or serious symptoms.</p>
+    </section>
+  </main>
+  <div class="age-gate" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageTitle">
+    <div class="age-card">
+      <img class="age-rocky" src="{{ 'dandy2-rocky-bouncer.webp' | asset_url }}" alt="" width="560" height="560">
+      <img class="age-logo" src="{{ 'dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="96" height="36">
+      <h2 id="ageTitle">ARE YOU <em>21</em> OR OLDER?</h2>
+      <p>Dandy makes kratom products for adults. You have to be 21 or older to take the quiz.</p>
+      <button class="primary" id="ageYes">I’M 21 OR OLDER</button>
+      <button class="text-button" id="ageNo">Not yet</button>
+      <p class="micro" id="ageMessage">By entering, you confirm you’re 21+ and of legal age to buy kratom where you live.</p>
+    </div>
+  </div>
+  <script defer src="{{ 'lp-moment-app.js' | asset_url }}"></script>
+
+{% schema %}
+{
+  "name": "Dandy moment quiz",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,93 @@
+/* Dandy paper trail: page-level motion. Loads after paper-trail.css and only ever moves transform, opacity, clip-path, background-size and filter; no layout property animates, so CLS stays at zero. paper-trail-motion.js puts .pt-motion on <html> when the visitor allows motion, and every start state that needs the script hangs off that class, so a no-script or reduced-motion visitor gets the resting state straight from the markup. Pure-CSS pieces carry their own prefers-reduced-motion fallback. --pt-bar is the sticky top bar's height (the script measures it). */
+:root{--pt-bar:45px;--pt-ease:cubic-bezier(.2,.7,.2,1)}
+@media (min-width:901px){:root{--pt-bar:59px}}
+@keyframes pt-push{from{transform:scale(1)}to{transform:scale(1.05)}}
+@keyframes pt-push-sm{from{transform:scale(1)}to{transform:scale(1.04)}}
+
+/* 1. hero: the headline rises .45em on load under a clip that tracks the rise (clip-path lives in the element's own space, so the bottom inset shrinks in step with the translate); it resolves in 520 ms. The photo pushes in from 1.00 to 1.05 over eight seconds. */
+@keyframes pt-rise{from{transform:translateY(.45em);clip-path:inset(-.3em -.1em .2em -.1em)}to{transform:none;clip-path:inset(-.3em -.1em -.25em -.1em)}}
+.hero__h1{animation:pt-rise .52s var(--pt-ease) both}
+.hero__photo{animation:pt-push 8s ease-out both}
+@media (min-width:901px){.hero__media{clip-path:inset(0 var(--pad) 0 0)}}
+
+/* 2. the store headline's highlighter draws once the headline is in (the factory beat is a plain stacked section; no pin) */
+html.pt-motion .agit__copy h2 .hi{background-size:0% 64%;transition:background-size .5s var(--pt-ease) .15s}
+html.pt-motion .agit__copy h2.is-in .hi{background-size:100% 64%}
+
+/* 3. three questions: the numeral draws in left to right over 700 ms, the row's hairline wipes in over 400 ms; rows stagger 120 ms. The hairline is a scaled pseudo-element over a transparent border, so the layout never changes. Phones draw the bottom rule; desktop draws the column rule. */
+html.pt-motion .quest__num{clip-path:inset(-.1em 100% -.1em -.05em);transition:clip-path .7s var(--pt-ease)}
+.quest__row.is-in .quest__num{clip-path:inset(-.1em -.1em -.1em -.05em)}
+html.pt-motion .quest__row{position:relative}
+html.pt-motion .quest__row::after{content:"";position:absolute;background:var(--hair-dark);transition:transform .4s var(--pt-ease) .12s}
+html.pt-motion .quest__row.is-in::after{transform:none}
+.quest__row:nth-child(2) .quest__num,.quest__row:nth-child(2)::after{transition-delay:.12s}
+.quest__row:nth-child(3) .quest__num,.quest__row:nth-child(3)::after{transition-delay:.24s}
+@media (max-width:900px){
+  html.pt-motion .quest__row{border-bottom-color:transparent}
+  html.pt-motion .quest__row::after{left:0;right:0;bottom:-1px;height:1px;transform:scaleX(0);transform-origin:0 50%}
+}
+@media (min-width:901px){
+  html.pt-motion .quest__row:not(:first-child){border-left-color:transparent}
+  html.pt-motion .quest__row:not(:first-child)::after{left:-1px;top:0;bottom:0;width:1px;transform:scaleY(0);transform-origin:50% 0}
+}
+
+/* 4. meet Dandy: the three cutouts settle one at a time, 120 ms apart, as the plate comes in; the script then drifts them 20 px over the next 400 px of scroll (will-change is reserved for this group) */
+@keyframes pt-settle{from{transform:translateY(40px) rotate(-6deg);opacity:0}to{transform:none;opacity:1}}
+html.pt-motion .meet__plate .cut{opacity:0;will-change:transform}
+html.pt-motion .meet__plate.is-in .cut{opacity:1;animation:pt-settle .9s var(--pt-ease) both}
+html.pt-motion .meet__plate.is-in .cut--jar{animation-delay:.12s}
+html.pt-motion .meet__plate.is-in .cut--pouch{animation-delay:.24s}
+
+/* 5. counters: the script sets the resting width before it counts, so the line never reflows */
+.count.is-counting{display:inline-block;text-align:right}
+
+/* 6. powder contrast: the mystery half loses its colour as the frame enters. A backdrop-filter veil over the right half scales open on a view timeline; browsers without scroll timelines open it on the frame's reveal; reduced motion shows it open. */
+@keyframes pt-desat{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.compare__split picture{position:relative;display:block}
+.compare__split picture::after{content:"";position:absolute;top:0;bottom:0;left:50%;right:0;pointer-events:none;-webkit-backdrop-filter:saturate(.25) contrast(.96);backdrop-filter:saturate(.25) contrast(.96);transform:scaleX(0);transform-origin:100% 50%;transition:transform 1.4s var(--pt-ease) .2s}
+.compare__split.is-in picture::after{transform:scaleX(1)}
+@supports (animation-timeline:view()){
+  .compare__split picture::after{transition:none;animation:pt-desat linear both;animation-timeline:view();animation-range:entry 25% entry 100%}
+  .compare__split.is-in picture::after{transform:none}
+}
+@media (prefers-reduced-motion:reduce){.compare__split picture::after,.compare__split.is-in picture::after{transform:scaleX(1);transition:none;animation:none}}
+
+/* 7. make: the seal still pushes in once, two seconds, when its frame is in */
+.make__stills .frame .shot{overflow:hidden}
+html.pt-motion .make__stills .frame:last-child.is-in .shot img{animation:pt-push-sm 2s var(--pt-ease) both}
+
+/* 8. test: the line from the batch number on the pouch to the report draws with scroll (the script sets stroke-dashoffset from 1 to 0 as the frames travel up the viewport); the head fades in at the end. Reduced motion and no script leave the line fully drawn. */
+html.pt-motion .test__line-path{stroke-dashoffset:1}
+html.pt-motion .test__line-head{opacity:0}
+html.pt-motion .test__line-head.is-on{opacity:1}
+
+/* 9. comparison: each row's tick and cross draw in when the row is on screen, 120 ms apart down the table */
+html.pt-motion .cmp td svg path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .45s var(--pt-ease)}
+html.pt-motion .cmp tr.is-in td svg path{stroke-dashoffset:0}
+html.pt-motion .cmp tr.is-in .cmp__no path:last-child{transition-delay:.18s}
+html.pt-motion .cmp td svg path:not([pathLength]){stroke-dasharray:none;stroke-dashoffset:0}
+
+/* 10. picker rows (the chooser section is gone; .rows--pic now lives only in the picker sheet): on press the thumbnail tilts two degrees and the chevron nudges four pixels */
+.rows--pic .row__pic,.rows--pic .chev{transition:transform .18s var(--pt-ease)}
+.rows--pic a:active .row__pic{transform:rotate(2deg)}
+.rows--pic a:active .chev{transform:translateX(4px)}
+
+/* 11. faq: the answer opens on a grid row going from 0fr to 1fr in 250 ms (browsers without ::details-content open instantly, which is the fallback) */
+.faq details::details-content{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .25s var(--pt-ease),content-visibility .25s allow-discrete}
+.faq details[open]::details-content{grid-template-rows:1fr}
+.faq details p{min-height:0}
+
+/* 12. close: the linen pushes in over eight seconds once it is on screen; the three product rows fade up 80 ms apart with the copy */
+.close__media{overflow:hidden}
+.close__media.is-on img{animation:pt-push 8s ease-out both}
+html.pt-motion .close .rows li{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .6s var(--pt-ease)}
+html.pt-motion .close__copy.is-in .rows li{opacity:1;transform:none}
+html.pt-motion .close__copy.is-in .rows li:nth-child(2){transition-delay:.08s}
+html.pt-motion .close__copy.is-in .rows li:nth-child(3){transition-delay:.16s}
+
+@media (prefers-reduced-motion:reduce){
+  .hero__h1,.hero__photo,.close__media.is-on img{animation:none}
+  .rows--pic .row__pic,.rows--pic .chev,.faq details::details-content,.cmp td svg path{transition:none}
+  .rows--pic a:active .row__pic,.rows--pic a:active .chev{transform:none}
+  .test__line-head{transition:none}
+}

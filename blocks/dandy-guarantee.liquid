@@ -1,0 +1,42 @@
+<div class="dandy-guarantee" {{ block.shopify_attributes }}>
+  <div class="dandy-guarantee__content">
+    {%- if block.settings.heading != blank -%}
+      <h2 class="dandy-guarantee__heading dandy-trim-display">{{ block.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if block.settings.text != blank -%}
+      <p class="dandy-guarantee__text dandy-trim">{{ block.settings.text }}</p>
+    {%- endif -%}
+  </div>
+  {%- if block.settings.image != blank -%}
+    <div class="dandy-guarantee__media" aria-hidden="true">
+      {{-
+        block.settings.image
+        | image_url: width: 1254
+        | image_tag:
+          widths: '460, 690, 920, 1254',
+          sizes: '(min-width: 1100px) 228px, 154px',
+          alt: '',
+          loading: 'lazy',
+          class: 'dandy-guarantee__image'
+      -}}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Dandy guarantee",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "30 day money-back guarantee" },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "If it doesn’t work for you, you get your money back."
+    },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG of the pouch in hand. Square source recommended." }
+  ],
+  "presets": [{ "name": "Dandy guarantee" }]
+}
+{% endschema %}

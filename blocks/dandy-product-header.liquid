@@ -1,0 +1,18 @@
+{%- assign product = closest.product -%}
+{%- assign subtitle = product.metafields.custom.product_subtitle.value -%}
+
+<div class="dandy-product-header" {{ block.shopify_attributes }}>
+  <h1 class="dandy-product-header__title dandy-trim-display">{{ product.title | escape }}</h1>
+  {%- if subtitle != blank -%}
+    <p class="dandy-product-header__subtitle dandy-trim">{{ subtitle | escape }}</p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Dandy title",
+  "tag": null,
+  "settings": [],
+  "presets": [{ "name": "Dandy title" }]
+}
+{% endschema %}

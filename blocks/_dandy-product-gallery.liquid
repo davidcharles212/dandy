@@ -1,0 +1,488 @@
+{%- liquid
+  assign product = closest.product
+  assign media_count = product.media.size
+  assign start_index = 0
+  assign featured_media = product.selected_or_first_available_variant.featured_media
+  if featured_media
+    for media in product.media
+      if media.id == featured_media.id
+        assign start_index = forloop.index0
+        break
+      endif
+    endfor
+  endif
+  assign gallery_label = 'accessibility.slideshow' | t
+-%}
+
+<dandy-pdp-gallery
+  class="dpg{% if media_count < 2 %} dpg--single{% endif %}"
+  data-start-index="{{ start_index }}"
+  {{ block.shopify_attributes }}
+>
+  <div
+    class="dpg__viewport"
+    data-dpg-viewport
+    role="region"
+    aria-roledescription="carousel"
+    aria-label="{{ gallery_label | escape }}"
+    tabindex="0"
+  >
+    {%- if media_count == 0 -%}
+      <div class="dpg__slide" data-dpg-slide>
+        {{ 'product-1' | placeholder_svg_tag: 'dpg__media' }}
+      </div>
+    {%- endif -%}
+
+    {%- for media in product.media -%}
+      {%- liquid
+        assign slide_label = 'accessibility.slide_status' | t: index: forloop.index, length: media_count
+        assign media_alt = media.alt | default: product.title
+        assign loading = 'lazy'
+        assign priority = 'auto'
+        if forloop.index0 == start_index
+          assign loading = 'eager'
+          assign priority = 'high'
+        endif
+      -%}
+      <div
+        class="dpg__slide"
+        id="DandyMedia-{{ section.id }}-{{ media.id }}"
+        data-dpg-slide
+        data-media-id="{{ media.id }}"
+        role="group"
+        aria-roledescription="slide"
+        aria-label="{{ slide_label | escape }}"
+      >
+        {%- case media.media_type -%}
+          {%- when 'image' -%}
+            {{-
+              media
+              | image_url: width: 2400
+              | image_tag:
+                widths: '600, 800, 1000, 1200, 1500, 1800, 2400',
+                sizes: '(min-width: 1100px) 600px, (min-width: 750px) 556px, 87vw',
+                alt: media_alt,
+                loading: loading,
+                fetchpriority: priority,
+                class: 'dpg__media'
+            -}}
+          {%- when 'video' -%}
+            {{ media | video_tag: controls: true, playsinline: true, preload: 'metadata', image_size: '2000x', class: 'dpg__media' }}
+          {%- when 'external_video' -%}
+            {{ media | external_video_tag: class: 'dpg__media', loading: 'lazy' }}
+          {%- else -%}
+            {{-
+              media.preview_image
+              | image_url: width: 2400
+              | image_tag:
+                widths: '600, 800, 1000, 1200, 1500, 1800, 2400',
+                sizes: '(min-width: 1100px) 600px, (min-width: 750px) 556px, 87vw',
+                alt: media_alt,
+                loading: loading,
+                class: 'dpg__media'
+            -}}
+        {%- endcase -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if media_count > 1 -%}
+    <div class="dpg__thumbs">
+      <div class="dpg__track" data-dpg-track>
+        {%- for media in product.media -%}
+          {%- assign thumb_label = 'accessibility.slide_status' | t: index: forloop.index, length: media_count -%}
+          <button
+            type="button"
+            class="dpg__thumb"
+            data-dpg-thumb
+            aria-controls="DandyMedia-{{ section.id }}-{{ media.id }}"
+            aria-label="{{ thumb_label | escape }}"
+            {% if forloop.index0 == start_index %}
+              aria-current="true"
+            {% endif %}
+          >
+            {{-
+              media.preview_image
+              | image_url: width: 480
+              | image_tag:
+                widths: '480',
+                sizes: '(min-width: 1100px) 119px, 60px',
+                alt: '',
+                loading: 'eager',
+                fetchpriority: 'low',
+                class: 'dpg__thumb-img'
+            -}}
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="dpg__nav">
+      <button type="button" class="dpg__arrow" data-dpg-step="-1" aria-label="{{ 'accessibility.slideshow_previous' | t | escape }}">
+        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#F4512B"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="#fff"/></svg>
+      </button>
+      <button type="button" class="dpg__arrow" data-dpg-step="1" aria-label="{{ 'accessibility.slideshow_next' | t | escape }}">
+        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#F4512B"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="#fff"/></svg>
+      </button>
+    </div>
+  {%- endif -%}
+</dandy-pdp-gallery>
+
+<script>
+  (() => {
+    if (customElements.get('dandy-pdp-gallery')) return;
+    const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const desktop = () => window.matchMedia('(min-width: 1100px)').matches;
+
+    class DandyPdpGallery extends HTMLElement {
+      connectedCallback() {
+        this.viewport = this.querySelector('[data-dpg-viewport]');
+        this.slides = [...this.querySelectorAll('[data-dpg-slide]')];
+        this.thumbs = [...this.querySelectorAll('[data-dpg-thumb]')];
+        this.track = this.querySelector('[data-dpg-track]');
+        this.index = -1;
+        this.lockUntil = 0;
+        if (!this.viewport || this.slides.length === 0) return;
+
+        this.onClick = (event) => {
+          const thumb = event.target.closest('[data-dpg-thumb]');
+          if (thumb && this.contains(thumb)) {
+            this.goTo(this.thumbs.indexOf(thumb));
+            return;
+          }
+          const arrow = event.target.closest('[data-dpg-step]');
+          if (arrow && this.contains(arrow)) this.goTo(this.index + Number(arrow.dataset.dpgStep));
+        };
+        this.onScroll = () => {
+          cancelAnimationFrame(this.raf);
+          this.raf = requestAnimationFrame(() => this.syncFromScroll());
+        };
+        this.onKeydown = (event) => {
+          if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
+          event.preventDefault();
+          this.goTo(this.index + (event.key === 'ArrowRight' ? 1 : -1));
+        };
+        this.onVariant = (event) => {
+          const id = event.detail?.resource?.featured_media?.id;
+          if (!id) return;
+          const i = this.slides.findIndex((slide) => slide.dataset.mediaId === String(id));
+          if (i > -1) this.goTo(i);
+        };
+
+        this.addEventListener('click', this.onClick);
+        this.viewport.addEventListener('scroll', this.onScroll, { passive: true });
+        this.viewport.addEventListener('keydown', this.onKeydown);
+        document.addEventListener('variant:update', this.onVariant);
+
+        requestAnimationFrame(() => this.goTo(Number(this.dataset.startIndex) || 0, true));
+      }
+
+      disconnectedCallback() {
+        this.removeEventListener('click', this.onClick);
+        this.viewport?.removeEventListener('scroll', this.onScroll);
+        this.viewport?.removeEventListener('keydown', this.onKeydown);
+        document.removeEventListener('variant:update', this.onVariant);
+        cancelAnimationFrame(this.raf);
+      }
+
+      slideLeft(i) {
+        return this.slides[i].getBoundingClientRect().left - this.slides[0].getBoundingClientRect().left;
+      }
+
+      goTo(index, instant = false) {
+        const count = this.slides.length;
+        const i = ((index % count) + count) % count;
+        this.lockUntil = Date.now() + (instant ? 50 : 700);
+        this.viewport.scrollTo({ left: this.slideLeft(i), behavior: instant || reduceMotion() ? 'auto' : 'smooth' });
+        this.setActive(i);
+      }
+
+      syncFromScroll() {
+        if (Date.now() < this.lockUntil) return;
+        const x = this.viewport.scrollLeft;
+        let nearest = 0;
+        let distance = Infinity;
+        this.slides.forEach((_, i) => {
+          const d = Math.abs(this.slideLeft(i) - x);
+          if (d < distance) {
+            distance = d;
+            nearest = i;
+          }
+        });
+        if (x + this.viewport.clientWidth >= this.viewport.scrollWidth - 2) nearest = this.slides.length - 1;
+        this.setActive(nearest);
+      }
+
+      setActive(i) {
+        if (i === this.index) return;
+        this.slides[this.index]?.querySelector('video')?.pause();
+        this.index = i;
+        this.thumbs.forEach((thumb, t) => {
+          if (t === i) thumb.setAttribute('aria-current', 'true');
+          else thumb.removeAttribute('aria-current');
+        });
+
+        const thumb = this.thumbs[i];
+        const track = this.track;
+        if (!thumb || !track) return;
+        const behavior = reduceMotion() ? 'auto' : 'smooth';
+        const t = thumb.getBoundingClientRect();
+        const r = track.getBoundingClientRect();
+        if (desktop()) {
+          track.scrollTo({ top: track.scrollTop + (t.top - r.top) - (r.height - t.height) / 2, behavior });
+        } else {
+          track.scrollTo({ left: track.scrollLeft + (t.left - r.left) - (r.width - t.width) / 2, behavior });
+        }
+      }
+    }
+
+    customElements.define('dandy-pdp-gallery', DandyPdpGallery);
+  })();
+</script>
+
+{% stylesheet %}
+  .dpg {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+    min-width: 0;
+    container-type: inline-size;
+  }
+
+  .dpg__viewport {
+    position: relative;
+    display: flex;
+    gap: calc(100cqi * 8 / 328);
+    margin: 0;
+    margin-inline-end: calc(-1 * var(--dandy-gutter, 16px));
+    padding: 0;
+    padding-inline-end: var(--dandy-gutter, 16px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .dpg__viewport::-webkit-scrollbar,
+  .dpg__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dpg__viewport:focus-visible {
+    outline: 2px solid #241914;
+    outline-offset: 2px;
+  }
+
+  .dpg__slide {
+    flex: 0 0 calc(100cqi * 285 / 328);
+    flex-basis: round(down, calc(100cqi * 285 / 328), 1px);
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    scroll-snap-align: start;
+    background: rgb(36 25 20 / 0.04);
+  }
+
+  .dpg--single .dpg__slide {
+    flex-basis: 100cqi;
+  }
+
+  .dpg__media {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dpg__slide iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .dpg__thumbs {
+    min-width: 0;
+    margin: 0;
+    margin-inline-end: calc(-1 * var(--dandy-gutter, 16px));
+    padding-top: calc(100cqi * 8 / 328);
+  }
+
+  .dpg__track {
+    display: flex;
+    flex-direction: row;
+    gap: calc(100cqi * 8 / 328);
+    margin: 0;
+    padding: 0;
+    padding-inline-end: var(--dandy-gutter, 16px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .dpg .dpg__thumb {
+    position: relative;
+    display: block;
+    flex: 0 0 calc(100cqi * 60 / 328);
+    box-sizing: border-box;
+    width: calc(100cqi * 60 / 328);
+    height: calc(100cqi * 60 / 328);
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgb(36 25 20 / 0.06);
+    box-shadow: none;
+    line-height: 0;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpg .dpg__thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .dpg .dpg__thumb[aria-current='true'],
+  .dpg .dpg__thumb:hover {
+    opacity: 1;
+  }
+
+  .dpg .dpg__thumb[aria-current='true']::after {
+    border-color: #f4512b;
+  }
+
+  .dpg .dpg__thumb:focus-visible,
+  .dpg .dpg__arrow:focus-visible {
+    outline: 2px solid #241914;
+    outline-offset: 2px;
+  }
+
+  .dpg .dpg__thumb-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dpg__nav {
+    display: none;
+  }
+
+  .dpg .dpg__arrow {
+    display: block;
+    flex: none;
+    box-sizing: border-box;
+    width: 33.8px;
+    height: 33.8px;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    box-shadow: none;
+    line-height: 0;
+    overflow: visible;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpg .dpg__arrow svg {
+    display: block;
+    width: 33.8px;
+    height: 33.8px;
+  }
+
+  .dpg .dpg__arrow:hover svg circle {
+    fill: #e4461f;
+  }
+
+  .dpg .dpg__arrow:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .dpg {
+      grid-template-columns: minmax(0, 119fr) minmax(0, 600fr);
+      column-gap: 28px;
+      row-gap: 25px;
+      container-type: normal;
+    }
+
+    .dpg--single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .dpg__viewport {
+      grid-column: -2;
+      grid-row: 1;
+      gap: 16px;
+      width: round(down, 100%, 1px);
+      margin: 0;
+      padding: 0;
+      border-radius: 8px;
+    }
+
+    .dpg__slide,
+    .dpg--single .dpg__slide {
+      flex: 0 0 100%;
+    }
+
+    .dpg__thumbs {
+      position: relative;
+      grid-column: 1;
+      grid-row: 1;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dpg__track {
+      position: absolute;
+      inset: 0;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+    }
+
+    .dpg .dpg__thumb {
+      flex: 0 0 auto;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+
+    .dpg__nav {
+      display: flex;
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: end;
+      align-items: center;
+      gap: 13px;
+      margin-inline-end: 1.4px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Product media",
+  "tag": null,
+  "settings": []
+}
+{% endschema %}
