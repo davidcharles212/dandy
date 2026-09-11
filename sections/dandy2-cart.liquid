@@ -11,7 +11,6 @@
   {% render 'dandy2-chrome-header' %}
   <main class="cartwrap" id="DandyMain">
     <header class="doc__head">
-      <p class="steplabel steplabel--center">Your bag</p>
       <h1 class="belowfold__title belowfold__title--center">{% if cart.item_count > 0 %}Nearly Dandy.{% else %}Nothing in the bag yet.{% endif %}</h1>
     </header>
 
@@ -43,31 +42,26 @@
         </section>
 
         <aside class="cartsum" aria-label="Summary">
-          {%- assign d2_units = 0 -%}
+          {%- assign d2_gummies = false -%}
+          {%- assign d2_free_pouch = false -%}
           {%- for item in cart.items -%}
-            {%- comment -%} subscription lines renew on their own schedule; the 3-for-2 pack deal never applies to them {%- endcomment -%}
-            {%- unless item.selling_plan_allocation -%}
-              {%- assign vt = item.variant.title | downcase -%}
-              {%- if vt contains '5-pack' -%}{%- assign mult = item.quantity | times: 5 -%}{%- assign d2_units = d2_units | plus: mult -%}
-              {%- elsif vt contains '3-pack' -%}{%- assign mult = item.quantity | times: 3 -%}{%- assign d2_units = d2_units | plus: mult -%}
-              {%- else -%}{%- assign d2_units = d2_units | plus: item.quantity -%}{%- endif -%}
-            {%- endunless -%}
+            {%- if item.product_id == 8948156301490 and item.selling_plan_allocation == nil -%}
+              {%- assign d2_gummies = true -%}
+              {%- if item.variant_id == 47958359998642 -%}{%- assign d2_free_pouch = true -%}{%- endif -%}
+            {%- endif -%}
           {%- endfor -%}
-          {%- assign d2_to3 = 3 | minus: d2_units -%}
           <div class="cartsum__box">
-            {%- if d2_units > 0 and d2_units < 3 -%}
+            {%- if d2_gummies -%}
               <div class="cartnudge">
-                <p><b>Add {{ d2_to3 }} more</b> and the third is free, plus we drop the $5.95 shipping.</p>
-                <div class="cartnudge__bar"><i style="width: {{ d2_units | times: 33 }}%"></i></div>
-                <a href="/#shop">Keep shopping →</a>
-              </div>
-            {%- elsif d2_units >= 3 -%}
-              <div class="cartnudge cartnudge--won">
-                <p><b>Nice.</b> You’ve hit the 3-pack deal, a free pouch and free shipping are in.</p>
+                {%- if d2_free_pouch -%}
+                  <p><b>Your free pouch is included</b> in your 3-pouch gummy pack.</p>
+                {%- else -%}
+                  <p><b>Buy 2, get 1 free</b> with the $119.98 3-pouch gummy pack.</p>
+                {%- endif -%}
               </div>
             {%- endif -%}
             <div class="cartsum__row"><span>Subtotal</span><b>{{ cart.total_price | money }}</b></div>
-            <p class="cartsum__ship">Shipping is $5.95 on a single one-time pack, and <b>free</b> on subscriptions and 3- or 5-packs. Calculated at checkout.</p>
+            <p class="cartsum__ship"><b>Free standard shipping on orders over $99</b>, subscriptions, and 3- or 5-packs. Otherwise $5.95. Calculated at checkout.</p>
             <form action="{{ routes.cart_url }}" method="post" novalidate>
               <button type="submit" name="checkout" class="cta">Checkout</button>
             </form>
@@ -96,6 +90,22 @@
   </main>
   {% render 'dandy2-chrome-footer' %}
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const before = {
+    total_price: {{ cart.total_price | json }},
+    items: [{% for item in cart.items %}{ key: {{ item.key | json }}, quantity: {{ item.quantity | json }} }{% unless forloop.last %},{% endunless %}{% endfor %}]
+  };
+  const signature = cart => JSON.stringify([cart.total_price, cart.items.map(item => [item.key, item.quantity])]);
+  let navigating = false;
+  document.addEventListener('d2:cart-updated', event => {
+    if (!navigating && signature(event.detail) !== signature(before)) {
+      navigating = true;
+      location.reload();
+    }
+  });
+});
+</script>
 {% schema %}
 { "name": "Dandy 2026 cart", "settings": [] }
 {% endschema %}

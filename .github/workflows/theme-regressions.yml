@@ -30,3 +30,5 @@ jobs:
           package-manager-cache: false
       - name: Run predictive search regressions
         run: node --experimental-vm-modules --test scripts/predictive-search.test.cjs
+      - name: Run gummy cart offer regressions
+        run: node --test qa/cart-offer/cart-offer.test.cjs
