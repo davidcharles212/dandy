@@ -182,7 +182,7 @@
                 "tier_1_badge": "",
                 "tier_1_shipping": "+ $5.95 Shipping",
                 "tier_1_cta": "ADD TO CART",
-                "tier_1_image_asset": "dandy-cap-tier-1{strength}.png",
+                "tier_1_image_asset": "dandy-cap-tier-1{strength}.webp",
                 "tier_1_hero": false,
                 "tier_1_ribbon": "",
                 "tier_2_variant_title": "30-count / 2-pack",
@@ -190,7 +190,7 @@
                 "tier_2_badge": "SAVE [save]",
                 "tier_2_shipping": "FREE SHIPPING",
                 "tier_2_cta": "ADD TO CART",
-                "tier_2_image_asset": "dandy-cap-tier-2{strength}.png",
+                "tier_2_image_asset": "dandy-cap-tier-2{strength}.webp",
                 "tier_2_hero": false,
                 "tier_2_ribbon": "",
                 "tier_3_variant_title": "30-count / 3-pack",
@@ -198,7 +198,7 @@
                 "tier_3_badge": "GET 1 FREE",
                 "tier_3_shipping": "FREE FAST SHIPPING",
                 "tier_3_cta": "CLAIM MY FREE JAR",
-                "tier_3_image_asset": "dandy-cap-tier-3{strength}.png",
+                "tier_3_image_asset": "dandy-cap-tier-3{strength}.webp",
                 "tier_3_hero": true,
                 "tier_3_ribbon": "MOST POPULAR — BUY 2, GET 1 FREE",
                 "reassurance": "One-time purchase • Never an automatic rebill",
@@ -511,16 +511,17 @@
         "pouch_image": "",
         "pouch_image_asset": "dandy-cap-review-top.webp",
         "pouch_image_mobile": "",
-        "pouch_image_mobile_asset": "dandy-cap-review-top.webp",
+        "pouch_image_mobile_asset": "",
         "pouch_cutout_mobile": "",
-        "pouch_cutout_mobile_asset": "dandy-cap-table-50.png",
+        "pouch_cutout_mobile_asset": "dandy-cap-jar-caps-50.webp",
         "person_image": "",
         "person_image_asset": "dandy-cap-spotlight.webp",
         "background_color": "#164020",
         "outside_color": "#fff9f0",
         "clamp_words": 40,
         "more_label": "Read more",
-        "less_label": "Show less"
+        "less_label": "Show less",
+        "art_contain": true
       }
     },
     "feels": {
@@ -631,7 +632,7 @@
             "title": "OTC painkillers",
             "text": "Can take the edge off for an hour or two, but daily use is notorious for wearing on the stomach lining, gut and liver. And zero mood support.",
             "image": "",
-            "image_asset": "dandy-cap-compare-otc.png",
+            "image_asset": "dandy-cap-compare-otc.webp",
             "desktop_column": "left",
             "img_width": 115,
             "img_height": 88,
@@ -648,7 +649,7 @@
             "title": "CBD & hemp capsules",
             "text": "Fine for general wellness, but most people find CBD underwhelming when real physical tension and joint stiffness strike. You need something you can actually feel.",
             "image": "",
-            "image_asset": "dandy-cap-compare-cbd.png",
+            "image_asset": "dandy-cap-compare-cbd.webp",
             "desktop_column": "left",
             "img_width": 124,
             "img_height": 122,
@@ -665,7 +666,7 @@
             "title": "Muscle relaxers & sedatives",
             "text": "They quiet the pain by switching off your nervous system. Great if you want to fall asleep on the couch at 2 PM. Useless if you need to work, drive or parent.",
             "image": "",
-            "image_asset": "dandy-cap-compare-rx.png",
+            "image_asset": "dandy-cap-compare-rx.webp",
             "desktop_column": "left",
             "img_width": 105,
             "img_height": 93,
@@ -682,7 +683,7 @@
             "title": "Raw-leaf kratom capsules",
             "text": "Unstandardized powder packed into giant shells. Six to ten horse pills a dose, potency that swings batch to batch, and rarely tested for heavy metals.",
             "image": "",
-            "image_asset": "dandy-cap-compare-raw.png",
+            "image_asset": "dandy-cap-compare-raw.webp",
             "desktop_column": "right",
             "img_width": 107,
             "img_height": 98,
@@ -704,13 +705,13 @@
             "icon": "",
             "icon_asset": "dandy-cap-icon-check-leaf.svg",
             "image": "",
-            "image_asset": "dandy-cap-tier-1-90.png",
+            "image_asset": "dandy-cap-jar-90.webp",
             "image_2": "",
-            "image_2_asset": "dandy-cap-tier-1-50.png",
+            "image_2_asset": "dandy-cap-jar-50.webp",
             "mobile_peek_image": "",
-            "mobile_peek_image_asset": "dandy-cap-tier-1-50.png",
+            "mobile_peek_image_asset": "dandy-cap-jar-50.webp",
             "mobile_image": "",
-            "mobile_image_asset": "dandy-cap-tier-1-50.png"
+            "mobile_image_asset": "dandy-cap-jar-50.webp"
           }
         }
       },
@@ -728,7 +729,8 @@
         "body": "Most options make you choose between a burned stomach, a foggy head or a fistful of bitter horse pills. Dandy delivers deep physical ease and a clear head in one measured capsule.",
         "background_color": "#164020",
         "show_wedge": true,
-        "next_color": "#fff9f0"
+        "next_color": "#fff9f0",
+        "art_contain": true
       }
     },
     "moments": {
@@ -795,26 +797,27 @@
         "item_1_title": "STANDARDIZED MITRAGYNINE EXTRACT",
         "item_1_text": "Exactly 50 mg or 90 mg of mitragynine, standardized so every capsule delivers the same ease.",
         "item_1_image": "",
-        "item_1_image_asset": "dandy-cap-ing-extract.png",
+        "item_1_image_asset": "dandy-cap-ing-extract.webp",
         "item_2_title": "MICROCRYSTALLINE CELLULOSE",
         "item_2_text": "A plant fiber that keeps the dose evenly dispersed and smoothly absorbed.",
         "item_2_image": "",
-        "item_2_image_asset": "dandy-cap-ing-cellulose.png",
+        "item_2_image_asset": "dandy-cap-ing-cellulose.webp",
         "item_3_title": "VEGAN HPMC SHELL",
         "item_3_text": "Plant-cellulose capsule that dissolves in minutes. No gelatin, dyes or preservatives.",
         "item_3_image": "",
-        "item_3_image_asset": "dandy-cap-ing-shell.png",
+        "item_3_image_asset": "dandy-cap-ing-shell.webp",
         "button_label": "View this batch's lab report",
         "ingredients": "<p>Kratom leaf (Mitragyna speciosa) extract, standardized to 50 mg or 90 mg mitragynine per capsule.<br/><br/>Other ingredients: microcrystalline cellulose, vegan capsule (hydroxypropyl methylcellulose). 0 g sugar. 0 calories.</p>",
         "button_link": "",
         "product_image": "",
-        "product_image_asset": "dandy-cap-table-50.png",
+        "product_image_asset": "dandy-cap-jar-caps-50.webp",
         "product_image_mobile": "",
-        "product_image_mobile_asset": "dandy-cap-table-50.png",
+        "product_image_mobile_asset": "dandy-cap-jar-caps-50.webp",
         "hand_image": "",
         "hand_image_asset": "dandy-cap-guarantee-hand.png",
         "card_color": "#164020",
-        "background_color": "#fff9f0"
+        "background_color": "#fff9f0",
+        "art_contain": true
       }
     },
     "start": {
@@ -999,10 +1002,11 @@
         "no_icon": "",
         "no_icon_asset": "dandy-cap-icon-x.svg",
         "pouch_image": "",
-        "pouch_image_asset": "dandy-cap-table-50.png",
+        "pouch_image_asset": "dandy-cap-jar-tilt-50.webp",
         "background_color": "#fff9f0",
         "show_wedge": true,
-        "next_color": "#164020"
+        "next_color": "#164020",
+        "art_contain": true
       }
     },
     "videos": {
@@ -1057,11 +1061,12 @@
         "heading_mobile": "How people\ndo Dandy.",
         "body": "Job sites at 11 AM, post-workout evenings, and the moment you stop noticing your back.",
         "gummies_image": "",
-        "gummies_image_asset": "dandy-cap-table-50.png",
+        "gummies_image_asset": "dandy-cap-jar-caps-50.webp",
         "background_color": "#164020",
         "verified_label": "Verified Buyer",
         "verified_icon": "",
-        "verified_icon_asset": "dandy-cap-icon-verified.svg"
+        "verified_icon_asset": "dandy-cap-icon-verified.svg",
+        "art_contain": true
       }
     },
     "faq": {

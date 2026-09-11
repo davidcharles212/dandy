@@ -4,7 +4,7 @@
 -%}
 {%- capture check_svg -%}<svg class="dpt__icon" viewBox="0 0 18.2 18.2" fill="none" aria-hidden="true" focusable="false"><path d="M9.1 0C7.30019 0 5.5408 0.533706 4.04431 1.53363C2.54783 2.53355 1.38146 3.95477 0.6927 5.61758C0.0039429 7.28039 -0.176267 9.11009 0.174858 10.8753C0.525983 12.6405 1.39267 14.262 2.66533 15.5347C3.93799 16.8073 5.55945 17.674 7.32468 18.0251C9.08991 18.3763 10.9196 18.1961 12.5824 17.5073C14.2452 16.8185 15.6665 15.6522 16.6664 14.1557C17.6663 12.6592 18.2 10.8998 18.2 9.1C18.2 6.68653 17.2413 4.37191 15.5347 2.66533C13.8281 0.958747 11.5135 0 9.1 0ZM14.3553 6.21833L9.16067 13.2632C9.10022 13.3456 9.02376 13.4149 8.93586 13.467C8.84796 13.5191 8.75044 13.5529 8.64916 13.5663C8.54788 13.5798 8.44492 13.5726 8.34647 13.5453C8.24802 13.518 8.15611 13.4711 8.07625 13.4073L4.368 10.4422C4.2901 10.3797 4.22534 10.3023 4.17743 10.2146C4.12952 10.1269 4.09942 10.0306 4.08885 9.93127C4.07828 9.83191 4.08745 9.73143 4.11584 9.63563C4.14422 9.53982 4.19126 9.45057 4.25425 9.373C4.38026 9.22009 4.56112 9.12257 4.75811 9.10131C4.95511 9.08005 5.15261 9.13674 5.30834 9.25925L8.40234 11.7314L13.1343 5.30833C13.2537 5.14843 13.4314 5.04205 13.6287 5.01223C13.826 4.98242 14.0271 5.03159 14.1884 5.14908C14.2703 5.20774 14.3397 5.28214 14.3926 5.36793C14.4454 5.45371 14.4806 5.54916 14.4961 5.64871C14.5117 5.74825 14.5072 5.8499 14.483 5.9477C14.4588 6.0455 14.4154 6.13751 14.3553 6.21833Z" fill="currentColor"/></svg>{%- endcapture -%}
 
-<div class="dpt" style="--dpt-bg: {{ section.settings.background_color }}; --dpt-next: {{ section.settings.next_color }};">
+<div class="dpt{% if section.settings.art_contain %} dpt--contain{% endif %}" style="--dpt-bg: {{ section.settings.background_color }}; --dpt-next: {{ section.settings.next_color }};">
   <div class="dpt__inner">
     {%- if section.settings.heading != blank -%}
       <h2 class="dpt__heading dpt__heading--desktop">{{ section.settings.heading | escape }}</h2>
@@ -184,6 +184,22 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+
+  .dpt--contain .dpt__table {
+    margin-top: 166px;
+  }
+
+  .dpt--contain .dpt__pouch {
+    left: calc(49.085% - 95px);
+    width: 190px;
+    height: 150px;
+  }
+
+  .dpt--contain .dpt__pouch img {
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .dpt__col-bg {
@@ -564,6 +580,7 @@
   "tag": "section",
   "class": "dandy-pdp-table-section",
   "settings": [
+    { "type": "checkbox", "id": "art_contain", "label": "Product art: fit the whole image (jar cutouts)", "default": false, "info": "Off keeps the original cover-fit slots sized for the gummy pouch art." },
     { "type": "text", "id": "heading", "label": "Heading (desktop)", "default": "Your old pick-me-up looks tired." },
     { "type": "textarea", "id": "heading_mobile", "label": "Heading (mobile)", "default": "Your old pick-me-up\nlooks tired.", "info": "Press Enter to set the line break." },
     { "type": "header", "content": "Columns" },

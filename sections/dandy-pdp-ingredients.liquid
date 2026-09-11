@@ -6,7 +6,7 @@
   }
 </style>
 
-<div class="dpi" style="--dpi-bg: {{ section.settings.background_color }}; --dpi-card: {{ section.settings.card_color }};">
+<div class="dpi{% if section.settings.art_contain %} dpi--contain{% endif %}" style="--dpi-bg: {{ section.settings.background_color }}; --dpi-card: {{ section.settings.card_color }};">
   <div class="dpi__card">
     {%- if section.settings.product_image != blank -%}
       <div class="dpi__product dpi__product--desktop" aria-hidden="true">
@@ -295,6 +295,37 @@
     width: 83.02px;
     height: 55.34px;
     transform: rotate(-151.28deg);
+  }
+
+
+  /* Jar art: whole-image fit for capsule product renders (art_contain) */
+  .dpi--contain .dpi__ing {
+    transform: none;
+  }
+
+  .dpi--contain .dpi__ing img {
+    object-fit: contain;
+    object-position: 50% 50%;
+  }
+
+  .dpi--contain .dpi__item--1 .dpi__ing,
+  .dpi--contain .dpi__item--2 .dpi__ing,
+  .dpi--contain .dpi__item--3 .dpi__ing {
+    top: -6px;
+    left: -12px;
+    width: 72px;
+    height: 60px;
+  }
+
+  .dpi--contain .dpi__product--mobile {
+    width: 100%;
+    aspect-ratio: 1121 / 1000;
+    margin: 12px 0 0;
+  }
+
+  .dpi--contain .dpi__product--mobile img {
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .dpi__item-text {
@@ -611,6 +642,30 @@
       height: 86.41px;
     }
 
+
+    .dpi--contain .dpi__item--1 .dpi__ing,
+    .dpi--contain .dpi__item--2 .dpi__ing,
+    .dpi--contain .dpi__item--3 .dpi__ing {
+      top: -9px;
+      left: -18px;
+      width: 106px;
+      height: 88px;
+    }
+
+    .dpi--contain .dpi__product--desktop {
+      right: 24px;
+      bottom: 0;
+      width: 440px;
+      height: 397px;
+    }
+
+    .dpi--contain .dpi__product--desktop img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+    }
+
     .dpi__item-text {
       gap: 15.6px;
       max-width: 287.3px;
@@ -671,6 +726,7 @@
   "tag": "section",
   "class": "dandy-pdp-ingredients-section",
   "settings": [
+    { "type": "checkbox", "id": "art_contain", "label": "Product art: fit the whole image (jar cutouts)", "default": false, "info": "Off keeps the original cover-fit slots sized for the gummy pouch art." },
     { "type": "text", "id": "heading_small", "label": "Heading line 1", "default": "What's in a" },
     { "type": "text", "id": "heading_large", "label": "Heading line 2", "default": "Dandy?" },
     { "type": "header", "content": "Ingredient 1" },
