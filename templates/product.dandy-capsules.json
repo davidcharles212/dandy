@@ -560,7 +560,7 @@
             "image_asset": "dandy-cap-grimace-1.webp",
             "image_mobile": "",
             "image_mobile_asset": "dandy-cap-grimace-1.webp",
-            "title": "1 capsule vs 8 horse pills",
+            "title": "One capsule, not eight",
             "text": "One standardized extract capsule carries the punch of a handful of raw leaf, without the digestive bloat."
           }
         },
@@ -571,7 +571,7 @@
             "image_asset": "dandy-cap-grimace-2.webp",
             "image_mobile": "",
             "image_mobile_asset": "dandy-cap-grimace-2.webp",
-            "title": "Tasteless and discreet",
+            "title": "Tasteless. Discreet.",
             "text": "Take it at your desk, on a job site or at the gym. No scoops, no shaker bottles, no bitter aftertaste."
           }
         },
@@ -582,7 +582,7 @@
             "image_asset": "dandy-cap-grimace-3.webp",
             "image_mobile": "",
             "image_mobile_asset": "dandy-cap-grimace-3.webp",
-            "title": "Gentle on sensitive guts",
+            "title": "Gentle on the gut",
             "text": "Pure concentrated extract means you aren't digesting grams of raw plant cellulose that cause nausea."
           }
         }
@@ -726,7 +726,7 @@
           "settings": {
             "image": "",
             "image_asset": "dandy-cap-moment-2.webp",
-            "title": "End the day\nwithout feeling broken",
+            "title": "End the day\nstill standing",
             "text": "Physical endurance that carries you through long shifts, workouts and weekend projects with something left over."
           }
         },
@@ -745,7 +745,7 @@
             "image": "",
             "image_asset": "dandy-cap-start-4.webp",
             "title": "Clear head, all day",
-            "text": "Ease in the body without fog in the mind. Work, drive, parent, train."
+            "text": "Ease in the body without fog in the mind, whatever the day asks."
           }
         }
       },
@@ -830,11 +830,11 @@
             "image": "",
             "image_asset": "dandy-cap-start-3.webp",
             "label": "Check in",
-            "text": "Notice how you stand, stretch and bend.",
+            "text": "Notice how you stand and stretch.",
             "text_mobile": "",
             "text_width_mobile": 134,
-            "overlay": 36,
-            "overlay_mobile": 36
+            "overlay": 42,
+            "overlay_mobile": 42
           }
         },
         "step_4": {
@@ -843,7 +843,7 @@
             "image": "",
             "image_asset": "dandy-cap-start-4.webp",
             "label": "Use it with intention",
-            "text": "Use it when you need it. Take days off.",
+            "text": "Use it when needed, with days off.",
             "text_mobile": "",
             "text_width_mobile": 134,
             "overlay": 36,
