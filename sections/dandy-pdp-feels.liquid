@@ -318,6 +318,10 @@
     height: 100%;
   }
 
+  .dpf__brain--motion .dpf__frame--before {
+    animation: dpf-before 6.4s linear infinite;
+  }
+
   .dpf__brain--motion .dpf__frame--after {
     -webkit-mask-image: radial-gradient(circle at 50% 46%, #000 0, #000 58%, transparent 70%);
     mask-image: radial-gradient(circle at 50% 46%, #000 0, #000 58%, transparent 70%);
@@ -327,7 +331,7 @@
     mask-position: center 46%;
     -webkit-mask-size: 0% 0%;
     mask-size: 0% 0%;
-    animation: dpf-wash 6.4s cubic-bezier(0.4, 0, 0.2, 1) infinite, dpf-wash-fade 6.4s linear infinite;
+    animation: dpf-wash 6.4s cubic-bezier(0.2, 0, 0.1, 1) infinite, dpf-wash-fade 6.4s linear infinite;
   }
 
   .dpf__brain--motion .dpf__pulse {
@@ -345,8 +349,14 @@
   }
 
   @keyframes dpf-wash {
-    0%, 14% { -webkit-mask-size: 0% 0%; mask-size: 0% 0%; }
-    46%, 100% { -webkit-mask-size: 340% 340%; mask-size: 340% 340%; }
+    0%, 8% { -webkit-mask-size: 0% 0%; mask-size: 0% 0%; }
+    46%, 100% { -webkit-mask-size: 150% 150%; mask-size: 150% 150%; }
+  }
+
+  @keyframes dpf-before {
+    0%, 8% { opacity: 1; }
+    40%, 88% { opacity: 0; }
+    100% { opacity: 1; }
   }
 
   @keyframes dpf-wash-fade {
