@@ -10,6 +10,15 @@
         {{ section.settings.gummies_image | image_url: width: 1050 | image_tag: widths: '350, 700, 1050', sizes: '350px', alt: '', loading: 'lazy' }}
       </div>
     </div>
+  {%- elsif section.settings.gummies_image_asset != blank -%}
+    <div class="dpv__gummies" aria-hidden="true">
+      <div class="dpv__gummy dpv__gummy--blur">
+        <img src="{{ section.settings.gummies_image_asset | asset_url }}" sizes="350px" alt="" loading="lazy">
+      </div>
+      <div class="dpv__gummy dpv__gummy--sharp">
+        <img src="{{ section.settings.gummies_image_asset | asset_url }}" sizes="350px" alt="" loading="lazy">
+      </div>
+    </div>
   {%- endif -%}
 
   <div class="dpv__intro">
@@ -28,18 +37,41 @@
     <div class="dpv__viewport" data-dpv-viewport tabindex="0" role="region" aria-label="{{ section.settings.heading | escape }}">
       {%- for block in section.blocks -%}
         <div class="dpv__card" data-dpv-card {{ block.shopify_attributes }}>
+          {%- liquid
+            assign has_video = false
+            if block.settings.video != blank or block.settings.video_asset != blank
+              assign has_video = true
+            endif
+          -%}
           {%- if block.settings.video != blank -%}
             {{ block.settings.video | video_tag: image_size: '1100x', class: 'dpv__video', loop: true, muted: true, playsinline: true, controls: false, preload: 'metadata' }}
+          {%- elsif block.settings.video_asset != blank -%}
+            <video
+              class="dpv__video"
+              muted
+              playsinline
+              loop
+              preload="metadata"
+              {% if block.settings.poster != blank %}
+                poster="{{ block.settings.poster | image_url: width: 1100 }}"
+              {% elsif block.settings.poster_asset != blank %}
+                poster="{{ block.settings.poster_asset | asset_url }}"
+              {% endif %}
+            >
+              <source src="{{ block.settings.video_asset | asset_url }}" type="video/mp4">
+            </video>
           {%- elsif block.settings.poster != blank -%}
             {{ block.settings.poster | image_url: width: 1100 | image_tag: widths: '450, 700, 1100', sizes: '(min-width: 1280px) 337px, 225px', alt: '', loading: 'lazy', class: 'dpv__video' }}
+          {%- elsif block.settings.poster_asset != blank -%}
+            <img src="{{ block.settings.poster_asset | asset_url }}" sizes="(min-width: 1280px) 337px, 225px" alt="" loading="lazy" class="dpv__video">
           {%- endif -%}
-          {%- if block.settings.video != blank -%}
+          {%- if has_video -%}
             <button type="button" class="dpv__play" data-dpv-play aria-label="Play video">
-              <svg viewBox="0 0 46.8 46.8" fill="none" aria-hidden="true" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="#F4512B"/></svg>
+              <svg viewBox="0 0 46.8 46.8" fill="none" aria-hidden="true" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="var(--dandy-accent, #f4512b)"/></svg>
             </button>
           {%- else -%}
             <span class="dpv__play" aria-hidden="true">
-              <svg viewBox="0 0 46.8 46.8" fill="none" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="#F4512B"/></svg>
+              <svg viewBox="0 0 46.8 46.8" fill="none" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="var(--dandy-accent, #f4512b)"/></svg>
             </span>
           {%- endif -%}
         </div>
@@ -48,13 +80,13 @@
 
     <div class="dpv__nav">
       <button type="button" class="dpv__arrow" data-dpv-step="-1" aria-label="{{ 'accessibility.slideshow_previous' | t | escape }}">
-        <svg viewBox="0 0 33.8 33.8" fill="none" aria-hidden="true" focusable="false"><circle cx="16.9" cy="16.9" r="16.9" transform="matrix(-1 0 0 1 33.8 0)" fill="#FFF9F0"/><path d="M19.5 15.9254C20.0385 15.9254 20.475 16.3619 20.475 16.9004C20.475 17.4389 20.0385 17.8754 19.5 17.8754L19.5 16.9004L19.5 15.9254ZM11.0106 17.5898C10.6298 17.2091 10.6298 16.5917 11.0106 16.211L17.2154 10.0061C17.5962 9.62534 18.2135 9.62534 18.5943 10.0061C18.9751 10.3869 18.9751 11.0042 18.5943 11.385L13.0789 16.9004L18.5943 22.4158C18.9751 22.7966 18.9751 23.4139 18.5943 23.7947C18.2135 24.1754 17.5962 24.1754 17.2154 23.7947L11.0106 17.5898ZM19.5 16.9004L19.5 17.8754L11.7 17.8754L11.7 16.9004L11.7 15.9254L19.5 15.9254L19.5 16.9004Z" fill="#F4512B"/></svg>
+        <svg viewBox="0 0 33.8 33.8" fill="none" aria-hidden="true" focusable="false"><circle cx="16.9" cy="16.9" r="16.9" transform="matrix(-1 0 0 1 33.8 0)" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M19.5 15.9254C20.0385 15.9254 20.475 16.3619 20.475 16.9004C20.475 17.4389 20.0385 17.8754 19.5 17.8754L19.5 16.9004L19.5 15.9254ZM11.0106 17.5898C10.6298 17.2091 10.6298 16.5917 11.0106 16.211L17.2154 10.0061C17.5962 9.62534 18.2135 9.62534 18.5943 10.0061C18.9751 10.3869 18.9751 11.0042 18.5943 11.385L13.0789 16.9004L18.5943 22.4158C18.9751 22.7966 18.9751 23.4139 18.5943 23.7947C18.2135 24.1754 17.5962 24.1754 17.2154 23.7947L11.0106 17.5898ZM19.5 16.9004L19.5 17.8754L11.7 17.8754L11.7 16.9004L11.7 15.9254L19.5 15.9254L19.5 16.9004Z" fill="var(--dandy-accent, #f4512b)"/></svg>
       </button>
       <div class="dpv__track">
         <div class="dpv__rail" data-dpv-rail><span class="dpv__thumb" data-dpv-thumb></span></div>
       </div>
       <button type="button" class="dpv__arrow" data-dpv-step="1" aria-label="{{ 'accessibility.slideshow_next' | t | escape }}">
-        <svg viewBox="0 0 33.8 33.8" fill="none" aria-hidden="true" focusable="false"><circle cx="16.9" cy="16.9" r="16.9" fill="#FFF9F0"/><path d="M14.3 15.9254C13.7616 15.9254 13.325 16.3619 13.325 16.9004C13.325 17.4389 13.7616 17.8754 14.3 17.8754L14.3 16.9004L14.3 15.9254ZM22.7895 17.5898C23.1702 17.2091 23.1702 16.5917 22.7895 16.211L16.5846 10.0061C16.2039 9.62534 15.5865 9.62534 15.2058 10.0061C14.825 10.3869 14.825 11.0042 15.2058 11.385L20.7212 16.9004L15.2058 22.4158C14.825 22.7966 14.825 23.4139 15.2058 23.7947C15.5865 24.1754 16.2039 24.1754 16.5846 23.7947L22.7895 17.5898ZM14.3 16.9004L14.3 17.8754L22.1 17.8754L22.1 16.9004L22.1 15.9254L14.3 15.9254L14.3 16.9004Z" fill="#F4512B"/></svg>
+        <svg viewBox="0 0 33.8 33.8" fill="none" aria-hidden="true" focusable="false"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M14.3 15.9254C13.7616 15.9254 13.325 16.3619 13.325 16.9004C13.325 17.4389 13.7616 17.8754 14.3 17.8754L14.3 16.9004L14.3 15.9254ZM22.7895 17.5898C23.1702 17.2091 23.1702 16.5917 22.7895 16.211L16.5846 10.0061C16.2039 9.62534 15.5865 9.62534 15.2058 10.0061C14.825 10.3869 14.825 11.0042 15.2058 11.385L20.7212 16.9004L15.2058 22.4158C14.825 22.7966 14.825 23.4139 15.2058 23.7947C15.5865 24.1754 16.2039 24.1754 16.5846 23.7947L22.7895 17.5898ZM14.3 16.9004L14.3 17.8754L22.1 17.8754L22.1 16.9004L22.1 15.9254L14.3 15.9254L14.3 16.9004Z" fill="var(--dandy-accent, #f4512b)"/></svg>
       </button>
     </div>
   </dandy-pdp-videos>
@@ -150,8 +182,8 @@
     position: relative;
     z-index: 1;
     padding: 39.5px 0 40px;
-    background: var(--dpv-bg, #f4512b);
-    color: #fff9f0;
+    background: var(--dpv-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
     -webkit-font-smoothing: antialiased;
@@ -217,7 +249,7 @@
 
   .dpv .dpv__heading {
     margin: -4.57px 0 -5.06px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 40px;
@@ -229,7 +261,7 @@
 
   .dpv .dpv__body {
     margin: -4.58px 0;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-weight: 400;
     font-size: 16px;
@@ -260,7 +292,7 @@
   }
 
   .dpv__viewport:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 4px;
   }
 
@@ -271,7 +303,7 @@
     overflow: hidden;
     border-radius: 8px 8px 32px 8px;
     background: transparent;
-    box-shadow: 4px 4px 0 #a02508;
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
     cursor: pointer;
     scroll-snap-align: start;
   }
@@ -359,7 +391,7 @@
 
   .dpv .dpv__arrow:focus-visible,
   .dpv .dpv__play:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 2px;
   }
 
@@ -377,7 +409,7 @@
     height: 6px;
     overflow: hidden;
     border-radius: 32px;
-    background: #a02508;
+    background: var(--dandy-accent-deep, #a02508);
   }
 
   .dpv__thumb {
@@ -387,7 +419,7 @@
     width: 70px;
     height: 6px;
     border-radius: 32px;
-    background: #fff9f0;
+    background: var(--dandy-pdp-cream, #fff9f0);
   }
 
   @media screen and (min-width: 750px) {
@@ -457,7 +489,7 @@
       height: auto;
       aspect-ratio: 337 / 445;
       border-radius: 10.4px 10.4px 41.6px 10.4px;
-      box-shadow: 5.2px 5.2px 0 #a02508;
+      box-shadow: 5.2px 5.2px 0 var(--dandy-accent-deep, #a02508);
     }
 
     .dpv .dpv__play {
@@ -514,6 +546,7 @@
       "default": "Morning momentum, afternoon second winds and the little rituals in between."
     },
     { "type": "image_picker", "id": "gummies_image", "label": "Gummies (top right)" },
+    { "type": "text", "id": "gummies_image_asset", "label": "Gummies (top right) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" }
   ],
   "blocks": [
@@ -522,7 +555,9 @@
       "name": "Video",
       "settings": [
         { "type": "video", "id": "video", "label": "Video" },
-        { "type": "image_picker", "id": "poster", "label": "Image", "info": "Shown when no video is set." }
+        { "type": "text", "id": "video_asset", "label": "Video (theme asset fallback)", "info": "MP4 filename in assets/, used when no video is picked." },
+        { "type": "image_picker", "id": "poster", "label": "Image", "info": "Shown when no video is set." },
+        { "type": "text", "id": "poster_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
       ]
     }
   ],

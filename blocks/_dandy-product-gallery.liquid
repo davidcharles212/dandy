@@ -1,9 +1,26 @@
 {%- liquid
   assign product = closest.product
-  assign media_count = product.media.size
+
+  comment
+    Extra gallery slides served from theme assets (no Files library needed).
+    One per line: "filename.webp|alt text". They render before product media.
+  endcomment
+  assign extra_slides = '' | split: ''
+  if block.settings.gallery_assets != blank
+    assign extra_slides = block.settings.gallery_assets | strip | newline_to_br | split: '<br />'
+  endif
+  assign extra_count = 0
+  for line in extra_slides
+    assign extra_file = line | split: '|' | first | strip
+    if extra_file != blank
+      assign extra_count = extra_count | plus: 1
+    endif
+  endfor
+
+  assign media_count = product.media.size | plus: extra_count
   assign start_index = 0
   assign featured_media = product.selected_or_first_available_variant.featured_media
-  if featured_media
+  if featured_media and extra_count == 0
     for media in product.media
       if media.id == featured_media.id
         assign start_index = forloop.index0
@@ -33,13 +50,51 @@
       </div>
     {%- endif -%}
 
+    {%- assign extra_index = 0 -%}
+    {%- for line in extra_slides -%}
+      {%- liquid
+        assign extra_parts = line | split: '|'
+        assign extra_file = extra_parts | first | strip
+        if extra_file == blank
+          continue
+        endif
+        assign extra_alt = extra_parts[1] | default: product.title | strip
+        assign extra_index = extra_index | plus: 1
+        assign slide_label = 'accessibility.slide_status' | t: index: extra_index, length: media_count
+        assign loading = 'lazy'
+        assign priority = 'auto'
+        if extra_index == 1
+          assign loading = 'eager'
+          assign priority = 'high'
+        endif
+      -%}
+      <div
+        class="dpg__slide"
+        id="DandyMedia-{{ section.id }}-asset-{{ extra_index }}"
+        data-dpg-slide
+        role="group"
+        aria-roledescription="slide"
+        aria-label="{{ slide_label | escape }}"
+      >
+        <img
+          src="{{ extra_file | asset_url }}"
+          alt="{{ extra_alt | escape }}"
+          loading="{{ loading }}"
+          fetchpriority="{{ priority }}"
+          sizes="(min-width: 1100px) 600px, (min-width: 750px) 556px, 87vw"
+          class="dpg__media"
+        >
+      </div>
+    {%- endfor -%}
+
     {%- for media in product.media -%}
       {%- liquid
-        assign slide_label = 'accessibility.slide_status' | t: index: forloop.index, length: media_count
+        assign slide_index = forloop.index | plus: extra_count
+        assign slide_label = 'accessibility.slide_status' | t: index: slide_index, length: media_count
         assign media_alt = media.alt | default: product.title
         assign loading = 'lazy'
         assign priority = 'auto'
-        if forloop.index0 == start_index
+        if forloop.index0 == start_index and extra_count == 0
           assign loading = 'eager'
           assign priority = 'high'
         endif
@@ -89,15 +144,47 @@
   {%- if media_count > 1 -%}
     <div class="dpg__thumbs">
       <div class="dpg__track" data-dpg-track>
+        {%- assign extra_index = 0 -%}
+        {%- for line in extra_slides -%}
+          {%- liquid
+            assign extra_parts = line | split: '|'
+            assign extra_file = extra_parts | first | strip
+            if extra_file == blank
+              continue
+            endif
+            assign extra_index = extra_index | plus: 1
+            assign thumb_label = 'accessibility.slide_status' | t: index: extra_index, length: media_count
+          -%}
+          <button
+            type="button"
+            class="dpg__thumb"
+            data-dpg-thumb
+            aria-controls="DandyMedia-{{ section.id }}-asset-{{ extra_index }}"
+            aria-label="{{ thumb_label | escape }}"
+            {% if extra_index == 1 %}
+              aria-current="true"
+            {% endif %}
+          >
+            <img
+              src="{{ extra_file | asset_url }}"
+              alt=""
+              loading="eager"
+              fetchpriority="low"
+              sizes="(min-width: 1100px) 119px, 60px"
+              class="dpg__thumb-img"
+            >
+          </button>
+        {%- endfor -%}
         {%- for media in product.media -%}
-          {%- assign thumb_label = 'accessibility.slide_status' | t: index: forloop.index, length: media_count -%}
+          {%- assign thumb_index = forloop.index | plus: extra_count -%}
+          {%- assign thumb_label = 'accessibility.slide_status' | t: index: thumb_index, length: media_count -%}
           <button
             type="button"
             class="dpg__thumb"
             data-dpg-thumb
             aria-controls="DandyMedia-{{ section.id }}-{{ media.id }}"
             aria-label="{{ thumb_label | escape }}"
-            {% if forloop.index0 == start_index %}
+            {% if forloop.index0 == start_index and extra_count == 0 %}
               aria-current="true"
             {% endif %}
           >
@@ -119,10 +206,10 @@
 
     <div class="dpg__nav">
       <button type="button" class="dpg__arrow" data-dpg-step="-1" aria-label="{{ 'accessibility.slideshow_previous' | t | escape }}">
-        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#F4512B"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="#fff"/></svg>
+        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-accent, #f4512b)"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="#fff"/></svg>
       </button>
       <button type="button" class="dpg__arrow" data-dpg-step="1" aria-label="{{ 'accessibility.slideshow_next' | t | escape }}">
-        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#F4512B"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="#fff"/></svg>
+        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-accent, #f4512b)"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="#fff"/></svg>
       </button>
     </div>
   {%- endif -%}
@@ -359,7 +446,7 @@
   }
 
   .dpg .dpg__thumb[aria-current='true']::after {
-    border-color: #f4512b;
+    border-color: var(--dandy-accent, #f4512b);
   }
 
   .dpg .dpg__thumb:focus-visible,
@@ -407,7 +494,7 @@
   }
 
   .dpg .dpg__arrow:hover svg circle {
-    fill: #e4461f;
+    fill: var(--dandy-accent-hover, #e4461f);
   }
 
   .dpg .dpg__arrow:focus:not(:focus-visible) {
@@ -483,6 +570,13 @@
 {
   "name": "Product media",
   "tag": null,
-  "settings": []
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "gallery_assets",
+      "label": "Extra gallery slides, one per line: filename.webp|alt text",
+      "info": "Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide."
+    }
+  ]
 }
 {% endschema %}

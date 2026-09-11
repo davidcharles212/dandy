@@ -12,6 +12,10 @@
       <div class="dpi__product dpi__product--desktop" aria-hidden="true">
         {{ section.settings.product_image | image_url: width: 2000 | image_tag: widths: '700, 1050, 1400, 2000', sizes: '514px', alt: '', loading: 'lazy' }}
       </div>
+    {%- elsif section.settings.product_image_asset != blank -%}
+      <div class="dpi__product dpi__product--desktop" aria-hidden="true">
+        <img src="{{ section.settings.product_image_asset | asset_url }}" sizes="514px" alt="" loading="lazy">
+      </div>
     {%- endif -%}
 
     {%- if section.settings.heading_small != blank or section.settings.heading_large != blank -%}
@@ -25,6 +29,10 @@
       <div class="dpi__hand" aria-hidden="true">
         {{ section.settings.hand_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '192px', alt: '', loading: 'lazy' }}
       </div>
+    {%- elsif section.settings.hand_image_asset != blank -%}
+      <div class="dpi__hand" aria-hidden="true">
+        <img src="{{ section.settings.hand_image_asset | asset_url }}" sizes="192px" alt="" loading="lazy">
+      </div>
     {%- endif -%}
 
     <ul class="dpi__items">
@@ -33,9 +41,11 @@
           assign title_key = 'item_' | append: i | append: '_title'
           assign text_key = 'item_' | append: i | append: '_text'
           assign image_key = 'item_' | append: i | append: '_image'
+          assign image_asset_key = 'item_' | append: i | append: '_image_asset'
           assign item_title = section.settings[title_key]
           assign item_text = section.settings[text_key]
           assign item_image = section.settings[image_key]
+          assign item_image_asset = section.settings[image_asset_key]
         -%}
         {%- if item_title != blank or item_text != blank -%}
           <li class="dpi__item dpi__item--{{ i }}">
@@ -43,6 +53,10 @@
               {%- if item_image != blank -%}
                 <span class="dpi__ing">
                   {{ item_image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '143px', alt: '', loading: 'lazy' }}
+                </span>
+              {%- elsif item_image_asset != blank -%}
+                <span class="dpi__ing">
+                  <img src="{{ item_image_asset | asset_url }}" sizes="143px" alt="" loading="lazy">
                 </span>
               {%- endif -%}
             </span>
@@ -63,20 +77,25 @@
       {%- if section.settings.ingredients != blank -%}
         <button type="button" class="dpi__button" data-dpi-open aria-haspopup="dialog">
           <span class="dpi__button-label">{{ section.settings.button_label | escape }}</span>
-          <span class="dpi__plus" aria-hidden="true"><svg viewBox="0 0 22.88 22.88" fill="none" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="#F4512B"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="#FFF9F0"/></svg></span>
+          <span class="dpi__plus" aria-hidden="true"><svg viewBox="0 0 22.88 22.88" fill="none" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="var(--dandy-accent, #f4512b)"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg></span>
         </button>
       {%- else -%}
         <a class="dpi__button" href="{{ section.settings.button_link | default: '#' }}">
           <span class="dpi__button-label">{{ section.settings.button_label | escape }}</span>
-          <span class="dpi__plus" aria-hidden="true"><svg viewBox="0 0 22.88 22.88" fill="none" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="#F4512B"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="#FFF9F0"/></svg></span>
+          <span class="dpi__plus" aria-hidden="true"><svg viewBox="0 0 22.88 22.88" fill="none" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="var(--dandy-accent, #f4512b)"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg></span>
         </a>
       {%- endif -%}
     {%- endif -%}
 
     {%- assign product_mobile = section.settings.product_image_mobile | default: section.settings.product_image -%}
+    {%- assign product_mobile_asset = section.settings.product_image_mobile_asset | default: section.settings.product_image_asset -%}
     {%- if product_mobile != blank -%}
       <div class="dpi__product dpi__product--mobile" aria-hidden="true">
         {{ product_mobile | image_url: width: 1800 | image_tag: widths: '600, 1200, 1800', sizes: '440px', alt: '', loading: 'lazy' }}
+      </div>
+    {%- elsif product_mobile_asset != blank -%}
+      <div class="dpi__product dpi__product--mobile" aria-hidden="true">
+        <img src="{{ product_mobile_asset | asset_url }}" sizes="440px" alt="" loading="lazy">
       </div>
     {%- endif -%}
   </div>
@@ -85,7 +104,7 @@
     <dialog class="dpi__dialog" data-dpi-dialog aria-label="{{ section.settings.button_label | escape }}">
       <div class="dpi__dialog-inner" tabindex="-1" autofocus>
         <button type="button" class="dpi__close" data-dpi-close aria-label="Close">
-          <svg class="dpi__close-icon" viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="#F4512B"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="#FFF9F0"/></svg>
+          <svg class="dpi__close-icon" viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
         </button>
         <p class="dpi__dialog-title">{{ section.settings.button_label | escape }}</p>
         <div class="dpi__dialog-body">{{ section.settings.ingredients }}</div>
@@ -111,8 +130,8 @@
     position: relative;
     z-index: 1;
     padding: 0 16px 40px;
-    background: var(--dpi-bg, #fff9f0);
-    color: #fff9f0;
+    background: var(--dpi-bg, var(--dandy-pdp-cream, #fff9f0));
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
     -webkit-font-smoothing: antialiased;
@@ -143,7 +162,7 @@
     overflow: hidden;
     padding: 24px 17px 0 16px;
     border-radius: 8px 8px 32px 8px;
-    background: var(--dpi-card, #f4512b);
+    background: var(--dpi-card, var(--dandy-accent, #f4512b));
   }
 
   .dpi__product {
@@ -191,7 +210,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     letter-spacing: 0;
@@ -233,7 +252,7 @@
     width: 48px;
     height: 48px;
     border-radius: 8px;
-    background: linear-gradient(165.96deg, #cf4322 10%, #a6361b 121.1%);
+    background: linear-gradient(165.96deg, var(--dandy-accent-grad-a, #cf4322) 10%, var(--dandy-accent-grad-b, #a6361b) 121.1%);
   }
 
   .dpi__ing {
@@ -294,7 +313,7 @@
   .dpi .dpi__item-title,
   .dpi .dpi__item-desc {
     display: block;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     letter-spacing: -0.16px;
   }
@@ -326,9 +345,9 @@
     padding: 0 17.4px 0 20px;
     border: 0;
     border-radius: 8px;
-    background: #fff9f0;
-    box-shadow: 4px 4px 0 #a02508;
-    color: #f4512b;
+    background: var(--dandy-pdp-cream, #fff9f0);
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
+    color: var(--dandy-accent, #f4512b);
     text-decoration: none;
     cursor: pointer;
     -webkit-appearance: none;
@@ -336,13 +355,13 @@
   }
 
   .dpi .dpi__button:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 4px;
   }
 
   .dpi__button-label {
     margin: -2.28px 0 -2.53px;
-    color: #f4512b;
+    color: var(--dandy-accent, #f4512b);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 20px;
@@ -360,7 +379,7 @@
     width: 17.6px;
     height: 17.6px;
     border-radius: 50%;
-    background: #f4512b;
+    background: var(--dandy-accent, #f4512b);
   }
 
   .dpi .dpi__plus {
@@ -390,7 +409,7 @@
     overflow-y: auto;
     border: 0;
     border-radius: 9px;
-    background: #fff9f0;
+    background: var(--dandy-pdp-cream, #fff9f0);
     box-shadow: none;
     color: #241914;
     font-family: var(--dandy-font-body, sans-serif);
@@ -439,7 +458,7 @@
   }
 
   .dpi .dpi__close:focus-visible {
-    outline: 2px solid #f4512b;
+    outline: 2px solid var(--dandy-accent, #f4512b);
     outline-offset: 2px;
   }
 
@@ -452,7 +471,7 @@
 
   .dpi .dpi__dialog-title {
     margin: -2.74px 30px -3.03px 0;
-    color: #f4512b;
+    color: var(--dandy-accent, #f4512b);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 24px;
@@ -620,7 +639,7 @@
       margin: 0;
       padding: 0 22.62px 0 26px;
       border-radius: 10.4px;
-      box-shadow: 5.2px 5.2px 0 #a02508;
+      box-shadow: 5.2px 5.2px 0 var(--dandy-accent-deep, #a02508);
     }
 
     .dpi__button-label {
@@ -658,22 +677,28 @@
     { "type": "text", "id": "item_1_title", "label": "Title", "default": "KRATOM LEAF EXTRACT" },
     { "type": "textarea", "id": "item_1_text", "label": "Text", "default": "Exactly 35mg of mitragynine per gummy for a consistent experience." },
     { "type": "image_picker", "id": "item_1_image", "label": "Image" },
+    { "type": "text", "id": "item_1_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Ingredient 2" },
     { "type": "text", "id": "item_2_title", "label": "Title", "default": "REAL BERRY FLAVOR" },
     { "type": "textarea", "id": "item_2_text", "label": "Text", "default": "Natural mixed berry flavor with color from carrot and blueberry." },
     { "type": "image_picker", "id": "item_2_image", "label": "Image" },
+    { "type": "text", "id": "item_2_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Ingredient 3" },
     { "type": "text", "id": "item_3_title", "label": "Title", "default": "PLANT-BASED PECTIN" },
     { "type": "textarea", "id": "item_3_text", "label": "Text", "default": "A gelatin-free gummy base made with organic tapioca syrup and cane sugar." },
     { "type": "image_picker", "id": "item_3_image", "label": "Image" },
+    { "type": "text", "id": "item_3_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Button" },
     { "type": "text", "id": "button_label", "label": "Label", "default": "Full ingredients list" },
     { "type": "richtext", "id": "ingredients", "label": "Full ingredients", "info": "Opens in a pop-up. Leave empty to use the link instead." },
     { "type": "url", "id": "button_link", "label": "Link" },
     { "type": "header", "content": "Product image" },
     { "type": "image_picker", "id": "product_image", "label": "Image (desktop)" },
+    { "type": "text", "id": "product_image_asset", "label": "Image (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "image_picker", "id": "product_image_mobile", "label": "Image (mobile)", "info": "Optional. Uses the desktop image when empty." },
+    { "type": "text", "id": "product_image_mobile_asset", "label": "Image (mobile) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "image_picker", "id": "hand_image", "label": "Hand (mobile)" },
+    { "type": "text", "id": "hand_image_asset", "label": "Hand (mobile) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "card_color", "label": "Card", "default": "#F4512B" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" }

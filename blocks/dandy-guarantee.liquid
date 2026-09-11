@@ -20,6 +20,10 @@
           class: 'dandy-guarantee__image'
       -}}
     </div>
+  {%- elsif block.settings.image_asset != blank -%}
+    <div class="dandy-guarantee__media" aria-hidden="true">
+      <img src="{{ block.settings.image_asset | asset_url }}" sizes="(min-width: 1100px) 228px, 154px" alt="" loading="lazy" class="dandy-guarantee__image">
+    </div>
   {%- endif -%}
 </div>
 
@@ -35,7 +39,8 @@
       "label": "Text",
       "default": "If it doesn’t work for you, you get your money back."
     },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG of the pouch in hand. Square source recommended." }
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Transparent PNG of the pouch in hand. Square source recommended." },
+    { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
   ],
   "presets": [{ "name": "Dandy guarantee" }]
 }

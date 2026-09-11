@@ -82,6 +82,8 @@
   <a class="dph__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">
     {%- if section.settings.logo != blank -%}
       {{ section.settings.logo | image_url: width: 250 | image_tag: width: 83, height: 31, alt: shop.name, loading: 'eager' }}
+    {%- elsif section.settings.logo_asset != blank -%}
+      <img src="{{ section.settings.logo_asset | asset_url }}" width="83" height="31" alt="{{ shop.name | escape }}" loading="eager">
     {%- else -%}
       <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="83" height="31" alt="{{ shop.name | escape }}">
     {%- endif -%}
@@ -130,6 +132,7 @@
   "settings": [
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Shown at 83 × 31px. Leave empty to use dandy-wordmark.svg." },
+    { "type": "text", "id": "logo_asset", "label": "Logo (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
     { "type": "color", "id": "icon_color", "label": "Icons", "default": "#000000" }
   ],

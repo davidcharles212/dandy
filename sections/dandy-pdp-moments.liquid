@@ -24,6 +24,8 @@
             {%- assign focal = block.settings.image.presentation.focal_point | default: '50% 50%' -%}
             {%- assign img_style = 'object-position: ' | append: focal -%}
             {{ block.settings.image | image_url: width: 1600 | image_tag: widths: '450, 675, 900, 1200, 1600', sizes: '(min-width: 1280px) 674px, (min-width: 750px) 90vw, 450px', alt: '', loading: 'lazy', class: 'dpm__img', style: img_style }}
+          {%- elsif block.settings.image_asset != blank -%}
+            <img src="{{ block.settings.image_asset | asset_url }}" sizes="(min-width: 1280px) 674px, (min-width: 750px) 90vw, 450px" alt="" loading="lazy" class="dpm__img">
           {%- endif -%}
           <div class="dpm__text">
             {%- if block.settings.title != blank -%}
@@ -39,13 +41,13 @@
 
     <div class="dpm__nav">
       <button type="button" class="dpm__arrow" data-dpm-step="-1" aria-label="{{ 'accessibility.slideshow_previous' | t | escape }}">
-        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#F4512B"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="#FFF9F0"/></svg>
+        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-accent, #f4512b)"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
       </button>
       <div class="dpm__track">
         <div class="dpm__rail" data-dpm-rail><span class="dpm__thumb" data-dpm-thumb></span></div>
       </div>
       <button type="button" class="dpm__arrow" data-dpm-step="1" aria-label="{{ 'accessibility.slideshow_next' | t | escape }}">
-        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#F4512B"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="#FFF9F0"/></svg>
+        <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-accent, #f4512b)"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
       </button>
     </div>
   </dandy-pdp-moments>
@@ -119,7 +121,7 @@
     position: relative;
     z-index: 1;
     padding: 42.5px 0 40px;
-    background: var(--dpm-bg, #fff9f0);
+    background: var(--dpm-bg, var(--dandy-pdp-cream, #fff9f0));
     color: #241914;
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
@@ -207,8 +209,8 @@
     padding: 16px;
     border-radius: 8px;
     background: #241914;
-    box-shadow: 4px 4px 0 #f4512b;
-    color: #fff9f0;
+    box-shadow: 4px 4px 0 var(--dandy-accent, #f4512b);
+    color: var(--dandy-pdp-cream, #fff9f0);
     scroll-snap-align: start;
     isolation: isolate;
   }
@@ -227,7 +229,7 @@
     position: absolute;
     inset: 0;
     z-index: 3;
-    border: 1px solid #f4512b;
+    border: 1px solid var(--dandy-accent, #f4512b);
     border-radius: inherit;
     pointer-events: none;
   }
@@ -252,7 +254,7 @@
 
   .dpm .dpm__title {
     margin: -2.28px 0 -2.53px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 20px;
@@ -263,7 +265,7 @@
 
   .dpm .dpm__desc {
     margin: -4.01px 0;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-weight: 400;
     font-size: 14px;
@@ -323,7 +325,7 @@
     height: 6px;
     overflow: hidden;
     border-radius: 32px;
-    background: #a02508;
+    background: var(--dandy-accent-deep, #a02508);
   }
 
   .dpm__thumb {
@@ -333,7 +335,7 @@
     width: 70px;
     height: 6px;
     border-radius: 32px;
-    background: #fff9f0;
+    background: var(--dandy-pdp-cream, #fff9f0);
   }
 
   @media screen and (min-width: 750px) {
@@ -389,7 +391,7 @@
       height: auto;
       aspect-ratio: 337 / 436;
       padding: 24px 24px 25px;
-      box-shadow: 5.2px 5.2px 0 #f4512b;
+      box-shadow: 5.2px 5.2px 0 var(--dandy-accent, #f4512b);
     }
 
     .dpm__text {
@@ -469,6 +471,7 @@
       "name": "Card",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "textarea", "id": "title", "label": "Title", "default": "Warm, euphoric lift", "info": "Press Enter to force a line break." },
         { "type": "textarea", "id": "text", "label": "Text", "default": "Feel lighter, brighter and genuinely excited to get into your day." }
       ]

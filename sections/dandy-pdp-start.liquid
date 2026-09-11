@@ -28,6 +28,8 @@
           {%- assign focal = block.settings.image.presentation.focal_point | default: '50% 50%' -%}
           {%- assign img_style = 'object-position: ' | append: focal -%}
           {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '450, 700, 1000, 1400', sizes: '(min-width: 1280px) 674px, (min-width: 750px) 90vw, 656px', alt: '', loading: 'lazy', class: 'dps__img', style: img_style }}
+        {%- elsif block.settings.image_asset != blank -%}
+          <img src="{{ block.settings.image_asset | asset_url }}" sizes="(min-width: 1280px) 674px, (min-width: 750px) 90vw, 656px" alt="" loading="lazy" class="dps__img">
         {%- endif -%}
         {%- if block.settings.label != blank -%}
           <p class="dps__pill"><span>{{ block.settings.label | escape }}</span></p>
@@ -48,7 +50,7 @@
     position: relative;
     z-index: 1;
     padding: 0 16px 40px;
-    background: var(--dps-bg, #fff9f0);
+    background: var(--dps-bg, var(--dandy-pdp-cream, #fff9f0));
     color: #241914;
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
@@ -88,7 +90,7 @@
 
   .dps__accent {
     display: block;
-    color: #f4512b;
+    color: var(--dandy-accent, #f4512b);
   }
 
   .dps .dps__body {
@@ -147,14 +149,14 @@
     align-self: flex-start;
     padding: 8px 10px;
     border-radius: 4px;
-    background: #f4512b;
+    background: var(--dandy-accent, #f4512b);
     line-height: 0;
   }
 
   .dps__pill span {
     display: block;
     margin: -1.83px 0 -2.02px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 16px;
@@ -169,7 +171,7 @@
     z-index: 2;
     max-width: var(--dps-tw-m, 146px);
     margin: -4.58px 0;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-weight: 500;
     font-size: 16px;
@@ -281,6 +283,7 @@
       "name": "Step",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "text", "id": "label", "label": "Label", "default": "Start with half" },
         { "type": "textarea", "id": "text", "label": "Text", "default": "Take half a gummy your first time." },
         { "type": "textarea", "id": "text_mobile", "label": "Text (mobile)", "info": "Optional. Uses the text above when empty." },

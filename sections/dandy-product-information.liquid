@@ -14,7 +14,36 @@
   if section.settings.show_accelerated_checkout
     assign pdp_class = pdp_class | append: ' dandy-pdp--show-accelerated'
   endif
+
+  comment
+    Page palette. Every dandy-pdp-* section and dandy-* block reads these
+    custom properties with a brand-orange fallback, so leaving them blank
+    renders the original gummy palette unchanged.
+  endcomment
+  assign palette_css = ''
+  if section.settings.accent_color != blank
+    assign palette_css = palette_css | append: '--dandy-accent:' | append: section.settings.accent_color | append: ';'
+  endif
+  if section.settings.accent_deep_color != blank
+    assign palette_css = palette_css | append: '--dandy-accent-deep:' | append: section.settings.accent_deep_color | append: ';'
+  endif
+  if section.settings.accent_hover_color != blank
+    assign palette_css = palette_css | append: '--dandy-accent-hover:' | append: section.settings.accent_hover_color | append: ';'
+  endif
+  if section.settings.accent_grad_a != blank
+    assign palette_css = palette_css | append: '--dandy-accent-grad-a:' | append: section.settings.accent_grad_a | append: ';'
+  endif
+  if section.settings.accent_grad_b != blank
+    assign palette_css = palette_css | append: '--dandy-accent-grad-b:' | append: section.settings.accent_grad_b | append: ';'
+  endif
+  if section.settings.cream_color != blank
+    assign palette_css = palette_css | append: '--dandy-pdp-cream:' | append: section.settings.cream_color | append: ';'
+  endif
 -%}
+
+{%- if palette_css != blank -%}
+  <style>:root{{ '{' }}{{ palette_css }}{{ '}' }}</style>
+{%- endif -%}
 
 <div
   class="{{ pdp_class }}"
@@ -55,6 +84,13 @@
       "content": "Product subtitle, benefits and subscription perks come from product metafields: custom.product_subtitle, custom.product_benefits and custom.subscription_benefits."
     },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
+    { "type": "header", "content": "Page palette (leave blank for brand orange)" },
+    { "type": "color", "id": "accent_color", "label": "Accent" },
+    { "type": "color", "id": "accent_deep_color", "label": "Accent, deep" },
+    { "type": "color", "id": "accent_hover_color", "label": "Accent, hover" },
+    { "type": "color", "id": "accent_grad_a", "label": "Accent gradient start" },
+    { "type": "color", "id": "accent_grad_b", "label": "Accent gradient end" },
+    { "type": "color", "id": "cream_color", "label": "Canvas cream" },
     { "type": "header", "content": "Buy buttons" },
     {
       "type": "checkbox",

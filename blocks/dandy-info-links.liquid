@@ -1,7 +1,15 @@
-{%- assign bullet = block.settings.bullet_icon -%}
+{%- liquid
+  assign bullet = block.settings.bullet_icon
+  assign bullet_url = ''
+  if bullet != blank
+    assign bullet_url = bullet | image_url: width: 112
+  elsif block.settings.bullet_icon_asset != blank
+    assign bullet_url = block.settings.bullet_icon_asset | asset_url
+  endif
+-%}
 <div
-  class="dandy-info-links{% if bullet != blank %} dandy-info-links--bullets{% endif %}"
-  {% if bullet != blank %}style="--dandy-bullet: url('{{ bullet | image_url: width: 112 }}');"{% endif %}
+  class="dandy-info-links{% if bullet_url != blank %} dandy-info-links--bullets{% endif %}"
+  {% if bullet_url != blank %}style="--dandy-bullet: url('{{ bullet_url }}');"{% endif %}
   {{ block.shopify_attributes }}
 >
   {% content_for 'blocks' %}
@@ -13,7 +21,8 @@
   "tag": null,
   "blocks": [{ "type": "popup-link" }],
   "settings": [
-    { "type": "image_picker", "id": "bullet_icon", "label": "List checkmark", "info": "Shown in Figma's red (#A02508) next to each bullet point in the popups." }
+    { "type": "image_picker", "id": "bullet_icon", "label": "List checkmark", "info": "Shown in Figma's red (#A02508) next to each bullet point in the popups." },
+    { "type": "text", "id": "bullet_icon_asset", "label": "List checkmark (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
   ],
   "presets": [
     {

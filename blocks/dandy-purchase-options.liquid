@@ -105,6 +105,8 @@
                       | image_url: width: 64
                       | image_tag: alt: '', width: 16, height: 16, loading: 'lazy', class: 'dandy-plan__perk-icon'
                     -}}
+                  {%- elsif block.settings.perk_icon_asset != blank -%}
+                    <img src="{{ block.settings.perk_icon_asset | asset_url }}" alt="" width="16" height="16" loading="lazy" class="dandy-plan__perk-icon">
                   {%- endif -%}
                   <span class="dandy-plan__perk-text dandy-trim">{{ perk | escape }}</span>
                 </li>
@@ -162,6 +164,7 @@
                 assign key_sub = k | append: '_subtitle'
                 assign key_price = k | append: '_price'
                 assign key_image = k | append: '_image'
+                assign key_image_asset = k | append: '_image_asset'
                 assign key_badge = k | append: '_badge'
                 assign key_badge_style = k | append: '_badge_style'
                 assign key_perks = k | append: '_perks'
@@ -171,6 +174,7 @@
                 assign o_sub = block.settings[key_sub]
                 assign o_price = block.settings[key_price]
                 assign o_image = block.settings[key_image]
+                assign o_image_asset = block.settings[key_image_asset]
                 assign o_badge = block.settings[key_badge]
                 assign o_badge_style = block.settings[key_badge_style]
                 assign o_perks = block.settings[key_perks] | newline_to_br | split: '<br />'
@@ -196,6 +200,8 @@
                   <span class="dandy-onetime__media" aria-hidden="true">
                     {%- if o_image != blank -%}
                       {{ o_image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '(min-width: 1100px) 94px, 86px', alt: '', loading: 'eager', fetchpriority: 'low' }}
+                    {%- elsif o_image_asset != blank -%}
+                      <img src="{{ o_image_asset | asset_url }}" sizes="(min-width: 1100px) 94px, 86px" alt="" loading="eager" fetchpriority="low">
                     {%- endif -%}
                   </span>
                   <span class="dandy-onetime__info">
@@ -217,6 +223,8 @@
                           <span class="dandy-onetime__perk">
                             {%- if block.settings.perk_icon != blank -%}
                               {{ block.settings.perk_icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dandy-onetime__perk-icon' }}
+                            {%- elsif block.settings.perk_icon_asset != blank -%}
+                              <img src="{{ block.settings.perk_icon_asset | asset_url }}" alt="" width="14" height="14" loading="lazy" class="dandy-onetime__perk-icon">
                             {%- endif -%}
                             <span class="dandy-onetime__perk-text">{{ pt | escape }}</span>
                           </span>
@@ -291,6 +299,7 @@
     { "type": "text", "id": "option_1_subtitle", "label": "Subtitle", "default": "30 gummies" },
     { "type": "text", "id": "option_1_price", "label": "Price", "default": "$59.99" },
     { "type": "image_picker", "id": "option_1_image", "label": "Image" },
+    { "type": "text", "id": "option_1_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "text", "id": "option_1_badge", "label": "Badge" },
     { "type": "select", "id": "option_1_badge_style", "label": "Badge color", "options": [ { "value": "orange", "label": "Orange" }, { "value": "dark", "label": "Dark" } ], "default": "orange" },
     { "type": "textarea", "id": "option_1_perks", "label": "Perks", "info": "One per line." },
@@ -300,6 +309,7 @@
     { "type": "text", "id": "option_2_subtitle", "label": "Subtitle", "default": "90 gummies" },
     { "type": "text", "id": "option_2_price", "label": "Price", "default": "$119.98" },
     { "type": "image_picker", "id": "option_2_image", "label": "Image" },
+    { "type": "text", "id": "option_2_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "text", "id": "option_2_badge", "label": "Badge", "default": "MOST POPULAR" },
     { "type": "select", "id": "option_2_badge_style", "label": "Badge color", "options": [ { "value": "orange", "label": "Orange" }, { "value": "dark", "label": "Dark" } ], "default": "orange" },
     { "type": "textarea", "id": "option_2_perks", "label": "Perks", "default": "$1.60 per gummy\nFree shipping", "info": "One per line." },
@@ -309,6 +319,7 @@
     { "type": "text", "id": "option_3_subtitle", "label": "Subtitle", "default": "150 gummies" },
     { "type": "text", "id": "option_3_price", "label": "Price", "default": "$179.97" },
     { "type": "image_picker", "id": "option_3_image", "label": "Image" },
+    { "type": "text", "id": "option_3_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "text", "id": "option_3_badge", "label": "Badge", "default": "BEST VALUE" },
     { "type": "select", "id": "option_3_badge_style", "label": "Badge color", "options": [ { "value": "orange", "label": "Orange" }, { "value": "dark", "label": "Dark" } ], "default": "dark" },
     { "type": "textarea", "id": "option_3_perks", "label": "Perks", "default": "$1.20 per gummy\nFree shipping", "info": "One per line." },
@@ -318,6 +329,7 @@
       "id": "perk_icon",
       "label": "Subscription perk icon"
     },
+    { "type": "text", "id": "perk_icon_asset", "label": "Subscription perk icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "text", "id": "legend", "label": "Accessible group label", "default": "Purchase options" }
   ],
   "presets": [{ "name": "Dandy purchase options" }]

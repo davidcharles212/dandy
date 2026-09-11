@@ -3,11 +3,10 @@
   --dandy-ink-80: rgb(36 25 20 / 0.8);
   --dandy-ink-60: rgb(36 25 20 / 0.6);
   --dandy-ink-50: rgb(36 25 20 / 0.5);
-  --dandy-orange: #f4512b;
-  --dandy-orange-25: rgb(244 81 43 / 0.25);
-  --dandy-orange-10: rgb(244 81 43 / 0.1);
-  --dandy-red: #a02508;
-  --dandy-cream: #fff9f0;
+  --dandy-orange: var(--dandy-accent, #f4512b);
+  --dandy-orange-25: color-mix(in srgb, var(--dandy-accent, #f4512b) 25%, transparent);
+  --dandy-orange-10: color-mix(in srgb, var(--dandy-accent, #f4512b) 10%, transparent);
+  --dandy-red: var(--dandy-accent-deep, #a02508);
   --dandy-stock: #5cd33f;
   --dandy-gutter: 16px;
   --dandy-trim-inter: 0.28623em;
@@ -16,7 +15,7 @@
 
   overflow-x: clip;
   padding-block: var(--dandy-pt-mobile, 4px) var(--dandy-pb-mobile, 48px);
-  background: var(--dandy-section-bg, var(--dandy-cream));
+  background: var(--dandy-section-bg, var(--dandy-pdp-cream, #fff9f0));
   color: var(--dandy-ink);
   font-family: var(--dandy-font-body);
   font-optical-sizing: none;
@@ -289,7 +288,7 @@
 }
 
 .dandy-plan:has(.dandy-plan__input:focus-visible) {
-  box-shadow: 0 0 0 2px var(--dandy-cream), 0 0 0 4px var(--dandy-ink);
+  box-shadow: 0 0 0 2px var(--dandy-pdp-cream, #fff9f0), 0 0 0 4px var(--dandy-ink);
 }
 
 .dandy-plan__input {
@@ -495,7 +494,7 @@
   border: 0;
   border-radius: 4px;
   outline: none;
-  background: var(--dandy-cream);
+  background: var(--dandy-pdp-cream, #fff9f0);
   box-shadow: inset 0 0 0 1px var(--dandy-orange-10);
   color: var(--dandy-ink);
   font-family: var(--dandy-font-body);
@@ -851,7 +850,7 @@
 }
 
 .dandy-pdp .product-form-buttons .add-to-cart-button.button:hover:not(:disabled) {
-  background: #e4461f;
+  background: var(--dandy-accent-hover, #e4461f);
 }
 
 .dandy-pdp .product-form-buttons .add-to-cart-button.button:focus-visible {
@@ -989,7 +988,7 @@
   line-height: 1.1;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: var(--dandy-cream);
+  color: var(--dandy-pdp-cream, #fff9f0);
 }
 
 .dandy-guarantee__text {
@@ -1159,7 +1158,7 @@
   border: 0;
   border-radius: 9px;
   outline: none;
-  background: #fff9f0;
+  background: var(--dandy-pdp-cream, #fff9f0);
   box-shadow: none;
   color: #241914;
   font-family: var(--dandy-font-body);
@@ -1265,7 +1264,7 @@
   flex: none;
   width: 14px;
   height: 14px;
-  background: #a02508;
+  background: var(--dandy-accent-deep, #a02508);
   -webkit-mask: var(--dandy-bullet) center / contain no-repeat;
   mask: var(--dandy-bullet) center / contain no-repeat;
 }
@@ -1296,7 +1295,7 @@
 }
 
 .dandy-pdp .dandy-info-links .popup-link__close:focus-visible {
-  outline: 2px solid #f4512b;
+  outline: 2px solid var(--dandy-accent, #f4512b);
   outline-offset: 2px;
 }
 

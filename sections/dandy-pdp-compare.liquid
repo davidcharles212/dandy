@@ -33,12 +33,16 @@
               <h3 class="dpw__head">
                 <button type="button" class="dpw__trigger" aria-expanded="false" aria-controls="{{ panel_id }}" data-dpw-trigger>
                   <span class="dpw__title">{{ block.settings.title | escape }}</span>
-                  <span class="dpw__toggle" aria-hidden="true"><svg class="dpw__icon-plus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="#F4512B"/><path d="M7.96016 12.7998V4.7998H9.63983V12.7998H7.96016ZM4.39999 9.56329V8.03632H13.2V9.56329H4.39999Z" fill="#FFF9F0"/></svg><svg class="dpw__icon-minus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="#F4512B"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="#FFF9F0"/></svg></span>
+                  <span class="dpw__toggle" aria-hidden="true"><svg class="dpw__icon-plus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M7.96016 12.7998V4.7998H9.63983V12.7998H7.96016ZM4.39999 9.56329V8.03632H13.2V9.56329H4.39999Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg><svg class="dpw__icon-minus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg></span>
                 </button>
               </h3>
               {%- if block.settings.image != blank -%}
                 <div class="dpw__peek" aria-hidden="true">
                   {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '87px', alt: '', loading: 'lazy' }}
+                </div>
+              {%- elsif block.settings.image_asset != blank -%}
+                <div class="dpw__peek" aria-hidden="true">
+                  <img src="{{ block.settings.image_asset | asset_url }}" sizes="87px" alt="" loading="lazy">
                 </div>
               {%- endif -%}
               <div class="dpw__panel" id="{{ panel_id }}">
@@ -49,11 +53,19 @@
                   <div class="dpw__open-img" aria-hidden="true">
                     {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '109px', alt: '', loading: 'lazy' }}
                   </div>
+                {%- elsif block.settings.image_asset != blank -%}
+                  <div class="dpw__open-img" aria-hidden="true">
+                    <img src="{{ block.settings.image_asset | asset_url }}" sizes="109px" alt="" loading="lazy">
+                  </div>
                 {%- endif -%}
               </div>
               {%- if block.settings.image != blank -%}
                 <div class="dpw__desk-img" aria-hidden="true">
                   {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '124px', alt: '', loading: 'lazy' }}
+                </div>
+              {%- elsif block.settings.image_asset != blank -%}
+                <div class="dpw__desk-img" aria-hidden="true">
+                  <img src="{{ block.settings.image_asset | asset_url }}" sizes="124px" alt="" loading="lazy">
                 </div>
               {%- endif -%}
             </div>
@@ -64,12 +76,16 @@
               <h3 class="dpw__head">
                 <button type="button" class="dpw__trigger" aria-expanded="false" aria-controls="{{ panel_id }}" data-dpw-trigger>
                   <span class="dpw__title">{{ block.settings.title | escape }}</span>
-                  <span class="dpw__toggle" aria-hidden="true"><svg class="dpw__icon-plus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="#F4512B"/><path d="M7.96016 12.7998V4.7998H9.63983V12.7998H7.96016ZM4.39999 9.56329V8.03632H13.2V9.56329H4.39999Z" fill="#FFF9F0"/></svg><svg class="dpw__icon-minus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="#F4512B"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="#FFF9F0"/></svg></span>
+                  <span class="dpw__toggle" aria-hidden="true"><svg class="dpw__icon-plus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M7.96016 12.7998V4.7998H9.63983V12.7998H7.96016ZM4.39999 9.56329V8.03632H13.2V9.56329H4.39999Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg><svg class="dpw__icon-minus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg></span>
                 </button>
               </h3>
               {%- if block.settings.mobile_peek_image != blank -%}
                 <div class="dpw__peek dpw__peek--diff" aria-hidden="true">
                   {{ block.settings.mobile_peek_image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '96px', alt: '', loading: 'lazy' }}
+                </div>
+              {%- elsif block.settings.mobile_peek_image_asset != blank -%}
+                <div class="dpw__peek dpw__peek--diff" aria-hidden="true">
+                  <img src="{{ block.settings.mobile_peek_image_asset | asset_url }}" sizes="96px" alt="" loading="lazy">
                 </div>
               {%- endif -%}
               <div class="dpw__panel" id="{{ panel_id }}">
@@ -90,6 +106,8 @@
                       <li class="dpw__point">
                         {%- if block.settings.icon != blank -%}
                           {{ block.settings.icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dpw__point-icon' }}
+                        {%- elsif block.settings.icon_asset != blank -%}
+                          <img src="{{ block.settings.icon_asset | asset_url }}" alt="" width="14" height="14" loading="lazy" class="dpw__point-icon">
                         {%- endif -%}
                         <span class="dpw__point-text">{{ label | escape }}</span>
                       </li>
@@ -100,6 +118,10 @@
                   <div class="dpw__diff-img" aria-hidden="true">
                     {{ block.settings.mobile_image | image_url: width: 1440 | image_tag: widths: '720, 1080, 1440', sizes: '359px', alt: '', loading: 'lazy' }}
                   </div>
+                {%- elsif block.settings.mobile_image_asset != blank -%}
+                  <div class="dpw__diff-img" aria-hidden="true">
+                    <img src="{{ block.settings.mobile_image_asset | asset_url }}" sizes="359px" alt="" loading="lazy">
+                  </div>
                 {%- endif -%}
               </div>
               {%- if block.settings.image != blank -%}
@@ -107,11 +129,21 @@
                   {{ block.settings.image | image_url: width: 400 | image_tag: alt: '', loading: 'lazy', class: 'dpw__pouch-shadow' }}
                   {{ block.settings.image | image_url: width: 1170 | image_tag: widths: '390, 780, 1170', sizes: '391px', alt: '', loading: 'lazy', class: 'dpw__pouch-img' }}
                 </div>
+              {%- elsif block.settings.image_asset != blank -%}
+                <div class="dpw__pouch dpw__pouch--back" aria-hidden="true">
+                  <img src="{{ block.settings.image_asset | asset_url }}" alt="" loading="lazy" class="dpw__pouch-shadow">
+                  <img src="{{ block.settings.image_asset | asset_url }}" sizes="391px" alt="" loading="lazy" class="dpw__pouch-img">
+                </div>
               {%- endif -%}
               {%- if block.settings.image_2 != blank -%}
                 <div class="dpw__pouch dpw__pouch--front" aria-hidden="true">
                   {{ block.settings.image_2 | image_url: width: 400 | image_tag: alt: '', loading: 'lazy', class: 'dpw__pouch-shadow' }}
                   {{ block.settings.image_2 | image_url: width: 891 | image_tag: widths: '297, 594, 891', sizes: '298px', alt: '', loading: 'lazy', class: 'dpw__pouch-img' }}
+                </div>
+              {%- elsif block.settings.image_2_asset != blank -%}
+                <div class="dpw__pouch dpw__pouch--front" aria-hidden="true">
+                  <img src="{{ block.settings.image_2_asset | asset_url }}" alt="" loading="lazy" class="dpw__pouch-shadow">
+                  <img src="{{ block.settings.image_2_asset | asset_url }}" sizes="298px" alt="" loading="lazy" class="dpw__pouch-img">
                 </div>
               {%- endif -%}
             </div>
@@ -157,8 +189,8 @@
     position: relative;
     z-index: 1;
     overflow-x: clip;
-    background: var(--dpw-bg, #f4512b);
-    color: #fff9f0;
+    background: var(--dpw-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
     -webkit-font-smoothing: antialiased;
@@ -198,7 +230,7 @@
   .dpw .dpw__heading {
     white-space: nowrap;
     margin: -4.57px 0 -5.06px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 40px;
@@ -209,7 +241,7 @@
 
   .dpw .dpw__body {
     margin: -4.58px 0;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-weight: 400;
     font-size: 16px;
@@ -227,8 +259,8 @@
   .dpw__item {
     position: relative;
     border-radius: 8px;
-    background: #fff9f0;
-    box-shadow: 4px 4px 0 #a02508;
+    background: var(--dandy-pdp-cream, #fff9f0);
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
     color: #241914;
   }
 
@@ -278,7 +310,7 @@
 
   .dpw__item--diff .dpw__title {
     max-width: none;
-    color: #f4512b;
+    color: var(--dandy-accent, #f4512b);
   }
 
   .dpw__toggle {
@@ -290,7 +322,7 @@
     width: 17.6px;
     height: 17.6px;
     border-radius: 50%;
-    background: #f4512b;
+    background: var(--dandy-accent, #f4512b);
   }
 
   .dpw .dpw__toggle {
@@ -496,7 +528,7 @@
     z-index: 2;
     height: 49.5px;
     margin-bottom: -2px;
-    background: var(--dpw-next, #fff9f0);
+    background: var(--dpw-next, var(--dandy-pdp-cream, #fff9f0));
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
   }
 
@@ -541,7 +573,7 @@
     }
 
     .dpw__item {
-      box-shadow: 5.2px 5.2px 0 #a02508;
+      box-shadow: 5.2px 5.2px 0 var(--dandy-accent-deep, #a02508);
     }
 
     .dpw__item--std {
@@ -770,6 +802,7 @@
         { "type": "text", "id": "title", "label": "Title", "default": "Energy gummies" },
         { "type": "textarea", "id": "text", "label": "Text", "default": "Usually caffeine in a chewable format. The packaging changes, but the stimulant and its potential drawbacks stay the same." },
         { "type": "image_picker", "id": "image", "label": "Image", "info": "Square image." },
+        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         {
           "type": "select",
           "id": "desktop_column",
@@ -801,10 +834,15 @@
         { "type": "textarea", "id": "text", "label": "Text", "default": "Dandy gives you exactly 35 mg of mitragynine in one glossy mixed-berry gummy that tastes good from the first bite to the center." },
         { "type": "textarea", "id": "points", "label": "List", "default": "Warm mood and clear focus\n35 mg mitragynine\nNo caffeine or THC\nNo Bitter Core", "info": "One item per line." },
         { "type": "image_picker", "id": "icon", "label": "List icon" },
+        { "type": "text", "id": "icon_asset", "label": "List icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "image_picker", "id": "image", "label": "Pouch, back (desktop)" },
+        { "type": "text", "id": "image_asset", "label": "Pouch, back (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "image_picker", "id": "image_2", "label": "Pouch, front (desktop)" },
+        { "type": "text", "id": "image_2_asset", "label": "Pouch, front (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "image_picker", "id": "mobile_peek_image", "label": "Mobile image (closed)" },
-        { "type": "image_picker", "id": "mobile_image", "label": "Mobile image (open)" }
+        { "type": "text", "id": "mobile_peek_image_asset", "label": "Mobile image (closed) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile image (open)" },
+        { "type": "text", "id": "mobile_image_asset", "label": "Mobile image (open) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
       ]
     }
   ],

@@ -3,12 +3,16 @@
   assign total = section.blocks.size
   assign half = total | plus: 1 | divided_by: 2
 -%}
-{%- capture plus_svg -%}<svg class="dpq__icon dpq__icon--plus" viewBox="0 0 22.88 22.88" fill="none" aria-hidden="true" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="#FFF9F0"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="#F4512B"/></svg><svg class="dpq__icon dpq__icon--minus" viewBox="0 0 22.88 22.88" fill="none" aria-hidden="true" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="#FFF9F0"/><path d="M5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="#F4512B"/></svg>{%- endcapture -%}
+{%- capture plus_svg -%}<svg class="dpq__icon dpq__icon--plus" viewBox="0 0 22.88 22.88" fill="none" aria-hidden="true" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="var(--dandy-accent, #f4512b)"/></svg><svg class="dpq__icon dpq__icon--minus" viewBox="0 0 22.88 22.88" fill="none" aria-hidden="true" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="var(--dandy-accent, #f4512b)"/></svg>{%- endcapture -%}
 
 <div class="dpq" style="--dpq-bg: {{ section.settings.background_color }}; --dpq-next: {{ section.settings.next_color }};">
   {%- if section.settings.hand_image != blank -%}
     <div class="dpq__hand" aria-hidden="true">
       {{ section.settings.hand_image | image_url: width: 840 | image_tag: widths: '420, 630, 840', sizes: '209px', alt: '', loading: 'lazy' }}
+    </div>
+  {%- elsif section.settings.hand_image_asset != blank -%}
+    <div class="dpq__hand" aria-hidden="true">
+      <img src="{{ section.settings.hand_image_asset | asset_url }}" sizes="209px" alt="" loading="lazy">
     </div>
   {%- endif -%}
 
@@ -65,8 +69,8 @@
     position: relative;
     z-index: 1;
     overflow-x: clip;
-    background: var(--dpq-bg, #f4512b);
-    color: #fff9f0;
+    background: var(--dpq-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
     -webkit-font-smoothing: antialiased;
@@ -106,7 +110,7 @@
 
   .dpq .dpq__eyebrow {
     margin: -4.58px 0;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-weight: 500;
     font-size: 16px;
@@ -117,7 +121,7 @@
   .dpq .dpq__heading {
     max-width: 273px;
     margin: -4.57px 0 -5.06px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 40px;
@@ -141,7 +145,7 @@
 
   .dpq__item {
     border-radius: 8px;
-    box-shadow: inset 0 0 0 1px #fff9f0;
+    box-shadow: inset 0 0 0 1px var(--dandy-pdp-cream, #fff9f0);
   }
 
   .dpq .dpq__question {
@@ -151,7 +155,7 @@
     gap: 16px;
     min-height: 54px;
     padding: 0 15px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     list-style: none;
     cursor: pointer;
   }
@@ -165,7 +169,7 @@
   }
 
   .dpq .dpq__question:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 2px;
     border-radius: 8px;
   }
@@ -197,7 +201,7 @@
 
   .dpq__answer {
     padding: 0 15px 17px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-size: 14px;
     line-height: 18.2px;
@@ -221,7 +225,7 @@
     z-index: 2;
     height: 49.5px;
     margin-bottom: -2px;
-    background: var(--dpq-next, #fff9f0);
+    background: var(--dpq-next, var(--dandy-pdp-cream, #fff9f0));
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
   }
 
@@ -291,7 +295,7 @@
     }
 
     .dpq__item {
-      box-shadow: inset 0 0 0 1.3px #fff9f0;
+      box-shadow: inset 0 0 0 1.3px var(--dandy-pdp-cream, #fff9f0);
     }
 
     .dpq .dpq__question {
@@ -333,6 +337,7 @@
     { "type": "text", "id": "eyebrow_mobile", "label": "Eyebrow (mobile)", "default": "FAQ’s" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "The things you actually want to know." },
     { "type": "image_picker", "id": "hand_image", "label": "Hand (desktop, top left)" },
+    { "type": "text", "id": "hand_image_asset", "label": "Hand (desktop, top left) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" },
     { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },
     { "type": "color", "id": "next_color", "label": "Next section color", "default": "#FFF9F0" }

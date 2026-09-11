@@ -19,11 +19,24 @@
         {{ section.settings.pouch_image | image_url: width: 2800 | image_tag: widths: '700, 1050, 1400, 2100, 2800', sizes: '692px', alt: '', loading: 'lazy' }}
       </div>
     </div>
+  {%- elsif section.settings.pouch_image_asset != blank -%}
+    <div class="dpr__pouch" aria-hidden="true">
+      <div class="dpr__pouch-frame dpr__pouch-frame--shadow">
+        <img src="{{ section.settings.pouch_image_asset | asset_url }}" sizes="692px" alt="" loading="lazy">
+      </div>
+      <div class="dpr__pouch-frame">
+        <img src="{{ section.settings.pouch_image_asset | asset_url }}" sizes="692px" alt="" loading="lazy">
+      </div>
+    </div>
   {%- endif -%}
 
   {%- if section.settings.pouch_image_mobile != blank -%}
     <div class="dpr__pouch-mobile dpr__pouch-mobile--photo" aria-hidden="true">
       {{ section.settings.pouch_image_mobile | image_url: width: 2400 | image_tag: widths: '500, 1000, 1500, 2000, 2400', sizes: '117vw', alt: '', loading: 'lazy' }}
+    </div>
+  {%- elsif section.settings.pouch_image_mobile_asset != blank -%}
+    <div class="dpr__pouch-mobile dpr__pouch-mobile--photo" aria-hidden="true">
+      <img src="{{ section.settings.pouch_image_mobile_asset | asset_url }}" sizes="117vw" alt="" loading="lazy">
     </div>
   {%- endif -%}
 
@@ -59,6 +72,8 @@
                 <p class="dpr__verified">
                   {%- if section.settings.verified_icon != blank -%}
                     {{ section.settings.verified_icon | image_url: width: 64 | image_tag: alt: '', width: 16, height: 16, loading: 'lazy', class: 'dpr__verified-icon' }}
+                  {%- elsif section.settings.verified_icon_asset != blank -%}
+                    <img src="{{ section.settings.verified_icon_asset | asset_url }}" alt="" width="16" height="16" loading="lazy" class="dpr__verified-icon">
                   {%- endif -%}
                   <span class="dpr__verified-text">{{ section.settings.verified_label }}</span>
                 </p>
@@ -70,7 +85,7 @@
 
       <div class="dpr__nav">
         <button type="button" class="dpr__arrow" data-dpr-step="-1" aria-label="{{ 'accessibility.slideshow_previous' | t | escape }}">
-          <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#FFF9F0"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="#F4512B"/></svg>
+          <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M19.5 15.9249C20.0385 15.9249 20.475 16.3614 20.475 16.8999C20.475 17.4384 20.0385 17.8749 19.5 17.8749L19.5 16.8999L19.5 15.9249ZM11.0106 17.5893C10.6298 17.2086 10.6298 16.5912 11.0106 16.2105L17.2154 10.0056C17.5962 9.62485 18.2135 9.62485 18.5943 10.0056C18.9751 10.3864 18.9751 11.0037 18.5943 11.3845L13.0789 16.8999L18.5943 22.4153C18.9751 22.7961 18.9751 23.4134 18.5943 23.7942C18.2135 24.175 17.5962 24.175 17.2154 23.7942L11.0106 17.5893ZM19.5 16.8999L19.5 17.8749L11.7 17.8749L11.7 16.8999L11.7 15.9249L19.5 15.9249L19.5 16.8999Z" fill="var(--dandy-accent, #f4512b)"/></svg>
         </button>
         <div class="dpr__track">
           <div class="dpr__rail" data-dpr-rail>
@@ -78,7 +93,7 @@
           </div>
         </div>
         <button type="button" class="dpr__arrow" data-dpr-step="1" aria-label="{{ 'accessibility.slideshow_next' | t | escape }}">
-          <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="#FFF9F0"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="#F4512B"/></svg>
+          <svg width="35.8" height="35.8" viewBox="-1 -1 35.8 35.8" fill="none" aria-hidden="true" focusable="false" style="display:block;width:35.8px;height:35.8px;margin:-1px;overflow:visible"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M14.3 15.9249C13.7616 15.9249 13.325 16.3614 13.325 16.8999C13.325 17.4384 13.7616 17.8749 14.3 17.8749L14.3 16.8999L14.3 15.9249ZM22.7895 17.5893C23.1702 17.2086 23.1702 16.5912 22.7895 16.2105L16.5846 10.0056C16.2039 9.62485 15.5865 9.62485 15.2058 10.0056C14.825 10.3864 14.825 11.0037 15.2058 11.3845L20.7212 16.8999L15.2058 22.4153C14.825 22.7961 14.825 23.4134 15.2058 23.7942C15.5865 24.175 16.2039 24.175 16.5846 23.7942L22.7895 17.5893ZM14.3 16.8999L14.3 17.8749L22.1 17.8749L22.1 16.8999L22.1 15.9249L14.3 15.9249L14.3 16.8999Z" fill="var(--dandy-accent, #f4512b)"/></svg>
         </button>
       </div>
     </dandy-pdp-reviews>
@@ -88,11 +103,19 @@
     <div class="dpr__pouch-mobile" aria-hidden="true">
       {{ section.settings.pouch_cutout_mobile | image_url: width: 1600 | image_tag: widths: '430, 860, 1300, 1600', sizes: '117vw', alt: '', loading: 'lazy' }}
     </div>
+  {%- elsif section.settings.pouch_cutout_mobile_asset != blank -%}
+    <div class="dpr__pouch-mobile" aria-hidden="true">
+      <img src="{{ section.settings.pouch_cutout_mobile_asset | asset_url }}" sizes="117vw" alt="" loading="lazy">
+    </div>
   {%- endif -%}
 
   {%- if section.settings.person_image != blank -%}
     <div class="dpr__person" aria-hidden="true">
       {{ section.settings.person_image | image_url: width: 1300 | image_tag: widths: '325, 650, 975, 1300', sizes: '(min-width: 750px) 325px, 262px', alt: '', loading: 'lazy' }}
+    </div>
+  {%- elsif section.settings.person_image_asset != blank -%}
+    <div class="dpr__person" aria-hidden="true">
+      <img src="{{ section.settings.person_image_asset | asset_url }}" sizes="(min-width: 750px) 325px, 262px" alt="" loading="lazy">
     </div>
   {%- endif -%}
 
@@ -188,8 +211,8 @@
     z-index: 1;
     height: calc(362 * var(--dpr-u) + 821px);
     overflow: clip;
-    background: var(--dpr-outside, #fff9f0);
-    color: #fff9f0;
+    background: var(--dpr-outside, var(--dandy-pdp-cream, #fff9f0));
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
     -webkit-font-smoothing: antialiased;
@@ -212,7 +235,7 @@
     right: 0;
     bottom: 2px;
     left: 0;
-    background: var(--dpr-bg, #f4512b);
+    background: var(--dpr-bg, var(--dandy-accent, #f4512b));
   }
 
   .dpr__pouch {
@@ -246,8 +269,8 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(168deg, rgb(244 81 43 / 0) 78.05%, #f4512b 82.66%),
-      linear-gradient(163.69deg, #fff9f0 24.48%, rgb(255 249 240 / 0) 54.23%);
+      linear-gradient(168deg, color-mix(in srgb, var(--dandy-accent, #f4512b) 0%, transparent) 78.05%, var(--dandy-accent, #f4512b) 82.66%),
+      linear-gradient(163.69deg, var(--dandy-pdp-cream, #fff9f0) 24.48%, color-mix(in srgb, var(--dandy-pdp-cream, #fff9f0) 0%, transparent) 54.23%);
   }
 
   .dpr__inner {
@@ -285,7 +308,7 @@
 
   .dpr__rating-value {
     margin: -5.71px 0 -6.32px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 50px;
@@ -302,7 +325,7 @@
   .dpr__rating--mobile .dpr__stars--rating {
     width: 70px;
     height: 14px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
   }
 
   .dpr__rating-caption {
@@ -317,7 +340,7 @@
 
   .dpr .dpr__heading {
    margin: calc(121 * var(--dpr-u) - 75.73px) 16px -5.06px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 40px;
@@ -349,7 +372,7 @@
   }
 
   .dpr__viewport:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 4px;
   }
 
@@ -361,8 +384,8 @@
     min-height: 262px;
     padding: 24px 16px 25px;
     border-radius: 8px 8px 32px 8px;
-    background: #fff9f0;
-    box-shadow: 4px 4px 0 #a02508;
+    background: var(--dandy-pdp-cream, #fff9f0);
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
     color: #241914;
     scroll-snap-align: start;
   }
@@ -370,7 +393,7 @@
   .dpr__stars--card {
     width: 100px;
     height: 20px;
-    color: #f4512b;
+    color: var(--dandy-accent, #f4512b);
   }
 
   .dpr .dpr__quote,
@@ -455,7 +478,7 @@
   }
 
   .dpr .dpr__arrow:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 2px;
   }
 
@@ -473,7 +496,7 @@
     height: 6px;
     overflow: hidden;
     border-radius: 32px;
-    background: #a02508;
+    background: var(--dandy-accent-deep, #a02508);
   }
 
   .dpr__thumb {
@@ -483,7 +506,7 @@
     width: 70px;
     height: 6px;
     border-radius: 32px;
-    background: #fff9f0;
+    background: var(--dandy-pdp-cream, #fff9f0);
   }
 
   .dpr__person {
@@ -508,7 +531,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: #f4512b;
+    color: var(--dandy-accent, #f4512b);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     text-align: center;
@@ -534,7 +557,7 @@
     left: calc(50% - 146px);
     width: 155px;
     height: 155px;
-    background: #fff9f0;
+    background: var(--dandy-pdp-cream, #fff9f0);
     box-shadow: -1px 4px 11.8px rgb(0 0 0 / 0.08);
     transform: rotate(-8.4deg);
   }
@@ -579,7 +602,7 @@
     right: 0;
     bottom: -2px;
     left: 0;
-    background: var(--dpr-outside, #fff9f0);
+    background: var(--dpr-outside, var(--dandy-pdp-cream, #fff9f0));
     clip-path: polygon(0 47.5px, 100% 0, 100% 100%, 0 100%);
   }
 
@@ -653,7 +676,7 @@
     .dpr__rating--desktop .dpr__stars--rating {
       width: 91px;
       height: 18.2px;
-      color: #fff9f0;
+      color: var(--dandy-pdp-cream, #fff9f0);
     }
 
     .dpr .dpr__rating-text {
@@ -696,7 +719,7 @@
       gap: 24px;
       padding: 24px;
       border-radius: 8px 10.4px 40px 8px;
-      box-shadow: 5px 5px 0 #a02508;
+      box-shadow: 5px 5px 0 var(--dandy-accent-deep, #a02508);
     }
 
     .dpr .dpr__quote,
@@ -832,6 +855,7 @@
     { "type": "header", "content": "Reviews" },
     { "type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified Buyer" },
     { "type": "image_picker", "id": "verified_icon", "label": "Verified icon" },
+    { "type": "text", "id": "verified_icon_asset", "label": "Verified icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Badges" },
     { "type": "text", "id": "badge_1_value", "label": "Badge 1 number", "default": "20" },
     { "type": "textarea", "id": "badge_1_label", "label": "Badge 1 label", "default": "CALORIES\nPER GUMMY" },
@@ -839,9 +863,13 @@
     { "type": "textarea", "id": "badge_2_label", "label": "Badge 2 label", "default": "PER GUMMY" },
     { "type": "header", "content": "Images" },
     { "type": "image_picker", "id": "pouch_image", "label": "Pouch and gummies (desktop)" },
+    { "type": "text", "id": "pouch_image_asset", "label": "Pouch and gummies (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "image_picker", "id": "pouch_image_mobile", "label": "Pouch and gummies (mobile)" },
+    { "type": "text", "id": "pouch_image_mobile_asset", "label": "Pouch and gummies (mobile) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "image_picker", "id": "pouch_cutout_mobile", "label": "Pouch and gummies cutout (mobile)" },
+    { "type": "text", "id": "pouch_cutout_mobile_asset", "label": "Pouch and gummies cutout (mobile) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "image_picker", "id": "person_image", "label": "Person" },
+    { "type": "text", "id": "person_image_asset", "label": "Person (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" },
     { "type": "color", "id": "outside_color", "label": "Page background", "default": "#FFF9F0" }

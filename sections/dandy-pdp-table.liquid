@@ -18,20 +18,24 @@
         <div class="dpt__pouch" aria-hidden="true">
           {{ section.settings.pouch_image | image_url: width: 680 | image_tag: widths: '340, 510, 680', sizes: '170px', alt: '', loading: 'lazy' }}
         </div>
+      {%- elsif section.settings.pouch_image_asset != blank -%}
+        <div class="dpt__pouch" aria-hidden="true">
+          <img src="{{ section.settings.pouch_image_asset | asset_url }}" sizes="170px" alt="" loading="lazy">
+        </div>
       {%- endif -%}
       <div class="dpt__col-bg" aria-hidden="true"></div>
 
       <div class="dpt__row dpt__row--head">
         <span class="dpt__cell dpt__cell--label"></span>
         <span class="dpt__cell dpt__cell--dandy">
-          <svg class="dpt__logo" viewBox="0 0 83 31" fill="none" role="img" aria-label="Dandy" focusable="false"><path d="M6.54087 30.4275L0 31.0001V7.26013L6.54087 6.68749C12.8862 6.13293 15.5205 11.7233 15.5205 17.7717C15.5205 23.8202 12.8836 29.8729 6.54087 30.4275ZM6.70368 12.0384L6.37719 12.0677V25.0765L6.70368 25.0472C8.65569 24.8776 8.98217 21.4022 8.98217 18.3443C8.98217 15.2865 8.65569 11.8688 6.70368 12.0384Z" fill="#FFF9F0"/><path d="M26.2582 28.7045L25.8662 26.1048L22.3852 26.4087L21.9941 29.0773L15.6815 29.6301L21.0164 5.42259L27.5236 4.85254L32.8585 28.1275L26.253 28.7045H26.2582ZM24.1425 13.8649L23.0046 21.8672L25.2495 21.67L24.1425 13.8649Z" fill="#FFF9F0"/><path d="M44.4776 27.1114L40.3453 17.3258V27.4731L34.2946 28.0035V4.26097L39.4037 3.81406L43.2767 12.9711V3.47392L49.33 2.94434V26.6869L44.4819 27.1114H44.4776Z" fill="#FFF9F0"/><path d="M58.077 25.9222L51.5361 26.494V2.75232L58.077 2.17968C64.4206 1.62512 67.0566 7.21545 67.0566 13.2639C67.0566 19.3123 64.4197 25.3651 58.077 25.9197V25.9222ZM58.2398 7.5332L57.9159 7.56248V20.5713L58.2398 20.542C60.1918 20.3724 60.5183 16.8969 60.5183 13.8383C60.5183 10.7805 60.1944 7.3627 58.2398 7.5332Z" fill="#FFF9F0"/><path d="M77.8928 14.0731V24.1869L71.3519 24.7595V14.6113L66.2764 1.46217L73.0765 0.867139L74.7356 7.77842L76.3948 0.576944L82.9994 0L77.8902 14.0731H77.8928Z" fill="#FFF9F0"/></svg>
+          <svg class="dpt__logo" viewBox="0 0 83 31" fill="none" role="img" aria-label="Dandy" focusable="false"><path d="M6.54087 30.4275L0 31.0001V7.26013L6.54087 6.68749C12.8862 6.13293 15.5205 11.7233 15.5205 17.7717C15.5205 23.8202 12.8836 29.8729 6.54087 30.4275ZM6.70368 12.0384L6.37719 12.0677V25.0765L6.70368 25.0472C8.65569 24.8776 8.98217 21.4022 8.98217 18.3443C8.98217 15.2865 8.65569 11.8688 6.70368 12.0384Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M26.2582 28.7045L25.8662 26.1048L22.3852 26.4087L21.9941 29.0773L15.6815 29.6301L21.0164 5.42259L27.5236 4.85254L32.8585 28.1275L26.253 28.7045H26.2582ZM24.1425 13.8649L23.0046 21.8672L25.2495 21.67L24.1425 13.8649Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M44.4776 27.1114L40.3453 17.3258V27.4731L34.2946 28.0035V4.26097L39.4037 3.81406L43.2767 12.9711V3.47392L49.33 2.94434V26.6869L44.4819 27.1114H44.4776Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M58.077 25.9222L51.5361 26.494V2.75232L58.077 2.17968C64.4206 1.62512 67.0566 7.21545 67.0566 13.2639C67.0566 19.3123 64.4197 25.3651 58.077 25.9197V25.9222ZM58.2398 7.5332L57.9159 7.56248V20.5713L58.2398 20.542C60.1918 20.3724 60.5183 16.8969 60.5183 13.8383C60.5183 10.7805 60.1944 7.3627 58.2398 7.5332Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M77.8928 14.0731V24.1869L71.3519 24.7595V14.6113L66.2764 1.46217L73.0765 0.867139L74.7356 7.77842L76.3948 0.576944L82.9994 0L77.8902 14.0731H77.8928Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
         </span>
         {%- for name in names -%}
           <span class="dpt__cell dpt__cell--head" data-col="{{ forloop.index0 }}">{{ name | escape }}</span>
         {%- endfor -%}
         <div class="dpt__switch">
           <span class="dpt__switch-name" data-dpt-name aria-hidden="true">{{ names[0] | escape }}</span>
-          <svg class="dpt__switch-arrow" viewBox="0 0 9.19 9.01" fill="none" aria-hidden="true" focusable="false"><path d="M4.59201 9.00834L9.18401 4.40034L8.11201 3.32834L5.39201 6.09634L5.39201 0.000344114L3.82401 0.000344045L3.82401 6.08034L1.08801 3.32834L1.12147e-05 4.40034L4.59201 9.00834Z" fill="#F4512B"/></svg>
+          <svg class="dpt__switch-arrow" viewBox="0 0 9.19 9.01" fill="none" aria-hidden="true" focusable="false"><path d="M4.59201 9.00834L9.18401 4.40034L8.11201 3.32834L5.39201 6.09634L5.39201 0.000344114L3.82401 0.000344045L3.82401 6.08034L1.08801 3.32834L1.12147e-05 4.40034L4.59201 9.00834Z" fill="var(--dandy-accent, #f4512b)"/></svg>
           <select class="dpt__select" data-dpt-select aria-label="Compare Dandy with">
             {%- for name in names -%}
               <option value="{{ forloop.index0 }}">{{ name | escape }}</option>
@@ -59,6 +63,8 @@
                   {%- if v == 'no' or v == 'not_always' -%}
                     {%- if section.settings.no_icon != blank -%}
                       {{ section.settings.no_icon | image_url: width: 80 | image_tag: alt: '', width: 18, height: 18, loading: 'lazy', class: 'dpt__icon dpt__icon--no' }}
+                    {%- elsif section.settings.no_icon_asset != blank -%}
+                      <img src="{{ section.settings.no_icon_asset | asset_url }}" alt="" width="18" height="18" loading="lazy" class="dpt__icon dpt__icon--no">
                     {%- else -%}
                       <span class="dpt__icon dpt__icon--no" aria-hidden="true"></span>
                     {%- endif -%}
@@ -116,7 +122,7 @@
   .dpt {
     position: relative;
     z-index: 1;
-    background: var(--dpt-bg, #fff9f0);
+    background: var(--dpt-bg, var(--dandy-pdp-cream, #fff9f0));
     color: #241914;
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
@@ -188,7 +194,7 @@
     left: 32.317%;
     width: 33.537%;
     border-radius: 8px 8px 32px 8px;
-    background: #f4512b;
+    background: var(--dandy-accent, #f4512b);
   }
 
   .dpt__row {
@@ -376,7 +382,7 @@
   }
 
   .dpt__item--dandy .dpt__icon {
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
   }
 
   .dpt .dpt__icon--no:not(img) {
@@ -410,7 +416,7 @@
     z-index: 2;
     height: 49.5px;
     margin-bottom: -2px;
-    background: var(--dpt-next, #f4512b);
+    background: var(--dpt-next, var(--dandy-accent, #f4512b));
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
   }
 
@@ -571,8 +577,10 @@
     { "type": "text", "id": "text_usually", "label": "Usually", "default": "Usually" },
     { "type": "text", "id": "text_not_always", "label": "Not always", "default": "Not Always" },
     { "type": "image_picker", "id": "no_icon", "label": "No icon" },
+    { "type": "text", "id": "no_icon_asset", "label": "No icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Mobile" },
     { "type": "image_picker", "id": "pouch_image", "label": "Pouch above Dandy column" },
+    { "type": "text", "id": "pouch_image_asset", "label": "Pouch above Dandy column (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
     { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },

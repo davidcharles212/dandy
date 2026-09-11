@@ -26,8 +26,25 @@
                     srcset="{{ block.settings.image_mobile | image_url: width: 456 }} 456w, {{ block.settings.image_mobile | image_url: width: 684 }} 684w"
                     sizes="228px"
                   >
+                {%- elsif block.settings.image_mobile_asset != blank -%}
+                  <source
+                    media="(max-width: 1023px)"
+                    srcset="{{ block.settings.image_mobile_asset | asset_url }}"
+                    sizes="228px"
+                  >
                 {%- endif -%}
                 {{ block.settings.image | image_url: width: 1248 | image_tag: widths: '456, 684, 832, 1248', sizes: '(min-width: 1024px) 416px, 228px', alt: block.settings.title, loading: 'lazy', class: 'dpx__img' }}
+              </picture>
+            {%- elsif block.settings.image_asset != blank -%}
+              <picture>
+                {%- if block.settings.image_mobile_asset != blank -%}
+                  <source
+                    media="(max-width: 1023px)"
+                    srcset="{{ block.settings.image_mobile_asset | asset_url }}"
+                    sizes="228px"
+                  >
+                {%- endif -%}
+                <img src="{{ block.settings.image_asset | asset_url }}" sizes="(min-width: 1024px) 416px, 228px" alt="{{ block.settings.title | escape }}" loading="lazy" class="dpx__img">
               </picture>
             {%- endif -%}
           </div>
@@ -93,8 +110,8 @@
     position: relative;
     z-index: 1;
     padding: 50.5px 0 40px;
-    background: var(--dpx-bg, #f4512b);
-    color: #fff9f0;
+    background: var(--dpx-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-body, sans-serif);
     font-optical-sizing: none;
     -webkit-font-smoothing: antialiased;
@@ -124,7 +141,7 @@
 
   .dpx .dpx__heading {
     margin: -4.57px 0 -5.06px;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-family: var(--dandy-font-display, sans-serif);
     font-weight: 400;
     font-size: 40px;
@@ -135,7 +152,7 @@
 
   .dpx .dpx__body {
     margin: -4.58px 0;
-    color: #fff9f0;
+    color: var(--dandy-pdp-cream, #fff9f0);
     font-variation-settings: 'opsz' 32;
     font-weight: 400;
     font-size: 16px;
@@ -165,7 +182,7 @@
   }
 
   .dpx__viewport:focus-visible {
-    outline: 2px solid #fff9f0;
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
     outline-offset: 4px;
   }
 
@@ -176,8 +193,8 @@
     min-height: 277px;
     padding: 16px;
     border-radius: 8px 8px 32px 8px;
-    background: #fff9f0;
-    box-shadow: 4px 4px 0 #a02508;
+    background: var(--dandy-pdp-cream, #fff9f0);
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
     color: #241914;
     scroll-snap-align: start;
   }
@@ -242,7 +259,7 @@
     height: 6px;
     overflow: hidden;
     border-radius: 32px;
-    background: #a02508;
+    background: var(--dandy-accent-deep, #a02508);
   }
 
   .dpx__thumb {
@@ -252,7 +269,7 @@
     width: 70px;
     height: 6px;
     border-radius: 32px;
-    background: #fff9f0;
+    background: var(--dandy-pdp-cream, #fff9f0);
   }
 
   @media screen and (min-width: 1024px) {
@@ -359,7 +376,9 @@
       "name": "Card",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "image_picker", "id": "image_mobile", "label": "Image (mobile)", "info": "Optional. Uses the main image when empty." },
+        { "type": "text", "id": "image_mobile_asset", "label": "Image (mobile) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
         { "type": "text", "id": "title", "label": "Title", "default": "Berry to the center" },
         {
           "type": "textarea",
