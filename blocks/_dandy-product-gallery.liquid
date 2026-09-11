@@ -423,6 +423,11 @@
 </script>
 
 {% stylesheet %}
+  .dpg__slide[hidden],
+  .dpg__thumb[hidden] {
+    display: none !important;
+  }
+
   .dpg {
     display: grid;
     grid-template-columns: minmax(0, 1fr);

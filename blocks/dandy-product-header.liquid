@@ -1,5 +1,5 @@
 {%- assign product = closest.product -%}
-{%- assign title = block.settings.title_override | default: product.title -%}
+{%- assign title = block.settings.title_override | default: product.title | replace: ' · ', ' · ' -%}
 {%- assign subtitle = block.settings.subtitle_override | default: product.metafields.custom.product_subtitle.value -%}
 
 <div class="dandy-product-header" {{ block.shopify_attributes }}>

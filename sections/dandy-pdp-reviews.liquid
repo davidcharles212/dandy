@@ -236,7 +236,8 @@
     --dpr-u: calc(100vw / 360);
     position: relative;
     z-index: 1;
-    height: calc(362 * var(--dpr-u) + 821px);
+    height: auto;
+    min-height: calc(362 * var(--dpr-u) + 821px);
     overflow: clip;
     background: var(--dpr-outside, var(--dandy-pdp-cream, #fff9f0));
     color: var(--dandy-pdp-cream, #fff9f0);
@@ -305,6 +306,8 @@
     display: flex;
     flex-direction: column;
     padding-top: calc(241 * var(--dpr-u));
+    /* Reserves the seal and person band below the cards; the section now grows with an opened review. */
+    padding-bottom: 370px;
   }
 
   .dpr__stars {
@@ -447,7 +450,7 @@
     line-height: 21px;
     letter-spacing: -0.17px;
     color: #241914;
-    text-wrap: pretty;
+    text-wrap: balance;
   }
 
   .dpr__body {
@@ -599,7 +602,8 @@
 
   .dpr__person {
     position: absolute;
-    top: calc(362 * var(--dpr-u) + 426px);
+    top: auto;
+    bottom: 68px;
     left: calc(50% - 66px);
     width: 262px;
     height: 327px;
@@ -641,7 +645,8 @@
   }
 
   .dpr__badge--cal {
-    top: calc(362 * var(--dpr-u) + 448.64px);
+    top: auto;
+    bottom: 217.36px;
     left: calc(50% - 146px);
     width: 155px;
     height: 155px;
@@ -663,7 +668,8 @@
   }
 
   .dpr__badge--mg {
-    top: calc(362 * var(--dpr-u) + 568px);
+    top: auto;
+    bottom: 120.14px;
     left: calc(50% - 152.39px);
     width: 132.86px;
     height: 132.86px;
