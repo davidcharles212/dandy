@@ -101,7 +101,7 @@
 /* ===== 9. The list: count line, card grid (one, two, three columns), the card (the page's only box), empty state, show more ===== */
 .rvh__list{padding:var(--gap-s) 0 var(--gap-l)}
 .rvh__count{margin-bottom:14px;font-size:15px;color:var(--rvh-meta);min-height:1.6em}
-.rvh__grid{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+.rvh__grid{display:grid;gap:16px;margin:0;padding:0;list-style:none;align-items:start}
 @media (min-width:641px){.rvh__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1024px){.rvh__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .rvh__grid > li{display:flex;min-width:0}
