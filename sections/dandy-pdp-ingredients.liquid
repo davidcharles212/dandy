@@ -324,10 +324,23 @@
   .dpi--contain .dpi__product--mobile {
     width: 100%;
     aspect-ratio: 1121 / 1000;
-    margin: 12px 0 0;
+    margin: 12px 0 18px;
+  }
+
+  .dpi--contain .dpi__product--mobile::before {
+    content: '';
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    bottom: -8px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgb(0 0 0 / 0.38), rgb(0 0 0 / 0) 68%);
+    pointer-events: none;
   }
 
   .dpi--contain .dpi__product--mobile img {
+    position: relative;
     object-fit: contain;
     object-position: center bottom;
   }

@@ -5,6 +5,7 @@
 {%- endcapture -%}
 
 <div
+  id="dpr"
   class="dpr{% if section.settings.art_contain %} dpr--contain{% endif %}"
   style="--dpr-bg: {{ section.settings.background_color }}; --dpr-outside: {{ section.settings.outside_color }};"
 >
@@ -233,6 +234,7 @@
 
 {% stylesheet %}
   .dpr {
+    scroll-margin-top: 16px;
     --dpr-u: calc(100vw / 360);
     position: relative;
     z-index: 1;

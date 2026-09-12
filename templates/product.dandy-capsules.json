@@ -41,7 +41,9 @@
               "name": "Dandy rating",
               "settings": {
                 "text": "Rated 4.9/5 | 1,200+ Happy Buyers",
-                "stars_label": "Rated 4.9 out of 5 stars"
+                "stars_label": "Rated 4.9 out of 5 stars",
+                "link": "#dpr",
+                "link_label": "Jump to customer reviews"
               },
               "blocks": {}
             },
@@ -814,7 +816,7 @@
         "product_image_mobile": "",
         "product_image_mobile_asset": "dandy-cap-jar-caps-50.webp",
         "hand_image": "",
-        "hand_image_asset": "dandy-cap-guarantee-hand.png",
+        "hand_image_asset": "",
         "card_color": "#164020",
         "background_color": "#fff9f0",
         "art_contain": true

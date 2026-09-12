@@ -1,7 +1,7 @@
 /* Dandy capsule offer: port of the gummy 1-2-3 offer box into the Ecom Landers PDP
    token vocabulary. Colours come from --dandy-accent* (set per template) so the
    same block would render orange on a gummy page and green on the capsule page. */
-.co { --co-accent: var(--dandy-accent, #f4512b); --co-accent-deep: var(--dandy-accent-deep, #a02508); --co-bright: var(--dandy-accent-bright, #4eae4b); --co-ink: var(--dandy-ink, #241914); --co-cream: var(--dandy-pdp-cream, #fff9f0); --co-line: color-mix(in srgb, var(--co-ink) 22%, transparent); --co-tint: color-mix(in srgb, var(--co-accent) 7%, white); display: block; min-width: 0; scroll-margin-top: 20px; font-family: var(--dandy-font-body); color: var(--co-ink); }
+.co { --co-accent: var(--dandy-accent, #164020); --co-accent-deep: var(--dandy-accent-deep, #a02508); --co-bright: var(--dandy-accent-bright, #4eae4b); --co-ink: var(--dandy-ink, #241914); --co-cream: var(--dandy-pdp-cream, #fff9f0); --co-line: color-mix(in srgb, var(--co-ink) 22%, transparent); --co-tint: color-mix(in srgb, var(--co-accent) 7%, white); display: block; min-width: 0; scroll-margin-top: 20px; font-family: var(--dandy-font-body); color: var(--co-ink); }
 .co * { min-width: 0; box-sizing: border-box; }
 .co-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 
