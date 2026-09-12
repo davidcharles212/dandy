@@ -1,0 +1,1010 @@
+{
+  "channel": "chrome",
+  "viewports": {
+    "390": {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "checks": {
+        "g4_inventory": {
+          "cards": [
+            "div.hage__box",
+            "span.hero__inset",
+            "article.rev.rev--first",
+            "article.rev",
+            "article.rev",
+            "input#HomeWelcomeEmail.welcome__input"
+          ],
+          "reviewCards": 3,
+          "offenders": [],
+          "nonButtonPills": [],
+          "pass": true
+        },
+        "g9_fixedBeforeDismiss": {
+          "fixed": [
+            "div.hh__nav:sticky",
+            "div.hage:fixed"
+          ],
+          "dialogs": [
+            "div.hage"
+          ],
+          "pass": true
+        },
+        "g8_cls": {
+          "withGate": 0,
+          "total": 0,
+          "preload": {
+            "present": true,
+            "sameSet": true,
+            "rendered": "home-hero-hands-900.webp",
+            "sizesMatch": true
+          },
+          "pass": true
+        },
+        "g9_afterDismiss": {
+          "dialogs": [],
+          "fixed": [
+            "div.hh__nav:sticky"
+          ],
+          "infiniteAnimations": [],
+          "tickerLike": [],
+          "pass": true
+        },
+        "g1_overflow": {
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "pass": true,
+          "offenders": []
+        },
+        "g2_typeFloor": {
+          "minFontSize": 13,
+          "minAt": "p.welcome__fine",
+          "bodySize": 16,
+          "bodyParagraphsUnder16": [],
+          "metaParagraphClasses": [
+            "welcome__fine",
+            "hf__legal",
+            "gear__range",
+            "moment__alt",
+            "hf__contact",
+            "hh__ann",
+            "dose__zone"
+          ],
+          "pass": true
+        },
+        "g3_dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "g4_eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "g5_whitespace": {
+          "limit": 56,
+          "nodes": 264,
+          "gaps": [],
+          "pass": true
+        },
+        "g6_textOverPhoto": {
+          "overlaps": [],
+          "pass": true
+        },
+        "g7_images": {
+          "images": [
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": false,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-hero-hands-1600.webp",
+              "complete": true,
+              "natural": "390x219",
+              "attrs": "1600x900",
+              "lazy": "auto",
+              "visible": true,
+              "real": "1600x900",
+              "attrsMatch": true,
+              "candidates": [
+                "home-hero-hands-900.webp:900x506",
+                "home-hero-hands-1600.webp:1600x900"
+              ]
+            },
+            {
+              "src": "home-hero-gummy-900.webp",
+              "complete": true,
+              "natural": "900x900",
+              "attrs": "900x900",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "900x900",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-gummies-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-capsules-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-powder-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "112x42",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            }
+          ],
+          "pass": true
+        },
+        "g11_hero": {
+          "h1Lines": 3,
+          "h1Size": 40,
+          "ledeLines": 5,
+          "buttonWidth": 350,
+          "contentWidth": 350,
+          "photoWidth": 390,
+          "photoHeight": 219,
+          "photoUncropped": true,
+          "photoEdgeToEdge": true,
+          "insetSize": 120,
+          "pass": true
+        },
+        "g12_analytics": {
+          "tracked": 16,
+          "events": {
+            "homepage_hero_reviews_click": 1,
+            "homepage_hero_cta_click": 2,
+            "format_card_click": 4,
+            "dosage_guide_interaction": 3,
+            "faq_accordion_toggle": 5,
+            "reviews_gateway_click": 1
+          },
+          "missing": [],
+          "absentEvents": [],
+          "pass": true
+        },
+        "g10_links": {
+          "unique": [
+            "#DandyMain",
+            "#formats",
+            "#reviews",
+            "/",
+            "/#dose",
+            "/cart",
+            "/collections/all",
+            "/pages/contact?view=dandy2-about",
+            "/pages/contact?view=dandy2-coa",
+            "/pages/contact?view=dandy2-faq",
+            "/pages/contact?view=dandy2-kratom",
+            "/pages/contact?view=dandy2-privacy",
+            "/pages/contact?view=dandy2-returns",
+            "/pages/contact?view=dandy2-shipping",
+            "/pages/contact?view=dandy2-subs",
+            "/pages/contact?view=dandy2-terms",
+            "/pages/reviews",
+            "/products/extract-capsules-50mg",
+            "/products/extract-capsules-90mg",
+            "/products/mixed-berry-kratom-gummies",
+            "/products/premium-kratom-leaf-powder",
+            "mailto:support@foreverdandy.com"
+          ],
+          "pass": true,
+          "note": "resolve on the preview theme; not measurable on the static harness"
+        },
+        "g13_reducedMotion": {
+          "identicalBytes": true,
+          "heroSrcAnimated": "home-hero-hands-900.webp",
+          "heroSrcReduced": "home-hero-hands-900.webp",
+          "pass": true
+        }
+      },
+      "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-390.png",
+      "pageHeight": 12232
+    },
+    "430": {
+      "width": 430,
+      "height": 844,
+      "errors": [],
+      "checks": {
+        "g4_inventory": {
+          "cards": [
+            "div.hage__box",
+            "span.hero__inset",
+            "article.rev.rev--first",
+            "article.rev",
+            "article.rev",
+            "input#HomeWelcomeEmail.welcome__input"
+          ],
+          "reviewCards": 3,
+          "offenders": [],
+          "nonButtonPills": [],
+          "pass": true
+        },
+        "g9_fixedBeforeDismiss": {
+          "fixed": [
+            "div.hh__nav:sticky",
+            "div.hage:fixed"
+          ],
+          "dialogs": [
+            "div.hage"
+          ],
+          "pass": true
+        },
+        "g8_cls": {
+          "withGate": 0,
+          "total": 0,
+          "preload": {
+            "present": true,
+            "sameSet": true,
+            "rendered": "home-hero-hands-900.webp",
+            "sizesMatch": true
+          },
+          "pass": true
+        },
+        "g9_afterDismiss": {
+          "dialogs": [],
+          "fixed": [
+            "div.hh__nav:sticky"
+          ],
+          "infiniteAnimations": [],
+          "tickerLike": [],
+          "pass": true
+        },
+        "g1_overflow": {
+          "scrollWidth": 430,
+          "innerWidth": 430,
+          "pass": true,
+          "offenders": []
+        },
+        "g2_typeFloor": {
+          "minFontSize": 13,
+          "minAt": "p.welcome__fine",
+          "bodySize": 16,
+          "bodyParagraphsUnder16": [],
+          "metaParagraphClasses": [
+            "welcome__fine",
+            "hf__legal",
+            "gear__range",
+            "moment__alt",
+            "hf__contact",
+            "hh__ann",
+            "dose__zone"
+          ],
+          "pass": true
+        },
+        "g3_dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "g4_eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "g5_whitespace": {
+          "limit": 56,
+          "nodes": 264,
+          "gaps": [],
+          "pass": true
+        },
+        "g6_textOverPhoto": {
+          "overlaps": [],
+          "pass": true
+        },
+        "g7_images": {
+          "images": [
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": false,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-hero-hands-1600.webp",
+              "complete": true,
+              "natural": "430x241",
+              "attrs": "1600x900",
+              "lazy": "auto",
+              "visible": true,
+              "real": "1600x900",
+              "attrsMatch": true,
+              "candidates": [
+                "home-hero-hands-900.webp:900x506",
+                "home-hero-hands-1600.webp:1600x900"
+              ]
+            },
+            {
+              "src": "home-hero-gummy-900.webp",
+              "complete": true,
+              "natural": "900x900",
+              "attrs": "900x900",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "900x900",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-gummies-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-capsules-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-powder-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "112x42",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            }
+          ],
+          "pass": true
+        },
+        "g11_hero": {
+          "h1Lines": 3,
+          "h1Size": 40,
+          "ledeLines": 4,
+          "buttonWidth": 387,
+          "contentWidth": 387,
+          "photoWidth": 430,
+          "photoHeight": 242,
+          "photoUncropped": true,
+          "photoEdgeToEdge": true,
+          "insetSize": 120,
+          "pass": true
+        },
+        "g12_analytics": {
+          "tracked": 16,
+          "events": {
+            "homepage_hero_reviews_click": 1,
+            "homepage_hero_cta_click": 2,
+            "format_card_click": 4,
+            "dosage_guide_interaction": 3,
+            "faq_accordion_toggle": 5,
+            "reviews_gateway_click": 1
+          },
+          "missing": [],
+          "absentEvents": [],
+          "pass": true
+        },
+        "g10_links": {
+          "unique": [
+            "#DandyMain",
+            "#formats",
+            "#reviews",
+            "/",
+            "/#dose",
+            "/cart",
+            "/collections/all",
+            "/pages/contact?view=dandy2-about",
+            "/pages/contact?view=dandy2-coa",
+            "/pages/contact?view=dandy2-faq",
+            "/pages/contact?view=dandy2-kratom",
+            "/pages/contact?view=dandy2-privacy",
+            "/pages/contact?view=dandy2-returns",
+            "/pages/contact?view=dandy2-shipping",
+            "/pages/contact?view=dandy2-subs",
+            "/pages/contact?view=dandy2-terms",
+            "/pages/reviews",
+            "/products/extract-capsules-50mg",
+            "/products/extract-capsules-90mg",
+            "/products/mixed-berry-kratom-gummies",
+            "/products/premium-kratom-leaf-powder",
+            "mailto:support@foreverdandy.com"
+          ],
+          "pass": true,
+          "note": "resolve on the preview theme; not measurable on the static harness"
+        },
+        "g13_reducedMotion": {
+          "identicalBytes": true,
+          "heroSrcAnimated": "home-hero-hands-900.webp",
+          "heroSrcReduced": "home-hero-hands-900.webp",
+          "pass": true
+        }
+      },
+      "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-430.png",
+      "pageHeight": 11925
+    },
+    "768": {
+      "width": 768,
+      "height": 1024,
+      "errors": [],
+      "checks": {
+        "g4_inventory": {
+          "cards": [
+            "div.hage__box",
+            "span.hero__inset",
+            "article.rev.rev--first",
+            "article.rev",
+            "article.rev",
+            "input#HomeWelcomeEmail.welcome__input"
+          ],
+          "reviewCards": 3,
+          "offenders": [],
+          "nonButtonPills": [],
+          "pass": true
+        },
+        "g9_fixedBeforeDismiss": {
+          "fixed": [
+            "div.hh__nav:sticky",
+            "div.hage:fixed"
+          ],
+          "dialogs": [
+            "div.hage"
+          ],
+          "pass": true
+        },
+        "g8_cls": {
+          "withGate": 0,
+          "total": 0,
+          "preload": {
+            "present": true,
+            "sameSet": true,
+            "rendered": "home-hero-hands-900.webp",
+            "sizesMatch": true
+          },
+          "pass": true
+        },
+        "g9_afterDismiss": {
+          "dialogs": [],
+          "fixed": [
+            "div.hh__nav:sticky"
+          ],
+          "infiniteAnimations": [],
+          "tickerLike": [],
+          "pass": true
+        },
+        "g1_overflow": {
+          "scrollWidth": 768,
+          "innerWidth": 768,
+          "pass": true,
+          "offenders": []
+        },
+        "g2_typeFloor": {
+          "minFontSize": 13,
+          "minAt": "p.welcome__fine",
+          "bodySize": 16,
+          "bodyParagraphsUnder16": [],
+          "metaParagraphClasses": [
+            "welcome__fine",
+            "hf__legal",
+            "gear__range",
+            "moment__alt",
+            "hf__contact",
+            "hh__ann",
+            "dose__zone"
+          ],
+          "pass": true
+        },
+        "g3_dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "g4_eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "g5_whitespace": {
+          "limit": 56,
+          "nodes": 259,
+          "gaps": [],
+          "pass": true
+        },
+        "g6_textOverPhoto": {
+          "overlaps": [],
+          "pass": true
+        },
+        "g7_images": {
+          "images": [
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": false,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-hero-hands-1600.webp",
+              "complete": true,
+              "natural": "768x431",
+              "attrs": "1600x900",
+              "lazy": "auto",
+              "visible": true,
+              "real": "1600x900",
+              "attrsMatch": true,
+              "candidates": [
+                "home-hero-hands-900.webp:900x506",
+                "home-hero-hands-1600.webp:1600x900"
+              ]
+            },
+            {
+              "src": "home-hero-gummy-900.webp",
+              "complete": true,
+              "natural": "900x900",
+              "attrs": "900x900",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "900x900",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-gummies-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-capsules-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-powder-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "112x42",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            }
+          ],
+          "pass": true
+        },
+        "g11_hero": {
+          "h1Lines": 3,
+          "h1Size": 41.472,
+          "ledeLines": 3,
+          "buttonWidth": 691,
+          "contentWidth": 691,
+          "photoWidth": 768,
+          "photoHeight": 432,
+          "photoUncropped": true,
+          "photoEdgeToEdge": true,
+          "insetSize": 120,
+          "pass": true
+        },
+        "g12_analytics": {
+          "tracked": 16,
+          "events": {
+            "homepage_hero_reviews_click": 1,
+            "homepage_hero_cta_click": 2,
+            "format_card_click": 4,
+            "dosage_guide_interaction": 3,
+            "faq_accordion_toggle": 5,
+            "reviews_gateway_click": 1
+          },
+          "missing": [],
+          "absentEvents": [],
+          "pass": true
+        },
+        "g10_links": {
+          "unique": [
+            "#DandyMain",
+            "#formats",
+            "#reviews",
+            "/",
+            "/#dose",
+            "/cart",
+            "/collections/all",
+            "/pages/contact?view=dandy2-about",
+            "/pages/contact?view=dandy2-coa",
+            "/pages/contact?view=dandy2-faq",
+            "/pages/contact?view=dandy2-kratom",
+            "/pages/contact?view=dandy2-privacy",
+            "/pages/contact?view=dandy2-returns",
+            "/pages/contact?view=dandy2-shipping",
+            "/pages/contact?view=dandy2-subs",
+            "/pages/contact?view=dandy2-terms",
+            "/pages/reviews",
+            "/products/extract-capsules-50mg",
+            "/products/extract-capsules-90mg",
+            "/products/mixed-berry-kratom-gummies",
+            "/products/premium-kratom-leaf-powder",
+            "mailto:support@foreverdandy.com"
+          ],
+          "pass": true,
+          "note": "resolve on the preview theme; not measurable on the static harness"
+        },
+        "g13_reducedMotion": {
+          "identicalBytes": true,
+          "heroSrcAnimated": "home-hero-hands-900.webp",
+          "heroSrcReduced": "home-hero-hands-900.webp",
+          "pass": true
+        }
+      },
+      "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-768.png",
+      "pageHeight": 10928
+    },
+    "1280": {
+      "width": 1280,
+      "height": 800,
+      "errors": [],
+      "checks": {
+        "g4_inventory": {
+          "cards": [
+            "div.hage__box",
+            "span.hero__inset",
+            "article.rev.rev--first",
+            "article.rev",
+            "article.rev",
+            "input#HomeWelcomeEmail.welcome__input"
+          ],
+          "reviewCards": 3,
+          "offenders": [],
+          "nonButtonPills": [],
+          "pass": true
+        },
+        "g9_fixedBeforeDismiss": {
+          "fixed": [
+            "div.hh__nav:sticky",
+            "div.hage:fixed"
+          ],
+          "dialogs": [
+            "div.hage"
+          ],
+          "pass": true
+        },
+        "g8_cls": {
+          "withGate": 0.0248,
+          "total": 0.0248,
+          "preload": {
+            "present": true,
+            "sameSet": true,
+            "rendered": "home-hero-hands-900.webp",
+            "sizesMatch": true
+          },
+          "pass": true
+        },
+        "g9_afterDismiss": {
+          "dialogs": [],
+          "fixed": [
+            "div.hh__nav:sticky"
+          ],
+          "infiniteAnimations": [],
+          "tickerLike": [],
+          "pass": true
+        },
+        "g1_overflow": {
+          "scrollWidth": 1280,
+          "innerWidth": 1280,
+          "pass": true,
+          "offenders": []
+        },
+        "g2_typeFloor": {
+          "minFontSize": 13,
+          "minAt": "p.welcome__fine",
+          "bodySize": 17,
+          "bodyParagraphsUnder16": [],
+          "metaParagraphClasses": [
+            "welcome__fine",
+            "hf__legal",
+            "gear__range",
+            "moment__alt",
+            "hf__contact",
+            "hh__ann",
+            "dose__zone"
+          ],
+          "pass": true
+        },
+        "g3_dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "g4_eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "g5_whitespace": {
+          "limit": 96,
+          "nodes": 269,
+          "gaps": [],
+          "pass": true
+        },
+        "g6_textOverPhoto": {
+          "overlaps": [],
+          "pass": true
+        },
+        "g7_images": {
+          "images": [
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "96x36",
+              "lazy": "auto",
+              "visible": false,
+              "real": "300x112",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-hero-hands-1600.webp",
+              "complete": true,
+              "natural": "588x331",
+              "attrs": "1600x900",
+              "lazy": "auto",
+              "visible": true,
+              "real": "1600x900",
+              "attrsMatch": true,
+              "candidates": [
+                "home-hero-hands-900.webp:900x506",
+                "home-hero-hands-1600.webp:1600x900"
+              ]
+            },
+            {
+              "src": "home-hero-gummy-900.webp",
+              "complete": true,
+              "natural": "900x900",
+              "attrs": "900x900",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "900x900",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-gummies-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-capsules-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "home-format-powder-1200.webp",
+              "complete": true,
+              "natural": "960x1200",
+              "attrs": "960x1200",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "960x1200",
+              "attrsMatch": true
+            },
+            {
+              "src": "dandy-wordmark.svg",
+              "complete": true,
+              "natural": "300x112",
+              "attrs": "112x42",
+              "lazy": "lazy",
+              "visible": true,
+              "real": "300x112",
+              "attrsMatch": true
+            }
+          ],
+          "pass": true
+        },
+        "g11_hero": {
+          "h1Lines": 3,
+          "h1Size": 66,
+          "ledeLines": 3,
+          "buttonWidth": 204,
+          "contentWidth": 1168,
+          "photoWidth": 536,
+          "photoHeight": 302,
+          "photoUncropped": true,
+          "photoEdgeToEdge": null,
+          "insetSize": 160,
+          "pass": true
+        },
+        "g12_analytics": {
+          "tracked": 16,
+          "events": {
+            "homepage_hero_reviews_click": 1,
+            "homepage_hero_cta_click": 2,
+            "format_card_click": 4,
+            "dosage_guide_interaction": 3,
+            "faq_accordion_toggle": 5,
+            "reviews_gateway_click": 1
+          },
+          "missing": [],
+          "absentEvents": [],
+          "pass": true
+        },
+        "g10_links": {
+          "unique": [
+            "#DandyMain",
+            "#formats",
+            "#reviews",
+            "/",
+            "/#dose",
+            "/cart",
+            "/collections/all",
+            "/pages/contact?view=dandy2-about",
+            "/pages/contact?view=dandy2-coa",
+            "/pages/contact?view=dandy2-faq",
+            "/pages/contact?view=dandy2-kratom",
+            "/pages/contact?view=dandy2-privacy",
+            "/pages/contact?view=dandy2-returns",
+            "/pages/contact?view=dandy2-shipping",
+            "/pages/contact?view=dandy2-subs",
+            "/pages/contact?view=dandy2-terms",
+            "/pages/reviews",
+            "/products/extract-capsules-50mg",
+            "/products/extract-capsules-90mg",
+            "/products/mixed-berry-kratom-gummies",
+            "/products/premium-kratom-leaf-powder",
+            "mailto:support@foreverdandy.com"
+          ],
+          "pass": true,
+          "note": "resolve on the preview theme; not measurable on the static harness"
+        },
+        "g13_reducedMotion": {
+          "identicalBytes": true,
+          "heroSrcAnimated": "home-hero-hands-900.webp",
+          "heroSrcReduced": "home-hero-hands-900.webp",
+          "pass": true
+        }
+      },
+      "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-1280.png",
+      "pageHeight": 8278
+    }
+  },
+  "hero": [
+    {
+      "width": 375,
+      "h1Lines": 3,
+      "ledeLines": 5,
+      "buttonWidth": 335,
+      "contentWidth": 335,
+      "photoHeight": 211,
+      "photoUncropped": true,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "h1Lines": 3,
+      "ledeLines": 5,
+      "buttonWidth": 350,
+      "contentWidth": 350,
+      "photoHeight": 219,
+      "photoUncropped": true,
+      "pass": true
+    },
+    {
+      "width": 430,
+      "h1Lines": 3,
+      "ledeLines": 4,
+      "buttonWidth": 387,
+      "contentWidth": 387,
+      "photoHeight": 242,
+      "photoUncropped": true,
+      "pass": true
+    }
+  ],
+  "duplicates": []
+}
