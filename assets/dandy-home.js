@@ -66,7 +66,7 @@
         btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-gear-btn') === n)); });
         place();
       }
-      btns.forEach(function (b) { b.addEventListener('click', function () { select(b.getAttribute('data-gear-btn')); }); });
+      btns.forEach(function (b) { b.addEventListener('click', function () { sec.setAttribute('data-picked', ''); select(b.getAttribute('data-gear-btn')); }); });
       select(sec.getAttribute('data-gear') || '1');
       w.addEventListener('resize', place);
       if (d.fonts && d.fonts.ready) d.fonts.ready.then(place);
