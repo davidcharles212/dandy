@@ -1,0 +1,9 @@
+{
+  "layout": "dandy-home",
+  "sections": {
+    "main": {
+      "type": "dandy-reviews"
+    }
+  },
+  "order": ["main"]
+}

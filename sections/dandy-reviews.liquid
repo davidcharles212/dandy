@@ -1,0 +1,122 @@
+{% comment %}
+  Dandy review hub (/pages/reviews). Rendered inside layout/dandy-home.liquid, which loads dandy-home.css and, when
+  template.suffix == 'reviews', dandy-reviews.css. Every number on the page is computed by assets/dandy-reviews.js from
+  assets/dandy-reviews.json; the three cards below are the no-JS fallback (the seed data) and are replaced on load.
+  Brief: companies/dandy/projects/homepage-botanical-hub/blueprint.md section 8. Schema for the JSON: qa/dandy-reviews/README.md.
+{% endcomment %}
+{% render 'dandy-home-header' %}
+<main class="rvh" id="MainContent" data-rvh data-src="{{ 'dandy-reviews.json' | asset_url }}">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="rvh-star" viewBox="0 0 24 24"><path d="M12 2.8l2.85 5.95 6.5.85-4.75 4.5 1.2 6.45L12 17.4l-5.8 3.15 1.2-6.45-4.75-4.5 6.5-.85z"/></symbol>
+  </svg>
+  <noscript><style>.rvh__score,.rvh__controls,.rvh__count{display:none}</style></noscript>
+
+  <section class="rvh__head wrap">
+    <h1 class="rvh__h1">Customer reviews and verified experiences.</h1>
+    <p class="rvh__lede">Unfiltered feedback from verified adults across our gummies, extract capsules, and raw leaf powder.</p>
+  </section>
+
+  <section class="rvh__score wrap" aria-label="Rating summary" data-rvh-score aria-busy="true">
+    <div class="rvh__avg">
+      <span class="rvh__avg-num" data-rvh-avg></span>
+      <span class="rvh__avg-stars rvh-stars" data-rvh-avg-stars role="img" aria-label=""></span>
+      <span class="rvh__avg-sub" data-rvh-avg-sub></span>
+    </div>
+    <ol class="rvh__bars" data-rvh-bars aria-label="Rating breakdown">
+      <li class="rvh__bar"><span class="rvh__bar-label">5 stars</span><span class="rvh__bar-track"><span class="rvh__bar-fill" data-star="5"></span></span><span class="rvh__bar-pct" data-star-pct="5"></span></li>
+      <li class="rvh__bar"><span class="rvh__bar-label">4 stars</span><span class="rvh__bar-track"><span class="rvh__bar-fill" data-star="4"></span></span><span class="rvh__bar-pct" data-star-pct="4"></span></li>
+      <li class="rvh__bar"><span class="rvh__bar-label">3 stars</span><span class="rvh__bar-track"><span class="rvh__bar-fill" data-star="3"></span></span><span class="rvh__bar-pct" data-star-pct="3"></span></li>
+      <li class="rvh__bar"><span class="rvh__bar-label">2 stars</span><span class="rvh__bar-track"><span class="rvh__bar-fill" data-star="2"></span></span><span class="rvh__bar-pct" data-star-pct="2"></span></li>
+      <li class="rvh__bar"><span class="rvh__bar-label">1 star</span><span class="rvh__bar-track"><span class="rvh__bar-fill" data-star="1"></span></span><span class="rvh__bar-pct" data-star-pct="1"></span></li>
+    </ol>
+    <ul class="rvh__facts rvh-facts">
+      <li data-rvh-recommend hidden></li>
+      <li data-rvh-verified></li>
+      <li>Independent lab tested</li>
+    </ul>
+  </section>
+
+  <section class="rvh__controls wrap" aria-label="Filter and sort reviews">
+    <div class="rvh__formats" role="tablist" aria-label="Filter by format" data-rvh-formats>
+      <button class="rvh__format" type="button" role="tab" aria-selected="true" data-format="all" id="rvh-tab-all">All<span class="rvh__format-n" data-format-n="all"></span></button>
+      <button class="rvh__format" type="button" role="tab" aria-selected="false" tabindex="-1" data-format="gummies" id="rvh-tab-gummies">Gummies<span class="rvh__format-n" data-format-n="gummies"></span></button>
+      <button class="rvh__format" type="button" role="tab" aria-selected="false" tabindex="-1" data-format="capsules" id="rvh-tab-capsules">Capsules<span class="rvh__format-n" data-format-n="capsules"></span></button>
+      <button class="rvh__format" type="button" role="tab" aria-selected="false" tabindex="-1" data-format="powder" id="rvh-tab-powder">Raw leaf powder<span class="rvh__format-n" data-format-n="powder"></span></button>
+    </div>
+    <div class="rvh__tools">
+      <div class="rvh__field">
+        <label class="rvh-vh" for="rvh-search">Search reviews</label>
+        <input class="rvh__search" id="rvh-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search reviews (coffee, back pain, sleep, taste)" data-rvh-search>
+      </div>
+      <div class="rvh__field rvh__sort-wrap">
+        <label class="rvh-vh" for="rvh-sort">Sort reviews</label>
+        <select class="rvh__sort" id="rvh-sort" data-rvh-sort>
+          <option value="relevant">Most relevant</option>
+          <option value="rating">Highest rated</option>
+          <option value="recent">Most recent</option>
+        </select>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
+    <div class="rvh__benefits" role="group" aria-label="Filter by benefit" data-rvh-benefits>
+      <button class="rvh__benefit" type="button" aria-pressed="false" data-benefit="focus-stamina" hidden>Focus and stamina<span class="rvh__benefit-n" data-benefit-n="focus-stamina"></span></button>
+      <button class="rvh__benefit" type="button" aria-pressed="false" data-benefit="joint-body-comfort" hidden>Joint and body comfort<span class="rvh__benefit-n" data-benefit-n="joint-body-comfort"></span></button>
+      <button class="rvh__benefit" type="button" aria-pressed="false" data-benefit="coffee-alternative" hidden>Coffee alternative<span class="rvh__benefit-n" data-benefit-n="coffee-alternative"></span></button>
+      <button class="rvh__benefit" type="button" aria-pressed="false" data-benefit="taste-flavor" hidden>Taste and flavor<span class="rvh__benefit-n" data-benefit-n="taste-flavor"></span></button>
+      <button class="rvh__benefit" type="button" aria-pressed="false" data-benefit="evening-unwind" hidden>Evening unwind<span class="rvh__benefit-n" data-benefit-n="evening-unwind"></span></button>
+      <button class="rvh__benefit" type="button" aria-pressed="false" data-benefit="first-time-user" hidden>First-time user<span class="rvh__benefit-n" data-benefit-n="first-time-user"></span></button>
+    </div>
+  </section>
+
+  <section class="rvh__list wrap" aria-label="Reviews">
+    <p class="rvh__count" data-rvh-count aria-live="polite"></p>
+    <ol class="rvh__grid" data-rvh-grid>
+      <li><article class="rvh-card" data-id="rv-0001">
+        <span class="rvh-stars rvh-card__stars" role="img" aria-label="5 out of 5 stars"><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg></span>
+        <h2 class="rvh-card__h">&#8220;Replaced my afternoon coffee without the heart flutters.&#8221;</h2>
+        <p class="rvh-card__body">I love coffee in the morning, but afternoon coffee started giving me acid reflux and racing thoughts. Half a Dandy gummy around 2 PM gives me a very clean, steady lift that carries me through my workday and into an evening walk with my wife. No jitters, no crash.</p>
+        <footer class="rvh-card__foot">
+          <p class="rvh-card__who">Robert M., 54, Columbus, OH</p>
+          <ul class="rvh-facts"><li>Verified buyer</li><li>March 14, 2026</li></ul>
+          <ul class="rvh-facts"><li>Purchased: Mixed Berry Gummies</li><li>35 mg</li></ul>
+        </footer>
+        <div class="rvh-card__cta"><a class="btn btn--secondary btn--sm" href="/products/mixed-berry-kratom-gummies" data-track="review_card_pdp_click" data-track-label="gummies">Shop gummies</a></div>
+      </article></li>
+      <li><article class="rvh-card" data-id="rv-0002">
+        <span class="rvh-stars rvh-card__stars" role="img" aria-label="5 out of 5 stars"><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg></span>
+        <h2 class="rvh-card__h">&#8220;My go-to after hours working in the garden.&#8221;</h2>
+        <p class="rvh-card__body">I spend hours outside tending to my garden, and my lower back and hips used to scream by 5 PM. A friend recommended Dandy capsules. One 50 mg capsule takes the edge off the physical stiffness and puts me in a calm, cheerful mood for dinner. And because it's in a capsule, there's zero taste.</p>
+        <footer class="rvh-card__foot">
+          <p class="rvh-card__who">Patricia K., 61, Phoenix, AZ</p>
+          <ul class="rvh-facts"><li>Verified buyer</li><li>May 2, 2026</li></ul>
+          <ul class="rvh-facts"><li>Purchased: Extract Capsules</li><li>50 mg</li></ul>
+        </footer>
+        <div class="rvh-card__cta"><a class="btn btn--secondary btn--sm" href="/products/extract-capsules-50mg" data-track="review_card_pdp_click" data-track-label="capsules">Shop capsules</a></div>
+      </article></li>
+      <li><article class="rvh-card" data-id="rv-0003">
+        <span class="rvh-stars rvh-card__stars" role="img" aria-label="5 out of 5 stars"><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg><svg class="rvh-star rvh-star--on"><use href="#rvh-star"/></svg></span>
+        <h2 class="rvh-card__h">&#8220;Remarkably fresh and the lab numbers match.&#8221;</h2>
+        <p class="rvh-card__body">I've purchased botanical powders online for over five years. Dandy's leaf is remarkably fresh: bright green color, clean aroma, and mixes smoothly into tea. The QR code on the bag pulled up the exact COA showing zero heavy metals. Outstanding quality control.</p>
+        <footer class="rvh-card__foot">
+          <p class="rvh-card__who">David K., 42, Denver, CO</p>
+          <ul class="rvh-facts"><li>Verified buyer</li><li>July 19, 2026</li></ul>
+          <ul class="rvh-facts"><li>Purchased: Premium Raw Leaf Powder</li><li>250 g</li></ul>
+        </footer>
+        <div class="rvh-card__cta"><a class="btn btn--secondary btn--sm" href="/products/premium-kratom-leaf-powder" data-track="review_card_pdp_click" data-track-label="powder">Shop raw leaf powder</a></div>
+      </article></li>
+    </ol>
+    <div class="rvh__empty" data-rvh-empty hidden>
+      <p>No reviews match that yet. Clear the filters to see everything.</p>
+      <button class="rvh__clear" type="button" data-rvh-clear>Clear filters</button>
+    </div>
+    <button class="btn btn--secondary rvh__more" type="button" data-rvh-more hidden>Show more</button>
+  </section>
+</main>
+{% render 'dandy-home-footer' %}
+<script src="{{ 'dandy-reviews.js' | asset_url }}" defer></script>
+{% schema %}
+{
+  "name": "Dandy reviews hub",
+  "settings": []
+}
+{% endschema %}

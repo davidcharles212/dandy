@@ -1,0 +1,873 @@
+{
+  "ran": "2026-09-12T08:00:34.791Z",
+  "seed": {
+    "total": 2050,
+    "pageOne": 20,
+    "byFormat": {
+      "gummies": 1230,
+      "capsules": 512,
+      "powder": 308
+    },
+    "byBenefit": {
+      "focus-stamina": 1399,
+      "joint-body-comfort": 1105,
+      "coffee-alternative": 598,
+      "taste-flavor": 392,
+      "evening-unwind": 243,
+      "first-time-user": 326
+    },
+    "avg": "4.8",
+    "verifiedPct": 100,
+    "hasRecommend": false,
+    "relevant": [
+      "825",
+      "1845",
+      "216",
+      "514",
+      "1541",
+      "1400",
+      "2040",
+      "1163",
+      "1780",
+      "759",
+      "391",
+      "35",
+      "133",
+      "1794",
+      "317",
+      "1544",
+      "312",
+      "1725",
+      "656",
+      "1052"
+    ]
+  },
+  "viewports": [
+    {
+      "width": 390,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 390,
+          "innerWidth": 390,
+          "offenders": [],
+          "pass": true
+        },
+        "typeFloor": {
+          "under13": [],
+          "bodyUnder16": [],
+          "cardBody": 17,
+          "h1": 40,
+          "pass": true
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "input.rvh__search",
+            "select.rvh__sort",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "button.btn.btn--secondary"
+          ],
+          "disallowed": [],
+          "nonButtonPills": [],
+          "cards": 20,
+          "pass": true
+        },
+        "buttons": {
+          "summary": {
+            "Shop gummies 42px 16px full": 12,
+            "Shop raw leaf powder 42px 16px full": 5,
+            "Shop capsules 42px 16px full": 3,
+            "Show more 48px 17px full": 1
+          },
+          "phone": true,
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 41,
+          "misaligned": [],
+          "pass": true
+        },
+        "layout": {
+          "gridColumns": 1,
+          "h1Lines": 2,
+          "formatRows": 2,
+          "pass": true
+        },
+        "contrast": {
+          "offenders": [],
+          "pass": true
+        }
+      }
+    },
+    {
+      "width": 430,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 430,
+          "innerWidth": 430,
+          "offenders": [],
+          "pass": true
+        },
+        "typeFloor": {
+          "under13": [],
+          "bodyUnder16": [],
+          "cardBody": 17,
+          "h1": 40,
+          "pass": true
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "input.rvh__search",
+            "select.rvh__sort",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "button.btn.btn--secondary"
+          ],
+          "disallowed": [],
+          "nonButtonPills": [],
+          "cards": 20,
+          "pass": true
+        },
+        "buttons": {
+          "summary": {
+            "Shop gummies 42px 16px full": 12,
+            "Shop raw leaf powder 42px 16px full": 5,
+            "Shop capsules 42px 16px full": 3,
+            "Show more 48px 17px full": 1
+          },
+          "phone": true,
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 41,
+          "misaligned": [],
+          "pass": true
+        },
+        "layout": {
+          "gridColumns": 1,
+          "h1Lines": 2,
+          "formatRows": 2,
+          "pass": true
+        },
+        "contrast": {
+          "offenders": [],
+          "pass": true
+        }
+      }
+    },
+    {
+      "width": 768,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 768,
+          "innerWidth": 768,
+          "offenders": [],
+          "pass": true
+        },
+        "typeFloor": {
+          "under13": [],
+          "bodyUnder16": [],
+          "cardBody": 17,
+          "h1": 41.472,
+          "pass": true
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "input.rvh__search",
+            "select.rvh__sort",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "button.btn.btn--secondary"
+          ],
+          "disallowed": [],
+          "nonButtonPills": [],
+          "cards": 20,
+          "pass": true
+        },
+        "buttons": {
+          "summary": {
+            "Shop gummies 42px 16px full": 12,
+            "Shop raw leaf powder 42px 16px full": 5,
+            "Shop capsules 42px 16px full": 3,
+            "Show more 48px 17px full": 1
+          },
+          "phone": true,
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 41,
+          "misaligned": [],
+          "pass": true
+        },
+        "layout": {
+          "gridColumns": 2,
+          "h1Lines": 2,
+          "formatRows": 1,
+          "pass": true
+        },
+        "contrast": {
+          "offenders": [],
+          "pass": true
+        }
+      }
+    },
+    {
+      "width": 1280,
+      "errors": [],
+      "checks": {
+        "overflow": {
+          "scrollWidth": 1280,
+          "innerWidth": 1280,
+          "offenders": [],
+          "pass": true
+        },
+        "typeFloor": {
+          "under13": [],
+          "bodyUnder16": [],
+          "cardBody": 17,
+          "h1": 66,
+          "pass": true
+        },
+        "dashes": {
+          "count": 0,
+          "pass": true
+        },
+        "eyebrows": {
+          "offenders": [],
+          "pass": true
+        },
+        "inventory": {
+          "roundedBordered": [
+            "input.rvh__search",
+            "select.rvh__sort",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "article.rvh-card",
+            "a.btn.btn--secondary",
+            "button.btn.btn--secondary"
+          ],
+          "disallowed": [],
+          "nonButtonPills": [],
+          "cards": 20,
+          "pass": true
+        },
+        "buttons": {
+          "summary": {
+            "Shop gummies 42px 16px": 12,
+            "Shop raw leaf powder 42px 16px": 5,
+            "Shop capsules 42px 16px": 3,
+            "Show more 48px 17px": 1
+          },
+          "phone": false,
+          "pass": true
+        },
+        "factsDots": {
+          "lists": 41,
+          "misaligned": [],
+          "pass": true
+        },
+        "layout": {
+          "gridColumns": 3,
+          "h1Lines": 2,
+          "formatRows": 1,
+          "pass": true
+        },
+        "contrast": {
+          "offenders": [],
+          "pass": true
+        }
+      }
+    }
+  ],
+  "behaviour": {
+    "scorecard": {
+      "avg": "4.8",
+      "sub": "Based on 2,050 verified reviews",
+      "bars": {
+        "1": "0%",
+        "2": "1%",
+        "3": "3%",
+        "4": "11%",
+        "5": "85%"
+      },
+      "fills": {
+        "1": "0%",
+        "2": "1%",
+        "3": "3%",
+        "4": "11%",
+        "5": "85%"
+      },
+      "recommendHidden": true,
+      "verified": "100% verified purchases",
+      "stars": 5,
+      "busy": null,
+      "want": {
+        "avg": "4.8",
+        "bars": {
+          "1": "0%",
+          "2": "1%",
+          "3": "3%",
+          "4": "11%",
+          "5": "85%"
+        }
+      },
+      "errors": [],
+      "pass": true
+    },
+    "initial": {
+      "counts": {
+        "formats": {
+          "all": 2050,
+          "gummies": 1230,
+          "capsules": 512,
+          "powder": 308
+        },
+        "benefits": {
+          "focus-stamina": {
+            "n": 1399,
+            "hidden": false,
+            "pressed": "false"
+          },
+          "joint-body-comfort": {
+            "n": 1105,
+            "hidden": false,
+            "pressed": "false"
+          },
+          "coffee-alternative": {
+            "n": 598,
+            "hidden": false,
+            "pressed": "false"
+          },
+          "taste-flavor": {
+            "n": 392,
+            "hidden": false,
+            "pressed": "false"
+          },
+          "evening-unwind": {
+            "n": 243,
+            "hidden": false,
+            "pressed": "false"
+          },
+          "first-time-user": {
+            "n": 326,
+            "hidden": false,
+            "pressed": "false"
+          }
+        },
+        "selected": "all",
+        "count": "Showing 20 of 2,050 reviews",
+        "n": 2050,
+        "empty": false,
+        "more": true,
+        "url": ""
+      },
+      "cards": [
+        "825",
+        "1845",
+        "216",
+        "514",
+        "1541",
+        "1400",
+        "2040",
+        "1163",
+        "1780",
+        "759",
+        "391",
+        "35",
+        "133",
+        "1794",
+        "317",
+        "1544",
+        "312",
+        "1725",
+        "656",
+        "1052"
+      ],
+      "pass": true
+    },
+    "formats": {
+      "perFormat": {
+        "gummies": {
+          "cards": 20,
+          "n": 1230,
+          "want": 1230,
+          "selected": "gummies",
+          "url": "?format=gummies",
+          "pass": true
+        },
+        "capsules": {
+          "cards": 20,
+          "n": 512,
+          "want": 512,
+          "selected": "capsules",
+          "url": "?format=capsules",
+          "pass": true
+        },
+        "powder": {
+          "cards": 20,
+          "n": 308,
+          "want": 308,
+          "selected": "powder",
+          "url": "?format=powder",
+          "pass": true
+        },
+        "all": {
+          "cards": 20,
+          "n": 2050,
+          "want": 2050,
+          "selected": "all",
+          "url": "",
+          "pass": true
+        }
+      },
+      "tracked": [
+        "gummies",
+        "capsules",
+        "powder",
+        "all"
+      ],
+      "pass": true
+    },
+    "benefits": {
+      "perBenefit": {
+        "focus-stamina": {
+          "cards": 20,
+          "n": 1399,
+          "want": 1399,
+          "pressed": "true",
+          "url": "?benefit=focus-stamina",
+          "pass": true
+        },
+        "joint-body-comfort": {
+          "cards": 20,
+          "n": 1105,
+          "want": 1105,
+          "pressed": "true",
+          "url": "?benefit=joint-body-comfort",
+          "pass": true
+        },
+        "coffee-alternative": {
+          "cards": 20,
+          "n": 598,
+          "want": 598,
+          "pressed": "true",
+          "url": "?benefit=coffee-alternative",
+          "pass": true
+        },
+        "taste-flavor": {
+          "cards": 20,
+          "n": 392,
+          "want": 392,
+          "pressed": "true",
+          "url": "?benefit=taste-flavor",
+          "pass": true
+        },
+        "evening-unwind": {
+          "cards": 20,
+          "n": 243,
+          "want": 243,
+          "pressed": "true",
+          "url": "?benefit=evening-unwind",
+          "pass": true
+        },
+        "first-time-user": {
+          "cards": 20,
+          "n": 326,
+          "want": 326,
+          "pressed": "true",
+          "url": "?benefit=first-time-user",
+          "pass": true
+        }
+      },
+      "urlCleared": true,
+      "pass": true
+    },
+    "search": {
+      "immediateN": 2050,
+      "coffeeN": 255,
+      "wantCoffee": 255,
+      "firstPage": 20,
+      "url": "?q=COFFEE",
+      "gardenN": 78,
+      "wantGarden": 78,
+      "empty": true,
+      "emptyCards": 0,
+      "cleared": 2050,
+      "clearedCards": 20,
+      "pass": true
+    },
+    "sort": {
+      "recent": [
+        "348",
+        "638",
+        "1495",
+        "1911",
+        "1153"
+      ],
+      "wantRecent": [
+        "348",
+        "638",
+        "1495",
+        "1911",
+        "1153"
+      ],
+      "rated": [
+        "825",
+        "1845",
+        "216",
+        "514",
+        "1541"
+      ],
+      "wantRated": [
+        "825",
+        "1845",
+        "216",
+        "514",
+        "1541"
+      ],
+      "relevant": [
+        "825",
+        "1845",
+        "216",
+        "514",
+        "1541"
+      ],
+      "wantRelevant": [
+        "825",
+        "1845",
+        "216",
+        "514",
+        "1541"
+      ],
+      "pass": true
+    },
+    "keyboard": {
+      "arrow": {
+        "active": "gummies",
+        "selected": "gummies",
+        "cards": 20
+      },
+      "end": {
+        "active": "powder",
+        "selected": "powder"
+      },
+      "afterTab": "rvh-search",
+      "afterTab2": "rvh-sort",
+      "firstBenefit": "focus-stamina",
+      "spaceToggle": {
+        "pressed": "true",
+        "cards": 20,
+        "benefit": "focus-stamina"
+      },
+      "untoggled": 20,
+      "tabbableFormats": 1,
+      "pass": true
+    },
+    "pdp": {
+      "events": [
+        {
+          "event": "review_card_pdp_click",
+          "label": "gummies"
+        }
+      ],
+      "hrefs": [
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/extract-capsules-90mg Shop capsules",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/extract-capsules-90mg Shop capsules",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/extract-capsules-50mg Shop capsules",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/mixed-berry-kratom-gummies Shop gummies"
+      ],
+      "pass": true
+    },
+    "stars": {
+      "count": 5,
+      "opacities": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "pass": true
+    },
+    "errors": {
+      "list": [],
+      "pass": true
+    },
+    "deepLink": {
+      "selected": "capsules",
+      "pressed": "true",
+      "q": "garden",
+      "n": 0,
+      "want": 0,
+      "firstPage": 0,
+      "pass": true
+    },
+    "preserveParams": {
+      "url": "?view=reviews&preview_theme_id=123&format=gummies",
+      "pass": true
+    },
+    "showMore": {
+      "first": 20,
+      "second": 40,
+      "third": 45,
+      "counts": [
+        "Showing 20 of 45 reviews",
+        "Showing 40 of 45 reviews",
+        "Showing 45 of 45 reviews"
+      ],
+      "moreVisible": [
+        true,
+        true,
+        false
+      ],
+      "pass": true
+    },
+    "noJs": {
+      "cards": 3,
+      "controls": "none",
+      "score": "none",
+      "pass": true
+    },
+    "fetchFail": {
+      "cards": 3,
+      "controlsHidden": true,
+      "scoreHidden": true,
+      "isStatic": true,
+      "errors": [],
+      "pass": true
+    },
+    "reducedMotion": {
+      "nodes": 131,
+      "identical": true,
+      "pass": true
+    },
+    "helpful": {
+      "sample": [
+        {
+          "id": "825",
+          "text": "45 people found this helpful",
+          "tag": "P",
+          "controls": 0
+        },
+        {
+          "id": "1845",
+          "text": "45 people found this helpful",
+          "tag": "P",
+          "controls": 0
+        },
+        {
+          "id": "216",
+          "text": "45 people found this helpful",
+          "tag": "P",
+          "controls": 0
+        }
+      ],
+      "checked": 20,
+      "bad": [],
+      "pass": true
+    },
+    "timing": {
+      "records": 2050,
+      "jsonBytes": 1419412,
+      "cpuThrottle": 4,
+      "parseMs": 16,
+      "renderMs": 38,
+      "totalMs": 54,
+      "formatClickMs": 6.9,
+      "pass": true
+    }
+  }
+}

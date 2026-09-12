@@ -1,0 +1,134 @@
+/* Dandy review hub (/pages/reviews). Loaded by layout/dandy-home.liquid when template.suffix == 'reviews', after dandy-home.css.
+   The :root tokens repeat blueprint section 3 (identical values to dandy-home.css) so the page stands on its own; every class is
+   rvh- scoped except .wrap and .btn, which get a fallback under .rvh. Only bordered rounded boxes: the review cards, the search
+   input and the sort select. Pills are buttons only. Breakpoints: 640 (two columns), 768 (tools side by side), 860 (phone buttons), 1024 (rhythm, three columns). */
+
+/* ===== 1. Tokens ===== */
+:root{
+  --ink:#28110c; --cream:#faf5f0; --cream-2:#f3e9e1; --white:#ffffff; --line:#e5d8d4;
+  --ink-2:rgba(40,17,12,.74); --ink-3:rgba(40,17,12,.56);
+  --action:#d85a34; --action-hi:#ba4724; --berry:#7a1f45; --amber:#8a4e1b; --spruce:#2e4c38; --gold:#f5b400;
+  --shadow-rest:0 4px 20px rgba(40,17,12,.05); --shadow-hover:0 8px 30px rgba(40,17,12,.08);
+  --r-module:16px; --r-frame:20px; --r-input:12px; --r-pill:999px;
+  --pad:clamp(20px,5vw,56px); --wrap:1180px; --wrap-text:68ch;
+  --gap-s:24px; --gap-m:44px; --gap-l:52px;
+  --rvh-display:"Barlow Condensed","Arial Narrow",sans-serif; --rvh-body:"Barlow",Arial,sans-serif;
+  --rvh-ease:cubic-bezier(.2,.7,.2,1);
+  --rvh-meta:rgba(40,17,12,.62); /* 15px meta on cream: --ink-3 (.56) measures 4.05:1, .62 measures 4.9:1 */
+}
+@media (min-width:1024px){:root{--gap-s:32px;--gap-m:64px;--gap-l:84px}}
+
+/* ===== 2. Base under .rvh: Barlow body 16 (17 from 1024) at 1.6, sentence-case Barlow Condensed headings ===== */
+.rvh{display:block;background:var(--cream);color:var(--ink);font-family:var(--rvh-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+@media (min-width:1024px){.rvh{font-size:17px}}
+.rvh *,.rvh *::before,.rvh *::after{box-sizing:border-box}
+.rvh .wrap{width:min(var(--wrap),100% - 2 * var(--pad));margin-inline:auto}
+.rvh p{margin:0;text-wrap:pretty}
+.rvh h1,.rvh h2{margin:0;font-family:var(--rvh-display);font-weight:700;letter-spacing:-.01em;line-height:1.02;text-wrap:balance}
+.rvh a{color:inherit}
+.rvh button{font-family:inherit;color:inherit}
+.rvh-vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ===== 3. Buttons (fallback for dandy-home.css .btn): full pill, 48px, Barlow 600 17px, primary on --action with a tinted shadow, secondary as a 1.5px ink outline that fills on hover; full width on phones ===== */
+.rvh .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:14px 28px;margin:0;border:0;border-radius:var(--r-pill);background:var(--action);color:#fff;font-family:var(--rvh-body);font-weight:600;font-size:17px;line-height:1.2;text-decoration:none;text-align:center;cursor:pointer;box-shadow:0 10px 24px -12px rgba(216,90,52,.8);transition:background .18s ease,color .18s ease,transform .18s ease,box-shadow .18s ease}
+.rvh .btn:hover{background:var(--action-hi);transform:translateY(-1px)}
+.rvh .btn:active{transform:none}
+.rvh .btn--secondary{padding:12.5px 26.5px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);box-shadow:none}
+.rvh .btn--secondary:hover{background:var(--ink);color:var(--cream)}
+.rvh .btn--sm{min-height:42px;padding:10px 20px;font-size:16px}
+.rvh .btn--secondary.btn--sm{padding:8.5px 18.5px}
+.rvh .btn:focus-visible,.rvh .rvh__format:focus-visible,.rvh .rvh__benefit:focus-visible,.rvh .rvh__clear:focus-visible{outline:2px solid var(--berry);outline-offset:3px}
+@media (max-width:860px){.rvh .btn{width:100%}}
+
+/* ===== 4. Facts row: a drawn 4px dot hangs at the start of every item except the first, so a wrapped line never starts or ends with a dot; the row is clipped at its content edge ===== */
+.rvh-facts{display:flex;flex-wrap:wrap;gap:4px 0;margin:0 0 0 -13px;padding:0 0 0 13px;list-style:none;clip-path:inset(0 0 0 13px)}
+.rvh-facts > *{white-space:nowrap}
+.rvh-facts > *:not(:last-child){padding-right:22px}
+.rvh-facts > *:not(:first-child){margin-left:-13px}
+.rvh-facts > *:not(:first-child)::before{content:"";display:inline-block;width:4px;height:4px;margin-right:9px;border-radius:50%;background:currentColor;opacity:.55;vertical-align:middle}
+
+/* ===== 5. Head: H1 and lede, no reveal above the fold ===== */
+.rvh__head{padding:var(--gap-m) 0 var(--gap-s)}
+.rvh .rvh__h1{max-width:22ch;font-size:clamp(40px,5.4vw,66px)}
+.rvh .rvh__lede{margin-top:12px;max-width:60ch;font-size:clamp(17px,1.4vw,19px);color:var(--ink-2)}
+@media (min-width:1024px){.rvh .rvh__lede{margin-top:18px}}
+
+/* ===== 6. Scorecard on hairlines: big average with stars, five square-ended breakdown bars, facts with dots. Never a card. ===== */
+.rvh__score{display:grid;gap:24px 56px;padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+@media (min-width:768px){.rvh__score{grid-template-columns:max-content minmax(0,520px);justify-content:start;align-items:center;padding:36px 0;gap:28px 64px}}
+.rvh__avg{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.rvh__avg-num{font-family:var(--rvh-display);font-weight:700;font-size:clamp(56px,7vw,80px);line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;min-height:1em}
+.rvh__avg-sub{font-size:15px;color:var(--rvh-meta);min-height:1.6em}
+.rvh__bars{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.rvh__bar{display:grid;grid-template-columns:4.6em minmax(0,1fr) 3em;align-items:center;gap:12px;font-size:15px;line-height:1.4;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.rvh__bar-track{display:block;height:8px;background:var(--line);overflow:hidden}
+.rvh__bar-fill{display:block;width:0;height:100%;background:var(--gold);transition:width .6s var(--rvh-ease)}
+.rvh__bar-pct{text-align:right;min-height:1.4em}
+.rvh__facts{grid-column:1 / -1;font-size:15px;color:var(--ink-2)}
+
+/* ===== 7. Stars: inline SVG, gold on, hairline colour off; the first card's stars light left to right ===== */
+.rvh-stars{display:inline-flex;gap:3px;color:var(--gold);line-height:0}
+.rvh-star{width:20px;height:20px;fill:currentColor;flex:none;transform-origin:center}
+.rvh-star--off{color:var(--line)}
+.rvh__avg-stars .rvh-star{width:24px;height:24px}
+
+/* ===== 8. Controls: format words in a row (selection by colour weight and a 2px berry underline, no tab chrome), search and sort at radius 12, benefit toggles as 8px outlines that fill ink when pressed ===== */
+.rvh__controls{padding-top:var(--gap-s)}
+.rvh__formats{display:flex;flex-wrap:wrap;gap:4px 28px}
+.rvh__format{appearance:none;-webkit-appearance:none;position:relative;margin:0;padding:6px 0 10px;border:0;background:none;font-family:var(--rvh-display);font-weight:600;font-size:clamp(22px,2.2vw,28px);line-height:1;letter-spacing:-.01em;color:rgba(40,17,12,.6);cursor:pointer;transition:color .2s ease}
+.rvh__format::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--berry);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--rvh-ease)}
+.rvh__format:hover{color:var(--ink-2)}
+.rvh__format[aria-selected="true"]{color:var(--ink)}
+.rvh__format[aria-selected="true"]::after{transform:none}
+.rvh__format-n{margin-left:7px;font-family:var(--rvh-body);font-weight:500;font-size:15px;letter-spacing:0;color:var(--ink-2);vertical-align:3px}
+.rvh__format-n:empty{display:none}
+.rvh__tools{display:grid;gap:12px;margin-top:22px}
+@media (min-width:768px){.rvh__tools{grid-template-columns:minmax(0,1fr) 220px}}
+.rvh__field{position:relative}
+.rvh__search,.rvh__sort{appearance:none;-webkit-appearance:none;width:100%;min-height:48px;margin:0;padding:10px 16px;border:1px solid var(--line);border-radius:var(--r-input);background:var(--white);color:var(--ink);font-family:inherit;font-size:16px;line-height:1.3;transition:border-color .18s ease}
+.rvh__search{text-overflow:ellipsis}
+.rvh__search::placeholder{color:var(--rvh-meta);opacity:1}
+.rvh__search::-webkit-search-decoration{-webkit-appearance:none}
+.rvh__search:focus,.rvh__sort:focus{outline:2px solid var(--berry);outline-offset:2px;border-color:var(--ink)}
+.rvh__sort{padding-right:44px;cursor:pointer}
+.rvh__sort-wrap svg{position:absolute;right:16px;top:50%;width:18px;height:18px;transform:translateY(-50%);color:var(--ink-2);pointer-events:none}
+.rvh__benefits{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.rvh__benefit{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;gap:8px;min-height:40px;margin:0;padding:6px 14px;border:1.5px solid var(--ink);border-radius:8px;background:transparent;color:var(--ink);font-family:var(--rvh-body);font-weight:500;font-size:16px;line-height:1.2;cursor:pointer;transition:background .18s ease,color .18s ease}
+.rvh__benefit:hover{background:var(--cream-2)}
+.rvh__benefit[aria-pressed="true"],.rvh__benefit[aria-pressed="true"]:hover{background:var(--ink);color:var(--cream)}
+.rvh__benefit-n{font-size:15px;opacity:.72}
+
+/* ===== 9. The list: count line, card grid (one, two, three columns), the card (the page's only box), empty state, show more ===== */
+.rvh__list{padding:var(--gap-s) 0 var(--gap-l)}
+.rvh__count{margin-bottom:14px;font-size:15px;color:var(--rvh-meta);min-height:1.6em}
+.rvh__grid{display:grid;gap:16px;margin:0;padding:0;list-style:none}
+@media (min-width:641px){.rvh__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.rvh__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.rvh__grid > li{display:flex;min-width:0}
+.rvh-card{display:flex;flex-direction:column;width:100%;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--white);color:var(--ink)}
+.rvh .rvh-card__h{margin-top:14px;font-size:20px;font-weight:600;line-height:1.15;text-wrap:pretty}
+.rvh .rvh-card__body{margin-top:10px;font-size:17px;line-height:1.5}
+.rvh-card__foot{display:grid;gap:4px;margin-top:16px;font-size:15px;line-height:1.5;color:var(--rvh-meta)}
+.rvh .rvh-card__helpful{margin-top:4px}
+.rvh .rvh-card__who{font-weight:500;color:var(--ink-2)}
+.rvh-card__cta{margin-top:auto;padding-top:20px}
+.rvh__empty{padding:28px 0 8px}
+.rvh__empty p{max-width:var(--wrap-text)}
+.rvh__clear{margin:10px 0 0;padding:6px 0;border:0;background:none;font-family:var(--rvh-body);font-weight:600;font-size:17px;color:var(--ink);text-decoration:underline;text-underline-offset:5px;cursor:pointer}
+.rvh .rvh__more{display:flex;width:auto;min-width:220px;margin:28px auto 0}
+@media (max-width:860px){.rvh .rvh__more{width:100%}}
+@media (max-width:860px){.rvh-card{padding:22px 20px 20px}}
+.rvh [hidden]{display:none}
+
+/* ===== 10. Motion: the first card's stars light 60ms apart once the data has rendered; everything rests pixel-identical under reduced motion ===== */
+@media (prefers-reduced-motion:no-preference){
+  .rvh.is-ready .rvh__grid > li:first-child .rvh-star--on{animation:rvh-star .35s ease both}
+  .rvh.is-ready .rvh__grid > li:first-child .rvh-star--on:nth-child(2){animation-delay:.06s}
+  .rvh.is-ready .rvh__grid > li:first-child .rvh-star--on:nth-child(3){animation-delay:.12s}
+  .rvh.is-ready .rvh__grid > li:first-child .rvh-star--on:nth-child(4){animation-delay:.18s}
+  .rvh.is-ready .rvh__grid > li:first-child .rvh-star--on:nth-child(5){animation-delay:.24s}
+  @keyframes rvh-star{from{opacity:.15;transform:scale(.7)}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){
+  .rvh *,.rvh *::before,.rvh *::after{transition:none!important;animation:none!important}
+}
