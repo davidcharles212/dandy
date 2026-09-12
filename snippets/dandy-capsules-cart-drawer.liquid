@@ -1,0 +1,20 @@
+{%- comment -%} Copy of snippets/dandy2-cart-drawer.liquid (Ecom Landers drawer) rendered only by the capsule PDP header. Retire when that drawer ships site-wide. {%- endcomment -%}
+
+{{ 'dandy2-cart-drawer.css' | asset_url | stylesheet_tag }}
+<div
+  class="dcart"
+  data-d2-cart
+  data-root-url="{{ routes.root_url }}"
+  data-change-url="{{ routes.cart_change_url }}.js"
+  data-cart-url="{{ routes.cart_url }}.js"
+  data-add-url="{{ routes.cart_add_url }}.js"
+  hidden
+  aria-hidden="true"
+>
+  <div class="dcart__scrim" data-d2-cart-close></div>
+  <div class="dcart__panel" role="dialog" aria-modal="true" aria-labelledby="DcartTitle" data-dcart-panel>
+    {% render 'dandy2-cart-drawer-inner' %}
+  </div>
+  <p class="dcart-sr" aria-live="polite" data-dcart-status></p>
+</div>
+<script src="{{ 'dandy2-cart-drawer.js' | asset_url }}" defer></script>

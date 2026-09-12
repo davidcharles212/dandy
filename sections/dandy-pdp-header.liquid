@@ -122,7 +122,8 @@
   </div>
 </div>
 
-{% render 'dandy2-cart-drawer' %}
+{%- comment -%} Capsule PDP ships its own copy of the tested drawer so the site-wide dandy2-cart-drawer snippet on the live theme is left untouched (2026-09-12). {%- endcomment -%}
+{% render 'dandy-capsules-cart-drawer' %}
 
 {% schema %}
 {
