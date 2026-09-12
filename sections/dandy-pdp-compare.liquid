@@ -867,9 +867,19 @@
       height: 390.15px;
     }
 
+    /* Audit 2026-09-11: both jars sit whole inside the card (lids under the top edge, labels not bled off the right) */
     .dpw--contain .dpw__pouch--back {
-      width: 360px;
-      height: 360px;
+      top: 20px;
+      left: calc(100% - 280px);
+      width: 270px;
+      height: 270px;
+    }
+
+    .dpw--contain .dpw__pouch--front {
+      top: 118px;
+      left: calc(100% - 210px);
+      width: 210px;
+      height: 210px;
     }
 
     .dpw__pouch--front {
