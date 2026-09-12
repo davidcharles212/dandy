@@ -76,8 +76,10 @@ const expect = {
   avg: (Math.round(seed.reduce((s, r) => s + r.rating, 0) / seed.length * 10) / 10).toFixed(1),
   verifiedPct: Math.round(seed.filter(r => r.verified).length / seed.length * 100),
   hasRecommend: seed.some(r => typeof r.recommend === 'boolean'),
-  relevant: ids(seed.slice().sort(byHelpful)).slice(0, PAGE)
+  /* the hub's default order blends rating (dominant), helpful votes capped at 30 and a recency bonus, then newest first; mirrors assets/dandy-reviews.js */
+  relevant: ids(seed.slice().sort((a, b) => (relevance(b) - relevance(a)) || byDate(a, b))).slice(0, PAGE)
 };
+function relevance(r) { return Number(r.rating) * 10 + Math.min(Number(r.helpful) || 0, 30) + (String(r.date) >= '2025-06-01' ? 5 : 0); }
 
 async function open(browser, width, opts, url) {
   const height = width >= 1024 ? 800 : 844;
@@ -328,7 +330,7 @@ async function behaviour(browser, base) {
 
   /* j. deep link opens filtered */
   {
-    const { page, context } = await open(browser, 390, null, base + HARNESS + '?format=capsules&benefit=joint-body-comfort&q=garden');
+    const { page, context } = await open(browser, 390, null, base + HARNESS + '?fmt=capsules&benefit=joint-body-comfort&q=garden');
     await waitReady(page);
     const c = await counts(page); const ids = await cards(page);
     const want = seed.filter(r => r.product === 'capsules' && (r.benefits || []).includes('joint-body-comfort') && text(r).includes('garden'));
@@ -343,7 +345,7 @@ async function behaviour(browser, base) {
     await waitReady(page);
     await page.click('[data-format="gummies"]'); await page.waitForTimeout(100);
     const url = await page.evaluate(() => location.search);
-    out.preserveParams = { url, pass: url.includes('view=reviews') && url.includes('preview_theme_id=123') && url.includes('format=gummies') };
+    out.preserveParams = { url, pass: url.includes('view=reviews') && url.includes('preview_theme_id=123') && url.includes('fmt=gummies') };
     await context.close();
   }
 

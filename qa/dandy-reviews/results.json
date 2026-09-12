@@ -1,5 +1,5 @@
 {
-  "ran": "2026-09-12T08:00:34.791Z",
+  "ran": "2026-09-12T17:48:22.902Z",
   "seed": {
     "total": 2050,
     "pageOne": 20,
@@ -9,37 +9,37 @@
       "powder": 308
     },
     "byBenefit": {
-      "focus-stamina": 1399,
-      "joint-body-comfort": 1105,
-      "coffee-alternative": 598,
-      "taste-flavor": 392,
-      "evening-unwind": 243,
-      "first-time-user": 326
+      "focus-stamina": 1568,
+      "joint-body-comfort": 1230,
+      "coffee-alternative": 480,
+      "taste-flavor": 160,
+      "evening-unwind": 322,
+      "first-time-user": 340
     },
     "avg": "4.8",
     "verifiedPct": 100,
     "hasRecommend": false,
     "relevant": [
-      "825",
-      "1845",
-      "216",
-      "514",
-      "1541",
-      "1400",
-      "2040",
-      "1163",
-      "1780",
-      "759",
-      "391",
+      "986",
+      "1831",
+      "24",
       "35",
-      "133",
-      "1794",
-      "317",
-      "1544",
-      "312",
-      "1725",
-      "656",
-      "1052"
+      "1131",
+      "207",
+      "466",
+      "1862",
+      "211",
+      "1188",
+      "715",
+      "268",
+      "1881",
+      "1042",
+      "2045",
+      "399",
+      "1756",
+      "608",
+      "1225",
+      "915"
     ]
   },
   "viewports": [
@@ -121,9 +121,9 @@
         },
         "buttons": {
           "summary": {
-            "Shop gummies 42px 16px full": 12,
-            "Shop raw leaf powder 42px 16px full": 5,
-            "Shop capsules 42px 16px full": 3,
+            "Shop gummies 42px 16px full": 13,
+            "Shop capsules 42px 16px full": 5,
+            "Shop raw leaf powder 42px 16px full": 2,
             "Show more 48px 17px full": 1
           },
           "phone": true,
@@ -224,9 +224,9 @@
         },
         "buttons": {
           "summary": {
-            "Shop gummies 42px 16px full": 12,
-            "Shop raw leaf powder 42px 16px full": 5,
-            "Shop capsules 42px 16px full": 3,
+            "Shop gummies 42px 16px full": 13,
+            "Shop capsules 42px 16px full": 5,
+            "Shop raw leaf powder 42px 16px full": 2,
             "Show more 48px 17px full": 1
           },
           "phone": true,
@@ -327,9 +327,9 @@
         },
         "buttons": {
           "summary": {
-            "Shop gummies 42px 16px full": 12,
-            "Shop raw leaf powder 42px 16px full": 5,
-            "Shop capsules 42px 16px full": 3,
+            "Shop gummies 42px 16px full": 13,
+            "Shop capsules 42px 16px full": 5,
+            "Shop raw leaf powder 42px 16px full": 2,
             "Show more 48px 17px full": 1
           },
           "phone": true,
@@ -430,9 +430,9 @@
         },
         "buttons": {
           "summary": {
-            "Shop gummies 42px 16px": 12,
-            "Shop raw leaf powder 42px 16px": 5,
-            "Shop capsules 42px 16px": 3,
+            "Shop gummies 42px 16px": 13,
+            "Shop capsules 42px 16px": 5,
+            "Shop raw leaf powder 42px 16px": 2,
             "Show more 48px 17px": 1
           },
           "phone": false,
@@ -501,32 +501,32 @@
         },
         "benefits": {
           "focus-stamina": {
-            "n": 1399,
+            "n": 1568,
             "hidden": false,
             "pressed": "false"
           },
           "joint-body-comfort": {
-            "n": 1105,
+            "n": 1230,
             "hidden": false,
             "pressed": "false"
           },
           "coffee-alternative": {
-            "n": 598,
+            "n": 480,
             "hidden": false,
             "pressed": "false"
           },
           "taste-flavor": {
-            "n": 392,
+            "n": 160,
             "hidden": false,
             "pressed": "false"
           },
           "evening-unwind": {
-            "n": 243,
+            "n": 322,
             "hidden": false,
             "pressed": "false"
           },
           "first-time-user": {
-            "n": 326,
+            "n": 340,
             "hidden": false,
             "pressed": "false"
           }
@@ -539,26 +539,26 @@
         "url": ""
       },
       "cards": [
-        "825",
-        "1845",
-        "216",
-        "514",
-        "1541",
-        "1400",
-        "2040",
-        "1163",
-        "1780",
-        "759",
-        "391",
+        "986",
+        "1831",
+        "24",
         "35",
-        "133",
-        "1794",
-        "317",
-        "1544",
-        "312",
-        "1725",
-        "656",
-        "1052"
+        "1131",
+        "207",
+        "466",
+        "1862",
+        "211",
+        "1188",
+        "715",
+        "268",
+        "1881",
+        "1042",
+        "2045",
+        "399",
+        "1756",
+        "608",
+        "1225",
+        "915"
       ],
       "pass": true
     },
@@ -569,7 +569,7 @@
           "n": 1230,
           "want": 1230,
           "selected": "gummies",
-          "url": "?format=gummies",
+          "url": "?fmt=gummies",
           "pass": true
         },
         "capsules": {
@@ -577,7 +577,7 @@
           "n": 512,
           "want": 512,
           "selected": "capsules",
-          "url": "?format=capsules",
+          "url": "?fmt=capsules",
           "pass": true
         },
         "powder": {
@@ -585,7 +585,7 @@
           "n": 308,
           "want": 308,
           "selected": "powder",
-          "url": "?format=powder",
+          "url": "?fmt=powder",
           "pass": true
         },
         "all": {
@@ -609,48 +609,48 @@
       "perBenefit": {
         "focus-stamina": {
           "cards": 20,
-          "n": 1399,
-          "want": 1399,
+          "n": 1568,
+          "want": 1568,
           "pressed": "true",
           "url": "?benefit=focus-stamina",
           "pass": true
         },
         "joint-body-comfort": {
           "cards": 20,
-          "n": 1105,
-          "want": 1105,
+          "n": 1230,
+          "want": 1230,
           "pressed": "true",
           "url": "?benefit=joint-body-comfort",
           "pass": true
         },
         "coffee-alternative": {
           "cards": 20,
-          "n": 598,
-          "want": 598,
+          "n": 480,
+          "want": 480,
           "pressed": "true",
           "url": "?benefit=coffee-alternative",
           "pass": true
         },
         "taste-flavor": {
           "cards": 20,
-          "n": 392,
-          "want": 392,
+          "n": 160,
+          "want": 160,
           "pressed": "true",
           "url": "?benefit=taste-flavor",
           "pass": true
         },
         "evening-unwind": {
           "cards": 20,
-          "n": 243,
-          "want": 243,
+          "n": 322,
+          "want": 322,
           "pressed": "true",
           "url": "?benefit=evening-unwind",
           "pass": true
         },
         "first-time-user": {
           "cards": 20,
-          "n": 326,
-          "want": 326,
+          "n": 340,
+          "want": 340,
           "pressed": "true",
           "url": "?benefit=first-time-user",
           "pass": true
@@ -661,12 +661,12 @@
     },
     "search": {
       "immediateN": 2050,
-      "coffeeN": 255,
-      "wantCoffee": 255,
+      "coffeeN": 350,
+      "wantCoffee": 350,
       "firstPage": 20,
       "url": "?q=COFFEE",
-      "gardenN": 78,
-      "wantGarden": 78,
+      "gardenN": 97,
+      "wantGarden": 97,
       "empty": true,
       "emptyCards": 0,
       "cleared": 2050,
@@ -675,46 +675,46 @@
     },
     "sort": {
       "recent": [
-        "348",
-        "638",
-        "1495",
-        "1911",
-        "1153"
+        "166",
+        "1458",
+        "149",
+        "248",
+        "1374"
       ],
       "wantRecent": [
-        "348",
-        "638",
-        "1495",
-        "1911",
-        "1153"
+        "166",
+        "1458",
+        "149",
+        "248",
+        "1374"
       ],
       "rated": [
-        "825",
-        "1845",
-        "216",
-        "514",
-        "1541"
+        "986",
+        "1881",
+        "915",
+        "1699",
+        "706"
       ],
       "wantRated": [
-        "825",
-        "1845",
-        "216",
-        "514",
-        "1541"
+        "986",
+        "1881",
+        "915",
+        "1699",
+        "706"
       ],
       "relevant": [
-        "825",
-        "1845",
-        "216",
-        "514",
-        "1541"
+        "986",
+        "1831",
+        "24",
+        "35",
+        "1131"
       ],
       "wantRelevant": [
-        "825",
-        "1845",
-        "216",
-        "514",
-        "1541"
+        "986",
+        "1831",
+        "24",
+        "35",
+        "1131"
       ],
       "pass": true
     },
@@ -749,24 +749,24 @@
       ],
       "hrefs": [
         "/products/mixed-berry-kratom-gummies Shop gummies",
-        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
-        "/products/mixed-berry-kratom-gummies Shop gummies",
-        "/products/extract-capsules-90mg Shop capsules",
         "/products/mixed-berry-kratom-gummies Shop gummies",
         "/products/mixed-berry-kratom-gummies Shop gummies",
         "/products/mixed-berry-kratom-gummies Shop gummies",
-        "/products/extract-capsules-90mg Shop capsules",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/mixed-berry-kratom-gummies Shop gummies",
         "/products/mixed-berry-kratom-gummies Shop gummies",
         "/products/mixed-berry-kratom-gummies Shop gummies",
         "/products/extract-capsules-50mg Shop capsules",
-        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
-        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
         "/products/mixed-berry-kratom-gummies Shop gummies",
-        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/extract-capsules-50mg Shop capsules",
         "/products/mixed-berry-kratom-gummies Shop gummies",
         "/products/mixed-berry-kratom-gummies Shop gummies",
-        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
         "/products/mixed-berry-kratom-gummies Shop gummies",
+        "/products/extract-capsules-90mg Shop capsules",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
+        "/products/extract-capsules-50mg Shop capsules",
+        "/products/extract-capsules-90mg Shop capsules",
+        "/products/premium-kratom-leaf-powder Shop raw leaf powder",
         "/products/mixed-berry-kratom-gummies Shop gummies"
       ],
       "pass": true
@@ -796,7 +796,7 @@
       "pass": true
     },
     "preserveParams": {
-      "url": "?view=reviews&preview_theme_id=123&format=gummies",
+      "url": "?view=reviews&preview_theme_id=123&fmt=gummies",
       "pass": true
     },
     "showMore": {
@@ -837,20 +837,20 @@
     "helpful": {
       "sample": [
         {
-          "id": "825",
-          "text": "45 people found this helpful",
+          "id": "986",
+          "text": "42 people found this helpful",
           "tag": "P",
           "controls": 0
         },
         {
-          "id": "1845",
-          "text": "45 people found this helpful",
+          "id": "1831",
+          "text": "38 people found this helpful",
           "tag": "P",
           "controls": 0
         },
         {
-          "id": "216",
-          "text": "45 people found this helpful",
+          "id": "24",
+          "text": "37 people found this helpful",
           "tag": "P",
           "controls": 0
         }
@@ -861,12 +861,12 @@
     },
     "timing": {
       "records": 2050,
-      "jsonBytes": 1419412,
+      "jsonBytes": 1820565,
       "cpuThrottle": 4,
-      "parseMs": 16,
-      "renderMs": 38,
-      "totalMs": 54,
-      "formatClickMs": 6.9,
+      "parseMs": 13,
+      "renderMs": 42,
+      "totalMs": 55,
+      "formatClickMs": 9.9,
       "pass": true
     }
   }

@@ -1,6 +1,6 @@
 # Dandy review hub QA
 
-Ran 2026-09-12T08:00:34.791Z. Seed: 2050 reviews. Screenshots in `qa/dandy-reviews/shots/`.
+Ran 2026-09-12T17:48:22.902Z. Seed: 2050 reviews. Screenshots in `qa/dandy-reviews/shots/`.
 
 | Check | 390 | 430 | 768 | 1280 |
 |---|---|---|---|---|
@@ -60,4 +60,4 @@ Ran 2026-09-12T08:00:34.791Z. Seed: 2050 reviews. Screenshots in `qa/dandy-revie
 - h1 66px, 2 lines; format row 1 rows; grid 3 columns
 - rounded bordered: input.rvh__search x1, select.rvh__sort x1, article.rvh-card x20, a.btn.btn--secondary x20, button.btn.btn--secondary x1
 
-- timing at 390, CPU 4x: parse 16ms, first render 38ms, total 54ms for 2050 records (1386 KB raw); format click 6.9ms
+- timing at 390, CPU 4x: parse 13ms, first render 42ms, total 55ms for 2050 records (1778 KB raw); format click 9.9ms
