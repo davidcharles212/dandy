@@ -150,6 +150,10 @@
     gap: 24px;
   }
 
+  .dandy-product-header__subtitle br {
+    display: none;
+  }
+
   .dandy-product-header__title {
     max-width: 432.6px;
     font-size: 48px;

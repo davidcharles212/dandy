@@ -103,9 +103,11 @@
         else link.removeAttribute('aria-current');
       });
 
+      this.querySelectorAll('[data-co-notice-90]').forEach((n) => { n.hidden = next !== '90'; });
+
       const title = attr('title');
       if (title) {
-        document.querySelectorAll('.dandy-product-header__title').forEach((h) => { h.textContent = title.replace(/ · /g, '\u00a0·\u00a0').replace(/ mg\b/g, '\u00a0mg'); });
+        document.querySelectorAll('.dandy-product-header__title:not([data-title-static])').forEach((h) => { h.textContent = title.replace(/ · /g, '\u00a0·\u00a0').replace(/ mg\b/g, '\u00a0mg'); });
         const prev = this.getAttribute('data-title-' + (next === '90' ? '50' : '90'));
         if (prev && document.title.includes(prev)) document.title = document.title.replace(prev, title);
       }

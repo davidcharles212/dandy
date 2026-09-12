@@ -295,8 +295,32 @@
   }
 
 
+  /* Revision plan 2026-09-11: on phones the rating sits left, under the photo, directly above the headline */
   .dpr--contain .dpr__rating--mobile {
-    transform: translateY(24px);
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: calc(110 * var(--dpr-u)) auto 0 16px;
+    transform: none;
+  }
+
+  .dpr--contain .dpr__rating-value {
+    margin: 0;
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  .dpr--contain .dpr__rating-sub {
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .dpr--contain .dpr__rating-caption {
+    text-align: left;
+  }
+
+  .dpr--contain .dpr__heading {
+    margin-top: 18px;
   }
 
   .dpr__pouch-mobile--photo::after {

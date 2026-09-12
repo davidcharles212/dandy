@@ -312,6 +312,40 @@
     object-position: 50% 50%;
   }
 
+  /* Revision plan 2026-09-11, phones: each ingredient in a soft translucent row so the text column is defined */
+  @media screen and (max-width: 1023px) {
+    .dpi--contain .dpi__items {
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .dpi--contain .dpi__item {
+      gap: 16px;
+      width: 100%;
+      min-height: 0;
+      padding: 14px 16px;
+      border: 1px solid rgb(255 249 240 / 0.12);
+      border-radius: 12px;
+      background: rgb(255 249 240 / 0.06);
+    }
+
+    .dpi--contain .dpi__tile {
+      width: 56px;
+      height: 56px;
+    }
+
+    .dpi--contain .dpi__item .dpi__tile .dpi__ing {
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dpi--contain .dpi__item .dpi__item-text {
+      flex: 1 1 auto;
+      max-width: none;
+    }
+  }
+
   .dpi--contain .dpi__item--1 .dpi__ing,
   .dpi--contain .dpi__item--2 .dpi__ing,
   .dpi--contain .dpi__item--3 .dpi__ing {

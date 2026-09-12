@@ -50,8 +50,8 @@
             "header": {
               "type": "dandy-product-header",
               "settings": {
-                "title_override": "",
-                "subtitle_override": "STANDARDIZED KRATOM EXTRACT · 30 CAPSULES PER JAR"
+                "title_override": "Targeted physical relief",
+                "subtitle_override": "STANDARDIZED KRATOM EXTRACT ·\n30\u00a0VEGAN\u00a0CAPSULES\u00a0PER\u00a0JAR"
               },
               "blocks": {}
             },
@@ -170,7 +170,8 @@
                 "strength_50_desc": "Daily tension, stiff mornings, first-timers.",
                 "strength_50_url": "/products/extract-capsules-50mg?view=dandy-capsules",
                 "strength_90_label": "Heavy-duty",
-                "strength_90_desc": "Hard physical days or an established tolerance.",
+                "strength_90_desc": "Heavy physical wear, demanding days, or experienced routines.",
+                "strength_90_notice": "<p><strong>First time with Dandy?</strong> 90 mg is high-potency. We recommend starting with 50 mg, or take with food.</p>",
                 "strength_90_url": "/products/extract-capsules-90mg?view=dandy-capsules",
                 "dispatch_headline": "ORDER NOW — SHIPS TODAY",
                 "dispatch_sub": "Orders placed by 2 PM CT ship same-day",
@@ -205,7 +206,7 @@
                 "tier_3_ribbon": "MOST POPULAR — BUY 2, GET 1 FREE",
                 "reassurance": "One-time purchase • Never an automatic rebill",
                 "guarantee_heading": "30-Day Physical Relief Guarantee",
-                "guarantee_text": "Take it for a full month. If your body doesn't feel noticeably looser, lighter and easier to move in, email us for a full refund. No return required.",
+                "guarantee_text": "Take it for a full month. If your body doesn't feel noticeably looser, lighter and easier to move in, reach out and return the remaining jar for a 100% refund. Zero hassle.",
                 "trust_1_sub": "(by 2 PM CT)",
                 "trust_2": "100% Lab Tested",
                 "trust_3": "Made in USA"
@@ -502,7 +503,7 @@
         "rating_text": "Rated 4.9 / 5 | From 1,200+ Reviews",
         "rating_value": "4.9",
         "rating_caption": "From 1,200+ Reviews",
-        "heading": "THE WORD\nON THE STREET.",
+        "heading": "REAL BODIES.\nREAL RELIEF.",
         "verified_label": "Verified Buyer",
         "verified_icon": "",
         "verified_icon_asset": "dandy-cap-icon-verified.svg",
@@ -585,8 +586,8 @@
             "image_asset": "dandy-cap-grimace-1.webp",
             "image_mobile": "",
             "image_mobile_asset": "dandy-cap-grimace-1.webp",
-            "title": "One capsule, not eight",
-            "text": "One standardized extract capsule carries the punch of a handful of raw leaf, without the digestive bloat."
+            "title": "No clumps, no shakers, no gagging",
+            "text": "Raw kratom powder tastes like bitter, muddy dirt and clings to your throat. Dandy isolates the pure active alkaloids into a tasteless vegan capsule that goes down in two seconds."
           }
         },
         "card_2": {
@@ -596,8 +597,8 @@
             "image_asset": "dandy-cap-grimace-2.webp",
             "image_mobile": "",
             "image_mobile_asset": "dandy-cap-grimace-2.webp",
-            "title": "Tasteless. Discreet.",
-            "text": "Take it at your desk, on a job site or at the gym. No scoops, no shaker bottles, no bitter aftertaste."
+            "title": "No $15 mystery shots",
+            "text": "Liquid extract shots hit hard, taste like battery acid, and cost upwards of $15 to $20 a bottle at smoke shops. Dandy delivers calibrated, laboratory-standardized relief for a fraction of the cost."
           }
         },
         "card_3": {
@@ -607,8 +608,8 @@
             "image_asset": "dandy-cap-grimace-3.webp",
             "image_mobile": "",
             "image_mobile_asset": "dandy-cap-grimace-3.webp",
-            "title": "Gentle on the gut",
-            "text": "Pure concentrated extract means you aren't digesting grams of raw plant cellulose that cause nausea."
+            "title": "One capsule, not ten",
+            "text": "Standard raw-leaf capsules force you to swallow 6 to 10 giant horse pills packed with raw plant cellulose that upsets your stomach lining. Dandy concentrates that entire handful into a single measured capsule."
           }
         }
       },
@@ -619,9 +620,9 @@
       ],
       "name": "Dandy flavor",
       "settings": {
-        "heading": "All the relief. Zero toss-and-wash.",
-        "heading_mobile": "ALL THE RELIEF.\nZERO TOSS-AND-WASH.",
-        "body": "Anyone who has used kratom for physical relief knows the drill: gagging down bitter green sludge, choking down a fistful of giant raw-leaf capsules, or wiping green powder off the counter.\n\nDandy concentrates the active relief of a whole handful of raw leaf into a single, tasteless capsule.",
+        "heading": "The relief you need. None of the disgusting rituals.",
+        "heading_mobile": "ALL THE RELIEF.\nNONE OF THE GAGGING.",
+        "body": "Most ways to take kratom make you pay a tax: choking down clumped mud, drinking chemical shots that burn your throat, or swallowing 8 giant horse pills. Dandy gives you pure, standardized relief in one clean capsule.",
         "background_color": "#164020"
       }
     },

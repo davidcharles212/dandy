@@ -79,6 +79,12 @@
           <span class="co-strength__desc">{{ block.settings.strength_90_desc }}</span>
         </a>
       </div>
+      {%- if block.settings.strength_90_notice != blank -%}
+        <div class="co-strength__notice" data-co-notice-90{% unless is_90 %} hidden{% endunless %}>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM6.75 7.5h2v4h-2v-4z"/></svg>
+          <div class="co-strength__notice-text">{{ block.settings.strength_90_notice }}</div>
+        </div>
+      {%- endif -%}
     </fieldset>
   {%- endif -%}
 
@@ -249,7 +255,8 @@
     { "type": "text", "id": "strength_50_desc", "label": "50 mg description", "default": "Daily tension, stiff mornings, first-timers." },
     { "type": "url", "id": "strength_50_url", "label": "50 mg page" },
     { "type": "text", "id": "strength_90_label", "label": "90 mg name", "default": "Heavy-duty" },
-    { "type": "text", "id": "strength_90_desc", "label": "90 mg description", "default": "Hard physical days or an established tolerance." },
+    { "type": "text", "id": "strength_90_desc", "label": "90 mg description", "default": "Heavy physical wear, demanding days, or experienced routines." },
+    { "type": "richtext", "id": "strength_90_notice", "label": "90 mg notice (shown only while 90 mg is selected)", "default": "<p><strong>First time with Dandy?</strong> 90 mg is high-potency. We recommend starting with 50 mg, or take with food.</p>" },
     { "type": "url", "id": "strength_90_url", "label": "90 mg page" },
 
     { "type": "header", "content": "Dispatch line" },
