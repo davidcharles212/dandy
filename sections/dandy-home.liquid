@@ -72,7 +72,7 @@
         </article>
 
         <article class="fmt fmt--capsules" data-reveal style="--i:1">
-          <figure class="fmt__photo"><img src="{{ 'home-lineup-capsules-1000.webp' | asset_url }}" width="1121" height="1000" alt="The Dandy Extract Capsules amber jar with capsules in front of it" loading="lazy" decoding="async"></figure>
+          <figure class="fmt__photo"><img src="{{ 'home-lineup-capsules-1000.webp' | asset_url }}" width="1000" height="1000" alt="The Dandy Extract Capsules amber jar with capsules in front of it" loading="lazy" decoding="async"></figure>
           <p class="fmt__aud">Zero taste, fast routine.</p>
           <h3 class="h3 fmt__h">Extract Capsules</h3>
           <p class="fmt__str">50&nbsp;mg (Balanced) or 90&nbsp;mg (Concentrated)</p>
@@ -117,7 +117,7 @@
         {%- assign n = id | split: '-' | last -%}
         <figure class="ugc{% cycle ' ugc--tilt-l', ' ugc--tilt-r' %}" data-slot="{{ id }}">
           <div class="ugc__frame">
-            <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-' | append: id | append: '-poster.jpg' | asset_url }}" width="720" height="1280">
+            <video class="ugc__video" playsinline preload="metadata" poster="{{ 'cshop-' | append: id | append: '-poster.jpg' | asset_url }}">
               <source src="{{ 'cshop-' | append: id | append: '.mov' | asset_url }}" type="video/quicktime">
               <source src="{{ 'cshop-' | append: id | append: '.mp4' | asset_url }}" type="video/mp4">
             </video>
@@ -137,7 +137,7 @@
   <section class="dose sec" id="dose" aria-labelledby="hm-dose-h">
     <div class="wrap">
       <div class="head" data-reveal>
-        <h2 class="h2" id="hm-dose-h">One plant. Two completely different gears.</h2>
+        <h2 class="h2" id="hm-dose-h"><span>One plant.</span> Two completely different gears.</h2>
         <p class="lede">Kratom is naturally dose-dependent. A lighter serving energizes your day; a larger serving relaxes your body. Here is how to dial in yours.</p>
       </div>
     </div>
@@ -218,7 +218,7 @@
 
   {% comment %} 7. FAQ: hairline accordion, first question open {% endcomment %}
   <section class="faq sec" id="honestly" aria-labelledby="hm-faq-h">
-    <div class="wrap wrap--narrow">
+    <div class="wrap">
       <div class="head" data-reveal><h2 class="h2" id="hm-faq-h">Kratom, honestly.</h2></div>
       <div class="faq__list" data-faq>
         <div class="faq__item">

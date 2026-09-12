@@ -472,6 +472,9 @@ async function measureViewport(browser, harness, width) {
       await c.page.waitForTimeout(600);
       await scrollThrough(c.page, c.height);
       await c.page.waitForTimeout(1500);
+      /* both contexts repaint from scratch once the reveals have settled, so text that was rasterised inside a compositor layer while it moved is redrawn the same way as text that never moved */
+      await c.page.evaluate(() => { document.body.style.display = 'none'; void document.body.offsetHeight; document.body.style.display = ''; });
+      await c.page.waitForTimeout(400);
       await c.page.addStyleTag({ content: '.hh__nav{position:static!important}.hero__frame::after{display:none!important}' });
       await c.page.evaluate(() => Promise.all(Array.from(document.images).map(i => i.decode().catch(() => null))));
       await c.page.evaluate(() => document.documentElement.scrollTo({ top: 0, behavior: 'instant' }));
@@ -490,17 +493,15 @@ async function measureViewport(browser, harness, width) {
     const rectsSame = JSON.stringify(n.imgRects) === JSON.stringify(m.imgRects);
     let diff = { identicalBytes: a.equals(b), imageRectsIdentical: rectsSame, images: n.imgRects.length, heroSrcAnimated: n.heroSrc, heroSrcReduced: m.heroSrc };
     if (!diff.identicalBytes) {
-      const cmp = await m.context.newPage();
-      diff = Object.assign(diff, await cmp.evaluate(async ([da, db]) => {
-        const load = src => new Promise(res => { const i = new Image(); i.onload = () => res(i); i.src = src; });
-        const ia = await load(da), ib = await load(db);
-        if (ia.width !== ib.width || ia.height !== ib.height) return { sizeA: ia.width + 'x' + ia.height, sizeB: ib.width + 'x' + ib.height, differing: -1 };
-        const c = document.createElement('canvas'); c.width = ia.width; c.height = ia.height; const ctx = c.getContext('2d');
-        ctx.drawImage(ia, 0, 0); const A = ctx.getImageData(0, 0, c.width, c.height).data;
-        ctx.clearRect(0, 0, c.width, c.height); ctx.drawImage(ib, 0, 0); const B = ctx.getImageData(0, 0, c.width, c.height).data;
-        let n = 0, minY = 1e9, maxY = 0; for (let i = 0; i < A.length; i += 4) { if (Math.abs(A[i] - B[i]) > 8 || Math.abs(A[i + 1] - B[i + 1]) > 8 || Math.abs(A[i + 2] - B[i + 2]) > 8) { n++; const y = (i / 4 / c.width) | 0; if (y < minY) minY = y; if (y > maxY) maxY = y; } }
-        return { differing: n, total: A.length / 4, firstRow: n ? minY : null, lastRow: n ? maxY : null };
-      }, ['data:image/png;base64,' + a.toString('base64'), 'data:image/png;base64,' + b.toString('base64')]));
+      /* exact decode with pngjs (a canvas decode of a very tall PNG was found to report a different pixel count than the file holds) */
+      const { PNG } = require('pngjs');
+      const ia = PNG.sync.read(a), ib = PNG.sync.read(b);
+      if (ia.width !== ib.width || ia.height !== ib.height) diff = Object.assign(diff, { sizeA: ia.width + 'x' + ia.height, sizeB: ib.width + 'x' + ib.height, differing: -1 });
+      else {
+        const A = ia.data, B = ib.data; let n = 0, minY = 1e9, maxY = 0;
+        for (let i = 0; i < A.length; i += 4) { if (Math.abs(A[i] - B[i]) > 8 || Math.abs(A[i + 1] - B[i + 1]) > 8 || Math.abs(A[i + 2] - B[i + 2]) > 8) { n++; const y = (i / 4 / ia.width) | 0; if (y < minY) minY = y; if (y > maxY) maxY = y; } }
+        diff = Object.assign(diff, { differing: n, total: A.length / 4, firstRow: n ? minY : null, lastRow: n ? maxY : null });
+      }
     }
     r.checks.g13_reducedMotion = Object.assign(diff, { pass: (diff.identicalBytes || diff.differing === 0) && rectsSame });
     await m.context.close();

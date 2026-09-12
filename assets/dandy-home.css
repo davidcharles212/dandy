@@ -74,6 +74,8 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 .hh__skip:focus{width:auto;height:auto;clip:auto}
 .hh__ann{background:var(--ink);color:var(--cream);text-align:center;padding:9px var(--pad)}
 .hh__ann p{font-size:14px;font-weight:500;line-height:1.4}
+.hh__ann span{display:block;white-space:nowrap}
+@media (min-width:600px){.hh__ann span{display:inline}.hh__ann span+span::before{content:"·";margin:0 8px;opacity:.7}}
 .hh__nav{position:sticky;top:0;z-index:40;height:var(--nav-h);background:rgba(250,245,240,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .hh__row{display:flex;align-items:center;justify-content:space-between;gap:16px;height:100%}
 .hh__logo{display:flex;align-items:center;min-height:44px}
@@ -119,6 +121,9 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
   .hero__frame{border-radius:var(--r-frame);overflow:hidden}
   .hero__frame img{aspect-ratio:3/2}
   .hero__facts{margin-top:16px}
+  .hero__facts>li{flex-basis:100%;white-space:normal;padding-right:0}
+  .hero__facts>li:not(:first-child){margin-left:0}
+  .hero__facts>li:not(:first-child)::before{content:none}
   .hero__lede{margin-top:22px;max-width:44ch;font-size:clamp(17px,1.4vw,19px)}
   .hero__cta{display:flex;align-items:start;margin-top:30px}
 }
@@ -132,10 +137,9 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 .fmt--gummies{--accent:var(--berry)}
 .fmt--capsules{--accent:var(--amber)}
 .fmt--powder{--accent:var(--spruce)}
-.fmt__photo{width:min(64%,280px);margin:0 auto 8px}
-.fmt__photo img{width:100%;filter:drop-shadow(0 22px 24px rgba(40,17,12,.22)) drop-shadow(0 2px 3px rgba(40,17,12,.16))}
+.fmt__photo{display:flex;align-items:flex-end;justify-content:center;width:min(64%,280px);aspect-ratio:1/1;margin:0 auto 8px}
+.fmt__photo img{width:auto;max-width:100%;max-height:100%;filter:drop-shadow(0 22px 24px rgba(40,17,12,.22)) drop-shadow(0 2px 3px rgba(40,17,12,.16))}
 .fmt__aud{margin-top:18px;color:var(--ink-2)}
-.fmt__aud::before{content:"";display:block;width:40px;height:2px;margin-bottom:14px;background:var(--accent)}
 .fmt__h{margin-top:6px}
 .fmt__str{margin-top:10px;font-weight:600}
 .fmt__p{margin-top:12px}
@@ -157,15 +161,15 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 /* ===== 8. Clips: the page's dark moment; four real customer clips in phone frames (bezel hairline and sheen), tilted alternately, straightening on play; one round play button each; verbatim line under the frame ===== */
 .clips{background:var(--ink);color:var(--cream)}
 .clips .lede{color:var(--cream-86)}
-.clips__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+.clips__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px;align-items:start;padding-inline:6px}
 .ugc{margin:0;padding-top:6px}
 .ugc__frame{position:relative;overflow:hidden;border-radius:22px;background:var(--plum);box-shadow:0 26px 40px -22px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08);isolation:isolate;transform:rotate(var(--tilt,0deg)) translateX(var(--nudge,0));transition:transform .5s var(--ease-reveal);cursor:pointer}
-.ugc--tilt-l{--tilt:-2deg;--nudge:-3px}
-.ugc--tilt-r{--tilt:2deg;--nudge:3px}
+.ugc--tilt-l{--tilt:-1.5deg;--nudge:0}
+.ugc--tilt-r{--tilt:1.5deg;--nudge:0}
 .ugc.is-playing .ugc__frame{transform:none}
 .ugc__frame::before{content:"";position:absolute;inset:8px;z-index:2;border-radius:14px;border:1px solid rgba(255,255,255,.28);pointer-events:none}
 .ugc__frame::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.10),rgba(255,255,255,0) 32%,rgba(255,255,255,0) 68%,rgba(255,255,255,.06))}
-.ugc__video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--plum)}
+.ugc__video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:var(--plum)}
 .ugc__fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ugc__play{position:absolute;left:50%;top:50%;z-index:3;display:grid;place-items:center;width:60px;height:60px;margin:-30px 0 0 -30px;padding:0;border:0;border-radius:50%;background:rgba(250,245,240,.92);color:var(--ink);cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);transition:transform .18s ease}
 .ugc__play svg{width:26px;height:26px;margin-left:3px;fill:currentColor}
@@ -177,11 +181,13 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 .ugc__cap.is-on::before{content:"";position:absolute;inset:-8px -10px;z-index:-1;border-radius:12px;background:rgba(40,17,12,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 .ugc__q{margin-top:14px;font-size:15px;line-height:1.45;color:var(--cream-86);text-wrap:pretty}
 @media (min-width:600px){.ugc__cap{font-size:16px;bottom:22px}}
-@media (min-width:768px){.clips__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:26px}.ugc__q{font-size:16px}}
+@media (min-width:768px){.clips__grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:34px;padding-inline:0}.ugc--tilt-l{--tilt:-2deg;--nudge:-2px}.ugc--tilt-r{--tilt:2deg;--nudge:2px}.ugc__q{font-size:16px}}
 
 /* ===== 9. Dose: heading on white, then a static two-sided split, the light gear on cream-2 and the deep gear on ink, inner columns aligned to the wrap ===== */
 .dose{background:var(--white);padding-bottom:0}
 .dose .head{margin-bottom:0}
+.dose .h2{max-width:32ch}
+.dose .h2 span{display:block}
 .dose__split{display:grid;grid-template-columns:minmax(0,1fr);margin-top:28px}
 .gear{padding:28px var(--pad)}
 .gear__in{width:min(var(--wrap),100%);margin-inline:auto;max-width:56ch}
@@ -207,6 +213,7 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 
 /* ===== 10. FAQ: hairline accordion on white, plus and minus, animated height ===== */
 .faq{background:var(--white)}
+.faq__list{max-width:820px}
 .faq__item{border-top:1px solid var(--line)}
 .faq__item:last-child{border-bottom:1px solid var(--line)}
 .faq__q{margin:0;font:inherit}
@@ -227,6 +234,7 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 .revs__counts{margin-top:12px;font-size:15px;color:var(--ink-2)}
 .revs__counts a{text-decoration:none;font-weight:500}
 .revs__counts a:hover{text-decoration:underline;text-underline-offset:3px}
+@media (max-width:479px){.revs__counts>li{flex-basis:auto;white-space:nowrap;padding-right:22px}.revs__counts>li:not(:first-child){margin-left:-13px}.revs__counts>li:not(:first-child)::before{content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.55;vertical-align:middle;margin-right:9px}}
 .revs__grid{display:grid;gap:14px}
 .rev{padding:24px;background:var(--white);border:1px solid var(--line);border-radius:18px}
 .rev__h{margin-top:14px;font-family:var(--display);font-weight:600;font-size:20px;line-height:1.15;letter-spacing:0}
@@ -234,7 +242,7 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
 .rev footer{display:grid;gap:2px;margin-top:16px;font-size:15px;line-height:1.4;color:var(--ink-3)}
 .revs__cta{margin-top:var(--gap-s);text-align:center}
 @media (min-width:600px){.revs__grid{grid-template-columns:1fr 1fr}}
-@media (min-width:1024px){.revs__grid{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media (min-width:1024px){.revs__grid{grid-template-columns:repeat(3,1fr);gap:16px}.rev__h{min-height:2.3em}}
 
 /* ===== 12. Transparency: three pillars on hairlines on white, icons draw in 80ms apart, one link to the lab reports ===== */
 .quality{background:var(--white);border-top:1px solid var(--line)}
@@ -256,8 +264,9 @@ h1,h2,h3,.h1,.h2,.h3{font-family:var(--display);font-weight:700;letter-spacing:-
   .quality__list li:last-child{padding-right:0}
 }
 
-/* ===== 13. Welcome offer: a centred cream-2 block with radius 20 and no border; native Shopify customer form ===== */
-.welcome__block{max-width:760px;margin-inline:auto;padding:clamp(28px,5vw,56px);border-radius:var(--r-frame);background:var(--cream-2)}
+/* ===== 13. Welcome offer: a cream-2 band on hairlines, left anchored like every other section; native Shopify customer form ===== */
+.welcome{background:var(--cream-2);border-top:1px solid var(--line)}
+.welcome__block{max-width:640px}
 .welcome__form{margin-top:16px;max-width:560px}
 .welcome__row{display:grid;gap:12px}
 .welcome__input{width:100%;min-height:52px;padding:14px 18px;border:1px solid var(--line);border-radius:var(--r-input);background:var(--white);font:inherit;color:var(--ink)}
@@ -315,5 +324,5 @@ html.hm-js .rev--first.is-in .star{animation:hm-light .3s ease backwards;animati
   html.hm-js [data-reveal]{opacity:1;transform:none;transition:none}
   html.hm-js .quality__list:not(.is-in) .ico :is(path,circle),html.hm-js .quality__list.is-in .ico :is(path,circle){stroke-dasharray:none;stroke-dashoffset:0;animation:none}
   html.hm-js .rev--first:not(.is-in) .star,html.hm-js .rev--first.is-in .star{opacity:1;animation:none}
-  .ugc__frame,.ugc__play,.faq__panel,.hh__links a{transition:none}
+  .faq__panel,.hh__links a{transition:none}
 }
