@@ -303,6 +303,10 @@
     transform: none;
   }
 
+  .dpi--contain .dpi__tile {
+    background: none;
+  }
+
   .dpi--contain .dpi__ing img {
     object-fit: contain;
     object-position: 50% 50%;
@@ -653,10 +657,15 @@
     }
 
     .dpi--contain .dpi__product--desktop {
+      top: auto;
       right: 24px;
       bottom: 0;
-      width: 440px;
-      height: 397px;
+      width: 300px;
+      height: 330px;
+    }
+
+    .dpi--contain .dpi__item--3 .dpi__item-text {
+      max-width: 250px;
     }
 
     .dpi--contain .dpi__product--desktop img {
