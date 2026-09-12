@@ -1729,3 +1729,24 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-home .d2head { border-bottom: 1px solid var(--hc-line); }
 .dandy2-home .marquee { background: var(--d2-cream, #FAF5F0); color: var(--d2-brown); border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
 .dandy2-home .marquee__track span { font-weight: 700; font-size: 15px; letter-spacing: .06em; }
+
+/* HOME CLEANUP round 4: three one-line hero facts so the CTA clears the fold at 390, finish the shadow and border sweep (email capture, finale band, footer, sticky bar), readable labels, all FAQ rows closed. */
+.dandy2-home .hhero__benefits--facts { gap: 8px; margin: 2px 0 4px; }
+.dandy2-home .hhero__benefits--facts li { padding-left: 0; border-left: 0; }
+.dandy2-home .hhero__benefits--facts b { font-weight: 600; font-size: 15.5px; line-height: 1.35; }
+.dandy2-home .hhero__benefits--facts b a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-home .hhero { gap: 14px; }
+.dandy2-home .warnbar { border-left: 0; padding-left: 0; }
+.dandy2-home .fcard { border-color: rgb(40 17 12 / 18%); }
+.dandy2-home .fcard__best { color: rgb(40 17 12 / 72%); }
+.dandy2-home .belowfold--finale { border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .d2cap { border-top: 1px solid var(--hc-line); }
+.dandy2-home .d2cap input, .dandy2-home .d2cap__row input { border-width: 1px; box-shadow: none; }
+.dandy2-home .d2cap .cta, .dandy2-home .d2cap button.cta, .dandy2-home .d2cap__row .cta { border: 0; box-shadow: none; }
+.dandy2-home .d2cap .cta:hover { transform: none; box-shadow: none; }
+.dandy2-home .d2foot { border-top: 1px solid var(--hc-line); }
+.dandy2-home .d2foot__legal { border-top: 1px solid var(--hc-line); }
+.dandy2-home .stickybar { border: 0; border-top: 1px solid var(--hc-line); box-shadow: 0 -6px 20px rgb(40 17 12 / 6%); }
+.dandy2-home .gseal__mark small { font-size: 12px; letter-spacing: .06em; }
+.dandy2-home .dose__lbl { font-size: 13px; }
+@media (min-width: 801px) { .dandy2-home .hhero__benefits--facts b { font-size: 17px; } .dandy2-home .dose__lbl { font-size: 13px; } }
