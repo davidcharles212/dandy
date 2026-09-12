@@ -341,6 +341,11 @@
     padding-bottom: 370px;
   }
 
+  /* Capsule page: 420 = portrait (327) + its 68px bottom offset + 25px clear of the slider bar (370 put the portrait and the calorie seal 25px over it). */
+  .dpr--contain .dpr__inner {
+    padding-bottom: 420px;
+  }
+
   .dpr__stars {
     display: block;
     flex: none;
@@ -941,7 +946,8 @@
     }
 
     .dpr--contain .dpr__inner {
-      padding-bottom: 470px;
+      /* 550 = portrait (407) + its 110px bottom offset + 33px clear of the slider bar (measured 2026-09-12: 470 put the portrait 47px over the bar). */
+      padding-bottom: 550px;
     }
 
     .dpr--contain .dpr__heading br {

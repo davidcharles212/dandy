@@ -5,7 +5,13 @@
 <div class="dandy-product-header" {{ block.shopify_attributes }}>
   <h1 class="dandy-product-header__title dandy-trim-display"{% if block.settings.title_override != blank %} data-title-static{% endif %}>{{ title | escape }}</h1>
   {%- if subtitle != blank -%}
-    <p class="dandy-product-header__subtitle dandy-trim">{{ subtitle | escape | newline_to_br }}</p>
+    {%- assign subtitle_lines = subtitle | escape | newline_to_br | split: '<br />' -%}
+    <p class="dandy-product-header__subtitle dandy-trim">
+      {%- for line in subtitle_lines -%}
+        {{- line | strip -}}
+        {%- unless forloop.last -%}<span class="dandy-product-header__sep" aria-hidden="true"> &middot; </span><br>{%- endunless -%}
+      {%- endfor -%}
+    </p>
   {%- endif -%}
 </div>
 

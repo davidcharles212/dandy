@@ -145,6 +145,11 @@
   color: var(--dandy-orange);
 }
 
+/* The dot between the subtitle lines exists only where they run on one line (desktop); the block emits it, the breakpoint reveals it. */
+.dandy-product-header__sep {
+  display: none;
+}
+
 @media screen and (min-width: 1100px) {
   .dandy-product-header {
     gap: 24px;
@@ -152,6 +157,10 @@
 
   .dandy-product-header__subtitle br {
     display: none;
+  }
+
+  .dandy-product-header__subtitle .dandy-product-header__sep {
+    display: inline;
   }
 
   .dandy-product-header__title {
