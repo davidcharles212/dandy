@@ -128,7 +128,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p><strong>50 mg, everyday ease.</strong> New to kratom, or after relief from desk stiffness, workouts and general wear-and-tear? Start here. One capsule is the baseline.</p><p><strong>90 mg, heavy-duty.</strong> Persistent, intense physical discomfort, demanding physical shifts, or an established botanical tolerance. Still start with a single capsule and a full glass of water.</p><ul><li>Both strengths: 30 capsules per jar<br/></li><li>Both: independently batch tested<br/></li><li>Both: 0 g sugar, 0 calories, vegan shell</li></ul>",
+                        "text": "<p><strong>50 mg, everyday ease.</strong> New to kratom, or after relief from desk stiffness, workouts and general wear-and-tear? Start here. One capsule is the baseline.</p><p><strong>90 mg, heavy-duty.</strong> Persistent, intense physical discomfort, demanding physical shifts, or experienced routines. Still start with a single capsule and a full glass of water.</p><ul><li>Both strengths: 30 capsules per jar<br/></li><li>Both: independently batch tested<br/></li><li>Both: 0 g sugar, 0 calories, vegan shell</li></ul>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -323,7 +323,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Orders placed by 2 PM Central ship the same business day in plain, unmarked packaging. Free shipping on two jars or more.</p><p>Every jar is covered by the 30-Day Physical Relief Guarantee: if it isn't for you, email support@foreverdandy.com within 30 days of delivery for a full refund. No return required.</p>",
+                        "text": "<p>Orders placed by 2 PM Central ship the same business day in plain, unmarked packaging. Free shipping on two jars or more.</p><p>Every jar is covered by the 30-Day Physical Relief Guarantee: if it isn't for you, reach out to support@foreverdandy.com within 30 days of delivery and return the remaining jar for a 100% refund. Zero hassle.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -1086,7 +1086,7 @@
           "type": "question",
           "settings": {
             "question": "Which strength should I start with, 50 mg or 90 mg?",
-            "answer": "<p>New to kratom, or after everyday relief from desk stiffness, workouts or general wear-and-tear? Start with <strong>50 mg</strong>. One capsule is the ideal baseline.</p><p>Persistent, intense physical discomfort, demanding physical shifts, or an established botanical tolerance? Choose <strong>90 mg</strong>. Either way, start with a single capsule and a full glass of water.</p>"
+            "answer": "<p>New to kratom, or after everyday relief from desk stiffness, workouts or general wear-and-tear? Start with <strong>50 mg</strong>. One capsule is the ideal baseline.</p><p>Persistent, intense physical discomfort, demanding physical shifts, or experienced routines? Choose <strong>90 mg</strong>. Either way, start with a single capsule and a full glass of water.</p>"
           }
         },
         "q3": {
@@ -1128,7 +1128,7 @@
           "type": "question",
           "settings": {
             "question": "What if Dandy doesn't relieve my discomfort?",
-            "answer": "<p>You're covered by the <strong>30-Day Physical Relief Guarantee</strong>. Use the capsules for a full month in your real routine. If your body doesn't feel noticeably looser, lighter and more comfortable, email <a href=\"mailto:support@foreverdandy.com\">support@foreverdandy.com</a> within 30 days of delivery and we refund your purchase. No interrogation, no return shipping, no hard feelings.</p>"
+            "answer": "<p>You're covered by the <strong>30-Day Physical Relief Guarantee</strong>. Use the capsules for a full month in your real routine. If your body doesn't feel noticeably looser, lighter and more comfortable, email <a href=\"mailto:support@foreverdandy.com\">support@foreverdandy.com</a> within 30 days of delivery, return the remaining jar, and we refund your purchase. No interrogation, no hard feelings.</p>"
           }
         }
       },

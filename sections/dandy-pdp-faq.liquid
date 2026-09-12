@@ -229,6 +229,14 @@
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
   }
 
+  /* Punch list 2026-09-11: the hand is pinned to the section edge, so it only clears the heading and the first
+     question once the centred 1472 px container has 224 px of side margin (2048 px and up, measured 1280 to 1600). */
+  @media screen and (min-width: 1024px) and (max-width: 2047px) {
+    .dpq__hand {
+      display: none !important;
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     .dpq__hand {
       position: absolute;

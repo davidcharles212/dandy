@@ -561,29 +561,14 @@
   .dpw__item--std .dpw__peek img,
   .dpw__item--std .dpw__open-img img,
   .dpw__item--std .dpw__desk-img img {
-    filter: grayscale(85%) opacity(0.8);
+    filter: grayscale(100%) opacity(0.85);
   }
 
   .dpw__item--diff {
-    --dpw-champ: #5f9b55;
+    --dpw-champ: #2d6a4f;
     --dpw-champ-off: 4px;
     border: 2px solid var(--dpw-champ);
-    box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 0 0 0 rgb(95 155 85 / 0.45);
-  }
-
-  @keyframes dpw-champ-pulse {
-    0%, 100% {
-      box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 0 0 0 rgb(95 155 85 / 0.45);
-    }
-    50% {
-      box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 0 20px 5px rgb(95 155 85 / 0.32);
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .dpw__item--diff {
-      animation: dpw-champ-pulse 3.6s ease-in-out infinite;
-    }
+    box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 8px 24px rgb(95 155 85 / 0.22);
   }
 
   /* Audit 2026-09-11: jar and bottle art fits inside the card on phones (no spill above the card, no sliced pills) */
