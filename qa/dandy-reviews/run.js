@@ -245,7 +245,7 @@ async function behaviour(browser, base) {
       await page.click(`[data-format="${f}"]`); await page.waitForTimeout(100);
       const ids = await cards(page); const c = await counts(page);
       const want = f === 'all' ? seed : seed.filter(r => r.product === f);
-      perFormat[f] = { cards: ids.length, n: c.n, want: want.length, selected: c.selected, url: c.url, pass: ids.length === Math.min(PAGE, want.length) && c.n === want.length && ids.every(id => want.some(r => String(r.id) === id)) && c.selected === f && (f === 'all' ? !/format=/.test(c.url) : c.url.includes('format=' + f)) };
+      perFormat[f] = { cards: ids.length, n: c.n, want: want.length, selected: c.selected, url: c.url, pass: ids.length === Math.min(PAGE, want.length) && c.n === want.length && ids.every(id => want.some(r => String(r.id) === id)) && c.selected === f && (f === 'all' ? !/fmt=/.test(c.url) : c.url.includes('fmt=' + f)) };
     }
     const dl = await page.evaluate(() => window.dataLayer.filter(e => e.event === 'review_hub_format_filter').map(e => e.label));
     out.formats = { perFormat, tracked: dl, pass: Object.values(perFormat).every(x => x.pass) && dl.join() === 'gummies,capsules,powder,all' };
