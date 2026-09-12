@@ -20,7 +20,7 @@
       </nav>
       <nav class="hf__col" aria-labelledby="hf-science">
         <h2 id="hf-science">Transparency and science</h2>
-        <a href="/pages/reviews">Customer reviews (4.8/5, 1,475+ verified)</a>
+        <a href="{%- assign hm_reviews_page = pages['reviews'] -%}{%- if hm_reviews_page.url != blank -%}{{ hm_reviews_page.url }}{%- else -%}/pages/contact?view=reviews{%- endif -%}">Customer reviews (4.8/5, 1,475+ verified)</a>
         <a href="/pages/contact?view=dandy2-kratom">What is kratom?</a>
         <a href="/pages/contact?view=dandy2-coa">Certificate of analysis (COA) lookup</a>
         <a href="/#dose">The dosage spectrum guide</a>

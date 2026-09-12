@@ -90,11 +90,15 @@
   }
   var byDate = function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : a.order - b.order; };
   var byHelpful = function (a, b) { return b.helpful - a.helpful || byDate(a, b); };
+  /* Relevance blends rating, helpful votes (capped so a few outliers cannot dominate) and recency, so the default
+     order reads like the scorecard above it instead of leading with whichever reviews collected the most votes. */
+  var relevance = function (r) { return r.rating * 10 + Math.min(r.helpful, 30) + (r.date >= '2025-06-01' ? 5 : 0); };
+  var byRelevance = function (a, b) { return relevance(b) - relevance(a) || byDate(a, b); };
   function comparator() {
     if (state.sort === 'recent') return byDate;
     if (state.sort === 'rating') return function (a, b) { return b.rating - a.rating || byHelpful(a, b); };
-    if (state.terms.length) return function (a, b) { return b._s - a._s || byHelpful(a, b); };
-    return byHelpful;
+    if (state.terms.length) return function (a, b) { return b._s - a._s || byRelevance(a, b); };
+    return byRelevance;
   }
 
   /* ---------- one pass: filtered list plus the count every control would yield if chosen ---------- */

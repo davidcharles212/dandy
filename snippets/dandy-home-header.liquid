@@ -42,7 +42,7 @@
       <a href="/products/premium-kratom-leaf-powder">Raw leaf</a>
       <a href="/pages/contact?view=dandy2-coa">Lab reports</a>
       <a href="/pages/contact?view=dandy2-about">About Dandy</a>
-      <a href="/pages/reviews">Customer reviews</a>
+      <a href="{%- assign hm_reviews_page = pages['reviews'] -%}{%- if hm_reviews_page.url != blank -%}{{ hm_reviews_page.url }}{%- else -%}/pages/contact?view=reviews{%- endif -%}">Customer reviews</a>
       <a href="/pages/contact?view=dandy2-shipping">Shipping and states</a>
     </nav>
   </div>

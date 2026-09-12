@@ -245,7 +245,7 @@
           <footer><span>David K., 42, Denver, CO</span><span>Verified buyer · Premium Raw Leaf Powder</span></footer>
         </article>
       </div>
-      <p class="revs__cta"><a class="btn btn--ghost" href="/pages/reviews" data-track="reviews_gateway_click">Read all 1,475+ verified customer reviews</a></p>
+      <p class="revs__cta"><a class="btn btn--ghost" href="{%- assign hm_reviews_page = pages['reviews'] -%}{%- if hm_reviews_page.url != blank -%}{{ hm_reviews_page.url }}{%- else -%}/pages/contact?view=reviews{%- endif -%}" data-track="reviews_gateway_click">Read all 1,475+ verified customer reviews</a></p>
     </div>
   </section>
 
