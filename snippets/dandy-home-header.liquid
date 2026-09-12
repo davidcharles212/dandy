@@ -1,0 +1,51 @@
+{% comment %}
+  Dandy home chrome: announcement bar, sticky nav, phone drawer, cart link with count.
+  Self-contained (no section settings) so the homepage and the reviews hub share it.
+  Renders the shared dandy2 cart drawer and the home age gate. Styles in assets/dandy-home.css,
+  drawer behaviour in assets/dandy-home.js.
+{% endcomment %}
+<header class="hh">
+  <a class="hh__skip" href="#DandyMain">Skip to content</a>
+  <div class="hh__ann"><p>Free shipping on subscriptions and orders $99+ · Same-day dispatch on orders before 2 PM Central</p></div>
+  <div class="hh__nav" data-hh-nav>
+    <div class="wrap hh__row">
+      <a class="hh__logo" href="{{ routes.root_url }}" aria-label="Dandy home"><img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="96" height="36" alt="Dandy"></a>
+      <nav class="hh__links" aria-label="Main">
+        <a href="/products/mixed-berry-kratom-gummies">Gummies</a>
+        <a href="/products/extract-capsules-50mg">Capsules</a>
+        <a href="/products/premium-kratom-leaf-powder">Raw leaf</a>
+        <a href="/pages/contact?view=dandy2-coa">Lab reports</a>
+        <a href="/pages/contact?view=dandy2-about">About Dandy</a>
+      </nav>
+      <div class="hh__right">
+        <span class="hh__age">21+ only</span>
+        <a class="hh__cart" href="{{ routes.cart_url }}" data-d2-cart-link data-d2-cart-open aria-label="Cart{% if cart.item_count > 0 %}, {{ cart.item_count }} item{% unless cart.item_count == 1 %}s{% endunless %}{% endif %}">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8h13l1 12.5h-15L5.5 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+          <span class="hh__count" data-d2-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+        </a>
+        <button class="hh__menu" type="button" data-hh-open aria-expanded="false" aria-controls="hh-drawer" aria-label="Menu">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="hh__drawer" id="hh-drawer" data-hh-drawer hidden>
+    <div class="hh__drawer-top">
+      <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="96" height="36" alt="Dandy">
+      <button class="hh__close" type="button" data-hh-close aria-label="Close menu">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <nav class="hh__drawer-links" aria-label="Menu">
+      <a href="/products/mixed-berry-kratom-gummies">Gummies</a>
+      <a href="/products/extract-capsules-50mg">Capsules</a>
+      <a href="/products/premium-kratom-leaf-powder">Raw leaf</a>
+      <a href="/pages/contact?view=dandy2-coa">Lab reports</a>
+      <a href="/pages/contact?view=dandy2-about">About Dandy</a>
+      <a href="/pages/reviews">Customer reviews</a>
+      <a href="/pages/contact?view=dandy2-shipping">Shipping and states</a>
+    </nav>
+  </div>
+</header>
+{% render 'dandy2-cart-drawer' %}
+{% render 'dandy-home-agegate' %}

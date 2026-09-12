@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ page_title }}</title>
+  {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  {%- if page_description -%}<meta property="og:description" content="{{ page_description | escape }}">{%- endif -%}
+  <meta property="og:image" content="{{ 'home-og.jpg' | asset_url }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  {%- if template.name == 'index' -%}
+  <link rel="preload" as="image" href="{{ 'home-hero-hands-1600.webp' | asset_url }}" imagesrcset="{{ 'home-hero-hands-900.webp' | asset_url }} 900w, {{ 'home-hero-hands-1600.webp' | asset_url }} 1600w" imagesizes="(min-width: 861px) 46vw, 100vw" fetchpriority="high">
+  {%- endif -%}
+  {{ 'dandy-home.css' | asset_url | stylesheet_tag }}
+  {%- if template.suffix == 'reviews' -%}{{ 'dandy-reviews.css' | asset_url | stylesheet_tag }}{%- endif -%}
+  <script>
+  (function () {
+    var h = document.documentElement;
+    h.classList.add('hm-js');
+    {%- unless request.design_mode -%}
+    var ok = false;
+    try { var at = +localStorage.getItem('d2age21') || 0; ok = !!at && Date.now() - at < 2592e6; } catch (e) {}
+    h.classList.add(ok ? 'd2-age-ok' : 'd2age-lock');
+    {%- endunless -%}
+    setTimeout(function () { if (!window.DandyHome) h.classList.remove('hm-js'); }, 3000);
+  })();
+  </script>
+  {{ content_for_header }}
+</head>
+<body class="hm-body">
+  {{ content_for_layout }}
+  <script src="{{ 'dandy-home.js' | asset_url }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% comment %}
+  Dandy home age gate (21+). Same key (d2age21), 30-day TTL and behaviour as dandy2-agegate:
+  rendered in the initial HTML, hidden before first paint by the inline head script in
+  layout/dandy-home.liquid (html.d2-age-ok when the stored answer is still valid), no close
+  button, Escape does nothing, Tab stays inside. Restyled: hairline, soft shadow, no thick strokes.
+  Suppressed in the theme editor.
+{% endcomment %}
+{%- unless request.design_mode -%}
+<div class="hage" data-hage role="dialog" aria-modal="true" aria-labelledby="hage-h">
+  <div class="hage__box" tabindex="-1" data-hage-box>
+    <img class="hage__rocky" src="{{ 'dandy2-rocky-bouncer.webp' | asset_url }}" alt="" width="560" height="560" aria-hidden="true">
+    <img class="hage__mark" src="{{ 'dandy-wordmark.svg' | asset_url }}" width="84" height="31" alt="Dandy">
+    <div data-hage-ask>
+      <h2 class="hage__h" id="hage-h">Rocky checks IDs at the door. Are you 21 or older?</h2>
+      <div class="hage__row">
+        <button type="button" class="btn" data-hage-yes>I'm 21 or older</button>
+        <button type="button" class="btn btn--ghost" data-hage-no>Not yet</button>
+      </div>
+    </div>
+    <div data-hage-deny hidden>
+      <h2 class="hage__h">See you at 21.</h2>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var gate = document.querySelector('[data-hage]');
+  if (!gate) return;
+  var KEY = 'd2age21', TTL = 30 * 864e5, at = 0;
+  try { at = +localStorage.getItem(KEY) || 0; } catch (e) {}
+  if (at && Date.now() - at < TTL) { gate.remove(); document.documentElement.classList.remove('d2age-lock'); return; }
+  var html = document.documentElement;
+  html.classList.remove('d2-age-ok');
+  html.classList.add('d2age-lock');
+  var ask = gate.querySelector('[data-hage-ask]'), deny = gate.querySelector('[data-hage-deny]');
+  gate.querySelector('[data-hage-yes]').addEventListener('click', function () {
+    try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+    html.classList.remove('d2age-lock');
+    gate.remove();
+  });
+  gate.querySelector('[data-hage-no]').addEventListener('click', function () {
+    ask.hidden = true; deny.hidden = false;
+    gate.querySelector('[data-hage-box]').focus({ preventScroll: true });
+  });
+  gate.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(gate.querySelectorAll('button, a'), function (el) { return el.offsetParent; });
+    if (!f.length) { e.preventDefault(); return; }
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+    else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+  });
+  gate.querySelector('[data-hage-box]').focus({ preventScroll: true });
+})();
+</script>
+{%- endunless -%}
