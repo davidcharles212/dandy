@@ -933,6 +933,36 @@
       box-shadow: -1.67px 6.66px 19.66px rgb(0 0 0 / 0.08);
     }
 
+    /* Revision plan 2026-09-11 (capsule page): the phone height formula no longer sizes the desktop section;
+       the portrait and seals sit in a band reserved under the slider instead of at fixed offsets from the top. */
+    .dpr.dpr--contain {
+      height: auto;
+      min-height: 0;
+    }
+
+    .dpr--contain .dpr__inner {
+      padding-bottom: 470px;
+    }
+
+    .dpr--contain .dpr__heading br {
+      display: inline;
+    }
+
+    .dpr--contain .dpr__person {
+      top: auto;
+      bottom: 110px;
+    }
+
+    .dpr--contain .dpr__badge--cal {
+      top: auto;
+      bottom: 172px;
+    }
+
+    .dpr--contain .dpr__badge--mg {
+      top: auto;
+      bottom: 214px;
+    }
+
     .dpr__badge--mg .dpr__badge-big {
       margin-top: -5.83px;
       font-size: 51.02px;
