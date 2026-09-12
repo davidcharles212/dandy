@@ -185,6 +185,8 @@
           "ledeLines": 5,
           "buttonWidth": 350,
           "contentWidth": 350,
+          "primaryButtonBottom": 541,
+          "firstScreen": true,
           "photoWidth": 390,
           "photoHeight": 219,
           "photoUncropped": true,
@@ -224,7 +226,7 @@
             "/pages/contact?view=dandy2-shipping",
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
-            "/pages/reviews",
+            "/pages/contact?view=reviews",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -236,13 +238,15 @@
         },
         "g13_reducedMotion": {
           "identicalBytes": true,
+          "imageRectsIdentical": true,
+          "images": 8,
           "heroSrcAnimated": "home-hero-hands-900.webp",
           "heroSrcReduced": "home-hero-hands-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-390.png",
-      "pageHeight": 12232
+      "pageHeight": 12210
     },
     "430": {
       "width": 430,
@@ -428,6 +432,8 @@
           "ledeLines": 4,
           "buttonWidth": 387,
           "contentWidth": 387,
+          "primaryButtonBottom": 494,
+          "firstScreen": true,
           "photoWidth": 430,
           "photoHeight": 242,
           "photoUncropped": true,
@@ -467,7 +473,7 @@
             "/pages/contact?view=dandy2-shipping",
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
-            "/pages/reviews",
+            "/pages/contact?view=reviews",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -479,13 +485,15 @@
         },
         "g13_reducedMotion": {
           "identicalBytes": true,
+          "imageRectsIdentical": true,
+          "images": 8,
           "heroSrcAnimated": "home-hero-hands-900.webp",
           "heroSrcReduced": "home-hero-hands-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-430.png",
-      "pageHeight": 11925
+      "pageHeight": 11901
     },
     "768": {
       "width": 768,
@@ -671,6 +679,8 @@
           "ledeLines": 3,
           "buttonWidth": 691,
           "contentWidth": 691,
+          "primaryButtonBottom": 456,
+          "firstScreen": true,
           "photoWidth": 768,
           "photoHeight": 432,
           "photoUncropped": true,
@@ -710,7 +720,7 @@
             "/pages/contact?view=dandy2-shipping",
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
-            "/pages/reviews",
+            "/pages/contact?view=reviews",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -722,13 +732,15 @@
         },
         "g13_reducedMotion": {
           "identicalBytes": true,
+          "imageRectsIdentical": true,
+          "images": 8,
           "heroSrcAnimated": "home-hero-hands-900.webp",
           "heroSrcReduced": "home-hero-hands-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-768.png",
-      "pageHeight": 10928
+      "pageHeight": 11007
     },
     "1280": {
       "width": 1280,
@@ -811,7 +823,7 @@
         },
         "g5_whitespace": {
           "limit": 96,
-          "nodes": 269,
+          "nodes": 267,
           "gaps": [],
           "pass": true
         },
@@ -914,6 +926,8 @@
           "ledeLines": 3,
           "buttonWidth": 204,
           "contentWidth": 1168,
+          "primaryButtonBottom": 855,
+          "firstScreen": true,
           "photoWidth": 536,
           "photoHeight": 302,
           "photoUncropped": true,
@@ -953,7 +967,7 @@
             "/pages/contact?view=dandy2-shipping",
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
-            "/pages/reviews",
+            "/pages/contact?view=reviews",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -965,13 +979,15 @@
         },
         "g13_reducedMotion": {
           "identicalBytes": true,
+          "imageRectsIdentical": true,
+          "images": 8,
           "heroSrcAnimated": "home-hero-hands-900.webp",
           "heroSrcReduced": "home-hero-hands-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-1280.png",
-      "pageHeight": 8278
+      "pageHeight": 8277
     }
   },
   "hero": [
@@ -981,6 +997,8 @@
       "ledeLines": 5,
       "buttonWidth": 335,
       "contentWidth": 335,
+      "primaryButtonBottom": 541,
+      "viewport": 844,
       "photoHeight": 211,
       "photoUncropped": true,
       "pass": true
@@ -991,6 +1009,8 @@
       "ledeLines": 5,
       "buttonWidth": 350,
       "contentWidth": 350,
+      "primaryButtonBottom": 541,
+      "viewport": 844,
       "photoHeight": 219,
       "photoUncropped": true,
       "pass": true
@@ -1001,6 +1021,8 @@
       "ledeLines": 4,
       "buttonWidth": 387,
       "contentWidth": 387,
+      "primaryButtonBottom": 494,
+      "viewport": 844,
       "photoHeight": 242,
       "photoUncropped": true,
       "pass": true

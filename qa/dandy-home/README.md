@@ -25,16 +25,16 @@ NODE_PATH=/path/to/dir-with-node_modules/node_modules node qa/dandy-home/run.js
 | g10_links | unique hrefs | listed for the preview-theme 200 check |
 | g11_hero and the hero table | H1 line count, lede lines, button width vs content width, photo size, uncropped 16:9 | H1 <= 3 lines, button equals content width on phones, photo uncropped |
 | g12_analytics | clicks every `data-track` element with navigation prevented | each pushes its event to `dataLayer`; all six homepage events seen |
-| g13_reducedMotion | two fresh contexts (animated at rest with the hero light sweep hidden, and `prefers-reduced-motion: reduce`) after the same scroll-through | byte-identical full-page screenshots, else a pixel diff count |
+| g13_reducedMotion | two fresh contexts (animated at rest with the hero light sweep hidden, and `prefers-reduced-motion: reduce`) after the same scroll-through; photo pixels hidden (`img{opacity:0}`, boxes and grounds stay) because a photo composited during a reveal resamples a few interior pixels differently | byte-identical full-page screenshots (else a pixel diff count) and every image rect numerically identical |
 | duplicates | md5 of the four full-page screenshots | none identical |
 
 ## Latest results
 
-See `results.md` for the full tables. Summary of the last run (2026-09-12):
+See `results.md` for the full tables. Summary of the last run (2026-09-12, fix pass r2):
 
 - 390, 430, 768, 1280: every measured gate passes; no page errors.
-- Hero: H1 3 lines at 375, 390, 430 (40px); lede 5, 5, 4 lines; button width equals content width; photo edge to edge and uncropped at 16:9 (211, 219, 242px tall). At 1280 the H1 is 3 lines at 66px.
+- Hero: H1 3 lines at 375, 390, 430 (40px); lede 5, 5, 4 lines; button width equals content width; the primary button's bottom edge sits at 541px (375, 390) and 494px (430) of an 844px viewport with the announcement bar and nav in place; photo edge to edge and uncropped at 16:9. At 1280 the H1 is 3 lines at 66px.
 - Card inventory: `div.hage__box`, `span.hero__inset`, three `article.rev`, `input#HomeWelcomeEmail.welcome__input`. No non-button pills.
-- Whitespace: no gaps over the limits at any width.
-- Reduced motion: byte-identical to the animated rest state at every width; the hero rendered `home-hero-hands-900.webp` in both contexts at every width (DPR 1).
-- CLS on the harness: 0 at phone widths, 0.027 at 1280 (font swap), under 0.05.
+- Whitespace: no gaps over the limits at any width (painted nodes walked in visual order).
+- Reduced motion: byte-identical to the animated rest state at every width with photo pixels hidden, and every image rect identical; the hero rendered `home-hero-hands-900.webp` in both contexts (DPR 1).
+- CLS on the harness: 0 at phone widths, under 0.05 at 1280 (font swap).

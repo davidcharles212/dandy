@@ -5,6 +5,8 @@
   Behaviour and analytics: assets/dandy-home.js. QA: qa/dandy-home/run.js.
 {% endcomment %}
 
+{%- assign hm_review_count = '2,050' -%}
+
 {%- capture star -%}<svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>{%- endcapture -%}
 {%- capture stars5 -%}{%- for i in (0..4) -%}<svg class="star" style="--i:{{ i }}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>{%- endfor -%}{%- endcapture -%}
 
@@ -31,14 +33,13 @@
   <section class="hero" id="top" aria-labelledby="hm-h1">
     <div class="wrap hero__grid">
       <div class="hero__copy">
-        <a class="hero__proof" href="#reviews" data-track="homepage_hero_reviews_click"><span class="stars" aria-label="4.8 out of 5 stars">{{ stars5 }}</span><span>Rated 4.8/5 across 1,475+ verified adults</span></a>
+        <a class="hero__proof" href="#reviews" data-track="homepage_hero_reviews_click"><span class="stars" aria-label="4.8 out of 5 stars">{{ stars5 }}</span><span>Rated 4.8/5 across {{ hm_review_count }} verified adults</span></a>
         <h1 class="h1" id="hm-h1">Clean energy, physical relief, and steady days.</h1>
         <p class="lede hero__lede">Pure Southeast Asian kratom leaf in three exact, measured formats. A natural botanical alternative for daytime stamina and evening body ease, without caffeine jitters or morning grogginess.</p>
-        <ul class="hero__benefits">
-          <li>{{ ico_sun }}<div><b>Smooth daytime stamina</b><p>Clean, alert focus that powers through the day without the acid reflux, racing heart, or 2 PM coffee crash.</p></div></li>
-          <li>{{ ico_ring }}<div><b>Uplifted composure</b><p>A bright, buoyant sense of well-being that keeps you feeling good and mentally sharp.</p></div></li>
-          <li>{{ ico_moon }}<div><b>Physical ease and unwinding</b><p>Naturally settles sore muscles, lower back tension, and joint stiffness when the work is done.</p></div></li>
-        </ul>
+      </div>
+      <div class="hero__cta">
+        <a class="btn" href="#formats" data-track="homepage_hero_cta_click" data-track-label="explore">Explore the formats</a>
+        <a class="btn btn--ghost" href="/products/mixed-berry-kratom-gummies" data-track="homepage_hero_cta_click" data-track-label="gummies">View Mixed Berry Gummies (35 mg)</a>
       </div>
       <div class="hero__media">
         <figure class="hero__photo">
@@ -51,10 +52,11 @@
           <li>Ships legally to 34 states</li>
         </ul>
       </div>
-      <div class="hero__cta">
-        <a class="btn" href="#formats" data-track="homepage_hero_cta_click" data-track-label="explore">Explore the formats</a>
-        <a class="btn btn--ghost" href="/products/mixed-berry-kratom-gummies" data-track="homepage_hero_cta_click" data-track-label="gummies">View Mixed Berry Gummies (35 mg)</a>
-      </div>
+      <ul class="hero__benefits">
+        <li>{{ ico_sun }}<div><b>Smooth daytime stamina</b><p>Clean, alert focus that powers through the day without the acid reflux, racing heart, or 2 PM coffee crash.</p></div></li>
+        <li>{{ ico_ring }}<div><b>Uplifted composure</b><p>A bright, buoyant sense of well-being that keeps you feeling good and mentally sharp.</p></div></li>
+        <li>{{ ico_moon }}<div><b>Physical ease and unwinding</b><p>Naturally settles sore muscles, lower back tension, and joint stiffness when the work is done.</p></div></li>
+      </ul>
     </div>
   </section>
 
@@ -64,7 +66,7 @@
       <li style="--i:0">{{ ico_scale }}<b>Exact measured milligrams</b><p>Every serving labeled with precise mitragynine content.</p></li>
       <li style="--i:1">{{ ico_flask }}<b>4-panel independent testing</b><p>Potency, heavy metals, microbials, and purity verified.</p></li>
       <li style="--i:2">{{ ico_shield }}<b>30-day money-back guarantee</b><p>If you don't feel the difference, we refund your order.</p></li>
-      <li style="--i:3">{{ ico_box }}<b>Same-day dispatch</b><p>Orders placed before 2 PM Central ship same day in discreet plain packaging.</p></li>
+      <li style="--i:3">{{ ico_box }}<b>Same&#8209;day dispatch</b><p>Orders placed before 2&nbsp;PM&nbsp;Central ship same day in discreet plain packaging.</p></li>
     </ul>
   </section>
 
@@ -140,8 +142,6 @@
 
       <div class="dose__body">
         <div class="dose__scale" aria-hidden="true">
-          <span class="dose__end dose__end--lo">15 mg</span>
-          <span class="dose__end dose__end--hi">90 mg</span>
           <div class="dose__track"><span class="dose__fill"></span><span class="dose__bound" style="--p:26.7%"></span><span class="dose__bound" style="--p:46.7%"></span><span class="dose__marker"></span></div>
           <span class="dose__zone" style="--p:13.3%">15 mg to 35 mg</span>
           <span class="dose__zone" style="--p:36.7%">35 mg to 50 mg</span>
@@ -222,30 +222,30 @@
     <div class="wrap">
       <div class="head revs__head" data-reveal>
         <h2 class="h2" id="hm-revs-h">Real days. Real relief.</h2>
-        <p class="revs__rating"><span class="stars" aria-label="4.8 out of 5 stars">{{ stars5 }}</span><span>4.8 out of 5 stars based on 1,475+ verified purchases</span></p>
+        <p class="revs__rating"><span class="stars" aria-label="4.8 out of 5 stars">{{ stars5 }}</span><span>4.8 out of 5 stars based on {{ hm_review_count }} verified&nbsp;purchases</span></p>
         <p class="revs__rec">94% of surveyed customers recommend Dandy for clean daytime lift and physical ease.</p>
       </div>
       <div class="revs__grid">
         <article class="rev rev--first" data-reveal>
           <span class="stars" aria-label="5 out of 5 stars">{{ stars5 }}</span>
-          <h3 class="rev__h">"Replaced my afternoon coffee without the heart flutters."</h3>
+          <h3 class="rev__h">“Replaced my afternoon coffee without the heart flutters.”</h3>
           <p>I love coffee in the morning, but afternoon coffee started giving me acid reflux and racing thoughts. Half a Dandy gummy around 2 PM gives me a very clean, steady lift that carries me through my workday and into an evening walk with my wife. No jitters, no crash.</p>
           <footer><span>Robert M., 54, Columbus, OH</span><span>Verified buyer · Mixed Berry Gummies (35 mg)</span></footer>
         </article>
         <article class="rev" data-reveal>
           <span class="stars" aria-label="5 out of 5 stars">{{ stars5 }}</span>
-          <h3 class="rev__h">"My go-to after hours working in the garden."</h3>
+          <h3 class="rev__h">“My go-to after hours working in the garden.”</h3>
           <p>I spend hours outside tending to my garden, and my lower back and hips used to scream by 5 PM. A friend recommended Dandy capsules. One 50 mg capsule takes the edge off the physical stiffness and puts me in a calm, cheerful mood for dinner. And because it's in a capsule, there's zero taste.</p>
           <footer><span>Patricia K., 61, Phoenix, AZ</span><span>Verified buyer · Extract Capsules (50 mg)</span></footer>
         </article>
         <article class="rev" data-reveal>
           <span class="stars" aria-label="5 out of 5 stars">{{ stars5 }}</span>
-          <h3 class="rev__h">"Remarkably fresh and the lab numbers match."</h3>
+          <h3 class="rev__h">“Remarkably fresh and the lab numbers match.”</h3>
           <p>I've purchased botanical powders online for over five years. Dandy's leaf is remarkably fresh: bright green color, clean aroma, and mixes smoothly into tea. The QR code on the bag pulled up the exact COA showing zero heavy metals. Outstanding quality control.</p>
           <footer><span>David K., 42, Denver, CO</span><span>Verified buyer · Premium Raw Leaf Powder</span></footer>
         </article>
       </div>
-      <p class="revs__cta"><a class="btn btn--ghost" href="{%- assign hm_reviews_page = pages['reviews'] -%}{%- if hm_reviews_page.url != blank -%}{{ hm_reviews_page.url }}{%- else -%}/pages/contact?view=reviews{%- endif -%}" data-track="reviews_gateway_click">Read all 1,475+ verified customer reviews</a></p>
+      <p class="revs__cta"><a class="btn btn--ghost" href="{%- assign hm_reviews_page = pages['reviews'] -%}{%- if hm_reviews_page.url != blank -%}{{ hm_reviews_page.url }}{%- else -%}/pages/contact?view=reviews{%- endif -%}" data-track="reviews_gateway_click">Read all {{ hm_review_count }} reviews</a></p>
     </div>
   </section>
 
@@ -256,7 +256,7 @@
       <ul class="quality__list" data-reveal>
         <li>{{ ico_leaf }}<b>Direct farm partnerships</b><p>Harvested from mature Mitragyna speciosa trees grown by family farming collectives in Thailand.</p></li>
         <li>{{ ico_label }}<b>100% label accuracy</b><p>The mitragynine milligram count on the front of our pouch matches what is inside. No proprietary mystery blends.</p></li>
-        <li>{{ ico_shield }}<b>30-day Feel the Shift guarantee</b><p>We want you to feel confident trying Dandy. If you are unsatisfied for any reason within 30 days of delivery, email <a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a> for an immediate, hassle-free refund.</p></li>
+        <li>{{ ico_shield }}<b>30-day Feel the Shift guarantee</b><p>We want you to feel confident trying Dandy. If you are unsatisfied for any reason within 30 days of delivery, email <a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a> for an immediate, hassle&#8209;free refund.</p></li>
         <li>{{ ico_headset }}<b>Dedicated human customer care</b><p>Have a question about how to take Dandy or need help choosing a format? Our US-based support team responds within 24 hours (Mon to Fri, 9am to 5pm CT).</p></li>
       </ul>
     </div>
@@ -273,11 +273,11 @@
             <p class="welcome__ok">Check your inbox. Your code is on its way.</p>
           {%- else -%}
             <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off">
+            <p class="welcome__fine">21+ only. Unsubscribe anytime. Offer valid on one-time orders and first subscription cycles.</p>
             <div class="welcome__row">
               <input class="welcome__input" id="HomeWelcomeEmail" type="email" name="contact[email]" placeholder="Enter your email address" aria-label="Enter your email address" required autocomplete="email">
               <button class="btn" type="submit">Get 10% off</button>
             </div>
-            <p class="welcome__fine">21+ only. Unsubscribe anytime. Offer valid on one-time orders and first subscription cycles.</p>
             {%- if form.errors -%}<p class="welcome__err" role="alert">{{ form.errors.messages.email }}</p>{%- endif -%}
           {%- endif -%}
         {%- endform -%}
@@ -287,7 +287,7 @@
 
 </main>
 
-{% render 'dandy-home-footer' %}
+{% render 'dandy-home-footer', count: hm_review_count %}
 </div>
 
 {% schema %}

@@ -295,3 +295,14 @@
     })
     .catch(function (e) { fail(e && e.message ? e.message : String(e)); });
 })();
+
+/* Under 480px the long search placeholder truncates, so the short form from data-rvh-placeholder-short is used there. */
+(function () {
+  var input = document.querySelector('[data-rvh-search][data-rvh-placeholder-short]');
+  if (!input || input.hasAttribute('data-rvh-ph-bound')) return;
+  input.setAttribute('data-rvh-ph-bound', '');
+  var full = input.getAttribute('placeholder'), mq = window.matchMedia('(max-width: 479px)');
+  function set() { input.setAttribute('placeholder', mq.matches ? input.getAttribute('data-rvh-placeholder-short') : full); }
+  set();
+  if (mq.addEventListener) mq.addEventListener('change', set); else mq.addListener(set);
+})();

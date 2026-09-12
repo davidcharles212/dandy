@@ -358,7 +358,8 @@ async function measureViewport(browser, harness, width) {
     nodes.sort((a, b) => a.o - b.o || a.top - b.top);
     /* ground-bottom markers belong after every descendant: re-key them by the last descendant's order */
     nodes.forEach(n => { if (n.kind === 'ground-bottom' || n.kind === 'border-bottom') { let last = n.el; const d = n.el.querySelectorAll('*'); if (d.length) last = d[d.length - 1]; n.o = order.get(last) * 3 + 2.5; } });
-    nodes.sort((a, b) => a.o - b.o || a.top - b.top);
+    /* visual order (top edge, DOM order as the tiebreak): the hero buttons precede the benefit rows in the DOM but sit below them on desktop */
+    nodes.sort((a, b) => a.top - b.top || a.o - b.o);
     const gaps = [];
     const rule = (a, b) => {
       let best = null;
@@ -414,7 +415,8 @@ async function measureViewport(browser, harness, width) {
     const lines = el => { const cs = getComputedStyle(el); return Math.round(el.getBoundingClientRect().height / parseFloat(cs.lineHeight)); };
     const wb = wrap.getBoundingClientRect(), bb = btn.getBoundingClientRect(), ib = img.getBoundingClientRect();
     const natural = img.naturalWidth / img.naturalHeight, box = ib.width / ib.height;
-    return { h1Lines: lines(h1), h1Size: parseFloat(getComputedStyle(h1).fontSize), ledeLines: lines(lede), buttonWidth: Math.round(bb.width), contentWidth: Math.round(wb.width), photoWidth: Math.round(ib.width), photoHeight: Math.round(ib.height), photoUncropped: Math.abs(natural - box) < 0.02, photoEdgeToEdge: innerWidth < 861 ? Math.abs(ib.left) < 1 && Math.abs(ib.width - innerWidth) < 1 : null, insetSize: Math.round(inset.getBoundingClientRect().width), pass: lines(h1) <= 3 && (innerWidth >= 861 || Math.abs(bb.width - wb.width) < 1) && Math.abs(natural - box) < 0.02 };
+    const btnBottom = Math.round(bb.bottom + window.scrollY);
+    return { h1Lines: lines(h1), h1Size: parseFloat(getComputedStyle(h1).fontSize), ledeLines: lines(lede), buttonWidth: Math.round(bb.width), contentWidth: Math.round(wb.width), primaryButtonBottom: btnBottom, firstScreen: innerWidth >= 861 || btnBottom <= innerHeight, photoWidth: Math.round(ib.width), photoHeight: Math.round(ib.height), photoUncropped: Math.abs(natural - box) < 0.02, photoEdgeToEdge: innerWidth < 861 ? Math.abs(ib.left) < 1 && Math.abs(ib.width - innerWidth) < 1 : null, insetSize: Math.round(inset.getBoundingClientRect().width), pass: lines(h1) <= 3 && (innerWidth >= 861 || (Math.abs(bb.width - wb.width) < 1 && btnBottom <= innerHeight)) && Math.abs(natural - box) < 0.02 };
   });
 
   /* Gate 12: analytics: every data-track element pushes its event */
@@ -457,7 +459,9 @@ async function measureViewport(browser, harness, width) {
 
   /* Gate 13: reduced motion renders pixel-identical to the animated resting state. Two fresh contexts run the same sequence
      (the measurement context above has preloaded every srcset candidate for gate 7, which lets Chrome pick a different hero
-     candidate on relayout, so it is not used for the comparison). */
+     candidate on relayout, so it is not used for the comparison). Photo pixels are hidden (img opacity 0, boxes and grounds
+     stay) because a photo that was composited during a reveal resamples a few interior pixels differently from one that never
+     moved; instead every image rect must be numerically identical between the two contexts. */
   {
     async function rest(extra, file) {
       const c = await newPage(browser, width, extra);
@@ -473,14 +477,18 @@ async function measureViewport(browser, harness, width) {
       await c.page.evaluate(() => document.documentElement.scrollTo({ top: 0, behavior: 'instant' }));
       await c.page.waitForTimeout(400);
       const heroSrc = await c.page.evaluate(() => (document.querySelector('.hero__frame img').currentSrc || '').split('/').pop());
+      const imgRects = await c.page.evaluate(() => Array.from(document.images).map(i => { const b = i.getBoundingClientRect(); return [Math.round(b.left), Math.round(b.top + scrollY), Math.round(b.width), Math.round(b.height)].join(','); }));
+      await c.page.addStyleTag({ content: 'img{opacity:0!important}' });
+      await c.page.waitForTimeout(150);
       await c.page.screenshot({ path: file, fullPage: true });
-      return { context: c.context, heroSrc };
+      return { context: c.context, heroSrc, imgRects };
     }
     const normalShot = path.join(shotsDir, `home-${width}-rest.png`), rmShot = path.join(shotsDir, `home-${width}-reduced.png`);
     const n = await rest({}, normalShot); await n.context.close();
     const m = await rest({ reducedMotion: 'reduce' }, rmShot);
     const a = fs.readFileSync(normalShot), b = fs.readFileSync(rmShot);
-    let diff = { identicalBytes: a.equals(b), heroSrcAnimated: n.heroSrc, heroSrcReduced: m.heroSrc };
+    const rectsSame = JSON.stringify(n.imgRects) === JSON.stringify(m.imgRects);
+    let diff = { identicalBytes: a.equals(b), imageRectsIdentical: rectsSame, images: n.imgRects.length, heroSrcAnimated: n.heroSrc, heroSrcReduced: m.heroSrc };
     if (!diff.identicalBytes) {
       const cmp = await m.context.newPage();
       diff = Object.assign(diff, await cmp.evaluate(async ([da, db]) => {
@@ -494,7 +502,7 @@ async function measureViewport(browser, harness, width) {
         return { differing: n, total: A.length / 4, firstRow: n ? minY : null, lastRow: n ? maxY : null };
       }, ['data:image/png;base64,' + a.toString('base64'), 'data:image/png;base64,' + b.toString('base64')]));
     }
-    r.checks.g13_reducedMotion = Object.assign(diff, { pass: diff.identicalBytes || diff.differing === 0 });
+    r.checks.g13_reducedMotion = Object.assign(diff, { pass: (diff.identicalBytes || diff.differing === 0) && rectsSame });
     await m.context.close();
   }
   return r;
@@ -510,10 +518,10 @@ async function heroAt(browser, harness, width) {
     const h1 = document.querySelector('.hero .h1'), lede = document.querySelector('.hero__lede'), btn = document.querySelector('.hero__cta .btn'), wrap = document.querySelector('.hero__grid'), img = document.querySelector('.hero__frame img');
     const lines = el => Math.round(el.getBoundingClientRect().height / parseFloat(getComputedStyle(el).lineHeight));
     const ib = img.getBoundingClientRect();
-    return { h1Lines: lines(h1), ledeLines: lines(lede), buttonWidth: Math.round(btn.getBoundingClientRect().width), contentWidth: Math.round(wrap.getBoundingClientRect().width), photoHeight: Math.round(ib.height), photoUncropped: Math.abs(img.naturalWidth / img.naturalHeight - ib.width / ib.height) < 0.02 };
+    return { h1Lines: lines(h1), ledeLines: lines(lede), buttonWidth: Math.round(btn.getBoundingClientRect().width), contentWidth: Math.round(wrap.getBoundingClientRect().width), primaryButtonBottom: Math.round(btn.getBoundingClientRect().bottom + window.scrollY), viewport: innerHeight, photoHeight: Math.round(ib.height), photoUncropped: Math.abs(img.naturalWidth / img.naturalHeight - ib.width / ib.height) < 0.02 };
   });
   await context.close();
-  return Object.assign({ width }, res, { pass: res.h1Lines <= 3 && Math.abs(res.buttonWidth - res.contentWidth) < 1 && res.photoUncropped });
+  return Object.assign({ width }, res, { pass: res.h1Lines <= 3 && Math.abs(res.buttonWidth - res.contentWidth) < 1 && res.photoUncropped && res.primaryButtonBottom <= res.viewport });
 }
 
 function summarize(results) {
@@ -532,8 +540,8 @@ function summarize(results) {
     const r = results.viewports[w];
     lines.push(`## ${w}px (page height ${r.pageHeight})`, '', ...table(r.checks), '', `Page errors: ${r.errors.length ? r.errors.join(' / ') : 'none'}`, '');
   }
-  lines.push('## Hero composition (gate 11)', '', '| Width | H1 lines | Lede lines | Button width | Content width | Photo height | Uncropped | Result |', '|---|---|---|---|---|---|---|---|');
-  results.hero.forEach(h => { lines.push(`| ${h.width} | ${h.h1Lines} | ${h.ledeLines} | ${h.buttonWidth} | ${h.contentWidth} | ${h.photoHeight} | ${h.photoUncropped} | ${h.pass ? 'pass' : 'FAIL'} |`); if (!h.pass) allPass = false; });
+  lines.push('## Hero composition (gate 11)', '', '| Width | H1 lines | Lede lines | Button width | Content width | Primary button bottom (viewport) | Photo height | Uncropped | Result |', '|---|---|---|---|---|---|---|---|---|');
+  results.hero.forEach(h => { lines.push(`| ${h.width} | ${h.h1Lines} | ${h.ledeLines} | ${h.buttonWidth} | ${h.contentWidth} | ${h.primaryButtonBottom} (${h.viewport}) | ${h.photoHeight} | ${h.photoUncropped} | ${h.pass ? 'pass' : 'FAIL'} |`); if (!h.pass) allPass = false; });
   lines.push('', `Screenshot duplicates: ${results.duplicates.length ? results.duplicates.join(', ') : 'none'}`, '');
   lines.push(allPass ? 'All gates passed.' : 'Some gates failed.');
   return lines.join('\n');
