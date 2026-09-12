@@ -1,0 +1,28 @@
+{%- assign product = closest.product -%}
+{%- assign title = block.settings.title_override | default: product.title | replace: ' · ', ' · ' | replace: ' mg', ' mg' -%}
+{%- assign subtitle = block.settings.subtitle_override | default: product.metafields.custom.product_subtitle.value -%}
+
+<div class="dandy-product-header" {{ block.shopify_attributes }}>
+  <h1 class="dandy-product-header__title dandy-trim-display"{% if block.settings.title_override != blank %} data-title-static{% endif %}>{{ title | escape }}</h1>
+  {%- if subtitle != blank -%}
+    {%- assign subtitle_lines = subtitle | escape | newline_to_br | split: '<br />' -%}
+    <p class="dandy-product-header__subtitle dandy-trim">
+      {%- for line in subtitle_lines -%}
+        {{- line | strip -}}
+        {%- unless forloop.last -%}<span class="dandy-product-header__sep" aria-hidden="true"> &middot; </span><br>{%- endunless -%}
+      {%- endfor -%}
+    </p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Dandy title",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "title_override", "label": "Title override", "info": "Leave blank to use the product title." },
+    { "type": "text", "id": "subtitle_override", "label": "Subtitle override", "info": "Leave blank to use the custom.product_subtitle metafield." }
+  ],
+  "presets": [{ "name": "Dandy title" }]
+}
+{% endschema %}

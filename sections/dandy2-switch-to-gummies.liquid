@@ -1,0 +1,483 @@
+{% comment %}
+  DANDY 2026, SWITCH TO GUMMIES: landing page for existing kratom users switching from
+  powder or capsules to Mixed Berry Gummies. Built 2026-09-06 from David's
+  brief (companies/dandy/projects/existing-user-landing-page). Self-contained:
+  own chrome, own CSS (dandy2-switch-to-gummies.css), own JS. Loads dandy2.css only for the
+  age gate. Rendered by templates/page.switch-to-gummies.json; live at /pages/switch-to-gummies; every CTA goes to the gummy PDP.
+{% endcomment %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{{ 'dandy2-switch-to-gummies.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dandy2-switch-to-gummies.js' | asset_url }}" defer></script>
+<div class="dandy2-stg">
+<a class="skip" href="#main">Skip to content</a>
+
+<p class="topbar">For people who already use Kratom</p>
+
+<header class="head">
+  <div class="head__row">
+    <a class="head__logo" href="/" aria-label="Dandy home"><img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="112" height="42" alt="Dandy"></a>
+    <a class="head__cta" href="/products/mixed-berry-kratom-gummies">Shop gummies</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__grid">
+      <div class="hero__copy">
+        <h1 class="h1" id="hero-title">Why Kratom users are switching from bitter powder and hard&#8209;to&#8209;swallow capsules to Dandy gummies</h1>
+        <div class="hero__sub">
+          <p>You already know what you want from Kratom.</p>
+          <p>The problem is the way you have to take it.</p>
+          <p>Dandy gives you a mixed-berry gummy with 35 mg in every gummy, one gummy per serving, and a taste you do not have to fight.</p>
+        </div>
+        <a class="cta" id="hero-cta" href="/products/mixed-berry-kratom-gummies">Try Dandy Mixed Berry Gummies</a>
+        <p class="guarantee-strip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 7.9-7.5 9.5-4.3-1.6-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12.3l2.2 2.2 4.4-4.6"/></svg>
+          Try the flavor for 30 days. If you do not get on with it, we refund it.
+        </p>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__pouch">
+          <img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" width="675" height="675" alt="Dandy Mixed Berry Kratom Gummies, 30-count pouch, front" fetchpriority="high">
+        </div>
+        <div class="hero__gummy">
+          <img src="{{ 'dandy-gummy-use-1200.webp' | asset_url }}" width="1200" height="1200" alt="A hand lifting one Dandy mixed-berry gummy off the pouch, with three gummies showing the berry color and sugar texture">
+        </div>
+        <span class="callout">35 mg per gummy · one gummy per serving</span>
+        <div class="hero__back">
+          <img src="{{ 'dandy-gummy-facts-zoom.webp' | asset_url }}" width="1008" height="394" alt="Label rows from the back of the pouch: serving size one gummy, 30 servings per container, 35 mg mitragynine per gummy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OPENING ===================== -->
+  <section class="sec opening" aria-label="Why the usual options have a problem">
+    <div class="wrap wrap--narrow stack">
+      <p class="lede">If you have used Kratom for a while, you do not need another explanation of what Kratom is.</p>
+      <p class="bigline">You need a better way to take it.</p>
+      <p>Because the usual options all come with a problem.</p>
+      <p>Powder tastes bitter. You mix it into a drink, force it down, and chase the aftertaste with something sweet.</p>
+      <p>Capsules solve the taste problem, but they give you a different one. You still have to swallow them. Sometimes more than one. Sometimes when you already do not feel like swallowing anything.</p>
+      <p>And many Kratom gummies make the same mistake in reverse. They promise berry flavor, then the bitter Kratom takes over as soon as you bite through the coating.</p>
+      <p>Dandy was built to remove those problems.</p>
+      <p>You get one mixed-berry gummy with 35 mg in it. One gummy is one serving. No powder to mix. No capsule to force down. No bitter center waiting underneath a sweet outside.</p>
+      <p>The difference comes from the way Dandy puts the Kratom into the gummy.</p>
+      <p><strong>Here are five reasons experienced Kratom users are switching to Dandy.</strong></p>
+    </div>
+    <div class="wrap">
+      <div class="strip" aria-label="Powder, capsule, and the Dandy gummy">
+        <figure class="frame" style="margin:0">
+          <img src="{{ 'fal-powder-spoon.webp' | asset_url }}" width="1024" height="1024" alt="A spoonful of bitter leaf powder beside a glass of juice" loading="lazy">
+          <figcaption class="frame__tag">Powder</figcaption>
+        </figure>
+        <figure class="frame" style="margin:0">
+          <img src="{{ 'fal-capsule-hand.webp' | asset_url }}" width="1024" height="1024" alt="A hand holding a large capsule with a glass of water behind it" loading="lazy">
+          <figcaption class="frame__tag">Capsule</figcaption>
+        </figure>
+        <figure class="frame frame--gummy" style="margin:0">
+          <img src="{{ 'dandy-gummy-lifestyle-1200.webp' | asset_url }}" width="1200" height="1200" alt="The Dandy gummy held between two fingers above the pouch" loading="lazy">
+          <span class="frame__hand" aria-hidden="true">Wait... this actually tastes good?</span>
+          <figcaption class="frame__tag">Dandy</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROOF ===================== -->
+  <section class="sec sec--band" aria-labelledby="proof-title">
+    <div class="wrap">
+      <div class="rating" data-copy-status="aggressive-draft">
+        <span class="stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+        </span>
+        <p class="ratingline">Rated <b>4.8/5</b> by 1,475 verified customers</p>
+      </div>
+      <h2 class="h2" id="proof-title">The first-bite reaction Kratom users did not expect</h2>
+      <div class="proof__grid">
+        <div class="proof__copy stack">
+          <p>The most useful reviews are from people who already knew what Kratom usually tastes like.</p>
+          <p>They expected the bitter hit.</p>
+          <p>They expected to reach for water.</p>
+          <p>They expected another gummy that sounded like berry until the Kratom took over.</p>
+          <p class="punch">Then they took the first bite.</p>
+          <div class="proof__product">
+            <img src="{{ 'dandy-gummy-10-tight.png' | asset_url }}" width="609" height="609" alt="Dandy Mixed Berry Kratom Gummies, 10-count pouch" loading="lazy">
+          </div>
+        </div>
+        <div class="wall" aria-label="Verified customer reviews">
+          <blockquote class="review">
+            <p>Honestly, couldn&rsquo;t believe it when I first tried it. I thought it was going to be gross, like every other kratom gummy, but it&rsquo;s actually totally pleasant.</p>
+            <footer class="review__meta"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Verified customer</b></footer>
+          </blockquote>
+          <blockquote class="review">
+            <p>It&rsquo;s not delicious, but it&rsquo;s also not offensive. Didn&rsquo;t make me gag or wince.</p>
+            <footer class="review__meta"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Verified customer</b></footer>
+          </blockquote>
+          <blockquote class="review">
+            <p>Can barely taste the bitterness. Was really easy to get down.</p>
+            <footer class="review__meta"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Verified customer</b></footer>
+          </blockquote>
+          <blockquote class="review">
+            <p>Used to take powder. Powder, obviously, tastes disgusting. These gummies are actually pretty tasty.</p>
+            <footer class="review__meta"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Verified customer</b></footer>
+          </blockquote>
+          <blockquote class="review">
+            <p>I hated choking down the kratom capsules. Always made me gag. These gummies are a little bit tangy and go down easily.</p>
+            <footer class="review__meta"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Verified customer</b></footer>
+          </blockquote>
+          <blockquote class="review">
+            <p>I&rsquo;m a believer, customer for life. Just placed my third order.</p>
+            <footer class="review__meta"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>Verified customer</b></footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REASON 1 ===================== -->
+  <section class="reason" aria-labelledby="r1-title">
+    <div class="wrap reason__grid">
+      <div class="reason__copy">
+        <span class="reason__num" aria-hidden="true">1</span>
+        <h2 class="h2" id="r1-title">Powder users can leave the bitter taste behind</h2>
+        <p>If powder is the format you know, you already know the problem.</p>
+        <p class="short">The taste.</p>
+        <p>It is bitter when you mix it. Bitter when you swallow it. Bitter again when it stays in your mouth after the drink is gone.</p>
+        <p>That is why people hide it in juice, mix it with stronger flavors, or keep something sweet nearby to chase it.</p>
+        <p>Dandy removes the powder from the routine.</p>
+        <p>You do not scoop it. You do not stir it. You do not hold your breath while you get it down.</p>
+        <p>You take one mixed-berry gummy and move on with your day.</p>
+        <p>The point is not to pretend Kratom is not naturally bitter. The point is to stop making your mouth deal with the bitterness every time you take it.</p>
+      </div>
+      <div class="reason__media">
+        <div class="duel">
+          <div class="duel__side">
+            <div class="duel__img"><img src="{{ 'fal-gritty-glass.webp' | asset_url }}" width="1024" height="1024" alt="A glass of gritty kratom powder stirred into water, sediment settled at the bottom, spoon still in it" loading="lazy"></div>
+            <p class="duel__cap"><b>Powder</b>Scoop, mix, swallow, chase.</p>
+          </div>
+          <div class="duel__side duel__side--dandy">
+            <div class="duel__img duel__img--pad"><img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" width="675" height="675" alt="Dandy pouch" loading="lazy"></div>
+            <p class="duel__cap"><b>Dandy</b>Open, take one gummy, continue your routine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REASON 2 ===================== -->
+  <section class="reason reason--flip" aria-labelledby="r2-title">
+    <div class="wrap reason__grid">
+      <div class="reason__copy">
+        <span class="reason__num" aria-hidden="true">2</span>
+        <h2 class="h2" id="r2-title">Capsule users can stop forcing down the alternative</h2>
+        <p>Capsules are convenient until you have to swallow them.</p>
+        <p>Then you are dealing with a dry capsule, a glass of water, and that uncomfortable feeling of trying to get something large down when you already know how it is going to feel.</p>
+        <p>Dandy gives you another option.</p>
+        <p>One gummy is one serving. You do not need a handful of capsules. You do not need to count out a complicated routine. You take one mixed-berry gummy and you are done.</p>
+        <p>The format is simple enough to keep in your normal routine and enjoyable enough that it does not feel like another chore.</p>
+        <ul class="chips">
+          <li class="chip chip--on">No capsule routine</li>
+          <li class="chip">One gummy per serving</li>
+        </ul>
+      </div>
+      <div class="reason__media">
+        <div class="duel">
+          <div class="duel__side">
+            <div class="duel__img"><img src="{{ 'fal-capsules-glass.webp' | asset_url }}" width="1024" height="1024" alt="Three capsules beside a glass of water" loading="lazy"></div>
+            <p class="duel__cap"><b>Capsules</b>Dry capsule, glass of water, swallow. Sometimes more than one.</p>
+          </div>
+          <div class="duel__side duel__side--dandy">
+            <div class="duel__img"><img src="{{ 'dandy-gummy-use-1200.webp' | asset_url }}" width="1200" height="1200" alt="One Dandy gummy lifted from the pouch, size and sugar texture visible" loading="lazy"></div>
+            <p class="duel__cap"><b>Dandy</b>One gummy. That is the serving.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REASON 3 ===================== -->
+  <section class="reason" aria-labelledby="r3-title">
+    <div class="wrap reason__grid">
+      <div class="reason__copy">
+        <span class="reason__num" aria-hidden="true">3</span>
+        <h2 class="h2" id="r3-title">You know exactly what one serving means</h2>
+        <p>Experienced Kratom users do not want vague labels. They want to know what they are taking.</p>
+        <p>Every Dandy gummy contains 35 mg. One gummy is one serving.</p>
+        <p>The bags come in two simple sizes: 10 gummies or 30 gummies.</p>
+        <p>The amount is printed on the bag, where you can see it before you open the package. You are not left guessing what "one serving" means, and you are not asked to scoop powder or count out a pile of capsules.</p>
+        <p>You get one gummy. You know the amount. You know how many servings are in the bag.</p>
+        <p class="short">That is how a Kratom product should be labeled.</p>
+        <ul class="chips">
+          <li class="chip chip--on">35 mg per gummy</li>
+          <li class="chip">1 gummy = 1 serving</li>
+          <li class="chip">10-count or 30-count bag</li>
+        </ul>
+      </div>
+      <div class="reason__media">
+        <div class="media"><img src="{{ 'fal-serving-row.webp' | asset_url }}" width="1024" height="1024" alt="Ten gummies laid out in two rows of five on a counter: ten gummies, ten servings" loading="lazy"></div>
+        <div class="bags">
+          <div class="bag">
+            <img src="{{ 'dandy-gummy-10-tight.png' | asset_url }}" width="609" height="609" alt="Dandy Mixed Berry Kratom Gummies, 10-count pouch" loading="lazy">
+            <b>10 gummies</b><span>10 servings</span>
+          </div>
+          <div class="bag">
+            <img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" width="675" height="675" alt="Dandy Mixed Berry Kratom Gummies, 30-count pouch" loading="lazy">
+            <b>30 gummies</b><span>30 servings</span>
+          </div>
+        </div>
+        <div class="media media--wide"><img src="{{ 'dandy-gummy-facts-zoom.webp' | asset_url }}" width="1008" height="394" alt="Zoomed crop of the pouch label: serving size one gummy, 30 servings per container, 35 mg mitragynine per gummy" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REASON 4 ===================== -->
+  <section class="reason reason--flip" aria-labelledby="r4-title">
+    <div class="wrap reason__grid">
+      <div class="reason__copy">
+        <span class="reason__num" aria-hidden="true">4</span>
+        <h2 class="h2" id="r4-title">It tastes like mixed berry instead of a bitter center</h2>
+        <p>This is where Dandy takes a different approach from a basic gummy with Kratom added to it.</p>
+        <p>Kratom's active ingredient, mitragynine, has a strong bitter taste.</p>
+        <p>Adding more sugar on the outside does not solve that problem. It only gives you a sweet first second before the bitterness breaks through.</p>
+        <p>Dandy uses proprietary nano-emulsion technology to spread the active ingredient into tiny particles throughout the gummy.</p>
+        <p>That gives the Kratom a better place to work inside the gummy instead of leaving one bitter pocket or a bitter center that takes over your mouth.</p>
+        <p>So the berry flavor stays present when you bite through it.</p>
+        <p>You get a mixed-berry gummy, not a berry coating wrapped around a bitter Kratom hit.</p>
+        <p>That is the difference between hiding Kratom under candy and building a gummy people actually want to take.</p>
+        <ul class="simple">
+          <li><b>Basic gummy</b><span>Sweet outside, bitter Kratom underneath.</span></li>
+          <li class="is-dandy"><b>Dandy</b><span>Proprietary nano-emulsion technology, mixed-berry flavor, 35 mg in every gummy.</span></li>
+        </ul>
+        <p style="margin-top:16px">The technology matters because it changes the experience of taking the product. You do not have to brace yourself before the first bite.</p>
+      </div>
+      <div class="reason__media">
+        <div class="mech" role="img" aria-label="Two panels: a basic gummy with a sweet coating over a bitter center, and a Dandy gummy with the active ingredient spread evenly throughout">
+          <div class="mech__panel">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <!-- thin, uneven sugar shell -->
+              <path d="M100 24c40 0 76 30 76 72 0 44-32 80-74 80-46 0-78-30-78-76 0-42 36-76 76-76z" fill="#EFD9C6" stroke="#28110C" stroke-width="4"/>
+              <path d="M100 24c40 0 76 30 76 72 0 44-32 80-74 80-46 0-78-30-78-76 0-42 36-76 76-76z" fill="none" stroke="#28110C" stroke-width="2" stroke-dasharray="5 7" transform="translate(0,0) scale(.9) translate(11,11)" opacity=".5"/>
+              <!-- bite taken out, exposing the center -->
+              <path d="M138 30c-8 10-4 22 6 26s24-2 30 6" fill="#FFFFFF" stroke="#28110C" stroke-width="4" stroke-linecap="round"/>
+              <!-- murky bitter core, off-center and bleeding through -->
+              <path d="M62 78c14-22 52-28 74-10 20 16 22 46 4 62-18 18-52 18-72 2-16-14-18-36-6-54z" fill="#5A4A1E"/>
+              <path d="M78 92c10-10 34-10 44 2 8 10 6 26-6 32-14 8-38 4-44-8-4-8-2-18 6-26z" fill="#3B2E0E"/>
+              <circle cx="88" cy="100" r="5" fill="#28110C"/><circle cx="118" cy="120" r="7" fill="#28110C"/><circle cx="106" cy="88" r="3.5" fill="#28110C"/>
+              <!-- bitterness seeping through the shell -->
+              <path d="M52 132c8 6 14 14 12 24M148 60c-8 2-16 8-18 16" fill="none" stroke="#5A4A1E" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+              <!-- sparse, patchy sugar -->
+              <g fill="#FFFFFF" opacity=".8"><circle cx="48" cy="60" r="2.5"/><circle cx="150" cy="150" r="2.5"/><circle cx="60" cy="150" r="2"/></g>
+            </svg>
+            <b>Basic gummy</b>
+            <span>A thin sweet shell over a bitter center. The berry lasts one second, then the Kratom takes over.</span>
+          </div>
+          <div class="mech__panel">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <rect x="22" y="22" width="156" height="156" rx="44" fill="#7A2E4A" stroke="#28110C" stroke-width="4"/>
+              <g fill="#3A1F17" opacity=".85">
+                <circle cx="50" cy="52" r="4"/><circle cx="76" cy="44" r="3.5"/><circle cx="104" cy="50" r="4"/><circle cx="132" cy="46" r="3.5"/><circle cx="154" cy="58" r="4"/>
+                <circle cx="42" cy="82" r="3.5"/><circle cx="66" cy="76" r="4"/><circle cx="92" cy="80" r="3.5"/><circle cx="118" cy="74" r="4"/><circle cx="144" cy="84" r="3.5"/>
+                <circle cx="52" cy="110" r="4"/><circle cx="80" cy="104" r="3.5"/><circle cx="106" cy="112" r="4"/><circle cx="134" cy="106" r="3.5"/><circle cx="158" cy="114" r="4"/>
+                <circle cx="44" cy="140" r="3.5"/><circle cx="70" cy="134" r="4"/><circle cx="96" cy="142" r="3.5"/><circle cx="124" cy="136" r="4"/><circle cx="150" cy="146" r="3.5"/>
+                <circle cx="60" cy="162" r="3.5"/><circle cx="88" cy="166" r="4"/><circle cx="116" cy="160" r="3.5"/><circle cx="142" cy="166" r="4"/>
+              </g>
+              <g fill="#FFFFFF" opacity=".9"><circle cx="46" cy="36" r="3"/><circle cx="160" cy="40" r="3"/><circle cx="166" cy="140" r="3"/><circle cx="38" cy="158" r="3"/></g>
+            </svg>
+            <b>Dandy</b>
+            <span>The active ingredient is spread through the whole gummy. The berry stays.</span>
+          </div>
+        </div>
+        <div class="media"><img src="{{ 'dandy-gummy-lifestyle-1200.webp' | asset_url }}" width="1200" height="1200" alt="Close-up of the real Dandy gummy held between two fingers" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== REASON 5 ===================== -->
+  <section class="reason" aria-labelledby="r5-title">
+    <div class="wrap reason__grid">
+      <div class="reason__copy">
+        <span class="reason__num" aria-hidden="true">5</span>
+        <h2 class="h2" id="r5-title">You know what you are buying before it arrives</h2>
+        <p>Experienced Kratom users have learned to ask better questions.</p>
+        <ul class="qa" style="margin:6px 0 16px">
+          <li>Where was it sourced?</li>
+          <li>Was the batch tested?</li>
+          <li>Was the potency measured?</li>
+          <li>What else is in the product?</li>
+        </ul>
+        <p>Dandy answers those questions directly.</p>
+        <p>Every batch is independently lab-tested for identity, potency, heavy metals, and microbials.</p>
+        <p>The batch number is printed on the bag, so you can match the product to the test results.</p>
+        <p>Dandy's Kratom is sourced directly from Thailand. There are no synthetics or adulterants.</p>
+        <p>No mystery blend. No vague label asking you to take "one serving" on faith.</p>
+        <p class="short">Just a clear product, a clear amount, and testing you can inspect.</p>
+        <div class="coa-row">
+          <a class="btn-ghost" href="/pages/contact?view=dandy2-coa">See batch results</a>
+        </div>
+      </div>
+      <div class="reason__media">
+        <ol class="steps">
+          <li class="step"><b>1</b><strong>Sourced from Thailand</strong><span>Real Thai kratom leaf, sourced directly.</span></li>
+          <li class="step"><b>2</b><strong>Made into Dandy</strong><span>Extracted and made in a GMP facility in the USA.</span></li>
+          <li class="step"><b>3</b><strong>Independently tested</strong><span>Every batch, by a third-party lab.</span></li>
+        </ol>
+        <ul class="tests" aria-label="What every batch is tested for">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4-3.5-7-7-7-11a7 7 0 0 1 14 0c0 4-3 7.5-7 11z"/><path d="M12 6v11M8.5 10.5c1.5 0 2.5 1 3.5 2.5 1-1.5 2-2.5 3.5-2.5"/></svg>Identity</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16a8 8 0 0 1 16 0"/><path d="M12 16l4-5"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/><path d="M3 19h18"/></svg>Potency</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 7.9-7.5 9.5-4.3-1.6-7.5-4.9-7.5-9.5V6z"/><path d="M9 12h6M12 9v6"/></svg>Heavy metals</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M15.5 15.5L21 21"/><circle cx="11" cy="11" r="2"/></svg>Microbials</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GUARANTEE ===================== -->
+  <section class="sec sec--band gsec" aria-labelledby="g-title">
+    <div class="wrap">
+      <div class="gcard">
+        <span class="seal" aria-hidden="true"><b>30</b><small>day</small><em>money back</em></span>
+        <h2 class="h2" id="g-title">Taste it before you commit to it</h2>
+        <p>We are not asking you to trust a sentence that says Dandy tastes better.</p>
+        <p>Take the first bite. Use it in your normal routine. See whether mixed berry works better for you than bitter powder or a capsule you have to force down.</p>
+        <p>If you do not get on with the flavor, the 30-day money-back guarantee has you covered.</p>
+        <a class="cta" href="/products/mixed-berry-kratom-gummies">Try Dandy Mixed Berry Gummies</a>
+      </div>
+      <img class="gsec__rocky" src="{{ 'dandy2-rocky-press.webp' | asset_url }}" width="640" height="384" alt="Rocky, the Dandy raccoon, crouched beside the button saying: if you don't press it, I will" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ===================== THREE FORMATS ===================== -->
+  <section class="sec" aria-labelledby="f-title">
+    <div class="wrap">
+      <h2 class="h2" id="f-title">One brand. Three ways to take Kratom.</h2>
+      <p style="margin-top:12px">Dandy makes three formats for people who want to keep Kratom in their routine in different ways.</p>
+      <div class="formats">
+        <a class="format format--current" href="/products/mixed-berry-kratom-gummies">
+          <div class="format__img"><img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" width="675" height="675" alt="" loading="lazy"></div>
+          <h3>Mixed Berry Gummies</h3>
+          <p>For people who want a simple one-gummy serving and a flavor they actually enjoy.</p>
+          <span>Shop gummies</span>
+        </a>
+        <a class="format" href="/products/extract-capsules-50mg">
+          <div class="format__img"><img src="{{ 'dandy2-cap-family-crop.webp' | asset_url }}" width="1120" height="640" alt="" loading="lazy"></div>
+          <h3>Extract Capsules</h3>
+          <p>Available in 50 mg and 90 mg strengths for people who prefer a capsule format.</p>
+          <span>Shop capsules</span>
+        </a>
+        <a class="format" href="/products/premium-kratom-leaf-powder">
+          <div class="format__img"><img src="{{ 'dandy2-pw-2.webp' | asset_url }}" width="1200" height="1200" alt="" loading="lazy"></div>
+          <h3>Raw Leaf Powder</h3>
+          <p>For experienced users who prefer traditional preparation.</p>
+          <span>Shop powder</span>
+        </a>
+      </div>
+      <p class="formats__note">Start with the format that fits how you take Kratom today. If that routine changes later, you can stay with Dandy instead of starting over with another brand.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="sec sec--finale final" aria-labelledby="final-title">
+    <div class="wrap">
+      <div class="stack">
+        <h2 class="h2" id="final-title">Stop fighting the way you take Kratom</h2>
+        <p>You already know whether Kratom belongs in your routine.</p>
+        <p>The real question is whether you want to keep dealing with bitter powder or capsules you have to force down.</p>
+        <p>Dandy gives you a mixed-berry gummy with 35 mg in every gummy, one gummy per serving, and a flavor that does not make you brace yourself before taking it.</p>
+        <p><strong>Try the flavor for 30 days. If you do not get on with it, we refund it.</strong></p>
+        <a class="cta" href="/products/mixed-berry-kratom-gummies">Try Dandy Mixed Berry Gummies</a>
+      </div>
+      <div class="final__visual">
+        <div class="media media--pad"><img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" width="675" height="675" alt="Dandy Mixed Berry Kratom Gummies pouch" loading="lazy"></div>
+        <div class="media"><img src="{{ 'dandy-gummy-use-1200.webp' | asset_url }}" width="1200" height="1200" alt="One Dandy gummy, berry color and sugar texture visible" loading="lazy"></div>
+        <span class="seal final__seal" aria-hidden="true"><b>30</b><small>day</small><em>money back</em></span>
+        <ul class="chips">
+          <li class="chip">35 mg per gummy</li>
+          <li class="chip">1 gummy per serving</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="sec" aria-labelledby="faq-title">
+    <div class="wrap wrap--narrow">
+      <h2 class="h2" id="faq-title">Questions Kratom users ask before switching</h2>
+      <div class="faq">
+        <details>
+          <summary>How many gummies are in one serving?</summary>
+          <p>One gummy is one serving. Every gummy contains 35 mg.</p>
+        </details>
+        <details>
+          <summary>How many gummies come in a bag?</summary>
+          <p>Dandy Mixed Berry Gummies come in 10-count and 30-count bags.</p>
+        </details>
+        <details>
+          <summary>Where is the amount listed?</summary>
+          <p>The amount is printed on the bag. Each gummy contains 35 mg, and one gummy is one serving.</p>
+        </details>
+        <details>
+          <summary>Why does Dandy taste different from other Kratom gummies?</summary>
+          <p>Dandy uses proprietary nano-emulsion technology to spread the active ingredient throughout the gummy instead of leaving a bitter center underneath a sweet coating.</p>
+          <p>That lets the mixed-berry flavor stay present when you bite through the gummy.</p>
+        </details>
+        <details>
+          <summary>Is Dandy lab-tested?</summary>
+          <p>Every batch is independently lab-tested for identity, potency, heavy metals, and microbials. The batch number is printed on the bag so you can match the product to the test results. <a href="/pages/contact?view=dandy2-coa">See batch results</a>.</p>
+        </details>
+        <details>
+          <summary>What if I do not like the flavor?</summary>
+          <p>Dandy is backed by a 30-day money-back guarantee. If you do not get on with it, we refund it.</p>
+        </details>
+        <details>
+          <summary>Does Dandy make products besides gummies?</summary>
+          <p>Yes. Dandy also offers <a href="/products/extract-capsules-50mg">extract capsules</a> and <a href="/products/premium-kratom-leaf-powder">raw leaf powder</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__row">
+      <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="132" height="49" alt="Dandy">
+      <nav aria-label="Footer">
+        <a href="/products/mixed-berry-kratom-gummies">Gummies</a>
+        <a href="/products/extract-capsules-50mg">Capsules</a>
+        <a href="/products/premium-kratom-leaf-powder">Powder</a>
+        <a href="/pages/contact?view=dandy2-coa">Lab reports</a>
+        <a href="/pages/contact?view=dandy2-shipping">Shipping &amp; states</a>
+        <a href="/pages/contact?view=dandy2-returns">Returns</a>
+        <a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a>
+      </nav>
+    </div>
+    <div class="foot__legal">
+      <p><b>21+ only.</b> Read and follow the product label. We do not ship to AL, AR, CA, CT, IN, KS, LA, MS, ND, NE, RI, TN, UT, VT, WV, or WI. <a href="/pages/contact?view=dandy2-shipping">See the full list</a>.</p>
+      <p>These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      <p>© {{ 'now' | date: '%Y' }} ForeverDandy · For adults 21+</p>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky" data-sticky aria-hidden="true">
+  <div class="sticky__info"><strong>Mixed Berry Gummies · 10-count</strong><span>$24.99</span></div>
+  <a class="sticky__btn" href="/products/mixed-berry-kratom-gummies" tabindex="-1">Try the flavor</a>
+</div>
+</div>
+{% render 'dandy2-agegate' %}
+
+{% schema %}
+{ "name": "Switch to gummies page", "settings": [], "presets": [] }
+{% endschema %}

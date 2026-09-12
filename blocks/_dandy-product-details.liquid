@@ -1,0 +1,16 @@
+<div
+  class="dandy-pdp__details"
+  id="ProductInformation-{{ section.id }}"
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Product details",
+  "tag": null,
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": []
+}
+{% endschema %}

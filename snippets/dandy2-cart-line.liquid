@@ -1,0 +1,61 @@
+
+{%- liquid
+  assign title_escaped = title | escape
+  if quantity <= 1
+    assign minus_label = 'Remove ' | append: title_escaped
+  else
+    assign minus_label = 'Decrease quantity of ' | append: title_escaped
+  endif
+-%}
+<li class="dcart-line" data-line-key="{{ key }}">
+  <a class="dcart-line__media" href="{{ url }}" tabindex="-1" aria-hidden="true">
+    {%- if image_src != blank -%}
+      <img src="{{ image_src }}" alt="" width="120" height="116" loading="lazy">
+    {%- endif -%}
+  </a>
+
+  <div class="dcart-line__info">
+    <a class="dcart-line__title" href="{{ url }}">{{ title }}</a>
+    {%- if meta != blank -%}
+      <p class="dcart-line__meta">{{ meta }}</p>
+    {%- endif -%}
+  </div>
+
+  <p class="dcart-line__price">
+    <span>{{ price }}</span>
+    {%- if compare != blank -%}
+      <s><span class="dcart-sr">Regular price </span>{{ compare }}</s>
+    {%- endif -%}
+  </p>
+
+  <div class="dcart-qty" role="group" aria-label="Quantity for {{ title_escaped }}">
+    <button
+      type="button"
+      data-dcart-qty="{{ quantity | minus: 1 }}"
+      data-dcart-focus="{{ key }}-dec"
+      aria-label="{{ minus_label }}"
+    >
+      <svg viewBox="0 0 8 8" width="8" height="8" aria-hidden="true" focusable="false"><path d="M1 4h6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+    </button>
+    <span class="dcart-qty__value dcart-t">{{ quantity }}</span>
+    <button
+      type="button"
+      data-dcart-qty="{{ quantity | plus: 1 }}"
+      data-dcart-focus="{{ key }}-inc"
+      aria-label="Increase quantity of {{ title_escaped }}"
+    >
+      <svg viewBox="0 0 8 8" width="8" height="8" aria-hidden="true" focusable="false"><path d="M4 1v6M1 4h6" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  {%- if save != blank -%}
+    <p class="dcart-line__save">
+      <svg viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M5.44946 0.0365013C5.39038 0.0554061 5.28049 0.103235 5.20528 0.142744C5.08001 0.208579 4.86093 0.422489 2.59637 2.69012C0.236426 5.05329 0.121709 5.1714 0.068686 5.29259C-0.0308957 5.52028 -0.021834 5.78802 0.0935082 6.02495C0.16317 6.16809 3.83187 9.83683 3.97501 9.90649C4.21194 10.0218 4.47967 10.0309 4.70737 9.93131C4.82855 9.87831 4.94673 9.76351 7.30999 7.40353C9.65818 5.0586 9.78957 4.92375 9.86158 4.78481C10.0085 4.50131 9.9999 4.64029 9.9999 2.55575V0.685322L9.95424 0.55953C9.86521 0.314216 9.68569 0.134697 9.44038 0.0456608L9.31459 0L7.43576 0.00105463C5.69729 0.00203112 5.54888 0.00466762 5.44946 0.0365013ZM7.25574 1.71359C7.01898 1.79815 6.85581 1.94398 6.75144 2.1643C6.69426 2.28499 6.68963 2.31011 6.68963 2.49982C6.68963 2.68981 6.6942 2.71453 6.75183 2.83618C6.83827 3.01867 6.9658 3.14858 7.1458 3.23754C7.28776 3.30771 7.30042 3.31031 7.50011 3.31031C7.6998 3.31031 7.71246 3.30771 7.85442 3.23754C8.03442 3.14858 8.16195 3.01867 8.24839 2.83618C8.30602 2.71453 8.31059 2.68981 8.31059 2.49982C8.31059 2.30983 8.30602 2.28511 8.24839 2.16346C8.16224 1.98159 8.03432 1.85102 7.85606 1.7629C7.72576 1.69851 7.6917 1.69029 7.53204 1.68478C7.39776 1.68013 7.32942 1.68726 7.25574 1.71359Z" fill="currentColor"/></svg>
+      Save {{ save }}
+    </p>
+  {%- endif -%}
+
+  {%- if in_stock -%}
+    <p class="dcart-line__stock"><svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="7" fill="#5CD33F" fill-opacity="0.25"/><circle cx="7" cy="7" r="3" fill="#5CD33F"/></svg><span class="dcart-t">In stock</span></p>
+  {%- endif -%}
+</li>

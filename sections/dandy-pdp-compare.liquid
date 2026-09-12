@@ -1,0 +1,1015 @@
+{%- render 'dandy-fonts' -%}
+<style>
+  @media screen and (max-width: 1023px) {
+    .dpw .dpw__inner { padding-bottom: 19px; }
+  }
+</style>
+
+<div class="dpw{% if section.settings.art_contain %} dpw--contain{% endif %}" style="--dpw-bg: {{ section.settings.background_color }}; --dpw-next: {{ section.settings.next_color }};">
+  <div class="dpw__inner">
+    <div class="dpw__intro">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="dpw__heading dpw__heading--desktop">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.heading_mobile != blank -%}
+        <h2 class="dpw__heading dpw__heading--mobile">{{ section.settings.heading_mobile | escape | newline_to_br }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <p class="dpw__body">{{ section.settings.body | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <dandy-pdp-compare class="dpw__grid">
+      {%- for block in section.blocks -%}
+        {%- assign panel_id = 'DpwPanel-' | append: block.id -%}
+        {%- case block.type -%}
+          {%- when 'item' -%}
+            <div
+              class="dpw__item dpw__item--std dpw__item--{{ block.settings.desktop_column }}"
+              style="--dpw-w: {{ block.settings.img_width }}px; --dpw-h: {{ block.settings.img_height }}px; --dpw-t: {{ block.settings.img_top }}px; --dpw-r: {{ block.settings.img_right }}px; --dpw-y: {{ block.settings.img_offset }}%; --dpw-ph: {{ block.settings.peek_height }}px; --dpw-py: {{ block.settings.peek_offset }}%;"
+              data-dpw-item
+              {{ block.shopify_attributes }}
+            >
+              <h3 class="dpw__head">
+                <button type="button" class="dpw__trigger" aria-expanded="false" aria-controls="{{ panel_id }}" data-dpw-trigger>
+                  <span class="dpw__title">{{ block.settings.title | escape }}</span>
+                  <span class="dpw__toggle" aria-hidden="true"><svg class="dpw__icon-plus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M7.96016 12.7998V4.7998H9.63983V12.7998H7.96016ZM4.39999 9.56329V8.03632H13.2V9.56329H4.39999Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg><svg class="dpw__icon-minus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg></span>
+                </button>
+              </h3>
+              {%- if block.settings.image != blank -%}
+                <div class="dpw__peek" aria-hidden="true">
+                  {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '87px', alt: '', loading: 'lazy' }}
+                </div>
+              {%- elsif block.settings.image_asset != blank -%}
+                <div class="dpw__peek" aria-hidden="true">
+                  <img src="{{ block.settings.image_asset | asset_url }}" sizes="87px" alt="" loading="lazy">
+                </div>
+              {%- endif -%}
+              <div class="dpw__panel" id="{{ panel_id }}">
+                {%- if block.settings.text != blank -%}
+                  <p class="dpw__text">{{ block.settings.text | escape }}</p>
+                {%- endif -%}
+                {%- if block.settings.image != blank -%}
+                  <div class="dpw__open-img" aria-hidden="true">
+                    {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '109px', alt: '', loading: 'lazy' }}
+                  </div>
+                {%- elsif block.settings.image_asset != blank -%}
+                  <div class="dpw__open-img" aria-hidden="true">
+                    <img src="{{ block.settings.image_asset | asset_url }}" sizes="109px" alt="" loading="lazy">
+                  </div>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.image != blank -%}
+                <div class="dpw__desk-img" aria-hidden="true">
+                  {{ block.settings.image | image_url: width: 600 | image_tag: widths: '300, 450, 600', sizes: '124px', alt: '', loading: 'lazy' }}
+                </div>
+              {%- elsif block.settings.image_asset != blank -%}
+                <div class="dpw__desk-img" aria-hidden="true">
+                  <img src="{{ block.settings.image_asset | asset_url }}" sizes="124px" alt="" loading="lazy">
+                </div>
+              {%- endif -%}
+            </div>
+
+          {%- when 'difference' -%}
+            {%- assign points = block.settings.points | newline_to_br | split: '<br />' -%}
+            <div class="dpw__item dpw__item--diff" data-dpw-item {{ block.shopify_attributes }}>
+              <h3 class="dpw__head">
+                <button type="button" class="dpw__trigger" aria-expanded="false" aria-controls="{{ panel_id }}" data-dpw-trigger>
+                  <span class="dpw__title">{{ block.settings.title | escape }}</span>
+                  <span class="dpw__toggle" aria-hidden="true"><svg class="dpw__icon-plus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M7.96016 12.7998V4.7998H9.63983V12.7998H7.96016ZM4.39999 9.56329V8.03632H13.2V9.56329H4.39999Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg><svg class="dpw__icon-minus" viewBox="0 0 17.6 17.6" fill="none" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg></span>
+                </button>
+              </h3>
+              {%- if block.settings.mobile_peek_image != blank -%}
+                <div class="dpw__peek dpw__peek--diff" aria-hidden="true">
+                  {{ block.settings.mobile_peek_image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '96px', alt: '', loading: 'lazy' }}
+                </div>
+              {%- elsif block.settings.mobile_peek_image_asset != blank -%}
+                <div class="dpw__peek dpw__peek--diff" aria-hidden="true">
+                  <img src="{{ block.settings.mobile_peek_image_asset | asset_url }}" sizes="96px" alt="" loading="lazy">
+                </div>
+              {%- endif -%}
+              <div class="dpw__panel" id="{{ panel_id }}">
+                {%- if block.settings.heading != blank -%}
+                  <p class="dpw__diff-heading dpw__diff-heading--desktop">{{ block.settings.heading | escape | newline_to_br }}</p>
+                {%- endif -%}
+                {%- if block.settings.heading_mobile != blank -%}
+                  <p class="dpw__diff-heading dpw__diff-heading--mobile">{{ block.settings.heading_mobile | escape }}</p>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  {%- assign diff_words = block.settings.text | escape | split: ' ' -%}
+                  <p class="dpw__diff-text">{%- for word in diff_words -%}{%- unless forloop.first -%}{{ ' ' }}{%- endunless -%}{%- if word contains '-' -%}<span class="dpw__nw">{{ word }}</span>{%- else -%}{{ word }}{%- endif -%}{%- endfor -%}</p>
+                {%- endif -%}
+                <ul class="dpw__points">
+                  {%- for point in points -%}
+                    {%- assign label = point | strip -%}
+                    {%- if label != blank -%}
+                      <li class="dpw__point">
+                        {%- if block.settings.icon != blank -%}
+                          {{ block.settings.icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dpw__point-icon' }}
+                        {%- elsif block.settings.icon_asset != blank -%}
+                          <img src="{{ block.settings.icon_asset | asset_url }}" alt="" width="14" height="14" loading="lazy" class="dpw__point-icon">
+                        {%- endif -%}
+                        <span class="dpw__point-text">{{ label | escape }}</span>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+                {%- if block.settings.mobile_image != blank -%}
+                  <div class="dpw__diff-img" aria-hidden="true">
+                    {{ block.settings.mobile_image | image_url: width: 1440 | image_tag: widths: '720, 1080, 1440', sizes: '359px', alt: '', loading: 'lazy' }}
+                  </div>
+                {%- elsif block.settings.mobile_image_asset != blank -%}
+                  <div class="dpw__diff-img" aria-hidden="true">
+                    <img src="{{ block.settings.mobile_image_asset | asset_url }}" sizes="359px" alt="" loading="lazy">
+                  </div>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.image != blank -%}
+                <div class="dpw__pouch dpw__pouch--back" aria-hidden="true">
+                  {{ block.settings.image | image_url: width: 400 | image_tag: alt: '', loading: 'lazy', class: 'dpw__pouch-shadow' }}
+                  {{ block.settings.image | image_url: width: 1170 | image_tag: widths: '390, 780, 1170', sizes: '391px', alt: '', loading: 'lazy', class: 'dpw__pouch-img' }}
+                </div>
+              {%- elsif block.settings.image_asset != blank -%}
+                <div class="dpw__pouch dpw__pouch--back" aria-hidden="true">
+                  <img src="{{ block.settings.image_asset | asset_url }}" alt="" loading="lazy" class="dpw__pouch-shadow">
+                  <img src="{{ block.settings.image_asset | asset_url }}" sizes="391px" alt="" loading="lazy" class="dpw__pouch-img">
+                </div>
+              {%- endif -%}
+              {%- if block.settings.image_2 != blank -%}
+                <div class="dpw__pouch dpw__pouch--front" aria-hidden="true">
+                  {{ block.settings.image_2 | image_url: width: 400 | image_tag: alt: '', loading: 'lazy', class: 'dpw__pouch-shadow' }}
+                  {{ block.settings.image_2 | image_url: width: 891 | image_tag: widths: '297, 594, 891', sizes: '298px', alt: '', loading: 'lazy', class: 'dpw__pouch-img' }}
+                </div>
+              {%- elsif block.settings.image_2_asset != blank -%}
+                <div class="dpw__pouch dpw__pouch--front" aria-hidden="true">
+                  <img src="{{ block.settings.image_2_asset | asset_url }}" alt="" loading="lazy" class="dpw__pouch-shadow">
+                  <img src="{{ block.settings.image_2_asset | asset_url }}" sizes="298px" alt="" loading="lazy" class="dpw__pouch-img">
+                </div>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </dandy-pdp-compare>
+  </div>
+
+  {%- if section.settings.show_wedge -%}
+    <div class="dpw__wedge" aria-hidden="true"></div>
+  {%- endif -%}
+</div>
+
+<script>
+  (() => {
+    if (customElements.get('dandy-pdp-compare')) return;
+
+    class DandyPdpCompare extends HTMLElement {
+      connectedCallback() {
+        this.onClick = (event) => {
+          const trigger = event.target.closest('[data-dpw-trigger]');
+          if (!trigger || !this.contains(trigger)) return;
+          if (window.matchMedia('(min-width: 1024px)').matches) return;
+          const item = trigger.closest('[data-dpw-item]');
+          const open = !item.classList.contains('is-open');
+          item.classList.toggle('is-open', open);
+          trigger.setAttribute('aria-expanded', String(open));
+        };
+        this.addEventListener('click', this.onClick);
+      }
+
+      disconnectedCallback() {
+        this.removeEventListener('click', this.onClick);
+      }
+    }
+
+    customElements.define('dandy-pdp-compare', DandyPdpCompare);
+  })();
+</script>
+
+<style>
+  .dpw {
+    position: relative;
+    z-index: 1;
+    overflow-x: clip;
+    background: var(--dpw-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dpw *,
+  .dpw *::before,
+  .dpw *::after {
+    box-sizing: border-box;
+  }
+
+  .dpw :where(h2, h3, p, ul) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dpw :where(ul) {
+    list-style: none;
+  }
+
+  .dpw__inner {
+    max-width: 592px;
+    margin: 0 auto;
+    padding: 0 16px 19px;
+  }
+
+  .dpw__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dpw__heading--desktop {
+    display: none;
+  }
+
+  .dpw .dpw__heading {
+    white-space: nowrap;
+    margin: -4.57px 0 -5.06px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dpw .dpw__body {
+    margin: -4.58px 0;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpw__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32.56px;
+  }
+
+  .dpw__item {
+    position: relative;
+    border-radius: 8px;
+    background: var(--dandy-pdp-cream, #fff9f0);
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
+    color: #241914;
+  }
+
+  .dpw__head {
+    margin: 0;
+    font: inherit;
+  }
+
+  .dpw .dpw__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    min-height: 57px;
+    margin: 0;
+    padding: 0 20.4px 0 20px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    box-shadow: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpw .dpw__trigger:focus-visible {
+    outline: 2px solid #241914;
+    outline-offset: 2px;
+  }
+
+  .dpw__title {
+    display: block;
+    max-width: 143px;
+    margin: -2.28px 0 -2.53px;
+    color: #241914;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dpw__item--diff .dpw__title {
+    max-width: none;
+    color: var(--dandy-accent, #f4512b);
+  }
+
+  .dpw__toggle {
+    position: relative;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 17.6px;
+    height: 17.6px;
+    border-radius: 50%;
+    background: var(--dandy-accent, #f4512b);
+  }
+
+  .dpw .dpw__toggle {
+    background: none;
+    border-radius: 0;
+  }
+
+  .dpw .dpw__toggle svg {
+    display: block;
+    flex: none;
+    width: 17.6px;
+    height: 17.6px;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .dpw .dpw__toggle {
+    overflow: visible;
+  }
+
+  .dpw .dpw__toggle .dpw__icon-minus,
+  .dpw .dpw__item.is-open .dpw__toggle .dpw__icon-plus {
+    display: none;
+  }
+
+  .dpw .dpw__item.is-open .dpw__toggle .dpw__icon-minus {
+    display: block;
+  }
+
+  .dpw__peek {
+    position: absolute;
+    bottom: 0;
+    right: 64px;
+    width: 87px;
+    height: var(--dpw-ph, 63px);
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .dpw__peek img,
+  .dpw__desk-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .dpw__peek img {
+    transform: translateY(calc(var(--dpw-py, 0%) * -1));
+  }
+
+  .dpw__peek--diff {
+    bottom: 0;
+    right: 33.6px;
+    width: 95.4px;
+    height: 65.07px;
+  }
+
+  .dpw__peek--diff img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    transform: none;
+  }
+
+
+  .dpw--contain .dpw__peek {
+    right: 58px;
+    width: 96px;
+    height: 74px;
+  }
+
+  .dpw--contain .dpw__item {
+    position: relative;
+    z-index: 1;
+  }
+
+  .dpw--contain .dpw__peek img,
+  .dpw--contain .dpw__peek--diff img,
+  .dpw--contain .dpw__open-img img,
+  .dpw--contain .dpw__diff-img img,
+  .dpw--contain .dpw__desk-img img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center bottom;
+    transform: none;
+  }
+
+  .dpw--contain .dpw__pouch img {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .dpw__item.is-open .dpw__peek {
+    display: none;
+  }
+
+  .dpw__panel {
+    display: none;
+  }
+
+  .dpw__item.is-open .dpw__panel {
+    display: block;
+  }
+
+  .dpw__item--std .dpw__panel {
+    min-height: 106px;
+    padding: 4px 20px 19px;
+  }
+
+  .dpw .dpw__text {
+    max-width: 192px;
+    margin: -4.01px 0;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+  }
+
+  .dpw__open-img {
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+    width: 109px;
+    height: 108px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .dpw__open-img img,
+  .dpw__diff-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dpw__desk-img,
+  .dpw__pouch,
+  .dpw__diff-heading--desktop {
+    display: none;
+  }
+
+  .dpw__item--diff .dpw__panel {
+    padding: 4px 20px calc((100% + 31px) * 183 / 359 - 29.3px);
+  }
+
+  .dpw .dpw__diff-heading {
+    max-width: 298px;
+    margin: -3.65px 0 -4.05px;
+    color: #241914;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35.2px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dpw .dpw__diff-text {
+    max-width: 288px;
+    margin: 15.99px 0 -4.01px;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+  }
+
+  .dpw__points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .dpw .dpw__point {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 14px;
+  }
+
+  .dpw .dpw__point-icon {
+    display: block;
+    flex: none;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  .dpw .dpw__point-text {
+    margin: -4.01px 0;
+    color: #241914;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+  }
+
+  .dpw__diff-img {
+    position: absolute;
+    bottom: 0;
+    left: -16px;
+    width: calc(100% + 31px);
+    height: auto;
+    aspect-ratio: 359 / 183;
+    pointer-events: none;
+  }
+
+  .dpw__nw {
+    white-space: nowrap;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .dpw__item.is-open .dpw__title {
+      max-width: 231px;
+    }
+
+    .dpw__item--right .dpw__open-img {
+      right: 7px;
+    }
+  }
+
+  /* Audit 2026-09-11: competitors demoted, the Dandy card is the champion */
+  .dpw__item--std .dpw__title {
+    color: #5a534e;
+  }
+
+  .dpw__item--std .dpw__peek img,
+  .dpw__item--std .dpw__open-img img,
+  .dpw__item--std .dpw__desk-img img {
+    filter: grayscale(100%) opacity(0.85);
+  }
+
+  .dpw__item--diff {
+    --dpw-champ: #2d6a4f;
+    --dpw-champ-off: 4px;
+    border: 2px solid var(--dpw-champ);
+    box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 8px 24px rgb(95 155 85 / 0.22);
+  }
+
+  /* Audit 2026-09-11: jar and bottle art fits inside the card on phones (no spill above the card, no sliced pills) */
+  @media screen and (max-width: 1023px) {
+    .dpw--contain .dpw__peek,
+    .dpw--contain .dpw__peek--diff {
+      top: 50%;
+      bottom: auto;
+      right: 56px;
+      width: 92px;
+      height: 50px;
+      overflow: visible;
+      transform: translateY(-50%);
+    }
+
+    .dpw--contain .dpw__peek img,
+    .dpw--contain .dpw__peek--diff img {
+      object-position: center center;
+    }
+
+    .dpw--contain .dpw__item--std.is-open .dpw__panel {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      min-height: 0;
+      padding: 4px 16px 16px 20px;
+    }
+
+    .dpw--contain .dpw__item--std .dpw__text {
+      flex: 1 1 auto;
+      align-self: flex-start;
+      max-width: none;
+    }
+
+    .dpw--contain .dpw__open-img {
+      position: static;
+      flex: none;
+      width: 104px;
+      height: 104px;
+      overflow: visible;
+    }
+
+    .dpw--contain .dpw__item--diff.is-open .dpw__panel {
+      padding: 4px 20px 18px;
+    }
+
+    .dpw--contain .dpw__diff-img {
+      position: relative;
+      left: auto;
+      width: 100%;
+      height: 208px;
+      margin-top: 20px;
+      aspect-ratio: auto;
+    }
+
+    .dpw--contain .dpw__diff-img::before {
+      content: '';
+      position: absolute;
+      left: 22%;
+      right: 22%;
+      bottom: -7px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgb(36 25 20 / 0.28), rgb(36 25 20 / 0) 68%);
+      pointer-events: none;
+    }
+
+    .dpw--contain .dpw__diff-img img {
+      position: relative;
+    }
+  }
+
+  .dpw__wedge {
+    position: relative;
+    z-index: 2;
+    height: 49.5px;
+    margin-bottom: -2px;
+    background: var(--dpw-next, var(--dandy-pdp-cream, #fff9f0));
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpw__inner {
+      max-width: 1472px;
+      padding: 0 32px 54px;
+    }
+
+    .dpw__intro {
+      align-items: center;
+      gap: 24px;
+      max-width: 1068px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .dpw__heading--desktop {
+      display: block;
+    }
+
+    .dpw__heading--mobile {
+      display: none;
+    }
+
+    .dpw .dpw__heading {
+      margin: -5.48px 0 -6.07px;
+      font-size: 48px;
+      line-height: 52.8px;
+    }
+
+    .dpw .dpw__body {
+      margin: -5.15px 0;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+    }
+
+    .dpw__grid {
+      gap: 22px;
+      margin-top: 39.25px;
+    }
+
+    .dpw__item {
+      box-shadow: 5.2px 5.2px 0 var(--dandy-accent-deep, #a02508);
+    }
+
+    .dpw__item--std {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+      min-height: 129px;
+      padding: 24px;
+    }
+
+    .dpw .dpw__trigger {
+      display: block;
+      min-height: 0;
+      padding: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .dpw__title {
+      max-width: 500px;
+      margin: -2.97px 0 -3.29px;
+      font-size: 26px;
+      line-height: 28.6px;
+    }
+
+    .dpw__toggle,
+    .dpw__peek,
+    .dpw__open-img,
+    .dpw__diff-img,
+    .dpw__diff-heading--mobile {
+      display: none;
+    }
+
+    .dpw__panel,
+    .dpw__item.is-open .dpw__panel {
+      display: block;
+    }
+
+    .dpw__item--std .dpw__panel {
+      min-height: 0;
+      padding: 0;
+    }
+
+    .dpw .dpw__text {
+      max-width: 500px;
+      margin: -4.58px 0;
+      color: rgb(36 25 20 / 0.8);
+      font-size: 16px;
+      line-height: 20.8px;
+      letter-spacing: -0.16px;
+    }
+
+    .dpw .dpw__item--right .dpw__text {
+      max-width: 464px;
+    }
+
+    .dpw__desk-img {
+      position: absolute;
+      top: var(--dpw-t);
+      right: var(--dpw-r);
+      display: block;
+      width: var(--dpw-w);
+      height: var(--dpw-h);
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .dpw__desk-img img {
+      transform: translateY(calc(var(--dpw-y, 0%) * -1));
+    }
+
+    .dpw__item--diff {
+      --dpw-champ-off: 5.2px;
+      overflow: hidden;
+      min-height: 280px;
+      padding: 24px 24px 19px;
+    }
+
+    .dpw__item--diff .dpw__panel,
+    .dpw__item--diff.is-open .dpw__panel {
+      padding: 20px 0 0;
+    }
+
+    .dpw__item--diff .dpw__title {
+      max-width: 500px;
+    }
+
+    .dpw__diff-heading--desktop {
+      display: block;
+    }
+
+    .dpw .dpw__diff-heading {
+      max-width: 500px;
+      margin: -4.57px 0 -5.06px;
+      font-size: 40px;
+      line-height: 44px;
+    }
+
+    .dpw .dpw__diff-text {
+      max-width: 470.49px;
+      margin: 15.42px 0 -4.58px;
+      font-size: 16px;
+      line-height: 20.8px;
+      letter-spacing: -0.16px;
+    }
+
+    .dpw__points {
+      flex-flow: row wrap;
+      gap: 16px;
+      max-width: 470.49px;
+    }
+
+    .dpw .dpw__point {
+      gap: 6px;
+    }
+
+    .dpw .dpw__point-text {
+      margin: -4.58px 0;
+      font-size: 16px;
+      line-height: 20.8px;
+      letter-spacing: -0.16px;
+    }
+
+    .dpw__pouch {
+      position: absolute;
+      display: block;
+      pointer-events: none;
+      transform-origin: 0 0;
+    }
+
+    .dpw__pouch img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dpw__pouch .dpw__pouch-shadow {
+      opacity: 0.11;
+      filter: brightness(0) blur(8.5px);
+    }
+
+    .dpw__pouch--back .dpw__pouch-shadow {
+      transform: translate(3.11px, 11.59px);
+    }
+
+    .dpw__pouch--front .dpw__pouch-shadow {
+      transform: translate(0.38px, 11.99px);
+    }
+
+    .dpw__pouch--back {
+      top: -5.98px;
+      left: calc(100% - 296px);
+      width: 390.15px;
+      height: 390.15px;
+    }
+
+    /* Audit 2026-09-11: both jars sit whole inside the card (lids under the top edge, labels not bled off the right) */
+    .dpw--contain .dpw__pouch--back {
+      top: 20px;
+      left: calc(100% - 280px);
+      width: 270px;
+      height: 270px;
+    }
+
+    .dpw--contain .dpw__pouch--front {
+      top: 118px;
+      left: calc(100% - 210px);
+      width: 210px;
+      height: 210px;
+    }
+
+    .dpw__pouch--front {
+      top: 54.69px;
+      left: calc(100% - 161.25px);
+      width: 297.03px;
+      height: 297.03px;
+    }
+
+    .dpw__wedge {
+      height: 63.05px;
+    }
+  }
+
+  @media screen and (min-width: 1472px) {
+    .dpw__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-flow: row dense;
+      grid-template-rows: repeat(3, minmax(129px, auto));
+      column-gap: 20px;
+      row-gap: 22px;
+    }
+
+    .dpw__item--left {
+      grid-column: 1;
+    }
+
+    .dpw__item--right {
+      grid-column: 2;
+    }
+
+    .dpw__item--std.dpw__item--right {
+      align-self: start;
+      min-height: 126px;
+      margin-top: 3px;
+    }
+
+    .dpw__item--diff {
+      grid-column: 2;
+      grid-row: 2 / span 2;
+    }
+
+    /* Audit 2026-09-11: in the two-column layout the paragraph stops short of the back jar */
+    .dpw--contain .dpw__item--diff .dpw__diff-text {
+      max-width: 400px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dandy comparison",
+  "tag": "section",
+  "class": "dandy-pdp-compare-section",
+  "settings": [
+    { "type": "checkbox", "id": "art_contain", "label": "Product art: fit the whole image (jar cutouts)", "default": false, "info": "Off keeps the original cover-fit slots sized for the gummy pouch art." },
+    { "type": "text", "id": "heading", "label": "Heading (desktop)", "default": "Why Dandy isn’t Like The Rest" },
+    { "type": "textarea", "id": "heading_mobile", "label": "Heading (mobile)", "default": "Why Dandy isn’t\nlike the rest.", "info": "Press Enter to set the line break." },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Text",
+      "default": "Most options make you choose between feeling wired, switching off or getting sleepy. Dandy delivers mood, energy, focus and ease in one measured gummy."
+    },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" },
+    { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },
+    { "type": "color", "id": "next_color", "label": "Next section color", "default": "#FFF9F0" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Comparison",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Energy gummies" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Usually caffeine in a chewable format. The packaging changes, but the stimulant and its potential drawbacks stay the same." },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Square image." },
+        { "type": "text", "id": "image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        {
+          "type": "select",
+          "id": "desktop_column",
+          "label": "Desktop column",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        { "type": "header", "content": "Image placement" },
+        { "type": "range", "id": "img_width", "label": "Desktop width", "min": 60, "max": 160, "step": 1, "unit": "px", "default": 115 },
+        { "type": "range", "id": "img_height", "label": "Desktop height", "min": 60, "max": 160, "step": 1, "unit": "px", "default": 88 },
+        { "type": "range", "id": "img_top", "label": "Desktop top", "min": 0, "max": 60, "step": 1, "unit": "px", "default": 27 },
+        { "type": "range", "id": "img_right", "label": "Desktop right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 29 },
+        { "type": "range", "id": "img_offset", "label": "Desktop crop", "min": -20, "max": 40, "step": 1, "unit": "%", "default": 14 },
+        { "type": "range", "id": "peek_height", "label": "Mobile height", "min": 30, "max": 80, "step": 1, "unit": "px", "default": 51 },
+        { "type": "range", "id": "peek_offset", "label": "Mobile crop", "min": -20, "max": 40, "step": 1, "unit": "%", "default": 14 }
+      ]
+    },
+    {
+      "type": "difference",
+      "name": "Dandy difference",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "The Dandy difference" },
+        { "type": "textarea", "id": "heading", "label": "Heading (desktop)", "default": "A BROADER EXPERIENCE.\nONE MEASURED GUMMY." },
+        { "type": "text", "id": "heading_mobile", "label": "Heading (mobile)", "default": "A better feeling. A better-tasting gummy." },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Dandy gives you exactly 35 mg of mitragynine in one glossy mixed-berry gummy that tastes good from the first bite to the center." },
+        { "type": "textarea", "id": "points", "label": "List", "default": "Warm mood and clear focus\n35 mg mitragynine\nNo caffeine or THC\nNo Bitter Core", "info": "One item per line." },
+        { "type": "image_picker", "id": "icon", "label": "List icon" },
+        { "type": "text", "id": "icon_asset", "label": "List icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "image_picker", "id": "image", "label": "Pouch, back (desktop)" },
+        { "type": "text", "id": "image_asset", "label": "Pouch, back (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "image_picker", "id": "image_2", "label": "Pouch, front (desktop)" },
+        { "type": "text", "id": "image_2_asset", "label": "Pouch, front (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "image_picker", "id": "mobile_peek_image", "label": "Mobile image (closed)" },
+        { "type": "text", "id": "mobile_peek_image_asset", "label": "Mobile image (closed) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "image_picker", "id": "mobile_image", "label": "Mobile image (open)" },
+        { "type": "text", "id": "mobile_image_asset", "label": "Mobile image (open) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Dandy comparison",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": { "title": "Energy gummies", "text": "Usually caffeine in a chewable format. The packaging changes, but the stimulant and its potential drawbacks stay the same.", "desktop_column": "left", "img_width": 115, "img_height": 88, "img_top": 27, "img_right": 29, "img_offset": 14, "peek_height": 51, "peek_offset": 14 }
+        },
+        {
+          "type": "item",
+          "settings": { "title": "Calm gummies", "text": "Often built around melatonin or ingredients designed to make you drowsy. Useful for sleep, but less useful when you still want to get things done.", "desktop_column": "left", "img_width": 124, "img_height": 122, "img_top": 4, "img_right": 29, "img_offset": 0, "peek_height": 63, "peek_offset": 0 }
+        },
+        {
+          "type": "item",
+          "settings": { "title": "THC gummies", "text": "Can help you switch off, but may also leave you feeling foggy, anxious, hungry or more impaired than intended.", "desktop_column": "left", "img_width": 105, "img_height": 93, "img_top": 20, "img_right": 41, "img_offset": 0, "peek_height": 63, "peek_offset": 0 }
+        },
+        {
+          "type": "item",
+          "settings": { "title": "Traditional kratom powder", "text": "Can be bitter, messy and difficult to portion consistently without using a scale.", "desktop_column": "right", "img_width": 107, "img_height": 98, "img_top": 13, "img_right": 43, "img_offset": 5, "peek_height": 63, "peek_offset": -5 }
+        },
+        { "type": "difference" }
+      ]
+    }
+  ]
+}
+{% endschema %}

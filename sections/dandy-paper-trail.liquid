@@ -1,0 +1,402 @@
+{%- liquid
+  assign gummies_url = section.settings.gummies_url | default: '/products/mixed-berry-kratom-gummies?variant=47958359933106'
+  assign capsules_url = section.settings.capsules_url | default: '/products/extract-capsules-50mg'
+  assign capsules_90_url = section.settings.capsules_90_url | default: '/products/extract-capsules-90mg'
+  assign powder_url = section.settings.powder_url | default: '/products/premium-kratom-leaf-powder'
+  assign coa_url = section.settings.coa_url | default: '/pages/contact?view=dandy2-coa'
+  assign video_base = section.settings.video_base
+  assign standins = section.settings.standins
+  assign coa_batch = section.settings.coa_batch_id
+  if video_base != blank
+    assign floor_q = video_base | append: '/floor-loop.mov'
+    assign floor_m = video_base | append: '/floor-loop.mp4'
+  endif
+-%}
+{%- capture chevron -%}<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>{%- endcapture -%}
+{%- capture flag_frame -%}{%- if standins -%}<b class="flag"><span>Storyboard</span><span>Not for release</span></b>{%- endif -%}{%- endcapture -%}
+{%- capture tick -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{%- endcapture -%}
+{%- capture cross -%}<svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M5 5.5c4.2 3.8 9.1 8.9 13.6 13.6"/><path pathLength="1" d="M18.8 5.2C14.6 9.3 9.7 14.1 5.4 18.9"/></svg>{%- endcapture -%}
+{%- capture verified -%}<svg class="rev__badge" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 1.9 3-.4 1.1 2.8 2.8 1.1-.4 3L23 12l-1.9 2.4.4 3-2.8 1.1-1.1 2.8-3-.4L12 22l-2.4-1.9-3 .4-1.1-2.8-2.8-1.1.4-3L1 12l1.9-2.4-.4-3 2.8-1.1 1.1-2.8 3 .4z"/><path class="rev__badge-tick" d="M8 12.3l2.6 2.6 5.2-5.6"/></svg>{%- endcapture -%}
+{%- capture fmt_rows -%}
+<li><a href="{{ gummies_url }}" aria-label="Shop gummies"><b>Mixed berry gummies.</b><span>Best for a measured format with a real berry taste.</span><img class="row__pic" src="{{ 'pt-pick-gummy.webp' | asset_url }}" alt="" width="150" height="150" loading="lazy">{{ chevron }}</a></li>
+<li><a href="{{ capsules_url }}" aria-label="Shop capsules"><b>Extract capsules.</b><span>Best for a measured format with nothing to taste or measure.</span><img class="row__pic" src="{{ 'pt-pick-capsule.webp' | asset_url }}" alt="" width="150" height="150" loading="lazy">{{ chevron }}</a></li>
+<li><a href="{{ powder_url }}" aria-label="Shop powder"><b>Raw leaf powder.</b><span>Best for experienced users who want the original leaf format.</span><img class="row__pic" src="{{ 'pt-pick-powder.webp' | asset_url }}" alt="" width="150" height="150" loading="lazy">{{ chevron }}</a></li>
+{%- endcapture -%}
+
+<!-- 0. Top bar (the facts ticker now sits between the three questions and Meet Dandy) -->
+<header class="topbar">
+  <a class="topbar__brand" href="{{ routes.root_url }}" aria-label="Dandy home"><img src="{{ 'dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="96" height="36"></a>
+  <button class="btn btn--sm" type="button" data-picker-open>Shop all formats</button>
+</header>
+
+<main class="pt">
+
+<!-- 1. Hero: the clerk alone. Headline, photo, two paragraphs. Nothing else. -->
+<section class="hero" id="top">
+  <h1 class="hero__h1">The guy behind the counter doesn't know what's in that kratom <span class="nb">bag either.</span></h1>
+  <figure class="hero__media">
+    <img class="hero__photo" src="{{ 'pt-hero-clerk2.webp' | asset_url }}" alt="A gas station clerk behind his counter, holding out a blank unlabeled pouch in front of a wall of loud unbranded kratom pouches." width="1120" height="1400" fetchpriority="high">
+  </figure>
+  <div class="hero__copy">
+    <p class="hero__lede">That pouch might look familiar. It still does not tell you where the leaf came from, how it was handled, or whether what is inside matches the last one you bought.</p>
+    <p class="hero__lede">Kratom is a notoriously sketchy category. FDA lab analysis has flagged kratom products for heavy metals like lead and nickel, a brand was recalled over salmonella, and there are plenty of reports of synthetic ingredients added and never disclosed.</p>
+  </div>
+</section>
+
+<!-- 2. Factory beat: the part the buyer never gets to see. A plain stacked section, no pin. -->
+<section class="factory" id="factory">
+  <div class="factory__ground">
+    <img src="{{ 'pt-agit-factory.webp' | asset_url }}" alt="A filthy makeshift bagging room: open sacks and unlabeled tubs of powder, a crusted scale, dust on every surface." width="1120" height="1400" loading="eager">
+  </div>
+  <div class="wrap factory__copy">
+    <h2 data-reveal>Don't buy kratom that comes from a factory <span class="nb">like this.</span></h2>
+    <div class="factory__body">
+      <p>Open sacks. Unlabeled tubs. A scale nobody has wiped down.</p>
+      <p class="factory__hard">No health standards. No sanitary standards. No batch record tying the powder to anything you can check.</p>
+      <p>A clean label on the pouch does not prove it came from somewhere better. That is the part you never get to see.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Gas station story: Mike from Tampa, same pouch, four Fridays. His own line sits inside the story; no pull quote follows it. -->
+<section class="agit" id="agitation">
+  <div class="agit__ground" aria-hidden="false">
+    <img data-angle="store" src="{{ 'pt-agit-store.webp' | asset_url }}" alt="Gas station counter under fluorescent light, a rack of loud unbranded kratom pouches beside the register." width="1400" height="1050" loading="lazy">
+    <img data-angle="lap" src="{{ 'pt-agit-lap.webp' | asset_url }}" alt="A loud unbranded kratom pouch resting on a lap in a parked car." width="1120" height="1400" loading="lazy">
+    <img data-angle="factory" src="{{ 'pt-agit-room.webp' | asset_url }}" alt="Cluttered unlit back room with unlabeled tubs and open bags of powder." width="1128" height="1400" loading="lazy">
+  </div>
+  <div class="wrap agit__copy">
+    <h2 data-reveal>The pouch never changed. <mark class="hi hi--dark">The effect did.</mark></h2>
+    <div class="agit__body">
+      <p>Mike from Tampa bought the same pouch from the same shop four Fridays in a row.</p>
+      <p class="agit__said">"It's the one I always got."</p>
+      <p>One week it felt like nothing. The next week it flattened him. Then a good week, with no way to know what made it different.</p>
+      <p>The pouch had not changed. But there was no lot number to compare, no test record to pull up, no second bag with a clear history sitting next to it.</p>
+      <p>The familiar logo made the purchase feel consistent. It did not give him anything he could check.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Three questions: the reader's test, one screen, no answers, no links -->
+<section class="quest" id="questions">
+  <div class="wrap wrap--narrow quest__head">
+    <h2 data-arm-sticky>Three questions to ask <span class="nb">before you buy.</span></h2>
+    <p>If nobody can answer these, you are buying on hope.</p>
+  </div>
+  <ol class="quest__rows">
+    <li class="quest__row" data-reveal>
+      <b class="quest__num" aria-hidden="true">1</b>
+      <h3>Can you name the source?</h3>
+      <p>If the source is hidden, you have no way to judge what you are buying.</p>
+    </li>
+    <li class="quest__row" data-reveal>
+      <b class="quest__num" aria-hidden="true">2</b>
+      <h3>Can you show how it was made?</h3>
+      <p>If the facility and process are hidden, you are trusting a room you cannot see.</p>
+    </li>
+    <li class="quest__row" data-reveal>
+      <b class="quest__num" aria-hidden="true">3</b>
+      <h3>Can you show the test for this exact batch?</h3>
+      <p>If there is no batch number and no report, there is nothing to check.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- Facts ticker: a full-width brown strip that opens the Dandy half of the page, between the three questions and Meet Dandy -->
+<div class="ticker" aria-label="Product facts">
+  <div class="ticker__track">
+    <ul class="ticker__list">
+      <li>FDA-registered cGMP facility</li><li>Raw leaf sourced from Thailand</li><li>Batch number on every pouch and jar</li><li>Independently tested</li><li>21+ only</li>
+    </ul>
+    <ul class="ticker__list" aria-hidden="true">
+      <li>FDA-registered cGMP facility</li><li>Raw leaf sourced from Thailand</li><li>Batch number on every pouch and jar</li><li>Independently tested</li><li>21+ only</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 5. Meet Dandy: the three answers on one pouch, who Dandy is, then the full-width CTA that bridges into the formats. The h2 keeps id="standard" because the sticky bar arms once it has crossed the top of the viewport. -->
+<section class="meet" id="meet">
+  <figure class="meet__plate" data-reveal aria-hidden="true">
+    <i class="plate__shade"></i>
+    <img class="cut cut--powder" src="{{ 'pt-cut-powder.webp' | asset_url }}" alt="" width="360" height="560" loading="lazy">
+    <img class="cut cut--jar" src="{{ 'pt-cut-jar.webp' | asset_url }}" alt="" width="381" height="448" loading="lazy">
+    <img class="cut cut--pouch" src="{{ 'pt-cut-pouch.webp' | asset_url }}" alt="" width="409" height="640" loading="lazy">
+  </figure>
+  <div class="wrap wrap--narrow meet__copy">
+    <h2 id="standard">Dandy has a straight answer for <span class="nb"><mark class="hi hi--dark">all three.</mark></span></h2>
+    <p class="lede">Dandy was started to be the kratom company you can check. Raw leaf sourced directly from Thailand. Made in an FDA-registered facility in Florida under cGMP. Every batch tested by an independent lab for identity, mitragynine potency, heavy metals and microbials, with the batch number printed on the pouch or jar in your hand.</p>
+    <h3>Kratom with a paper trail.</h3>
+    <p class="meet__who">Three plain standards: know the source, know the process, know the batch. The format and strength are stated on every label. No mystery blend. No anonymous dose. No asking you to trust a clean-looking pouch.</p>
+    <p class="rating rating--dark">Rated 4.8/5 by 1,400+ <span class="nb">customers</span></p>
+    <button class="btn btn--block" type="button" data-picker-open>See Dandy's batch-tested formats</button>
+  </div>
+</section>
+
+<!-- 6. The lineup: three formats, each a frame, a caption row, a headline, one paragraph, one button -->
+<section class="source" id="source">
+  <div class="wrap wrap--narrow source__head">
+    <h2>Kratom made <span class="nb">transparent.</span></h2>
+    <p class="lede">We can tell you exactly what's in it because this is our formula, our batch, and our paper trail.</p>
+  </div>
+
+  <article class="fmt fmt--gummies">
+    <figure class="frame frame--54" data-reveal>
+      <img src="{{ 'pt-gummies.webp' | asset_url }}" alt="A Dandy mixed berry gummy bitten in half, glossy inside, with the pouch behind it." width="1280" height="1000" loading="lazy">
+      <b class="frame__word" aria-hidden="true">Sweet.</b>
+      <figcaption class="caprow"><span>35 mg MIT</span><span>Mixed berry</span><span>Pectin, no gelatin</span></figcaption>
+    </figure>
+    <div class="wrap fmt__copy">
+      <h3>Kratom gummies that actually taste like something you want to eat.</h3>
+      <p>Dandy uses nano-emulsion technology to make the kratom work inside a real mixed berry gummy instead of leaving you with the usual harsh botanical taste. Raw kratom is bitter because the alkaloids sit on your tongue as plant material; the emulsion wraps them in droplets too small to taste, so the berry lands and the leaf does not. Each gummy contains 35 mg of mitragynine.</p>
+      <figure class="loop fmt__loop" data-loop="nano">
+        <img class="loop__still" src="{{ 'pt-loop-gummy-poster.jpg' | asset_url }}" alt="Kratom leaf breaking into tiny droplets, the nano-emulsion that carries it into the gummy." width="720" height="404" loading="lazy">
+        <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'pt-loop-gummy-poster.jpg' | asset_url }}" aria-label="Kratom leaf breaking into tiny droplets, the nano-emulsion that carries it into the gummy.">
+          <source src="{{ 'pt-loop-gummy.mov' | asset_url }}" type="video/quicktime">
+          <source src="{{ 'pt-loop-gummy.mp4' | asset_url }}" type="video/mp4">
+        </video>
+      </figure>
+      <a class="btn btn--lg" href="{{ gummies_url }}">Try mixed berry gummies</a>
+    </div>
+  </article>
+
+  <article class="fmt fmt--capsules fmt--dark">
+    <figure class="frame frame--43" data-reveal>
+      <img src="{{ 'pt-capsules.webp' | asset_url }}" alt="Dandy extract capsules laid in straight rows beside their jar, the label in focus." width="1400" height="1045" loading="lazy">
+      <b class="frame__word" aria-hidden="true">Strong.</b>
+      <figcaption class="caprow"><span>50 mg or 90 mg MIT</span><span>Vegan HPMC shell</span></figcaption>
+    </figure>
+    <div class="wrap fmt__copy">
+      <h3>Extract enhanced powder in a tightly <span class="nb">sealed capsule.</span></h3>
+      <p>Dandy capsules are made with kratom extract standardized to an exact 50 mg or 90 mg of mitragynine per capsule. Nothing to taste. Nothing to measure at the shelf.</p>
+      <a class="btn btn--lg" href="{{ capsules_url }}">Shop extract capsules</a>
+    </div>
+  </article>
+
+  <article class="fmt fmt--powder">
+    <figure class="frame frame--43" data-reveal>
+      <img src="{{ 'pt-powder.webp' | asset_url }}" alt="Green raw leaf kratom powder with a clean scoop beside the Dandy powder pouch." width="1400" height="1045" loading="lazy">
+      <b class="frame__word" aria-hidden="true">Original.</b>
+      <figcaption class="caprow"><span>Direct from Thailand</span><span>30 mg MIT per serving</span></figcaption>
+    </figure>
+    <div class="wrap fmt__copy">
+      <h3>Raw leaf powder, sourced directly from Thailand.</h3>
+      <p>For experienced users who want the original format, Dandy keeps the product close to the leaf. The powder is sourced directly from Thailand, then tied to a batch and independently tested before it ships.</p>
+      <a class="btn btn--lg" href="{{ powder_url }}">Shop raw leaf powder</a>
+    </div>
+  </article>
+</section>
+
+<!-- 7. Make -->
+<section class="make" id="make">
+  <div class="wrap wrap--narrow make__head">
+    <h2>Made in an <span class="nb">FDA-registered</span> facility <span class="nb">under cGMP.</span></h2>
+    <p class="lede">Dandy products are made in an FDA-registered cGMP facility in Florida. Each batch is identified, labeled, and tied to its own testing record.</p>
+  </div>
+  {%- if video_base != blank -%}
+  <figure class="loop make__loop" data-loop="floor">
+    <img class="loop__still" src="{{ 'pt-make-floor.webp' | asset_url }}" alt="Stainless production line in the cGMP facility, gloved hands guiding sealed Dandy pouches." width="1400" height="787" loading="lazy">
+    <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'pt-make-floor.webp' | asset_url }}" aria-label="Stainless production line in the cGMP facility, gloved hands guiding sealed Dandy pouches.">
+      <source src="{{ floor_q }}" type="video/quicktime">
+      <source src="{{ floor_m }}" type="video/mp4">
+    </video>
+    <figcaption class="caprow caprow--dark"><span>cGMP facility</span><span>Florida</span><span>Real footage</span></figcaption>
+  </figure>
+  {%- else -%}
+  <figure class="frame frame--169 make__floor" data-reveal>
+    <div class="shot"><img src="{{ 'pt-make-floor.webp' | asset_url }}" alt="Storyboard reference of a production floor. Not a photograph of the facility." width="1400" height="787" loading="lazy">{{ flag_frame }}</div>
+  </figure>
+  {%- endif -%}
+  <div class="make__stills">
+    <figure class="frame frame--1310" data-reveal>
+      <div class="shot"><img src="{{ 'pt-make-weigh.webp' | asset_url }}" alt="Weigh station on the production floor with a labeled container on the scale." width="1400" height="1076" loading="lazy">{{ flag_frame }}</div>
+      <b class="frame__word" aria-hidden="true">Weighed.</b>
+      <figcaption class="caprow caprow--dark"><span>Weigh station</span><span>Labeled container</span><span>On the scale</span></figcaption>
+    </figure>
+    <figure class="frame frame--1310" data-reveal>
+      <div class="shot"><img src="{{ 'pt-make-seal.webp' | asset_url }}" alt="A Dandy pouch passing through the heat sealer." width="1400" height="1076" loading="lazy">{{ flag_frame }}</div>
+      <b class="frame__word" aria-hidden="true">Sealed.</b>
+      <figcaption class="caprow caprow--dark"><span>Heat sealer</span><span>Finished pouch</span><span>Same batch</span></figcaption>
+    </figure>
+  </div>
+  <div class="wrap wrap--narrow make__foot">
+    <ul class="ticks">
+      <li>{{ tick }}FDA-registered cGMP facility in Florida.</li>
+      <li>{{ tick }}Product and batch identification.</li>
+      <li>{{ tick }}Clear format and strength on every label.</li>
+      <li>{{ tick }}Independent testing for the finished batch.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- 8. Test: the pouch and its report side by side; the report itself is the proof, so no COA button here -->
+<section class="test">
+  <div class="wrap wrap--narrow test__head">
+    <h2 id="test">Quality control you can <span class="nb">rely on.</span></h2>
+    <p class="lede">Dandy independently tests each batch for identity, mitragynine potency, heavy metals, and microbials. The batch number is printed on the pouch or jar so the product can be tied back to its testing record.</p>
+  </div>
+  <div class="test__frames">
+    <!-- motion: the scroll-drawn line from the batch number on the pouch to the report. paper-trail-motion.js computes the path from the two frames' layout boxes and drives the draw from scroll; with reduced motion the line rests fully drawn. -->
+    <svg class="test__line" aria-hidden="true" focusable="false"><path class="test__line-path" pathLength="1" d=""/><path class="test__line-head" d="M-6 -7L0 0L6 -7"/></svg>
+    <figure class="frame frame--43 test__macro" data-reveal>
+      <div class="shot"><img src="{{ 'pt-test-match.webp' | asset_url }}" alt="A Dandy mixed berry pouch with batch {{ coa_batch | default: 'RD8221-B' }} printed on it, beside a phone showing the potency report for the same batch." width="1400" height="1050" loading="lazy"></div>
+      <figcaption class="caprow"><span>Batch {{ coa_batch | default: 'RD8221-B' }}</span><span>On the pouch</span><span>On the report</span></figcaption>
+    </figure>
+    <figure class="paper" data-reveal>
+      <div class="paper__sheet">
+        <img src="{{ 'pt-test-coa.webp' | asset_url }}" alt="Page one of the potency report for Dandy batch {{ coa_batch | default: 'RD8221-B' }}." width="1400" height="1320" loading="lazy">
+      </div>
+    </figure>
+  </div>
+</section>
+
+{%- comment -%} Review 2: after the Test section, next to the proof it supports. {%- endcomment -%}
+{%- if section.settings.rev2_quote != blank -%}
+<section class="revs" aria-label="Customer review">
+  <blockquote class="rev" data-reveal>
+    <span class="rev__stars" aria-label="Five stars">★★★★★</span>
+    <p>“{{ section.settings.rev2_quote }}”</p>
+    <footer>
+      <img class="rev__pic" src="{{ 'pt-rev-2.webp' | asset_url }}" alt="" width="150" height="150" loading="lazy">
+      <span class="rev__who">{%- if section.settings.rev2_name != blank and section.settings.rev2_name != section.settings.rev2_note -%}<b>{{ section.settings.rev2_name }}</b>{%- endif -%}<span>{{ verified }}{{ section.settings.rev2_note | default: 'Verified customer' }}</span></span>
+    </footer>
+  </blockquote>
+</section>
+{%- endif -%}
+
+<!-- 10. Comparison: the split photo, Dandy in colour beside the grey mystery bag, then the check and cross table -->
+<section class="compare" id="comparison">
+  <div class="wrap wrap--narrow compare__head">
+    <h2>Put them side <span class="nb">by side.</span></h2>
+  </div>
+  <figure class="frame frame--bare compare__split" data-reveal>
+    <picture>
+      <source media="(min-width: 901px)" srcset="{{ 'pt-powder-contrast.webp' | asset_url }}" type="image/webp">
+      <img src="{{ 'pt-powder-contrast-4x5.webp' | asset_url }}" alt="Fresh green raw leaf kratom powder beside the labeled Dandy pouch on one side, a plain unmarked bag of powder on the other." width="1120" height="1400" loading="lazy">
+    </picture>
+  </figure>
+  <div class="wrap wrap--narrow">
+    <table class="cmp">
+      <thead>
+        <tr><th scope="col" class="cmp__what"><span class="sr">Standard</span></th><th scope="col" class="cmp__dandy">Dandy</th><th scope="col" class="cmp__myst">Mystery pouch</th></tr>
+      </thead>
+      <tbody>
+        <tr data-reveal><th scope="row">Leaf source named</th><td class="cmp__yes">{{ tick }}<span class="sr">Yes</span></td><td class="cmp__no">{{ cross }}<span class="sr">No</span></td></tr>
+        <tr data-reveal><th scope="row">Made in an FDA-registered cGMP facility</th><td class="cmp__yes">{{ tick }}<span class="sr">Yes</span></td><td class="cmp__no">{{ cross }}<span class="sr">No</span></td></tr>
+        <tr data-reveal><th scope="row">Batch number on every pouch and jar</th><td class="cmp__yes">{{ tick }}<span class="sr">Yes</span></td><td class="cmp__no">{{ cross }}<span class="sr">No</span></td></tr>
+        <tr data-reveal><th scope="row">Independent lab test on every batch</th><td class="cmp__yes">{{ tick }}<span class="sr">Yes</span></td><td class="cmp__no">{{ cross }}<span class="sr">No</span></td></tr>
+        <tr data-reveal><th scope="row">Strength stated per serving</th><td class="cmp__yes">{{ tick }}<span class="sr">Yes</span></td><td class="cmp__no">{{ cross }}<span class="sr">No</span></td></tr>
+        <tr data-reveal><th scope="row">30-day <span class="nb">money-back guarantee</span></th><td class="cmp__yes">{{ tick }}<span class="sr">Yes</span></td><td class="cmp__no">{{ cross }}<span class="sr">No</span></td></tr>
+      </tbody>
+    </table>
+    <p class="cmp__after" data-reveal>You can read how it was made <span class="nb">and tested.</span></p>
+  </div>
+</section>
+
+<!-- 11. Proof: the heading, then four customer cards in one format. Phones show the first card and the top of the second under a fade, with a See more button; the script measures the collapsed height, and without it every card shows. -->
+<section class="proof">
+  <div class="wrap wrap--narrow proof__head">
+    <h2>What customers say after the <span class="nb">first pouch.</span></h2>
+  </div>
+  <div class="wrap proof__body">
+    <div class="wall" id="proof-wall" data-wall>
+      <div class="revs revs--wall">
+        <blockquote class="rev rev--ugc" data-reveal><img class="rev__ugc" src="{{ 'pt-ugc-0.webp' | asset_url }}" alt="A customer holding a Dandy mixed berry gummy over a desk." width="800" height="1000" loading="lazy"><span class="rev__stars" aria-label="Five stars">★★★★★</span><p>"I'm a believer, customer for life. Just placed my third order."</p><footer><span class="rev__who"><b>Jessica P.</b><span>{{ verified }}Verified customer</span></span></footer></blockquote>
+        <blockquote class="rev rev--ugc" data-reveal><img class="rev__ugc" src="{{ 'pt-ugc-1.webp' | asset_url }}" alt="A customer holding up a Dandy mixed berry gummy pouch at their kitchen counter." width="800" height="1000" loading="lazy"><span class="rev__stars" aria-label="Five stars">★★★★★</span><p>"Used to take powder. Powder, obviously, tastes disgusting. These gummies are actually pretty tasty."</p><footer><span class="rev__who"><b>Rebecca F.</b><span>{{ verified }}Verified customer</span></span></footer></blockquote>
+        <blockquote class="rev rev--ugc" data-reveal><img class="rev__ugc" src="{{ 'pt-ugc-2.webp' | asset_url }}" alt="A customer in a parked car holding a single Dandy gummy up to the camera." width="800" height="1000" loading="lazy"><span class="rev__stars" aria-label="Five stars">★★★★★</span><p>"I hated choking down the kratom capsules. Always made me gag. These gummies are a little bit tangy and go down easily."</p><footer><span class="rev__who"><b>Alan P.</b><span>{{ verified }}Verified customer</span></span></footer></blockquote>
+        <blockquote class="rev rev--ugc" data-reveal><img class="rev__ugc" src="{{ 'pt-ugc-3.webp' | asset_url }}" alt="Two Dandy gummies in a customer's palm on the couch, the pouch beside them." width="800" height="1000" loading="lazy"><span class="rev__stars" aria-label="Five stars">★★★★★</span><p>"Can barely taste the bitterness. Was really easy to get down."</p><footer><span class="rev__who"><b>Sam T.</b><span>{{ verified }}Verified customer</span></span></footer></blockquote>
+      </div>
+    </div>
+    <div class="proof__acts">
+      <button class="btn btn--lg btn--ghost wall__more" type="button" data-wall-more aria-expanded="false" aria-controls="proof-wall" hidden>See more reviews</button>
+      <button class="btn btn--lg" type="button" data-picker-open>Choose your format</button>
+    </div>
+  </div>
+</section>
+
+<!-- 12. FAQ: the seven from the switch page, testing first for a reader who arrived on trust -->
+<section class="faq" id="faq">
+  <div class="wrap wrap--narrow">
+    <h2>Questions people ask before they buy.</h2>
+    <div class="faq__list">
+      <details><summary>What does every batch get tested for?</summary><p>Every batch is independently lab-tested for identity, mitragynine potency, heavy metals, and microbials. The batch number is printed on every pouch and jar so you can match it to its report.</p></details>
+      <details><summary>Is one gummy one serving?</summary><p>Yes. One gummy is one serving and contains 35 mg of mitragynine. If you are new to the format, start with half a gummy and wait about 45 minutes before taking more.</p></details>
+      <details><summary>Where is the amount printed?</summary><p>On the bag. Each gummy contains 35 mg of mitragynine, and the serving, strength and batch number are all printed on the pouch.</p></details>
+      <details><summary>How many gummies come in a bag?</summary><p>Dandy gummies come in 10-count and 30-count bags.</p></details>
+      <details><summary>Why does Dandy taste different?</summary><p>Dandy uses nano-emulsion technology to disperse the kratom extract through a real mixed berry gummy. The berry flavor lands first instead of leaving the usual concentrated botanical taste on your tongue. The gummy is made with a plant-based pectin base and no gelatin.</p></details>
+      <details><summary>What is the guarantee?</summary><p>Every Dandy product comes with a 30-day money-back guarantee. If the flavor or format is not for you, email us within 30 days and we make it right.</p></details>
+      <details><summary>Does Dandy offer anything besides gummies?</summary><p>Yes. Dandy also offers <a href="{{ capsules_url }}">extract capsules</a> in 50 mg and 90 mg strengths, plus <a href="{{ powder_url }}">raw leaf powder</a> for experienced users, made and tested to the same standard.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 13. Close -->
+<section class="close">
+  <div class="close__media loop" data-loop="close">
+    <img class="loop__still" src="{{ 'pt-loop-close-poster.jpg' | asset_url }}" alt="Sugar falling onto a Dandy mixed berry gummy." width="720" height="900" loading="lazy">
+    <video class="loop__video" playsinline muted loop preload="none" poster="{{ 'pt-loop-close-poster.jpg' | asset_url }}" aria-label="Sugar falling onto a Dandy mixed berry gummy.">
+      <source src="{{ 'pt-loop-close.mov' | asset_url }}" type="video/quicktime">
+      <source src="{{ 'pt-loop-close.mp4' | asset_url }}" type="video/mp4">
+    </video>
+  </div>
+  <div class="wrap wrap--narrow close__copy" data-reveal>
+    <h2>You do not need another <span class="struck struck--blush">mystery pouch</span>.</h2>
+    <p class="lede">Choose the format that fits you, see what goes into it, and know the batch you are buying was tested before it reached your door.</p>
+    <p class="caprow caprow--dark close__trust"><span>Made in Florida</span><span>Batch-coded</span><span>Independently tested</span></p>
+    <ul class="rows rows--dark">
+      <li><a href="{{ gummies_url }}" aria-label="Shop gummies"><b>Mixed berry gummies</b>{{ chevron }}</a></li>
+      <li><a href="{{ capsules_url }}" aria-label="Shop capsules"><b>Extract capsules</b>{{ chevron }}</a></li>
+      <li><a href="{{ powder_url }}" aria-label="Shop powder"><b>Raw leaf powder</b>{{ chevron }}</a></li>
+    </ul>
+    <div class="close__guar" data-reveal>
+      <img class="seal" src="{{ 'pt-seal.webp' | asset_url }}" alt="30 day money back guarantee seal." width="559" height="560" loading="lazy">
+      <p>30-day money-back guarantee on every option. If the flavor or the format is not for you, email us within 30 days and we make it right.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="{{ 'dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="72" height="27" class="foot__mark">
+    <p class="foot__links"><span><a href="{{ coa_url }}">Lab reports</a></span><span><a href="/pages/contact?view=dandy2-returns">Guarantee</a></span><span><a href="/pages/contact?view=dandy2-shipping">Shipping and states</a></span><span><a href="/policies/privacy-policy">Privacy</a></span><span><a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a></span></p>
+    <p>21+ only. Read and follow the product label. We do not ship to AL, AR, CA, CT, IN, KS, LA, MS, ND, NE, RI, TN, UT, VT, WV, or WI. Keep out of reach of children. Do not use if pregnant or nursing. Consult a physician before use if you take medication or have a medical condition. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+  </div>
+</footer>
+
+<div class="sticky" aria-hidden="true">
+  <div class="sticky__info"><img src="{{ 'pt-sticky.webp' | asset_url }}" alt="" width="40" height="32"><small>Three formats. Pick one.</small></div>
+  <button class="btn" type="button" data-picker-open>Shop Dandy</button>
+</div>
+
+<div class="picker" id="picker" hidden>
+  <div class="picker__backdrop" data-picker-close></div>
+  <div class="picker__sheet" role="dialog" aria-modal="true" aria-labelledby="picker-title" tabindex="-1">
+    <div class="picker__head">
+      <h2 id="picker-title">Pick a format.</h2>
+      <button class="picker__close" type="button" data-picker-close aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <ul class="rows rows--pic">{{ fmt_rows }}</ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Paper trail landing",
+  "settings": [
+    { "type": "text", "id": "gummies_url", "label": "Gummies product URL (10 count preselected)", "default": "/products/mixed-berry-kratom-gummies?variant=47958359933106" },
+    { "type": "text", "id": "capsules_url", "label": "Capsules 50 mg product URL", "default": "/products/extract-capsules-50mg" },
+    { "type": "text", "id": "capsules_90_url", "label": "Capsules 90 mg product URL", "default": "/products/extract-capsules-90mg" },
+    { "type": "text", "id": "powder_url", "label": "Powder product URL", "default": "/products/premium-kratom-leaf-powder" },
+    { "type": "text", "id": "coa_url", "label": "Lab reports (COA) page URL", "default": "/pages/contact?view=dandy2-coa" },
+    { "type": "text", "id": "video_base", "label": "External base URL for the floor loop (optional)", "info": "Leave blank until real floor footage exists; the Make section then shows the storyboard still. Set a URL that serves floor-loop.mov and floor-loop.mp4 to switch to the loop." },
+    { "type": "checkbox", "id": "standins", "label": "Show the storyboard captions on stand-in frames", "default": false, "info": "Keep on until real facility footage replaces the storyboard frames. Never release with AI facility frames." },
+    { "type": "text", "id": "coa_batch_id", "label": "Batch ID shown on the Test frames", "default": "RD8221-B", "info": "The batch printed on the photographed pouch and its report." },
+    { "type": "header", "content": "Review after the Test section" },
+    { "type": "textarea", "id": "rev2_quote", "label": "Quote", "info": "Leave blank and the card does not render. Wants a customer on consistency batch to batch, or on being able to check a report. Photo comes from the pt-rev-2.webp asset." },
+    { "type": "text", "id": "rev2_name", "label": "Name (first name and initial; leave blank to show only the badge line)" },
+    { "type": "text", "id": "rev2_note", "label": "Line under the name", "default": "Verified customer" }
+  ]
+}
+{% endschema %}

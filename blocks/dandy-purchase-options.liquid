@@ -1,0 +1,337 @@
+{%- liquid
+  assign product = closest.product
+  assign variant = product.selected_or_first_available_variant
+  assign form_id = 'BuyButtons-ProductForm-' | append: section.id
+  assign perks = product.metafields.custom.subscription_benefits.value
+  assign perk_rows = perks.size | plus: 1 | divided_by: 2
+
+  assign has_plans = false
+  if product.selling_plan_groups.size > 0 and variant.selling_plan_allocations.size > 0
+    assign has_plans = true
+  endif
+
+  assign show_one_time = true
+  if product.requires_selling_plan and has_plans
+    assign show_one_time = false
+  endif
+
+  assign selected_plan_id = ''
+  if product.selected_selling_plan
+    assign selected_plan_id = product.selected_selling_plan.id | append: ''
+  elsif has_plans
+    if block.settings.default_selection == 'subscription' or show_one_time == false
+      assign selected_plan_id = variant.selling_plan_allocations.first.selling_plan.id | append: ''
+    endif
+  endif
+
+  assign use_currency = settings.currency_code_enabled_product_pages
+-%}
+
+<dandy-purchase-options
+  class="dandy-purchase"
+  data-dandy-block="purchase-{{ block.id }}"
+  {{ block.shopify_attributes }}
+>
+  <input
+    type="hidden"
+    name="selling_plan"
+    form="{{ form_id }}"
+    value="{{ selected_plan_id }}"
+    data-selling-plan-input
+    {% if selected_plan_id == blank %}
+      disabled
+    {% endif %}
+  >
+  <fieldset class="dandy-purchase__fieldset">
+    <legend class="visually-hidden">{{ block.settings.legend }}</legend>
+
+    {%- if has_plans -%}
+      {%- for allocation in variant.selling_plan_allocations -%}
+        {%- liquid
+          assign plan = allocation.selling_plan
+          assign plan_id = plan.id | append: ''
+          assign price = allocation.price
+          assign compare_price = allocation.compare_at_price | default: variant.price
+          assign is_selected = false
+          if plan_id == selected_plan_id
+            assign is_selected = true
+          endif
+
+          assign discount_label = ''
+          if compare_price > price
+            assign discount = compare_price | minus: price | times: 100.0 | divided_by: compare_price | round
+            assign discount_label = discount | append: '%'
+          endif
+          assign plan_title = block.settings.subscription_title | replace: '[discount]', discount_label | replace: '[plan]', plan.name | strip
+          assign plan_description = block.settings.subscription_description | default: plan.description | default: plan.name
+          assign input_id = 'DandyPlan-' | append: block.id | append: '-' | append: plan_id
+        -%}
+        <div class="dandy-plan dandy-plan--subscription" data-plan-card{% if is_selected %} data-selected{% endif %}>
+          <input
+            class="dandy-plan__input"
+            type="radio"
+            name="dandy-purchase-{{ block.id }}"
+            id="{{ input_id }}"
+            value="{{ plan_id }}"
+            aria-describedby="{{ input_id }}-desc {{ input_id }}-price"
+            {% if is_selected %}
+              checked
+            {% endif %}
+          >
+          <span class="dandy-plan__main">
+            <label class="dandy-plan__title dandy-trim" for="{{ input_id }}">{{ plan_title }}</label>
+            {%- if plan_description != blank -%}
+              <span class="dandy-plan__desc dandy-trim" id="{{ input_id }}-desc">{{ plan_description | escape }}</span>
+            {%- endif -%}
+          </span>
+          <span class="dandy-plan__prices" id="{{ input_id }}-price">
+            <span class="dandy-plan__price dandy-trim">
+              {%- if use_currency -%}{{ price | money_with_currency }}{%- else -%}{{ price | money }}{%- endif -%}
+            </span>
+            {%- if compare_price > price -%}
+              <s class="dandy-plan__compare dandy-trim">
+                {%- if use_currency -%}{{ compare_price | money_with_currency }}{%- else -%}{{ compare_price | money }}{%- endif -%}
+              </s>
+            {%- endif -%}
+          </span>
+          {%- if perks != blank -%}
+            <span class="dandy-plan__divider" aria-hidden="true"></span>
+            <ul class="dandy-plan__perks" style="--dandy-perk-rows: {{ perk_rows }};">
+              {%- for perk in perks -%}
+                <li class="dandy-plan__perk">
+                  {%- if block.settings.perk_icon != blank -%}
+                    {{-
+                      block.settings.perk_icon
+                      | image_url: width: 64
+                      | image_tag: alt: '', width: 16, height: 16, loading: 'lazy', class: 'dandy-plan__perk-icon'
+                    -}}
+                  {%- elsif block.settings.perk_icon_asset != blank -%}
+                    <img src="{{ block.settings.perk_icon_asset | asset_url }}" alt="" width="16" height="16" loading="lazy" class="dandy-plan__perk-icon">
+                  {%- endif -%}
+                  <span class="dandy-plan__perk-text dandy-trim">{{ perk | escape }}</span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
+
+    {%- if show_one_time -%}
+      {%- liquid
+        assign input_id = 'DandyPlan-' | append: block.id | append: '-onetime'
+        assign is_selected = false
+        if selected_plan_id == blank
+          assign is_selected = true
+        endif
+        assign has_onetime_options = false
+        if block.settings.option_1_title != blank or block.settings.option_2_title != blank or block.settings.option_3_title != blank
+          assign has_onetime_options = true
+        endif
+      -%}
+      <div class="dandy-plan dandy-plan--onetime" data-plan-card{% if is_selected %} data-selected{% endif %}>
+        <input
+          class="dandy-plan__input"
+          type="radio"
+          name="dandy-purchase-{{ block.id }}"
+          id="{{ input_id }}"
+          value=""
+          aria-describedby="{{ input_id }}-price"
+          {% if is_selected %}
+            checked
+          {% endif %}
+        >
+        <span class="dandy-plan__main">
+          <label class="dandy-plan__title dandy-trim" for="{{ input_id }}">{{ block.settings.one_time_title }}</label>
+        </span>
+        <span class="dandy-plan__prices" id="{{ input_id }}-price">
+          <span class="dandy-plan__price dandy-trim">
+            {%- if use_currency -%}{{ variant.price | money_with_currency }}{%- else -%}{{ variant.price | money }}{%- endif -%}
+          </span>
+          {%- if variant.compare_at_price > variant.price -%}
+            <s class="dandy-plan__compare dandy-trim">
+              {%- if use_currency -%}{{ variant.compare_at_price | money_with_currency }}{%- else -%}{{ variant.compare_at_price | money }}{%- endif -%}
+            </s>
+          {%- endif -%}
+        </span>
+        {%- if has_onetime_options -%}
+          <span class="dandy-plan__divider dandy-onetime__divider" aria-hidden="true"></span>
+          <div class="dandy-onetime" data-onetime-options>
+            {%- for i in (1..3) -%}
+              {%- liquid
+                assign k = 'option_' | append: i
+                assign key_title = k | append: '_title'
+                assign key_sub = k | append: '_subtitle'
+                assign key_price = k | append: '_price'
+                assign key_image = k | append: '_image'
+                assign key_image_asset = k | append: '_image_asset'
+                assign key_badge = k | append: '_badge'
+                assign key_badge_style = k | append: '_badge_style'
+                assign key_perks = k | append: '_perks'
+                assign key_variant = k | append: '_variant_id'
+
+                assign o_title = block.settings[key_title]
+                assign o_sub = block.settings[key_sub]
+                assign o_price = block.settings[key_price]
+                assign o_image = block.settings[key_image]
+                assign o_image_asset = block.settings[key_image_asset]
+                assign o_badge = block.settings[key_badge]
+                assign o_badge_style = block.settings[key_badge_style]
+                assign o_perks = block.settings[key_perks] | newline_to_br | split: '<br />'
+                assign o_variant = block.settings[key_variant] | strip
+
+                assign i_str = i | append: ''
+                assign o_selected = false
+                if block.settings.option_default == i_str
+                  assign o_selected = true
+                endif
+              -%}
+              {%- if o_title != blank -%}
+                <button
+                  type="button"
+                  class="dandy-onetime__option{% if o_badge != blank %} dandy-onetime__option--badge{% endif %}{% if o_selected %} is-selected{% endif %}"
+                  data-onetime-option
+                  data-variant-id="{{ o_variant }}"
+                  aria-pressed="{{ o_selected }}"
+                >
+                  {%- if o_badge != blank -%}
+                    <span class="dandy-onetime__badge dandy-onetime__badge--{{ o_badge_style }}">{{ o_badge | escape }}</span>
+                  {%- endif -%}
+                  <span class="dandy-onetime__media" aria-hidden="true">
+                    {%- if o_image != blank -%}
+                      {{ o_image | image_url: width: 400 | image_tag: widths: '200, 300, 400', sizes: '(min-width: 1100px) 94px, 86px', alt: '', loading: 'eager', fetchpriority: 'low' }}
+                    {%- elsif o_image_asset != blank -%}
+                      <img src="{{ o_image_asset | asset_url }}" sizes="(min-width: 1100px) 94px, 86px" alt="" loading="eager" fetchpriority="low">
+                    {%- endif -%}
+                  </span>
+                  <span class="dandy-onetime__info">
+                    <span class="dandy-onetime__title">{{ o_title | escape }}</span>
+                    {%- if o_sub != blank -%}
+                      <span class="dandy-onetime__sub">{{ o_sub | escape }}</span>
+                    {%- endif -%}
+                  </span>
+                  {%- if o_price != blank -%}
+                    <span class="dandy-onetime__price">{{ o_price | escape }}</span>
+                  {%- endif -%}
+                  {%- assign perk_count = 0 -%}
+                  {%- for p in o_perks -%}{%- assign pt = p | strip -%}{%- if pt != blank -%}{%- assign perk_count = perk_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+                  {%- if perk_count > 0 -%}
+                    <span class="dandy-onetime__perks">
+                      {%- for p in o_perks -%}
+                        {%- assign pt = p | strip -%}
+                        {%- if pt != blank -%}
+                          <span class="dandy-onetime__perk">
+                            {%- if block.settings.perk_icon != blank -%}
+                              {{ block.settings.perk_icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dandy-onetime__perk-icon' }}
+                            {%- elsif block.settings.perk_icon_asset != blank -%}
+                              <img src="{{ block.settings.perk_icon_asset | asset_url }}" alt="" width="14" height="14" loading="lazy" class="dandy-onetime__perk-icon">
+                            {%- endif -%}
+                            <span class="dandy-onetime__perk-text">{{ pt | escape }}</span>
+                          </span>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </span>
+                  {%- endif -%}
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          <script>
+            (() => {
+              const wrap = document.currentScript.previousElementSibling;
+              if (!wrap) return;
+              wrap.addEventListener('click', (event) => {
+                const option = event.target.closest('[data-onetime-option]');
+                if (!option) return;
+                wrap.querySelectorAll('[data-onetime-option]').forEach((el) => {
+                  el.classList.toggle('is-selected', el === option);
+                  el.setAttribute('aria-pressed', String(el === option));
+                });
+                const id = option.dataset.variantId;
+                const form = document.getElementById('{{ form_id }}');
+                const input = form?.querySelector('[name="id"]');
+                if (id && input) {
+                  input.value = id;
+                  input.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+              });
+            })();
+          </script>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </fieldset>
+</dandy-purchase-options>
+
+{% schema %}
+{
+  "name": "Dandy purchase options",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "default_selection",
+      "label": "Selected by default",
+      "options": [
+        { "value": "subscription", "label": "Subscription" },
+        { "value": "one_time", "label": "One-time purchase" }
+      ],
+      "default": "subscription"
+    },
+    {
+      "type": "text",
+      "id": "subscription_title",
+      "label": "Subscription title",
+      "default": "Subscribe & Save [discount]"
+    },
+    {
+      "type": "text",
+      "id": "subscription_description",
+      "label": "Subscription description",
+      "default": "One 30-count pouch every 30 days",
+      "info": "Leave empty to use the selling plan's description from your subscription app."
+    },
+    { "type": "text", "id": "one_time_title", "label": "One-time title", "default": "One Time Purchase" },
+    { "type": "header", "content": "One-time options" },
+    { "type": "select", "id": "option_default", "label": "Selected option", "options": [ { "value": "1", "label": "Option 1" }, { "value": "2", "label": "Option 2" }, { "value": "3", "label": "Option 3" } ], "default": "2" },
+    { "type": "header", "content": "Option 1" },
+    { "type": "text", "id": "option_1_title", "label": "Title", "default": "1 Pouch" },
+    { "type": "text", "id": "option_1_subtitle", "label": "Subtitle", "default": "30 gummies" },
+    { "type": "text", "id": "option_1_price", "label": "Price", "default": "$59.99" },
+    { "type": "image_picker", "id": "option_1_image", "label": "Image" },
+    { "type": "text", "id": "option_1_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "text", "id": "option_1_badge", "label": "Badge" },
+    { "type": "select", "id": "option_1_badge_style", "label": "Badge color", "options": [ { "value": "orange", "label": "Orange" }, { "value": "dark", "label": "Dark" } ], "default": "orange" },
+    { "type": "textarea", "id": "option_1_perks", "label": "Perks", "info": "One per line." },
+    { "type": "text", "id": "option_1_variant_id", "label": "Variant ID", "info": "Optional. Add later to link this option to a variant." },
+    { "type": "header", "content": "Option 2" },
+    { "type": "text", "id": "option_2_title", "label": "Title", "default": "Buy 2, Get 1 FREE" },
+    { "type": "text", "id": "option_2_subtitle", "label": "Subtitle", "default": "90 gummies" },
+    { "type": "text", "id": "option_2_price", "label": "Price", "default": "$119.98" },
+    { "type": "image_picker", "id": "option_2_image", "label": "Image" },
+    { "type": "text", "id": "option_2_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "text", "id": "option_2_badge", "label": "Badge", "default": "MOST POPULAR" },
+    { "type": "select", "id": "option_2_badge_style", "label": "Badge color", "options": [ { "value": "orange", "label": "Orange" }, { "value": "dark", "label": "Dark" } ], "default": "orange" },
+    { "type": "textarea", "id": "option_2_perks", "label": "Perks", "default": "$1.60 per gummy\nFree shipping", "info": "One per line." },
+    { "type": "text", "id": "option_2_variant_id", "label": "Variant ID", "info": "Optional. Add later to link this option to a variant." },
+    { "type": "header", "content": "Option 3" },
+    { "type": "text", "id": "option_3_title", "label": "Title", "default": "Buy 3, Get 2 FREE" },
+    { "type": "text", "id": "option_3_subtitle", "label": "Subtitle", "default": "150 gummies" },
+    { "type": "text", "id": "option_3_price", "label": "Price", "default": "$179.97" },
+    { "type": "image_picker", "id": "option_3_image", "label": "Image" },
+    { "type": "text", "id": "option_3_image_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "text", "id": "option_3_badge", "label": "Badge", "default": "BEST VALUE" },
+    { "type": "select", "id": "option_3_badge_style", "label": "Badge color", "options": [ { "value": "orange", "label": "Orange" }, { "value": "dark", "label": "Dark" } ], "default": "dark" },
+    { "type": "textarea", "id": "option_3_perks", "label": "Perks", "default": "$1.20 per gummy\nFree shipping", "info": "One per line." },
+    { "type": "text", "id": "option_3_variant_id", "label": "Variant ID", "info": "Optional. Add later to link this option to a variant." },
+    {
+      "type": "image_picker",
+      "id": "perk_icon",
+      "label": "Subscription perk icon"
+    },
+    { "type": "text", "id": "perk_icon_asset", "label": "Subscription perk icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "text", "id": "legend", "label": "Accessible group label", "default": "Purchase options" }
+  ],
+  "presets": [{ "name": "Dandy purchase options" }]
+}
+{% endschema %}

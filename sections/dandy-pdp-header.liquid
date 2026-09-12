@@ -1,0 +1,142 @@
+<script type="module" src="{{ 'cart-icon.js' | asset_url }}" fetchpriority="low"></script>
+
+<style>
+  .dandy-pdp-header-section { background: {{ section.settings.background_color }}; }
+  .dph {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    max-width: calc(1408px + 64px);
+    min-height: 57px;
+    margin: 0 auto;
+    padding: 0 16px;
+    color: {{ section.settings.icon_color }};
+  }
+  .dph__menu { grid-column: 1; justify-self: start; display: flex; }
+  .dph__logo { grid-column: 2; display: block; line-height: 0; }
+  .dph__logo img { display: block; width: 83px; height: 31px; object-fit: contain; }
+  .dph__actions { grid-column: 3; justify-self: end; display: flex; align-items: center; gap: 8px; }
+
+  .dph__menu .header__icon--menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 8px;
+    margin: -8px;
+    color: inherit;
+  }
+  .dph__menu .header-drawer-icon--open {
+    display: block;
+    width: 21.6px;
+    height: 21.6px;
+    background-color: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4.99878 24.0006C4.4465 24.0006 3.99878 23.5529 3.99878 23.0006C3.99878 22.4483 4.44649 22.0006 4.99878 22.0006H26.9988C27.5511 22.0006 27.9988 22.4483 27.9988 23.0006C27.9988 23.5529 27.5511 24.0006 26.9988 24.0006H4.99878ZM4.99878 17.0006C4.4465 17.0006 3.99878 16.5529 3.99878 16.0006C3.99878 15.4483 4.44649 15.0006 4.99878 15.0006H26.9988C27.5511 15.0006 27.9988 15.4483 27.9988 16.0006C27.9988 16.5529 27.5511 17.0006 26.9988 17.0006H4.99878ZM4.99878 10.0006C4.4465 10.0006 3.99878 9.5529 3.99878 9.00061C3.99878 8.44833 4.44649 8.00061 4.99878 8.00061H26.9988C27.5511 8.00061 27.9988 8.44833 27.9988 9.00061C27.9988 9.5529 27.5511 10.0006 26.9988 10.0006H4.99878Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4.99878 24.0006C4.4465 24.0006 3.99878 23.5529 3.99878 23.0006C3.99878 22.4483 4.44649 22.0006 4.99878 22.0006H26.9988C27.5511 22.0006 27.9988 22.4483 27.9988 23.0006C27.9988 23.5529 27.5511 24.0006 26.9988 24.0006H4.99878ZM4.99878 17.0006C4.4465 17.0006 3.99878 16.5529 3.99878 16.0006C3.99878 15.4483 4.44649 15.0006 4.99878 15.0006H26.9988C27.5511 15.0006 27.9988 15.4483 27.9988 16.0006C27.9988 16.5529 27.5511 17.0006 26.9988 17.0006H4.99878ZM4.99878 10.0006C4.4465 10.0006 3.99878 9.5529 3.99878 9.00061C3.99878 8.44833 4.44649 8.00061 4.99878 8.00061H26.9988C27.5511 8.00061 27.9988 8.44833 27.9988 9.00061C27.9988 9.5529 27.5511 10.0006 26.9988 10.0006H4.99878Z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+  }
+  .dph__menu .header-drawer-icon--open > svg { visibility: hidden; }
+
+  .dph__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    margin: -8px;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  .dph__icon svg { display: block; }
+  .dph__icon--search svg { width: 19px; height: 19px; }
+  .dph__icon--bag .header-actions__cart-icon {
+    --cart-bubble-size: 14px;
+    --cart-bubble-top: -2px;
+    --cart-bubble-right: -7px;
+    display: block;
+  }
+  .dph__icon--bag .svg-wrapper { display: block; width: 15px; height: 15px; }
+  .dph__icon--bag .svg-wrapper svg { width: 100%; height: 100%; }
+  .dph :is(.dph__icon, .header__icon--menu):focus-visible {
+    outline: 2px solid #241914;
+    outline-offset: -4px;
+    border-radius: 4px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .dph { min-height: 71px; padding: 0 32px; }
+    .dph__actions { gap: 26px; }
+    .dph__menu .header-drawer-icon--open { width: 32px; height: 32px; }
+    .dph__icon--search svg { width: 32px; height: 32px; }
+    .dph__icon--bag .svg-wrapper { width: 22px; height: 21px; }
+    .dph__icon--bag .header-actions__cart-icon { --cart-bubble-size: 16px; }
+  }
+</style>
+
+<div class="dph">
+  <div class="dph__menu">
+    {%- render 'header-drawer', linklist: section.settings.menu, section: section -%}
+  </div>
+
+  <a class="dph__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">
+    {%- if section.settings.logo != blank -%}
+      {{ section.settings.logo | image_url: width: 250 | image_tag: width: 83, height: 31, alt: shop.name, loading: 'eager' }}
+    {%- elsif section.settings.logo_asset != blank -%}
+      <img src="{{ section.settings.logo_asset | asset_url }}" width="83" height="31" alt="{{ shop.name | escape }}" loading="eager">
+    {%- else -%}
+      <img src="{{ 'dandy-wordmark.svg' | asset_url }}" width="83" height="31" alt="{{ shop.name | escape }}">
+    {%- endif -%}
+  </a>
+
+  <div class="dph__actions">
+    <button
+      type="button"
+      class="button-unstyled dph__icon dph__icon--search"
+      on:click="#search-modal/showDialog"
+      aria-haspopup="dialog"
+      aria-label="{{ 'content.search_input_label' | t }}"
+    >
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false"><circle cx="14.6667" cy="14.6666" r="8" stroke="currentColor" stroke-width="1.11695"/><path d="M26.6667 26.6666L22.6667 22.6666" stroke="currentColor" stroke-width="1.11695" stroke-linecap="round"/></svg>
+    </button>
+
+    {%- capture dph_cart_icon -%}
+      <cart-icon class="header-actions__cart-icon{% unless cart == empty %} header-actions__cart-icon--has-cart{% endunless %}">
+        <span class="svg-wrapper" aria-hidden="true">
+          <svg viewBox="0 0 22 21" focusable="false"><path fill="currentColor" d="M11.1457 1.33C12.0695 1.33 12.9555 1.68031 13.6088 2.30387C14.262 2.92743 14.629 3.77315 14.629 4.655V5.32H7.66233V4.655C7.66233 3.77315 8.02933 2.92743 8.68258 2.30387C9.33583 1.68031 10.2218 1.33 11.1457 1.33ZM16.0223 5.32V4.655C16.0223 3.42042 15.5085 2.2364 14.594 1.36342C13.6794 0.490436 12.439 0 11.1457 0C9.8523 0 8.6119 0.490436 7.69734 1.36342C6.78279 2.2364 6.269 3.42042 6.269 4.655V5.32H1.39233V18.62C1.39233 19.3255 1.68593 20.0021 2.20853 20.5009C2.73113 20.9997 3.43993 21.28 4.179 21.28H18.1123C18.8514 21.28 19.5602 20.9997 20.0828 20.5009C20.6054 20.0021 20.899 19.3255 20.899 18.62V5.32H16.0223ZM2.78567 6.65H19.5057V18.62C19.5057 18.9727 19.3589 19.311 19.0976 19.5605C18.8363 19.8099 18.4819 19.95 18.1123 19.95H4.179C3.80947 19.95 3.45507 19.8099 3.19377 19.5605C2.93246 19.311 2.78567 18.9727 2.78567 18.62V6.65Z"/></svg>
+        </span>
+        {% render 'cart-bubble', limit: 100 %}
+      </cart-icon>
+    {%- endcapture -%}
+
+    <a
+      class="dph__icon dph__icon--bag"
+      href="{{ routes.cart_url }}"
+      data-d2-cart-open
+      aria-haspopup="dialog"
+      aria-label="{{ 'accessibility.cart' | t }}"
+      aria-describedby="cart-bubble-text"
+    >
+      {{ dph_cart_icon }}
+    </a>
+  </div>
+</div>
+
+{%- comment -%} Capsule PDP ships its own copy of the tested drawer so the site-wide dandy2-cart-drawer snippet on the live theme is left untouched (2026-09-12). {%- endcomment -%}
+{% render 'dandy-capsules-cart-drawer' %}
+
+{% schema %}
+{
+  "name": "Dandy PDP header",
+  "tag": "div",
+  "class": "dandy-pdp-header-section",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Shown at 83 × 31px. Leave empty to use dandy-wordmark.svg." },
+    { "type": "text", "id": "logo_asset", "label": "Logo (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
+    { "type": "color", "id": "icon_color", "label": "Icons", "default": "#000000" }
+  ],
+  "presets": [{ "name": "Dandy PDP header" }]
+}
+{% endschema %}

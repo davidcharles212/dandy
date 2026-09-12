@@ -1,50 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header",
   "sections": {
-    "dandy_announcement": {
-      "type": "dandy-announcement",
+    "dandy_announcement_bar_Q7e4RC": {
+      "type": "dandy-announcement-bar",
+      "name": "Dandy announcement bar",
       "settings": {
-        "text": "FREE SHIPPING ON 3+ PACKS · SUBSCRIBE & SAVE 20%",
+        "text": "Free shipping on 3+ packs",
         "link": "",
-        "claim_ids": "C-09 C-16",
-        "copy_status": "aggressive-draft"
+        "show_default_icon": true,
+        "background_color": "#f4512b",
+        "text_color": "#fff9f0"
       }
     },
-    "dandy_header": {
-      "type": "dandy-header",
-      "blocks": {
-        "shop": {
-          "type": "link",
-          "settings": { "label": "Shop", "link": "shopify://collections/all" }
-        },
-        "gummies": {
-          "type": "link",
-          "settings": { "label": "Gummies", "link": "/products/mixed-berry-kratom-gummies" }
-        },
-        "learn": {
-          "type": "link",
-          "settings": { "label": "Learn", "link": "/learn" }
-        },
-        "quality": {
-          "type": "link",
-          "settings": { "label": "COA", "link": "/COA" }
-        },
-        "faq": {
-          "type": "link",
-          "settings": { "label": "FAQ", "link": "/pages/faq" }
-        },
-        "about": {
-          "type": "link",
-          "settings": { "label": "About", "link": "/about" }
-        }
-      },
-      "block_order": ["shop", "gummies", "learn", "quality", "faq", "about"],
-      "settings": {
-        "shop_label": "Shop gummies",
-        "shop_link": "/products/mixed-berry-kratom-gummies"
-      }
+    "dandy_header_restyle_wcEV8J": {
+      "type": "dandy-header-restyle",
+      "name": "Dandy header restyle",
+      "settings": {}
     }
   },
-  "order": ["dandy_announcement", "dandy_header"]
+  "order": [
+    "dandy_announcement_bar_Q7e4RC",
+    "dandy_header_restyle_wcEV8J"
+  ]
 }

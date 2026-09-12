@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product_hero": {
@@ -12,18 +21,9 @@
         "highlight_2": "10 gummies per trial pack",
         "highlight_3": "[FINAL LABEL REQUIRED: flavor, ingredient, and serving facts]",
         "highlight_4": "One-time trial only unless a genuine, approved selling plan says otherwise",
-        "preselect_subscription": false,
-        "enable_quantity_ladder": false,
-        "single_selection_label": "1 trial pack",
-        "one_time_detail": "One 10-count trial pack. Cart pricing follows Shopify's current server-side rules.",
-        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: no recurring trial offer is currently approved]",
         "reassurance_1": "21+ only",
         "reassurance_2": "Secure checkout",
         "reassurance_3": "Eligibility checked at checkout",
-        "development_preview": true,
-        "development_unit_price": "2499",
-        "development_three_pack_price": "0",
-        "development_five_pack_price": "0",
         "claim_ids": "C-09 C-10 C-13 C-16",
         "copy_status": "aggressive-draft"
       }
@@ -46,11 +46,34 @@
     "faq": {
       "type": "dandy-faq",
       "blocks": {
-        "difference": { "type": "question", "settings": { "question": "How is this different from the 30-count pack?", "answer": "<p>This is a separate 10-count trial path. Final product records must confirm whether the formula, serving, ingredients, and label are otherwise identical.</p>", "open": true } },
-        "subscription": { "type": "question", "settings": { "question": "Is the trial a subscription?", "answer": "<p>No recurring trial offer is currently approved. A subscription can appear only if a genuine Shopify selling plan and complete adjacent terms exist.</p>" } },
-        "report": { "type": "question", "settings": { "question": "Does it have its own batch report?", "answer": "<p>[FINAL COA REQUIRED: product-to-lot mapping and a finished-product report that covers the actual 10-count trial item.]</p>" } }
+        "difference": {
+          "type": "question",
+          "settings": {
+            "question": "How is this different from the 30-count pack?",
+            "answer": "<p>This is a separate 10-count trial path. Final product records must confirm whether the formula, serving, ingredients, and label are otherwise identical.</p>",
+            "open": true
+          }
+        },
+        "subscription": {
+          "type": "question",
+          "settings": {
+            "question": "Is the trial a subscription?",
+            "answer": "<p>No recurring trial offer is currently approved. A subscription can appear only if a genuine Shopify selling plan and complete adjacent terms exist.</p>"
+          }
+        },
+        "report": {
+          "type": "question",
+          "settings": {
+            "question": "Does it have its own batch report?",
+            "answer": "<p>[FINAL COA REQUIRED: product-to-lot mapping and a finished-product report that covers the actual 10-count trial item.]</p>"
+          }
+        }
       },
-      "block_order": ["difference", "subscription", "report"],
+      "block_order": [
+        "difference",
+        "subscription",
+        "report"
+      ],
       "settings": {
         "eyebrow": "Trial questions",
         "heading": "Smaller count. Same standard for clarity.",
@@ -74,5 +97,10 @@
       }
     }
   },
-  "order": ["product_hero", "details", "faq", "final_cta"]
+  "order": [
+    "product_hero",
+    "details",
+    "faq",
+    "final_cta"
+  ]
 }

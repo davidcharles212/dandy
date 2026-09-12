@@ -1,15 +1,12 @@
 {%- comment -%}
   Motion loop: poster img under the video, .mov (video/quicktime) first then .mp4, playsinline muted preload=none.
   Params: name (asset base without extension), poster (asset filename), alt, loop (true|false; false holds the last frame),
-          ratio ('16x9'|'4x5'|'4x3'|'6x5', optional), class (extra classes), width, height, sparkles (true adds six),
-          base (external base URL, optional: files are fetched as base/<file>.mov and .mp4), file (external file base, defaults to name),
-          words ('key:Label,key:Label' renders a .loop__word for a stage; keys match the tabs' data-state).
+          ratio ('16x9'|'4x5'|'4x3'|'6x5', optional), class (extra classes), width, height, sparkles (true adds six), base (external base URL, optional).
   Usage: {% render 'dandy-loop', name: 'cshop-mechanism-loop', poster: 'cshop-loop-mechanism-poster.jpg', alt: '...', loop: true, ratio: '16x9', sparkles: true %}
 {%- endcomment -%}
 {%- if base != blank -%}
-  {%- assign ext_name = file | default: name -%}
-  {%- assign mov = base | append: '/' | append: ext_name | append: '.mov' -%}
-  {%- assign mp4 = base | append: '/' | append: ext_name | append: '.mp4' -%}
+  {%- assign mov = base | append: '/' | append: name | append: '.mov' -%}
+  {%- assign mp4 = base | append: '/' | append: name | append: '.mp4' -%}
 {%- else -%}
   {%- assign mov = name | append: '.mov' | asset_url -%}
   {%- assign mp4 = name | append: '.mp4' | asset_url -%}
@@ -20,9 +17,5 @@
     <source src="{{ mov }}" type="video/quicktime">
     <source src="{{ mp4 }}" type="video/mp4">
   </video>
-  {%- if words != blank -%}
-  {%- assign pairs = words | split: ',' -%}
-  <span class="loop__word" aria-hidden="true">{% for pair in pairs %}{% assign kv = pair | split: ':' %}<b data-for="{{ kv[0] | strip }}">{{ kv[1] | strip }}</b>{% endfor %}</span>
-  {%- endif -%}
   {%- if sparkles %}{% render 'dandy-sparkles' %}{% endif -%}
 </figure>

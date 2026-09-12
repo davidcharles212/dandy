@@ -1,0 +1,698 @@
+{%- render 'dandy-fonts' -%}
+
+<div class="dpv{% if section.settings.art_contain %} dpv--contain{% endif %}" style="--dpv-bg: {{ section.settings.background_color }};">
+  {%- if section.settings.gummies_image != blank -%}
+    <div class="dpv__gummies" aria-hidden="true">
+      <div class="dpv__gummy dpv__gummy--blur">
+        {{ section.settings.gummies_image | image_url: width: 1050 | image_tag: widths: '350, 700, 1050', sizes: '350px', alt: '', loading: 'lazy' }}
+      </div>
+      <div class="dpv__gummy dpv__gummy--sharp">
+        {{ section.settings.gummies_image | image_url: width: 1050 | image_tag: widths: '350, 700, 1050', sizes: '350px', alt: '', loading: 'lazy' }}
+      </div>
+    </div>
+  {%- elsif section.settings.gummies_image_asset != blank -%}
+    <div class="dpv__gummies" aria-hidden="true">
+      <div class="dpv__gummy dpv__gummy--blur">
+        <img src="{{ section.settings.gummies_image_asset | asset_url }}" sizes="350px" alt="" loading="lazy">
+      </div>
+      <div class="dpv__gummy dpv__gummy--sharp">
+        <img src="{{ section.settings.gummies_image_asset | asset_url }}" sizes="350px" alt="" loading="lazy">
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="dpv__intro">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="dpv__heading dpv__heading--desktop">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.heading_mobile != blank -%}
+      <h2 class="dpv__heading dpv__heading--mobile">{{ section.settings.heading_mobile | escape | newline_to_br }}</h2>
+    {%- endif -%}
+    {%- if section.settings.body != blank -%}
+      <p class="dpv__body">{{ section.settings.body | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <dandy-pdp-videos class="dpv__slider">
+    <div class="dpv__viewport" data-dpv-viewport tabindex="0" role="region" aria-label="{{ section.settings.heading | escape }}">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign has_video = false
+          if block.settings.video != blank or block.settings.video_asset != blank
+            assign has_video = true
+          endif
+          assign card_tag = 'div'
+          if has_video == false and block.settings.quote != blank
+            assign card_tag = 'figure'
+          endif
+        -%}
+        <{{ card_tag }} class="dpv__card{% if card_tag == 'figure' %} dpv__card--quote{% endif %}" data-dpv-card {{ block.shopify_attributes }}>
+          {%- if block.settings.video != blank -%}
+            {{ block.settings.video | video_tag: image_size: '1100x', class: 'dpv__video', loop: true, muted: true, playsinline: true, controls: false, preload: 'metadata' }}
+          {%- elsif block.settings.video_asset != blank -%}
+            <video
+              class="dpv__video"
+              muted
+              playsinline
+              loop
+              preload="metadata"
+              {% if block.settings.poster != blank %}
+                poster="{{ block.settings.poster | image_url: width: 1100 }}"
+              {% elsif block.settings.poster_asset != blank %}
+                poster="{{ block.settings.poster_asset | asset_url }}"
+              {% endif %}
+            >
+              <source src="{{ block.settings.video_asset | asset_url }}" type="video/mp4">
+            </video>
+          {%- elsif block.settings.poster != blank -%}
+            {{ block.settings.poster | image_url: width: 1100 | image_tag: widths: '450, 700, 1100', sizes: '(min-width: 1280px) 337px, 225px', alt: '', loading: 'lazy', class: 'dpv__video' }}
+          {%- elsif block.settings.poster_asset != blank -%}
+            <img src="{{ block.settings.poster_asset | asset_url }}" sizes="(min-width: 1280px) 337px, 225px" alt="" loading="lazy" class="dpv__video">
+          {%- endif -%}
+          {%- if has_video -%}
+            <button type="button" class="dpv__play" data-dpv-play aria-label="Play video">
+              <svg viewBox="0 0 46.8 46.8" fill="none" aria-hidden="true" focusable="false"><rect width="46.8" height="46.8" rx="23.4" fill="white"/><path d="M31.7489 21.9417L20.1152 16.1248C18.0407 15.0876 15.5999 16.5961 15.5999 18.9155V29.6189C15.5999 31.9383 18.0407 33.4468 20.1152 32.4095L31.7489 26.5927C33.6652 25.6345 33.6652 22.8998 31.7489 21.9417Z" fill="var(--dandy-accent, #164020)"/></svg>
+            </button>
+          {%- elsif block.settings.quote != blank or block.settings.name != blank -%}
+            <figcaption class="dpv__caption">
+              {%- if block.settings.quote != blank -%}
+                <p class="dpv__quote">{{ block.settings.quote | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.name != blank -%}
+                <p class="dpv__name">
+                  <span>{{ block.settings.name | escape }}</span>
+                  {%- if section.settings.verified_label != blank -%}
+                    <span class="dpv__verified">
+                      {%- if section.settings.verified_icon != blank -%}
+                        {{ section.settings.verified_icon | image_url: width: 64 | image_tag: alt: '', width: 14, height: 14, loading: 'lazy', class: 'dpv__verified-icon' }}
+                      {%- elsif section.settings.verified_icon_asset != blank -%}
+                        <img src="{{ section.settings.verified_icon_asset | asset_url }}" alt="" width="14" height="14" loading="lazy" class="dpv__verified-icon">
+                      {%- endif -%}
+                      {{ section.settings.verified_label | escape }}
+                    </span>
+                  {%- endif -%}
+                </p>
+              {%- endif -%}
+            </figcaption>
+          {%- endif -%}
+        </{{ card_tag }}>
+      {%- endfor -%}
+    </div>
+
+    <div class="dpv__nav">
+      <button type="button" class="dpv__arrow" data-dpv-step="-1" aria-label="{{ 'accessibility.slideshow_previous' | t | escape }}">
+        <svg viewBox="0 0 33.8 33.8" fill="none" aria-hidden="true" focusable="false"><circle cx="16.9" cy="16.9" r="16.9" transform="matrix(-1 0 0 1 33.8 0)" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M19.5 15.9254C20.0385 15.9254 20.475 16.3619 20.475 16.9004C20.475 17.4389 20.0385 17.8754 19.5 17.8754L19.5 16.9004L19.5 15.9254ZM11.0106 17.5898C10.6298 17.2091 10.6298 16.5917 11.0106 16.211L17.2154 10.0061C17.5962 9.62534 18.2135 9.62534 18.5943 10.0061C18.9751 10.3869 18.9751 11.0042 18.5943 11.385L13.0789 16.9004L18.5943 22.4158C18.9751 22.7966 18.9751 23.4139 18.5943 23.7947C18.2135 24.1754 17.5962 24.1754 17.2154 23.7947L11.0106 17.5898ZM19.5 16.9004L19.5 17.8754L11.7 17.8754L11.7 16.9004L11.7 15.9254L19.5 15.9254L19.5 16.9004Z" fill="var(--dandy-accent, #f4512b)"/></svg>
+      </button>
+      <div class="dpv__track">
+        <div class="dpv__rail" data-dpv-rail><span class="dpv__thumb" data-dpv-thumb></span></div>
+      </div>
+      <button type="button" class="dpv__arrow" data-dpv-step="1" aria-label="{{ 'accessibility.slideshow_next' | t | escape }}">
+        <svg viewBox="0 0 33.8 33.8" fill="none" aria-hidden="true" focusable="false"><circle cx="16.9" cy="16.9" r="16.9" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M14.3 15.9254C13.7616 15.9254 13.325 16.3619 13.325 16.9004C13.325 17.4389 13.7616 17.8754 14.3 17.8754L14.3 16.9004L14.3 15.9254ZM22.7895 17.5898C23.1702 17.2091 23.1702 16.5917 22.7895 16.211L16.5846 10.0061C16.2039 9.62534 15.5865 9.62534 15.2058 10.0061C14.825 10.3869 14.825 11.0042 15.2058 11.385L20.7212 16.9004L15.2058 22.4158C14.825 22.7966 14.825 23.4139 15.2058 23.7947C15.5865 24.1754 16.2039 24.1754 16.5846 23.7947L22.7895 17.5898ZM14.3 16.9004L14.3 17.8754L22.1 17.8754L22.1 16.9004L22.1 15.9254L14.3 15.9254L14.3 16.9004Z" fill="var(--dandy-accent, #f4512b)"/></svg>
+      </button>
+    </div>
+  </dandy-pdp-videos>
+</div>
+
+<script>
+  (() => {
+    if (customElements.get('dandy-pdp-videos')) return;
+    const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    class DandyPdpVideos extends HTMLElement {
+      connectedCallback() {
+        this.viewport = this.querySelector('[data-dpv-viewport]');
+        this.rail = this.querySelector('[data-dpv-rail]');
+        this.thumb = this.querySelector('[data-dpv-thumb]');
+        this.arrows = [...this.querySelectorAll('[data-dpv-step]')];
+        if (!this.viewport) return;
+
+        this.onScroll = () => {
+          cancelAnimationFrame(this.raf);
+          this.raf = requestAnimationFrame(() => this.update());
+        };
+
+        this.onClick = (event) => {
+          const arrow = event.target.closest('[data-dpv-step]');
+          if (arrow && this.contains(arrow)) {
+            const card = this.viewport.querySelector('[data-dpv-card]');
+            if (!card) return;
+            const gap = parseFloat(getComputedStyle(this.viewport).columnGap) || 0;
+            this.viewport.scrollBy({
+              left: Number(arrow.dataset.dpvStep) * (card.getBoundingClientRect().width + gap),
+              behavior: reduceMotion() ? 'auto' : 'smooth',
+            });
+            return;
+          }
+          const card = event.target.closest('[data-dpv-card]');
+          const video = card?.querySelector('video');
+          if (!video) return;
+          if (video.paused) {
+            this.querySelectorAll('video').forEach((other) => other !== video && other.pause());
+            video.muted = false;
+            video.play();
+          } else {
+            video.pause();
+          }
+        };
+
+        this.onMedia = (event) => {
+          const card = event.target.closest('[data-dpv-card]');
+          if (card) card.classList.toggle('is-playing', event.type === 'play');
+        };
+
+        this.viewport.addEventListener('scroll', this.onScroll, { passive: true });
+        this.addEventListener('click', this.onClick);
+        this.addEventListener('play', this.onMedia, true);
+        this.addEventListener('pause', this.onMedia, true);
+        this.resizeObserver = new ResizeObserver(this.onScroll);
+        this.resizeObserver.observe(this.viewport);
+        this.update();
+      }
+
+      disconnectedCallback() {
+        this.viewport?.removeEventListener('scroll', this.onScroll);
+        this.removeEventListener('click', this.onClick);
+        this.removeEventListener('play', this.onMedia, true);
+        this.removeEventListener('pause', this.onMedia, true);
+        this.resizeObserver?.disconnect();
+        cancelAnimationFrame(this.raf);
+      }
+
+      update() {
+        const { scrollLeft, scrollWidth, clientWidth } = this.viewport;
+        const max = Math.max(0, scrollWidth - clientWidth);
+        if (this.rail && this.thumb) {
+          const railWidth = this.rail.clientWidth;
+          const width = Math.max(24, railWidth * Math.min(1, clientWidth / scrollWidth));
+          this.thumb.style.width = `${width}px`;
+          this.thumb.style.transform = `translateX(${(railWidth - width) * (max > 0 ? scrollLeft / max : 0)}px)`;
+        }
+        if (this.arrows.length === 2) {
+          this.arrows[0].disabled = scrollLeft <= 1;
+          this.arrows[1].disabled = scrollLeft >= max - 1;
+        }
+      }
+    }
+
+    customElements.define('dandy-pdp-videos', DandyPdpVideos);
+  })();
+</script>
+
+<style>
+  .dpv {
+    position: relative;
+    z-index: 1;
+    padding: 39.5px 0 40px;
+    background: var(--dpv-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dpv *,
+  .dpv *::before,
+  .dpv *::after {
+    box-sizing: border-box;
+  }
+
+  .dpv :where(h2, p) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dpv__gummies {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .dpv__gummy {
+    position: absolute;
+    width: 230.69px;
+    height: 201.79px;
+    transform: rotate(-9.35deg);
+    transform-origin: 0 0;
+  }
+
+  .dpv__gummy img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+  .dpv--contain .dpv__gummy img {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .dpv--contain .dpv__gummy--sharp {
+    top: -67px;
+  }
+
+  .dpv--contain .dpv__gummy--blur {
+    top: -61px;
+  }
+
+  .dpv__gummy--blur {
+    top: -49.13px;
+    left: calc(100% - 161.43px);
+    filter: blur(2.75px);
+  }
+
+  .dpv__gummy--sharp {
+    top: -55px;
+    left: calc(100% - 168px);
+  }
+
+  .dpv__intro {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 16px;
+  }
+
+  .dpv__heading--desktop {
+    display: none;
+  }
+
+  .dpv .dpv__heading {
+    margin: -4.57px 0 -5.06px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .dpv .dpv__body {
+    margin: -4.58px 0;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpv__slider {
+    position: relative;
+    display: block;
+    margin-top: 32.13px;
+  }
+
+  .dpv__viewport {
+    display: flex;
+    gap: 16px;
+    margin-bottom: -4px;
+    padding: 0 16px 4px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+  }
+
+  .dpv__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dpv__viewport:focus-visible {
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
+    outline-offset: 4px;
+  }
+
+  .dpv__card {
+    position: relative;
+    flex: 0 0 225px;
+    height: 304px;
+    overflow: hidden;
+    border-radius: 8px 8px 32px 8px;
+    background: transparent;
+    box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
+    cursor: pointer;
+    scroll-snap-align: start;
+  }
+
+  .dpv__video {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dpv .dpv__play {
+    position: absolute;
+    top: 134px;
+    left: 50%;
+    display: block;
+    width: 36px;
+    height: 36px;
+    margin: 0 0 0 -18px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    box-shadow: none;
+    line-height: 0;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpv__play svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .dpv__card.is-playing .dpv__play {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .dpv__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    margin-top: 24px;
+    padding: 0 16px;
+  }
+
+  .dpv .dpv__arrow {
+    display: none;
+    flex: none;
+    width: 33.8px;
+    height: 33.8px;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    box-shadow: none;
+    line-height: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpv__arrow svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .dpv .dpv__arrow:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  .dpv .dpv__arrow:focus-visible,
+  .dpv .dpv__play:focus-visible {
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
+    outline-offset: 2px;
+  }
+
+  .dpv__track {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 14px;
+    padding: 4px 5px;
+    border-radius: 32px;
+    background: #d64827;
+  }
+
+  .dpv__rail {
+    position: relative;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 32px;
+    background: var(--dandy-accent-deep, #a02508);
+  }
+
+  .dpv__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 6px;
+    border-radius: 32px;
+    background: var(--dandy-pdp-cream, #fff9f0);
+  }
+
+
+  .dpv__card--quote {
+    margin: 0;
+    cursor: default;
+  }
+
+  .dpv__card--quote::after {
+    content: '';
+    position: absolute;
+    inset: 40% 0 0;
+    background: linear-gradient(to bottom, rgb(12 42 21 / 0) 0%, rgb(12 42 21 / 0.55) 45%, rgb(12 42 21 / 0.86) 100%);
+    pointer-events: none;
+  }
+
+  .dpv .dpv__caption {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    padding: 0 14px 16px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+  }
+
+  .dpv .dpv__quote {
+    margin: 0;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 19.5px;
+    letter-spacing: -0.15px;
+    text-wrap: pretty;
+    text-shadow: 0 1px 2px rgb(12 42 21 / 0.35);
+  }
+
+  .dpv .dpv__name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 10px;
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .dpv .dpv__verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    opacity: 0.92;
+  }
+
+  .dpv .dpv__verified-icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .dpv {
+      padding: 38.95px 32px 70.2px;
+    }
+
+    .dpv__gummy {
+      width: 349.06px;
+      height: 305.33px;
+    }
+
+    .dpv__gummy--blur {
+      top: -128.9px;
+      left: calc(100% - 272.05px);
+    }
+
+    .dpv__gummy--sharp {
+      top: -137.78px;
+      left: calc(100% - 282px);
+    }
+
+    .dpv--contain .dpv__gummy--sharp {
+      top: -80px;
+    }
+
+    .dpv--contain .dpv__gummy--blur {
+      top: -71px;
+    }
+
+    .dpv__intro {
+      align-items: center;
+      gap: 24px;
+      max-width: 679px;
+      margin: 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+
+    .dpv__heading--desktop {
+      display: block;
+    }
+
+    .dpv__heading--mobile {
+      display: none;
+    }
+
+    .dpv .dpv__heading {
+      margin: -5.94px 0 -6.57px;
+      font-size: 52px;
+      line-height: 57.2px;
+    }
+
+    .dpv .dpv__body {
+      margin: -5.95px 0;
+      font-size: 20.8px;
+      line-height: 27.04px;
+      letter-spacing: -0.208px;
+    }
+
+    .dpv__slider {
+      max-width: 1408px;
+      margin: 40.18px auto 0;
+    }
+
+    .dpv__viewport {
+      gap: 20px;
+      margin: 0 -5.2px -5.2px 0;
+      padding: 0 5.2px 5.2px 0;
+      scroll-padding-inline: 0;
+    }
+
+    .dpv__card {
+      flex: 0 0 calc((100% - 20px) / 2);
+      height: auto;
+      aspect-ratio: 337 / 445;
+      border-radius: 10.4px 10.4px 41.6px 10.4px;
+      box-shadow: 5.2px 5.2px 0 var(--dandy-accent-deep, #a02508);
+    }
+
+    .dpv .dpv__play {
+      top: 39.15%;
+      width: 46.8px;
+      height: 46.8px;
+      margin-left: -23.4px;
+    }
+
+    .dpv__nav {
+      margin-top: 40px;
+      padding: 0;
+    }
+
+    .dpv .dpv__arrow {
+      display: block;
+    }
+
+    .dpv__track {
+      flex: 0 0 328px;
+      width: 328px;
+    }
+
+    .dpv__thumb {
+      width: 148px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpv__card {
+      flex-basis: calc((100% - 40px) / 3);
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpv .dpv__quote {
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .dpv .dpv__caption {
+      padding: 0 18px 20px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .dpv__card {
+      flex-basis: calc((100% - 60px) / 4);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dandy videos",
+  "tag": "section",
+  "class": "dandy-pdp-videos-section",
+  "settings": [
+    { "type": "checkbox", "id": "art_contain", "label": "Product art: fit the whole image (jar cutouts)", "default": false, "info": "Off keeps the original cover-fit slots sized for the gummy pouch art." },
+    { "type": "text", "id": "heading", "label": "Heading (desktop)", "default": "How people do Dandy." },
+    { "type": "textarea", "id": "heading_mobile", "label": "Heading (mobile)", "default": "How people\ndo Dandy.", "info": "Press Enter to set the line break." },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Text",
+      "default": "Morning momentum, afternoon second winds and the little rituals in between."
+    },
+    { "type": "image_picker", "id": "gummies_image", "label": "Gummies (top right)" },
+    { "type": "text", "id": "gummies_image_asset", "label": "Gummies (top right) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "header", "content": "Photo cards (used when a card has no video)" },
+    { "type": "text", "id": "verified_label", "label": "Verified label", "info": "Shown next to the name on photo cards. Leave blank to hide." },
+    { "type": "image_picker", "id": "verified_icon", "label": "Verified icon" },
+    { "type": "text", "id": "verified_icon_asset", "label": "Verified icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video" },
+        { "type": "text", "id": "video_asset", "label": "Video (theme asset fallback)", "info": "MP4 filename in assets/, used when no video is picked." },
+        { "type": "image_picker", "id": "poster", "label": "Image", "info": "Shown when no video is set." },
+        { "type": "text", "id": "poster_asset", "label": "Image (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+        { "type": "textarea", "id": "quote", "label": "Quote", "info": "With no video, the card becomes a photo and quote card (no play button)." },
+        { "type": "text", "id": "name", "label": "Name" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Dandy videos",
+      "blocks": [{ "type": "video" }, { "type": "video" }, { "type": "video" }, { "type": "video" }]
+    }
+  ]
+}
+{% endschema %}

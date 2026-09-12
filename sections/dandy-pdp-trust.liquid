@@ -1,0 +1,445 @@
+{%- render 'dandy-fonts' -%}
+{%- capture stars -%}<svg class="dpu__stars" viewBox="0 0 100 20" fill="var(--dandy-accent, #f4512b)" role="img" aria-label="5 out of 5 stars" focusable="false">{%- for i in (0..4) -%}<path transform="translate({{ i | times: 20 | plus: 1.27 }} 0)" d="M8.09485 0.389264C8.35995 -0.130201 9.1022 -0.130201 9.3673 0.389264L11.5636 4.69293C11.6674 4.8963 11.8622 5.0378 12.0876 5.07367L16.8594 5.83257C17.4353 5.92417 17.6647 6.63009 17.2526 7.04274L13.8382 10.4615C13.6769 10.623 13.6025 10.852 13.6381 11.0775L14.3909 15.8502C14.4817 16.4263 13.8812 16.8626 13.3614 16.5981L9.05495 14.4073C8.85145 14.3038 8.61071 14.3038 8.40721 14.4073L4.10073 16.5981C3.58092 16.8626 2.98043 16.4263 3.07129 15.8502L3.82408 11.0775C3.85965 10.852 3.78526 10.623 3.62391 10.4615L0.209579 7.04274C-0.202541 6.63009 0.0268259 5.92417 0.602787 5.83257L5.37451 5.07367C5.6 5.0378 5.79476 4.8963 5.89855 4.69293L8.09485 0.389264Z"/>{%- endfor -%}</svg>{%- endcapture -%}
+
+<div class="dpu" style="--dpu-bg: {{ section.settings.background_color }}; --dpu-next: {{ section.settings.next_color }};">
+  {%- if section.settings.hand_image != blank -%}
+    <div class="dpu__hand dpu__hand--desktop" aria-hidden="true">
+      {{ section.settings.hand_image | image_url: width: 1080 | image_tag: widths: '540, 810, 1080', sizes: '270px', alt: '', loading: 'lazy' }}
+    </div>
+  {%- elsif section.settings.hand_image_asset != blank -%}
+    <div class="dpu__hand dpu__hand--desktop" aria-hidden="true">
+      <img src="{{ section.settings.hand_image_asset | asset_url }}" sizes="270px" alt="" loading="lazy">
+    </div>
+  {%- endif -%}
+  {%- assign hand_mobile = section.settings.hand_image_mobile | default: section.settings.hand_image -%}
+  {%- assign hand_mobile_asset = section.settings.hand_image_mobile_asset | default: section.settings.hand_image_asset -%}
+  {%- if hand_mobile != blank -%}
+    <div class="dpu__hand dpu__hand--mobile" aria-hidden="true">
+      {{ hand_mobile | image_url: width: 588 | image_tag: widths: '294, 441, 588', sizes: '147px', alt: '', loading: 'lazy' }}
+    </div>
+  {%- elsif hand_mobile_asset != blank -%}
+    <div class="dpu__hand dpu__hand--mobile" aria-hidden="true">
+      <img src="{{ hand_mobile_asset | asset_url }}" sizes="147px" alt="" loading="lazy">
+    </div>
+  {%- endif -%}
+
+  <div class="dpu__inner">
+    <div class="dpu__intro">
+      {{ stars }}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="dpu__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="dpu__grid">
+      {%- for block in section.blocks -%}
+        <article class="dpu__card" {{ block.shopify_attributes }}>
+          {{ stars }}
+          {%- if block.settings.quote != blank -%}
+            <p class="dpu__quote">{{ block.settings.quote | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.name != blank -%}
+            <p class="dpu__name">{{ block.settings.name | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.verified_label != blank -%}
+            <p class="dpu__verified">
+              {%- if section.settings.verified_icon != blank -%}
+                {{ section.settings.verified_icon | image_url: width: 128 | image_tag: alt: '', width: 16, height: 16, loading: 'lazy', class: 'dpu__verified-icon' }}
+              {%- elsif section.settings.verified_icon_asset != blank -%}
+                <img src="{{ section.settings.verified_icon_asset | asset_url }}" alt="" width="16" height="16" loading="lazy" class="dpu__verified-icon">
+              {%- endif -%}
+              <span>{{ section.settings.verified_label | escape }}</span>
+            </p>
+          {%- endif -%}
+        </article>
+      {%- endfor -%}
+      {%- if section.blocks.size > 3 -%}
+        <div class="dpu__fade" aria-hidden="true"></div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.link_label != blank and section.blocks.size > 3 -%}
+      <button
+        type="button"
+        class="dpu__link{% if section.blocks.size <= 6 %} dpu__link--mobile-only{% endif %}"
+        data-dpu-more
+        data-more="{{ section.settings.link_label | escape }}"
+        data-less="{{ section.settings.less_label | escape }}"
+        aria-expanded="false"
+      >{{ section.settings.link_label | escape }}</button>
+      <script>
+        (() => {
+          const button = document.currentScript.previousElementSibling;
+          const section = button?.closest('.dpu');
+          if (!button || !section) return;
+          button.addEventListener('click', () => {
+            const open = !section.classList.contains('is-expanded');
+            section.classList.toggle('is-expanded', open);
+            button.setAttribute('aria-expanded', String(open));
+            button.textContent = open ? button.dataset.less : button.dataset.more;
+            if (!open) {
+              const grid = section.querySelector('.dpu__grid');
+              if (grid && grid.getBoundingClientRect().top < 0) {
+                grid.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+              }
+            }
+          });
+        })();
+      </script>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.show_wedge -%}
+    <div class="dpu__wedge" aria-hidden="true"></div>
+  {%- endif -%}
+</div>
+
+<style>
+  .dpu {
+    position: relative;
+    z-index: 1;
+    padding-top: 46.13px;
+    background: var(--dpu-bg, var(--dandy-pdp-cream, #fff9f0));
+    color: #241914;
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dpu *,
+  .dpu *::before,
+  .dpu *::after {
+    box-sizing: border-box;
+  }
+
+  .dpu :where(h2, p) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dpu__hand {
+    position: absolute;
+    top: -101.93px;
+    right: 0;
+    z-index: 3;
+    width: 147px;
+    height: 216.12px;
+    pointer-events: none;
+  }
+
+  .dpu__hand--desktop {
+    display: none;
+  }
+
+  .dpu__hand img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .dpu__inner {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px 21px;
+  }
+
+  .dpu__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .dpu .dpu__stars {
+    display: block;
+    flex: none;
+    width: 100px;
+    height: 20px;
+  }
+
+  .dpu .dpu__heading {
+    max-width: 268px;
+    margin: -4.57px 0 -5.06px;
+    color: #241914;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dpu__grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin-top: 23.57px;
+  }
+
+  .dpu__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 182px;
+    padding: 16px;
+    border-radius: 8px 8px 32px 8px;
+    background: var(--dandy-pdp-cream, #fff9f0);
+    box-shadow: inset 0 0 0 1px var(--dandy-accent, #f4512b);
+  }
+
+  .dpu__grid > .dpu__card:nth-child(n + 4) {
+    display: none;
+  }
+
+  .dpu .dpu__quote {
+    margin: 15.42px 0 -4.58px;
+    color: #000;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpu .dpu__name {
+    margin: 15.42px 0 -4.58px;
+    color: #000;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpu .dpu__verified {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 14px;
+    margin-top: 10px;
+    color: rgb(0 0 0 / 0.6);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpu__verified span {
+    margin: -4.58px 0;
+  }
+
+  .dpu .dpu__verified-icon {
+    display: block;
+    flex: none;
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+  }
+
+  .dpu__fade {
+    position: absolute;
+    right: 0;
+    bottom: -5.61px;
+    left: 0;
+    z-index: 1;
+    height: 248px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--dandy-pdp-cream, #fff9f0) 32%, transparent) 0%, var(--dandy-pdp-cream, #fff9f0) 84%);
+    pointer-events: none;
+  }
+
+  .dpu.is-expanded .dpu__grid > .dpu__card {
+    display: flex;
+  }
+
+  .dpu.is-expanded .dpu__fade {
+    display: none;
+  }
+
+  .dpu .dpu__link {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 24px;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .dpu__wedge {
+    position: relative;
+    z-index: 2;
+    height: 35.02px;
+    margin-bottom: -2px;
+    background: var(--dpu-next, var(--dandy-accent, #f4512b));
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
+  }
+
+  /* Punch list 2026-09-11: the desktop hand is pinned to the section edge, so it only clears the top-right review
+     card once the centred container has 286 px of side margin (2048 px and up, measured 1280 to 1600). */
+  @media screen and (min-width: 750px) and (max-width: 2047px) {
+    .dpu__hand--desktop {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .dpu {
+      padding-top: 38.95px;
+    }
+
+    .dpu__hand--desktop {
+      top: -159.05px;
+      display: block;
+      width: 270px;
+      height: 452.75px;
+    }
+
+    .dpu__hand--mobile {
+      display: none;
+    }
+
+    .dpu__inner {
+      max-width: 1472px;
+      padding: 0 32px 39.6px;
+    }
+
+    .dpu .dpu__heading {
+      max-width: none;
+      margin: -5.48px 0 -6.07px;
+      font-size: 48px;
+      line-height: 52.8px;
+    }
+
+    .dpu__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 19.8px 20px;
+      margin-top: 39.75px;
+    }
+
+    .dpu__grid > .dpu__card:nth-child(n + 4) {
+      display: flex;
+    }
+
+    .dpu__grid > .dpu__card:nth-child(n + 7) {
+      display: none;
+    }
+
+    .dpu .dpu__link--mobile-only {
+      display: none;
+    }
+
+    .dpu__fade {
+      display: none;
+    }
+
+    .dpu__card {
+      min-height: 197.2px;
+      padding: 24px;
+      box-shadow: inset 0 0 0 1.3px var(--dandy-accent, #f4512b);
+    }
+
+    .dpu .dpu__quote {
+      margin: 20.26px 0 -5.15px;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+    }
+
+    .dpu .dpu__name {
+      margin: 20.85px 0 -5.15px;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+    }
+
+    .dpu .dpu__verified {
+      gap: 8px;
+      min-height: 16.2px;
+      margin-top: 12px;
+    }
+
+    .dpu .dpu__verified-icon {
+      width: 16.2px;
+      height: 16.2px;
+    }
+
+    .dpu .dpu__link {
+      margin-top: 39.8px;
+      font-size: 18px;
+      line-height: 23.4px;
+    }
+
+    .dpu__wedge {
+      height: 63.05px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpu__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dandy trusted reviews",
+  "tag": "section",
+  "class": "dandy-pdp-trust-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trusted by 1k+ people like you" },
+    { "type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified Buyer" },
+    { "type": "image_picker", "id": "verified_icon", "label": "Verified icon" },
+    { "type": "text", "id": "verified_icon_asset", "label": "Verified icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Read More Reviews" },
+    { "type": "text", "id": "less_label", "label": "Show less label", "default": "Show Less" },
+    { "type": "image_picker", "id": "hand_image", "label": "Hand with pouch (desktop)" },
+    { "type": "text", "id": "hand_image_asset", "label": "Hand with pouch (desktop) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "image_picker", "id": "hand_image_mobile", "label": "Hand with pouch (mobile)" },
+    { "type": "text", "id": "hand_image_mobile_asset", "label": "Hand with pouch (mobile) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
+    { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },
+    { "type": "color", "id": "next_color", "label": "Next section color", "default": "#F4512B" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Marcus T." }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Dandy trusted reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

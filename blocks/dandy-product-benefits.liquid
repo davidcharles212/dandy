@@ -1,0 +1,63 @@
+{%- liquid
+  assign benefits = closest.product.metafields.custom.product_benefits.value
+  if block.settings.benefits_override != blank
+    assign benefits = block.settings.benefits_override | strip | newline_to_br | split: '<br />'
+  endif
+-%}
+
+{%- if benefits != blank -%}
+  <ul class="dandy-benefits" {{ block.shopify_attributes }}>
+    {%- for benefit in benefits -%}
+      {%- assign benefit_text = benefit | strip -%}
+      {%- if benefit_text == blank -%}{%- continue -%}{%- endif -%}
+      <li class="dandy-benefits__item">
+        {%- if block.settings.benefit_icon != blank -%}
+          {{-
+            block.settings.benefit_icon
+            | image_url: width: 72
+            | image_tag: alt: '', width: 18, height: 18, loading: 'eager', class: 'dandy-benefits__icon'
+          -}}
+        {%- elsif block.settings.benefit_icon_asset != blank -%}
+          <img src="{{ block.settings.benefit_icon_asset | asset_url }}" alt="" width="18" height="18" loading="eager" class="dandy-benefits__icon">
+        {%- endif -%}
+        <span class="dandy-benefits__text dandy-trim">{{ benefit_text | escape }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- elsif request.design_mode -%}
+  <p class="dandy-editor-note" {{ block.shopify_attributes }}>
+    Add benefits to this product's <strong>custom.product_benefits</strong> metafield (list of single line text), or fill the "Benefits override" setting.
+  </p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Dandy benefits",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "benefit_icon",
+      "label": "Benefit checkmark icon",
+      "info": "Displayed at 18 × 18px (14 × 14px on mobile)."
+    },
+    {
+      "type": "text",
+      "id": "benefit_icon_asset",
+      "label": "Benefit checkmark icon (theme asset fallback)",
+      "info": "Filename in assets/, used when no image is picked."
+    },
+    {
+      "type": "textarea",
+      "id": "benefits_override",
+      "label": "Benefits override",
+      "info": "One benefit per line. Leave blank to use the product metafield custom.product_benefits."
+    },
+    {
+      "type": "paragraph",
+      "content": "Benefit text comes from the product metafield custom.product_benefits unless overridden above."
+    }
+  ],
+  "presets": [{ "name": "Dandy benefits" }]
+}
+{% endschema %}

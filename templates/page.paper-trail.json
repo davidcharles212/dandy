@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "paper-trail",
+  "sections": {
+    "main": {
+      "type": "dandy-paper-trail",
+      "settings": {
+        "gummies_url": "/products/mixed-berry-kratom-gummies?variant=47958359933106",
+        "capsules_url": "/products/extract-capsules-50mg",
+        "capsules_90_url": "/products/extract-capsules-90mg",
+        "powder_url": "/products/premium-kratom-leaf-powder",
+        "coa_url": "/pages/contact?view=dandy2-coa",
+        "video_base": "",
+        "standins": false,
+        "rev2_quote": "Love that each batch is the same and I can view the test results. Super consistent experience every time",
+        "rev2_name": "",
+        "rev2_note": "Verified customer",
+        "coa_batch_id": "RD8221-B"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

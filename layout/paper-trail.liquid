@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{ page_title }}</title>
+  {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="robots" content="noindex">
+  <meta property="og:title" content="{{ page_title | escape }}">
+  {%- if page_description -%}<meta property="og:description" content="{{ page_description | escape }}">{%- endif -%}
+  <meta property="og:image" content="{{ 'pt-og.jpg' | asset_url }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    /* Hero angle (?a=store|lap|factory) and h1 test variant (?h=a|b|c) are read before first paint so the support line and the agitation still never flash. Store is the default. */
+    (function(){var q=location.search,a=/[?&]a=(store|lap|factory)\b/.exec(q),h=/[?&]h=(a|b|c)\b/.exec(q),d=document.documentElement;d.dataset.angle=a?a[1]:'store';d.dataset.h=h?h[1]:'a';})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  {{ 'paper-trail.css' | asset_url | stylesheet_tag }}
+  {{ 'paper-trail-motion.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body class="pt-body">
+  {{ content_for_layout }}
+  <script src="{{ 'paper-trail.js' | asset_url }}" defer></script>
+  <script src="{{ 'paper-trail-motion.js' | asset_url }}" defer></script>
+</body>
+</html>

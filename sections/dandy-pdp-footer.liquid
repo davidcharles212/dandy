@@ -1,0 +1,451 @@
+{%- render 'dandy-fonts' -%}
+
+<footer class="dff" style="--dff-bg: {{ section.settings.background_color }};">
+  <div class="dff__inner">
+    <a class="dff__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+      <svg class="dff__logo-desktop" viewBox="0 0 172.9 69.59" fill="none" aria-hidden="true" focusable="false"><path d="M13.6255 68.3048L0 69.5902V16.2987L13.6255 15.0132C26.8437 13.7683 32.3312 26.3175 32.3312 39.8951C32.3312 53.4727 26.8383 67.0599 13.6255 68.3048ZM13.9647 27.025L13.2846 27.0907V56.293L13.9647 56.2272C18.031 55.8464 18.7111 48.0447 18.7111 41.1806C18.7111 34.3164 18.031 26.6442 13.9647 27.025Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M54.6997 64.4364L53.8832 58.6006L46.6317 59.283L45.817 65.2734L32.667 66.5144L43.7802 12.1732L57.3358 10.8936L68.449 63.1413L54.6889 64.4364H54.6997ZM50.2924 31.1246L47.9219 49.0882L52.5983 48.6455L50.2924 31.1246Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M92.6527 60.8607L84.0445 38.8938V61.6726L71.4401 62.8633V9.56595L82.0832 8.56271L90.1512 29.1185V7.79916L102.761 6.61035V59.9077L92.6616 60.8607H92.6527Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M120.982 58.1904L107.357 59.474V6.17855L120.982 4.89309C134.197 3.64822 139.688 16.1974 139.688 29.775C139.688 43.3525 134.195 56.9398 120.982 58.1846V58.1904ZM121.321 16.9107L120.647 16.9764V46.1786L121.321 46.1129C125.388 45.7321 126.068 37.9304 126.068 31.0643C126.068 24.2001 125.393 16.528 121.321 16.9107Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M162.261 31.5914V54.2948L148.636 55.5803V32.7996L138.063 3.28228L152.229 1.94656L155.685 17.461L159.141 1.29513L172.899 0L162.256 31.5914H162.261Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
+      <svg class="dff__logo-mobile" viewBox="0 0 83 31" fill="none" aria-hidden="true" focusable="false"><path d="M6.54087 30.4275L0 31.0001V7.26013L6.54087 6.68749C12.8862 6.13293 15.5205 11.7233 15.5205 17.7717C15.5205 23.8202 12.8836 29.8729 6.54087 30.4275ZM6.70368 12.0384L6.37719 12.0677V25.0765L6.70368 25.0472C8.65569 24.8776 8.98217 21.4022 8.98217 18.3443C8.98217 15.2865 8.65569 11.8688 6.70368 12.0384Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M26.2582 28.7045L25.8662 26.1048L22.3852 26.4087L21.9941 29.0773L15.6815 29.6301L21.0164 5.42259L27.5236 4.85254L32.8585 28.1275L26.253 28.7045H26.2582ZM24.1425 13.8649L23.0046 21.8672L25.2495 21.67L24.1425 13.8649Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M44.4776 27.1114L40.3453 17.3258V27.4731L34.2946 28.0035V4.26097L39.4037 3.81406L43.2767 12.9711V3.47392L49.33 2.94434V26.6869L44.4819 27.1114H44.4776Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M58.077 25.9222L51.5361 26.494V2.75232L58.077 2.17968C64.4206 1.62512 67.0566 7.21545 67.0566 13.2639C67.0566 19.3123 64.4197 25.3651 58.077 25.9197V25.9222ZM58.2398 7.5332L57.9159 7.56248V20.5713L58.2398 20.542C60.1918 20.3724 60.5183 16.8969 60.5183 13.8383C60.5183 10.7805 60.1944 7.3627 58.2398 7.5332Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M77.8928 14.0731V24.1869L71.3519 24.7595V14.6113L66.2764 1.46217L73.0765 0.867139L74.7356 7.77842L76.3948 0.576944L82.9994 0L77.8902 14.0731H77.8928Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
+    </a>
+
+    <div class="dff__cols">
+      <div class="dff__col dff__col--main">
+        {%- if section.settings.tagline != blank -%}
+          <p class="dff__tagline">{{ section.settings.tagline | escape }}</p>
+        {%- endif -%}
+        <hr class="dff__line">
+        <div class="dff__block">
+          {%- if section.settings.newsletter_heading != blank -%}
+            <p class="dff__title">{{ section.settings.newsletter_heading | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.newsletter_text != blank -%}
+            <p class="dff__text">{{ section.settings.newsletter_text | escape }}</p>
+          {%- endif -%}
+          {%- form 'customer', id: 'DandyFooterNewsletter', class: 'dff__form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}
+              <p class="dff__msg" role="status">{{ section.settings.success_text | escape }}</p>
+            {%- else -%}
+              <div class="dff__field">
+                <label class="dff__sr" for="DandyFooterEmail">{{ section.settings.placeholder | escape }}</label>
+                <input
+                  id="DandyFooterEmail"
+                  class="dff__input"
+                  type="email"
+                  name="contact[email]"
+                  value="{{ form.email }}"
+                  placeholder="{{ section.settings.placeholder | escape }}"
+                  autocomplete="email"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  required
+                  {% if form.errors %}aria-invalid="true" aria-describedby="DandyFooterError"{% endif %}
+                >
+                <button type="submit" class="dff__submit">{{ section.settings.button_label | escape }}</button>
+              </div>
+              {%- if form.errors -%}
+                <p class="dff__msg dff__msg--error" id="DandyFooterError" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+        <hr class="dff__line">
+        {%- if section.settings.copyright != blank -%}
+          <p class="dff__copy dff__copy--desktop">{{ section.settings.copyright | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- for i in (1..2) -%}
+        {%- liquid
+          assign title_key = 'menu_' | append: i | append: '_title'
+          assign menu_key = 'menu_' | append: i
+          assign menu_title = section.settings[title_key]
+          assign menu = section.settings[menu_key]
+        -%}
+        {%- if i == 2 -%}<hr class="dff__line dff__line--mobile">{%- endif -%}
+        <div class="dff__col dff__col--menu">
+          <div class="dff__block">
+            {%- if menu_title != blank -%}
+              <p class="dff__title">{{ menu_title | escape }}</p>
+            {%- endif -%}
+            {%- if menu != blank -%}
+              <ul class="dff__links">
+                {%- for link in menu.links -%}
+                  <li><a class="dff__link" href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+
+      {%- if section.settings.copyright != blank -%}
+        <hr class="dff__line dff__line--mobile">
+        <p class="dff__copy dff__copy--mobile">{{ section.settings.copyright | escape }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+<style>
+  .dff {
+    position: relative;
+    z-index: 1;
+    background: var(--dff-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dff *,
+  .dff *::before,
+  .dff *::after {
+    box-sizing: border-box;
+  }
+
+  .dff :where(p, ul) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dff :where(ul) {
+    list-style: none;
+  }
+
+  .dff__inner {
+    position: relative;
+    max-width: 592px;
+    margin: 0 auto;
+    padding: 162.98px 16px 67.59px;
+  }
+
+  .dff .dff__logo {
+    position: absolute;
+    top: -12.02px;
+    left: 16px;
+    z-index: 3;
+    display: block;
+    width: calc(100% - 32px);
+    line-height: 0;
+  }
+
+  .dff__logo svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .dff__logo-desktop {
+    display: none !important;
+  }
+
+  .dff__cols {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .dff__col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+  }
+
+  .dff .dff__line {
+    width: 100%;
+    max-width: 100%;
+    height: 1px;
+    margin: -0.5px 0;
+    border: 0;
+    background: var(--dandy-pdp-cream, #fff9f0);
+  }
+
+  .dff .dff__tagline {
+    margin: -5.72px 0;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: -0.2px;
+  }
+
+  .dff__block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dff .dff__title {
+    margin: -2.28px 0 -2.53px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dff .dff__text,
+  .dff .dff__link {
+    display: block;
+    margin: -4.58px 0;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+    text-decoration: none;
+  }
+
+  .dff .dff__link:hover {
+    text-decoration: underline;
+  }
+
+  .dff__links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dff__form {
+    margin: 0;
+  }
+
+  .dff__field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+    border-radius: 8px 8px 32px 8px;
+    box-shadow: inset 0 0 0 1px #fdfcf8;
+  }
+
+  .dff .dff__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0 12px 0 23.5px;
+    border: 0;
+    border-radius: 8px 0 0 32px;
+    background: transparent;
+    box-shadow: none;
+    color: #fdfcf8;
+    font-family: inherit;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23.4px;
+    letter-spacing: 0;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dff .dff__input::placeholder {
+    color: rgb(255 255 255 / 0.56);
+    opacity: 1;
+  }
+
+  .dff .dff__field:focus-within {
+    box-shadow: inset 0 0 0 2px #fdfcf8;
+  }
+
+  .dff .dff__submit {
+    flex: none;
+    height: 100%;
+    margin: 0;
+    padding: 0 27.5px 0 12px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    color: #fdfcf8;
+    font-family: inherit;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 23.4px;
+    letter-spacing: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dff .dff__submit:focus-visible {
+    outline: 2px solid #fdfcf8;
+    outline-offset: -6px;
+  }
+
+  .dff .dff__msg {
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.8px;
+  }
+
+  .dff .dff__msg--error {
+    margin-top: 10px;
+  }
+
+  .dff__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .dff .dff__copy {
+    margin: -4.01px 0;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+  }
+
+  .dff__copy--desktop {
+    display: none;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dff__inner {
+      max-width: 1472px;
+      padding: 191.95px 32px 58.6px;
+    }
+
+    .dff .dff__logo {
+      top: 72.36px;
+      left: 38.1px;
+      width: 172.9px;
+    }
+
+    .dff__logo-desktop {
+      display: block !important;
+    }
+
+    .dff__logo-mobile {
+      display: none !important;
+    }
+
+    .dff__cols {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 70px;
+    }
+
+    .dff__col {
+      gap: 41.6px;
+    }
+
+    .dff__col--main {
+      flex: 0 1 552px;
+    }
+
+    .dff__col--menu {
+      flex: 0 1 287.3px;
+      padding-top: 100px;
+    }
+
+    .dff__line--mobile,
+    .dff__copy--mobile {
+      display: none;
+    }
+
+    .dff__copy--desktop {
+      display: block;
+    }
+
+    .dff .dff__line {
+      width: 100%;
+      height: 1.3px;
+      margin: -0.65px 0;
+    }
+
+    .dff .dff__tagline {
+      margin: -6.87px 0;
+      font-size: 24px;
+      line-height: 31.2px;
+      letter-spacing: -0.24px;
+    }
+
+    .dff__block,
+    .dff__links {
+      gap: 26px;
+    }
+
+    .dff .dff__title {
+      margin: -2.97px 0 -3.29px;
+      font-size: 26px;
+      line-height: 28.6px;
+    }
+
+    .dff .dff__text,
+    .dff .dff__link {
+      margin: -5.15px 0;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+    }
+
+    .dff__field {
+      width: 100%;
+      height: 78px;
+      box-shadow: inset 0 0 0 1.3px #fdfcf8;
+    }
+
+    .dff .dff__input {
+      padding-left: 29.9px;
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    .dff .dff__submit {
+      padding-right: 44.1px;
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    .dff .dff__copy {
+      margin: -4.58px 0;
+      font-size: 16px;
+      line-height: 20.8px;
+      letter-spacing: -0.16px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dandy footer",
+  "tag": "section",
+  "class": "dandy-pdp-footer-section",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Kratom made fine and Dandy." },
+    { "type": "header", "content": "Newsletter" },
+    { "type": "text", "id": "newsletter_heading", "label": "Heading", "default": "Stay in the know" },
+    { "type": "text", "id": "newsletter_text", "label": "Text", "default": "Good emails. No inbox nonsense." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Enter your email" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Sign Up" },
+    { "type": "text", "id": "success_text", "label": "Success message", "default": "Thanks for signing up!" },
+    { "type": "header", "content": "Menus" },
+    { "type": "text", "id": "menu_1_title", "label": "Menu 1 heading", "default": "Shop" },
+    { "type": "link_list", "id": "menu_1", "label": "Menu 1" },
+    { "type": "text", "id": "menu_2_title", "label": "Menu 2 heading", "default": "Know" },
+    { "type": "link_list", "id": "menu_2", "label": "Menu 2" },
+    { "type": "header", "content": "Bottom" },
+    { "type": "text", "id": "copyright", "label": "Copyright", "default": "© 2026 DANDY, All rights reserved." },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" }
+  ],
+  "presets": [{ "name": "Dandy footer" }]
+}
+{% endschema %}

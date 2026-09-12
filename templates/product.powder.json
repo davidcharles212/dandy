@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product_hero": {
@@ -12,18 +21,9 @@
         "highlight_2": "Choose the available pouch size above",
         "highlight_3": "[FINAL LABEL REQUIRED: grind, ingredients, and serving facts]",
         "highlight_4": "Batch report access when the finished-lot report is published",
-        "preselect_subscription": false,
-        "enable_quantity_ladder": false,
-        "single_selection_label": "Selected pouch",
-        "one_time_detail": "Choose an available pouch size above. Cart pricing follows Shopify's current server-side rules.",
-        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: charge today, renewal amount and cadence, shipping, edit/skip/cancel path]",
         "reassurance_1": "21+ only",
         "reassurance_2": "Secure checkout",
         "reassurance_3": "Eligibility checked at checkout",
-        "development_preview": true,
-        "development_unit_price": "3499",
-        "development_three_pack_price": "0",
-        "development_five_pack_price": "0",
         "claim_ids": "C-02 C-03 C-04 C-05 C-09 C-10 C-13 C-16",
         "copy_status": "aggressive-draft"
       }
@@ -77,12 +77,45 @@
     "responsible_use": {
       "type": "dandy-icon-grid",
       "blocks": {
-        "measure": { "type": "card", "settings": { "icon": "check", "heading": "Measure, don't guess", "text": "<p>Use the exact tool and amount specified on the final label.</p>" } },
-        "smallest": { "type": "card", "settings": { "icon": "leaf", "heading": "Begin with the smallest labeled serving", "text": "<p>Powder can look deceptively simple; the label still controls.</p>" } },
-        "wait": { "type": "card", "settings": { "icon": "calendar", "heading": "Wait the full labeled interval", "text": "<p>Do not stack servings while waiting for an experience.</p>" } },
-        "mix": { "type": "card", "settings": { "icon": "lab", "heading": "Do not mix casually", "text": "<p>[FINAL LABEL REQUIRED: approved interaction, medication, condition, driving, pregnancy, and age warnings.]</p>" } }
+        "measure": {
+          "type": "card",
+          "settings": {
+            "icon": "check",
+            "heading": "Measure, don't guess",
+            "text": "<p>Use the exact tool and amount specified on the final label.</p>"
+          }
+        },
+        "smallest": {
+          "type": "card",
+          "settings": {
+            "icon": "leaf",
+            "heading": "Begin with the smallest labeled serving",
+            "text": "<p>Powder can look deceptively simple; the label still controls.</p>"
+          }
+        },
+        "wait": {
+          "type": "card",
+          "settings": {
+            "icon": "calendar",
+            "heading": "Wait the full labeled interval",
+            "text": "<p>Do not stack servings while waiting for an experience.</p>"
+          }
+        },
+        "mix": {
+          "type": "card",
+          "settings": {
+            "icon": "lab",
+            "heading": "Do not mix casually",
+            "text": "<p>[FINAL LABEL REQUIRED: approved interaction, medication, condition, driving, pregnancy, and age warnings.]</p>"
+          }
+        }
       },
-      "block_order": ["measure", "smallest", "wait", "mix"],
+      "block_order": [
+        "measure",
+        "smallest",
+        "wait",
+        "mix"
+      ],
       "settings": {
         "eyebrow": "Use guidance",
         "heading": "Measure first. Then give it time.",
@@ -94,12 +127,41 @@
     "quality_timeline": {
       "type": "dandy-timeline",
       "blocks": {
-        "source": { "type": "step", "settings": { "heading": "Document the leaf", "text": "[FINAL PROCESS FACT REQUIRED: source, botanical identity, and material controls]" } },
-        "make": { "type": "step", "settings": { "heading": "Prepare the powder", "text": "[FINAL PROCESS FACT REQUIRED: actual processing partner, grind, and controls]" } },
-        "test": { "type": "step", "settings": { "heading": "Test the finished lot", "text": "[FINAL COA REQUIRED: independent lab, methods, analytes, dates, and exact powder lot identity]" } },
-        "share": { "type": "step", "settings": { "heading": "Publish the report", "text": "[FINAL COA REQUIRED: stable report URL and approved explanation of actual test scope]" } }
+        "source": {
+          "type": "step",
+          "settings": {
+            "heading": "Document the leaf",
+            "text": "[FINAL PROCESS FACT REQUIRED: source, botanical identity, and material controls]"
+          }
+        },
+        "make": {
+          "type": "step",
+          "settings": {
+            "heading": "Prepare the powder",
+            "text": "[FINAL PROCESS FACT REQUIRED: actual processing partner, grind, and controls]"
+          }
+        },
+        "test": {
+          "type": "step",
+          "settings": {
+            "heading": "Test the finished lot",
+            "text": "[FINAL COA REQUIRED: independent lab, methods, analytes, dates, and exact powder lot identity]"
+          }
+        },
+        "share": {
+          "type": "step",
+          "settings": {
+            "heading": "Publish the report",
+            "text": "[FINAL COA REQUIRED: stable report URL and approved explanation of actual test scope]"
+          }
+        }
       },
-      "block_order": ["source", "make", "test", "share"],
+      "block_order": [
+        "source",
+        "make",
+        "test",
+        "share"
+      ],
       "settings": {
         "eyebrow": "Leaf to lot",
         "heading": "Trust should have a trail.",
@@ -113,11 +175,36 @@
     "reviews": {
       "type": "dandy-review-slots",
       "blocks": {
-        "review_1": { "type": "review_slot", "settings": { "slot_id": "REV-07", "objection": "Mixability", "placeholder": "[REAL REVIEW NEEDED — powder mixability — 20–45 words]" } },
-        "review_2": { "type": "review_slot", "settings": { "slot_id": "REV-08", "objection": "Measuring clarity", "placeholder": "[REAL REVIEW NEEDED — directions and measuring clarity — 30–60 words]" } },
-        "review_3": { "type": "review_slot", "settings": { "slot_id": "REV-09", "objection": "Taste expectation", "placeholder": "[REAL REVIEW NEEDED — honest powder taste expectation — 20–45 words]" } }
+        "review_1": {
+          "type": "review_slot",
+          "settings": {
+            "slot_id": "REV-07",
+            "objection": "Mixability",
+            "placeholder": "[REAL REVIEW NEEDED — powder mixability — 20–45 words]"
+          }
+        },
+        "review_2": {
+          "type": "review_slot",
+          "settings": {
+            "slot_id": "REV-08",
+            "objection": "Measuring clarity",
+            "placeholder": "[REAL REVIEW NEEDED — directions and measuring clarity — 30–60 words]"
+          }
+        },
+        "review_3": {
+          "type": "review_slot",
+          "settings": {
+            "slot_id": "REV-09",
+            "objection": "Taste expectation",
+            "placeholder": "[REAL REVIEW NEEDED — honest powder taste expectation — 20–45 words]"
+          }
+        }
       },
-      "block_order": ["review_1", "review_2", "review_3"],
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ],
       "settings": {
         "eyebrow": "Real voices, when they're ready",
         "heading": "Proof we won't make up.",
@@ -127,13 +214,50 @@
     "faq": {
       "type": "dandy-faq",
       "blocks": {
-        "measure": { "type": "question", "settings": { "question": "How do I measure it?", "answer": "<p>[FINAL LABEL REQUIRED: exact tool, amount, preparation method, and labeled interval.] Never estimate from marketing photography.</p>", "open": true } },
-        "taste": { "type": "question", "settings": { "question": "What does powder taste like?", "answer": "<p>[FINAL PRODUCT FACT REQUIRED: approved, non-misleading taste and texture description for this exact formula.]</p>" } },
-        "compare": { "type": "question", "settings": { "question": "How is powder different from gummies?", "answer": "<p>Powder is measured and mixed; gummies are pre-portioned. That is a format distinction, not a promised effects ladder. Follow the exact label in your hand.</p>" } },
-        "coa": { "type": "question", "settings": { "question": "Where is the batch report?", "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked powder report and stable public URL.]</p>" } },
-        "shipping": { "type": "question", "settings": { "question": "Can it ship to me?", "answer": "<p>Rules vary and can change. The counsel-approved shipping matrix must drive eligibility, and checkout remains the final enforcement point.</p>" } }
+        "measure": {
+          "type": "question",
+          "settings": {
+            "question": "How do I measure it?",
+            "answer": "<p>[FINAL LABEL REQUIRED: exact tool, amount, preparation method, and labeled interval.] Never estimate from marketing photography.</p>",
+            "open": true
+          }
+        },
+        "taste": {
+          "type": "question",
+          "settings": {
+            "question": "What does powder taste like?",
+            "answer": "<p>[FINAL PRODUCT FACT REQUIRED: approved, non-misleading taste and texture description for this exact formula.]</p>"
+          }
+        },
+        "compare": {
+          "type": "question",
+          "settings": {
+            "question": "How is powder different from gummies?",
+            "answer": "<p>Powder is measured and mixed; gummies are pre-portioned. That is a format distinction, not a promised effects ladder. Follow the exact label in your hand.</p>"
+          }
+        },
+        "coa": {
+          "type": "question",
+          "settings": {
+            "question": "Where is the batch report?",
+            "answer": "<p>[FINAL COA REQUIRED: finished-product, lot-linked powder report and stable public URL.]</p>"
+          }
+        },
+        "shipping": {
+          "type": "question",
+          "settings": {
+            "question": "Can it ship to me?",
+            "answer": "<p>Rules vary and can change. The counsel-approved shipping matrix must drive eligibility, and checkout remains the final enforcement point.</p>"
+          }
+        }
       },
-      "block_order": ["measure", "taste", "compare", "coa", "shipping"],
+      "block_order": [
+        "measure",
+        "taste",
+        "compare",
+        "coa",
+        "shipping"
+      ],
       "settings": {
         "eyebrow": "Before you add it",
         "heading": "Powder questions, answered plainly.",
@@ -157,5 +281,15 @@
       }
     }
   },
-  "order": ["product_hero", "powder_story", "product_details", "visual_v07", "responsible_use", "quality_timeline", "reviews", "faq", "final_cta"]
+  "order": [
+    "product_hero",
+    "powder_story",
+    "product_details",
+    "visual_v07",
+    "responsible_use",
+    "quality_timeline",
+    "reviews",
+    "faq",
+    "final_cta"
+  ]
 }

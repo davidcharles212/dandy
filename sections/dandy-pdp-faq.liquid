@@ -1,0 +1,378 @@
+{%- render 'dandy-fonts' -%}
+{%- liquid
+  assign total = section.blocks.size
+  assign half = total | plus: 1 | divided_by: 2
+-%}
+{%- capture plus_svg -%}<svg class="dpq__icon dpq__icon--plus" viewBox="0 0 22.88 22.88" fill="none" aria-hidden="true" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M10.3482 16.6402V6.24023H12.5318V16.6402H10.3482ZM5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="var(--dandy-accent, #f4512b)"/></svg><svg class="dpq__icon dpq__icon--minus" viewBox="0 0 22.88 22.88" fill="none" aria-hidden="true" focusable="false"><rect width="22.88" height="22.88" rx="11.44" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M5.71997 12.4328V10.4477H17.16V12.4328H5.71997Z" fill="var(--dandy-accent, #f4512b)"/></svg>{%- endcapture -%}
+
+<div class="dpq" style="--dpq-bg: {{ section.settings.background_color }}; --dpq-next: {{ section.settings.next_color }};">
+  {%- if section.settings.hand_image != blank -%}
+    <div class="dpq__hand" aria-hidden="true">
+      {{ section.settings.hand_image | image_url: width: 840 | image_tag: widths: '420, 630, 840', sizes: '209px', alt: '', loading: 'lazy' }}
+    </div>
+  {%- elsif section.settings.hand_image_asset != blank -%}
+    <div class="dpq__hand" aria-hidden="true">
+      <img src="{{ section.settings.hand_image_asset | asset_url }}" sizes="209px" alt="" loading="lazy">
+    </div>
+  {%- endif -%}
+
+  <div class="dpq__inner">
+    <div class="dpq__intro">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="dpq__eyebrow dpq__eyebrow--desktop">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.eyebrow_mobile != blank -%}
+        <p class="dpq__eyebrow dpq__eyebrow--mobile">{{ section.settings.eyebrow_mobile | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="dpq__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="dpq__grid">
+      <div class="dpq__col">
+        {%- for block in section.blocks limit: half -%}
+          <details class="dpq__item" {{ block.shopify_attributes }}>
+            <summary class="dpq__question">
+              <span class="dpq__q-text">{{ block.settings.question | escape }}</span>
+              {{ plus_svg }}
+            </summary>
+            {%- if block.settings.answer != blank -%}
+              <div class="dpq__answer">{{ block.settings.answer }}</div>
+            {%- endif -%}
+          </details>
+        {%- endfor -%}
+      </div>
+      <div class="dpq__col">
+        {%- for block in section.blocks offset: half -%}
+          <details class="dpq__item" {{ block.shopify_attributes }}>
+            <summary class="dpq__question">
+              <span class="dpq__q-text">{{ block.settings.question | escape }}</span>
+              {{ plus_svg }}
+            </summary>
+            {%- if block.settings.answer != blank -%}
+              <div class="dpq__answer">{{ block.settings.answer }}</div>
+            {%- endif -%}
+          </details>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  {%- if section.settings.show_wedge -%}
+    <div class="dpq__wedge" aria-hidden="true"></div>
+  {%- endif -%}
+</div>
+
+<style>
+  .dpq {
+    position: relative;
+    z-index: 1;
+    overflow-x: clip;
+    background: var(--dpq-bg, var(--dandy-accent, #f4512b));
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dpq *,
+  .dpq *::before,
+  .dpq *::after {
+    box-sizing: border-box;
+  }
+
+  .dpq :where(h2, p) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dpq__hand {
+    display: none;
+  }
+
+  .dpq__inner {
+    position: relative;
+    max-width: 592px;
+    margin: 0 auto;
+    padding: 40px 16px 28px;
+  }
+
+  .dpq__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dpq__eyebrow--desktop {
+    display: none;
+  }
+
+  .dpq .dpq__eyebrow {
+    margin: -4.58px 0;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpq .dpq__heading {
+    max-width: 273px;
+    margin: -4.57px 0 -5.06px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .dpq__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 31.99px;
+  }
+
+  .dpq__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dpq__item {
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px var(--dandy-pdp-cream, #fff9f0);
+  }
+
+  .dpq .dpq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 54px;
+    padding: 0 15px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .dpq__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .dpq__question::marker {
+    content: '';
+  }
+
+  .dpq .dpq__question:focus-visible {
+    outline: 2px solid var(--dandy-pdp-cream, #fff9f0);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  .dpq__q-text {
+    font-variation-settings: 'opsz' 32;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20.8px;
+    letter-spacing: -0.16px;
+  }
+
+  .dpq .dpq__icon {
+    display: block;
+    flex: none;
+    width: 17.6px;
+    height: 17.6px;
+    overflow: visible;
+  }
+
+  .dpq .dpq__icon--minus,
+  .dpq .dpq__item[open] .dpq__icon--plus {
+    display: none;
+  }
+
+  .dpq .dpq__item[open] .dpq__icon--minus {
+    display: block;
+  }
+
+  .dpq__answer {
+    padding: 0 15px 17px;
+    color: var(--dandy-pdp-cream, #fff9f0);
+    font-variation-settings: 'opsz' 32;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+  }
+
+  .dpq__answer > * {
+    margin: 0;
+  }
+
+  .dpq__answer > * + * {
+    margin-top: 10px;
+  }
+
+  .dpq__answer a {
+    color: inherit;
+  }
+
+  .dpq__wedge {
+    position: relative;
+    z-index: 2;
+    height: 49.5px;
+    margin-bottom: -2px;
+    background: var(--dpq-next, var(--dandy-pdp-cream, #fff9f0));
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
+  }
+
+  /* Punch list 2026-09-11: the hand is pinned to the section edge, so it only clears the heading and the first
+     question once the centred 1472 px container has 224 px of side margin (2048 px and up, measured 1280 to 1600). */
+  @media screen and (min-width: 1024px) and (max-width: 2047px) {
+    .dpq__hand {
+      display: none !important;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpq__hand {
+      position: absolute;
+      top: -129px;
+      left: 0;
+      z-index: 2;
+      display: block;
+      width: 208.33px;
+      height: 436.4px;
+      pointer-events: none;
+    }
+
+    .dpq__hand img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .dpq__inner {
+      max-width: 1472px;
+      padding: 48px 32px 70px;
+    }
+
+    .dpq__intro {
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .dpq__eyebrow--desktop {
+      display: block;
+    }
+
+    .dpq__eyebrow--mobile {
+      display: none;
+    }
+
+    .dpq .dpq__eyebrow {
+      margin: -5.95px 0;
+      font-weight: 400;
+      font-size: 20.8px;
+      line-height: 27.04px;
+      letter-spacing: -0.208px;
+    }
+
+    .dpq .dpq__heading {
+      max-width: none;
+      margin: -5.94px 0 -6.57px;
+      font-size: 52px;
+      line-height: 57.2px;
+    }
+
+    .dpq__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: start;
+      gap: 22px;
+      margin-top: 40.18px;
+    }
+
+    .dpq__col {
+      gap: 20px;
+    }
+
+    .dpq__item {
+      box-shadow: inset 0 0 0 1.3px var(--dandy-pdp-cream, #fff9f0);
+    }
+
+    .dpq .dpq__question {
+      min-height: 70px;
+      padding: 0 24px;
+    }
+
+    .dpq__q-text {
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: -0.2px;
+    }
+
+    .dpq .dpq__icon {
+      width: 22.88px;
+      height: 22.88px;
+    }
+
+    .dpq__answer {
+      padding: 0 24px 24px;
+      font-size: 16px;
+      line-height: 20.8px;
+      letter-spacing: -0.16px;
+    }
+
+    .dpq__wedge {
+      height: 63.05px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dandy FAQ",
+  "tag": "section",
+  "class": "dandy-pdp-faq-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (desktop)", "default": "FAQs" },
+    { "type": "text", "id": "eyebrow_mobile", "label": "Eyebrow (mobile)", "default": "FAQ’s" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The things you actually want to know." },
+    { "type": "image_picker", "id": "hand_image", "label": "Hand (desktop, top left)" },
+    { "type": "text", "id": "hand_image_asset", "label": "Hand (desktop, top left) (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" },
+    { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },
+    { "type": "color", "id": "next_color", "label": "Next section color", "default": "#FFF9F0" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What is Kratom?" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "Dandy FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "What is Kratom?" } },
+        { "type": "question", "settings": { "question": "How much should I take?" } },
+        { "type": "question", "settings": { "question": "Is every batch tested?" } },
+        { "type": "question", "settings": { "question": "How does the subscription work?" } },
+        { "type": "question", "settings": { "question": "Can Kratom become habit forming?" } },
+        { "type": "question", "settings": { "question": "Who should not take Dandy?" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

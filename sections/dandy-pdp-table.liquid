@@ -1,0 +1,653 @@
+{%- render 'dandy-fonts' -%}
+{%- liquid
+  assign names = section.settings.col_1 | append: '|' | append: section.settings.col_2 | append: '|' | append: section.settings.col_3 | append: '|' | append: section.settings.col_4 | split: '|'
+-%}
+{%- capture check_svg -%}<svg class="dpt__icon" viewBox="0 0 18.2 18.2" fill="none" aria-hidden="true" focusable="false"><path d="M9.1 0C7.30019 0 5.5408 0.533706 4.04431 1.53363C2.54783 2.53355 1.38146 3.95477 0.6927 5.61758C0.0039429 7.28039 -0.176267 9.11009 0.174858 10.8753C0.525983 12.6405 1.39267 14.262 2.66533 15.5347C3.93799 16.8073 5.55945 17.674 7.32468 18.0251C9.08991 18.3763 10.9196 18.1961 12.5824 17.5073C14.2452 16.8185 15.6665 15.6522 16.6664 14.1557C17.6663 12.6592 18.2 10.8998 18.2 9.1C18.2 6.68653 17.2413 4.37191 15.5347 2.66533C13.8281 0.958747 11.5135 0 9.1 0ZM14.3553 6.21833L9.16067 13.2632C9.10022 13.3456 9.02376 13.4149 8.93586 13.467C8.84796 13.5191 8.75044 13.5529 8.64916 13.5663C8.54788 13.5798 8.44492 13.5726 8.34647 13.5453C8.24802 13.518 8.15611 13.4711 8.07625 13.4073L4.368 10.4422C4.2901 10.3797 4.22534 10.3023 4.17743 10.2146C4.12952 10.1269 4.09942 10.0306 4.08885 9.93127C4.07828 9.83191 4.08745 9.73143 4.11584 9.63563C4.14422 9.53982 4.19126 9.45057 4.25425 9.373C4.38026 9.22009 4.56112 9.12257 4.75811 9.10131C4.95511 9.08005 5.15261 9.13674 5.30834 9.25925L8.40234 11.7314L13.1343 5.30833C13.2537 5.14843 13.4314 5.04205 13.6287 5.01223C13.826 4.98242 14.0271 5.03159 14.1884 5.14908C14.2703 5.20774 14.3397 5.28214 14.3926 5.36793C14.4454 5.45371 14.4806 5.54916 14.4961 5.64871C14.5117 5.74825 14.5072 5.8499 14.483 5.9477C14.4588 6.0455 14.4154 6.13751 14.3553 6.21833Z" fill="currentColor"/></svg>{%- endcapture -%}
+
+<div class="dpt{% if section.settings.art_contain %} dpt--contain{% endif %}" style="--dpt-bg: {{ section.settings.background_color }}; --dpt-next: {{ section.settings.next_color }};">
+  <div class="dpt__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="dpt__heading dpt__heading--desktop">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.heading_mobile != blank -%}
+      <h2 class="dpt__heading dpt__heading--mobile">{{ section.settings.heading_mobile | escape | newline_to_br }}</h2>
+    {%- endif -%}
+
+    <dandy-pdp-table class="dpt__table" data-active="0">
+      {%- if section.settings.pouch_image != blank -%}
+        <div class="dpt__pouch" aria-hidden="true">
+          {{ section.settings.pouch_image | image_url: width: 680 | image_tag: widths: '340, 510, 680', sizes: '170px', alt: '', loading: 'lazy' }}
+        </div>
+      {%- elsif section.settings.pouch_image_asset != blank -%}
+        <div class="dpt__pouch" aria-hidden="true">
+          <img src="{{ section.settings.pouch_image_asset | asset_url }}" sizes="170px" alt="" loading="lazy">
+        </div>
+      {%- endif -%}
+      <div class="dpt__col-bg" aria-hidden="true"></div>
+
+      <div class="dpt__row dpt__row--head">
+        <span class="dpt__cell dpt__cell--label"></span>
+        <span class="dpt__cell dpt__cell--dandy">
+          <svg class="dpt__logo" viewBox="0 0 83 31" fill="none" role="img" aria-label="Dandy" focusable="false"><path d="M6.54087 30.4275L0 31.0001V7.26013L6.54087 6.68749C12.8862 6.13293 15.5205 11.7233 15.5205 17.7717C15.5205 23.8202 12.8836 29.8729 6.54087 30.4275ZM6.70368 12.0384L6.37719 12.0677V25.0765L6.70368 25.0472C8.65569 24.8776 8.98217 21.4022 8.98217 18.3443C8.98217 15.2865 8.65569 11.8688 6.70368 12.0384Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M26.2582 28.7045L25.8662 26.1048L22.3852 26.4087L21.9941 29.0773L15.6815 29.6301L21.0164 5.42259L27.5236 4.85254L32.8585 28.1275L26.253 28.7045H26.2582ZM24.1425 13.8649L23.0046 21.8672L25.2495 21.67L24.1425 13.8649Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M44.4776 27.1114L40.3453 17.3258V27.4731L34.2946 28.0035V4.26097L39.4037 3.81406L43.2767 12.9711V3.47392L49.33 2.94434V26.6869L44.4819 27.1114H44.4776Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M58.077 25.9222L51.5361 26.494V2.75232L58.077 2.17968C64.4206 1.62512 67.0566 7.21545 67.0566 13.2639C67.0566 19.3123 64.4197 25.3651 58.077 25.9197V25.9222ZM58.2398 7.5332L57.9159 7.56248V20.5713L58.2398 20.542C60.1918 20.3724 60.5183 16.8969 60.5183 13.8383C60.5183 10.7805 60.1944 7.3627 58.2398 7.5332Z" fill="var(--dandy-pdp-cream, #fff9f0)"/><path d="M77.8928 14.0731V24.1869L71.3519 24.7595V14.6113L66.2764 1.46217L73.0765 0.867139L74.7356 7.77842L76.3948 0.576944L82.9994 0L77.8902 14.0731H77.8928Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
+        </span>
+        {%- for name in names -%}
+          <span class="dpt__cell dpt__cell--head" data-col="{{ forloop.index0 }}">{{ name | escape }}</span>
+        {%- endfor -%}
+        <div class="dpt__switch">
+          <span class="dpt__switch-name" data-dpt-name aria-hidden="true">{{ names[0] | escape }}</span>
+          <svg class="dpt__switch-arrow" viewBox="0 0 9.19 9.01" fill="none" aria-hidden="true" focusable="false"><path d="M4.59201 9.00834L9.18401 4.40034L8.11201 3.32834L5.39201 6.09634L5.39201 0.000344114L3.82401 0.000344045L3.82401 6.08034L1.08801 3.32834L1.12147e-05 4.40034L4.59201 9.00834Z" fill="var(--dandy-accent, #f4512b)"/></svg>
+          <select class="dpt__select" data-dpt-select aria-label="Compare Dandy with">
+            {%- for name in names -%}
+              <option value="{{ forloop.index0 }}">{{ name | escape }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+      </div>
+
+      <div class="dpt__rows">
+        {%- for block in section.blocks -%}
+          {%- assign label_mobile = block.settings.label_mobile | default: block.settings.label -%}
+          <div class="dpt__row" {{ block.shopify_attributes }}>
+            <span class="dpt__cell dpt__cell--label">
+              <span class="dpt__label dpt__label--desktop">{{ block.settings.label | escape }}</span>
+              <span class="dpt__label dpt__label--mobile">{{ label_mobile | escape | newline_to_br }}</span>
+            </span>
+            <span class="dpt__cell dpt__cell--dandy">
+              <span class="dpt__item dpt__item--dandy">{{ check_svg }}<span class="dpt__yes">{{ block.settings.dandy | escape }}</span></span>
+            </span>
+            {%- for i in (1..4) -%}
+              {%- assign key = 'val_' | append: i -%}
+              {%- assign v = block.settings[key] -%}
+              <span class="dpt__cell dpt__cell--val" data-col="{{ forloop.index0 }}">
+                <span class="dpt__item">
+                  {%- if v == 'no' or v == 'not_always' -%}
+                    {%- if section.settings.no_icon != blank -%}
+                      {{ section.settings.no_icon | image_url: width: 80 | image_tag: alt: '', width: 18, height: 18, loading: 'lazy', class: 'dpt__icon dpt__icon--no' }}
+                    {%- elsif section.settings.no_icon_asset != blank -%}
+                      <img src="{{ section.settings.no_icon_asset | asset_url }}" alt="" width="18" height="18" loading="lazy" class="dpt__icon dpt__icon--no">
+                    {%- else -%}
+                      <span class="dpt__icon dpt__icon--no" aria-hidden="true"></span>
+                    {%- endif -%}
+                  {%- else -%}
+                    {{ check_svg }}
+                  {%- endif -%}
+                  <span class="dpt__val">
+                    {%- case v -%}
+                      {%- when 'yes' -%}{{ section.settings.text_yes | escape }}
+                      {%- when 'no' -%}{{ section.settings.text_no | escape }}
+                      {%- when 'usually' -%}{{ section.settings.text_usually | escape }}
+                      {%- when 'not_always' -%}{{ section.settings.text_not_always | escape }}
+                    {%- endcase -%}
+                  </span>
+                </span>
+              </span>
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </dandy-pdp-table>
+  </div>
+
+  {%- if section.settings.show_wedge -%}
+    <div class="dpt__wedge" aria-hidden="true"></div>
+  {%- endif -%}
+</div>
+
+<script>
+  (() => {
+    if (customElements.get('dandy-pdp-table')) return;
+
+    class DandyPdpTable extends HTMLElement {
+      connectedCallback() {
+        this.select = this.querySelector('[data-dpt-select]');
+        this.name = this.querySelector('[data-dpt-name]');
+        if (!this.select) return;
+        this.onChange = () => {
+          this.dataset.active = this.select.value;
+          if (this.name) this.name.textContent = this.select.options[this.select.selectedIndex].text;
+        };
+        this.select.addEventListener('change', this.onChange);
+      }
+
+      disconnectedCallback() {
+        this.select?.removeEventListener('change', this.onChange);
+      }
+    }
+
+    customElements.define('dandy-pdp-table', DandyPdpTable);
+  })();
+</script>
+
+<style>
+  .dpt {
+    position: relative;
+    z-index: 1;
+    background: var(--dpt-bg, var(--dandy-pdp-cream, #fff9f0));
+    color: #241914;
+    font-family: var(--dandy-font-body, sans-serif);
+    font-optical-sizing: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dpt *,
+  .dpt *::before,
+  .dpt *::after {
+    box-sizing: border-box;
+  }
+
+  .dpt :where(h2) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dpt__inner {
+    max-width: 592px;
+    margin: 0 auto;
+    padding: 0 16px 22px;
+  }
+
+  .dpt__heading--desktop {
+    display: none;
+  }
+
+  .dpt .dpt__heading {
+    margin: -4.57px 0 -5.06px;
+    color: #241914;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .dpt__table {
+    position: relative;
+    display: block;
+    margin-top: 97.6px;
+    padding-bottom: 9px;
+  }
+
+  .dpt__pouch {
+    position: absolute;
+    bottom: 100%;
+    left: calc(49.085% - 87px);
+    z-index: 3;
+    width: 170px;
+    height: 107px;
+    pointer-events: none;
+  }
+
+  .dpt__pouch img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+  .dpt--contain .dpt__table {
+    margin-top: 166px;
+  }
+
+  .dpt--contain .dpt__pouch {
+    left: calc(49.085% - 95px);
+    width: 190px;
+    height: 150px;
+  }
+
+  .dpt--contain .dpt__pouch img {
+    object-fit: contain;
+    object-position: center bottom;
+  }
+
+  .dpt__col-bg {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 32.317%;
+    width: 33.537%;
+    border-radius: 8px 8px 32px 8px;
+    background: var(--dandy-accent, #f4512b);
+  }
+
+  .dpt__row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 106fr 110fr 16fr 96fr;
+    align-items: start;
+    height: 46px;
+  }
+
+  .dpt__row--head {
+    height: 50px;
+  }
+
+  .dpt__rows {
+    margin-top: 23px;
+  }
+
+  .dpt__rows .dpt__row + .dpt__row {
+    margin-top: 20px;
+  }
+
+  .dpt__rows .dpt__row:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 0.5px;
+    background: rgb(26 26 26 / 0.1);
+  }
+
+  .dpt__cell {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+  }
+
+  .dpt__cell--label {
+    grid-column: 1;
+  }
+
+  .dpt__cell--dandy {
+    display: flex;
+    grid-column: 2;
+    justify-content: center;
+  }
+
+  .dpt__cell--val {
+    display: none;
+    grid-column: 4;
+  }
+
+  @media screen and (max-width: 1023px) {
+    .dpt__table[data-active='0'] .dpt__cell--val[data-col='0'],
+    .dpt__table[data-active='1'] .dpt__cell--val[data-col='1'],
+    .dpt__table[data-active='2'] .dpt__cell--val[data-col='2'],
+    .dpt__table[data-active='3'] .dpt__cell--val[data-col='3'] {
+      display: flex;
+    }
+
+    .dpt__rows .dpt__cell--dandy,
+    .dpt__rows .dpt__cell--val {
+      align-items: center;
+      height: 26px;
+    }
+
+    .dpt__rows .dpt__item {
+      margin-top: 0;
+      white-space: normal;
+    }
+
+    .dpt__cell--val .dpt__val {
+      max-width: 49px;
+    }
+  }
+
+  .dpt__cell--head {
+    display: none;
+  }
+
+  .dpt__logo {
+    display: block;
+    width: 83px;
+    height: 31px;
+    margin-top: 19px;
+  }
+
+  .dpt .dpt__switch {
+    display: flex;
+    grid-column: 4;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0 10px 0 12px;
+    border: 0;
+    border-radius: 4px;
+    background: none;
+    box-shadow: none;
+    color: #241914;
+    font: inherit;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpt .dpt__switch {
+    position: relative;
+    gap: 6px;
+  }
+
+  .dpt .dpt__switch:has(.dpt__select:focus-visible) {
+    outline: 2px solid #241914;
+    outline-offset: 2px;
+  }
+
+  .dpt .dpt__select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .dpt__switch-name {
+    min-width: 0;
+    font-variation-settings: 'opsz' 32;
+    font-size: 13px;
+    line-height: 16.9px;
+    letter-spacing: -0.13px;
+    white-space: normal;
+  }
+
+  .dpt__switch-arrow {
+    display: block;
+    flex: none;
+    width: 9.19px;
+    height: 9.01px;
+    margin-right: 1.4px;
+  }
+
+  .dpt__label {
+    display: block;
+    margin: -3.72px 0;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16.9px;
+    letter-spacing: -0.13px;
+  }
+
+  .dpt__label--desktop {
+    display: none;
+  }
+
+  .dpt__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    white-space: nowrap;
+  }
+
+  .dpt__cell--val .dpt__item {
+    margin-left: 23px;
+  }
+
+  .dpt .dpt__icon {
+    display: block;
+    flex: none;
+    width: 14px;
+    height: 14px;
+    color: #767676;
+    object-fit: contain;
+  }
+
+  .dpt__item--dandy .dpt__icon {
+    color: var(--dandy-pdp-cream, #fff9f0);
+  }
+
+  .dpt .dpt__icon--no:not(img) {
+    background: #ca4a4a;
+    border-radius: 50%;
+  }
+
+  .dpt__yes {
+    margin: -2.46px 0 -2.62px;
+    color: #fff;
+    font-family: var(--dandy-font-display, sans-serif);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16.25px;
+    letter-spacing: -0.26px;
+    text-transform: uppercase;
+  }
+
+  .dpt__val {
+    margin: -4.01px 0;
+    color: #241914;
+    font-variation-settings: 'opsz' 32;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18.2px;
+    letter-spacing: -0.14px;
+  }
+
+  .dpt__wedge {
+    position: relative;
+    z-index: 2;
+    height: 49.5px;
+    margin-bottom: -2px;
+    background: var(--dpt-next, var(--dandy-accent, #f4512b));
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 calc(100% - 2px));
+  }
+
+  @media screen and (min-width: 1024px) {
+    .dpt__inner {
+      max-width: 1472px;
+      padding: 0 32px 76.5px;
+    }
+
+    .dpt__heading--desktop {
+      display: block;
+      text-align: center;
+    }
+
+    .dpt__heading--mobile {
+      display: none;
+    }
+
+    .dpt .dpt__heading {
+      margin: -5.48px 0 -6.07px;
+      font-size: 48px;
+      line-height: 52.8px;
+    }
+
+    .dpt__table {
+      margin-top: 33.25px;
+      padding-bottom: 15.5px;
+    }
+
+    .dpt__pouch,
+    .dpt .dpt__switch,
+    .dpt__logo,
+    .dpt__label--mobile {
+      display: none;
+    }
+
+    .dpt__col-bg {
+      left: 16.889%;
+      width: 25.355%;
+    }
+
+    .dpt__row {
+      grid-template-columns: 237.8fr 357fr 37.8fr 163.4fr 40.6fr 163.4fr 40.6fr 163.4fr 40.6fr 163.4fr;
+      height: 37px;
+    }
+
+    .dpt__row--head {
+      align-items: end;
+      height: 65.5px;
+    }
+
+    .dpt__rows {
+      margin-top: 35px;
+    }
+
+    .dpt__rows .dpt__row + .dpt__row {
+      margin-top: 24px;
+    }
+
+    .dpt__rows .dpt__row:not(:last-child)::after {
+      height: 0.65px;
+    }
+
+    .dpt .dpt__cell--val,
+    .dpt .dpt__cell--head {
+      display: flex;
+      justify-content: center;
+    }
+
+    .dpt__row > [data-col='0'] {
+      grid-column: 4;
+    }
+
+    .dpt__row > [data-col='1'] {
+      grid-column: 6;
+    }
+
+    .dpt__row > [data-col='2'] {
+      grid-column: 8;
+    }
+
+    .dpt__row > [data-col='3'] {
+      grid-column: 10;
+    }
+
+    .dpt__cell--head {
+      font-variation-settings: 'opsz' 32;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: -0.2px;
+      white-space: nowrap;
+    }
+
+    .dpt__label--desktop {
+      display: block;
+      margin: -5.15px 0;
+      font-size: 18px;
+      line-height: 23.4px;
+      letter-spacing: -0.18px;
+      white-space: nowrap;
+    }
+
+    .dpt__item {
+      gap: 10.4px;
+      margin-top: 0;
+    }
+
+    .dpt__cell--val .dpt__item {
+      margin-left: 0;
+    }
+
+    .dpt .dpt__icon {
+      width: 18.2px;
+      height: 18.2px;
+    }
+
+    .dpt .dpt__icon--no {
+      width: 18.26px;
+      height: 18.26px;
+    }
+
+    .dpt__yes {
+      margin: -3.41px 0 -3.63px;
+      font-size: 18px;
+      line-height: 22.5px;
+      letter-spacing: -0.36px;
+    }
+
+    .dpt__val {
+      margin: -5.21px 0;
+      font-size: 18.2px;
+      line-height: 23.66px;
+      letter-spacing: -0.18px;
+    }
+
+    .dpt__wedge {
+      height: 63.05px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dandy comparison table",
+  "tag": "section",
+  "class": "dandy-pdp-table-section",
+  "settings": [
+    { "type": "checkbox", "id": "art_contain", "label": "Product art: fit the whole image (jar cutouts)", "default": false, "info": "Off keeps the original cover-fit slots sized for the gummy pouch art." },
+    { "type": "text", "id": "heading", "label": "Heading (desktop)", "default": "Your old pick-me-up looks tired." },
+    { "type": "textarea", "id": "heading_mobile", "label": "Heading (mobile)", "default": "Your old pick-me-up\nlooks tired.", "info": "Press Enter to set the line break." },
+    { "type": "header", "content": "Columns" },
+    { "type": "text", "id": "col_1", "label": "Column 1", "default": "Coffee" },
+    { "type": "text", "id": "col_2", "label": "Column 2", "default": "Energy Gummy" },
+    { "type": "text", "id": "col_3", "label": "Column 3", "default": "Sleep Gummy" },
+    { "type": "text", "id": "col_4", "label": "Column 4", "default": "THC Gummy" },
+    { "type": "header", "content": "Answers" },
+    { "type": "text", "id": "text_yes", "label": "Yes", "default": "Yes" },
+    { "type": "text", "id": "text_no", "label": "No", "default": "No" },
+    { "type": "text", "id": "text_usually", "label": "Usually", "default": "Usually" },
+    { "type": "text", "id": "text_not_always", "label": "Not always", "default": "Not Always" },
+    { "type": "image_picker", "id": "no_icon", "label": "No icon" },
+    { "type": "text", "id": "no_icon_asset", "label": "No icon (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "header", "content": "Mobile" },
+    { "type": "image_picker", "id": "pouch_image", "label": "Pouch above Dandy column" },
+    { "type": "text", "id": "pouch_image_asset", "label": "Pouch above Dandy column (theme asset fallback)", "info": "Filename in assets/, used when no image is picked." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFF9F0" },
+    { "type": "checkbox", "id": "show_wedge", "label": "Show diagonal into next section", "default": true },
+    { "type": "color", "id": "next_color", "label": "Next section color", "default": "#F4512B" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Noticeable Energy" },
+        { "type": "textarea", "id": "label_mobile", "label": "Label (mobile)", "info": "Optional. Press Enter to set the line break." },
+        { "type": "text", "id": "dandy", "label": "Dandy", "default": "Yes" },
+        {
+          "type": "select", "id": "val_1", "label": "Column 1",
+          "options": [{ "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "usually", "label": "Usually" }, { "value": "not_always", "label": "Not always" }],
+          "default": "yes"
+        },
+        {
+          "type": "select", "id": "val_2", "label": "Column 2",
+          "options": [{ "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "usually", "label": "Usually" }, { "value": "not_always", "label": "Not always" }],
+          "default": "yes"
+        },
+        {
+          "type": "select", "id": "val_3", "label": "Column 3",
+          "options": [{ "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "usually", "label": "Usually" }, { "value": "not_always", "label": "Not always" }],
+          "default": "no"
+        },
+        {
+          "type": "select", "id": "val_4", "label": "Column 4",
+          "options": [{ "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "usually", "label": "Usually" }, { "value": "not_always", "label": "Not always" }],
+          "default": "no"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Dandy comparison table",
+      "blocks": [
+        { "type": "row", "settings": { "label": "Noticeable Energy", "label_mobile": "Noticeable\nEnergy", "val_1": "yes", "val_2": "yes", "val_3": "no", "val_4": "no" } },
+        { "type": "row", "settings": { "label": "Caffeine Free", "label_mobile": "Caffeine\nFree", "val_1": "no", "val_2": "no", "val_3": "usually", "val_4": "yes" } },
+        { "type": "row", "settings": { "label": "THC Free", "label_mobile": "THC\nFree", "val_1": "yes", "val_2": "yes", "val_3": "usually", "val_4": "no" } },
+        { "type": "row", "settings": { "label": "Supports Focus", "label_mobile": "Supports\nFocus", "val_1": "yes", "val_2": "yes", "val_3": "no", "val_4": "not_always" } },
+        { "type": "row", "settings": { "label": "Supports Physical Ease", "label_mobile": "Supports Physical\nEase", "val_1": "no", "val_2": "no", "val_3": "usually", "val_4": "yes" } },
+        { "type": "row", "settings": { "label": "Keeps You Present", "label_mobile": "Keeps You\nPresent", "val_1": "no", "val_2": "no", "val_3": "no", "val_4": "not_always" } },
+        { "type": "row", "settings": { "label": "No Drink Or Preperation", "label_mobile": "No Drink Or\nPreperation", "val_1": "no", "val_2": "no", "val_3": "yes", "val_4": "yes" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

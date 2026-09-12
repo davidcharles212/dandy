@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product_hero": {
@@ -12,18 +21,9 @@
         "highlight_2": "10- and 30-count options proposed",
         "highlight_3": "[FINAL LABEL REQUIRED: capsule contents, material, serving, and directions]",
         "highlight_4": "Batch report access when the finished-lot report is published",
-        "preselect_subscription": false,
-        "enable_quantity_ladder": false,
-        "single_selection_label": "Selected 50 mg capsule count",
-        "one_time_detail": "Choose 10 or 30 capsules from genuine Shopify variants when the final catalog is connected.",
-        "subscription_terms": "[FINAL SUBSCRIPTION TERMS REQUIRED: only a supported 30-count plan may appear after economics, gateway, app, legal, and renewal testing pass]",
         "reassurance_1": "21+ only",
         "reassurance_2": "Secure checkout",
         "reassurance_3": "Eligibility checked at checkout",
-        "development_preview": true,
-        "development_unit_price": "2899",
-        "development_three_pack_price": "0",
-        "development_five_pack_price": "0",
         "claim_ids": "C-09 C-10 C-13 C-16",
         "copy_status": "aggressive-draft"
       }
@@ -62,12 +62,42 @@
     "faq": {
       "type": "dandy-faq",
       "blocks": {
-        "means": { "type": "question", "settings": { "question": "What does 50 mg mean?", "answer": "<p>[FINAL LABEL REQUIRED: exact approved definition. Do not infer ingredient, alkaloid, extract, or serving meaning from the working product name.]</p>", "open": true } },
-        "count": { "type": "question", "settings": { "question": "Should I choose 10 or 30 capsules?", "answer": "<p>Count describes how many capsules are in the package. Compare actual price, label, availability, and intended trial or replenishment use without treating count as an effects claim.</p>" } },
-        "use": { "type": "question", "settings": { "question": "How many capsules should I use?", "answer": "<p>[FINAL LABEL REQUIRED: exact suggested-use text and interval.] Follow the selected product label.</p>" } },
-        "available": { "type": "question", "settings": { "question": "Is this available?", "answer": "<p>Only a published, approved Shopify product with real price, inventory, label, media, eligibility, and lot report may be sold. This template is currently a development surface.</p>" } }
+        "means": {
+          "type": "question",
+          "settings": {
+            "question": "What does 50 mg mean?",
+            "answer": "<p>[FINAL LABEL REQUIRED: exact approved definition. Do not infer ingredient, alkaloid, extract, or serving meaning from the working product name.]</p>",
+            "open": true
+          }
+        },
+        "count": {
+          "type": "question",
+          "settings": {
+            "question": "Should I choose 10 or 30 capsules?",
+            "answer": "<p>Count describes how many capsules are in the package. Compare actual price, label, availability, and intended trial or replenishment use without treating count as an effects claim.</p>"
+          }
+        },
+        "use": {
+          "type": "question",
+          "settings": {
+            "question": "How many capsules should I use?",
+            "answer": "<p>[FINAL LABEL REQUIRED: exact suggested-use text and interval.] Follow the selected product label.</p>"
+          }
+        },
+        "available": {
+          "type": "question",
+          "settings": {
+            "question": "Is this available?",
+            "answer": "<p>Only a published, approved Shopify product with real price, inventory, label, media, eligibility, and lot report may be sold. This template is currently a development surface.</p>"
+          }
+        }
       },
-      "block_order": ["means", "count", "use", "available"],
+      "block_order": [
+        "means",
+        "count",
+        "use",
+        "available"
+      ],
       "settings": {
         "eyebrow": "50 mg capsule questions",
         "heading": "Define every number.",
@@ -91,5 +121,11 @@
       }
     }
   },
-  "order": ["product_hero", "details", "visual", "faq", "final_cta"]
+  "order": [
+    "product_hero",
+    "details",
+    "visual",
+    "faq",
+    "final_cta"
+  ]
 }
