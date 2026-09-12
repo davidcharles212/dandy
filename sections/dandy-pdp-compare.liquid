@@ -568,15 +568,15 @@
     --dpw-champ: #5f9b55;
     --dpw-champ-off: 4px;
     border: 2px solid var(--dpw-champ);
-    box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dpw-champ), 0 0 0 0 rgb(95 155 85 / 0.45);
+    box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 0 0 0 rgb(95 155 85 / 0.45);
   }
 
   @keyframes dpw-champ-pulse {
     0%, 100% {
-      box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dpw-champ), 0 0 0 0 rgb(95 155 85 / 0.45);
+      box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 0 0 0 rgb(95 155 85 / 0.45);
     }
     50% {
-      box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dpw-champ), 0 0 20px 5px rgb(95 155 85 / 0.32);
+      box-shadow: var(--dpw-champ-off) var(--dpw-champ-off) 0 var(--dandy-accent-deep, #a02508), 0 0 20px 5px rgb(95 155 85 / 0.32);
     }
   }
 
@@ -627,15 +627,32 @@
     }
 
     .dpw--contain .dpw__item--diff.is-open .dpw__panel {
-      padding: 4px 20px 0;
+      padding: 4px 20px 18px;
     }
 
     .dpw--contain .dpw__diff-img {
-      position: static;
+      position: relative;
+      left: auto;
       width: 100%;
       height: 208px;
       margin-top: 20px;
       aspect-ratio: auto;
+    }
+
+    .dpw--contain .dpw__diff-img::before {
+      content: '';
+      position: absolute;
+      left: 22%;
+      right: 22%;
+      bottom: -7px;
+      height: 26px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgb(36 25 20 / 0.28), rgb(36 25 20 / 0) 68%);
+      pointer-events: none;
+    }
+
+    .dpw--contain .dpw__diff-img img {
+      position: relative;
     }
   }
 
