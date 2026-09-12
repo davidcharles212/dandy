@@ -31,23 +31,22 @@
       <p class="ratingline" data-copy-status="aggressive-draft">Rated <b>4.8/5</b> by 1,475 verified customers</p>
       <h1 class="title" id="d2h-hero-{{ section.id }}">Energy, relief<br>and happiness.</h1>
       <p class="desc">One plant, three formats, and the amount is always on the label.</p>
-      <ul class="benefits hhero__benefits" data-copy-status="aggressive-draft">
-        <li><i>☀</i><b>Switched-on days</b><span>A clean lift with focus, no jittery espresso stack.</span></li>
-        <li><i>◎</i><b>Lifted mood</b><span>The reason people come back, without checking out.</span></li>
-        <li><i>☾</i><b>Body at ease</b><span>Take more and it settles instead of speeds you up.</span></li>
+      <ul class="benefits hhero__benefits">
+        <li><i>☀</i><b>Clean daytime lift</b><span>Alert focus that carries the afternoon, without the espresso jitters or the 2&nbsp;PM crash.</span></li>
+        <li><i>◎</i><b>Exact milligrams, every time</b><span>35&nbsp;mg per gummy, 50 or 90&nbsp;mg per capsule, powder by the gram. It is printed on the label.</span></li>
+        <li><i>☾</i><b>Real evening relief</b><span>A larger serving settles tight muscles and a long day instead of speeding you up.</span></li>
+      </ul>
+      <ul class="hhero__trust">
+        <li>{{ d2_gcheck }} Lab report on every batch</li>
+        <li>{{ d2_gcheck }} 30-day guarantee</li>
+        <li>{{ d2_gcheck }} Ships to 34 states</li>
       </ul>
       <a class="cta" href="#shop">Shop the lineup</a>
-      <p class="hhero__sub">Subscribe &amp; save 20% · free shipping · cancel anytime</p>
-      <ul class="hhero__trust">
-        <li>{{ d2_gcheck }} Batch-tested</li>
-        <li>{{ d2_gcheck }} 30-day guarantee</li>
-        <li>{{ d2_gcheck }} Ships free</li>
-      </ul>
     </div>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee__track">
-    <span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span><span>Tested every batch ★ 35 mg exactly ★ No games ★ Know what’s in the bag ★ Fine and Dandy ★ </span>
+    <span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span><span>Gummies, capsules and raw leaf ★ Lab report on every batch ★ 30-day guarantee ★ Same-day dispatch before 2 PM Central ★ The amount is always on the label ★ </span>
   </div></div>
 
   {% comment %} ---------- 3. Pick your format (F1 swipe rail) ----------
@@ -56,10 +55,9 @@
     links to a live PDP until the real SKUs exist.
   {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2h-lineup-{{ section.id }}" id="shop">
-    <p class="steplabel steplabel--center">Three formats</p>
     <h2 class="belowfold__title belowfold__title--center" id="d2h-lineup-{{ section.id }}-h">Pick your format.</h2>
     <div class="frail" data-d2-frail>
-      <article class="fcard fcard--hero">
+      <article class="fcard">
         <a class="fcard__link" href="{{ pdp }}" aria-label="Shop mixed berry gummies"></a>
         <div class="fcard__img"><img src="{{ 'dandy-gummy-closeup-1200.webp' | asset_url }}" alt="Holding a Dandy mixed berry gummy above the pouch" width="1200" height="1200" loading="lazy"></div>
         <div class="fcard__bd">
@@ -70,23 +68,23 @@
         </div>
       </article>
       <article class="fcard">
-        <a class="fcard__link" href="/products/extract-capsules-50mg" aria-label="See Dandy extract capsules"></a>
+        <a class="fcard__link" href="/products/extract-capsules-50mg" aria-label="Shop Dandy extract capsules"></a>
         <div class="fcard__img"><img src="{{ 'dandy2-cap-life-card.webp' | asset_url }}" alt="Taking a Dandy extract capsule from the open jar" width="1200" height="900" loading="lazy"></div>
         <div class="fcard__bd">
           <h3>Extract capsules</h3>
           <p class="fcard__best">Best for strong doses</p>
           <p class="fcard__from"><b>From $28.99</b></p>
-          <span class="cta cta--ghost">See capsules</span>
+          <span class="cta">Shop capsules</span>
         </div>
       </article>
       <article class="fcard">
-        <a class="fcard__link" href="/products/premium-kratom-leaf-powder" aria-label="See Dandy raw leaf powder"></a>
+        <a class="fcard__link" href="/products/premium-kratom-leaf-powder" aria-label="Shop Dandy raw leaf powder"></a>
         <div class="fcard__img"><img src="{{ 'dandy2-pw-2.webp' | asset_url }}" alt="Lifting a spoonful of Dandy leaf powder from the open pouch" width="1200" height="1200" loading="lazy"></div>
         <div class="fcard__bd">
           <h3>Raw leaf powder</h3>
           <p class="fcard__best">Best for experienced users</p>
           <p class="fcard__from"><b>From $34.99</b></p>
-          <span class="cta cta--ghost">See powder</span>
+          <span class="cta">Shop powder</span>
         </div>
       </article>
     </div>
@@ -100,15 +98,16 @@
   {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2h-kratom-{{ section.id }}" data-copy-status="aggressive-draft">
     <div class="belowfold__inner belowfold__inner--narrow">
-      <p class="steplabel steplabel--center">Before you scroll on</p>
       <h2 class="belowfold__title belowfold__title--center" id="d2h-kratom-{{ section.id }}">Kratom, honestly.</h2>
-      <span class="k2tag">No spin, no miracle claims</span>
       <div class="qa">
-        <details class="qitem" open><summary>So what actually is it?</summary><p>A leaf from <b>Mitragyna speciosa</b>, a Southeast Asian tree in the coffee family. Brewed and chewed there for generations. The alkaloid people talk about is mitragynine, that&rsquo;s what we measure.</p></details>
-        <details class="qitem"><summary>Will it get me high?</summary><p>It isn&rsquo;t THC and we won&rsquo;t pretend it&rsquo;s a substitute for anything. People describe steady energy or physical ease depending on the amount. Effects vary by person, and that&rsquo;s the honest answer.</p></details>
-        <details class="qitem"><summary>Is it legal?</summary><p>Kratom is regulated state by state. We ship to 34 states and don&rsquo;t ship to the other 16, <a href="{{ url_ship }}">here&rsquo;s the list</a>, and checkout blocks those addresses before you can pay.</p></details>
-        <details class="qitem"><summary>How do I know what I&rsquo;m getting?</summary><p>Every batch is screened by an independent lab for identity, potency, heavy metals and microbials, and the batch number is printed on your pouch. <a href="{{ url_coa }}">Read the reports</a>.</p></details>
-        <details class="qitem"><summary>Who shouldn&rsquo;t take it?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. Regular daily use can build tolerance and habit, start low and take breaks.</p></details>
+        <details class="qitem" open><summary>What does taking Dandy feel like?</summary><p>It depends on the serving. A lighter serving reads as a clean, alert lift with focus, the kind that carries you through the afternoon without a racing heart. A larger serving reads as a deep, warm release of physical tension across the lower back, neck and joints, paired with calm, alert clarity. Within about 45 minutes the nagging physical background noise softens. Unlike sedating remedies or muscle relaxers, there is no brain fog, heavy eyelids or couch-lock.</p></details>
+        <details class="qitem"><summary>Which format and strength should I start with?</summary><p>New to kratom? Start with one 35&nbsp;mg Mixed Berry gummy, or half of one. After everyday relief from desk stiffness, workouts or general wear-and-tear? One 50&nbsp;mg capsule is the ideal baseline. Persistent, intense physical discomfort, demanding physical shifts, or an experienced routine? Choose 90&nbsp;mg. Raw leaf powder is for people who already measure their own serving by the gram. Whichever you pick, start with a single serving and a full glass of water.</p></details>
+        <details class="qitem"><summary>How quickly does it work, and how long does it last?</summary><p>Most people feel it within 35 to 50 minutes, a little faster on an empty or light stomach. The lift or the ease typically lasts 3 to 6 hours depending on the format and the serving, tapering off gently with no crash or rebound stiffness.</p></details>
+        <details class="qitem"><summary>What is in it, and is it tested?</summary><p>Pure Mitragyna speciosa leaf, nothing else doing the work: whole micronized leaf in the powder, and leaf extract standardized to an exact 35&nbsp;mg of mitragynine per gummy or 50 or 90&nbsp;mg per capsule. Gummies are plant-based pectin dusted in cane sugar. Capsules are a vegan plant-cellulose shell with zero gelatin, zero sugar and zero fillers. Every batch is independently third-party tested for alkaloid potency, heavy metals, pesticides and microbials, and the batch number is printed on your pouch or jar so you can read the report.</p></details>
+        <details class="qitem"><summary>Is Dandy legal, and how is it different from 7-OH products?</summary><p>Yes, Dandy is federally legal. It's made exclusively from natural, unadulterated Southeast Asian kratom leaf extract, a botanical in the coffee family with centuries of traditional use for physical endurance and comfort.</p><p>Dandy is fundamentally different from synthetic or hyper-concentrated 7-hydroxymitragynine (7-OH) tablets and gas-station shots, which have faced regulatory bans. Dandy contains only the natural leaf alkaloid profile, dominated by mitragynine with minor alkaloids below 1%, and ships legally to your door in the states where kratom is regulated for adults 21+.</p></details>
+        <details class="qitem"><summary>Is kratom habit-forming? Can I take it every day?</summary><p>Like coffee, tea or any botanical that provides noticeable physical support, kratom can be habit-forming with continuous daily use. That's why we advocate intentional relief: take it on heavy physical days, after hard workouts, or when stiffness flares. One or two days off per week keeps your receptors responsive so a single serving keeps delivering, without needing more.</p></details>
+        <details class="qitem"><summary>Who is Dandy for, and who should avoid it?</summary><p>Healthy adults 21 and older who want a clean daytime lift or serious physical comfort from joint stiffness, muscular strain or demanding days, without the fog of sedatives or the stomach irritation of daily over-the-counter pills.</p><p>Not for anyone under 21, anyone pregnant or nursing, or anyone taking prescription medication without first consulting their physician.</p></details>
+        <details class="qitem"><summary>What if Dandy does not work for me?</summary><p>You are covered by the 30-day guarantee. Use it for a full month in your real routine. If you do not feel the difference, email support@foreverdandy.com within 30 days of delivery, send back what is left, and we refund your purchase. No interrogation, no hard feelings.</p></details>
       </div>
       <p class="kcard__more k2more"><a href="{{ url_kratom }}">The full kratom guide →</a></p>
     </div>
@@ -121,7 +120,6 @@
   {% endcomment %}
   <section class="belowfold belowfold--rule" aria-labelledby="d2h-dose-{{ section.id }}" data-copy-status="aggressive-draft">
     <div class="belowfold__inner">
-      <p class="steplabel steplabel--center">The part nobody explains</p>
       <h2 class="belowfold__title belowfold__title--center" id="d2h-dose-{{ section.id }}">Less lifts you. More settles you.</h2>
       <p class="dose__lede">Kratom is dose-dependent, that is the whole trick. A small amount tends to read as energy and focus. A larger one leans into body ease. Same leaf, different gear.</p>
 
@@ -183,7 +181,6 @@
   {% comment %} ---------- 8. Finale ---------- {% endcomment %}
   <section class="belowfold belowfold--finale" aria-labelledby="d2h-end-{{ section.id }}">
     <div class="belowfold__inner belowfold__inner--narrow belowfold__inner--center">
-      <p class="steplabel">Still here?</p>
       <h2 class="belowfold__title" id="d2h-end-{{ section.id }}">Good days look Dandy.</h2>
       <div class="recapcard">
         <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" loading="lazy" aria-hidden="true">

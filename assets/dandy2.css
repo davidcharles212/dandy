@@ -1659,3 +1659,51 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-pdp .daycheck + .belowfold--rule { padding-top: 58px; }
   .dandy2-pdp .faq summary { font-size: clamp(16px, 4.7vw, 18px); text-wrap: balance; }
 }
+
+/* ============================================================
+   HOME CLEANUP (2026-09-12): quieter finish on the homepage only.
+   Scoped to .dandy2-home so the PDPs sharing this sheet keep
+   their approved treatment. Thick brown borders become hairlines,
+   hard offset shadows go, buttons sit flat, labels drop to
+   sentence case, and the section eyebrows and tag pill are gone
+   from the markup. */
+.dandy2-home { --hc-line: rgb(40 17 12 / 14%); --hc-line-soft: rgb(40 17 12 / 9%); }
+.dandy2-home .hhero__art img { border: 0; box-shadow: none; }
+.dandy2-home .cta, .dandy2-home .fcard__bd .cta, .dandy2-home .stickybar__btn { border: 0; box-shadow: none; }
+.dandy2-home .cta:hover, .dandy2-home .stickybar__btn:hover { transform: none; box-shadow: none; }
+.dandy2-home .cta--ghost { border: 1.5px solid var(--d2-brown); box-shadow: none; }
+.dandy2-home .hhero__sub { display: none; }
+.dandy2-home .hhero__trust { margin-top: 2px; }
+.dandy2-home .marquee { border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .steplabel, .dandy2-home .k2tag { display: none; }
+.dandy2-home .fcard { border: 1px solid var(--hc-line); box-shadow: none; background: var(--d2-white); }
+.dandy2-home .fcard--hero { background: var(--d2-white); }
+.dandy2-home .fcard__img { border-bottom: 1px solid var(--hc-line-soft); }
+.dandy2-home .fcard__best { font-family: var(--d2-body); font-weight: 500; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--d2-brown-50); }
+.dandy2-home .fcard__bd .cta { border-width: 0; box-shadow: none; }
+.dandy2-home .fdots i.is-on { background: var(--d2-brown); }
+.dandy2-home .qa { gap: 0; border-top: 1px solid var(--hc-line); }
+.dandy2-home .qitem { border: 0; border-bottom: 1px solid var(--hc-line); border-radius: 0; background: transparent; box-shadow: none; }
+.dandy2-home .qitem[open] { background: transparent; }
+.dandy2-home .qitem summary { padding: 15px 2px; font-family: var(--d2-body); font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; }
+.dandy2-home .qitem summary::after { color: var(--d2-brown); font-weight: 600; }
+.dandy2-home .qitem p { padding: 0 2px 16px; font-size: 15px; }
+.dandy2-home .qitem p + p { margin-top: -6px; }
+.dandy2-home .dose__row { border: 1px solid var(--hc-line); box-shadow: none; }
+.dandy2-home .dose__amt b { color: var(--d2-brown); }
+.dandy2-home .dose__fill { border: 1px solid rgb(40 17 12 / 22%); }
+.dandy2-home .dose__fill::after { border-right: 0; }
+.dandy2-home .dose__key { border: 0; }
+.dandy2-home .warnbar { border: 0; border-left: 2px solid var(--hc-line); border-radius: 0; background: transparent; box-shadow: none; }
+.dandy2-home .promise { border-top: 1px solid var(--hc-line); }
+.dandy2-home .promise__truck { border: 0; }
+.dandy2-home .recapcard { border: 1px solid var(--hc-line); box-shadow: none; }
+.dandy2-home .belowfold--finale .recapcard { box-shadow: none; }
+.dandy2-home .gseal { border-width: 1px; }
+.dandy2-home .belowfold--rule { border-top-width: 1px; border-top-color: var(--hc-line); }
+@media (min-width: 801px) {
+  .dandy2-home .qitem summary { padding: 17px 2px; font-size: 18px; }
+  .dandy2-home .qitem p { padding: 0 2px 18px; }
+}
+.dandy2-home .d2head__cart, .dandy2-home .d2head__burger { border-width: 1px; border-color: var(--hc-line); box-shadow: none; }
+.dandy2-home .d2head__cta { border: 0; box-shadow: none; }
