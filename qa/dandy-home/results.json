@@ -9,7 +9,14 @@
         "g4_inventory": {
           "cards": [
             "div.hage__box",
-            "span.hero__inset",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
             "article.rev.rev--first",
             "article.rev",
             "article.rev",
@@ -36,7 +43,7 @@
           "preload": {
             "present": true,
             "sameSet": true,
-            "rendered": "home-hero-hands-900.webp",
+            "rendered": "home-hero-lineup-phone-900.webp",
             "sizesMatch": true
           },
           "pass": true
@@ -65,10 +72,10 @@
             "welcome__fine",
             "hf__legal",
             "gear__range",
-            "moment__alt",
+            "fmt__alt",
             "hf__contact",
             "hh__ann",
-            "dose__zone"
+            "ugc__q"
           ],
           "pass": true
         },
@@ -82,7 +89,7 @@
         },
         "g5_whitespace": {
           "limit": 56,
-          "nodes": 264,
+          "nodes": 272,
           "gaps": [],
           "pass": true
         },
@@ -113,57 +120,87 @@
               "attrsMatch": true
             },
             {
-              "src": "home-hero-hands-1600.webp",
+              "src": "home-hero-lineup-1800.webp",
               "complete": true,
               "natural": "390x219",
-              "attrs": "1600x900",
+              "attrs": "1800x1200",
               "lazy": "auto",
               "visible": true,
-              "real": "1600x900",
+              "real": "1800x1200",
               "attrsMatch": true,
               "candidates": [
-                "home-hero-hands-900.webp:900x506",
-                "home-hero-hands-1600.webp:1600x900"
+                "home-hero-lineup-900.webp:900x600",
+                "home-hero-lineup-1800.webp:1800x1200"
               ]
             },
             {
-              "src": "home-hero-gummy-900.webp",
+              "src": "home-lineup-gummies-1000.webp",
               "complete": true,
-              "natural": "900x900",
-              "attrs": "900x900",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "900x900",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-gummies-1200.webp",
+              "src": "home-lineup-capsules-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1121x1000",
+              "attrs": "1121x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1121x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-capsules-1200.webp",
+              "src": "home-lineup-powder-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-powder-1200.webp",
+              "src": "cshop-ugc-01-poster.jpg",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
-              "lazy": "lazy",
-              "visible": true,
-              "real": "960x1200",
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-02-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-04-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-05-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
               "attrsMatch": true
             },
             {
@@ -181,28 +218,29 @@
         },
         "g11_hero": {
           "h1Lines": 3,
-          "h1Size": 40,
+          "h1Size": 35.88,
           "ledeLines": 5,
           "buttonWidth": 350,
           "contentWidth": 350,
-          "primaryButtonBottom": 541,
+          "primaryButtonBottom": 785,
           "firstScreen": true,
           "photoWidth": 390,
           "photoHeight": 219,
           "photoUncropped": true,
           "photoEdgeToEdge": true,
-          "insetSize": 120,
+          "insetSize": null,
           "pass": true
         },
         "g12_analytics": {
-          "tracked": 16,
+          "tracked": 20,
           "events": {
-            "homepage_hero_reviews_click": 1,
-            "homepage_hero_cta_click": 2,
+            "homepage_hero_cta_click": 1,
             "format_card_click": 4,
-            "dosage_guide_interaction": 3,
-            "faq_accordion_toggle": 5,
-            "reviews_gateway_click": 1
+            "ugc_play": 4,
+            "coa_link_click": 1,
+            "review_filter_click": 4,
+            "reviews_gateway_click": 1,
+            "faq_accordion_toggle": 5
           },
           "missing": [],
           "absentEvents": [],
@@ -211,8 +249,7 @@
         "g10_links": {
           "unique": [
             "#DandyMain",
-            "#formats",
-            "#reviews",
+            "#lineup",
             "/",
             "/#dose",
             "/cart",
@@ -227,6 +264,9 @@
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
             "/pages/contact?view=reviews",
+            "/pages/contact?view=reviews&format=capsules",
+            "/pages/contact?view=reviews&format=gummies",
+            "/pages/contact?view=reviews&format=powder",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -239,14 +279,14 @@
         "g13_reducedMotion": {
           "identicalBytes": true,
           "imageRectsIdentical": true,
-          "images": 8,
-          "heroSrcAnimated": "home-hero-hands-900.webp",
-          "heroSrcReduced": "home-hero-hands-900.webp",
+          "images": 11,
+          "heroSrcAnimated": "home-hero-lineup-phone-900.webp",
+          "heroSrcReduced": "home-hero-lineup-phone-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-390.png",
-      "pageHeight": 12210
+      "pageHeight": 12441
     },
     "430": {
       "width": 430,
@@ -256,7 +296,14 @@
         "g4_inventory": {
           "cards": [
             "div.hage__box",
-            "span.hero__inset",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
             "article.rev.rev--first",
             "article.rev",
             "article.rev",
@@ -283,7 +330,7 @@
           "preload": {
             "present": true,
             "sameSet": true,
-            "rendered": "home-hero-hands-900.webp",
+            "rendered": "home-hero-lineup-phone-900.webp",
             "sizesMatch": true
           },
           "pass": true
@@ -312,10 +359,10 @@
             "welcome__fine",
             "hf__legal",
             "gear__range",
-            "moment__alt",
+            "fmt__alt",
             "hf__contact",
             "hh__ann",
-            "dose__zone"
+            "ugc__q"
           ],
           "pass": true
         },
@@ -329,7 +376,7 @@
         },
         "g5_whitespace": {
           "limit": 56,
-          "nodes": 264,
+          "nodes": 272,
           "gaps": [],
           "pass": true
         },
@@ -360,57 +407,87 @@
               "attrsMatch": true
             },
             {
-              "src": "home-hero-hands-1600.webp",
+              "src": "home-hero-lineup-1800.webp",
               "complete": true,
               "natural": "430x241",
-              "attrs": "1600x900",
+              "attrs": "1800x1200",
               "lazy": "auto",
               "visible": true,
-              "real": "1600x900",
+              "real": "1800x1200",
               "attrsMatch": true,
               "candidates": [
-                "home-hero-hands-900.webp:900x506",
-                "home-hero-hands-1600.webp:1600x900"
+                "home-hero-lineup-900.webp:900x600",
+                "home-hero-lineup-1800.webp:1800x1200"
               ]
             },
             {
-              "src": "home-hero-gummy-900.webp",
+              "src": "home-lineup-gummies-1000.webp",
               "complete": true,
-              "natural": "900x900",
-              "attrs": "900x900",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "900x900",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-gummies-1200.webp",
+              "src": "home-lineup-capsules-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1121x1000",
+              "attrs": "1121x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1121x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-capsules-1200.webp",
+              "src": "home-lineup-powder-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-powder-1200.webp",
+              "src": "cshop-ugc-01-poster.jpg",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
-              "lazy": "lazy",
-              "visible": true,
-              "real": "960x1200",
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-02-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-04-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-05-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
               "attrsMatch": true
             },
             {
@@ -428,28 +505,29 @@
         },
         "g11_hero": {
           "h1Lines": 3,
-          "h1Size": 40,
+          "h1Size": 39.56,
           "ledeLines": 4,
           "buttonWidth": 387,
           "contentWidth": 387,
-          "primaryButtonBottom": 494,
+          "primaryButtonBottom": 796,
           "firstScreen": true,
           "photoWidth": 430,
           "photoHeight": 242,
           "photoUncropped": true,
           "photoEdgeToEdge": true,
-          "insetSize": 120,
+          "insetSize": null,
           "pass": true
         },
         "g12_analytics": {
-          "tracked": 16,
+          "tracked": 20,
           "events": {
-            "homepage_hero_reviews_click": 1,
-            "homepage_hero_cta_click": 2,
+            "homepage_hero_cta_click": 1,
             "format_card_click": 4,
-            "dosage_guide_interaction": 3,
-            "faq_accordion_toggle": 5,
-            "reviews_gateway_click": 1
+            "ugc_play": 4,
+            "coa_link_click": 1,
+            "review_filter_click": 4,
+            "reviews_gateway_click": 1,
+            "faq_accordion_toggle": 5
           },
           "missing": [],
           "absentEvents": [],
@@ -458,8 +536,7 @@
         "g10_links": {
           "unique": [
             "#DandyMain",
-            "#formats",
-            "#reviews",
+            "#lineup",
             "/",
             "/#dose",
             "/cart",
@@ -474,6 +551,9 @@
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
             "/pages/contact?view=reviews",
+            "/pages/contact?view=reviews&format=capsules",
+            "/pages/contact?view=reviews&format=gummies",
+            "/pages/contact?view=reviews&format=powder",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -486,14 +566,14 @@
         "g13_reducedMotion": {
           "identicalBytes": true,
           "imageRectsIdentical": true,
-          "images": 8,
-          "heroSrcAnimated": "home-hero-hands-900.webp",
-          "heroSrcReduced": "home-hero-hands-900.webp",
+          "images": 11,
+          "heroSrcAnimated": "home-hero-lineup-phone-900.webp",
+          "heroSrcReduced": "home-hero-lineup-phone-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-430.png",
-      "pageHeight": 11901
+      "pageHeight": 12284
     },
     "768": {
       "width": 768,
@@ -503,7 +583,14 @@
         "g4_inventory": {
           "cards": [
             "div.hage__box",
-            "span.hero__inset",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
             "article.rev.rev--first",
             "article.rev",
             "article.rev",
@@ -530,7 +617,7 @@
           "preload": {
             "present": true,
             "sameSet": true,
-            "rendered": "home-hero-hands-900.webp",
+            "rendered": "home-hero-lineup-phone-900.webp",
             "sizesMatch": true
           },
           "pass": true
@@ -559,10 +646,10 @@
             "welcome__fine",
             "hf__legal",
             "gear__range",
-            "moment__alt",
+            "fmt__alt",
             "hf__contact",
             "hh__ann",
-            "dose__zone"
+            "ugc__q"
           ],
           "pass": true
         },
@@ -576,7 +663,7 @@
         },
         "g5_whitespace": {
           "limit": 56,
-          "nodes": 259,
+          "nodes": 266,
           "gaps": [],
           "pass": true
         },
@@ -607,57 +694,87 @@
               "attrsMatch": true
             },
             {
-              "src": "home-hero-hands-1600.webp",
+              "src": "home-hero-lineup-1800.webp",
               "complete": true,
               "natural": "768x431",
-              "attrs": "1600x900",
+              "attrs": "1800x1200",
               "lazy": "auto",
               "visible": true,
-              "real": "1600x900",
+              "real": "1800x1200",
               "attrsMatch": true,
               "candidates": [
-                "home-hero-hands-900.webp:900x506",
-                "home-hero-hands-1600.webp:1600x900"
+                "home-hero-lineup-900.webp:900x600",
+                "home-hero-lineup-1800.webp:1800x1200"
               ]
             },
             {
-              "src": "home-hero-gummy-900.webp",
+              "src": "home-lineup-gummies-1000.webp",
               "complete": true,
-              "natural": "900x900",
-              "attrs": "900x900",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "900x900",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-gummies-1200.webp",
+              "src": "home-lineup-capsules-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1121x1000",
+              "attrs": "1121x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1121x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-capsules-1200.webp",
+              "src": "home-lineup-powder-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-powder-1200.webp",
+              "src": "cshop-ugc-01-poster.jpg",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
-              "lazy": "lazy",
-              "visible": true,
-              "real": "960x1200",
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-02-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-04-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-05-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
               "attrsMatch": true
             },
             {
@@ -675,28 +792,29 @@
         },
         "g11_hero": {
           "h1Lines": 3,
-          "h1Size": 41.472,
+          "h1Size": 66,
           "ledeLines": 3,
           "buttonWidth": 691,
           "contentWidth": 691,
-          "primaryButtonBottom": 456,
+          "primaryButtonBottom": 983,
           "firstScreen": true,
           "photoWidth": 768,
           "photoHeight": 432,
           "photoUncropped": true,
           "photoEdgeToEdge": true,
-          "insetSize": 120,
+          "insetSize": null,
           "pass": true
         },
         "g12_analytics": {
-          "tracked": 16,
+          "tracked": 20,
           "events": {
-            "homepage_hero_reviews_click": 1,
-            "homepage_hero_cta_click": 2,
+            "homepage_hero_cta_click": 1,
             "format_card_click": 4,
-            "dosage_guide_interaction": 3,
-            "faq_accordion_toggle": 5,
-            "reviews_gateway_click": 1
+            "ugc_play": 4,
+            "coa_link_click": 1,
+            "review_filter_click": 4,
+            "reviews_gateway_click": 1,
+            "faq_accordion_toggle": 5
           },
           "missing": [],
           "absentEvents": [],
@@ -705,8 +823,7 @@
         "g10_links": {
           "unique": [
             "#DandyMain",
-            "#formats",
-            "#reviews",
+            "#lineup",
             "/",
             "/#dose",
             "/cart",
@@ -721,6 +838,9 @@
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
             "/pages/contact?view=reviews",
+            "/pages/contact?view=reviews&format=capsules",
+            "/pages/contact?view=reviews&format=gummies",
+            "/pages/contact?view=reviews&format=powder",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -733,14 +853,14 @@
         "g13_reducedMotion": {
           "identicalBytes": true,
           "imageRectsIdentical": true,
-          "images": 8,
-          "heroSrcAnimated": "home-hero-hands-900.webp",
-          "heroSrcReduced": "home-hero-hands-900.webp",
+          "images": 11,
+          "heroSrcAnimated": "home-hero-lineup-phone-900.webp",
+          "heroSrcReduced": "home-hero-lineup-phone-900.webp",
           "pass": true
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-768.png",
-      "pageHeight": 11007
+      "pageHeight": 8149
     },
     "1280": {
       "width": 1280,
@@ -750,7 +870,14 @@
         "g4_inventory": {
           "cards": [
             "div.hage__box",
-            "span.hero__inset",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
+            "div.ugc__frame",
+            "button.ugc__play",
             "article.rev.rev--first",
             "article.rev",
             "article.rev",
@@ -772,12 +899,12 @@
           "pass": true
         },
         "g8_cls": {
-          "withGate": 0.0248,
-          "total": 0.0248,
+          "withGate": 0.0071,
+          "total": 0.0071,
           "preload": {
             "present": true,
             "sameSet": true,
-            "rendered": "home-hero-hands-900.webp",
+            "rendered": "home-hero-lineup-900.webp",
             "sizesMatch": true
           },
           "pass": true
@@ -806,10 +933,10 @@
             "welcome__fine",
             "hf__legal",
             "gear__range",
-            "moment__alt",
+            "fmt__alt",
             "hf__contact",
             "hh__ann",
-            "dose__zone"
+            "ugc__q"
           ],
           "pass": true
         },
@@ -823,7 +950,7 @@
         },
         "g5_whitespace": {
           "limit": 96,
-          "nodes": 267,
+          "nodes": 276,
           "gaps": [],
           "pass": true
         },
@@ -854,57 +981,87 @@
               "attrsMatch": true
             },
             {
-              "src": "home-hero-hands-1600.webp",
+              "src": "home-hero-lineup-1800.webp",
               "complete": true,
-              "natural": "588x331",
-              "attrs": "1600x900",
+              "natural": "588x392",
+              "attrs": "1800x1200",
               "lazy": "auto",
               "visible": true,
-              "real": "1600x900",
+              "real": "1800x1200",
               "attrsMatch": true,
               "candidates": [
-                "home-hero-hands-900.webp:900x506",
-                "home-hero-hands-1600.webp:1600x900"
+                "home-hero-lineup-900.webp:900x600",
+                "home-hero-lineup-1800.webp:1800x1200"
               ]
             },
             {
-              "src": "home-hero-gummy-900.webp",
+              "src": "home-lineup-gummies-1000.webp",
               "complete": true,
-              "natural": "900x900",
-              "attrs": "900x900",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "900x900",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-gummies-1200.webp",
+              "src": "home-lineup-capsules-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1121x1000",
+              "attrs": "1121x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1121x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-capsules-1200.webp",
+              "src": "home-lineup-powder-1000.webp",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
+              "natural": "1000x1000",
+              "attrs": "1000x1000",
               "lazy": "lazy",
               "visible": true,
-              "real": "960x1200",
+              "real": "1000x1000",
               "attrsMatch": true
             },
             {
-              "src": "home-format-powder-1200.webp",
+              "src": "cshop-ugc-01-poster.jpg",
               "complete": true,
-              "natural": "960x1200",
-              "attrs": "960x1200",
-              "lazy": "lazy",
-              "visible": true,
-              "real": "960x1200",
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-02-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-04-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
+              "attrsMatch": true
+            },
+            {
+              "src": "cshop-ugc-05-poster.jpg",
+              "complete": true,
+              "natural": "720x1280",
+              "attrs": "720x1280",
+              "lazy": "auto",
+              "visible": false,
+              "real": "720x1280",
               "attrsMatch": true
             },
             {
@@ -923,27 +1080,28 @@
         "g11_hero": {
           "h1Lines": 3,
           "h1Size": 66,
-          "ledeLines": 3,
-          "buttonWidth": 204,
+          "ledeLines": 4,
+          "buttonWidth": 236,
           "contentWidth": 1168,
-          "primaryButtonBottom": 855,
+          "primaryButtonBottom": 572,
           "firstScreen": true,
           "photoWidth": 536,
-          "photoHeight": 302,
+          "photoHeight": 357,
           "photoUncropped": true,
           "photoEdgeToEdge": null,
-          "insetSize": 160,
+          "insetSize": null,
           "pass": true
         },
         "g12_analytics": {
-          "tracked": 16,
+          "tracked": 20,
           "events": {
-            "homepage_hero_reviews_click": 1,
-            "homepage_hero_cta_click": 2,
+            "homepage_hero_cta_click": 1,
             "format_card_click": 4,
-            "dosage_guide_interaction": 3,
-            "faq_accordion_toggle": 5,
-            "reviews_gateway_click": 1
+            "ugc_play": 4,
+            "coa_link_click": 1,
+            "review_filter_click": 4,
+            "reviews_gateway_click": 1,
+            "faq_accordion_toggle": 5
           },
           "missing": [],
           "absentEvents": [],
@@ -952,8 +1110,7 @@
         "g10_links": {
           "unique": [
             "#DandyMain",
-            "#formats",
-            "#reviews",
+            "#lineup",
             "/",
             "/#dose",
             "/cart",
@@ -968,6 +1125,9 @@
             "/pages/contact?view=dandy2-subs",
             "/pages/contact?view=dandy2-terms",
             "/pages/contact?view=reviews",
+            "/pages/contact?view=reviews&format=capsules",
+            "/pages/contact?view=reviews&format=gummies",
+            "/pages/contact?view=reviews&format=powder",
             "/products/extract-capsules-50mg",
             "/products/extract-capsules-90mg",
             "/products/mixed-berry-kratom-gummies",
@@ -978,16 +1138,20 @@
           "note": "resolve on the preview theme; not measurable on the static harness"
         },
         "g13_reducedMotion": {
-          "identicalBytes": true,
+          "identicalBytes": false,
           "imageRectsIdentical": true,
-          "images": 8,
-          "heroSrcAnimated": "home-hero-hands-900.webp",
-          "heroSrcReduced": "home-hero-hands-900.webp",
-          "pass": true
+          "images": 11,
+          "heroSrcAnimated": "home-hero-lineup-900.webp",
+          "heroSrcReduced": "home-hero-lineup-900.webp",
+          "differing": 28,
+          "total": 9812480,
+          "firstRow": 5541,
+          "lastRow": 5582,
+          "pass": false
         }
       },
       "shot": "/Users/davidcharles/hq/workspace/worktrees/dandy/homepage-redesign/qa/dandy-home/shots/home-1280.png",
-      "pageHeight": 8277
+      "pageHeight": 7666
     }
   },
   "hero": [
@@ -997,7 +1161,7 @@
       "ledeLines": 5,
       "buttonWidth": 335,
       "contentWidth": 335,
-      "primaryButtonBottom": 541,
+      "primaryButtonBottom": 773,
       "viewport": 844,
       "photoHeight": 211,
       "photoUncropped": true,
@@ -1009,7 +1173,7 @@
       "ledeLines": 5,
       "buttonWidth": 350,
       "contentWidth": 350,
-      "primaryButtonBottom": 541,
+      "primaryButtonBottom": 785,
       "viewport": 844,
       "photoHeight": 219,
       "photoUncropped": true,
@@ -1021,7 +1185,7 @@
       "ledeLines": 4,
       "buttonWidth": 387,
       "contentWidth": 387,
-      "primaryButtonBottom": 494,
+      "primaryButtonBottom": 796,
       "viewport": 844,
       "photoHeight": 242,
       "photoUncropped": true,

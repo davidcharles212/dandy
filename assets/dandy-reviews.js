@@ -203,7 +203,7 @@
   function setQuery(q) { state.q = q; state.terms = q ? terms(q) : []; }
   function readUrl() {
     var p = new URLSearchParams(location.search);
-    var f = (p.get('format') || '').toLowerCase();
+    var f = (p.get('fmt') || '').toLowerCase();
     if (FORMATS.indexOf(f) > 0) state.format = f;
     state.benefits = (p.get('benefit') || '').toLowerCase().split(',').filter(function (b) { return BENEFITS.indexOf(b) >= 0; });
     setQuery((p.get('q') || '').slice(0, 120));
@@ -212,7 +212,7 @@
     if (!window.history || !history.replaceState) return;
     var u = new URL(location.href);
     var set = function (k, v) { if (v) u.searchParams.set(k, v); else u.searchParams.delete(k); };
-    set('format', state.format === 'all' ? '' : state.format);
+    set('fmt', state.format === 'all' ? '' : state.format);
     set('benefit', state.benefits.join(','));
     set('q', state.q.trim());
     var next = u.pathname + u.search + u.hash;

@@ -249,7 +249,7 @@ async function measureViewport(browser, harness, width) {
   /* Gate 4 inventory is taken with the age gate still up so its dialog is in the record. */
   r.checks.g4_inventory = await page.evaluate(() => {
     const q = window.__q;
-    const allowed = ['.rev', '.hero__inset', '.welcome__input', '.hage__box', '.dcart__panel'];
+    const allowed = ['.rev', '.ugc__frame', '.ugc__play', '.welcome__input', '.hage__box', '.dcart__panel'];
     const box = el => { const cs = getComputedStyle(el); if (cs.display === 'none' || cs.visibility === 'hidden') return false; const r = el.getBoundingClientRect(); if (r.width <= 0 || r.height <= 0) return false; for (let a = el; a; a = a.parentElement) { if (a.hidden) return false; } return true; };
     const els = Array.from(document.querySelectorAll('body *')).filter(el => box(el));
     const cards = els.filter(el => { const cs = getComputedStyle(el); return parseFloat(cs.borderTopLeftRadius) > 8 && (parseFloat(cs.borderTopWidth) > 0 || cs.boxShadow !== 'none') && !el.classList.contains('btn'); }).map(el => q.sel(el));
@@ -299,7 +299,7 @@ async function measureViewport(browser, harness, width) {
   /* Gate 2: type floor: nothing under 13px, no body paragraph under 16px */
   r.checks.g2_typeFloor = await page.evaluate(() => {
     const q = window.__q;
-    const metaP = ['welcome__fine', 'hf__legal', 'gear__range', 'moment__alt', 'hf__contact', 'hh__ann', 'dose__zone'];
+    const metaP = ['welcome__fine', 'hf__legal', 'gear__range', 'fmt__alt', 'hf__contact', 'hh__ann', 'ugc__q'];
     let min = 999, minSel = null, under16 = [];
     const seen = new Set();
     q.textEls().forEach(t => {
@@ -342,7 +342,7 @@ async function measureViewport(browser, harness, width) {
     const nodes = [];
     const sy = window.scrollY;
     q.textEls().forEach(t => { if (t.el.closest('.btn')) return; const top = Math.min(...t.rects.map(r => r.top)), bottom = Math.max(...t.rects.map(r => r.bottom)); const left = Math.min(...t.rects.map(r => r.left)), right = Math.max(...t.rects.map(r => r.right)); nodes.push({ el: t.el, kind: 'text', top: top + sy, bottom: bottom + sy, left, right }); });
-    document.querySelectorAll('img, svg, input, .btn, .dose__track, .hero__inset').forEach(el => { if (!q.visible(el)) return; const b = el.getBoundingClientRect(); nodes.push({ el, kind: el.tagName.toLowerCase(), top: b.top + sy, bottom: b.bottom + sy, left: b.left, right: b.right }); });
+    document.querySelectorAll('img, svg, video, input, .btn, .ugc__frame').forEach(el => { if (!q.visible(el)) return; const b = el.getBoundingClientRect(); nodes.push({ el, kind: el.tagName.toLowerCase(), top: b.top + sy, bottom: b.bottom + sy, left: b.left, right: b.right }); });
     const bg = el => getComputedStyle(el).backgroundColor;
     document.querySelectorAll('body *').forEach(el => {
       if (!q.visible(el)) return; const cs = getComputedStyle(el); const b = el.getBoundingClientRect();
@@ -416,7 +416,7 @@ async function measureViewport(browser, harness, width) {
     const wb = wrap.getBoundingClientRect(), bb = btn.getBoundingClientRect(), ib = img.getBoundingClientRect();
     const natural = img.naturalWidth / img.naturalHeight, box = ib.width / ib.height;
     const btnBottom = Math.round(bb.bottom + window.scrollY);
-    return { h1Lines: lines(h1), h1Size: parseFloat(getComputedStyle(h1).fontSize), ledeLines: lines(lede), buttonWidth: Math.round(bb.width), contentWidth: Math.round(wb.width), primaryButtonBottom: btnBottom, firstScreen: innerWidth >= 861 || btnBottom <= innerHeight, photoWidth: Math.round(ib.width), photoHeight: Math.round(ib.height), photoUncropped: Math.abs(natural - box) < 0.02, photoEdgeToEdge: innerWidth < 861 ? Math.abs(ib.left) < 1 && Math.abs(ib.width - innerWidth) < 1 : null, insetSize: Math.round(inset.getBoundingClientRect().width), pass: lines(h1) <= 3 && (innerWidth >= 861 || (Math.abs(bb.width - wb.width) < 1 && btnBottom <= innerHeight)) && Math.abs(natural - box) < 0.02 };
+    return { h1Lines: lines(h1), h1Size: parseFloat(getComputedStyle(h1).fontSize), ledeLines: lines(lede), buttonWidth: Math.round(bb.width), contentWidth: Math.round(wb.width), primaryButtonBottom: btnBottom, firstScreen: innerWidth >= 861 || btnBottom <= innerHeight, photoWidth: Math.round(ib.width), photoHeight: Math.round(ib.height), photoUncropped: Math.abs(natural - box) < 0.02, photoEdgeToEdge: innerWidth < 861 ? Math.abs(ib.left) < 1 && Math.abs(ib.width - innerWidth) < 1 : null, insetSize: inset ? Math.round(inset.getBoundingClientRect().width) : null, pass: lines(h1) <= 3 && (innerWidth >= 861 || (Math.abs(bb.width - wb.width) < 1 && btnBottom <= innerHeight)) && Math.abs(natural - box) < 0.02 };
   });
 
   /* Gate 12: analytics: every data-track element pushes its event */
@@ -434,12 +434,12 @@ async function measureViewport(browser, harness, width) {
       if (!pushed) missing.push(el.getAttribute('data-track') + ' ' + (el.getAttribute('data-track-label') || ''));
     }
     const events = {}; window.dataLayer.forEach(d => { events[d.event] = (events[d.event] || 0) + 1; });
-    const expected = ['homepage_hero_cta_click', 'homepage_hero_reviews_click', 'format_card_click', 'dosage_guide_interaction', 'faq_accordion_toggle', 'reviews_gateway_click'];
+    const expected = ['homepage_hero_cta_click', 'format_card_click', 'ugc_play', 'faq_accordion_toggle', 'review_filter_click', 'reviews_gateway_click', 'coa_link_click'];
     const absent = expected.filter(e => !events[e]);
     return { tracked: els.length, events, missing, absentEvents: absent, pass: missing.length === 0 && absent.length === 0 };
   });
   /* restore the FAQ and gears to their load state after the click sweep */
-  await page.evaluate(() => { document.querySelectorAll('.faq__q button').forEach((b, i) => { const on = b.getAttribute('aria-expanded') === 'true'; if (on !== (i === 0)) b.click(); }); const g = document.querySelector('[data-gear-btn="1"]'); if (g) g.click(); });
+  await page.evaluate(() => { document.querySelectorAll('.faq__q button').forEach((b, i) => { const on = b.getAttribute('aria-expanded') === 'true'; if (on !== (i === 0)) b.click(); }); document.querySelectorAll('.ugc video').forEach(v => { v.pause(); v.currentTime = 0; v.load(); }); });
   await page.waitForTimeout(700);
 
   /* Gate 10 (list only): every href on the page for the preview-theme link check */

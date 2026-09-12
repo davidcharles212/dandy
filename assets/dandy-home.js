@@ -1,4 +1,4 @@
-/* Dandy homepage and reviews hub chrome: reveal, header drawer, dose gears, FAQ accordion, welcome form, analytics.
+/* Dandy homepage (v3) and reviews hub chrome: reveal, header drawer, customer clips, FAQ accordion, welcome form, analytics.
    window.DandyHome.track(event, payload) pushes {event, ...payload} to window.dataLayer and to Shopify.analytics.publish
    when present. Elements carry data-track="<event>" and optional data-track-label. Every initialiser is idempotent. */
 (function (w, d) {
@@ -18,17 +18,21 @@
     return data;
   }
 
-  /* Reveal: [data-reveal] gains is-in once at 30 percent visible (or half the viewport for tall blocks) and is unobserved. */
+  /* Reveal: [data-reveal] gains is-in as soon as 5 percent of it is on screen (or anything at all for blocks taller than the viewport), once, then is unobserved. Blocks already on screen at load are shown at once. */
   function reveal(root) {
     var els = all('[data-reveal]', root).filter(function (el) { return once(el, 'hmReveal'); });
     if (!els.length) return;
     if (!hasIO || reduce) { els.forEach(function (el) { el.classList.add('is-in'); }); return; }
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting && (e.intersectionRatio >= 0.3 || e.intersectionRect.height >= w.innerHeight * 0.5)) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        if (e.isIntersecting && (e.intersectionRatio >= 0.05 || e.intersectionRect.height >= 40)) { e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { threshold: [0, 0.3, 0.6] });
-    els.forEach(function (el) { io.observe(el); });
+    }, { threshold: [0, 0.05, 0.2], rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < w.innerHeight && r.bottom > 0) { el.classList.add('is-in'); return; }
+      io.observe(el);
+    });
   }
 
   /* Header: phone drawer. */
@@ -48,28 +52,44 @@
     d.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !drawer.hidden) set(false); });
   }
 
-  /* Dose: three gear titles; pressing one raises its zone and dims the others; the marker slides to the zone. */
-  function dose(root) {
-    all('[data-dose]', root).forEach(function (sec) {
-      if (!once(sec, 'hmBound')) return;
-      var gears = all('.gear', sec), btns = all('[data-gear-btn]', sec), marker = sec.querySelector('.dose__marker');
-      var centres = { '1': '13.3%', '2': '36.7%', '3': '73.3%' };
-      function place() {
-        var n = sec.getAttribute('data-gear') || '1', g = sec.querySelector('[data-gear-zone="' + n + '"]');
-        if (!marker) return;
-        marker.style.setProperty('--mx', centres[n] || centres['1']);
-        if (g) marker.style.setProperty('--my', (g.offsetTop + 13) + 'px');
+  /* Customer clips: poster with one play button; a tap plays with sound, a tap on the frame pauses; the poster comes back when the clip ends;
+     only one clip plays at a time; a clip leaving the viewport pauses; verbatim captions (from #hm-captions) render inside the frame while it plays;
+     if every source errors the poster stays and the frame is inert. The first play of each clip is tracked once. */
+  function clips(root) {
+    var cues = {};
+    try { cues = JSON.parse((d.getElementById('hm-captions') || {}).textContent || '{}'); } catch (e) { cues = {}; }
+    var slots = all('.ugc', root).filter(function (s) { return once(s, 'hmBound'); });
+    if (!slots.length) return;
+    function pauseOthers(keep) { all('.ugc video').forEach(function (o) { if (o !== keep && !o.paused) o.pause(); }); }
+    slots.forEach(function (slot) {
+      var v = slot.querySelector('video'), fb = slot.querySelector('.ugc__fallback'), cap = slot.querySelector('.ugc__cap'), play = slot.querySelector('.ugc__play'), frame = slot.querySelector('.ugc__frame');
+      if (!v || !play || !frame) return;
+      var list = cues[slot.getAttribute('data-slot')] || [], played = false;
+      function showFallback() { v.hidden = true; if (fb) fb.hidden = false; slot.classList.add('is-fallback'); slot.classList.remove('is-playing'); if (cap) cap.hidden = true; }
+      v.addEventListener('error', showFallback);
+      var src = v.querySelectorAll('source'); if (src.length) src[src.length - 1].addEventListener('error', showFallback);
+      function start() {
+        if (slot.classList.contains('is-fallback')) return;
+        pauseOthers(v); v.muted = false; v.volume = 1;
+        var p = v.play();
+        if (p && p.catch) p.catch(function (err) { if (err && err.name === 'NotSupportedError') showFallback(); });
       }
-      function select(n) {
-        sec.setAttribute('data-gear', n);
-        gears.forEach(function (g) { g.classList.toggle('is-on', g.getAttribute('data-gear-zone') === n); });
-        btns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-gear-btn') === n)); });
-        place();
+      function toggle() { if (v.paused || v.ended) start(); else v.pause(); }
+      frame.addEventListener('click', function (e) { if (e.target.closest('.ugc__play')) return; e.preventDefault(); toggle(); });
+      play.addEventListener('click', function (e) { e.preventDefault(); toggle(); });
+      v.addEventListener('play', function () { slot.classList.add('is-playing'); play.setAttribute('aria-label', 'Pause video'); if (!played) { played = true; } });
+      v.addEventListener('playing', function () { slot.classList.add('is-playing'); });
+      v.addEventListener('pause', function () { slot.classList.remove('is-playing'); play.setAttribute('aria-label', 'Play video'); });
+      v.addEventListener('ended', function () { slot.classList.remove('is-playing'); v.currentTime = 0; if (cap) { cap.textContent = ''; cap.classList.remove('is-on'); } });
+      if (cap && list.length) {
+        var last = null;
+        v.addEventListener('timeupdate', function () {
+          var t = v.currentTime, hit = null;
+          for (var i = 0; i < list.length; i++) { if (t >= list[i][0] && t < list[i][1]) { hit = list[i]; break; } }
+          if (hit !== last) { last = hit; cap.textContent = hit ? hit[2] : ''; cap.classList.toggle('is-on', !!hit); }
+        });
       }
-      btns.forEach(function (b) { b.addEventListener('click', function () { sec.setAttribute('data-picked', ''); select(b.getAttribute('data-gear-btn')); }); });
-      select(sec.getAttribute('data-gear') || '1');
-      w.addEventListener('resize', place);
-      if (d.fonts && d.fonts.ready) d.fonts.ready.then(place);
+      if (hasIO) new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting && !v.paused) v.pause(); }); }, { threshold: 0 }).observe(v);
     });
   }
 
@@ -142,7 +162,7 @@
     });
   }
 
-  function init(root) { analytics(); reveal(root); header(root); dose(root); faq(root); welcome(root); }
+  function init(root) { analytics(); reveal(root); header(root); clips(root); faq(root); welcome(root); }
 
   w.DandyHome = { track: track, init: init, reveal: reveal, reduce: reduce };
   if (d.readyState === 'loading') d.addEventListener('DOMContentLoaded', function () { init(); });
