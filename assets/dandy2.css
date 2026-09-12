@@ -1724,3 +1724,8 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-home .hhero__benefits--facts b { font-size: 17px; }
   .dandy2-home .hhero__benefits--facts span { font-size: 15px; }
 }
+
+/* HOME CLEANUP round 3: header rule and the ticker band go quiet. */
+.dandy2-home .d2head { border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .marquee { background: var(--d2-cream, #FAF5F0); color: var(--d2-brown); border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .marquee__track span { font-weight: 700; font-size: 15px; letter-spacing: .06em; }
