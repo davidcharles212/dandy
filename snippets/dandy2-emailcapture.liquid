@@ -4,7 +4,7 @@
   "newsletter" tag. The discount CODE ITSELF must be created in Shopify Admin
   (Discounts > Amount off order, 10%, one use per customer, first order only), 
   the code string is set once in `d2_promo_code` below.
-  Renders as an inline footer band plus a one-time modal (scroll-triggered, dismissible).
+  Renders as an inline footer band plus a one-time modal (opens after 45s of browsing, dismissible).
 {% endcomment %}
 {%- assign d2_promo_code = 'DANDY10' -%}
 {%- comment -%}
@@ -122,12 +122,13 @@
   m.querySelectorAll('[data-d2-modal-close]').forEach(b => b.addEventListener('click', close));
   m.addEventListener('click', e => { if (e.target === m) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !m.hidden) close(); });
-  // fire once the visitor is genuinely engaged: 45% down the page, or exit intent on desktop
-  const onScroll = () => {
-    const d = (scrollY + innerHeight) / document.body.scrollHeight;
-    if (d > 0.45) { open(); removeEventListener('scroll', onScroll); }
-  };
-  addEventListener('scroll', onScroll, { passive: true });
-  document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY < 10) open(); });
+  // fire only after DELAY of browsing time, counted from the first page of the visit
+  // (sessionStorage), so moving between pages does not restart the clock. If the age
+  // gate is still up at that point, wait for it to clear.
+  const DELAY = 45000, START = 'd2captureStart';
+  let start;
+  try { start = +sessionStorage.getItem(START) || 0; if (!start) { start = Date.now(); sessionStorage.setItem(START, start); } } catch { start = Date.now(); }
+  const tryOpen = () => { if (document.querySelector('[data-d2-age]')) return setTimeout(tryOpen, 2000); open(); };
+  setTimeout(tryOpen, Math.max(0, start + DELAY - Date.now()));
 })();
 </script>
