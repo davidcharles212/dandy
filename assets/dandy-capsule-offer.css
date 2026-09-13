@@ -119,3 +119,42 @@
 .co .co-trust small { font-size: 12px; }
 .dandy-pdp .dandy-product-header__title, .dps__desc, .dpm__desc, .dpx__title, .dpx__desc { text-wrap: pretty; }
 .dpm__title, .dpw__head, .dpi__heading, .dpf__heading { text-wrap: balance; }
+
+/* Hero polish (2026-09-13) ------------------------------------------------ */
+
+/* Compact strength picker: strength over name inside each card; the chosen strength's description is one line underneath. */
+.co .co-strength { margin-bottom: 12px; }
+.co .co-strength__card { grid-template-columns: 20px minmax(0, 1fr); grid-template-rows: auto auto; row-gap: 3px; padding: 9px 12px; }
+.co .co-strength__mg { font-size: 22px; }
+.co .co-strength__mg small { font-size: 13px; }
+.co .co-strength__name { font-size: 13px; line-height: 1.2; white-space: nowrap; }
+.co .co-strength__desc { display: none; }
+.co .co-strength__hint { margin: 7px 0 0; font-size: 13px; line-height: 1.35; color: color-mix(in srgb, var(--co-ink) 72%, transparent); text-wrap: pretty; }
+@media (min-width: 600px) { .co .co-strength__mg { font-size: 24px; } }
+
+/* Delivery estimate, under the billing reassurance line */
+.co-eta { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 12px 0 0; padding: 0; color: var(--co-ink); text-align: left; }
+.co-eta > svg { flex: 0 0 22px; color: var(--co-accent); }
+.co-eta p { margin: 0; min-width: 0; }
+.co-eta b { display: block; font-size: 15px; font-weight: 800; line-height: 1.3; color: var(--co-accent); }
+.co-eta span { display: block; font-size: 13px; line-height: 1.35; text-wrap: pretty; }
+
+/* Phone sticky bar: lives on <body>, hidden until the bundle cards scroll above the screen */
+.co-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--dandy-pdp-cream, #fff9f0); border-top: 1px solid color-mix(in srgb, var(--dandy-ink, #241914) 14%, transparent); box-shadow: 0 -6px 18px rgb(36 25 20 / .08); color: var(--dandy-ink, #241914); font-family: var(--dandy-font-body); transform: translateY(110%); transition: transform 220ms ease; }
+.co-sticky[hidden] { display: none; }
+.co-sticky.is-visible { transform: none; }
+.co-sticky__pack { width: 44px; height: 44px; }
+.co-sticky__pack img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.co-sticky__text { min-width: 0; }
+.co-sticky__text b { display: block; font-size: 15px; font-weight: 800; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.co-sticky__text span { display: block; font-size: 13px; line-height: 1.3; color: color-mix(in srgb, var(--dandy-ink, #241914) 72%, transparent); white-space: nowrap; }
+.co-sticky__cta { min-height: 48px; padding: 0 16px; border: 2px solid var(--dandy-ink, #241914); border-radius: 10px; background: var(--dandy-accent-bright, #4eae4b); color: var(--dandy-ink, #241914); font-family: var(--dandy-font-display); font-size: 19px; letter-spacing: .02em; line-height: 1; text-transform: uppercase; white-space: nowrap; cursor: pointer; }
+.co-sticky__cta:focus-visible { outline: 3px solid var(--dandy-accent, #164020); outline-offset: 3px; }
+@media (min-width: 1100px) { .co-sticky { display: none; } }
+@media (prefers-reduced-motion: reduce) { .co-sticky { transition: none; } }
+
+/* Phone gallery: one photo at a time, full width, thumbnails underneath (no partial next photo) */
+@media screen and (max-width: 1099px) {
+  .dpg .dpg__viewport { margin-inline-end: 0; padding-inline-end: 0; }
+  .dpg .dpg__slide { flex-basis: 100cqi; }
+}

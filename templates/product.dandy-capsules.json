@@ -61,9 +61,9 @@
             "header": {
               "type": "dandy-product-header",
               "settings": {
-                "title_override": "Extract capsules",
+                "title_override": "Mitragynine capsules",
                 "tagline": "Relief for aching backs and stiff joints",
-                "subtitle_override": "STANDARDIZED MITRAGYNINE EXTRACT\n30 VEGAN CAPSULES PER JAR"
+                "subtitle_override": "STANDARDIZED LEAF EXTRACT\n30 VEGAN CAPSULES PER JAR"
               },
               "blocks": {}
             },
@@ -147,7 +147,7 @@
                 "cutoff_hour": 14,
                 "tiers_legend": "2. Choose your jar bundle",
                 "capsules_per_jar": 30,
-                "default_tier": "3",
+                "default_tier": "2",
                 "per_day_prefix": "Just",
                 "tier_1_variant_title": "30-count / Single",
                 "tier_1_title": "1 Jar",

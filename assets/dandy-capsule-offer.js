@@ -5,6 +5,7 @@
    present in the DOM (the links still work as plain navigation without JS). */
 (() => {
   const money = (cents) => '$' + (cents / 100).toFixed(2);
+  const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   class DandyCapsuleOffer extends HTMLElement {
     connectedCallback() {
@@ -60,13 +61,120 @@
         if (proof) proof.textContent = 'Ships ' + when.charAt(0) + when.slice(1).toLowerCase();
       };
       this.tick();
-      this.timer = setInterval(this.tick, 30000);
+      this.timer = setInterval(() => { this.tick(); this.renderEta(); }, 30000);
+      this.renderEta();
+      this.setupSticky();
       this.sync();
     }
 
     disconnectedCallback() {
       clearInterval(this.timer);
+      if (this.onStickyScroll) {
+        window.removeEventListener('scroll', this.onStickyScroll);
+        window.removeEventListener('resize', this.onStickyScroll);
+      }
+      this.sticky?.remove();
       this.initialized = false;
+    }
+
+    // Delivery estimate: ship day from the Central-time cutoff (weekdays only), arrival window in business days.
+    renderEta() {
+      const eta = this.querySelector('[data-co-eta]');
+      if (!eta) return;
+      const cutoff = Number(this.dataset.cutoffHour) || 14;
+      const minDays = Number(eta.dataset.minDays) || 2;
+      const maxDays = Math.max(minDays, Number(eta.dataset.maxDays) || 3);
+      const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Chicago', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', hourCycle: 'h23'
+      }).formatToParts(new Date()).map((p) => [p.type, p.value]));
+      // A UTC midnight date carries the Central calendar day, so day arithmetic never crosses a DST edge.
+      const today = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day)));
+      const isWeekday = (d) => d.getUTCDay() !== 0 && d.getUTCDay() !== 6;
+      const addBusinessDays = (d, n) => {
+        const out = new Date(d);
+        let left = n;
+        while (left > 0) {
+          out.setUTCDate(out.getUTCDate() + 1);
+          if (isWeekday(out)) left -= 1;
+        }
+        return out;
+      };
+      const shipsToday = isWeekday(today) && Number(parts.hour) < cutoff;
+      const ship = shipsToday ? today : addBusinessDays(today, 1);
+      const fmt = (d) => new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric' }).format(d);
+      const from = fmt(addBusinessDays(ship, minDays));
+      const to = fmt(addBusinessDays(ship, maxDays));
+      const origin = eta.dataset.origin;
+      const arrive = eta.querySelector('[data-co-eta-arrive]');
+      const shipLine = eta.querySelector('[data-co-eta-ship]');
+      const shipWord = shipsToday ? 'today'
+        : ship - today === 86400000 ? 'tomorrow'
+        : new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'long' }).format(ship);
+      if (arrive) arrive.textContent = 'Most orders arrive ' + from + ' to ' + to;
+      if (shipLine) shipLine.textContent = shipsToday
+        ? 'Ships today from ' + origin + ' when you order by ' + (cutoff > 12 ? cutoff - 12 + ' PM' : cutoff + ' AM') + ' CT'
+        : 'Ships ' + shipWord + ' from ' + origin;
+    }
+
+    // Phone sticky bar: shown once the bundle cards are above the screen; its button brings them back into view.
+    setupSticky() {
+      const bar = this.querySelector('[data-co-sticky]');
+      if (!bar) return;
+      this.sticky = bar;
+      document.body.appendChild(bar);
+      bar.querySelector('[data-co-sticky-cta]')?.addEventListener('click', () => {
+        const target = this.fieldsetFor(this.strength) || this;
+        const top = target.getBoundingClientRect().top + window.scrollY - 16;
+        window.scrollTo({ top, behavior: reduceMotion() ? 'auto' : 'smooth' });
+      });
+      let queued = false;
+      this.onStickyScroll = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          this.updateSticky();
+        });
+      };
+      window.addEventListener('scroll', this.onStickyScroll, { passive: true });
+      window.addEventListener('resize', this.onStickyScroll, { passive: true });
+      this.updateSticky();
+    }
+
+    updateSticky() {
+      const bar = this.sticky;
+      if (!bar) return;
+      const target = this.fieldsetFor(this.strength) || this;
+      const past = target.getBoundingClientRect().bottom < 0;
+      const phone = window.matchMedia('(max-width: 1099px)').matches;
+      const cartOpen = document.documentElement.classList.contains('dcart-lock');
+      const show = past && phone && !cartOpen;
+      if (show) bar.hidden = false;
+      bar.classList.toggle('is-visible', show);
+      bar.toggleAttribute('inert', !show);
+      if (!show && !bar.hidden) {
+        clearTimeout(this.stickyHide);
+        this.stickyHide = setTimeout(() => { if (!bar.classList.contains('is-visible')) bar.hidden = true; }, 250);
+      }
+    }
+
+    renderStickyOffer() {
+      const bar = this.sticky;
+      if (!bar) return;
+      const inputs = this.inputs;
+      // The best per-day tier of the current strength carries the sub line (reader price when the voucher is active).
+      let best = null;
+      inputs.forEach((input) => {
+        const jars = Number(input.value) || 1;
+        const cents = this.reader ? Number(input.dataset.readerPrice) : Number(input.dataset.price);
+        const perDay = Math.floor(cents / (jars * (Number(this.dataset.caps) || 30)));
+        if (!best || perDay < best.perDay) best = { input, jars, perDay };
+      });
+      const sub = bar.querySelector('[data-co-sticky-sub]');
+      if (sub && best) sub.textContent = best.jars + (best.jars === 1 ? ' jar' : ' jars') + ' from ' + money(best.perDay) + ' a day';
+      const img = best && best.input.closest('[data-co-tier-card]')?.querySelector('.co-pack img');
+      const stickyImg = bar.querySelector('.co-sticky__pack img');
+      if (img && stickyImg && stickyImg.src !== img.src) stickyImg.src = img.currentSrc || img.src;
     }
 
     fieldsetFor(strength) {
@@ -145,6 +253,8 @@
       });
 
       this.querySelectorAll('[data-co-notice-90]').forEach((n) => { n.hidden = next !== '90'; });
+      const hint = this.querySelector('[data-co-hint]');
+      if (hint && hint.getAttribute('data-hint-' + next)) hint.textContent = hint.getAttribute('data-hint-' + next);
 
       // Strength-specific page text (snippets/dandy-strength-text.liquid): 50 mg phrases carry their 90 mg twin.
       document.querySelectorAll('[data-dandy-st-' + next + ']').forEach((el) => {
@@ -193,6 +303,8 @@
         card.toggleAttribute('data-selected', card.contains(input));
       });
       this.message.hidden = true;
+      this.renderStickyOffer();
+      this.updateSticky();
       this.dispatchEvent(new CustomEvent('dandy:capsule-offer-change', {
         bubbles: true,
         detail: { variantId: id.value, price: Number(input.dataset.price) || 0, label: input.dataset.label, strength: this.strength }

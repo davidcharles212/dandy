@@ -100,6 +100,7 @@
   class="co"
   data-dandy-block="capsule-offer-{{ block.id }}"
   data-cutoff-hour="{{ block.settings.cutoff_hour }}"
+  data-caps="{{ caps }}"
   data-default-tier="{{ block.settings.default_tier }}"
   data-cart-url="{{ routes.cart_url }}"
   data-product-url="{{ product.url }}"
@@ -135,6 +136,12 @@
           <span class="co-strength__desc">{{ block.settings.strength_90_desc }}</span>
         </a>
       </div>
+      {%- comment -%} Compact picker: the cards carry strength and name only; the chosen strength's description sits in one line under them. {%- endcomment -%}
+      {%- if block.settings.strength_50_desc != blank or block.settings.strength_90_desc != blank -%}
+        <p class="co-strength__hint" data-co-hint data-hint-50="{{ block.settings.strength_50_desc | escape }}" data-hint-90="{{ block.settings.strength_90_desc | escape }}">
+          {%- if is_90 %}{{ block.settings.strength_90_desc }}{% else %}{{ block.settings.strength_50_desc }}{% endif -%}
+        </p>
+      {%- endif -%}
       {%- if block.settings.strength_90_notice != blank -%}
         <div class="co-strength__notice" data-co-notice-90{% unless is_90 %} hidden{% endunless %}>
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM6.75 7.5h2v4h-2v-4z"/></svg>
@@ -286,6 +293,16 @@
         <span>{{ block.settings.reassurance }}</span>
       </p>
     {%- endif -%}
+    {%- if block.settings.eta_origin != blank -%}
+      {%- comment -%} Delivery estimate. Without JS the static line stands; JS writes the dated arrival window (Central time, business days). {%- endcomment -%}
+      <div class="co-eta" data-co-eta data-origin="{{ block.settings.eta_origin | escape }}" data-min-days="{{ block.settings.eta_min_days }}" data-max-days="{{ block.settings.eta_max_days }}">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <p>
+          <b data-co-eta-arrive>Arrives in {{ block.settings.eta_min_days }} to {{ block.settings.eta_max_days }} business days</b>
+          <span data-co-eta-ship>Ships from {{ block.settings.eta_origin }} the same day when you order by 2 PM CT</span>
+        </p>
+      </div>
+    {%- endif -%}
     <p class="co-message" data-co-message role="status" hidden></p>
     <noscript>Please enable JavaScript to choose your bundle.</noscript>
   </form>
@@ -314,6 +331,23 @@
       <span><b>{{ block.settings.trust_3 }}</b></span>
     </li>
   </ul>
+
+  {%- if block.settings.show_sticky -%}
+    {%- comment -%}
+      Phone sticky bar. It appears only once the bundle cards have scrolled above the screen, and its button
+      scrolls back to them rather than adding to cart, so every shopper chooses a bundle with the cards in view.
+      JS moves it to <body> so no containment context on the product grid can break position: fixed.
+    {%- endcomment -%}
+    {%- assign sticky_img = block.settings.tier_3_image_asset | replace: '{strength}', '-50' -%}
+    <div class="co-sticky" data-co-sticky hidden>
+      <span class="co-sticky__pack" aria-hidden="true">{%- if sticky_img != blank -%}<img src="{{ sticky_img | asset_url }}" alt="" width="600" height="600" loading="lazy">{%- endif -%}</span>
+      <span class="co-sticky__text">
+        <b data-co-sticky-title>{{ block.settings.sticky_title }}</b>
+        <span data-co-sticky-sub></span>
+      </span>
+      <button type="button" class="co-sticky__cta" data-co-sticky-cta>{{ block.settings.sticky_cta }}</button>
+    </div>
+  {%- endif -%}
 </dandy-capsule-offer>
 
 {% schema %}
@@ -374,6 +408,16 @@
     { "type": "text", "id": "tier_3_image_asset", "label": "Tier 3 image", "default": "dandy-cap-tier-3{strength}.webp" },
     { "type": "checkbox", "id": "tier_3_hero", "label": "Tier 3 is the hero tier", "default": true },
     { "type": "text", "id": "tier_3_ribbon", "label": "Tier 3 ribbon", "default": "MOST POPULAR — BUY 2, GET 1 FREE" },
+
+    { "type": "header", "content": "Delivery estimate (under the reassurance line)" },
+    { "type": "text", "id": "eta_origin", "label": "Ships from (blank hides the estimate)", "default": "Charlotte, NC" },
+    { "type": "range", "id": "eta_min_days", "label": "Fastest transit (business days)", "min": 1, "max": 7, "step": 1, "default": 2 },
+    { "type": "range", "id": "eta_max_days", "label": "Slowest typical transit (business days)", "min": 1, "max": 10, "step": 1, "default": 3 },
+
+    { "type": "header", "content": "Phone sticky bar" },
+    { "type": "checkbox", "id": "show_sticky", "label": "Show sticky bar after the bundles scroll away", "default": true },
+    { "type": "text", "id": "sticky_title", "label": "Title", "default": "Buy 2, get 1 free" },
+    { "type": "text", "id": "sticky_cta", "label": "Button (scrolls back to the bundles)", "default": "See bundles" },
 
     { "type": "header", "content": "Under the button" },
     { "type": "text", "id": "reassurance", "label": "Reassurance line", "default": "One-time purchase • Never an automatic rebill" },
