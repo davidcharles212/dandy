@@ -206,6 +206,8 @@
     applyDefault() {
       // A campaign link that names the tier it sold (bundle=, qty= or variant=) is honoured when it
       // matches a rendered tier of the current strength; the configured default still wins for anything else.
+      // A tier the shopper tapped before this script loaded stays selected.
+      if (this.inputs.some((i) => i.checked && !i.defaultChecked)) return;
       const params = new URLSearchParams(window.location.search);
       const bundle = params.get('bundle') || params.get('qty');
       const variant = params.get('variant');

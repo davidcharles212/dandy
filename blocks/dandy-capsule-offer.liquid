@@ -283,7 +283,7 @@
             {%- comment -%} Price per capsule, rounded to the cent. The bundle total lives only on the button. {%- endcomment -%}
             {%- assign per_cap = v.price | times: 1.0 | divided_by: days | round -%}
             {%- assign reader_per_cap = reader_price | times: 1.0 | divided_by: days | round -%}
-            <span class="co-daily co-total" data-co-daily data-regular="{{ per_cap | money }} per capsule" data-reader="{{ reader_per_cap | money }} per capsule">{{ per_cap | money }} per capsule</span>
+            <span class="co-daily co-total" data-co-daily data-regular="{{ per_cap | money }}/capsule" data-reader="{{ reader_per_cap | money }}/capsule">{{ per_cap | money }}/capsule</span>
             <span class="co-shipping{% if is_free_ship %} co-shipping--free{% endif %}">{{ t_ship }}</span>
           </span>
         </span>
