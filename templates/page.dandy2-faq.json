@@ -12,7 +12,7 @@
     "main": {
       "type": "dandy2-doc",
       "settings": {
-        "eyebrow": "Straight answers",
+        "eyebrow": "",
         "heading": "The Dandy FAQ.",
         "lede": "The questions people actually ask, answered without the marketing voice.",
         "copy_status": "aggressive-draft"
