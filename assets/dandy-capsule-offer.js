@@ -77,43 +77,27 @@
       this.initialized = false;
     }
 
-    // Delivery estimate: ship day from the Central-time cutoff (weekdays only), arrival window in business days.
+    // Dispatch line: today on a weekday before the Central cutoff, otherwise tomorrow or the next weekday by name.
     renderEta() {
-      const eta = this.querySelector('[data-co-eta]');
-      if (!eta) return;
+      const text = this.querySelector('[data-co-eta-text]');
+      if (!text) return;
       const cutoff = Number(this.dataset.cutoffHour) || 14;
-      const minDays = Number(eta.dataset.minDays) || 2;
-      const maxDays = Math.max(minDays, Number(eta.dataset.maxDays) || 3);
       const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
         timeZone: 'America/Chicago', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', hourCycle: 'h23'
       }).formatToParts(new Date()).map((p) => [p.type, p.value]));
       // A UTC midnight date carries the Central calendar day, so day arithmetic never crosses a DST edge.
       const today = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day)));
       const isWeekday = (d) => d.getUTCDay() !== 0 && d.getUTCDay() !== 6;
-      const addBusinessDays = (d, n) => {
-        const out = new Date(d);
-        let left = n;
-        while (left > 0) {
-          out.setUTCDate(out.getUTCDate() + 1);
-          if (isWeekday(out)) left -= 1;
-        }
-        return out;
-      };
-      const shipsToday = isWeekday(today) && Number(parts.hour) < cutoff;
-      const ship = shipsToday ? today : addBusinessDays(today, 1);
-      const fmt = (d) => new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric' }).format(d);
-      const from = fmt(addBusinessDays(ship, minDays));
-      const to = fmt(addBusinessDays(ship, maxDays));
-      const origin = eta.dataset.origin;
-      const arrive = eta.querySelector('[data-co-eta-arrive]');
-      const shipLine = eta.querySelector('[data-co-eta-ship]');
-      const shipWord = shipsToday ? 'today'
-        : ship - today === 86400000 ? 'tomorrow'
-        : new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'long' }).format(ship);
-      if (arrive) arrive.textContent = 'Most orders arrive ' + from + ' to ' + to;
-      if (shipLine) shipLine.textContent = shipsToday
-        ? 'Ships today from ' + origin + ' when you order by ' + (cutoff > 12 ? cutoff - 12 + ' PM' : cutoff + ' AM') + ' CT'
-        : 'Ships ' + shipWord + ' from ' + origin;
+      if (isWeekday(today) && Number(parts.hour) < cutoff) {
+        const label = cutoff > 12 ? (cutoff - 12) + ' PM' : cutoff === 12 ? '12 PM' : cutoff + ' AM';
+        text.textContent = 'Ships today if you order by ' + label + ' CT';
+        return;
+      }
+      const ship = new Date(today);
+      do { ship.setUTCDate(ship.getUTCDate() + 1); } while (!isWeekday(ship));
+      text.textContent = ship - today === 86400000
+        ? 'Ships tomorrow'
+        : 'Ships ' + new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'long' }).format(ship);
     }
 
     // Phone sticky bar: shown once the bundle cards are above the screen; its button brings them back into view.
@@ -162,16 +146,16 @@
       const bar = this.sticky;
       if (!bar) return;
       const inputs = this.inputs;
-      // The best per-day tier of the current strength carries the sub line (reader price when the voucher is active).
+      // The lowest price per jar of the current strength carries the sub line (reader price when the voucher is active).
       let best = null;
       inputs.forEach((input) => {
         const jars = Number(input.value) || 1;
         const cents = this.reader ? Number(input.dataset.readerPrice) : Number(input.dataset.price);
-        const perDay = Math.floor(cents / (jars * (Number(this.dataset.caps) || 30)));
-        if (!best || perDay < best.perDay) best = { input, jars, perDay };
+        const perJar = Math.round(cents / jars);
+        if (!best || perJar < best.perJar) best = { input, jars, perJar };
       });
       const sub = bar.querySelector('[data-co-sticky-sub]');
-      if (sub && best) sub.textContent = best.jars + (best.jars === 1 ? ' jar' : ' jars') + ' from ' + money(best.perDay) + ' a day';
+      if (sub && best) sub.textContent = best.jars + (best.jars === 1 ? ' jar at ' : ' jars at ') + money(best.perJar) + (best.jars === 1 ? '' : ' each');
       const img = best && best.input.closest('[data-co-tier-card]')?.querySelector('.co-pack img');
       const stickyImg = bar.querySelector('.co-sticky__pack img');
       if (img && stickyImg && stickyImg.src !== img.src) stickyImg.src = img.currentSrc || img.src;

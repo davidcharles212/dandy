@@ -175,6 +175,7 @@
       endif
       assign v1 = blank
       assign v2 = blank
+      assign anchor_price = 0
       assign v3 = blank
       for v in sp.variants
         assign v_title = v.title
@@ -192,6 +193,9 @@
           assign v3 = v
         endif
       endfor
+      if v1 != blank
+        assign anchor_price = v1.price
+      endif
     -%}
   <fieldset class="co-tiers" data-co-tiers="{{ strength }}"{% if strength != current_strength %} hidden{% endif %}>
     <legend class="co-sr-only">{{ block.settings.tiers_legend }}</legend>
@@ -210,8 +214,6 @@
         endif
         assign jars = i
         assign days = caps | times: jars
-        assign per_day_cents = v.price | divided_by: days
-        assign per_day_str = per_day_cents | money
         assign save = 0
         assign save_str = ''
         if v.compare_at_price > v.price
@@ -220,6 +222,14 @@
         endif
         assign reader_off = v.price | times: reader_percent | divided_by: 100
         assign reader_price = v.price | minus: reader_off
+        comment
+          The big figure is the price per jar (rounded to the cent); the single-jar price is the struck anchor,
+          so the ladder reads $64.99, $54.99, $43.33. The bundle total stays visible in smaller type.
+        endcomment
+        assign per_jar = v.price | times: 1.0 | divided_by: jars | round
+        assign reader_per_jar = reader_price | times: 1.0 | divided_by: jars | round
+        assign supply_key = 'tier_' | append: i | append: '_supply'
+        assign t_supply = block.settings[supply_key] | default: '[days]-Day Supply' | replace: '[days]', days
         assign title_key = 'tier_' | append: i | append: '_title'
         assign badge_key = 'tier_' | append: i | append: '_badge'
         assign ship_key = 'tier_' | append: i | append: '_shipping'
@@ -265,14 +275,19 @@
           </span>
           <span class="co-title">{{ t_title }}{% if t_badge != blank %}<span class="co-badge">{{ t_badge }}</span>{% endif %}</span>
           <span class="co-price">
-            {%- comment -%} Regular prices render first; the reader rate swaps both spans in place when the voucher is active. {%- endcomment -%}
-            <span data-co-now data-regular="{{ v.price | money }}" data-reader="{{ reader_price | money }}">{{ v.price | money }}</span>
-            <s data-co-was data-regular="{% if save > 0 %}{{ v.compare_at_price | money }}{% endif %}" data-reader="{{ v.price | money }}"{% if save == 0 %} hidden{% endif %}>{% if save > 0 %}{{ v.compare_at_price | money }}{% endif %}</s>
+            {%- comment -%} Regular prices render first; the reader rate swaps the spans in place when the voucher is active. {%- endcomment -%}
+            <span class="co-price__now"><span data-co-now data-regular="{{ per_jar | money }}" data-reader="{{ reader_per_jar | money }}">{{ per_jar | money }}</span><small>/jar</small></span>
+            {%- assign show_anchor = false -%}
+            {%- if anchor_price > per_jar -%}{%- assign show_anchor = true -%}{%- endif -%}
+            <s data-co-was data-regular="{% if show_anchor %}{{ anchor_price | money }}{% endif %}" data-reader="{% if anchor_price > 0 %}{{ anchor_price | money }}{% endif %}"{% unless show_anchor %} hidden{% endunless %}>{% if show_anchor %}{{ anchor_price | money }}{% endif %}</s>
           </span>
-          <span class="co-supply">{{ days }}-Day Supply</span>
+          <span class="co-supply">{{ t_supply }}</span>
           <span class="co-detail">
-            {%- assign reader_per_day_str = reader_price | divided_by: days | money -%}
-            <span class="co-daily" data-co-daily data-regular="{{ block.settings.per_day_prefix }} {{ per_day_str }} / day" data-reader="{{ block.settings.per_day_prefix }} {{ reader_per_day_str }} / day">{{ block.settings.per_day_prefix }} {{ per_day_str }} / day</span>
+            {%- if jars > 1 -%}
+              <span class="co-daily co-total" data-co-daily data-regular="{{ v.price | money }} for {{ jars }} jars" data-reader="{{ reader_price | money }} for {{ jars }} jars">{{ v.price | money }} for {{ jars }} jars</span>
+            {%- else -%}
+              <span class="co-daily co-total"></span>
+            {%- endif -%}
             <span class="co-shipping{% if is_free_ship %} co-shipping--free{% endif %}">{{ t_ship }}</span>
           </span>
         </span>
@@ -293,15 +308,12 @@
         <span>{{ block.settings.reassurance }}</span>
       </p>
     {%- endif -%}
-    {%- if block.settings.eta_origin != blank -%}
-      {%- comment -%} Delivery estimate. Without JS the static line stands; JS writes the dated arrival window (Central time, business days). {%- endcomment -%}
-      <div class="co-eta" data-co-eta data-origin="{{ block.settings.eta_origin | escape }}" data-min-days="{{ block.settings.eta_min_days }}" data-max-days="{{ block.settings.eta_max_days }}">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
-        <p>
-          <b data-co-eta-arrive>Arrives in {{ block.settings.eta_min_days }} to {{ block.settings.eta_max_days }} business days</b>
-          <span data-co-eta-ship>Ships from {{ block.settings.eta_origin }} the same day when you order by 2 PM CT</span>
-        </p>
-      </div>
+    {%- if block.settings.eta_show -%}
+      {%- comment -%} One light dispatch line; JS names the day (today before the Central cutoff, else the next weekday). {%- endcomment -%}
+      <p class="co-eta" data-co-eta>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <span data-co-eta-text>Orders by 2 PM CT ship the same day</span>
+      </p>
     {%- endif -%}
     <p class="co-message" data-co-message role="status" hidden></p>
     <noscript>Please enable JavaScript to choose your bundle.</noscript>
@@ -384,6 +396,7 @@
 
     { "type": "text", "id": "tier_1_variant_title", "label": "Tier 1 variant title", "default": "30-count / Single" },
     { "type": "text", "id": "tier_1_title", "label": "Tier 1 title", "default": "1 Jar" },
+    { "type": "text", "id": "tier_1_supply", "label": "Tier 1 supply chip ([days] = days)", "default": "[days]-Day Supply" },
     { "type": "text", "id": "tier_1_badge", "label": "Tier 1 badge ([save] = amount saved)" },
     { "type": "text", "id": "tier_1_shipping", "label": "Tier 1 shipping line", "default": "+ $5.95 Shipping" },
     { "type": "text", "id": "tier_1_cta", "label": "Tier 1 button", "default": "ADD TO CART" },
@@ -393,6 +406,7 @@
 
     { "type": "text", "id": "tier_2_variant_title", "label": "Tier 2 variant title", "default": "30-count / 2-pack" },
     { "type": "text", "id": "tier_2_title", "label": "Tier 2 title", "default": "2 Jars" },
+    { "type": "text", "id": "tier_2_supply", "label": "Tier 2 supply chip ([days] = days)", "default": "[days]-Day Supply" },
     { "type": "text", "id": "tier_2_badge", "label": "Tier 2 badge", "default": "SAVE [save]" },
     { "type": "text", "id": "tier_2_shipping", "label": "Tier 2 shipping line", "default": "FREE SHIPPING" },
     { "type": "text", "id": "tier_2_cta", "label": "Tier 2 button", "default": "ADD TO CART" },
@@ -402,6 +416,7 @@
 
     { "type": "text", "id": "tier_3_variant_title", "label": "Tier 3 variant title", "default": "30-count / 3-pack" },
     { "type": "text", "id": "tier_3_title", "label": "Tier 3 title", "default": "3 Jars" },
+    { "type": "text", "id": "tier_3_supply", "label": "Tier 3 supply chip ([days] = days)", "default": "[days]-Day Supply" },
     { "type": "text", "id": "tier_3_badge", "label": "Tier 3 badge", "default": "GET 1 FREE" },
     { "type": "text", "id": "tier_3_shipping", "label": "Tier 3 shipping line", "default": "FREE FAST SHIPPING" },
     { "type": "text", "id": "tier_3_cta", "label": "Tier 3 button", "default": "CLAIM MY FREE JAR" },
@@ -409,10 +424,8 @@
     { "type": "checkbox", "id": "tier_3_hero", "label": "Tier 3 is the hero tier", "default": true },
     { "type": "text", "id": "tier_3_ribbon", "label": "Tier 3 ribbon", "default": "MOST POPULAR — BUY 2, GET 1 FREE" },
 
-    { "type": "header", "content": "Delivery estimate (under the reassurance line)" },
-    { "type": "text", "id": "eta_origin", "label": "Ships from (blank hides the estimate)", "default": "Charlotte, NC" },
-    { "type": "range", "id": "eta_min_days", "label": "Fastest transit (business days)", "min": 1, "max": 7, "step": 1, "default": 2 },
-    { "type": "range", "id": "eta_max_days", "label": "Slowest typical transit (business days)", "min": 1, "max": 10, "step": 1, "default": 3 },
+    { "type": "header", "content": "Dispatch line (under the reassurance line)" },
+    { "type": "checkbox", "id": "eta_show", "label": "Show the ship day", "default": true },
 
     { "type": "header", "content": "Phone sticky bar" },
     { "type": "checkbox", "id": "show_sticky", "label": "Show sticky bar after the bundles scroll away", "default": true },
