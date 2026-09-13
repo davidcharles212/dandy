@@ -107,7 +107,7 @@
           <svg class="dpi__close-icon" viewBox="0 0 17.6 17.6" fill="none" aria-hidden="true" focusable="false"><rect width="17.6" height="17.6" rx="8.8" fill="var(--dandy-accent, #f4512b)"/><path d="M4.40002 9.56359V8.03662H13.2V9.56359H4.40002Z" fill="var(--dandy-pdp-cream, #fff9f0)"/></svg>
         </button>
         <p class="dpi__dialog-title">{{ section.settings.button_label | escape }}</p>
-        <div class="dpi__dialog-body">{{ section.settings.ingredients }}</div>
+        <div class="dpi__dialog-body">{% render 'dandy-strength-text', text: section.settings.ingredients %}</div>
       </div>
     </dialog>
     <script>

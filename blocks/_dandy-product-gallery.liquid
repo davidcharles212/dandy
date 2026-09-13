@@ -94,7 +94,12 @@
         if extra_file == blank
           continue
         endif
-        assign extra_alt = extra_parts[1] | default: product.title | strip
+        assign extra_alt_50 = extra_parts[1] | default: product.title | strip
+        assign extra_alt_90 = extra_parts[2] | default: extra_alt_50 | strip
+        assign extra_alt = extra_alt_50
+        if current_strength == '90'
+          assign extra_alt = extra_alt_90
+        endif
         assign extra_index = extra_index | plus: 1
         assign slide_label = 'accessibility.slide_status' | t: index: extra_index, length: media_count
         assign loading = 'lazy'
@@ -121,6 +126,10 @@
           {%- assign src_90 = raw_file | replace: '{strength}', '-90' | asset_url %}
           data-dpg-src-50="{{ src_50 }}"
           data-dpg-src-90="{{ src_90 }}"
+          {%- endif %}
+          {%- if extra_alt_90 != extra_alt_50 %}
+          data-dpg-alt-50="{{ extra_alt_50 | escape }}"
+          data-dpg-alt-90="{{ extra_alt_90 | escape }}"
           {%- endif %}
           alt="{{ extra_alt | escape }}"
           width="{{ asset_px }}"
@@ -348,6 +357,9 @@
           this.querySelectorAll('[data-dpg-src-' + strength + ']').forEach((img) => {
             const src = img.getAttribute('data-dpg-src-' + strength);
             if (src && img.getAttribute('src') !== src) img.setAttribute('src', src);
+          });
+          this.querySelectorAll('[data-dpg-alt-' + strength + ']').forEach((img) => {
+            img.setAttribute('alt', img.getAttribute('data-dpg-alt-' + strength));
           });
           this.querySelectorAll('[data-dpg-strength]').forEach((el) => {
             el.hidden = el.dataset.dpgStrength !== strength;
@@ -687,8 +699,8 @@
     {
       "type": "textarea",
       "id": "gallery_assets",
-      "label": "Extra gallery slides, one per line: filename.webp|alt text",
-      "info": "Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide. {strength} becomes -50 or -90 and switches with the buy box."
+      "label": "Extra gallery slides, one per line: filename.webp|alt text|90 mg alt text (optional)",
+      "info": "Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide. {strength} becomes -50 or -90 and switches with the buy box, together with the optional third field (the 90 mg alt text)."
     },
     { "type": "checkbox", "id": "show_product_media", "label": "Show the product's own media after the asset slides", "default": true, "info": "Turn off when the asset slides are the whole gallery. Also stops rendering the other strength's hidden media." },
     { "type": "number", "id": "asset_px", "label": "Asset slide pixel size (square)", "default": 1200, "info": "Written as the width and height attributes of every asset slide and thumbnail." },

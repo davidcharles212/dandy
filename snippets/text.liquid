@@ -94,7 +94,7 @@
   </div>
 {% elsif plain_text != blank %}
   <{{ element }} {{ attributes | strip_newlines | strip }}>
-    {{ block.settings.text }}
+    {% render 'dandy-strength-text', text: block.settings.text %}
   </{{ element }}>
 {% endif %}
 

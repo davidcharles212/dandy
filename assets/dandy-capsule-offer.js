@@ -105,6 +105,12 @@
 
       this.querySelectorAll('[data-co-notice-90]').forEach((n) => { n.hidden = next !== '90'; });
 
+      // Strength-specific page text (snippets/dandy-strength-text.liquid): 50 mg phrases carry their 90 mg twin.
+      document.querySelectorAll('[data-dandy-st-' + next + ']').forEach((el) => {
+        const text = el.getAttribute('data-dandy-st-' + next);
+        if (text && el.textContent !== text) el.textContent = text;
+      });
+
       const title = attr('title');
       if (title) {
         document.querySelectorAll('.dandy-product-header__title:not([data-title-static])').forEach((h) => { h.textContent = title.replace(/ · /g, '\u00a0·\u00a0').replace(/ mg\b/g, '\u00a0mg'); });

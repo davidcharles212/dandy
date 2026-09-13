@@ -5,7 +5,7 @@
   {% render 'dandy2-chrome-header' %}
   <main class="doc" id="DandyMain">
     <header class="doc__head">
-      <p class="steplabel steplabel--center">{{ section.settings.eyebrow }}</p>
+      {% if section.settings.eyebrow != blank %}<p class="steplabel steplabel--center">{{ section.settings.eyebrow }}</p>{% endif %}
       <h1 class="belowfold__title belowfold__title--center">{{ section.settings.heading }}</h1>
       {% if section.settings.lede != blank %}<p class="doc__lede">{{ section.settings.lede }}</p>{% endif %}
     </header>

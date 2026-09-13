@@ -1,0 +1,38 @@
+{%- comment -%}
+  Outputs rich text with its 50 mg-specific phrases switchable to 90 mg, the text counterpart of the gallery's
+  data-dpg-src-50 / data-dpg-src-90 slides. Only on the capsule template (template.suffix dandy-capsules); every other
+  template gets the text back unchanged.
+
+  Each known phrase is wrapped in <span data-dandy-st-50="…" data-dandy-st-90="…">. The server renders the phrase for the
+  page's own strength (the 90 mg product handle contains "90", the same test the gallery uses) and
+  assets/dandy-capsule-offer.js swaps the span text on dandy:strength-change.
+
+  90 mg figures: batch N11396, 91.3 mg per capsule (foreverdandy.com/pages/lab-reports, report N11396).
+
+  Usage: {% render 'dandy-strength-text', text: block.settings.answer %}
+{%- endcomment -%}
+{%- liquid
+  assign st_out = text
+  if template.suffix == 'dandy-capsules' and st_out contains '50'
+    assign st_is_90 = false
+    if product.handle contains '90'
+      assign st_is_90 = true
+    endif
+    assign st_pairs = 'Why 50mg standardized extract=Why 90mg standardized extract|Exact 50mg Active Alkaloids=Exact 90mg Active Alkaloids|Dandy Standardized 50mg Extract=Dandy Standardized 90mg Extract|Exact 50mg Mitragynine:=Exact 90mg Mitragynine:|Batch #N11395: 100% Pass=Batch #N11396: 100% Pass|Active Mitragynine: 50.8 mg=Active Mitragynine: 91.3 mg' | split: '|'
+    for st_pair in st_pairs
+      assign st_50 = st_pair | split: '=' | first
+      assign st_90 = st_pair | split: '=' | last
+      if st_out contains st_50
+        assign st_now = st_50
+        if st_is_90
+          assign st_now = st_90
+        endif
+        capture st_span
+          echo '<span data-dandy-st-50="' | append: st_50 | append: '" data-dandy-st-90="' | append: st_90 | append: '">' | append: st_now | append: '</span>'
+        endcapture
+        assign st_out = st_out | replace: st_50, st_span
+      endif
+    endfor
+  endif
+  echo st_out
+-%}
