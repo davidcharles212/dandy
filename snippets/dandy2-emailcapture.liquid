@@ -4,7 +4,7 @@
   "newsletter" tag. The discount CODE ITSELF must be created in Shopify Admin
   (Discounts > Amount off order, 10%, one use per customer, first order only), 
   the code string is set once in `d2_promo_code` below.
-  Renders as an inline footer band plus a one-time modal (opens after 45s of browsing, dismissible).
+  Renders as an inline footer band plus a one-time modal (opens after 60s of browsing, dismissible).
 {% endcomment %}
 {%- assign d2_promo_code = 'DANDY10' -%}
 {%- comment -%}
@@ -125,7 +125,7 @@
   // fire only after DELAY of browsing time, counted from the first page of the visit
   // (sessionStorage), so moving between pages does not restart the clock. If the age
   // gate is still up at that point, wait for it to clear.
-  const DELAY = 45000, START = 'd2captureStart';
+  const DELAY = 60000, START = 'd2captureStart';
   let start;
   try { start = +sessionStorage.getItem(START) || 0; if (!start) { start = Date.now(); sessionStorage.setItem(START, start); } } catch { start = Date.now(); }
   const tryOpen = () => { if (document.querySelector('[data-d2-age]')) return setTimeout(tryOpen, 2000); open(); };
