@@ -6,6 +6,26 @@
   close button and Escape does nothing — the only way through is an answer.
   Page content stays in the DOM (legal interstitials don't hurt crawling).
 {% endcomment %}
+{%- liquid
+  # Landing pages never show the age gate (founder rule 2026-09-12, HQ policy
+  # dandy-no-age-gate-on-landing-pages). A visitor from an ad sees the page first
+  # and is asked on the homepage, a product page or another main-site page.
+  # On page templates the gate renders only for the main-site pages listed below
+  # (plus the default page template and any dandy2-* site page). Every other page
+  # template, including each new landing page, advertorial or quiz, renders no gate.
+  # Add a suffix here only for a genuine main-site page, never for a landing page.
+  assign age_gate_site_pages = ',contact,about,about-dandy,about-kratom-remake,accessibility,batch-reports,faq,how-it-works,privacy,quality-and-testing,returns,reviews,shipping,subscription-policy,terms,what-is-kratom,'
+  assign age_gate_on = true
+  if template.name == 'page'
+    assign age_gate_suffix = template.suffix | default: ''
+    assign age_gate_key = ',' | append: age_gate_suffix | append: ','
+    assign age_gate_prefix = age_gate_suffix | slice: 0, 7
+    unless age_gate_suffix == blank or age_gate_prefix == 'dandy2-' or age_gate_site_pages contains age_gate_key
+      assign age_gate_on = false
+    endunless
+  endif
+-%}
+{%- if age_gate_on -%}
 {%- unless request.design_mode -%}
 <div class="d2age" data-d2-age role="dialog" aria-modal="true" aria-label="Age verification">
   <div class="d2age__box" tabindex="-1" data-d2-age-box>
@@ -65,3 +85,4 @@
 })();
 </script>
 {%- endunless -%}
+{%- endif -%}
