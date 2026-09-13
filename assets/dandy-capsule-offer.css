@@ -139,7 +139,9 @@
 /* Price per jar is the big figure; the struck single-jar price sits under it; the bundle total is small in the detail row */
 .co .co-price__now { display: block; }
 .co .co-price__now small { margin-left: 2px; font-size: 14px; font-weight: 600; letter-spacing: 0; color: color-mix(in srgb, var(--co-ink) 65%, transparent); }
-.co .co-total, .co .co-tier--hero .co-total { color: color-mix(in srgb, var(--co-ink) 72%, transparent); font-weight: 500; }
+.co .co-total { color: color-mix(in srgb, var(--co-ink) 72%, transparent); font-weight: 500; }
+/* The best-value tier's per-capsule price is red and bold, as on the gummy PDP */
+.co .co-tier--hero .co-total { color: #a02508; font-weight: 800; }
 
 /* Phone sticky bar: lives on <body>, hidden until the bundle cards scroll above the screen */
 .co-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 80; display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--dandy-pdp-cream, #fff9f0); border-top: 1px solid color-mix(in srgb, var(--dandy-ink, #241914) 14%, transparent); box-shadow: 0 -6px 18px rgb(36 25 20 / .08); color: var(--dandy-ink, #241914); font-family: var(--dandy-font-body); transform: translateY(110%); transition: transform 220ms ease; }

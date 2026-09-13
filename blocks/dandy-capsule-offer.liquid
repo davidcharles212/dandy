@@ -327,8 +327,13 @@
 
   <ul class="co-trust" aria-label="Shipping and quality">
     <li>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
-      <span><b data-co-proof-dispatch>Ships Today</b><small>{{ block.settings.trust_1_sub }}</small></span>
+      {%- if block.settings.trust_1 != blank -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>
+        <span><b>{{ block.settings.trust_1 }}</b>{%- if block.settings.trust_1_sub != blank -%}<small>{{ block.settings.trust_1_sub }}</small>{%- endif -%}</span>
+      {%- else -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <span><b data-co-proof-dispatch>Ships Today</b><small>{{ block.settings.trust_1_sub }}</small></span>
+      {%- endif -%}
     </li>
     <li>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3h5M10 3v6.2L5.2 18a2 2 0 0 0 1.8 3h10a2 2 0 0 0 1.8-3L14 9.2V3"/><path d="M7.5 15.5h9"/></svg>
@@ -429,6 +434,7 @@
     { "type": "text", "id": "reassurance", "label": "Reassurance line", "default": "One-time purchase • Never an automatic rebill" },
     { "type": "text", "id": "guarantee_heading", "label": "Guarantee heading", "default": "30-Day Physical Relief Guarantee" },
     { "type": "textarea", "id": "guarantee_text", "label": "Guarantee text", "default": "Take it for a full month. If your body doesn't feel noticeably looser and easier to move in, email us for a full refund. No return required." },
+    { "type": "text", "id": "trust_1", "label": "Trust 1 (blank shows the live ship day)" },
     { "type": "text", "id": "trust_1_sub", "label": "Trust 1 sub line", "default": "(by 2 PM CT)" },
     { "type": "text", "id": "trust_2", "label": "Trust 2", "default": "100% Lab Tested" },
     { "type": "text", "id": "trust_3", "label": "Trust 3", "default": "Made in USA" }

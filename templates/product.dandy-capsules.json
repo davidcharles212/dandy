@@ -176,13 +176,14 @@
                 "reassurance": "One-time purchase • Never an automatic rebill",
                 "guarantee_heading": "30-Day 100% Satisfaction Guarantee",
                 "guarantee_text": "",
-                "trust_1_sub": "(by 2 PM CT)",
+                "trust_1_sub": "",
                 "trust_2": "100% Lab Tested",
                 "trust_3": "Made in USA",
                 "eta_show": true,
                 "sticky_title": "Buy 2, Get 1 Free",
                 "sticky_cta": "See bundles",
-                "show_sticky": true
+                "show_sticky": true,
+                "trust_1": "Plain Packaging"
               },
               "blocks": {}
             },
