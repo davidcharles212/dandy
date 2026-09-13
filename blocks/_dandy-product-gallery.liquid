@@ -29,6 +29,11 @@
     assign sibling_handle = block.settings.sibling_handle_50
   endif
   assign sibling = blank
+  assign show_product_media = true
+  if block.settings.show_product_media == false
+    assign show_product_media = false
+    assign sibling_handle = blank
+  endif
   if sibling_handle != blank
     assign sibling = all_products[sibling_handle]
   endif
@@ -43,7 +48,12 @@
     endif
   endfor
 
-  assign media_count = product.media.size | plus: extra_count
+  assign media_count = extra_count
+  if show_product_media
+    assign media_count = product.media.size | plus: extra_count
+  endif
+  assign asset_px = block.settings.asset_px | default: 1200
+  assign slide_sizes = '(min-width: 1440px) 600px, (min-width: 1100px) 41vw, (min-width: 750px) 556px, calc(87vw - 28px)'
   assign start_index = 0
   assign featured_media = product.selected_or_first_available_variant.featured_media
   if featured_media and extra_count == 0
@@ -84,7 +94,12 @@
         if extra_file == blank
           continue
         endif
-        assign extra_alt = extra_parts[1] | default: product.title | strip
+        assign extra_alt_50 = extra_parts[1] | default: product.title | strip
+        assign extra_alt_90 = extra_parts[2] | default: extra_alt_50 | strip
+        assign extra_alt = extra_alt_50
+        if current_strength == '90'
+          assign extra_alt = extra_alt_90
+        endif
         assign extra_index = extra_index | plus: 1
         assign slide_label = 'accessibility.slide_status' | t: index: extra_index, length: media_count
         assign loading = 'lazy'
@@ -112,10 +127,16 @@
           data-dpg-src-50="{{ src_50 }}"
           data-dpg-src-90="{{ src_90 }}"
           {%- endif %}
+          {%- if extra_alt_90 != extra_alt_50 %}
+          data-dpg-alt-50="{{ extra_alt_50 | escape }}"
+          data-dpg-alt-90="{{ extra_alt_90 | escape }}"
+          {%- endif %}
           alt="{{ extra_alt | escape }}"
+          width="{{ asset_px }}"
+          height="{{ asset_px }}"
           loading="{{ loading }}"
           fetchpriority="{{ priority }}"
-          sizes="(min-width: 1100px) 600px, (min-width: 750px) 556px, 87vw"
+          sizes="{{ slide_sizes }}"
           class="dpg__media"
         >
       </div>
@@ -123,7 +144,7 @@
 
     {%- for gallery_pass in (1..2) -%}
     {%- liquid
-      if gallery_pass == 1
+      if gallery_pass == 1 and show_product_media
         assign gp = product
         assign gp_strength = current_strength
       else
@@ -226,16 +247,17 @@
               data-dpg-src-90="{{ src_90 }}"
               {%- endif %}
               alt=""
+              width="{{ asset_px }}"
+              height="{{ asset_px }}"
               loading="eager"
               fetchpriority="low"
-              sizes="(min-width: 1100px) 119px, 60px"
               class="dpg__thumb-img"
             >
           </button>
         {%- endfor -%}
         {%- for gallery_pass in (1..2) -%}
         {%- liquid
-          if gallery_pass == 1
+          if gallery_pass == 1 and show_product_media
             assign gp = product
             assign gp_strength = current_strength
           else
@@ -335,6 +357,9 @@
           this.querySelectorAll('[data-dpg-src-' + strength + ']').forEach((img) => {
             const src = img.getAttribute('data-dpg-src-' + strength);
             if (src && img.getAttribute('src') !== src) img.setAttribute('src', src);
+          });
+          this.querySelectorAll('[data-dpg-alt-' + strength + ']').forEach((img) => {
+            img.setAttribute('alt', img.getAttribute('data-dpg-alt-' + strength));
           });
           this.querySelectorAll('[data-dpg-strength]').forEach((el) => {
             el.hidden = el.dataset.dpgStrength !== strength;
@@ -674,9 +699,11 @@
     {
       "type": "textarea",
       "id": "gallery_assets",
-      "label": "Extra gallery slides, one per line: filename.webp|alt text",
-      "info": "Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide. {strength} becomes -50 or -90 and switches with the buy box."
+      "label": "Extra gallery slides (one per line)",
+      "info": "One per line: filename.webp|alt text|90 mg alt text (optional). Filenames in assets/. These slides render before the product's own media, so the first one becomes the opening slide. {strength} becomes -50 or -90 and switches with the buy box, together with the optional third field (the 90 mg alt text)."
     },
+    { "type": "checkbox", "id": "show_product_media", "label": "Show the product's own media after the asset slides", "default": true, "info": "Turn off when the asset slides are the whole gallery. Also stops rendering the other strength's hidden media." },
+    { "type": "number", "id": "asset_px", "label": "Asset slide pixel size (square)", "default": 1200, "info": "Written as the width and height attributes of every asset slide and thumbnail." },
     { "type": "text", "id": "sibling_handle_50", "label": "50 mg product handle", "default": "extract-capsules-50mg", "info": "The other strength's media renders hidden so the buy box can switch strength in place." },
     { "type": "text", "id": "sibling_handle_90", "label": "90 mg product handle", "default": "extract-capsules-90mg" }
   ]

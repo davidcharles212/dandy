@@ -38,7 +38,7 @@
               {{ plus_svg }}
             </summary>
             {%- if block.settings.answer != blank -%}
-              <div class="dpq__answer">{{ block.settings.answer }}</div>
+              <div class="dpq__answer">{% render 'dandy-strength-text', text: block.settings.answer %}</div>
             {%- endif -%}
           </details>
         {%- endfor -%}
@@ -51,7 +51,7 @@
               {{ plus_svg }}
             </summary>
             {%- if block.settings.answer != blank -%}
-              <div class="dpq__answer">{{ block.settings.answer }}</div>
+              <div class="dpq__answer">{% render 'dandy-strength-text', text: block.settings.answer %}</div>
             {%- endif -%}
           </details>
         {%- endfor -%}
