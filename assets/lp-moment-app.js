@@ -55,7 +55,5 @@ function renderQuestion(){const q=questions[step];$('progressLabel').textContent
 function choose(a){scores[a.score]++;pendingInsight={title:a.insightTitle,text:a.insight};step++;step<questions.length?renderQuestion():finish();}
 function finish(){const winner=Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0],r=results[winner],pdpUrl=`https://foreverdandy.com/products/mixed-berry-kratom-gummies?utm_source=meta&utm_medium=paid_social&utm_campaign=dandy_quiz&utm_content=${winner}_result`;$('resultBadge').textContent=r.badge;$('resultTitle').textContent=r.title;$('resultCopy').textContent=r.copy;$('resultMoment').textContent=r.moment;$('resultPriority').textContent=r.priority;$('solutionReason').textContent=`Based on your answers, Dandy is the best fit for ${r.priority.toLowerCase()} during ${r.moment.toLowerCase()}. It gives you one flexible gummy for the kind of moment you said you want most.`;$('shopBtn').href=pdpUrl;$('productCardLink').href=pdpUrl;show('result');}
 $('restartBtn').onclick=()=>{step=0;scores={energy:0,focus:0,mood:0,relax:0};pendingInsight=null;show('quiz');renderQuestion();};
-$('ageYes').onclick=()=>{$('ageGate').classList.add('hidden');renderQuestion();};
-$('ageNo').onclick=()=>{$('ageMessage').textContent='Dandy is only available to adults 21 and older.';};
 
 renderQuestion();
