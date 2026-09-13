@@ -52,8 +52,8 @@
             "header": {
               "type": "dandy-product-header",
               "settings": {
-                "title_override": "Targeted physical relief",
-                "subtitle_override": "STANDARDIZED KRATOM EXTRACT\n30 VEGAN CAPSULES PER JAR"
+                "title_override": "Physical relief",
+                "subtitle_override": "STANDARDIZED MITRAGYNINE EXTRACT\n30 VEGAN CAPSULES PER JAR"
               },
               "blocks": {}
             },
@@ -62,7 +62,7 @@
               "settings": {
                 "benefit_icon": "shopify://shop_images/dandy-check-benefit.png",
                 "benefit_icon_asset": "",
-                "benefits_override": "Deep physical ease where you carry tension and wear\nClean, fully functional relief with zero drowsiness or couch‑lock\nExact mitragynine, 50 mg or 90 mg, with zero measuring\nPlant-based shell, swallowed in seconds, gentle on the stomach"
+                "benefits_override": "Soothes the tension and wear your body carries\nA lift in mood, a clear head, and no drowsiness\nExact 50 mg or 90 mg per capsule\nVegan capsule, gentle on the stomach"
               },
               "blocks": {}
             },
@@ -77,7 +77,7 @@
                   "type": "popup-link",
                   "settings": {
                     "behavior": "default",
-                    "heading": "What is Kratom?",
+                    "heading": "What is mitragynine?",
                     "type_preset": "",
                     "padding-block-start": 0,
                     "padding-block-end": 0,
@@ -88,49 +88,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Kratom is a leaf from a Southeast Asian tree in the coffee family.</p><p>Its primary active compound is called <strong>mitragynine</strong>. People use it for a combination of physical ease, alertness and positive mood.</p><p>Dandy extracts that compound and standardizes it to an exact 50 mg or 90 mg serving in one small capsule.</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "text_color": "",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "content"
-                  ]
-                },
-                "strength_guide": {
-                  "type": "popup-link",
-                  "settings": {
-                    "behavior": "default",
-                    "heading": "50 mg vs 90 mg?",
-                    "type_preset": "",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "content": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p><strong>50 mg, everyday ease.</strong> New to kratom, or after relief from desk stiffness, workouts and general wear-and-tear? Start here. One capsule is the baseline.</p><p><strong>90 mg, heavy-duty.</strong> Persistent, intense physical discomfort, demanding physical shifts, or experienced routines. Still start with a single capsule and a full glass of water.</p><ul><li>Both strengths: 30 capsules per jar<br/></li><li>Both: independently batch tested<br/></li><li>Both: 0 g sugar, 0 calories, vegan shell</li></ul>",
+                        "text": "<p>Dandy is made from Mitragyna speciosa leaf extract. The tree grows in Southeast Asia, belongs to the coffee family, and is commonly called kratom.</p><p>Mitragynine is its main alkaloid, and each capsule is standardized to exactly 50 or 90 mg.</p><p>Some gas station products sold as kratom use concentrated or synthetic compounds. They are not the same thing. Dandy adds nothing.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -159,8 +117,7 @@
                 }
               },
               "block_order": [
-                "what_is_kratom",
-                "strength_guide"
+                "what_is_kratom"
               ]
             },
             "offer": {
@@ -169,14 +126,14 @@
                 "show_strength_switch": true,
                 "strength_legend": "1. Pick your strength",
                 "strength_50_label": "Everyday ease",
-                "strength_50_desc": "Tension, stiff joints, first-timers.",
+                "strength_50_desc": "Stiffness any time of day, or new to this.",
                 "strength_50_url": "/products/extract-capsules-50mg?view=dandy-capsules",
                 "strength_90_label": "Heavy-duty",
-                "strength_90_desc": "Heavy physical wear, demanding days, or experienced routines.",
-                "strength_90_notice": "<p><strong>First time with Dandy?</strong> 90 mg is high-potency. We recommend starting with 50 mg, or take with food.</p>",
+                "strength_90_desc": "Heavier wear, or you know how you respond.",
+                "strength_90_notice": "<p><strong>First time with Dandy?</strong> Start with 50 mg. 90 mg is for experienced users.</p>",
                 "strength_90_url": "/products/extract-capsules-90mg?view=dandy-capsules",
                 "dispatch_headline": "ORDER NOW — SHIPS TODAY",
-                "dispatch_sub": "Orders placed by 2 PM CT ship same-day",
+                "dispatch_sub": "Plain, unmarked packaging",
                 "cutoff_hour": 14,
                 "tiers_legend": "2. Choose your jar bundle",
                 "capsules_per_jar": 30,
@@ -193,7 +150,7 @@
                 "tier_2_variant_title": "30-count / 2-pack",
                 "tier_2_title": "2 Jars",
                 "tier_2_badge": "SAVE [save]",
-                "tier_2_shipping": "FREE SHIPPING",
+                "tier_2_shipping": "FREE FAST SHIPPING",
                 "tier_2_cta": "ADD TO CART",
                 "tier_2_image_asset": "dandy-cap-tier-2{strength}.webp",
                 "tier_2_hero": false,
