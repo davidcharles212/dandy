@@ -4,6 +4,9 @@
 
 <div class="dandy-product-header" {{ block.shopify_attributes }}>
   <h1 class="dandy-product-header__title dandy-trim-display"{% if block.settings.title_override != blank %} data-title-static{% endif %}>{{ title | escape }}</h1>
+  {%- if block.settings.tagline != blank -%}
+    <p class="dandy-product-header__tagline">{{ block.settings.tagline | escape }}</p>
+  {%- endif -%}
   {%- if subtitle != blank -%}
     {%- assign subtitle_lines = subtitle | escape | newline_to_br | split: '<br />' -%}
     <p class="dandy-product-header__subtitle dandy-trim">
@@ -15,12 +18,33 @@
   {%- endif -%}
 </div>
 
+{% stylesheet %}
+  .dandy-product-header__tagline {
+    margin: -12px 0 0;
+    font-family: var(--dandy-font-body, inherit);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--dandy-ink);
+    text-wrap: pretty;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .dandy-product-header__tagline {
+      margin-top: -14px;
+      font-size: 22px;
+    }
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Dandy title",
   "tag": null,
   "settings": [
     { "type": "text", "id": "title_override", "label": "Title override", "info": "Leave blank to use the product title." },
+    { "type": "text", "id": "tagline", "label": "Benefit line", "info": "Optional sentence under the title. Leave blank to hide." },
     { "type": "text", "id": "subtitle_override", "label": "Subtitle override", "info": "Leave blank to use the custom.product_subtitle metafield." }
   ],
   "presets": [{ "name": "Dandy title" }]

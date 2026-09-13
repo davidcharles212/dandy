@@ -6,12 +6,33 @@
   becomes an in-page toggle (history.replaceState keeps the URL bookmarkable).
   Prices come from real variants; a tier whose variant is missing or
   unavailable is hidden rather than faked.
+
+  Merged product (2026-09-13): when the product carries a "Strength" option,
+  both strengths are variants of one product at one URL. The strength links
+  become ?variant= links to the default tier of that strength, and the current
+  strength comes from the selected variant. The two-product mode stays in
+  place so the block keeps working on stores that have not merged.
+
+  Reader rate: a shopper who arrives through /discount/CODE carries a
+  discount_code cookie. When it matches the configured code, the notice shows
+  and each tier shows the voucher price with the pre-voucher price struck
+  through. Shopify truncates a percentage discount to the cent, so the voucher
+  price is price - floor(price * percent / 100), which matches checkout.
 {%- endcomment -%}
 {%- liquid
   assign product = closest.product
   assign caps = block.settings.capsules_per_jar | default: 30
+  assign reader_percent = block.settings.reader_percent | default: 0
+  assign merged = false
+  if product.options_by_name['Strength']
+    assign merged = true
+  endif
   assign is_90 = false
-  if product.handle contains '90'
+  if merged
+    if product.selected_or_first_available_variant.option1 contains '90'
+      assign is_90 = true
+    endif
+  elsif product.handle contains '90'
     assign is_90 = true
   endif
   assign strength_label = block.settings.strength_50_label
@@ -25,7 +46,26 @@
   assign handle_50 = url_50 | split: '/products/' | last | split: '?' | first | split: '#' | first
   assign handle_90 = url_90 | split: '/products/' | last | split: '?' | first | split: '#' | first
   assign sibling = blank
-  if is_90 and handle_50 != blank
+  if merged
+    comment
+      Strength links point at the default tier of each strength on this product,
+      so they render the right strength server-side without JS.
+    endcomment
+    assign default_title = 'tier_' | append: block.settings.default_tier | append: '_variant_title'
+    assign default_title = block.settings[default_title]
+    assign url_50 = product.url
+    assign url_90 = product.url
+    for v in product.variants
+      assign v_rest = v.option2 | append: ' / ' | append: v.option3
+      if v_rest == default_title
+        if v.option1 contains '90'
+          assign url_90 = product.url | append: '?variant=' | append: v.id
+        else
+          assign url_50 = product.url | append: '?variant=' | append: v.id
+        endif
+      endif
+    endfor
+  elsif is_90 and handle_50 != blank
     assign sibling = all_products[handle_50]
   elsif is_90 == false and handle_90 != blank
     assign sibling = all_products[handle_90]
@@ -40,9 +80,17 @@
   assign strengths = '50,90' | split: ','
   assign product_50 = product
   assign product_90 = sibling
-  if is_90
+  if merged
+    assign product_90 = product
+  elsif is_90
     assign product_50 = sibling
     assign product_90 = product
+  endif
+  assign title_50 = product_50.title
+  assign title_90 = product_90.title
+  if merged
+    assign title_50 = product.title | append: ' · 50 mg'
+    assign title_90 = product.title | append: ' · 90 mg'
   endif
 -%}
 {{ 'dandy-capsule-offer.css' | asset_url | stylesheet_tag }}
@@ -52,16 +100,25 @@
   class="co"
   data-dandy-block="capsule-offer-{{ block.id }}"
   data-cutoff-hour="{{ block.settings.cutoff_hour }}"
+  data-caps="{{ caps }}"
   data-default-tier="{{ block.settings.default_tier }}"
   data-cart-url="{{ routes.cart_url }}"
   data-product-url="{{ product.url }}"
   data-strength="{{ current_strength }}"
   data-url-50="{{ url_50 }}"
   data-url-90="{{ url_90 }}"
-  {%- if product_50 != blank %} data-title-50="{{ product_50.title | escape }}" data-product-url-50="{{ product_50.url }}"{% endif -%}
-  {%- if product_90 != blank %} data-title-90="{{ product_90.title | escape }}" data-product-url-90="{{ product_90.url }}"{% endif -%}
+  {%- if merged %} data-merged{% endif -%}
+  {%- if product_50 != blank %} data-title-50="{{ title_50 | escape }}" data-product-url-50="{{ product_50.url }}"{% endif -%}
+  {%- if product_90 != blank %} data-title-90="{{ title_90 | escape }}" data-product-url-90="{{ product_90.url }}"{% endif -%}
+  {%- if block.settings.reader_code != blank and reader_percent > 0 %} data-reader-code="{{ block.settings.reader_code | escape }}"{% endif %}
   {{ block.shopify_attributes }}
 >
+  {%- if block.settings.reader_code != blank and reader_percent > 0 and block.settings.reader_notice != blank -%}
+    <div class="co-reader" data-co-reader role="status" hidden>
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3.5 8.5 3 3 6-7"/></svg>
+      <span>{{ block.settings.reader_notice }}</span>
+    </div>
+  {%- endif -%}
   {%- if block.settings.show_strength_switch -%}
     <fieldset class="co-strength">
       <legend class="co-strength__legend">{{ block.settings.strength_legend }}</legend>
@@ -79,6 +136,12 @@
           <span class="co-strength__desc">{{ block.settings.strength_90_desc }}</span>
         </a>
       </div>
+      {%- comment -%} Compact picker: the cards carry strength and name only; the chosen strength's description sits in one line under them. {%- endcomment -%}
+      {%- if block.settings.strength_50_desc != blank or block.settings.strength_90_desc != blank -%}
+        <p class="co-strength__hint" data-co-hint data-hint-50="{{ block.settings.strength_50_desc | escape }}" data-hint-90="{{ block.settings.strength_90_desc | escape }}">
+          {%- if is_90 %}{{ block.settings.strength_90_desc }}{% else %}{{ block.settings.strength_50_desc }}{% endif -%}
+        </p>
+      {%- endif -%}
       {%- if block.settings.strength_90_notice != blank -%}
         <div class="co-strength__notice" data-co-notice-90{% unless is_90 %} hidden{% endunless %}>
           <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0 3.5a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM6.75 7.5h2v4h-2v-4z"/></svg>
@@ -88,6 +151,7 @@
     </fieldset>
   {%- endif -%}
 
+  {%- if block.settings.dispatch_headline != blank -%}
   <div class="co-dispatch">
     <span class="co-dot" aria-hidden="true"></span>
     <div>
@@ -95,6 +159,7 @@
       <span>{{ block.settings.dispatch_sub }}</span>
     </div>
   </div>
+  {%- endif -%}
 
   {%- for strength in strengths -%}
     {%- liquid
@@ -110,16 +175,27 @@
       endif
       assign v1 = blank
       assign v2 = blank
+      assign anchor_price = 0
       assign v3 = blank
       for v in sp.variants
-        if v.title == block.settings.tier_1_variant_title
+        assign v_title = v.title
+        if merged
+          unless v.option1 contains strength
+            continue
+          endunless
+          assign v_title = v.option2 | append: ' / ' | append: v.option3
+        endif
+        if v_title == block.settings.tier_1_variant_title
           assign v1 = v
-        elsif v.title == block.settings.tier_2_variant_title
+        elsif v_title == block.settings.tier_2_variant_title
           assign v2 = v
-        elsif v.title == block.settings.tier_3_variant_title
+        elsif v_title == block.settings.tier_3_variant_title
           assign v3 = v
         endif
       endfor
+      if v1 != blank
+        assign anchor_price = v1.price
+      endif
     -%}
   <fieldset class="co-tiers" data-co-tiers="{{ strength }}"{% if strength != current_strength %} hidden{% endif %}>
     <legend class="co-sr-only">{{ block.settings.tiers_legend }}</legend>
@@ -138,14 +214,20 @@
         endif
         assign jars = i
         assign days = caps | times: jars
-        assign per_day_cents = v.price | divided_by: days
-        assign per_day_str = per_day_cents | money
         assign save = 0
         assign save_str = ''
         if v.compare_at_price > v.price
           assign save = v.compare_at_price | minus: v.price
           assign save_str = save | money_without_trailing_zeros
         endif
+        assign reader_off = v.price | times: reader_percent | divided_by: 100
+        assign reader_price = v.price | minus: reader_off
+        comment
+          The big figure is the price per jar (rounded to the cent); the single-jar price is the struck anchor,
+          so the ladder reads $64.99, $54.99, $43.33. The bundle total stays visible in smaller type.
+        endcomment
+        assign per_jar = v.price | times: 1.0 | divided_by: jars | round
+        assign reader_per_jar = reader_price | times: 1.0 | divided_by: jars | round
         assign title_key = 'tier_' | append: i | append: '_title'
         assign badge_key = 'tier_' | append: i | append: '_badge'
         assign ship_key = 'tier_' | append: i | append: '_shipping'
@@ -173,6 +255,7 @@
           data-co-tier
           data-variant-id="{{ v.id }}"
           data-price="{{ v.price }}"
+          data-reader-price="{{ reader_price }}"
           data-label="{{ t_title | escape }}"
           data-cta="{{ t_cta | escape }}"
           {% if default_tier == i %}checked{% endif %}
@@ -189,10 +272,18 @@
             {%- endif -%}
           </span>
           <span class="co-title">{{ t_title }}{% if t_badge != blank %}<span class="co-badge">{{ t_badge }}</span>{% endif %}</span>
-          <span class="co-price">{{ v.price | money }}{% if save > 0 %}<s>{{ v.compare_at_price | money }}</s>{% endif %}</span>
-          <span class="co-supply">{{ days }}-Day Supply</span>
+          <span class="co-price">
+            {%- comment -%} Regular prices render first; the reader rate swaps the spans in place when the voucher is active. {%- endcomment -%}
+            <span class="co-price__now"><span data-co-now data-regular="{{ per_jar | money }}" data-reader="{{ reader_per_jar | money }}">{{ per_jar | money }}</span><small>/jar</small></span>
+            {%- assign show_anchor = false -%}
+            {%- if anchor_price > per_jar -%}{%- assign show_anchor = true -%}{%- endif -%}
+            <s data-co-was data-regular="{% if show_anchor %}{{ anchor_price | money }}{% endif %}" data-reader="{% if anchor_price > 0 %}{{ anchor_price | money }}{% endif %}"{% unless show_anchor %} hidden{% endunless %}>{% if show_anchor %}{{ anchor_price | money }}{% endif %}</s>
+          </span>
           <span class="co-detail">
-            <span class="co-daily">{{ block.settings.per_day_prefix }} {{ per_day_str }} / day</span>
+            {%- comment -%} Price per capsule, rounded to the cent. The bundle total lives only on the button. {%- endcomment -%}
+            {%- assign per_cap = v.price | times: 1.0 | divided_by: days | round -%}
+            {%- assign reader_per_cap = reader_price | times: 1.0 | divided_by: days | round -%}
+            <span class="co-daily co-total" data-co-daily data-regular="{{ block.settings.per_day_prefix }} {{ per_cap | money }}/capsule" data-reader="{{ block.settings.per_day_prefix }} {{ reader_per_cap | money }}/capsule">{{ block.settings.per_day_prefix }} {{ per_cap | money }}/capsule</span>
             <span class="co-shipping{% if is_free_ship %} co-shipping--free{% endif %}">{{ t_ship }}</span>
           </span>
         </span>
@@ -213,6 +304,13 @@
         <span>{{ block.settings.reassurance }}</span>
       </p>
     {%- endif -%}
+    {%- if block.settings.eta_show -%}
+      {%- comment -%} One light dispatch line; JS names the day (today before the Central cutoff, else the next weekday). {%- endcomment -%}
+      <p class="co-eta" data-co-eta>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <span data-co-eta-text>Orders by 2 PM CT ship the same day</span>
+      </p>
+    {%- endif -%}
     <p class="co-message" data-co-message role="status" hidden></p>
     <noscript>Please enable JavaScript to choose your bundle.</noscript>
   </form>
@@ -222,15 +320,20 @@
       <svg viewBox="0 0 24 24" width="32" height="32" fill="color-mix(in srgb, var(--dandy-accent, #164020) 10%, white)" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3 20 6v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg>
       <div>
         <h2>{{ block.settings.guarantee_heading }}</h2>
-        <p>{{ block.settings.guarantee_text }}</p>
+        {%- if block.settings.guarantee_text != blank -%}<p>{{ block.settings.guarantee_text }}</p>{%- endif -%}
       </div>
     </div>
   {%- endif -%}
 
   <ul class="co-trust" aria-label="Shipping and quality">
     <li>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
-      <span><b data-co-proof-dispatch>Ships Today</b><small>{{ block.settings.trust_1_sub }}</small></span>
+      {%- if block.settings.trust_1 != blank -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg>
+        <span><b>{{ block.settings.trust_1 }}</b>{%- if block.settings.trust_1_sub != blank -%}<small>{{ block.settings.trust_1_sub }}</small>{%- endif -%}</span>
+      {%- else -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+        <span><b data-co-proof-dispatch>Ships Today</b><small>{{ block.settings.trust_1_sub }}</small></span>
+      {%- endif -%}
     </li>
     <li>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3h5M10 3v6.2L5.2 18a2 2 0 0 0 1.8 3h10a2 2 0 0 0 1.8-3L14 9.2V3"/><path d="M7.5 15.5h9"/></svg>
@@ -241,6 +344,23 @@
       <span><b>{{ block.settings.trust_3 }}</b></span>
     </li>
   </ul>
+
+  {%- if block.settings.show_sticky -%}
+    {%- comment -%}
+      Phone sticky bar. It appears only once the bundle cards have scrolled above the screen, and its button
+      scrolls back to them rather than adding to cart, so every shopper chooses a bundle with the cards in view.
+      JS moves it to <body> so no containment context on the product grid can break position: fixed.
+    {%- endcomment -%}
+    {%- assign sticky_img = block.settings.tier_3_image_asset | replace: '{strength}', '-50' -%}
+    <div class="co-sticky" data-co-sticky hidden>
+      <span class="co-sticky__pack" aria-hidden="true">{%- if sticky_img != blank -%}<img src="{{ sticky_img | asset_url }}" alt="" width="600" height="600" loading="lazy">{%- endif -%}</span>
+      <span class="co-sticky__text">
+        <b data-co-sticky-title>{{ block.settings.sticky_title }}</b>
+        <span data-co-sticky-sub></span>
+      </span>
+      <button type="button" class="co-sticky__cta" data-co-sticky-cta>{{ block.settings.sticky_cta }}</button>
+    </div>
+  {%- endif -%}
 </dandy-capsule-offer>
 
 {% schema %}
@@ -258,6 +378,11 @@
     { "type": "text", "id": "strength_90_desc", "label": "90 mg description", "default": "Heavy physical wear, demanding days, or experienced routines." },
     { "type": "richtext", "id": "strength_90_notice", "label": "90 mg notice (shown only while 90 mg is selected)", "default": "<p><strong>First time with Dandy?</strong> 90 mg is high-potency. We recommend starting with 50 mg, or take with food.</p>" },
     { "type": "url", "id": "strength_90_url", "label": "90 mg page" },
+
+    { "type": "header", "content": "Reader rate (via /discount/CODE link)" },
+    { "type": "text", "id": "reader_code", "label": "Discount code", "default": "DISPATCH10" },
+    { "type": "range", "id": "reader_percent", "label": "Percent off (must match the Shopify discount)", "min": 0, "max": 50, "step": 1, "unit": "%", "default": 10 },
+    { "type": "text", "id": "reader_notice", "label": "Notice", "default": "Daily Health Dispatch Reader Rate Active (-10% Auto-Applied at Checkout)" },
 
     { "type": "header", "content": "Dispatch line" },
     { "type": "text", "id": "dispatch_headline", "label": "Headline ([when] becomes TODAY / TOMORROW / MONDAY)", "default": "ORDER NOW — SHIPS [when]" },
@@ -297,10 +422,19 @@
     { "type": "checkbox", "id": "tier_3_hero", "label": "Tier 3 is the hero tier", "default": true },
     { "type": "text", "id": "tier_3_ribbon", "label": "Tier 3 ribbon", "default": "MOST POPULAR — BUY 2, GET 1 FREE" },
 
+    { "type": "header", "content": "Dispatch line (under the reassurance line)" },
+    { "type": "checkbox", "id": "eta_show", "label": "Show the ship day", "default": true },
+
+    { "type": "header", "content": "Phone sticky bar" },
+    { "type": "checkbox", "id": "show_sticky", "label": "Show sticky bar after the bundles scroll away", "default": true },
+    { "type": "text", "id": "sticky_title", "label": "Title", "default": "Buy 2, get 1 free" },
+    { "type": "text", "id": "sticky_cta", "label": "Button (scrolls back to the bundles)", "default": "See bundles" },
+
     { "type": "header", "content": "Under the button" },
     { "type": "text", "id": "reassurance", "label": "Reassurance line", "default": "One-time purchase • Never an automatic rebill" },
     { "type": "text", "id": "guarantee_heading", "label": "Guarantee heading", "default": "30-Day Physical Relief Guarantee" },
     { "type": "textarea", "id": "guarantee_text", "label": "Guarantee text", "default": "Take it for a full month. If your body doesn't feel noticeably looser and easier to move in, email us for a full refund. No return required." },
+    { "type": "text", "id": "trust_1", "label": "Trust 1 (blank shows the live ship day)" },
     { "type": "text", "id": "trust_1_sub", "label": "Trust 1 sub line", "default": "(by 2 PM CT)" },
     { "type": "text", "id": "trust_2", "label": "Trust 2", "default": "100% Lab Tested" },
     { "type": "text", "id": "trust_3", "label": "Trust 3", "default": "Made in USA" }
