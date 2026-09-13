@@ -160,14 +160,14 @@
   .dpg .dpg__viewport { margin-inline-end: 0; padding-inline-end: 0; }
   .dpg .dpg__slide { flex-basis: 100cqi; }
 }
-/* Phones: "/jar" widens the price column, so the price and supply chip give back a little width to stay clear of each other */
+/* Phones: a slightly smaller "/jar" unit */
 @media (max-width: 599px) {
-  .co .co-price { font-size: 22px; }
   .co .co-price__now small { margin-left: 1px; font-size: 12px; }
-  .co .co-supply { padding: 2px 6px; font-size: 12px; }
-  .co .co-tier-body { grid-template-columns: 20px 76px minmax(0, 1fr) auto; }
-  .co .co-pack { width: 76px; padding-right: 8px; }
 }
 /* Keep the per-jar prices on one baseline down the list: a tier with no struck anchor still reserves its line */
 .co .co-price s[hidden] { display: block; visibility: hidden; min-height: 1.5em; }
 .co .co-trust small[hidden] { display: none; }
+
+/* Guarantee panel (2026-09-13): heading centred on the shield, tighter padding */
+.co .co-guarantee { align-items: center; padding: 10px 14px; }
+.co .co-guarantee h2 { margin: 0; }

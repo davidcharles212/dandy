@@ -228,8 +228,6 @@
         endcomment
         assign per_jar = v.price | times: 1.0 | divided_by: jars | round
         assign reader_per_jar = reader_price | times: 1.0 | divided_by: jars | round
-        assign supply_key = 'tier_' | append: i | append: '_supply'
-        assign t_supply = block.settings[supply_key] | default: '[days]-Day Supply' | replace: '[days]', days
         assign title_key = 'tier_' | append: i | append: '_title'
         assign badge_key = 'tier_' | append: i | append: '_badge'
         assign ship_key = 'tier_' | append: i | append: '_shipping'
@@ -281,13 +279,11 @@
             {%- if anchor_price > per_jar -%}{%- assign show_anchor = true -%}{%- endif -%}
             <s data-co-was data-regular="{% if show_anchor %}{{ anchor_price | money }}{% endif %}" data-reader="{% if anchor_price > 0 %}{{ anchor_price | money }}{% endif %}"{% unless show_anchor %} hidden{% endunless %}>{% if show_anchor %}{{ anchor_price | money }}{% endif %}</s>
           </span>
-          <span class="co-supply">{{ t_supply }}</span>
           <span class="co-detail">
-            {%- if jars > 1 -%}
-              <span class="co-daily co-total" data-co-daily data-regular="{{ v.price | money }} for {{ jars }} jars" data-reader="{{ reader_price | money }} for {{ jars }} jars">{{ v.price | money }} for {{ jars }} jars</span>
-            {%- else -%}
-              <span class="co-daily co-total"></span>
-            {%- endif -%}
+            {%- comment -%} Price per capsule, rounded to the cent. The bundle total lives only on the button. {%- endcomment -%}
+            {%- assign per_cap = v.price | times: 1.0 | divided_by: days | round -%}
+            {%- assign reader_per_cap = reader_price | times: 1.0 | divided_by: days | round -%}
+            <span class="co-daily co-total" data-co-daily data-regular="{{ per_cap | money }} per capsule" data-reader="{{ reader_per_cap | money }} per capsule">{{ per_cap | money }} per capsule</span>
             <span class="co-shipping{% if is_free_ship %} co-shipping--free{% endif %}">{{ t_ship }}</span>
           </span>
         </span>
@@ -396,7 +392,6 @@
 
     { "type": "text", "id": "tier_1_variant_title", "label": "Tier 1 variant title", "default": "30-count / Single" },
     { "type": "text", "id": "tier_1_title", "label": "Tier 1 title", "default": "1 Jar" },
-    { "type": "text", "id": "tier_1_supply", "label": "Tier 1 supply chip ([days] = days)", "default": "[days]-Day Supply" },
     { "type": "text", "id": "tier_1_badge", "label": "Tier 1 badge ([save] = amount saved)" },
     { "type": "text", "id": "tier_1_shipping", "label": "Tier 1 shipping line", "default": "+ $5.95 Shipping" },
     { "type": "text", "id": "tier_1_cta", "label": "Tier 1 button", "default": "ADD TO CART" },
@@ -406,7 +401,6 @@
 
     { "type": "text", "id": "tier_2_variant_title", "label": "Tier 2 variant title", "default": "30-count / 2-pack" },
     { "type": "text", "id": "tier_2_title", "label": "Tier 2 title", "default": "2 Jars" },
-    { "type": "text", "id": "tier_2_supply", "label": "Tier 2 supply chip ([days] = days)", "default": "[days]-Day Supply" },
     { "type": "text", "id": "tier_2_badge", "label": "Tier 2 badge", "default": "SAVE [save]" },
     { "type": "text", "id": "tier_2_shipping", "label": "Tier 2 shipping line", "default": "FREE SHIPPING" },
     { "type": "text", "id": "tier_2_cta", "label": "Tier 2 button", "default": "ADD TO CART" },
@@ -416,7 +410,6 @@
 
     { "type": "text", "id": "tier_3_variant_title", "label": "Tier 3 variant title", "default": "30-count / 3-pack" },
     { "type": "text", "id": "tier_3_title", "label": "Tier 3 title", "default": "3 Jars" },
-    { "type": "text", "id": "tier_3_supply", "label": "Tier 3 supply chip ([days] = days)", "default": "[days]-Day Supply" },
     { "type": "text", "id": "tier_3_badge", "label": "Tier 3 badge", "default": "GET 1 FREE" },
     { "type": "text", "id": "tier_3_shipping", "label": "Tier 3 shipping line", "default": "FREE FAST SHIPPING" },
     { "type": "text", "id": "tier_3_cta", "label": "Tier 3 button", "default": "CLAIM MY FREE JAR" },

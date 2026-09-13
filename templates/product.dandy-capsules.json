@@ -182,8 +182,7 @@
                 "eta_show": true,
                 "sticky_title": "Buy 2, Get 1 Free",
                 "sticky_cta": "See bundles",
-                "show_sticky": true,
-                "tier_3_supply": "[days]-Day Supply"
+                "show_sticky": true
               },
               "blocks": {}
             },
