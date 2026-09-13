@@ -6,12 +6,33 @@
   becomes an in-page toggle (history.replaceState keeps the URL bookmarkable).
   Prices come from real variants; a tier whose variant is missing or
   unavailable is hidden rather than faked.
+
+  Merged product (2026-09-13): when the product carries a "Strength" option,
+  both strengths are variants of one product at one URL. The strength links
+  become ?variant= links to the default tier of that strength, and the current
+  strength comes from the selected variant. The two-product mode stays in
+  place so the block keeps working on stores that have not merged.
+
+  Reader rate: a shopper who arrives through /discount/CODE carries a
+  discount_code cookie. When it matches the configured code, the notice shows
+  and each tier shows the voucher price with the pre-voucher price struck
+  through. Shopify truncates a percentage discount to the cent, so the voucher
+  price is price - floor(price * percent / 100), which matches checkout.
 {%- endcomment -%}
 {%- liquid
   assign product = closest.product
   assign caps = block.settings.capsules_per_jar | default: 30
+  assign reader_percent = block.settings.reader_percent | default: 0
+  assign merged = false
+  if product.options_by_name['Strength']
+    assign merged = true
+  endif
   assign is_90 = false
-  if product.handle contains '90'
+  if merged
+    if product.selected_or_first_available_variant.option1 contains '90'
+      assign is_90 = true
+    endif
+  elsif product.handle contains '90'
     assign is_90 = true
   endif
   assign strength_label = block.settings.strength_50_label
@@ -25,7 +46,26 @@
   assign handle_50 = url_50 | split: '/products/' | last | split: '?' | first | split: '#' | first
   assign handle_90 = url_90 | split: '/products/' | last | split: '?' | first | split: '#' | first
   assign sibling = blank
-  if is_90 and handle_50 != blank
+  if merged
+    comment
+      Strength links point at the default tier of each strength on this product,
+      so they render the right strength server-side without JS.
+    endcomment
+    assign default_title = 'tier_' | append: block.settings.default_tier | append: '_variant_title'
+    assign default_title = block.settings[default_title]
+    assign url_50 = product.url
+    assign url_90 = product.url
+    for v in product.variants
+      assign v_rest = v.option2 | append: ' / ' | append: v.option3
+      if v_rest == default_title
+        if v.option1 contains '90'
+          assign url_90 = product.url | append: '?variant=' | append: v.id
+        else
+          assign url_50 = product.url | append: '?variant=' | append: v.id
+        endif
+      endif
+    endfor
+  elsif is_90 and handle_50 != blank
     assign sibling = all_products[handle_50]
   elsif is_90 == false and handle_90 != blank
     assign sibling = all_products[handle_90]
@@ -40,9 +80,17 @@
   assign strengths = '50,90' | split: ','
   assign product_50 = product
   assign product_90 = sibling
-  if is_90
+  if merged
+    assign product_90 = product
+  elsif is_90
     assign product_50 = sibling
     assign product_90 = product
+  endif
+  assign title_50 = product_50.title
+  assign title_90 = product_90.title
+  if merged
+    assign title_50 = product.title | append: ' · 50 mg'
+    assign title_90 = product.title | append: ' · 90 mg'
   endif
 -%}
 {{ 'dandy-capsule-offer.css' | asset_url | stylesheet_tag }}
@@ -58,10 +106,18 @@
   data-strength="{{ current_strength }}"
   data-url-50="{{ url_50 }}"
   data-url-90="{{ url_90 }}"
-  {%- if product_50 != blank %} data-title-50="{{ product_50.title | escape }}" data-product-url-50="{{ product_50.url }}"{% endif -%}
-  {%- if product_90 != blank %} data-title-90="{{ product_90.title | escape }}" data-product-url-90="{{ product_90.url }}"{% endif -%}
+  {%- if merged %} data-merged{% endif -%}
+  {%- if product_50 != blank %} data-title-50="{{ title_50 | escape }}" data-product-url-50="{{ product_50.url }}"{% endif -%}
+  {%- if product_90 != blank %} data-title-90="{{ title_90 | escape }}" data-product-url-90="{{ product_90.url }}"{% endif -%}
+  {%- if block.settings.reader_code != blank and reader_percent > 0 %} data-reader-code="{{ block.settings.reader_code | escape }}"{% endif %}
   {{ block.shopify_attributes }}
 >
+  {%- if block.settings.reader_code != blank and reader_percent > 0 and block.settings.reader_notice != blank -%}
+    <div class="co-reader" data-co-reader role="status" hidden>
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3.5 8.5 3 3 6-7"/></svg>
+      <span>{{ block.settings.reader_notice }}</span>
+    </div>
+  {%- endif -%}
   {%- if block.settings.show_strength_switch -%}
     <fieldset class="co-strength">
       <legend class="co-strength__legend">{{ block.settings.strength_legend }}</legend>
@@ -88,6 +144,7 @@
     </fieldset>
   {%- endif -%}
 
+  {%- if block.settings.dispatch_headline != blank -%}
   <div class="co-dispatch">
     <span class="co-dot" aria-hidden="true"></span>
     <div>
@@ -95,6 +152,7 @@
       <span>{{ block.settings.dispatch_sub }}</span>
     </div>
   </div>
+  {%- endif -%}
 
   {%- for strength in strengths -%}
     {%- liquid
@@ -112,11 +170,18 @@
       assign v2 = blank
       assign v3 = blank
       for v in sp.variants
-        if v.title == block.settings.tier_1_variant_title
+        assign v_title = v.title
+        if merged
+          unless v.option1 contains strength
+            continue
+          endunless
+          assign v_title = v.option2 | append: ' / ' | append: v.option3
+        endif
+        if v_title == block.settings.tier_1_variant_title
           assign v1 = v
-        elsif v.title == block.settings.tier_2_variant_title
+        elsif v_title == block.settings.tier_2_variant_title
           assign v2 = v
-        elsif v.title == block.settings.tier_3_variant_title
+        elsif v_title == block.settings.tier_3_variant_title
           assign v3 = v
         endif
       endfor
@@ -146,6 +211,8 @@
           assign save = v.compare_at_price | minus: v.price
           assign save_str = save | money_without_trailing_zeros
         endif
+        assign reader_off = v.price | times: reader_percent | divided_by: 100
+        assign reader_price = v.price | minus: reader_off
         assign title_key = 'tier_' | append: i | append: '_title'
         assign badge_key = 'tier_' | append: i | append: '_badge'
         assign ship_key = 'tier_' | append: i | append: '_shipping'
@@ -173,6 +240,7 @@
           data-co-tier
           data-variant-id="{{ v.id }}"
           data-price="{{ v.price }}"
+          data-reader-price="{{ reader_price }}"
           data-label="{{ t_title | escape }}"
           data-cta="{{ t_cta | escape }}"
           {% if default_tier == i %}checked{% endif %}
@@ -189,10 +257,15 @@
             {%- endif -%}
           </span>
           <span class="co-title">{{ t_title }}{% if t_badge != blank %}<span class="co-badge">{{ t_badge }}</span>{% endif %}</span>
-          <span class="co-price">{{ v.price | money }}{% if save > 0 %}<s>{{ v.compare_at_price | money }}</s>{% endif %}</span>
+          <span class="co-price">
+            {%- comment -%} Regular prices render first; the reader rate swaps both spans in place when the voucher is active. {%- endcomment -%}
+            <span data-co-now data-regular="{{ v.price | money }}" data-reader="{{ reader_price | money }}">{{ v.price | money }}</span>
+            <s data-co-was data-regular="{% if save > 0 %}{{ v.compare_at_price | money }}{% endif %}" data-reader="{{ v.price | money }}"{% if save == 0 %} hidden{% endif %}>{% if save > 0 %}{{ v.compare_at_price | money }}{% endif %}</s>
+          </span>
           <span class="co-supply">{{ days }}-Day Supply</span>
           <span class="co-detail">
-            <span class="co-daily">{{ block.settings.per_day_prefix }} {{ per_day_str }} / day</span>
+            {%- assign reader_per_day_str = reader_price | divided_by: days | money -%}
+            <span class="co-daily" data-co-daily data-regular="{{ block.settings.per_day_prefix }} {{ per_day_str }} / day" data-reader="{{ block.settings.per_day_prefix }} {{ reader_per_day_str }} / day">{{ block.settings.per_day_prefix }} {{ per_day_str }} / day</span>
             <span class="co-shipping{% if is_free_ship %} co-shipping--free{% endif %}">{{ t_ship }}</span>
           </span>
         </span>
@@ -222,7 +295,7 @@
       <svg viewBox="0 0 24 24" width="32" height="32" fill="color-mix(in srgb, var(--dandy-accent, #164020) 10%, white)" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3 20 6v6c0 5-8 9-8 9s-8-4-8-9V6Z"/><path d="m8 12 3 3 5-6"/></svg>
       <div>
         <h2>{{ block.settings.guarantee_heading }}</h2>
-        <p>{{ block.settings.guarantee_text }}</p>
+        {%- if block.settings.guarantee_text != blank -%}<p>{{ block.settings.guarantee_text }}</p>{%- endif -%}
       </div>
     </div>
   {%- endif -%}
@@ -258,6 +331,11 @@
     { "type": "text", "id": "strength_90_desc", "label": "90 mg description", "default": "Heavy physical wear, demanding days, or experienced routines." },
     { "type": "richtext", "id": "strength_90_notice", "label": "90 mg notice (shown only while 90 mg is selected)", "default": "<p><strong>First time with Dandy?</strong> 90 mg is high-potency. We recommend starting with 50 mg, or take with food.</p>" },
     { "type": "url", "id": "strength_90_url", "label": "90 mg page" },
+
+    { "type": "header", "content": "Reader rate (via /discount/CODE link)" },
+    { "type": "text", "id": "reader_code", "label": "Discount code", "default": "DISPATCH10" },
+    { "type": "range", "id": "reader_percent", "label": "Percent off (must match the Shopify discount)", "min": 0, "max": 50, "step": 1, "unit": "%", "default": 10 },
+    { "type": "text", "id": "reader_notice", "label": "Notice", "default": "Daily Health Dispatch Reader Rate Active (-10% Auto-Applied at Checkout)" },
 
     { "type": "header", "content": "Dispatch line" },
     { "type": "text", "id": "dispatch_headline", "label": "Headline ([when] becomes TODAY / TOMORROW / MONDAY)", "default": "ORDER NOW — SHIPS [when]" },

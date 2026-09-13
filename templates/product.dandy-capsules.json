@@ -142,8 +142,8 @@
                 "strength_90_desc": "Heavier wear, or you know how you respond.",
                 "strength_90_notice": "<p><strong>First time with Dandy?</strong> Start with 50 mg. 90 mg is for experienced users.</p>",
                 "strength_90_url": "/products/extract-capsules?variant=48042269769906",
-                "dispatch_headline": "ORDER NOW — SHIPS TODAY",
-                "dispatch_sub": "Plain, unmarked packaging",
+                "dispatch_headline": "",
+                "dispatch_sub": "",
                 "cutoff_hour": 14,
                 "tiers_legend": "2. Choose your jar bundle",
                 "capsules_per_jar": 30,
@@ -175,7 +175,7 @@
                 "tier_3_ribbon": "MOST POPULAR — BUY 2, GET 1 FREE",
                 "reassurance": "One-time purchase • Never an automatic rebill",
                 "guarantee_heading": "30-Day 100% Satisfaction Guarantee",
-                "guarantee_text": "Every order is covered. <a href=\"/pages/contact?view=dandy2-returns\">See the refund policy</a> for how it works.",
+                "guarantee_text": "",
                 "trust_1_sub": "(by 2 PM CT)",
                 "trust_2": "100% Lab Tested",
                 "trust_3": "Made in USA"
@@ -214,7 +214,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Within 45 minutes, most people notice a warm, loosening sensation spreading through the lower back, neck and joints. The physical background noise of the day fades. Unlike sedating remedies, your head stays completely clear, sharp and focused.</p><p><strong>Acute Tension Melts.</strong> Active mitragynine engages comfort pathways. That familiar tight, grinding ache in your lumbar spine and knees begins to soften.</p>",
+                        "text": "<p>Within 45 minutes, most people notice a warm, loosening feeling spreading through the lower back, neck and joints. The physical background noise of the day fades. Unlike sedating remedies, your head stays clear, sharp and focused.</p><p><strong>Tension Melts.</strong> Active mitragynine works on the body's comfort pathways. That familiar tight, grinding ache in your lower back and knees starts to soften.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -253,7 +253,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Each capsule contains pure standardized Mitragyna speciosa leaf extract (50 mg or 90 mg mitragynine), microcrystalline cellulose (a plant fiber for smooth, even absorption) and a vegan HPMC capsule shell. Nothing else.</p><p>Every batch is third-party tested for purity, heavy metals, microbials and precise alkaloid potency. The batch number is printed on the bottom of your jar so you can read its Certificate of Analysis.</p>",
+                        "text": "<p>Each capsule contains pure standardized Mitragyna speciosa leaf extract (50 mg or 90 mg mitragynine), microcrystalline cellulose (a plant fiber for smooth, even absorption) and a vegan HPMC capsule shell. Nothing else.</p><p>Every batch is third-party tested for purity, heavy metals, microbes and exact potency. The batch number is printed on the bottom of your jar so you can read its lab report (Certificate of Analysis).</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -370,7 +370,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Concentrated mitragynine engages peripheral discomfort pathways to quiet stubborn pain at the source.</p><p><strong>Lower Lumbar Spine.</strong> Soothes deep spinal tension and stiffness.</p><p><strong>Knees & Joints.</strong> Supports smooth flexion, bending, and stair climbing.</p><p><strong>Hips & Pelvis.</strong> Relieves the deep, dull ache when rising from chairs.</p><p><strong>Hands & Wrists.</strong> Eases grip tightness and finger joint throbbing.</p><p><strong>Neck & Shoulders.</strong> Releases postural tightness and muscular strain.</p>",
+                        "text": "<p>Concentrated mitragynine works on the body's comfort pathways to quiet stubborn aches where you feel them.</p><p><strong>Lower Back.</strong> Soothes deep tension and stiffness.</p><p><strong>Knees & Joints.</strong> Supports easy bending, walking and stair climbing.</p><p><strong>Hips & Pelvis.</strong> Eases the deep, dull ache when you get up from a chair.</p><p><strong>Hands & Wrists.</strong> Eases a tight grip and aching finger joints.</p><p><strong>Neck & Shoulders.</strong> Releases tightness from posture and strain.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -400,7 +400,7 @@
                 "extract": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Maximum Efficacy. Zero Plant Bloat.",
+                    "heading": "Maximum Effect. Zero Plant Bloat.",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -409,7 +409,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Why 50mg standardized extract delivers relief raw leaf powder can’t match. (Without the indigestible plant fiber, gut bloat, or nausea)</p><p><strong>Exact 50mg Active Alkaloids.</strong> Lab-calibrated for reliable, identical relief in every dose.</p><p><strong>Rapid 45 Minute Bioavailability.</strong> Fast-dissolving vegan shell releases pure extract directly for swift comfort.</p>",
+                        "text": "<p>Why a standardized extract gives relief raw leaf powder can't match. No indigestible plant fiber, so no gut bloat.</p><p><strong>Exact Dose, Every Capsule.</strong> Lab-measured 50 mg or 90 mg of mitragynine, so every dose feels the same.</p><p><strong>Works Within 45 Minutes.</strong> The fast-dissolving vegan shell releases the extract quickly for fast comfort.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",

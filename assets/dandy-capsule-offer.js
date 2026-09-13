@@ -17,9 +17,19 @@
       if (!this.form || !this.button || this.fieldsets.length === 0) return;
 
       this.strength = this.dataset.strength || '50';
+      this.reader = this.readerActive();
+      this.applyReader();
       this.collectInputs();
       if (this.inputs.length === 0) return;
       this.applyDefault();
+
+      // One product, one URL: ?strength=90 (or 50) picks the strength when no ?variant= already decided it server-side.
+      const params = new URLSearchParams(window.location.search);
+      const wantedStrength = params.get('strength');
+      if (this.hasAttribute('data-merged') && !params.get('variant') && /^(50|90)$/.test(wantedStrength || '')
+        && wantedStrength !== this.strength && this.fieldsetFor(wantedStrength)) {
+        this.switchStrength(wantedStrength, { keepUrl: true });
+      }
 
       this.addEventListener('change', (event) => {
         if (event.target.matches('[data-co-tier]')) this.sync();
@@ -68,9 +78,40 @@
       this.inputs = active ? [...active.querySelectorAll('[data-co-tier]')] : [];
     }
 
+    readerActive() {
+      const code = (this.dataset.readerCode || '').trim().toUpperCase();
+      if (!code) return false;
+      const match = document.cookie.match(/(?:^|;\s*)discount_code=([^;]*)/);
+      let cookie = '';
+      try {
+        cookie = match ? decodeURIComponent(match[1]) : '';
+      } catch (error) {
+        console.error('Dandy capsule offer: unreadable discount_code cookie', error);
+      }
+      const param = new URLSearchParams(window.location.search).get('discount') || '';
+      return cookie.trim().toUpperCase() === code || param.trim().toUpperCase() === code;
+    }
+
+    applyReader() {
+      const notice = this.querySelector('[data-co-reader]');
+      if (notice) notice.hidden = !this.reader;
+      if (!this.reader) return;
+      this.querySelectorAll('[data-co-now], [data-co-daily]').forEach((el) => { el.textContent = el.dataset.reader; });
+      this.querySelectorAll('[data-co-was]').forEach((el) => {
+        el.textContent = el.dataset.reader;
+        el.hidden = !el.dataset.reader;
+      });
+    }
+
     applyDefault() {
-      // The configured default wins over stale campaign URLs.
-      const wanted = this.dataset.defaultTier;
+      // A campaign link that names the tier it sold (bundle=, qty= or variant=) is honoured when it
+      // matches a rendered tier of the current strength; the configured default still wins for anything else.
+      const params = new URLSearchParams(window.location.search);
+      const bundle = params.get('bundle') || params.get('qty');
+      const variant = params.get('variant');
+      const match = (bundle && this.inputs.find((i) => i.value === bundle))
+        || (variant && this.inputs.find((i) => i.dataset.variantId === variant));
+      const wanted = match ? match.value : this.dataset.defaultTier;
       if (wanted && this.inputs.some((i) => i.value === wanted)) {
         this.inputs.forEach((i) => { i.checked = i.value === wanted; });
       } else if (!this.inputs.some((i) => i.checked)) {
@@ -78,7 +119,7 @@
       }
     }
 
-    switchStrength(next) {
+    switchStrength(next, options = {}) {
       const target = this.fieldsetFor(next);
       if (!target) return;
       this.fieldsets.forEach((f) => {
@@ -118,11 +159,14 @@
         if (prev && document.title.includes(prev)) document.title = document.title.replace(prev, title);
       }
 
-      if (url && window.history && history.replaceState) {
+      if (url && !options.keepUrl && window.history && history.replaceState) {
         try {
           const u = new URL(url, location.origin);
-          // Keep preview/session params (preview_theme_id etc.) the shopper arrived with.
-          new URLSearchParams(location.search).forEach((v, k) => { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+          // Keep preview/session params (preview_theme_id etc.) the shopper arrived with; the new link's
+          // variant decides strength, so a stale strength= must not survive the switch.
+          new URLSearchParams(location.search).forEach((v, k) => {
+            if (k !== 'strength' && !u.searchParams.has(k)) u.searchParams.set(k, v);
+          });
           history.replaceState(history.state, '', u.pathname + u.search + location.hash);
         } catch (error) {
           console.error('Dandy capsule offer: could not update the URL', error);
@@ -143,7 +187,8 @@
       const id = this.querySelector('[data-co-id]');
       id.value = input.dataset.variantId || '';
       this.querySelector('[data-co-cta-text]').textContent = input.dataset.cta || 'ADD TO CART';
-      this.querySelector('[data-co-cta-price]').textContent = ' • ' + money(Number(input.dataset.price) || 0);
+      const shown = this.reader ? Number(input.dataset.readerPrice) : Number(input.dataset.price);
+      this.querySelector('[data-co-cta-price]').textContent = ' • ' + money(shown || Number(input.dataset.price) || 0);
       this.querySelectorAll('[data-co-tier-card]').forEach((card) => {
         card.toggleAttribute('data-selected', card.contains(input));
       });
@@ -182,7 +227,9 @@
         });
         if (!response.ok) throw new Error('Cart add failed: ' + response.status);
         await response.json();
-        window.location.href = this.dataset.cartUrl || '/cart';
+        // Open the side cart in place. Only a layout without the Dandy cart drawer goes to the cart page.
+        if (document.querySelector('[data-d2-cart]')) document.dispatchEvent(new CustomEvent('d2:cart-open'));
+        else window.location.href = this.dataset.cartUrl || '/cart';
       } catch (error) {
         console.error('Dandy capsule add to cart failed', error);
         this.message.textContent = 'We couldn’t add this bundle. Please refresh and try again.';

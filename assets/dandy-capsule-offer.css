@@ -30,6 +30,12 @@
 .co-dispatch b { display: block; font-size: 16px; font-weight: 800; line-height: 1.3; }
 .co-dispatch div > span { display: block; font-size: 13px; line-height: 1.5; }
 
+/* reader rate: shown only when the shopper arrived through the reader discount link */
+.co-reader { display: flex; align-items: center; gap: 8px; padding: 10px 12px; margin-bottom: 12px; border: 1px solid color-mix(in srgb, var(--co-accent) 35%, white); border-radius: 10px; background: var(--co-tint); color: var(--co-accent); font-size: 15px; font-weight: 700; line-height: 1.35; text-wrap: pretty; }
+.co-reader[hidden] { display: none; }
+.co-reader svg { flex: 0 0 16px; }
+.co-price s[hidden] { display: none; }
+
 /* tiers */
 .co-tiers { display: grid; gap: 12px; border: 0; padding: 0; margin: 0; }
 .co-tiers[hidden] { display: none; }
