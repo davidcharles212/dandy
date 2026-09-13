@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "announcement": {
@@ -27,7 +36,7 @@
           "type": "_dandy-product-gallery",
           "static": true,
           "settings": {
-            "gallery_assets": "dandy-capgal-01{strength}.webp|Relief for Aching Backs & Stiff Joints. Rated 4.9/5 by 1,200+ Active Adults. A Dandy jar of 30 extract capsules on pale stone with two clear capsules of green powder\ndandy-capgal-03{strength}.webp|1 Dandy Capsule = Potency of 8–10 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of a row of ten darker raw-leaf capsules|1 Dandy Capsule = Potency of 16–18 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of two rows of nine darker raw-leaf capsules\ndandy-capgal-06{strength}.webp|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 50.8mg. Batch ID: N11395. A Dandy jar on a deep green background|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 91.3mg. Batch ID: N11396. A Dandy jar on a deep green background\ndandy-capgal-02.webp|Relief Right Where Your Body Needs It Most. A woman working the soil in a raised garden bed\ndandy-capgal-05.webp|Stop Choking Down Bitter Powder. No clumps, no shakers, no gagging. A hand holding one Dandy capsule above spilled kratom powder, a shaker and a glass of water\ndandy-capgal-07.webp|“Zero lower-back throbbing when I climbed out of the driver’s seat.” Gary P. A man standing by the open door of his pickup truck\ndandy-capgal-04.webp|What You’ll Feel & When. Within about 45 minutes. Notice how you stand and stretch. Use it when needed. A person stepping up stone stairs\ndandy-capgal-08.webp|30-Day 100% Satisfaction Guarantee. An opened shipping box with a jar in kraft paper fill",
+            "gallery_assets": "dandy-capgal-01{strength}.webp|A Dandy jar of extract capsules against a warm beige wall with soft leaf shadows, two capsules beside it, and three benefit labels: Eases Back & Joint Aches, A Lighter Mood, Stay Clear Headed\ndandy-capgal-03{strength}.webp|1 Dandy Capsule = Potency of 8–10 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of a row of ten darker raw-leaf capsules|1 Dandy Capsule = Potency of 16–18 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of two rows of nine darker raw-leaf capsules\ndandy-capgal-06{strength}.webp|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 50.8mg. Batch ID: N11395. A Dandy jar on a deep green background|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 91.3mg. Batch ID: N11396. A Dandy jar on a deep green background\ndandy-capgal-02.webp|Relief Right Where Your Body Needs It Most. A woman working the soil in a raised garden bed\ndandy-capgal-05.webp|Stop Choking Down Bitter Powder. No clumps, no shakers, no gagging. A hand holding one Dandy capsule above spilled kratom powder, a shaker and a glass of water\ndandy-capgal-07.webp|“Zero lower-back throbbing when I climbed out of the driver’s seat.” Gary P. A man standing by the open door of his pickup truck\ndandy-capgal-04.webp|What You’ll Feel & When. Within about 45 minutes. Notice how you stand and stretch. Use it when needed. A person stepping up stone stairs\ndandy-capgal-08.webp|30-Day 100% Satisfaction Guarantee. An opened shipping box with a jar in kraft paper fill",
             "show_product_media": false,
             "asset_px": 1200
           },
@@ -52,7 +61,8 @@
             "header": {
               "type": "dandy-product-header",
               "settings": {
-                "title_override": "Physical relief",
+                "title_override": "Extract capsules",
+                "tagline": "Relief for aching backs and stiff joints",
                 "subtitle_override": "STANDARDIZED MITRAGYNINE EXTRACT\n30 VEGAN CAPSULES PER JAR"
               },
               "blocks": {}
@@ -127,11 +137,11 @@
                 "strength_legend": "1. Pick your strength",
                 "strength_50_label": "Everyday ease",
                 "strength_50_desc": "Stiffness any time of day, or new to this.",
-                "strength_50_url": "/products/extract-capsules-50mg?view=dandy-capsules",
+                "strength_50_url": "/products/extract-capsules",
                 "strength_90_label": "Heavy-duty",
                 "strength_90_desc": "Heavier wear, or you know how you respond.",
                 "strength_90_notice": "<p><strong>First time with Dandy?</strong> Start with 50 mg. 90 mg is for experienced users.</p>",
-                "strength_90_url": "/products/extract-capsules-90mg?view=dandy-capsules",
+                "strength_90_url": "/products/extract-capsules?variant=48042269769906",
                 "dispatch_headline": "ORDER NOW — SHIPS TODAY",
                 "dispatch_sub": "Plain, unmarked packaging",
                 "cutoff_hour": 14,
