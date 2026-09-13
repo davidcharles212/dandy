@@ -58,7 +58,11 @@
         const head = this.querySelector('[data-co-dispatch]');
         if (head) head.textContent = head.textContent.replace(/TODAY|TOMORROW|MONDAY/, when);
         const proof = this.querySelector('[data-co-proof-dispatch]');
-        if (proof) proof.textContent = 'Ships ' + when.charAt(0) + when.slice(1).toLowerCase();
+        if (proof) {
+          proof.textContent = 'Ships ' + when.charAt(0) + when.slice(1).toLowerCase();
+          const deadline = proof.nextElementSibling;
+          if (deadline && deadline.tagName === 'SMALL') deadline.hidden = !today;
+        }
       };
       this.tick();
       this.timer = setInterval(() => { this.tick(); this.renderEta(); }, 30000);
@@ -73,6 +77,7 @@
         window.removeEventListener('scroll', this.onStickyScroll);
         window.removeEventListener('resize', this.onStickyScroll);
       }
+      this.cartObserver?.disconnect();
       this.sticky?.remove();
       this.initialized = false;
     }
@@ -122,6 +127,9 @@
       };
       window.addEventListener('scroll', this.onStickyScroll, { passive: true });
       window.addEventListener('resize', this.onStickyScroll, { passive: true });
+      // The side cart locks the page with a class on <html>; hide the bar the moment it opens, not on the next scroll.
+      this.cartObserver = new MutationObserver(this.onStickyScroll);
+      this.cartObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
       this.updateSticky();
     }
 
