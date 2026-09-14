@@ -1750,3 +1750,22 @@ html.d2age-lock { overflow: hidden; }
 .dandy2-home .gseal__mark small { font-size: 12px; letter-spacing: .06em; }
 .dandy2-home .dose__lbl { font-size: 13px; }
 @media (min-width: 801px) { .dandy2-home .hhero__benefits--facts b { font-size: 17px; } .dandy2-home .dose__lbl { font-size: 13px; } }
+
+/* HOME CLEANUP round 7: line icons on the hero facts, and the proof strip moved up under the lineup as icon rows. */
+.dandy2-home .hhero__benefits--facts li { grid-template-columns: 24px 1fr; gap: 0 10px; align-items: center; }
+.dandy2-home .hhero__benefits--facts i { grid-row: auto; display: block; width: 24px; height: 24px; }
+.dandy2-home .hhero__benefits--facts i svg, .dandy2-home .promise--facts i svg { display: block; width: 24px; height: 24px; fill: none; stroke: #064C26; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dandy2-home .promise--facts { border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); background: #FAF5F0; padding: 22px 18px; margin-top: 26px; }
+.dandy2-home .promise--facts .promise__inner { display: block; }
+.dandy2-home .promise--facts .promise__cols { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.dandy2-home .promise--facts .promise__cols > div { display: grid; grid-template-columns: 24px 1fr; gap: 0 12px; align-items: center; padding: 0; border: 0; }
+.dandy2-home .promise--facts .promise__cols i { display: block; width: 24px; height: 24px; }
+.dandy2-home .promise--facts .promise__cols b { display: inline; font-family: var(--d2-body); font-weight: 600; font-size: 16px; text-transform: none; letter-spacing: 0; line-height: 1.3; margin: 0 8px 0 0; }
+.dandy2-home .promise--facts .promise__cols > div > span > span { display: inline; font-size: 15px; font-weight: 400; color: rgb(40 17 12 / 72%); margin: 0; }
+@media (min-width: 801px) {
+  .dandy2-home .promise--facts { padding: 26px 24px; margin-top: 34px; }
+  .dandy2-home .promise--facts .promise__inner { max-width: 1200px; margin: 0 auto; }
+  .dandy2-home .promise--facts .promise__cols { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .dandy2-home .promise--facts .promise__cols b { display: block; margin: 0; }
+  .dandy2-home .promise--facts .promise__cols > div > span > span { display: block; margin-top: 2px; }
+}
