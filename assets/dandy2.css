@@ -1769,3 +1769,7 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-home .promise--facts .promise__cols b { display: block; margin: 0; }
   .dandy2-home .promise--facts .promise__cols > div > span > span { display: block; margin-top: 2px; }
 }
+/* round 7c: icon sits on the first line of a wrapped fact; single hairline between the strip and the next section */
+.dandy2-home .hhero__benefits--facts li { align-items: start; }
+.dandy2-home .hhero__benefits--facts i { margin-top: -1.5px; }
+.dandy2-home .promise--facts { border-bottom: 0; }
