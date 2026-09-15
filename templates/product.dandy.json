@@ -1,19 +1,13 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "dandy_header_announcement_LL9fRE": {
-      "type": "dandy-header-announcement",
+      "type": "dandy-gpdp-header-announcement",
       "name": "Dandy header announcement",
       "settings": {
-        "text": "Free shipping on 3+ packs",
+        "text": "FREE US SHIPPING ON 2+ POUCHES | 30-DAY GUARANTEE",
+        "text_mobile": "FREE US SHIPPING ON 2+ POUCHES | 100% PURE LEAF EXTRACT | ZERO SYNTHETICS | 30-DAY GUARANTEE",
+        "mobile_scroll": true,
+        "mobile_scroll_speed": 18,
         "link": "",
         "show_default_icon": true,
         "background_color": "#f4512b",
@@ -30,12 +24,15 @@
       }
     },
     "main": {
-      "type": "dandy-product-information",
+      "type": "dandy-gpdp-hero",
       "blocks": {
         "dandy-gallery": {
           "type": "_dandy-product-gallery",
           "static": true,
-          "settings": {},
+          "settings": {
+            "gallery_assets": "gpdp-gallery-1.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 1\ngpdp-gallery-2.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 2\ngpdp-gallery-3.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 3\ngpdp-gallery-4.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 4\ngpdp-gallery-5.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 5\ngpdp-gallery-6.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 6\ngpdp-gallery-7.jpg|Dandy Feel-Good Kratom Leaf Gummies, gallery image 7\ngpdp-gallery-8.png|Dandy Feel-Good Kratom Leaf Gummies, gallery image 8",
+            "show_product_media": false
+          },
           "blocks": {}
         },
         "dandy-details": {
@@ -47,20 +44,24 @@
               "type": "dandy-rating",
               "name": "Dandy rating",
               "settings": {
-                "text": "Rated 4.8/5 | 1,400+ Happy Buyers",
-                "stars_label": "Rated 4.8 out of 5 stars"
+                "text": "Rated 4.9/5 | 1,400+ Happy Buyers",
+                "stars_label": "Rated 4.9 out of 5 stars"
               },
               "blocks": {}
             },
             "header": {
               "type": "dandy-product-header",
-              "settings": {},
+              "settings": {
+                "title_override": "Feel-Good Kratom Leaf Gummies",
+                "subtitle_override": "35MG MITRAGYNINE · ZERO SYNTHETICS"
+              },
               "blocks": {}
             },
             "benefits": {
               "type": "dandy-product-benefits",
               "settings": {
-                "benefit_icon": "shopify://shop_images/dandy-check-benefit.png"
+                "benefit_icon": "shopify://shop_images/dandy-check-benefit.png",
+                "benefits_override": "A warm, euphoric mood lift\nClear focus without the jitters\nSocial ease without feeling foggy\nSweet berry flavor, zero bitter leaf"
               },
               "blocks": {}
             },
@@ -74,6 +75,7 @@
                   "type": "popup-link",
                   "settings": {
                     "behavior": "default",
+                    "popup_heading": "",
                     "heading": "What is Kratom?",
                     "type_preset": "",
                     "padding-block-start": 0,
@@ -85,7 +87,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Kratom is a leaf from a Southeast Asian tree in the coffee family.</p><p>Its primary active compound is called <strong>mitragynine</strong>. People use it for a combination of energy, alertness, positive mood and physical ease.</p><p>Dandy extracts that compound and puts an exact 35 mg serving into one mixed-berry gummy.</p>",
+                        "text": "<p>Kratom is a tropical leaf from Southeast Asia and a natural relative of the coffee plant.</p><p>Its active botanical compound is <strong>mitragynine</strong>. It creates a warm, euphoric lift with clean, crash-free energy and physical ease without clouding your mind.</p><p>100% federally legal. Dandy extracts pure leaf mitragynine into an exact 35 mg gummy with zero synthetics.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -116,6 +118,7 @@
                   "type": "popup-link",
                   "settings": {
                     "behavior": "default",
+                    "popup_heading": "Why Is Dandy Built Different?",
                     "heading": "Why Dandy?",
                     "type_preset": "",
                     "padding-block-start": 0,
@@ -127,7 +130,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Dandy removes the confusion from trying Kratom:</p><ul><li>35 mg mitragynine in every gummy<br/></li><li>0 mg 7-OH declared on the label<br/></li><li>Independently batch tested<br/></li><li>No caffeine or THC<br/></li><li>Mixed-berry flavor<br/></li><li>No powder, measuring or preparation</li></ul>",
+                        "text": "<p>Dandy removes the confusion, mess, and sketchiness from trying kratom:</p><ul><li><strong>Zero Synthetics or 7-OH:</strong> 100% natural leaf extract. We never touch isolated 7-OH or synthetic gas-station chemicals.<br/></li><li><strong>Exact 35 mg Dose:</strong> Every single gummy delivers a reliable, lab-verified amount. No guessing, no measuring, and no surprise spikes.<br/></li><li><strong>No Bitter Pond Sludge:</strong> Artisan berry pectin gummies that taste like real fruit. Zero gag-inducing raw leaf powder or stomach upset.<br/></li><li><strong>100% Plant-Based Pectin:</strong> Made with citrus pectin and colored with real fruit. Zero boiled animal gelatin and zero Red 40.<br/></li><li><strong>Batch Tested in the USA:</strong> Every production run is verified by third-party ISO-accredited labs for alkaloid purity, heavy metals, and safety.</li></ul>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -162,6 +165,7 @@
             },
             "variant_picker": {
               "type": "variant-picker",
+              "disabled": true,
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": false,
@@ -185,36 +189,47 @@
             "purchase_options": {
               "type": "dandy-purchase-options",
               "settings": {
-                "default_selection": "subscription",
-                "subscription_title": "Subscribe & Save [discount]",
-                "subscription_description": "One 30-count pouch every 30 days",
-                "one_time_title": "One Time Purchase",
-                "option_default": "2",
-                "option_1_title": "1 Pouch",
-                "option_1_subtitle": "30 gummies",
-                "option_1_price": "$59.99",
-                "option_1_image": "shopify://shop_images/Group_2087330545.png",
-                "option_1_badge": "",
-                "option_1_badge_style": "orange",
-                "option_1_perks": "",
-                "option_1_variant_id": "",
-                "option_2_title": "Buy 2, Get 1 FREE",
-                "option_2_subtitle": "90 gummies",
-                "option_2_price": "$119.98",
-                "option_2_image": "shopify://shop_images/Group_2087330647.png",
-                "option_2_badge": "MOST POPULAR",
-                "option_2_badge_style": "orange",
-                "option_2_perks": "$1.60 per gummy\nFree shipping",
-                "option_2_variant_id": "",
-                "option_3_title": "Buy 3, Get 2 FREE",
-                "option_3_subtitle": "150 gummies",
-                "option_3_price": "$179.97",
-                "option_3_image": "shopify://shop_images/Group_2087330649_1.png",
-                "option_3_badge": "BEST VALUE",
-                "option_3_badge_style": "dark",
-                "option_3_perks": "$1.20 per gummy\nFree shipping",
-                "option_3_variant_id": "",
+                "default_tab": "one_time",
+                "one_time_tab_label": "One Time Purchase",
+                "subscribe_tab_label": "Subscribe",
+                "save_badge": "Save [discount]",
+                "one_time_panel_title": "One Time Purchase",
+                "subscribe_panel_title": "Subscribe & Save [discount]",
+                "default_tier": "2",
                 "perk_icon": "shopify://shop_images/dandy-check-perk.png",
+                "tier_1_title": "1 Pouch",
+                "tier_1_subtitle": "30 gummies",
+                "tier_1_sub_subtitle": "30 gummies\nDelivered every 30 days",
+                "tier_1_image": "shopify://shop_images/Group_2087330545_1.png",
+                "tier_1_badge": "",
+                "tier_1_badge_style": "orange",
+                "tier_1_sub_badge": "",
+                "tier_1_perks": "$2.00 per gummy",
+                "tier_1_sub_perks": "$1.60 per gummy\nFree shipping",
+                "tier_1_variant_id": "47958359965874",
+                "tier_1_plan_index": "1",
+                "tier_2_title": "2 Pouches",
+                "tier_2_subtitle": "60 gummies \nSave $20",
+                "tier_2_sub_subtitle": "60 gummies\nDelivered every 60 days",
+                "tier_2_image": "shopify://shop_images/Group_2087330647_2.png",
+                "tier_2_badge": "POPULAR",
+                "tier_2_badge_style": "orange",
+                "tier_2_sub_badge": "POPULAR (SAVE $20)",
+                "tier_2_perks": "$1.66 per gummy\nFree shipping",
+                "tier_2_sub_perks": "$1.33 per gummy\nFree shipping",
+                "tier_2_variant_id": "48043999035570",
+                "tier_2_plan_index": "2",
+                "tier_3_title": "Buy 2, Get 1 FREE",
+                "tier_3_subtitle": "90 gummies\nSave $60 (1 Pouch Free)",
+                "tier_3_sub_subtitle": "90 gummies\nDelivered every 90 days",
+                "tier_3_image": "shopify://shop_images/Group_2087330647_1.png",
+                "tier_3_badge": "BEST VALUE",
+                "tier_3_badge_style": "dark",
+                "tier_3_sub_badge": "BEST VALUE (SAVE $24)",
+                "tier_3_perks": "$1.33 per gummy\nFree shipping",
+                "tier_3_sub_perks": "$1.06 per gummy\nFree shipping",
+                "tier_3_variant_id": "48043999068338",
+                "tier_3_plan_index": "3",
                 "legend": "Purchase options"
               },
               "blocks": {}
@@ -222,13 +237,20 @@
             "delivery": {
               "type": "dandy-delivery-estimate",
               "settings": {
-                "in_stock_label": "In stock",
-                "separator": "-",
+                "display_mode": "cutoff",
+                "static_text": "Ships within 24 business hours (Same-day before 2 PM CT)",
+                "static_text_mobile": "Ships within 24 business hours \n(Same-day before 2 PM CT)",
+                "in_stock_label": "In Stock",
+                "separator": "·",
                 "delivery_label": "Delivered to you by",
                 "sold_out_label": "Currently out of stock",
                 "business_days": 3,
                 "skip_weekends": true,
-                "date_format": "short"
+                "date_format": "short",
+                "cutoff_hour": 14,
+                "cutoff_today_text": "Ships *TODAY*: order within [countdown]",
+                "cutoff_tomorrow_text": "Ships *tomorrow morning*: order now",
+                "cutoff_monday_text": "Ships *first thing Monday*: order now"
               },
               "blocks": {}
             },
@@ -342,7 +364,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Placeholder content here.</p>",
+                        "text": "<p>You will feel the onset within 35 to 45 minutes. It begins with a noticeable wave of warmth and good cheer in your chest and shoulders. Your mood brightens, conversation comes easily, and mental resistance to daily tasks drops away.</p><p>Unlike caffeine, your heart does not flutter, your hands stay steady, and your stomach stays completely comfortable. It naturally loosens physical tension in your neck and back while keeping your thoughts clear and alert. When the effect settles, you glide into a peaceful, relaxed evening with zero 2 PM crash and zero post-stimulant hangover.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -381,7 +403,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Placeholder content here.</p>",
+                        "text": "<p>Crafted in an FDA-registered American facility. Each gummy delivers an exact 35 mg of natural mitragynine extracted from pure <em>Mitragyna speciosa</em> leaves.</p><p><strong>The Base:</strong> Plant-based citrus pectin, organic tapioca syrup, and organic cane sugar. No animal gelatin.</p><p><strong>Flavor & Color:</strong> Real mixed berry extracts, colored naturally with purple carrot and blueberry juice. No Red 40, no artificial dyes.</p><p><strong>Independent Lab Certification:</strong> Every batch is tested by third-party ISO-accredited American laboratories for alkaloid potency, heavy metals (lead, arsenic, cadmium, mercury), residual solvents, and microbials. You can inspect the Certificate of Analysis for your pouch anytime.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -420,7 +442,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Placeholder content here.</p>",
+                        "text": "<p>Kratom is 100% federally legal in the United States. A growing number of states have passed dedicated Kratom Consumer Protection Acts to protect your right to pure botanicals by establishing strict standards for third-party lab testing, clean manufacturing, accurate labeling, and age verification (21+). Dandy proudly complies with and exceeds these standards on every single batch.</p><p>All orders placed before 2:00 PM Central, Monday through Saturday, ship the same day. Your order arrives in a plain, discreet mailer to protect your privacy. Covered by our risk-free 30-day money-back guarantee on your first order.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -459,7 +481,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Placeholder content here.</p>",
+                        "text": "<p>If you are new to kratom, start low. Cut one gummy in half for an initial 17.5 mg serving.</p><p>Take it with a glass of water on a light stomach. Give it a full 45 minutes to settle in before deciding whether to take more. Most people find that half a gummy is ideal for bright morning focus or beating the afternoon slump, while a full gummy provides deeper social euphoria and physical relaxation. Do not exceed 2 gummies in a single 24-hour period.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -521,53 +543,53 @@
       }
     },
     "dandy_pdp_reviews_zHaAMN": {
-      "type": "dandy-pdp-reviews",
+      "type": "dandy-gpdp-reviews",
       "blocks": {
         "review_wXWzTL": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "author": "Marcus T.",
+            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from. I take half a gummy most afternoons. Within 35 minutes, my afternoon fatigue is gone and I work without any jitters or 4pm slump.”",
+            "author": "Nate B. · Portland, OR",
             "show_verified": true
           }
         },
         "review_Fbhdkj": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "author": "Marcus T.",
+            "quote": "“I work on my feet all day and usually come home with tight shoulders and an aching lower back. One gummy loosens that physical tension without making me feel drowsy or sluggish. My body feels comfortable and my head stays totally clear. Far better than reaching for another drink.”",
+            "author": "Renee C. · Kansas City, MO",
             "show_verified": true
           }
         },
         "review_Mhjp89": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "author": "Marcus T.",
+            "quote": "“The best social drink alternative I have found. I stopped drinking wine on weeknights, and one Dandy gummy gives me that exact same warm, talkative, happy feeling. I feel present, relaxed, and connected, and I wake up the next morning feeling fresh.”",
+            "author": "Priya S. · Chicago, IL",
             "show_verified": true
           }
         },
         "review_zLDn6M": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "author": "Marcus T.",
+            "quote": "“I used raw kratom powder for two years and hated choking down bitter green sludge. Dandy is an absolute revelation. It tastes like a real berry gummy with zero bitter aftertaste, and the 35 mg dose is perfectly consistent every single time.”",
+            "author": "Luis M. · Dallas, TX",
             "show_verified": true
           }
         },
         "review_iaCwEK": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "author": "Marcus T.",
+            "quote": "“I was super skeptical because of all the weird smoke shop products out there. Seeing Dandy’s public lab tests and sourcing convinced me. A gummy gives me this calm, sunny wave of good energy. It just feels like having your best day.”",
+            "author": "Hannah W. · Louisville, KY",
             "show_verified": true
           }
         },
         "review_Bk8H64": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "author": "Marcus T.",
+            "quote": "“Enduring horsepower for long, demanding days. I run an independent commercial shop and needed stamina without the jittery, irritable edge from energy drinks. Dandy keeps my mood patient and my mind locked in from morning until I knock off.”",
+            "author": "Greg D. · Tampa, FL",
             "show_verified": true
           }
         }
@@ -608,8 +630,8 @@
           "settings": {
             "variant": "caffeine",
             "title": "Caffeine: More awake",
-            "description": "Temporarily blocks the signal that tells you you’re tired.",
-            "items": "Alert\nWired\nPotential crash",
+            "description": "Blocks the signal that tells your brain you’re tired.",
+            "items": "Alert\nWired\nSudden crash",
             "icon": "shopify://shop_images/dandy-icon-cross.png",
             "image": "shopify://shop_images/ede60ddff878a2c3e4aa49ed7cc5f3c0f6dff523.png"
           }
@@ -619,8 +641,8 @@
           "settings": {
             "variant": "dandy",
             "title": "Dandy: More alive",
-            "description": "Mitragynine works across multiple pathways, creating an experience that goes beyond stimulation alone.",
-            "items": "Better mood\nClear focus\nSocial energy\nPhysical ease",
+            "description": "Natural plant alkaloids that go beyond stimulation.",
+            "items": "Better mood\nClear focus\nSocial spark\nPhysical ease",
             "icon": "shopify://shop_images/dandy-icon-check-red.png",
             "image": "shopify://shop_images/285fea2c4b5855d8fffeec7e3a5802a950007970.png"
           }
@@ -634,7 +656,7 @@
       "settings": {
         "eyebrow": "How Dandy feels",
         "heading": "The good mood changes everything.",
-        "body": "Caffeine can make you feel more awake. Dandy can make you feel more into the day.\n\nPeople describe a warm, euphoric lift that makes conversation flow, plans feel more appealing and focus come naturally because everything feels more interesting.",
+        "body": "Caffeine can make you feel more awake. Dandy makes you feel more into the day. \n\nA warm, clean lift that makes work engaging, conversation easy, and your afternoon crash-free.",
         "background_color": "#fff9f0",
         "show_wedge": true,
         "next_color": "#f4512b"
@@ -648,23 +670,23 @@
           "settings": {
             "image": "shopify://shop_images/Rectangle_1000003595.jpg",
             "title": "Berry to the center",
-            "text": "A rich mixed-berry taste that does not disappear the moment you bite in."
+            "text": "Real fruit extracts infused all the way through. Zero bitter leaf bite."
           }
         },
         "card_HQYM7J": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/Rectangle_1000003602.jpg",
-            "title": "35mg, measured",
-            "text": "A precisely portioned serving of mitragynine without forcing down bitter powder."
+            "title": "35MG LAB-MEASURED",
+            "text": "An exact, consistent dose of pure mitragynine in every single gummy."
           }
         },
         "card_BgpFhm": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/Rectangle_1000003603.jpg",
-            "title": "No chaser required",
-            "text": "One glossy gummy. No scoops, scales, capsules, shots or second drink."
+            "title": "NO CHASER NEEDED",
+            "text": "No mixing messy powders, no shaker cups, and no gagging down sludge."
           }
         }
       },
@@ -677,18 +699,19 @@
       "settings": {
         "heading": "Kratom without the grimace",
         "heading_mobile": "KRATOM WITHOUT\nTHE GRIMACE.",
-        "body": "Traditional kratom is famously bitter. Other gummies can hide it beneath a sugary coating, until you bite in.\n\nDandy keeps the mixed-berry flavor going from the first bite to the center, with no bitter powder or foul-tasting core.",
+        "body": "Raw kratom powder is notoriously bitter. Most gummies just dust sugar on the outside. Dandy infuses real mixed berry all the way through to the core. No pond-water taste, no grit, zero aftertaste.",
         "background_color": "#f4512b"
       }
     },
     "dandy_pdp_compare_hhnCTm": {
-      "type": "dandy-pdp-compare",
+      "type": "dandy-gpdp-compare",
       "blocks": {
         "item_7ANBjk": {
           "type": "item",
           "settings": {
-            "title": "Energy gummies",
-            "text": "Usually caffeine in a chewable format. The packaging changes, but the stimulant and its potential drawbacks stay the same.",
+            "title": "Coffee & energy drinks",
+            "title_mobile": "",
+            "text": "Spikes your stress levels, triggers an edgy heart flutter, and drops you off a steep 2 PM afternoon cliff.",
             "image": "shopify://shop_images/8fca96d829e0d66e1b83047c5d94c06221a8c5bf.png",
             "desktop_column": "left",
             "img_width": 115,
@@ -703,8 +726,9 @@
         "item_UPxpqA": {
           "type": "item",
           "settings": {
-            "title": "Calm gummies",
-            "text": "Often built around melatonin or ingredients designed to make you drowsy. Useful for sleep, but less useful when you still want to get things done.",
+            "title": "Sleep gummies",
+            "title_mobile": "",
+            "text": "Designed to knock you out in bed, but useless when you want to relax, de-stress, or socialize while staying awake.",
             "image": "shopify://shop_images/da24cf10fe024ad3f45382a0187d68f7104d7251.png",
             "desktop_column": "left",
             "img_width": 124,
@@ -720,7 +744,8 @@
           "type": "item",
           "settings": {
             "title": "THC gummies",
-            "text": "Can help you switch off, but may also leave you feeling foggy, anxious, hungry or more impaired than intended.",
+            "title_mobile": "",
+            "text": "Loosens physical tension, but clouds mental clarity, drains motivation, and leaves you sluggish and foggy.",
             "image": "shopify://shop_images/63fe4c0064ba6c9f6b759185c94da84f432088b9.png",
             "desktop_column": "left",
             "img_width": 105,
@@ -735,8 +760,9 @@
         "item_WJVmDd": {
           "type": "item",
           "settings": {
-            "title": "Traditional kratom powder",
-            "text": "Can be bitter, messy and difficult to portion consistently without using a scale.",
+            "title": "Raw kratom & 7-OH pills",
+            "title_mobile": "",
+            "text": "Raw leaf powder is bitter sludge that upsets your stomach. Smoke-shop 7-OH tablets are unregulated synthetic chemical isolates. Neither belongs in a clean routine.",
             "image": "shopify://shop_images/0fbf24594aa6ef344e7a708e9826016acb52b304.png",
             "desktop_column": "right",
             "img_width": 107,
@@ -752,10 +778,11 @@
           "type": "difference",
           "settings": {
             "title": "The Dandy difference",
+            "title_mobile": "",
             "heading": "A BROADER EXPERIENCE.\nONE MEASURED GUMMY.",
             "heading_mobile": "A better feeling. A better-tasting gummy.",
-            "text": "Dandy gives you exactly 35 mg of mitragynine in one glossy mixed-berry gummy that tastes good from the first bite to the center.",
-            "points": "Warm mood and clear focus\n35 mg mitragynine\nNo caffeine or THC\nNo Bitter Core",
+            "text": "35 mg of pure, standardized whole-leaf mitragynine in an artisan berry pectin gummy. Clean euphoria, steady stamina, and physical ease without the crash.",
+            "points": "Warm mood and clear focus\n35 mg standardized mitragynine\nZero synthetic additives or 7-OH isolates\nNo caffeine, no THC, no bitter core",
             "icon": "shopify://shop_images/dandy-icon-check-orange.png",
             "image": "shopify://shop_images/dandy-pouch-back.png",
             "image_2": "shopify://shop_images/dandy-pouch-front.png",
@@ -775,7 +802,7 @@
       "settings": {
         "heading": "Why Dandy isn’t Like The Rest",
         "heading_mobile": "Why Dandy isn’t\nlike the rest.",
-        "body": "Most options make you choose between feeling wired, switching off or getting sleepy. Dandy delivers mood, energy, focus and ease in one measured gummy.",
+        "body": "Most options force a compromise: feeling wired and edgy, or foggy and sluggish. Dandy delivers mood, focus, and body ease in one measured gummy.",
         "background_color": "#f4512b",
         "show_wedge": true,
         "next_color": "#fff9f0"
@@ -789,31 +816,31 @@
           "settings": {
             "image": "shopify://shop_images/13dac6cfe1a3e1f0288ffe1d307686a75d7daf67.png",
             "title": "Warm, euphoric lift",
-            "text": "Feel lighter, brighter and genuinely excited to get into your day."
+            "text": "Feel lighter, brighter, and genuinely excited to get into your day."
           }
         },
         "card_RJtHDa": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/b82c7d86667fa1ba96f19b44c52fba0bc8608aa8.png",
-            "title": "Everything feels\nmore engaging",
-            "text": "Work, workouts, errands and plans become easier to get into."
+            "title": "Everything \nfeels engaging",
+            "text": "Work, workouts, and daily to-do lists become easier to knock out."
           }
         },
         "card_jJcdg7": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/08926b4c822e51acd2ab1bafb7799666c137633c.png",
-            "title": "Clearer focus",
-            "text": "When everything feels more interesting, staying locked in comes naturally."
+            "title": "Clear, steady focus",
+            "text": "Tune out background noise and stay locked into your flow without caffeine jitters."
           }
         },
         "card_7qh6yR": {
           "type": "card",
           "settings": {
             "image": "shopify://shop_images/331b193e5bb5fbc24d5f62c7f24ebd74f127105c.png",
-            "title": "Social energy",
-            "text": "Feel more open, talkative and ready to go do something."
+            "title": "Effortless social spark",
+            "text": "The perfect evening drink replacement. Warm, talkative, and relaxed with zero hangover."
           }
         },
         "card_NtiaRE": {
@@ -821,7 +848,7 @@
           "settings": {
             "image": "shopify://shop_images/0db258aab2713a32ab9a7fe5ca3c5f25e8f602a8.png",
             "title": "Physical ease",
-            "text": "Take some of the edge off while staying awake, clear and present."
+            "text": "Take the edge off a long day while staying awake, clear, and present."
           }
         }
       },
@@ -834,30 +861,33 @@
       ],
       "name": "Dandy feel good",
       "settings": {
-        "heading": "Feel good. Get Into Everything",
+        "heading": "Feel good. Get Into Everything.",
         "heading_mobile": "Feel good.\nGet into everything.",
         "body": "Not a sugar-rush jolt. A more balanced way to bring some momentum to whatever the day has planned.",
-        "body_mobile": "The warm mood lift is what makes the energy, focus and social spark feel different.",
+        "body_mobile": "The warm mood lift is what makes the energy, focus, and social spark feel different.",
         "background_color": "#fff9f0"
       }
     },
     "dandy_pdp_ingredients_p3ArMH": {
-      "type": "dandy-pdp-ingredients",
+      "type": "dandy-gpdp-ingredients",
       "name": "Dandy ingredients",
       "settings": {
         "heading_small": "What's in a",
         "heading_large": "Dandy?",
-        "item_1_title": "KRATOM LEAF EXTRACT",
-        "item_1_text": "Exactly 35mg of mitragynine per gummy for a consistent experience.",
+        "item_1_title": "PURE KRATOM LEAF EXTRACT",
+        "item_1_text": "Standardized to 35 mg mitragynine per gummy. 100% natural leaf, zero synthetic 7-OH.",
         "item_1_image": "shopify://shop_images/caf1b44516a322b0449ab7e5ddc4f448616889ae.png",
-        "item_2_title": "REAL BERRY FLAVOR",
-        "item_2_text": "Natural mixed berry flavor with color from carrot and blueberry.",
-        "item_2_image": "shopify://shop_images/fbb0670f5334dd305ce177495cc222801a4ebb4f.png",
-        "item_3_title": "PLANT-BASED PECTIN",
-        "item_3_text": "A gelatin-free gummy base made with organic tapioca syrup and cane sugar.",
-        "item_3_image": "shopify://shop_images/a895a49bc9004eeea7430024d5aa90c3bc3bedb2.png",
+        "item_1_art": "leaf",
+        "item_2_title": "PLANT-BASED CITRUS PECTIN",
+        "item_2_text": "100% gelatin-free gummy base made from citrus peels and tapioca. Just 20 calories.",
+        "item_2_image": "shopify://shop_images/a895a49bc9004eeea7430024d5aa90c3bc3bedb2.png",
+        "item_2_art": "pectin",
+        "item_3_title": "NATURAL FRUIT COLOR & FLAVOR",
+        "item_3_text": "Real mixed berry flavor, colored naturally with purple carrots. Zero Red 40 or artificial dyes.",
+        "item_3_image": "shopify://shop_images/fbb0670f5334dd305ce177495cc222801a4ebb4f.png",
+        "item_3_art": "berry",
         "button_label": "Full ingredients list",
-        "ingredients": "<p>Kratom leaf (Mitragyna speciosa) extract.<br/><br/>Other ingredients: organic tapioca syrup, organic cane sugar, purified water, pectin, natural flavoring, citric acid, sucralose, sodium citrate, natural color from carrots and blueberry.</p>",
+        "ingredients": "<p><strong>Active Ingredient:</strong> Kratom Leaf (<em>Mitragyna speciosa</em>) Extract (Standardized to 35 mg Mitragynine).</p><p><strong>Other Ingredients:</strong> Organic Tapioca Syrup, Organic Cane Sugar, Purified Water, Citrus Pectin, Natural Berry Flavoring, Citric Acid, Sucralose, Sodium Citrate, Natural Color (Carrot and Blueberry Juice).</p><p><strong>Purity Guarantee:</strong> Gelatin-free, vegan, gluten-free. Zero synthetic cannabinoids, zero synthetic opioids, zero isolated 7-OH chemical spikes.</p>",
         "button_link": "",
         "product_image": "shopify://shop_images/9de3ba94165c7c0b5caf73ae3cb4d890268986b3.png",
         "hand_image": "shopify://shop_images/image_1855116179.png",
@@ -866,7 +896,7 @@
       }
     },
     "dandy_pdp_start_4cXteM": {
-      "type": "dandy-pdp-start",
+      "type": "dandy-gpdp-start",
       "blocks": {
         "step_MnnCmb": {
           "type": "step",
@@ -885,7 +915,7 @@
           "settings": {
             "image": "shopify://shop_images/3b3ed5c55449eed10cdb8133f5382d7b8559bda0.png",
             "label": "Wait 45 minutes",
-            "text": "Let it settle in before deciding on more.",
+            "text": "Give it time to settle before deciding on more.",
             "text_mobile": "Give it time to settle before deciding on more.",
             "text_width_mobile": 134,
             "overlay": 36,
@@ -897,7 +927,7 @@
           "settings": {
             "image": "shopify://shop_images/bf4553db2843853326fe964be616ab7fbebe47c6.png",
             "label": "Check in",
-            "text": "Notice your energy, mood and focus.",
+            "text": "Notice your energy, mood, and focus.",
             "text_mobile": "",
             "text_width_mobile": 109,
             "overlay": 31,
@@ -927,95 +957,155 @@
       "settings": {
         "heading_accent": "Start low.",
         "heading": "Find your sweet spot.",
-        "body": "Everyone responds differently. Start with half, give it time and only take more if you need it.",
+        "body": "Everyone responds differently. Start with half a gummy, give it time to work, and find your natural baseline.",
         "background_color": "#fff9f0"
       }
     },
     "dandy_pdp_table_HLteYC": {
-      "type": "dandy-pdp-table",
+      "type": "dandy-gpdp-table",
       "blocks": {
         "row_UiiRKp": {
           "type": "row",
           "settings": {
-            "label": "Noticeable Energy",
-            "label_mobile": "Noticeable\nEnergy",
+            "label": "Noticeable Euphoria \n& Mood Lift",
+            "label_mobile": "Noticeable Euphoria \n& Mood Lift",
             "dandy": "Yes",
-            "val_1": "yes",
-            "val_2": "yes",
-            "val_3": "no",
-            "val_4": "no"
+            "val_1": "cross",
+            "val_1_text": "No",
+            "val_2": "cross",
+            "val_2_text": "No",
+            "val_3": "cross",
+            "val_3_text": "No",
+            "val_4": "yes",
+            "val_4_text": "Sometimes"
           }
         },
         "row_VhXn9c": {
           "type": "row",
           "settings": {
-            "label": "Caffeine Free",
-            "label_mobile": "Caffeine\nFree",
+            "label": "Clean, Crash-Free \nDaytime Energy",
+            "label_mobile": "Clean, Crash-Free Daytime Energy",
             "dandy": "Yes",
-            "val_1": "no",
-            "val_2": "no",
-            "val_3": "usually",
-            "val_4": "yes"
+            "val_1": "cross",
+            "val_1_text": "Wired/Crash",
+            "val_2": "cross",
+            "val_2_text": "Wired/Crash",
+            "val_3": "cross",
+            "val_3_text": "Drowsy",
+            "val_4": "cross",
+            "val_4_text": "Sluggish"
           }
         },
         "row_WJnq8z": {
           "type": "row",
           "settings": {
-            "label": "THC Free",
-            "label_mobile": "THC\nFree",
+            "label": "100% Caffeine Free",
+            "label_mobile": "100% \nCaffeine Free",
             "dandy": "Yes",
-            "val_1": "yes",
-            "val_2": "yes",
-            "val_3": "usually",
-            "val_4": "no"
+            "val_1": "cross",
+            "val_1_text": "No",
+            "val_2": "cross",
+            "val_2_text": "No",
+            "val_3": "yes",
+            "val_3_text": "",
+            "val_4": "yes",
+            "val_4_text": ""
           }
         },
         "row_K3Eiz3": {
           "type": "row",
           "settings": {
-            "label": "Supports Focus",
-            "label_mobile": "Supports\nFocus",
+            "label": "100% THC & \nImpairment Free",
+            "label_mobile": "100% THC & \nImpairment Free",
             "dandy": "Yes",
             "val_1": "yes",
+            "val_1_text": "",
             "val_2": "yes",
-            "val_3": "no",
-            "val_4": "not_always"
+            "val_2_text": "",
+            "val_3": "yes",
+            "val_3_text": "Sometimes",
+            "val_4": "cross",
+            "val_4_text": "No"
           }
         },
         "row_EDiCLt": {
           "type": "row",
           "settings": {
-            "label": "Supports Physical Ease",
-            "label_mobile": "Supports Physical\nEase",
+            "label": "Zero Synthetic Chemicals / 7-OH",
+            "label_mobile": "Zero Synthetic Chemicals / 7-OH",
             "dandy": "Yes",
-            "val_1": "no",
-            "val_2": "no",
-            "val_3": "usually",
-            "val_4": "yes"
+            "val_1": "yes",
+            "val_1_text": "",
+            "val_2": "cross",
+            "val_2_text": "Often",
+            "val_3": "yes",
+            "val_3_text": "Usually",
+            "val_4": "cross",
+            "val_4_text": "Often"
           }
         },
         "row_JbQVFK": {
           "type": "row",
           "settings": {
-            "label": "Keeps You Present",
-            "label_mobile": "Keeps You\nPresent",
+            "label": "Supports Natural Focus",
+            "label_mobile": "Supports \nNatural Focus",
             "dandy": "Yes",
-            "val_1": "no",
-            "val_2": "no",
-            "val_3": "no",
-            "val_4": "not_always"
+            "val_1": "yes",
+            "val_1_text": "Jittery",
+            "val_2": "yes",
+            "val_2_text": "Jittery",
+            "val_3": "cross",
+            "val_3_text": "No",
+            "val_4": "cross",
+            "val_4_text": "Impaired"
           }
         },
         "row_B8gHeJ": {
           "type": "row",
           "settings": {
-            "label": "No Drink Or Preperation",
-            "label_mobile": "No Drink Or\nPreperation",
+            "label": "Supports Physical Ease \n& Body Comfort",
+            "label_mobile": "Supports Physical \nEase & Body Comfort",
             "dandy": "Yes",
-            "val_1": "no",
-            "val_2": "no",
+            "val_1": "cross",
+            "val_1_text": "Increases",
+            "val_2": "cross",
+            "val_2_text": "Increases",
             "val_3": "yes",
-            "val_4": "yes"
+            "val_3_text": "Heavy",
+            "val_4": "yes",
+            "val_4_text": ""
+          }
+        },
+        "row_GkpNqK": {
+          "type": "row",
+          "settings": {
+            "label": "Keeps You 100% Sharp \n& Present",
+            "label_mobile": "Keeps You 100% \nSharp & Present",
+            "dandy": "Yes",
+            "val_1": "cross",
+            "val_1_text": "Agitated",
+            "val_2": "cross",
+            "val_2_text": "Agitated",
+            "val_3": "cross",
+            "val_3_text": "Drowsy",
+            "val_4": "cross",
+            "val_4_text": "Foggy"
+          }
+        },
+        "row_PNNy6z": {
+          "type": "row",
+          "settings": {
+            "label": "No Brewing, Shaker Cup, \nor Prep",
+            "label_mobile": "No Brewing, Shaker Cup, or Prep",
+            "dandy": "Yes",
+            "val_1": "cross",
+            "val_1_text": "Brewing",
+            "val_2": "yes",
+            "val_2_text": "",
+            "val_3": "yes",
+            "val_3_text": "",
+            "val_4": "yes",
+            "val_4_text": ""
           }
         }
       },
@@ -1026,16 +1116,18 @@
         "row_K3Eiz3",
         "row_EDiCLt",
         "row_JbQVFK",
-        "row_B8gHeJ"
+        "row_B8gHeJ",
+        "row_GkpNqK",
+        "row_PNNy6z"
       ],
       "name": "Dandy comparison table",
       "settings": {
         "heading": "Your old pick-me-up looks tired.",
         "heading_mobile": "Your old pick-me-up\nlooks tired.",
         "col_1": "Coffee",
-        "col_2": "Energy Gummy",
-        "col_3": "Sleep Gummy",
-        "col_4": "THC Gummy",
+        "col_2": "Energy Drinks",
+        "col_3": "Sleep Gummies",
+        "col_4": "THC Gummies",
         "text_yes": "Yes",
         "text_no": "No",
         "text_usually": "Usually",
@@ -1052,23 +1144,33 @@
       "blocks": {
         "video_g6jbzB": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "video": "shopify://files/videos/pdp-ugc-01.mp4"
+          }
         },
         "video_teNj7P": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "video": "shopify://files/videos/pdp-ugc-02.mp4"
+          }
         },
         "video_6wHzUh": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "video": "shopify://files/videos/pdp-ugc-04.mp4"
+          }
         },
         "video_YEMzVJ": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "video": "shopify://files/videos/pdp-ugc-05.mp4"
+          }
         },
         "video_XCymWe": {
           "type": "video",
-          "settings": {}
+          "settings": {
+            "video": "shopify://files/videos/pdp-ugc-07.mp4"
+          }
         }
       },
       "block_order": [
@@ -1082,54 +1184,75 @@
       "settings": {
         "heading": "How people do Dandy.",
         "heading_mobile": "How people\ndo Dandy.",
-        "body": "Morning momentum, afternoon second winds and the little rituals in between.",
+        "body": "Morning momentum, afternoon second winds, and the little rituals in between.",
         "gummies_image": "shopify://shop_images/c5a4dc589a455df17b62f149a2eafaf4a0b7c402.png",
         "background_color": "#f4512b"
       }
     },
     "dandy_pdp_faq_VEDxnP": {
-      "type": "dandy-pdp-faq",
+      "type": "dandy-gpdp-faq",
       "blocks": {
         "question_JEMW6J": {
           "type": "question",
           "settings": {
             "question": "What is Kratom?",
-            "answer": "<p>Placeholder content here.</p>"
+            "answer": "<p>Kratom is the leaf of <em>Mitragyna speciosa</em>, a tropical evergreen tree native to Southeast Asia that belongs to the <em>Rubiaceae</em> (coffee) botanical family. For generations, farmers and villagers harvested the leaves to chew during long workdays for clean physical stamina and in the evening to relax in good spirits. The leaf contains natural botanical alkaloids, primarily <strong>mitragynine</strong>. Dandy takes mature leaves, extracts the pure mitragynine, and portions it into an exact 35 mg gummy so you know what you are getting every single time.</p>"
           }
         },
         "question_UXt9UC": {
           "type": "question",
           "settings": {
-            "question": "How much should I take?",
-            "answer": "<p>Placeholder content here.</p>"
+            "question": "Is Kratom legal?",
+            "answer": "<p>Yes. Kratom is 100% federally legal in the United States. Furthermore, a growing number of states have enacted Kratom Consumer Protection Acts (KCPA). These state laws specifically protect safe consumer access by establishing strict legal standards for third-party laboratory testing, accurate labeling, clean manufacturing, and age verification (21+). Dandy is fully compliant with all state consumer protection statutes nationwide.</p>"
           }
         },
         "question_k4LB36": {
           "type": "question",
           "settings": {
-            "question": "Is every batch tested?",
-            "answer": "<p>Every batch is screened by an independent lab for identity, mitragynine potency, heavy metals, and microbials. The batch number is on your pouch.</p>"
+            "question": "How is Dandy different from smoke-shop “7-OH” and synthetic products?",
+            "answer": "<p>This is the most critical distinction in the botanical world today. Many gas stations and smoke shops sell “7-OH” (7-hydroxymitragynine) products. In nature, 7-OH only exists in tiny fractions of a percent in raw leaves. Isolating or chemically synthesizing 7-OH into concentrated pills creates unpredictable, intense chemical highs and severe crashes.</p><p><strong>Dandy never touches isolated 7-OH or synthetic chemicals.</strong> We use pure, unadulterated whole-leaf extract standardized to <strong>mitragynine</strong>, the natural, gentle, uplifting primary compound found in traditional leaves. Dandy is whole-plant wellness with zero synthetics.</p>"
           }
         },
         "question_GLgdKW": {
           "type": "question",
           "settings": {
             "question": "How does the subscription work?",
-            "answer": "<p>$47.99 charged today, $47.99 every 30 days — the first charge equals every renewal. Skip, pause, or cancel anytime.</p>"
+            "answer": "<p>When you choose a subscription, you lock in a 20% discount and receive free shipping on all 2-pouch and 3-pouch deliveries. Your fresh batch arrives automatically every 30, 60, or 90 days. You have complete control: you can skip an upcoming order, adjust your delivery interval, pause, or cancel at any time directly in your account or with a quick email to support@foreverdandy.com. No contracts, no fees, no hassle.</p>"
           }
         },
         "question_CNgx49": {
           "type": "question",
           "settings": {
-            "question": "Can Kratom become habit forming?",
-            "answer": "<p>Regular daily use can build tolerance and habit. That's real, it's on our label, and it's why the guidance says start low and take breaks.</p>"
+            "question": "How much should I take?",
+            "answer": "<p>If you are new to Dandy, start with <strong>half a gummy</strong> (approx. 17.5 mg mitragynine). Cut it in half with a knife, chew thoroughly, and give it a full 45 minutes on a light stomach. Most people find that half a gummy provides bright, cheerful focus for work or beating the afternoon slump. A full gummy provides deeper social euphoria and physical relaxation. Do not exceed 2 gummies in a single 24-hour period.</p>"
           }
         },
         "question_E8aKNh": {
           "type": "question",
           "settings": {
+            "question": "Can Kratom become habit-forming?",
+            "answer": "<p>Just like coffee, energy drinks, alcohol, or THC, responsible adults know that anything that makes you feel good should be enjoyed with intention. If you take large amounts every single day, your body will naturally build a tolerance. That is why we recommend using Dandy thoughtfully: start with half a gummy, keep your serving consistent, and take 2 to 3 days off each week to keep your sensitivity fresh and clean.</p>"
+          }
+        },
+        "question_XbMTHD": {
+          "type": "question",
+          "settings": {
+            "question": "Will this show up on a standard workplace drug test?",
+            "answer": "<p>Mitragynine is chemically distinct from opioids, amphetamines, THC, and benzodiazepines. Standard 5-panel, 10-panel, and 12-panel workplace drug screens, such as the standard SAMHSA 5, do not test for kratom alkaloids. While specialized commercial tests for kratom exist, standard employment screenings look for illicit narcotics and controlled substances, not legal Southeast Asian botanicals.</p>"
+          }
+        },
+        "question_yKfqPc": {
+          "type": "question",
+          "settings": {
+            "question": "Is every batch independently lab tested?",
+            "answer": "<p>Yes, without exception. Every production run is crafted in an FDA-registered American facility and sent to an accredited third-party laboratory. They test for exact mitragynine potency (guaranteed 35 mg per gummy), zero synthetic adulterants, heavy metals (lead, arsenic, cadmium, mercury), residual solvents, and microbials. Every pouch carries its lot number on the back, and you can inspect the Certificate of Analysis anytime.</p>"
+          }
+        },
+        "question_z7H8zn": {
+          "type": "question",
+          "settings": {
             "question": "Who should not take Dandy?",
-            "answer": "<p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first.</p>"
+            "answer": "<p>Dandy is strictly formulated for responsible adults <strong>aged 21 and older</strong>. Do not use Dandy if you are pregnant, planning to become pregnant, or nursing. If you have an existing medical condition or take prescription medications, speak with your healthcare provider prior to use.</p>"
           }
         }
       },
@@ -1139,12 +1262,15 @@
         "question_k4LB36",
         "question_GLgdKW",
         "question_CNgx49",
-        "question_E8aKNh"
+        "question_E8aKNh",
+        "question_XbMTHD",
+        "question_yKfqPc",
+        "question_z7H8zn"
       ],
       "name": "Dandy FAQ",
       "settings": {
         "eyebrow": "FAQs",
-        "eyebrow_mobile": "FAQ’s",
+        "eyebrow_mobile": "FAQs",
         "heading": "The things you actually want to know.",
         "hand_image": "shopify://shop_images/image_1855116179_1.png",
         "background_color": "#f4512b",
@@ -1153,69 +1279,111 @@
       }
     },
     "dandy_pdp_trust_XEXgBa": {
-      "type": "dandy-pdp-trust",
+      "type": "dandy-gpdp-trust",
       "blocks": {
         "review_ENtcUR": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“By 1:30 PM my brain usually feels completely drained. I used to grab a third cup of coffee, but that always left me with sweaty palms, racing thoughts, and an awful crash by 4 PM. A friend gave me half a Dandy gummy last month. Within 35 minutes I felt this warm, pleasant wave of good energy. No jitters, no racing heart, just pure, clean focus. I knocked out my entire to-do list without getting distracted once. I am now on my third month of the subscription.”",
+            "name": "Marcus T. · Hope, Idaho"
           }
         },
         "review_YDAh9k": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“I work on my feet and do a lot of heavy lifting. By late afternoon my lower back is usually throbbing and my neck feels tight. Traditional pain relievers upset my stomach, but one Dandy gummy melts that muscular tension away within 45 minutes. My body feels relaxed and comfortable, but my head stays totally clear and sharp. It has been a huge upgrade for my daily routine.”",
+            "name": "David K. · Destin, FL"
           }
         },
         "review_LLwWAD": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“I stopped drinking alcohol about six months ago, but I hated standing at dinner parties with plain club soda while everyone else was unwinding. One Dandy gummy gives me the exact same warm, euphoric, social buzz without intoxicating me or clouding my head. I feel chatty, present, relaxed, and happy. Best part? I wake up at 6:00 AM on Sunday feeling completely refreshed and clear-headed. It completely saved my weekends.”",
+            "name": "Elena R. · Denver, CO"
           }
         },
         "review_kTGHhU": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“If you have ever tried drinking raw kratom powder mixed in orange juice, you know it tastes like bitter pond dirt and makes your stomach churn. I put up with it for two years because I loved the mood boost, but I hated the mess. Dandy completely solved it. These taste like gourmet berry gummies from a candy shop. Zero bitter leaf aftertaste, no upset stomach, and because every gummy is exactly 35 mg, the effect is identical every single time.”",
+            "name": "Sam P. · Columbus, OH"
           }
         },
         "review_zbzcQa": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“I was super skeptical because I have seen those weird neon 7-OH packs at local vape shops and they honestly sketched me out. But reading Dandy’s public lab reports and seeing that they only use pure whole leaf extract with zero synthetics gave me the confidence to try the 3-pack. I started with half a gummy on a Saturday morning. About 40 minutes in, I felt this peaceful, sunny optimism wash over me. Completely clean and comfortable.”",
+            "name": "Sarah M. · Madison, MS"
           }
         },
         "review_497rfb": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“I run an independent commercial fabrication shop, so my work is physically demanding and requires total mental precision. Traditional energy drinks made me edgy and snappy with my crew. Dandy gives me steady, enduring horsepower from morning to late afternoon. My mood stays upbeat even when unexpected shop problems hit, and my back does not feel as tight at the end of the shift. This is hands-down the cleanest focus tool I have ever found.”",
+            "name": "Jason P. · Phoenix, AZ"
           }
         },
         "review_RrL6i6": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“My typical workday used to look like two energy drinks in the morning, followed by an aggressive afternoon slump around 2:30 PM where I could barely keep my eyes open. Since switching to Dandy, my energy curve is completely level. I chew half a gummy after lunch, and by 1:30 PM I feel this bright, alert clarity that carries me right through dinner. No headaches, no jitters, and I fall asleep easily at 10:30 PM.”",
+            "name": "Derek W. · Charlotte, NC"
           }
         },
         "review_HPaFMH": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“Some days getting into a project feels like dragging heavy stones uphill. Taking half a gummy at 10 AM gets me into an effortless flow state. The ideas just flow naturally. It does not feel like an intense stimulant. It just feels like the best version of your natural brain on a great day. Plus, customer support answered my shipping question within two hours. Truly trustworthy company.”",
+            "name": "Chloe B. · Raleigh, NC"
           }
         },
         "review_Da6pKW": {
           "type": "review",
           "settings": {
-            "quote": "“Clean focus, a noticeably better mood, and none of the coffee edge I was trying to get away from.”",
-            "name": "Marcus T."
+            "quote": "“I am 44 and love spending Saturdays outdoors, but my knees and lower back usually start complaining after two hours. Taking one Dandy gummy before heading out on a 6-mile hike makes my body feel loose and comfortable. My endurance feels steady and my mood is fantastic the whole time. A fantastic botanical supplement.”",
+            "name": "Brian F. · Grand Rapids, MI"
+          }
+        },
+        "review_jKWdTN": {
+          "type": "review",
+          "settings": {
+            "quote": "“I manage client accounts for a high-stress agency. When the clock hits 5:30 PM, my brain usually keeps racing about deadlines and unread emails. Taking half a Dandy gummy as I shut my laptop acts like a gentle circuit breaker. The mental noise quiets down, and I can actually sit on the porch, chat with my husband, and enjoy my evening without ruminating.”",
+            "name": "Megan H. · Minneapolis, MN"
+          }
+        },
+        "review_ztGi8W": {
+          "type": "review",
+          "settings": {
+            "quote": "“Anyone who has experimented with raw kratom leaves or capsules knows that potency can swing wildly from one vendor to the next. That inconsistency makes it tough to use responsibly. Dandy solves that completely. Exactly 35 mg of mitragynine in every gummy. I know precisely what I am getting every single time I take half or a whole one.”",
+            "name": "Anthony C. · St. Louis, MO"
+          }
+        },
+        "review_6imf3t": {
+          "type": "review",
+          "settings": {
+            "quote": "“I used to drink those neon pre-workout powders that give you itchy skin tingles and an uncomfortably racing heart. Half a Dandy gummy 30 minutes before my lifting sessions gives me incredible mind-muscle focus, smooth physical stamina, and none of that manic stimulant aggression. My workouts have never felt better.”",
+            "name": "Vanessa T. · Atlanta, GA"
+          }
+        },
+        "review_zpj4WX": {
+          "type": "review",
+          "settings": {
+            "quote": "“I had a question about batch testing and shipping speed to Texas. I sent an email to support and had a detailed, human answer within 90 minutes with a direct link to the lab certificate. My package arrived two days later in plain packaging. The gummies delivered on every promise. You can tell this company is run by real people who care about doing things right.”",
+            "name": "Kevin L. · Fort Worth, TX"
+          }
+        },
+        "review_MN8grj": {
+          "type": "review",
+          "settings": {
+            "quote": "“I was up to four cups of dark roast coffee every day just to function, and my stomach was paying the price with daily heartburn. Replacing my second and third cups with half a Dandy gummy gave me better focus without bathing my stomach in acid. My digestion feels 100 times better, and my mood is noticeably brighter.”",
+            "name": "Laura B. · Boise, ID"
+          }
+        },
+        "review_jh3k3r": {
+          "type": "review",
+          "settings": {
+            "quote": "“The product quality is unmatched. Deep plum color, sparkling sugar coating, and a wonderful, bright mood boost. It feels like a sunny day in a gummy. No crash, no weird aftertaste, and complete transparency on the lab testing. Forever customer.”",
+            "name": "Sam G. · Las Vegas, NV"
           }
         }
       },
@@ -1228,7 +1396,13 @@
         "review_497rfb",
         "review_RrL6i6",
         "review_HPaFMH",
-        "review_Da6pKW"
+        "review_Da6pKW",
+        "review_jKWdTN",
+        "review_ztGi8W",
+        "review_6imf3t",
+        "review_zpj4WX",
+        "review_MN8grj",
+        "review_jh3k3r"
       ],
       "name": "Dandy trusted reviews",
       "settings": {
@@ -1245,20 +1419,24 @@
       }
     },
     "dandy_pdp_footer_YRgWGn": {
-      "type": "dandy-pdp-footer",
+      "type": "dandy-gpdp-footer",
       "name": "Dandy footer",
       "settings": {
         "tagline": "Kratom made fine and Dandy.",
+        "tagline_sub": "Real botanical euphoria and clean, crash-free energy. Crafted with pure Southeast Asian kratom leaf extract, standardized to 35 mg mitragynine, and verified by independent third-party laboratories.",
         "newsletter_heading": "Stay in the know",
         "newsletter_text": "Good emails. No inbox nonsense.",
         "placeholder": "Enter your email",
         "button_label": "Sign Up",
         "success_text": "Thanks for signing up!",
+        "form_note": "Get perks like holiday sales and early-access to new products. No spam, ever.",
         "menu_1_title": "Shop",
         "menu_1": "shop",
         "menu_2_title": "Know",
         "menu_2": "know",
-        "copyright": "© 2026 DANDY, All rights reserved.",
+        "age_note": "Dandy products are intended exclusively for responsible adults aged 21 and older. Keep out of reach of children and pets.",
+        "fda_note": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your physician before using any botanical supplement if you are pregnant, nursing, taking prescription medications, or have a medical condition.",
+        "copyright": "© 2026 DANDY. All rights reserved.",
         "background_color": "#f4512b"
       }
     }

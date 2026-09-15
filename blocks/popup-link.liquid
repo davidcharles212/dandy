@@ -1,6 +1,7 @@
 
 
 {% assign block_settings = block.settings %}
+{% assign popup_heading = block_settings.popup_heading | default: block_settings.heading %}
 
 <script
   src="{{ 'dialog.js' | asset_url }}"
@@ -30,7 +31,7 @@
       id="popup-dialog-heading"
       class="visually-hidden"
     >
-      {{ block_settings.heading }}
+      {{ popup_heading }}
     </h2>
     <div class="popup-link__inner">
       {% content_for 'blocks' %}
@@ -129,6 +130,12 @@
         }
       ],
       "default": "default"
+    },
+    {
+      "type": "text",
+      "id": "popup_heading",
+      "label": "Popup title",
+      "info": "Leave empty to reuse the link text."
     },
     {
       "type": "header",
