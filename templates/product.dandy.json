@@ -515,6 +515,13 @@
                 "shipping",
                 "how_to_take"
               ]
+            },
+            "reader": {
+              "type": "dandy-reader-notice",
+              "settings": {
+                "code": "DISPATCH10",
+                "text": "Daily Health Dispatch Reader Rate Active (-10% Auto-Applied)"
+              }
             }
           },
           "block_order": [
@@ -523,6 +530,7 @@
             "benefits",
             "info_links",
             "variant_picker",
+            "reader",
             "purchase_options",
             "delivery",
             "buy_buttons",

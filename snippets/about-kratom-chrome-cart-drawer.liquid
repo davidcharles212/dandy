@@ -6,7 +6,7 @@
 {% endcomment %}
 <div class="d2cart" data-d2-cart hidden aria-hidden="true">
   <div class="d2cart__scrim" data-d2-cart-close></div>
-  <aside class="d2cart__panel" role="dialog" aria-modal="true" aria-label="Your bag">
+  <div class="d2cart__panel" role="dialog" aria-modal="true" aria-label="Your bag">
     <header class="d2cart__head">
       <p class="d2cart__title">Your bag <span data-d2-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span></p>
       <button type="button" class="d2cart__x" data-d2-cart-close aria-label="Close bag">×</button>
@@ -18,8 +18,9 @@
     </div>
 
     <div class="d2cart__body" data-d2-cart-body>
+      <p data-d2-cart-error role="alert" hidden></p>
       <div class="d2cart__empty" data-d2-cart-empty>
-        <img src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" aria-hidden="true">
+        <img src="{{ 'about-kratom-dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" aria-hidden="true">
         <p>Rocky checked. It’s empty.</p>
         <div class="d2cart__picks">
           <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $39.99 a pouch</span></a>
@@ -31,22 +32,36 @@
     </div>
 
     <footer class="d2cart__foot" data-d2-cart-foot hidden>
-      <p data-d2-cart-error role="alert" hidden></p>
       <div class="d2cart__row"><span>Subtotal</span><b data-d2-cart-total>$0.00</b></div>
       <p class="d2cart__ship"><b>Free standard shipping on orders over $99</b>, subscriptions, and 3- or 5-packs. Otherwise $5.95. Calculated at checkout.</p>
       <form action="{{ routes.cart_url }}" method="post">
         <button type="submit" name="checkout" class="cta">Checkout</button>
       </form>
-      {% render 'dandy2-trustbadges' %}
+      {% render 'about-kratom-chrome-trustbadges' %}
       <p class="d2cart__states">21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, ND, NE, RI, TN, UT, VT, WV or WI, <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.</p>
     </footer>
-  </aside>
+  </div>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.querySelector('[data-d2-cart]');
   if (!root) return;
+  // The dedicated layout does not load the legacy PDP cart controller.
+  const cartBase = {{ routes.cart_url | json }};
+  const requestCart = async (url, options) => {
+    const response = await fetch(url, options);
+    if (!response.ok) throw new Error('Cart request failed: ' + response.status);
+    return { cart: await response.json() };
+  };
+  const cartApi = {
+    ensure: () => requestCart(cartBase + '.js'),
+    change: (id, quantity) => requestCart(cartBase + '/change.js', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, quantity })
+    })
+  };
+  const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const isDemo = new URLSearchParams(location.search).get('cartdemo') === '1';
   let pending = 0;
   const busy = () => root.querySelectorAll('button[name=checkout], [data-d2-inc], [data-d2-dec]').forEach(button => { button.disabled = pending > 0; });
@@ -74,16 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (has) {
       lines.innerHTML = items.map(i => `
         <li class="d2line">
-          <span class="d2line__img">${i.image ? `<img src="${i.image.replace(/(\.[a-z]+)(\?|$)/i, '_160x$1$2')}" alt="">` : ''}</span>
+          <span class="d2line__img">${i.image ? `<img src="${escapeHTML(i.image.replace(/(\.[a-z]+)(\?|$)/i, '_160x$1$2'))}" alt="">` : ''}</span>
           <span class="d2line__bd">
-            <span class="d2line__name">${i.product_title}</span>
-            ${i.variant_title && !/default/i.test(i.variant_title) ? `<span class="d2line__var">${i.variant_title}</span>` : ''}
-            ${i.selling_plan_allocation ? `<span class="d2line__plan">✓ ${i.selling_plan_allocation.selling_plan.name}</span>` : ''}
+            <span class="d2line__name">${escapeHTML(i.product_title)}</span>
+            ${i.variant_title && !/default/i.test(i.variant_title) ? `<span class="d2line__var">${escapeHTML(i.variant_title)}</span>` : ''}
+            ${i.selling_plan_allocation ? `<span class="d2line__plan">✓ ${escapeHTML(i.selling_plan_allocation.selling_plan.name)}</span>` : ''}
             <span class="d2line__row">
               <span class="d2qty">
-                <button type="button" data-d2-dec="${i.key}" aria-label="Decrease">−</button>
+                <button type="button" data-d2-dec="${escapeHTML(i.key)}" aria-label="Decrease">−</button>
                 <b>${i.quantity}</b>
-                <button type="button" data-d2-inc="${i.key}" aria-label="Increase">+</button>
+                <button type="button" data-d2-inc="${escapeHTML(i.key)}" aria-label="Increase">+</button>
               </span>
               <b class="d2line__price">${money(i.final_line_price)}</b>
             </span>
@@ -104,6 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const refresh = async operation => {
+    const focused = document.activeElement;
+    const focusKey = focused?.dataset?.d2Inc || focused?.dataset?.d2Dec;
+    const focusAttribute = focused?.dataset?.d2Inc ? 'data-d2-inc' : 'data-d2-dec';
     pending += 1;
     busy();
     el('[data-d2-cart-error]').hidden = true;
@@ -118,12 +136,34 @@ document.addEventListener('DOMContentLoaded', () => {
     } finally {
       pending -= 1;
       busy();
+      // Rendering replaces quantity buttons. Keep keyboard users inside the bag.
+      if (focusKey && !root.hidden && !focused.isConnected && (document.activeElement === focused || document.activeElement === document.body)) {
+        const replacement = [...root.querySelectorAll('[' + focusAttribute + ']')].find(button => button.getAttribute(focusAttribute) === focusKey);
+        (replacement || el('button[data-d2-cart-close]')).focus();
+      }
     }
   };
-  const load = () => refresh(() => window.DandyGummyCart.ensure());
+  // Opening or restoring the page must not race an in-flight cart mutation.
+  const load = () => { if (!pending) return refresh(() => cartApi.ensure()); };
 
-  const open = (refresh = true) => { root.hidden = false; root.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; if (refresh) load(); };
-  const close = () => { root.hidden = true; root.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+  let returnFocus;
+  const open = (refresh = true) => {
+    returnFocus = document.activeElement;
+    root.hidden = false; root.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+    el('button[data-d2-cart-close]').focus();
+    if (refresh) load();
+  };
+  const close = () => {
+    root.hidden = true; root.setAttribute('aria-hidden', 'true'); document.body.style.overflow = '';
+    if (returnFocus?.isConnected) returnFocus.focus();
+  };
+  root.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const controls = [...root.querySelectorAll('a[href], button:not(:disabled), input:not(:disabled)')].filter(node => node.offsetParent !== null);
+    const first = controls[0], last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  });
   root.querySelectorAll('[data-d2-cart-close]').forEach(b => b.addEventListener('click', close));
   addEventListener('keydown', e => { if (e.key === 'Escape' && !root.hidden) close(); });
   document.addEventListener('d2:cart-open', () => open());
@@ -140,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = (inc || dec).dataset.d2Inc || (inc || dec).dataset.d2Dec;
     const cur = Number((inc || dec).parentElement.querySelector('b').textContent);
     const qty = inc ? cur + 1 : Math.max(0, cur - 1);
-    refresh(() => window.DandyGummyCart.change(id, qty));
+    refresh(() => cartApi.change(id, qty));
   });
 
   // preview the populated design while the catalog is still empty

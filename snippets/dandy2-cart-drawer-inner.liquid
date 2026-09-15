@@ -3,8 +3,7 @@
   assign free_ship_threshold = 9900
   assign rating_score = '4.8/5'
   assign rating_label = '1,400+ Happy Buyers'
-  assign sub_card_asset = 'dandy2-cart-sub.png'
-  assign sub_fallback_pct = 20
+  assign dispatch_code = 'DISPATCH10'
   assign show_state_note = false
 
   assign is_demo = false
@@ -14,15 +13,8 @@
 
   assign units = 0
   assign has_sub = false
+  assign has_pack = false
   assign compare_total = 0
-  assign upsell_key = ''
-  assign upsell_plan = ''
-  assign upsell_qty = 1
-  assign upsell_pct = 0
-  assign upsell_mode = 'change'
-  assign upsell_variant = ''
-  assign upsell_title = ''
-  assign upsell_img = ''
 -%}
 
 {%- capture lines_html -%}
@@ -37,12 +29,6 @@
       assign demo_compare_1 = 2999 | money
       assign demo_save_1 = 500 | money
       assign demo_price_2 = 3499 | money
-      assign upsell_key = 'demo-1'
-      assign upsell_plan = '0'
-      assign upsell_variant = '0'
-      assign upsell_pct = 20
-      assign upsell_title = 'Mixed Berry Kratom Gummies'
-      assign upsell_img = demo_img
     -%}
     {%- render 'dandy2-cart-line',
       key: 'demo-1',
@@ -77,6 +63,8 @@
         assign unit_compare = item.original_price | at_least: variant_compare
 
         assign meta = ''
+        assign line_plans = blank
+        assign line_plan_id = blank
         unless item.product.has_only_default_variant
           assign meta = item.variant.title
         endunless
@@ -85,10 +73,8 @@
           assign has_sub = true
           assign plan_compare = item.selling_plan_allocation.compare_at_price | default: 0
           assign unit_compare = unit_compare | at_least: plan_compare
-          if meta != blank
-            assign meta = meta | append: ' · '
-          endif
-          assign meta = meta | append: item.selling_plan_allocation.selling_plan.name
+          assign line_plans = item.variant.selling_plan_allocations
+          assign line_plan_id = item.selling_plan_allocation.selling_plan.id
         else
           assign variant_words = item.variant.title | downcase | replace: '-', ' ' | replace: '(', ' ' | replace: ',', ' ' | split: ' '
           assign pack_n = 1
@@ -104,56 +90,8 @@
           endfor
           assign line_units = item.quantity | times: pack_n
           assign units = units | plus: line_units
-          if upsell_key == blank and item.product.selling_plan_groups.size > 0
-            assign target_variant = nil
-            if item.variant.selling_plan_allocations.size > 0
-              assign target_variant = item.variant
-              assign target_mode = 'change'
-              assign target_qty = item.quantity
-            else
-              for v in item.product.variants
-                if v.available and v.selling_plan_allocations.size > 0
-                  assign target_variant = v
-                  break
-                endif
-              endfor
-              assign target_mode = 'swap'
-              assign target_qty = line_units
-            endif
-
-            if target_variant
-              assign best_off = -1
-              assign best_base = target_variant.price
-              for alloc in target_variant.selling_plan_allocations
-                assign plan_base = alloc.compare_at_price | default: target_variant.price
-                assign plan_off = plan_base | minus: alloc.price
-                if plan_off > best_off
-                  assign best_off = plan_off
-                  assign best_base = plan_base
-                  assign best_plan = alloc.selling_plan.id
-                endif
-              endfor
-
-              assign upsell_key = item.key
-              assign upsell_plan = best_plan
-              assign upsell_mode = target_mode
-              assign upsell_variant = target_variant.id
-              assign upsell_qty = target_qty
-              assign upsell_title = item.product.title
-              assign upsell_pct = 0
-              if best_off > 0 and best_base > 0
-                assign upsell_pct = best_off | times: 100.0 | divided_by: best_base | round
-              endif
-              if upsell_pct == 0
-                assign upsell_pct = sub_fallback_pct
-              endif
-              assign upsell_src_img = target_variant.image | default: item.product.featured_image
-              if upsell_src_img
-                assign upsell_img = upsell_src_img | image_url: width: 240
-              elsif item.image
-                assign upsell_img = item.image | image_url: width: 240
-              endif
-            endif
+          if pack_n >= 2
+            assign has_pack = true
           endif
         endif
 
@@ -184,7 +122,9 @@
         price: price_str,
         compare: compare_str,
         save: save_str,
-        in_stock: item.variant.available
+        in_stock: item.variant.available,
+        plans: line_plans,
+        plan_id: line_plan_id
       -%}
     {%- endfor -%}
   {%- endif -%}
@@ -192,16 +132,14 @@
 
 {%- liquid
   assign free_ship = false
-  if total >= free_ship_threshold or has_sub or units >= 3
+  # Mirrors Shopify shipping: packs (2+) sit in the free Multi-pack profile, subscriptions ship free, else free over $99.
+  if total >= free_ship_threshold or has_sub or has_pack
     assign free_ship = true
   endif
   assign ship_remaining = free_ship_threshold | minus: total
   assign ship_pct = total | times: 100 | divided_by: free_ship_threshold | at_most: 100
   if free_ship
     assign ship_pct = 100
-  endif
-  if sub_card_asset != blank
-    assign upsell_img = sub_card_asset | asset_url
   endif
 -%}
 
@@ -257,33 +195,20 @@
     </div>
 
     <div class="dcart__foot">
-      {%- if upsell_key != blank -%}
-        <p class="dcart__upsell-label">Change to subscription &amp; save {{ upsell_pct }}%</p>
-        <div class="dcart-sub">
-          <div class="dcart-sub__copy">
-            <p class="dcart-sub__title">Save {{ upsell_pct }}% On Every Order</p>
-            <p class="dcart-sub__desc">Get this order and future orders for less.</p>
-          </div>
-          {%- if upsell_img != blank -%}
-            <img class="dcart-sub__img" src="{{ upsell_img }}" alt="" width="99" height="110" loading="lazy">
-          {%- else -%}
-            <span class="dcart-sub__img" aria-hidden="true"></span>
-          {%- endif -%}
-          <span class="dcart-sub__badge"><span class="dcart-t">Best value</span></span>
-          <button
-            type="button"
-            class="dcart-sub__btn"
-            data-dcart-switch
-            data-dcart-focus="switch"
-            data-key="{{ upsell_key }}"
-            data-plan="{{ upsell_plan }}"
-            data-variant="{{ upsell_variant }}"
-            data-mode="{{ upsell_mode }}"
-            data-quantity="{{ upsell_qty }}"
-            aria-label="Switch {{ upsell_title | escape }} to a subscription and save {{ upsell_pct }}%"
-          >
-            <span class="dcart-t">Switch &amp; save</span>
-          </button>
+      {%- liquid
+        # Only the Daily Dispatch reader code is itemised; any other code is simply reflected in the total.
+        assign dispatch_off = 0
+        for application in cart.cart_level_discount_applications
+          assign application_code = application.title | upcase
+          if application_code == dispatch_code
+            assign dispatch_off = dispatch_off | plus: application.total_allocated_amount
+          endif
+        endfor
+      -%}
+      {%- if dispatch_off > 0 -%}
+        <div class="dcart__discount">
+          <span>Daily Dispatch discount ({{ dispatch_code }})</span>
+          <b>&minus;{{ dispatch_off | money }}</b>
         </div>
       {%- endif -%}
 
@@ -331,9 +256,9 @@
       <p class="dcart__empty-title">Rocky checked. It’s empty.</p>
       <a class="dcart__cta" href="{{ routes.root_url }}#shop"><span class="dcart-t">Shop the lineup</span></a>
       <div class="dcart__picks">
-        <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $24.99</span></a>
+        <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $39.99 a pouch</span></a>
         <a href="/products/premium-kratom-leaf-powder"><b>Powder</b><span>from $34.99</span></a>
-        <a href="/products/extract-capsules-50mg"><b>Capsules</b><span>from $28.99</span></a>
+        <a href="/products/extract-capsules"><b>Capsules</b><span>from $43.33 a jar</span></a>
       </div>
     </div>
   {%- endif -%}
