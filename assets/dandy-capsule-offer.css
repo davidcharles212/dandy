@@ -173,3 +173,17 @@
 /* Guarantee panel (2026-09-13): heading centred on the shield, tighter padding */
 .co .co-guarantee { align-items: center; padding: 10px 14px; }
 .co .co-guarantee h2 { margin: 0; }
+
+/* Capsule page grounds (2026-09-17 parity): compare, videos, ingredients card and grimace run on a light leaf tint
+   instead of forest green; their root text colour flips from cream to forest. Page-only stylesheet, the gummy
+   page is untouched. Nested cream rules (quote cards over photos, cream cards) keep their own colour. */
+.dandy-pdp-compare-section .dpw,
+.dandy-pdp-videos-section .dpv,
+.dandy-pdp-ingredients-section .dpi,
+.dandy-pdp-ingredients-section .dpi .dpi__heading,
+.dandy-pdp-flavor-section .dpx { color: #164020; }
+.dandy-pdp-flavor-section .dpx .dpx__heading, .dandy-pdp-flavor-section .dpx .dpx__body,
+.dandy-pdp-compare-section .dpw .dpw__heading, .dandy-pdp-compare-section .dpw .dpw__body,
+.dandy-pdp-videos-section .dpv .dpv__heading, .dandy-pdp-videos-section .dpv .dpv__body,
+.dandy-pdp-ingredients-section .dpi .dpi__item-title, .dandy-pdp-ingredients-section .dpi .dpi__item-desc { color: #164020; }
+.dandy-pdp-ingredients-section .dpi--contain .dpi__item { background: rgb(22 64 32 / 0.06); border-color: rgb(22 64 32 / 0.14); }
