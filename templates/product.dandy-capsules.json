@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "announcement": {
@@ -36,7 +27,7 @@
           "type": "_dandy-product-gallery",
           "static": true,
           "settings": {
-            "gallery_assets": "dandy-capgal-01{strength}.webp|A Dandy jar of extract capsules against a warm beige wall with soft leaf shadows, two capsules beside it, and three benefit labels: Eases Back & Joint Aches, A Lighter Mood, Stay Clear Headed\ndandy-capgal-03{strength}.webp|1 Dandy Capsule = Potency of 8–10 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of a row of ten darker raw-leaf capsules|1 Dandy Capsule = Potency of 16–18 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of two rows of nine darker raw-leaf capsules\ndandy-capgal-06{strength}.webp|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 50.8mg. Batch ID: N11395. A Dandy jar on a deep green background|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 91.3mg. Batch ID: N11396. A Dandy jar on a deep green background\ndandy-capgal-02.webp|Relief Right Where Your Body Needs It Most. A woman working the soil in a raised garden bed\ndandy-capgal-05.webp|Stop Choking Down Bitter Powder. No clumps, no shakers, no gagging. A hand holding one Dandy capsule above spilled kratom powder, a shaker and a glass of water\ndandy-capgal-07.webp|“Zero lower-back throbbing when I climbed out of the driver’s seat.” Gary P. A man standing by the open door of his pickup truck\ndandy-capgal-04.webp|What You’ll Feel & When. Within about 45 minutes. Notice how you stand and stretch. Use it when needed. A person stepping up stone stairs\ndandy-capgal-08.webp|30-Day 100% Satisfaction Guarantee. An opened shipping box with a jar in kraft paper fill",
+            "gallery_assets": "dandy-capgal-01{strength}.jpg|A Dandy jar of extract capsules against a warm beige wall with soft leaf shadows, two capsules beside it, and three benefit labels: Eases Back & Joint Aches, A Lighter Mood, Stay Clear Headed\ndandy-capgal-03{strength}.jpg|1 Dandy Capsule = Potency of 8–10 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of a row of ten darker raw-leaf capsules|1 Dandy Capsule = Potency of 16–18 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of two rows of nine darker raw-leaf capsules\ndandy-capgal-06{strength}.jpg|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 50.8mg. Batch ID: N11395. A Dandy jar on a deep green background|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 91.3mg. Batch ID: N11396. A Dandy jar on a deep green background\ndandy-capgal-02.jpg|Relief Right Where Your Body Needs It Most. A woman working the soil in a raised garden bed\ndandy-capgal-05.jpg|Stop Choking Down Bitter Powder. No clumps, no shakers, no gagging. A hand holding one Dandy capsule above spilled kratom powder, a shaker and a glass of water\ndandy-capgal-07.jpg|“Zero lower-back throbbing when I climbed out of the driver’s seat.” Gary P. A man standing by the open door of his pickup truck\ndandy-capgal-04.jpg|What You’ll Feel & When. Within about 45 minutes. Notice how you stand and stretch. Use it when needed. A person stepping up stone stairs\ndandy-capgal-08.jpg|30-Day 100% Satisfaction Guarantee. An opened shipping box with a jar in kraft paper fill",
             "show_product_media": false,
             "asset_px": 1200
           },
@@ -61,9 +52,9 @@
             "header": {
               "type": "dandy-product-header",
               "settings": {
-                "title_override": "Extract capsules",
+                "title_override": "Mitragynine capsules",
                 "tagline": "Relief for aching backs and stiff joints",
-                "subtitle_override": "STANDARDIZED MITRAGYNINE EXTRACT\n30 VEGAN CAPSULES PER JAR"
+                "subtitle_override": "STANDARDIZED LEAF EXTRACT\n30 VEGAN CAPSULES PER JAR"
               },
               "blocks": {}
             },
@@ -142,19 +133,19 @@
                 "strength_90_desc": "Heavier wear, or you know how you respond.",
                 "strength_90_notice": "<p><strong>First time with Dandy?</strong> Start with 50 mg. 90 mg is for experienced users.</p>",
                 "strength_90_url": "/products/extract-capsules?variant=48042269769906",
-                "dispatch_headline": "ORDER NOW — SHIPS TODAY",
-                "dispatch_sub": "Plain, unmarked packaging",
+                "dispatch_headline": "",
+                "dispatch_sub": "",
                 "cutoff_hour": 14,
                 "tiers_legend": "2. Choose your jar bundle",
                 "capsules_per_jar": 30,
-                "default_tier": "3",
+                "default_tier": "2",
                 "per_day_prefix": "Just",
                 "tier_1_variant_title": "30-count / Single",
                 "tier_1_title": "1 Jar",
                 "tier_1_badge": "",
                 "tier_1_shipping": "+ $5.95 Shipping",
                 "tier_1_cta": "ADD TO CART",
-                "tier_1_image_asset": "dandy-cap-tier-1{strength}.webp",
+                "tier_1_image_asset": "dandy-cap-tier-1{strength}.png",
                 "tier_1_hero": false,
                 "tier_1_ribbon": "",
                 "tier_2_variant_title": "30-count / 2-pack",
@@ -162,23 +153,28 @@
                 "tier_2_badge": "SAVE [save]",
                 "tier_2_shipping": "FREE FAST SHIPPING",
                 "tier_2_cta": "ADD TO CART",
-                "tier_2_image_asset": "dandy-cap-tier-2{strength}.webp",
+                "tier_2_image_asset": "dandy-cap-tier-2{strength}.png",
                 "tier_2_hero": false,
                 "tier_2_ribbon": "",
                 "tier_3_variant_title": "30-count / 3-pack",
-                "tier_3_title": "3 Jars",
-                "tier_3_badge": "GET 1 FREE",
+                "tier_3_title": "Buy 2, Get 1 Free",
+                "tier_3_badge": "",
                 "tier_3_shipping": "FREE FAST SHIPPING",
                 "tier_3_cta": "CLAIM MY FREE JAR",
-                "tier_3_image_asset": "dandy-cap-tier-3{strength}.webp",
+                "tier_3_image_asset": "dandy-cap-tier-3{strength}.png",
                 "tier_3_hero": true,
-                "tier_3_ribbon": "MOST POPULAR — BUY 2, GET 1 FREE",
+                "tier_3_ribbon": "MOST POPULAR",
                 "reassurance": "One-time purchase • Never an automatic rebill",
                 "guarantee_heading": "30-Day 100% Satisfaction Guarantee",
-                "guarantee_text": "Every order is covered. <a href=\"/pages/contact?view=dandy2-returns\">See the refund policy</a> for how it works.",
-                "trust_1_sub": "(by 2 PM CT)",
+                "guarantee_text": "",
+                "trust_1_sub": "",
                 "trust_2": "100% Lab Tested",
-                "trust_3": "Made in USA"
+                "trust_3": "Made in USA",
+                "eta_show": true,
+                "sticky_title": "Buy 2, Get 1 Free",
+                "sticky_cta": "See bundles",
+                "show_sticky": true,
+                "trust_1": "Plain Packaging"
               },
               "blocks": {}
             },
@@ -214,7 +210,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Within 45 minutes, most people notice a warm, loosening sensation spreading through the lower back, neck and joints. The physical background noise of the day fades. Unlike sedating remedies, your head stays completely clear, sharp and focused.</p><p><strong>Acute Tension Melts.</strong> Active mitragynine engages comfort pathways. That familiar tight, grinding ache in your lumbar spine and knees begins to soften.</p>",
+                        "text": "<p>Within 45 minutes, most people notice a warm, loosening feeling spreading through the lower back, neck and joints. The physical background noise of the day fades. Unlike sedating remedies, your head stays clear, sharp and focused.</p><p><strong>Tension Melts.</strong> Active mitragynine works on the body's comfort pathways. That familiar tight, grinding ache in your lower back and knees starts to soften.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -253,7 +249,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Each capsule contains pure standardized Mitragyna speciosa leaf extract (50 mg or 90 mg mitragynine), microcrystalline cellulose (a plant fiber for smooth, even absorption) and a vegan HPMC capsule shell. Nothing else.</p><p>Every batch is third-party tested for purity, heavy metals, microbials and precise alkaloid potency. The batch number is printed on the bottom of your jar so you can read its Certificate of Analysis.</p>",
+                        "text": "<p>Each capsule contains pure standardized Mitragyna speciosa leaf extract (50 mg or 90 mg mitragynine), microcrystalline cellulose (a plant fiber for smooth, even absorption) and a vegan HPMC capsule shell. Nothing else.</p><p>Every batch is third-party tested for purity, heavy metals, microbes and exact potency. The batch number is printed on the bottom of your jar so you can read its lab report (Certificate of Analysis).</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -370,7 +366,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Concentrated mitragynine engages peripheral discomfort pathways to quiet stubborn pain at the source.</p><p><strong>Lower Lumbar Spine.</strong> Soothes deep spinal tension and stiffness.</p><p><strong>Knees & Joints.</strong> Supports smooth flexion, bending, and stair climbing.</p><p><strong>Hips & Pelvis.</strong> Relieves the deep, dull ache when rising from chairs.</p><p><strong>Hands & Wrists.</strong> Eases grip tightness and finger joint throbbing.</p><p><strong>Neck & Shoulders.</strong> Releases postural tightness and muscular strain.</p>",
+                        "text": "<p>Concentrated mitragynine works on the body's comfort pathways to quiet stubborn aches where you feel them.</p><p><strong>Lower Back.</strong> Soothes deep tension and stiffness.</p><p><strong>Knees & Joints.</strong> Supports easy bending, walking and stair climbing.</p><p><strong>Hips & Pelvis.</strong> Eases the deep, dull ache when you get up from a chair.</p><p><strong>Hands & Wrists.</strong> Eases a tight grip and aching finger joints.</p><p><strong>Neck & Shoulders.</strong> Releases tightness from posture and strain.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -400,7 +396,7 @@
                 "extract": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Maximum Efficacy. Zero Plant Bloat.",
+                    "heading": "Maximum Effect. Zero Plant Bloat.",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -409,7 +405,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Why 50mg standardized extract delivers relief raw leaf powder can’t match. (Without the indigestible plant fiber, gut bloat, or nausea)</p><p><strong>Exact 50mg Active Alkaloids.</strong> Lab-calibrated for reliable, identical relief in every dose.</p><p><strong>Rapid 45 Minute Bioavailability.</strong> Fast-dissolving vegan shell releases pure extract directly for swift comfort.</p>",
+                        "text": "<p>Why a standardized extract gives relief raw leaf powder can't match. No indigestible plant fiber, so no gut bloat.</p><p><strong>Exact Dose, Every Capsule.</strong> Lab-measured 50 mg or 90 mg of mitragynine, so every dose feels the same.</p><p><strong>Works Within 45 Minutes.</strong> The fast-dissolving vegan shell releases the extract quickly for fast comfort.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -561,13 +557,13 @@
         "badge_2_value": "50/90",
         "badge_2_label": "MG, EXACT\nPER CAPSULE",
         "pouch_image": "",
-        "pouch_image_asset": "dandy-cap-review-top.webp",
+        "pouch_image_asset": "dandy-cap-review-top.jpg",
         "pouch_image_mobile": "",
-        "pouch_image_mobile_asset": "dandy-cap-review-top.webp",
+        "pouch_image_mobile_asset": "dandy-cap-review-top.jpg",
         "pouch_cutout_mobile": "",
         "pouch_cutout_mobile_asset": "",
         "person_image": "",
-        "person_image_asset": "dandy-cap-spotlight.webp",
+        "person_image_asset": "dandy-cap-spotlight.jpg",
         "background_color": "#164020",
         "outside_color": "#fff9f0",
         "clamp_words": 40,
@@ -589,7 +585,7 @@
             "icon": "",
             "icon_asset": "dandy-cap-icon-x.svg",
             "image": "",
-            "image_asset": "dandy-cap-reframe-otc.webp",
+            "image_asset": "dandy-cap-reframe-otc.png",
             "art_portrait": true
           }
         },
@@ -603,9 +599,9 @@
             "icon": "",
             "icon_asset": "dandy-cap-icon-check.svg",
             "image": "",
-            "image_asset": "dandy-cap-reframe-dandy.webp",
+            "image_asset": "dandy-cap-reframe-dandy.png",
             "art_portrait": true,
-            "motion_before_asset": "dandy-cap-reframe-otc.webp",
+            "motion_before_asset": "dandy-cap-reframe-otc.png",
             "motion_pulse_x": 50,
             "motion_pulse_y": 12
           }
@@ -632,9 +628,9 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-ritual-1.webp",
+            "image_asset": "dandy-cap-ritual-1.jpg",
             "image_mobile": "",
-            "image_mobile_asset": "dandy-cap-ritual-1.webp",
+            "image_mobile_asset": "dandy-cap-ritual-1.jpg",
             "title": "No clumps, no shakers, no gagging",
             "text": "Raw kratom powder tastes like bitter, muddy dirt and clings to your throat. Dandy isolates the pure active alkaloids into a tasteless vegan capsule that goes down in two seconds."
           }
@@ -643,9 +639,9 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-ritual-2.webp",
+            "image_asset": "dandy-cap-ritual-2.jpg",
             "image_mobile": "",
-            "image_mobile_asset": "dandy-cap-ritual-2.webp",
+            "image_mobile_asset": "dandy-cap-ritual-2.jpg",
             "title": "No $15 mystery shots",
             "text": "Liquid extract shots hit hard, taste like battery acid, and cost upwards of $15 to $20 a bottle at smoke shops. Dandy delivers calibrated, laboratory-standardized relief for a fraction of the cost."
           }
@@ -654,9 +650,9 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-ritual-3.webp",
+            "image_asset": "dandy-cap-ritual-3.jpg",
             "image_mobile": "",
-            "image_mobile_asset": "dandy-cap-ritual-3.webp",
+            "image_mobile_asset": "dandy-cap-ritual-3.jpg",
             "title": "One capsule, not ten",
             "text": "Standard raw-leaf capsules force you to swallow 6 to 10 giant horse pills packed with raw plant cellulose that upsets your stomach lining. Dandy concentrates that entire handful into a single measured capsule."
           }
@@ -684,7 +680,7 @@
             "title": "OTC painkillers",
             "text": "Can take the edge off for an hour or two, but regular use is notorious for wearing on the stomach lining, gut and liver. And zero mood support.",
             "image": "",
-            "image_asset": "dandy-cap-compare-otc.webp",
+            "image_asset": "dandy-cap-compare-otc.png",
             "desktop_column": "left",
             "img_width": 115,
             "img_height": 88,
@@ -701,7 +697,7 @@
             "title": "CBD & hemp capsules",
             "text": "Fine for general wellness, but most people find CBD underwhelming when real physical tension and joint stiffness strike. You need something you can actually feel.",
             "image": "",
-            "image_asset": "dandy-cap-compare-cbd.webp",
+            "image_asset": "dandy-cap-compare-cbd.png",
             "desktop_column": "left",
             "img_width": 124,
             "img_height": 122,
@@ -718,7 +714,7 @@
             "title": "Muscle relaxers & sedatives",
             "text": "They quiet the pain by switching off your nervous system. Great if you want to fall asleep on the couch at 2 PM. Useless if you need to work, drive or parent.",
             "image": "",
-            "image_asset": "dandy-cap-compare-rx.webp",
+            "image_asset": "dandy-cap-compare-rx.png",
             "desktop_column": "left",
             "img_width": 105,
             "img_height": 93,
@@ -735,7 +731,7 @@
             "title": "Raw-leaf kratom capsules",
             "text": "Unstandardized powder packed into giant shells. Six to ten horse pills a dose, potency that swings batch to batch, and rarely tested for heavy metals.",
             "image": "",
-            "image_asset": "dandy-cap-compare-raw.webp",
+            "image_asset": "dandy-cap-compare-raw.png",
             "desktop_column": "right",
             "img_width": 107,
             "img_height": 98,
@@ -757,13 +753,13 @@
             "icon": "",
             "icon_asset": "dandy-cap-icon-check-leaf.svg",
             "image": "",
-            "image_asset": "dandy-cap-jar-90.webp",
+            "image_asset": "dandy-cap-jar-90.png",
             "image_2": "",
-            "image_2_asset": "dandy-cap-jar-50.webp",
+            "image_2_asset": "dandy-cap-jar-50.png",
             "mobile_peek_image": "",
-            "mobile_peek_image_asset": "dandy-cap-jar-50.webp",
+            "mobile_peek_image_asset": "dandy-cap-jar-50.png",
             "mobile_image": "",
-            "mobile_image_asset": "dandy-cap-jar-50.webp"
+            "mobile_image_asset": "dandy-cap-jar-50.png"
           }
         }
       },
@@ -792,7 +788,7 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-1.webp",
+            "image_asset": "dandy-cap-moment-1.jpg",
             "title": "Loosen stiff joints",
             "text": "Get moving without that first creaky half hour of tight joints and a locked lower back."
           }
@@ -801,7 +797,7 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-2.webp",
+            "image_asset": "dandy-cap-moment-2.jpg",
             "title": "End the day\nstill standing",
             "text": "Physical endurance that carries you through long shifts, workouts and weekend projects with something left over."
           }
@@ -810,7 +806,7 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-3.webp",
+            "image_asset": "dandy-cap-moment-3.jpg",
             "title": "Stand up like it's nothing",
             "text": "Out of the chair, off the floor, up the stairs. The small moves stop being a negotiation."
           }
@@ -819,7 +815,7 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-4.webp",
+            "image_asset": "dandy-cap-moment-4.jpg",
             "title": "Clear head, all day",
             "text": "Ease in the body without fog in the mind, whatever the day asks."
           }
@@ -849,22 +845,22 @@
         "item_1_title": "STANDARDIZED MITRAGYNINE EXTRACT",
         "item_1_text": "Exactly 50 mg or 90 mg of mitragynine, standardized so every capsule delivers the same ease.",
         "item_1_image": "",
-        "item_1_image_asset": "dandy-cap-ing-extract.webp",
+        "item_1_image_asset": "dandy-cap-ing-extract.png",
         "item_2_title": "MICROCRYSTALLINE CELLULOSE",
         "item_2_text": "A plant fiber that keeps the dose evenly dispersed and smoothly absorbed.",
         "item_2_image": "",
-        "item_2_image_asset": "dandy-cap-ing-cellulose.webp",
+        "item_2_image_asset": "dandy-cap-ing-cellulose.png",
         "item_3_title": "VEGAN HPMC SHELL",
         "item_3_text": "Plant-cellulose capsule that dissolves in minutes. No gelatin, dyes or preservatives. Smooth size 00 capsule. Easy to swallow. Zero bitter taste.",
         "item_3_image": "",
-        "item_3_image_asset": "dandy-cap-ing-shell.webp",
+        "item_3_image_asset": "dandy-cap-ing-shell.png",
         "button_label": "View this batch's lab report",
         "ingredients": "<p><strong>Triple-Tested Purity. Zero Compromises.</strong></p><p>Every batch is tested by independent US laboratories before it ever reaches your doorstep. Independently Verified by ISO-Certified US Labs.</p><p><strong>Batch #N11395: 100% Pass</strong><br/>Active Mitragynine: 50.8 mg<br/>Heavy Metals (Lead, Arsenic, Cadmium): None detected<br/>Microbial &amp; Solvent Screen: 100% clean<br/>Zero Heavy Metals (Tested to Parts-Per-Billion)<br/>cGMP Certified Facility</p><p>Kratom leaf (Mitragyna speciosa) extract, standardized to 50 mg or 90 mg mitragynine per capsule.<br/><br/>Other ingredients: microcrystalline cellulose, vegan capsule (hydroxypropyl methylcellulose). 0 g sugar. 0 calories. 100% Vegan &amp; Non-GMO.</p>",
         "button_link": "",
         "product_image": "",
-        "product_image_asset": "dandy-cap-jar-caps-50.webp",
+        "product_image_asset": "dandy-cap-jar-caps-50.png",
         "product_image_mobile": "",
-        "product_image_mobile_asset": "dandy-cap-jar-caps-50.webp",
+        "product_image_mobile_asset": "dandy-cap-jar-caps-50.png",
         "hand_image": "",
         "hand_image_asset": "",
         "card_color": "#164020",
@@ -879,7 +875,7 @@
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-1.webp",
+            "image_asset": "dandy-cap-start-1.jpg",
             "label": "Start with one 50 mg",
             "text": "One capsule with a full glass of water.",
             "text_mobile": "",
@@ -892,7 +888,7 @@
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-2.webp",
+            "image_asset": "dandy-cap-start-2.jpg",
             "label": "Wait 45 minutes",
             "text": "Let it settle in before deciding on more.",
             "text_mobile": "",
@@ -905,20 +901,20 @@
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-3.webp",
+            "image_asset": "dandy-cap-start-3.jpg",
             "label": "Check in",
             "text": "Notice how you stand and stretch.",
             "text_mobile": "",
             "text_width_mobile": 134,
-            "overlay": 42,
-            "overlay_mobile": 42
+            "overlay": 50,
+            "overlay_mobile": 58
           }
         },
         "step_4": {
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-4.webp",
+            "image_asset": "dandy-cap-start-4.jpg",
             "label": "Use it with intention",
             "text": "Use it when needed, with days off.",
             "text_mobile": "",
@@ -1054,7 +1050,7 @@
         "no_icon": "",
         "no_icon_asset": "dandy-cap-icon-x.svg",
         "pouch_image": "",
-        "pouch_image_asset": "dandy-cap-jar-tilt-50.webp",
+        "pouch_image_asset": "dandy-cap-jar-tilt-50.png",
         "background_color": "#fff9f0",
         "show_wedge": true,
         "next_color": "#164020",
@@ -1067,7 +1063,7 @@
         "video_1": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-1.webp",
+            "poster_asset": "dandy-cap-videos-1.jpg",
             "video_asset": "",
             "quote": "“Replaced 6 ibuprofen a day. My stomach finally gets a break.”",
             "name": "Marcus T."
@@ -1076,7 +1072,7 @@
         "video_2": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-2.webp",
+            "poster_asset": "dandy-cap-videos-2.jpg",
             "video_asset": "",
             "quote": "“Finally done choking down green dirt.”",
             "name": "Jason M."
@@ -1085,7 +1081,7 @@
         "video_3": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-3.webp",
+            "poster_asset": "dandy-cap-videos-3.jpg",
             "video_asset": "",
             "quote": "“The knot between my shoulder blades is finally gone.”",
             "name": "Sarah L."
@@ -1094,7 +1090,7 @@
         "video_4": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-4.webp",
+            "poster_asset": "dandy-cap-videos-4.jpg",
             "video_asset": "",
             "quote": "“Skeptical first-timer. Completely won over.”",
             "name": "Brent W."
@@ -1113,7 +1109,7 @@
         "heading_mobile": "How people\ndo Dandy.",
         "body": "Job sites at 11 AM, post-workout evenings, and the moment you stop noticing your back.",
         "gummies_image": "",
-        "gummies_image_asset": "dandy-cap-jar-caps-50.webp",
+        "gummies_image_asset": "dandy-cap-jar-caps-50.png",
         "background_color": "#164020",
         "verified_label": "Verified Buyer",
         "verified_icon": "",
