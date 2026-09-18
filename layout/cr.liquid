@@ -1,21 +1,19 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}" class="rv">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>{{ page_title }}</title>
-  {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}
+  <title>7 Reasons Adults With Daily Physical Discomfort Are Choosing Dandy Extract Capsules | Daily Health Dispatch</title>
   <link rel="canonical" href="{{ canonical_url }}">
   <meta name="robots" content="noindex">
-  <meta property="og:title" content="{{ page_title | escape }}">
-  {%- if page_description -%}<meta property="og:description" content="{{ page_description | escape }}">{%- endif -%}
-  <meta property="og:image" content="{{ 'cshop-og.jpg' | asset_url }}">
-  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="7 Reasons Adults With Daily Physical Discomfort Are Choosing Dandy Extract Capsules">
+  <meta property="og:image" content="{{ 'cr-hero.webp' | asset_url }}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-  {{ 'cshop.css' | asset_url | stylesheet_tag }}
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&display=swap" rel="stylesheet">
+  {{ 'cr.css' | asset_url | stylesheet_tag }}
+  <script>setTimeout(function(){if(!window.__ready)document.documentElement.classList.remove('rv')},3000)</script>
   {{ content_for_header }}
   {%- comment -%} Whop ads pixel (account biz_9EucgaXdTemeix). Source: docs.whop.com/developer/ads/platforms/shopify. Lives in layout/theme.liquid before </head>. {%- endcomment -%}
   <script>
@@ -24,8 +22,8 @@
   whop.track("page");
   </script>
 </head>
-<body class="cshop-body">
+<body>
   {{ content_for_layout }}
-  <script src="{{ 'cshop.js' | asset_url }}" defer></script>
+  <script src="{{ 'cr.js' | asset_url }}" defer></script>
 </body>
 </html>
