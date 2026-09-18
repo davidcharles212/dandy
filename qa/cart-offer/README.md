@@ -10,6 +10,7 @@ The shared cart service converts each pair of full-price USD singles into one ex
 - `node --experimental-vm-modules --test scripts/predictive-search.test.cjs`: existing theme tests.
 - `node qa/cart-offer/browser.cjs`: actual phone and desktop selector/cart interactions, full-cart repair, and native checkout. Uses an isolated `agent-browser` session and creates no order. Shopify's preview bar must be dismissed; the test uses its own Hide bar control and waits for scrolling to finish.
 - Set `CART_QA_SESSION`, `CART_QA_URL`, and `CART_QA_OUTPUT` to check production in a fresh session.
+- `node qa/cart-offer/checkout-back.cjs`: Checkout must still reach checkout after the shopper presses Back from checkout (Chrome restores the page from the back-forward cache with `checkingOut` still set; the guard releases itself on `pageshow`). Set `CART_QA_ROUTE_SCRIPT=assets/dandy-gummy-cart.js` to test a local copy of the script against the live store before pushing it. The case reports itself inconclusive when the browser reloads instead of restoring.
 
 The production files are `assets/dandy-gummy-cart.js`, `layout/theme.liquid`, `snippets/dandy2-cart-drawer.liquid`, and `sections/dandy2-cart.liquid`. Their base was read from the live theme to preserve previously published work. Publish only these files. The shared CI workflow also runs the new regression suite.
 

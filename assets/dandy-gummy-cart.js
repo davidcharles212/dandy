@@ -2,7 +2,7 @@
 (function (scope) {
   'use strict';
   const SINGLE = 47958359965874;
-  const BUNDLE = 47958359998642;
+  const BUNDLE = 48043999068338;
   const plain = item => !item.selling_plan_allocation && !item.parent_relationship &&
     !item.item_components?.length && !Object.keys(item.properties || {}).length;
   const singles = cart => (cart.items || []).filter(item => Number(item.id) === SINGLE &&
@@ -87,21 +87,31 @@
     }
     notice.textContent = message;
   };
+  let disabledButtons = [];
+  const releaseCheckout = () => {
+    checkingOut = false;
+    disabledButtons.forEach(button => { button.disabled = false; });
+    disabledButtons = [];
+    document.querySelectorAll('input[data-gummy-cart-checkout]').forEach(input => input.remove());
+  };
   async function checkout(host, proceed) {
     if (checkingOut) return;
     checkingOut = true;
-    const buttons = [...host.querySelectorAll('button')];
-    buttons.forEach(button => { button.disabled = true; });
+    disabledButtons = [...host.querySelectorAll('button')];
+    disabledButtons.forEach(button => { button.disabled = true; });
     try {
       await service.ensure();
       proceed();
     } catch (error) {
       console.error('Dandy checkout offer check failed', error);
       report(host, 'We couldn’t apply your free-pouch offer. Please refresh your bag and try again.');
-      checkingOut = false;
-      buttons.forEach(button => { button.disabled = false; });
+      releaseCheckout();
     }
   }
+  // Chrome restores this page from the back-forward cache when the shopper presses Back
+  // from checkout, with checkingOut still true. Release the guard so Checkout works again.
+  scope.addEventListener('pageshow', event => { if (event.persisted) releaseCheckout(); });
+  scope.addEventListener('pagehide', () => { if (checkingOut) releaseCheckout(); });
   document.addEventListener('submit', event => {
     const form = event.target;
     if (!(form instanceof HTMLFormElement)) return;
@@ -112,6 +122,7 @@
       // Preserve Shopify's native checkout submission after the cart is verified.
       const input = document.createElement('input');
       input.type = 'hidden'; input.name = 'checkout'; input.value = 'Checkout';
+      input.dataset.gummyCartCheckout = '';
       form.append(input);
       HTMLFormElement.prototype.submit.call(form);
     });

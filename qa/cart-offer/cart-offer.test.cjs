@@ -1,7 +1,7 @@
 const {test} = require('node:test');
 const assert = require('node:assert/strict');
 const {plan, createService} = require('../../assets/dandy-gummy-cart.js');
-const SINGLE=47958359965874, BUNDLE=47958359998642;
+const SINGLE=47958359965874, BUNDLE=48043999068338;
 const product={variants:[{id:SINGLE,price:5999,available:true},{id:BUNDLE,price:11998,available:true}]};
 const item=(id,quantity,extra={})=>({id,key:id+':key',quantity,final_price:id===SINGLE?5999:11998,properties:{},...extra});
 const cart=items=>({items,currency:'USD',total_price:items.reduce((n,i)=>n+i.quantity*i.final_price,0)});
@@ -13,7 +13,7 @@ test('DY1046: two paid singles become three pouches for the same $119.98',()=>{
 });
 test('one single and the deliberately discounted two-pack are unchanged',()=>{
  assert.equal(plan(cart([item(SINGLE,1)]),product),null);
- assert.equal(plan(cart([item(48031678955698,1,{final_price:9998})]),product),null);
+ assert.equal(plan(cart([item(48043999035570,1,{final_price:9998})]),product),null);
 });
 test('subscription, discounted singles, customized lines, and bundle components are excluded',()=>{
  for(const extra of [{selling_plan_allocation:{selling_plan:{id:1}}},{final_price:4799},{properties:{gift:'yes'}},{parent_relationship:{parent_key:'bundle'}},{item_components:[{}]}]) {
