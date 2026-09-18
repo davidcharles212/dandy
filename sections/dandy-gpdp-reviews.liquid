@@ -5,7 +5,7 @@
 {%- endcapture -%}
 
 <div
-  class="dpr"
+  class="dpr dpr--gpdp"
   style="--dpr-bg: {{ section.settings.background_color }}; --dpr-outside: {{ section.settings.outside_color }};"
 >
   <div class="dpr__bg" aria-hidden="true"></div>
@@ -589,6 +589,15 @@
       min-height: 930px;
       overflow-x: clip;
       overflow-y: visible;
+    }
+
+    /* Shopify bundles every section's stylesheet into one file, and
+       dandy-pdp-reviews (capsule page) also styles .dpr: its base min-height,
+       a phone formula in vw, lands after the rule above and made this section
+       2750px tall at 1920. The extra class keeps the desktop height here. */
+    .dpr.dpr--gpdp {
+      height: auto;
+      min-height: 930px;
     }
 
     .dpr__bg {
