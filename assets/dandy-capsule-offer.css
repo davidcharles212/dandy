@@ -189,3 +189,5 @@
 .dandy-pdp-ingredients-section .dpi--contain .dpi__item { background: rgb(22 64 32 / 0.06); border-color: rgb(22 64 32 / 0.14); }
 /* parity 2026-09-17: ritual card 2 source has tight headroom; anchor the cover crop to the top */
 .dandy-pdp-flavor-section .dpx__card:nth-child(2) .dpx__img { object-position: 50% 0%; }
+/* parity 2026-09-18: keep the copyright clear of the sticky bar on phones */
+@media (max-width: 749px) { .dandy-pdp .dff, .dandy-pdp-footer-section .dff { padding-bottom: 89px; } }
