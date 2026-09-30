@@ -16,7 +16,7 @@
         "heading": "KRATOM, MADE EASY.",
         "text": "Precisely portioned mixed-berry gummies for clear focus, warm body ease, and a smooth social glow—without pouring another drink.",
         "primary_label": "SHOP GUMMIES",
-        "primary_link": "/products/mixed-berry-kratom-gummies",
+        "primary_link": "/products/feel-good-gummies",
         "secondary_label": "WHAT IS KRATOM?",
         "secondary_link": "/learn",
         "claim_ids": "C-02 C-04 C-05 C-09",
@@ -78,7 +78,7 @@
             "detail": "Mixed berry · pocket size",
             "price": "$24.99",
             "image_alt": "Dandy 10-count mixed berry gummy pouch",
-            "link": "/products/mixed-berry-kratom-gummies"
+            "link": "/products/feel-good-gummies"
           }
         },
         "gummy30": {
@@ -91,7 +91,7 @@
             "detail": "Mixed berry · full size",
             "price": "$59.99",
             "image_alt": "Dandy 30-count mixed berry gummy pouch",
-            "link": "/products/mixed-berry-kratom-gummies"
+            "link": "/products/feel-good-gummies"
           }
         },
         "powder100": {
@@ -194,7 +194,7 @@
         "heading": "THE GUMMY THAT MAKES KRATOM EASY.",
         "text": "<p>Open the pouch, take the labeled serving, and get on with your day. No scale. No scoop. No green cloud in the kitchen.</p>",
         "link_label": "SHOP GUMMIES",
-        "link": "/products/mixed-berry-kratom-gummies"
+        "link": "/products/feel-good-gummies"
       }
     },
     "use_guide": {
@@ -272,7 +272,7 @@
         "heading": "KNOW WHAT'S IN THE BAG.",
         "text": "Good proof should be simple to follow. Find the batch on the bag, match it to the report, and see what the report actually covers.",
         "link_label": "QUALITY & TESTING",
-        "link": "/COA"
+        "link": "/pages/lab-reports"
       }
     },
     "faq": {
@@ -346,7 +346,7 @@
         "heading": "GOOD DAYS LOOK DANDY.",
         "text": "Mixed berry, precisely portioned, and ready when you are.",
         "primary_label": "SHOP GUMMIES",
-        "primary_link": "/products/mixed-berry-kratom-gummies",
+        "primary_link": "/products/feel-good-gummies",
         "secondary_label": "WHAT IS KRATOM?",
         "secondary_link": "/learn"
       }

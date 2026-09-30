@@ -1,0 +1,39 @@
+{% doc %}
+  Renders a verified package image in a normalized square stage.
+  @param {string} product_handle - Product whose packaging to render.
+  @param {boolean} [decorative] - Empty alt text for table thumbnails.
+{% enddoc %}
+{% liquid
+  case product_handle
+    when 'feel-good-gummies'
+      assign coa_image = 'coa-gummies.png'
+      assign coa_art_class = 'gummy'
+      assign coa_alt = 'Dandy mixed berry gummies, 35 mg, 30-count pouch'
+      assign coa_width = 675
+      assign coa_height = 675
+    when 'premium-kratom-leaf-powder'
+      assign coa_image = 'coa-powder250.png'
+      assign coa_art_class = 'powder'
+      assign coa_alt = 'Dandy premium kratom leaf powder, 250 g pouch'
+      assign coa_width = 1000
+      assign coa_height = 1000
+    when 'extract-capsules-90mg'
+      assign coa_image = 'coa-capsule90.jpg'
+      assign coa_art_class = 'capsule90'
+      assign coa_alt = 'Dandy extract capsules, 90 mg, 30-count jar'
+      assign coa_width = 2048
+      assign coa_height = 2048
+    else
+      assign coa_image = 'coa-capsule50.webp'
+      assign coa_art_class = 'capsule'
+      assign coa_alt = 'Dandy extract capsules, 50 mg, 30-count jar'
+      assign coa_width = 381
+      assign coa_height = 448
+  endcase
+  if decorative
+    assign coa_alt = ''
+  endif
+%}
+<span class="coa-art coa-art--{{ coa_art_class }}">
+  <img src="{{ coa_image | asset_url }}" width="{{ coa_width }}" height="{{ coa_height }}" alt="{{ coa_alt }}" loading="lazy">
+</span>

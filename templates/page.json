@@ -22,7 +22,7 @@
     "content": {
       "type": "dandy-page-content",
       "settings": {
-        "fallback_content": "<p>[COPY NEEDED: replace this development page content before release.]</p>",
+        "fallback_content": "<p>If you are seeing this message, the page did not load correctly. Please let us know at support@foreverdandy.com.</p>",
         "copy_status": "missing-final-copy"
       }
     }

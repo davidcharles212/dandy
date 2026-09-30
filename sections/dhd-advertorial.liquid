@@ -1,0 +1,431 @@
+{%- liquid
+  assign product_url = section.settings.product_url | default: '/products/extract-capsules'
+  assign advanced_url = section.settings.advanced_url
+  assign discount_code = section.settings.discount_code | default: 'DISPATCH10'
+  assign shipping_url = section.settings.shipping_url | default: '/pages/contact?view=dandy2-shipping'
+  comment
+    Offer links route through Shopify's discount redirect so the reader voucher is applied without a coupon box.
+    The redirect target carries the strength, count and bundle the capsule product page pre-selects (PDP patch on
+    claude/capsule-offer-url-tier; until it is live every link lands on the PDP's configured default tier).
+    Variant ids are read from the store by title so a re-created variant never leaves a stale id in copy.
+    Since 2026-09-13 both strengths are one product (/products/extract-capsules, "Strength" option), so both
+    offers link to the same URL and the variant id picks the strength. A separate 90 mg URL in advanced_url
+    is only used when the product has no Strength option.
+  endcomment
+  assign disc_base = '/discount/' | append: discount_code | append: '?redirect='
+  assign h50 = product_url | split: '/' | last | split: '?' | first
+  assign cap = all_products[h50]
+  assign merged = false
+  if cap.options_by_name['Strength']
+    assign merged = true
+    assign advanced_url = product_url
+  endif
+  assign v50_3 = ''
+  assign v90_3 = ''
+  for v in cap.variants
+    if merged
+      assign v_rest = v.option2 | append: ' / ' | append: v.option3
+      if v_rest == '30-count / 3-pack'
+        if v.option1 contains '90'
+          assign v90_3 = v.id
+        else
+          assign v50_3 = v.id
+        endif
+      endif
+    elsif v.title == '30-count / 3-pack'
+      assign v50_3 = v.id
+    endif
+  endfor
+  if merged == false and advanced_url != blank
+    assign h90 = advanced_url | split: '/' | last | split: '?' | first
+    for v in all_products[h90].variants
+      if v.title == '30-count / 3-pack'
+        assign v90_3 = v.id
+      endif
+    endfor
+  endif
+  assign q50_3 = '?strength=50&count=30&bundle=3'
+  assign q90_3 = '?strength=90&count=30&bundle=3'
+  if v50_3 != ''
+    assign q50_3 = q50_3 | append: '&variant=' | append: v50_3
+  endif
+  if v90_3 != ''
+    assign q90_3 = q90_3 | append: '&variant=' | append: v90_3
+  endif
+  comment
+    The reader discount is already in the catalog price, so offer links go straight to the product (no /discount redirect).
+  endcomment
+  assign t50_3 = product_url | append: q50_3 | escape
+  assign t90_3 = advanced_url | append: q90_3 | escape
+-%}
+<div class="dhd">
+
+<header class="mast">
+  <div class="col">
+    <p class="mast__name">Daily Health Dispatch</p>
+  </div>
+  <nav class="mast__nav" aria-label="Sections">
+    <div class="mast__navrow"><span>Home Health</span><span>Aches &amp; Pains</span><span>Joints &amp; Mobility</span><span>Healthy Aging</span></div>
+  </nav>
+</header>
+
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<main class="page" id="main">
+
+{%- comment -%} Round 26: cadence rewrite with StefanBrain (median about 12 words per paragraph), photos rebuilt on the who held the camera rule, 7-OH section cut to about 125 words. Round 24: sensational headline without the reveal, fuller paragraphs, Dale's own story, Thailand ban arc removed, rebuilt kratom versus 7-OH section with verified federal facts. Offer selector and guarantee unchanged. {%- endcomment -%}
+<article class="col lead">
+  <h1>My Doctor Took Away My Pills. What My Friend Told Me Next Is Something <em class="hl">Most People Get Completely Wrong</em>.</h1>
+  <p class="dek">Two weeks later I almost threw the jar in the trash. I’m glad I read one more page first.</p>
+</article>
+
+<figure class="hero col">
+  <div class="hero__frame">
+    <img src="{{ 'dhd-r23-hero.webp' | asset_url }}" alt="Jack, a contractor in a red flannel shirt, at his kitchen table beside his pills, coffee and a bloodwork printout" width="1600" height="1195" fetchpriority="high">
+  </div>
+  <div class="byline" data-copy-status="scripted-editorial-persona">
+    <img class="byline__photo" src="{{ 'dhd-r23-jack.webp' | asset_url }}" alt="Jack R." width="240" height="240">
+    <div class="byline__text"><b>By Jack R.</b><span>Dayton, Ohio · <time datetime="2026-09-12">Sep 12, 2026</time> · 3 min read</span></div>
+  </div>
+</figure>
+
+<article class="col body story">
+
+<p class="lead-p">At 6:42 every morning, I lined up my pills beside my coffee before I put on my boots.</p>
+<p>Ibuprofen for my back. Acetaminophen for my knee. And a prescription acid reducer.</p>
+<p>After four years of that routine, my stomach had started fighting back.</p>
+<p>I’m 54. I’ve poured concrete and framed houses in Ohio for thirty years.</p>
+<p>In my trade, you don’t talk about your back. You get up, put your boots on, and do the work.</p>
+<p>So I hid it. Some mornings I sat in my truck at the job site, not checking the plans.</p>
+<p>I was waiting for my back to settle enough to climb out.</p>
+<p>I carried one tool at a time. I used the truck door to pull myself up.</p>
+<p>If one of the guys noticed, I blamed the cold.</p>
+<p>My wife noticed anyway.</p>
+<p>One morning she found me sitting on the bottom stair with one boot on.</p>
+<p>When she asked if I needed help, I told her I was tying my laces.</p>
+<p>I wasn’t.</p>
+
+<h2 class="story-turn" data-reveal>The Appointment I Kept Putting Off</h2>
+
+<p>She finally made me get bloodwork.</p>
+<p>I’d put it off for a year, because I already had a feeling what the doctor would say.</p>
+
+
+<p>A week later he turned his screen toward me.</p>
+<p>He pointed at two lines and set my ibuprofen bottle on the counter between us.</p>
+
+<blockquote class="quote" data-reveal><p>“Your kidney numbers are moving the wrong way. And your stomach is taking a beating.</p><p>You need to stop taking ibuprofen every day.”</p></blockquote>
+
+<figure class="fig" data-reveal><div class="fig__frame"><img src="{{ 'dhd-r28-lab-arm.webp' | asset_url }}" alt="Sunburned forearm on a blue lab chair armrest, a cotton ball taped inside the elbow, the open hand grey with concrete dust" width="1600" height="1195" loading="lazy"></div></figure>
+
+<p>I looked down at my hands. I knew he was right.</p>
+<p>I also had a concrete delivery at <strong>7&nbsp;AM</strong> the next morning.</p>
+<p>I had a crew to pay and a back that hurt before I even stood up.</p>
+<p>“So what am I supposed to take at 6&nbsp;AM?” I asked him.</p>
+<p>Ten minutes later I was sitting in my truck in the parking lot.</p>
+<p>A prescription for <strong>Tramadol</strong> was on the passenger seat.</p>
+
+<h2 class="story-turn" data-reveal>Nothing Prepared Me to Be Afraid of a Piece of Paper</h2>
+
+<p>My older brother spent six years on prescription painkillers after his shoulder surgery.</p>
+<p>I remember the foggy phone calls, and him losing his place halfway through a sentence.</p>
+<p>I remember how hard it was for him to come off them.</p>
+<p>That stayed with me a lot longer than his surgery did.</p>
+<p>Now his whole story was sitting on my passenger seat.</p>
+<p>I kept looking from that paper to the job site through the windshield.</p>
+
+<figure class="fig" data-reveal><div class="fig__frame"><img src="{{ 'dhd-r26-prescription.webp' | asset_url }}" alt="A folded prescription on a pickup truck’s passenger seat beside work gloves, a parking lot through the windshield" width="1600" height="1195" loading="lazy"></div></figure>
+
+<p>Keep taking the pills my doctor had just told me to stop. Or start the one I was scared of.</p>
+
+<aside class="pull" data-reveal><p>Neither one felt like a choice I wanted to make.</p></aside>
+
+<p>Tomorrow was already set: the delivery, the crew, the forms to sign.</p>
+<p>My body was the only part of the schedule I couldn’t count on.</p>
+
+<h2 class="story-turn" data-reveal>The Talk in Dale’s Shop</h2>
+
+<p>That evening I drove over to Dale’s shop.</p>
+<p>We’ve worked side by side for twenty years.</p>
+<p>He’s seen me pour footings in January and sit in my truck longer than I needed to.</p>
+<p>I told him about the bloodwork and the paper in my truck.</p>
+<p>“I’m supposed to stop the ibuprofen,” I said. “I still have to work tomorrow.”</p>
+<p>He was quiet for a second.</p>
+<p>Then he said, “Jack, I was sitting exactly where you are three years ago.”</p>
+
+<figure class="fig fig--portrait" data-reveal><div class="fig__frame"><img src="{{ 'dhd-r26-dale.webp' | asset_url }}" alt="Dale, a grey haired carpenter, at his workbench, smiling at the camera" width="1280" height="1600" loading="lazy"></div></figure>
+
+<p>I didn’t know that.</p>
+<p>He’s been kneeling on subfloors and carrying lumber up stairs since he was nineteen.</p>
+<p>I always figured he was just tougher than me.</p>
+<p>“I was eating ibuprofen like candy,” he said.</p>
+<p>“Then my doctor told me the same thing yours did.”</p>
+<p>“I spent a whole winter gritting my teeth through jobs, dreading the drive home.”</p>
+<p>What changed, he said, was a jar his nephew put in his hand.</p>
+<p>A capsule made from the leaf of a tree called <i>Mitragyna speciosa</i>. Its main compound is called&nbsp;<strong>mitragynine</strong>.</p>
+<p>“I didn’t believe it either,” he said.</p>
+<p>“But I’ve taken it most mornings since. It’s the thing I rely on now.”</p>
+<p>He told me farmers and laborers in Southeast Asia have used the leaves for centuries.</p>
+<p>People with jobs as hard on their bodies as ours.</p>
+<p>Before I left, he texted me a link to the capsules he uses.</p>
+
+<figure class="sms" data-reveal aria-label="Text message from Dale">
+  <p class="sms__time">Tuesday 7:48 PM</p>
+  <p class="sms__from">Dale</p>
+  <p class="sms__bubble">This is the capsule I told you about. Read this first.</p>
+  <div class="sms__card"><img src="{{ 'dhd-r25-leaf.webp' | asset_url }}" alt="" width="1536" height="1152" loading="lazy"><p><i>Mitragyna speciosa</i> Leaf Extract Capsules</p></div>
+</figure>
+
+<p>I looked at the page, closed it, opened it again, and ordered a jar.</p>
+
+<h2 class="story-turn" data-reveal>I Stood Up Before I Thought About My Back</h2>
+
+<p>The jar came midweek.</p>
+<p>I waited until Saturday to try one at home, with nowhere to be.</p>
+<p>After a little while, I felt a clean lift, with warmth spreading through my arms and legs.</p>
+<p>It was deeply relaxing, and somehow put me in a better mood.</p>
+<p>Then the doorbell rang.</p>
+<p>I got up to answer it and realized I <strong>hadn’t planted both hands on my knees first</strong>.</p>
+<p>The ache in my back had eased enough that I just moved.</p>
+<p>On the way back I bent down and picked up the shoes I’d left in the hallway.</p>
+<p>They were the same shoes I’d been stepping around all week.</p>
+<p>After breakfast I carried my coffee upstairs.</p>
+<p>Halfway up, I noticed my free hand was hanging at my side. It wasn’t pulling me along the rail.</p>
+<p>I stopped on the landing and looked back at the stairs.</p>
+<p>I had just walked up my own stairs without thinking about every step.</p>
+<p>That afternoon I finally watered the tomato plants I’d been meaning to get to all week.</p>
+<p>Then I sat on the porch with nothing left on my list. My wife took this picture.</p>
+
+<figure class="fig" data-reveal><div class="fig__frame"><img src="{{ 'dhd-r26-porch.webp' | asset_url }}" alt="Jack on his back porch step in late afternoon, boots off, coffee in hand, smiling at the camera, tomato plants behind him" width="1600" height="1195" loading="lazy"></div></figure>
+
+<p>I’d been saving every bit of strength for paid work.</p>
+<p>Having some left over for a regular Saturday felt good.</p>
+<p>That night, before bed, I looked up mitragynine.</p>
+
+</article>
+
+
+<section class="mechanism" aria-labelledby="mechanism-title">
+  <div class="col body mechanism__copy">
+<h2 id="mechanism-title" data-reveal>What I Learned About Mitragynine</h2>
+
+<p>Mitragynine interacts with receptors involved in pain signaling.</p>
+<p>In laboratory experiments, it produced a smaller response than compounds that fully activate those receptors.</p>
+<p>Researchers call this <strong>partial activation</strong>.</p>
+
+<figure class="diagram" data-reveal>
+    <div class="diagram__panels">
+      <div class="panel panel--bad">
+        <div class="panel__art">
+          <img src="{{ 'dhd-receptor-bad.webp' | asset_url }}" width="900" height="900" loading="lazy" alt="Simplified illustration of a molecule activating a receptor">
+        </div>
+        <p class="panel__name"><span class="panel__degree">Full</span> receptor&nbsp;activation</p>
+      </div>
+      <div class="panel panel--good">
+        <div class="panel__art">
+          <img src="{{ 'dhd-receptor-good.webp' | asset_url }}" width="900" height="900" loading="lazy" alt="Simplified illustration of partial receptor activation">
+        </div>
+        <p class="panel__name"><span class="panel__degree">Partial</span> receptor&nbsp;activation</p>
+      </div>
+    </div>
+  </figure>
+
+<p class="mechanism__coda">It didn’t explain everything about my Saturday.</p>
+<p>But I wasn’t looking at a mystery bottle anymore.</p>
+<p>I was looking at a plant with a named compound, and I kept reading.</p>
+
+<p class="story-cta"><a class="btn btn--story" href="#claim-offer">See the capsules Dale sent me</a></p>
+
+</div>
+</section>
+
+<article class="col body story reveal-name">
+
+<h2 class="story-turn" data-reveal>Then I Saw the Other Name, and I Almost Threw the Jar Out</h2>
+
+<p>A few pages in, I found out the plant had another name: <strong>kratom</strong>.</p>
+<p>My stomach dropped. I pictured the pill bags by the gas station register. Maybe you did too.</p>
+<p>But those pills aren’t the leaf.</p>
+<p class="spine" data-reveal>They’re synthetic. Kratom leaf is&nbsp;not.</p>
+<p>The natural leaf holds more than 40 compounds.</p>
+<p>One of them is <strong>7-OH</strong>, a natural trace compound found at about <strong>1&nbsp;part in&nbsp;10,000</strong>.</p>
+
+<figure class="fig" data-reveal><div class="fig__frame fig__frame--plain"><img src="{{ 'dhd-r25-rice.webp' | asset_url }}" alt="A bowl of about ten thousand white rice grains with a single red grain circled" width="1600" height="1200" loading="lazy"></div><figcaption>1 grain in 10,000. About 100 parts per million.</figcaption></figure>
+
+<p>Chemists make 7-OH in bulk, press it into pills, and sell them as kratom.</p>
+<p>That trace in the leaf gives them a way to borrow the label.</p>
+
+<aside class="pull pull--compare" data-reveal><p>Calling those pills kratom is like a jet wearing one feather and calling itself a&nbsp;bird.</p></aside>
+
+<p>The DEA is in the process of banning concentrated 7-OH. The natural leaf isn’t the target.</p>
+
+<figure class="fig fig--split" data-reveal><div class="fig__frame"><img src="{{ 'dhd-r24-split.webp' | asset_url }}" alt="Left, in colour: a fresh leaf beside a plain jar of capsules. Right, in grey: bags of pressed tablets and a shot bottle on a gas station counter" width="1600" height="1067" loading="lazy"></div><figcaption class="split-labels"><span>Natural kratom leaf extract</span><span class="split-labels__bad">Synthetic 7-OH sold as&nbsp;“kratom”</span></figcaption></figure>
+
+<p>I wanted the leaf Dale told me about.</p>
+<p>So I went back to the label on my jar.</p>
+
+<p class="story-cta"><a class="btn btn--story" href="#claim-offer">See the 3 Jar Reader Offer</a></p>
+
+</article>
+
+<section class="product-proof" aria-labelledby="product-proof-title">
+  <div class="col">
+    <h2 id="product-proof-title" data-reveal>What I Ordered</h2>
+<p data-product-reveal>The jar came from <a href="{{ t50_3 }}"><strong>Dandy</strong></a>.</p>
+<figure class="fig" data-reveal><div class="fig__frame"><img src="{{ 'dhd-inhand.webp' | asset_url }}" alt="A hand holding a Dandy capsule beside its jar" width="1200" height="1490" loading="lazy"></div></figure>
+<div class="product-proof__copy">
+<p>The capsules are standardized <i>Mitragyna speciosa</i> leaf extract, sourced from Thailand.</p>
+<p>They’re made in an FDA registered cGMP facility in Florida.</p>
+<p>Leaf extract, not a 7-OH pill.</p>
+<p>That was the part I needed to be sure of.</p>
+<p>So I looked up the lab results Dandy published for my batch.</p>
+
+<div class="proof-doc" data-reveal>
+  <p class="proof-doc__row">Batch <strong>N11395</strong></p>
+  <p class="proof-doc__row proof-doc__row--big"><strong>50.8 mg</strong> of mitragynine per capsule</p>
+  <p class="proof-doc__row">7-OH: <strong>not detected</strong></p>
+</div>
+
+<p>Not a vague promise. A named batch, a measured amount, and a report I could read myself.</p>
+<p>A capsule goes down with water at the kitchen counter.</p>
+<p>No bitter powder. No mixing a drink before work.</p>
+<p class="story-cta"><a class="btn btn--story" href="#claim-offer">See the 3 Jar Reader Offer</a></p>
+</div>
+</div>
+</section>
+
+<article class="col body story closure" aria-labelledby="closure-title">
+<h2 id="closure-title" class="story-turn" data-reveal>Five Months On</h2>
+<p>Five months on, I still have good days and bad days.</p>
+<p>But I don’t plan my mornings around my back anymore.</p>
+<p>I get up, put my boots on, and do the work.</p>
+<p>I haven’t looked back.</p>
+<figure class="fig" data-reveal><div class="fig__frame"><img src="{{ 'dhd-r27-jobsite.webp' | asset_url }}" alt="Jack on a job site in the morning, smiling at the camera, house framing behind him" width="1600" height="1195" loading="lazy"></div></figure>
+</article>
+
+<section class="letters col" aria-labelledby="letters-title">
+<h2 id="letters-title" data-reveal>What Other People Said</h2>
+<p class="letters__stat"><span class="letters__stars" aria-hidden="true">★★★★★</span><span><strong>1,400+ reviews</strong> across the Dandy&nbsp;range</span></p>
+<div class="letters__list">
+<figure class="review"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-truck-sq.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Melissa R.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Asheville, NC</span><span class="review__meta">50 mg · Sep 3, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>Between framing jobs and hauling material, my lower back was the part of the day I felt first. A friend told me about Dandy, so I started with the 50 mg capsules. The difference for me is how much easier it is to move through the afternoon. I am not stopping every hour to stretch or bracing myself before I climb out of the truck. I still work hard. I just do not feel as beaten up by the end of the day.</p></blockquote></figure>
+<figure class="review"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-tailgate-sq.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Jason M.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Tampa, FL</span><span class="review__meta">90 mg · Aug 27, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>Years of lifting, kneeling, and crawling under houses caught up with my back and shoulders. I bought the 90 mg capsules after a buddy put me onto Dandy. They became part of my morning before I head to a job. By lunch, I am moving instead of guarding every turn. I can carry tools, climb stairs, and finish the work without thinking about my back every five minutes. That is a big change for me.</p></blockquote></figure>
+<figure class="review"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-breakroom.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Erin L.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Columbus, OH</span><span class="review__meta">50 mg · Aug 19, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>I spend most days on my feet, carrying boxes, reaching, and twisting. By the time I got home, my lower back and knees felt cooked. I tried Dandy 50 mg capsules after hearing about them from a friend. Now I get through the workday with a lot more ease, and I am not dropping onto the couch the second I walk in. I can make dinner, play with my kids, and still feel like I have something left.</p></blockquote></figure>
+</div>
+</section>
+
+
+
+<section class="offer" id="claim-offer" aria-labelledby="offer-title">
+  <div class="wide">
+    <div class="offer__intro">
+      <h2 id="offer-title" data-reveal>Get 3 Jars for&nbsp;<span data-bundle-total>$129.99</span></h2>
+    </div>
+    <div class="bundle" data-bundle>
+      <div class="bundle__visual">
+        <img data-bundle-image src="{{ 'dhd-jars50-3.webp' | asset_url }}" alt="Three 30-count Dandy 50 mg Baseline jars" width="1200" height="600" loading="lazy">
+        <p class="bundle__ship">Free shipping included.</p>
+        <div class="coupon" data-reveal>
+          <p class="coupon__lede">Exclusive discount for Daily Health Dispatch readers</p>
+          <p class="coupon__big">UP TO 57% OFF</p>
+          <p class="coupon__how">Already in the price. No code to type.</p>
+        </div>
+      </div>
+      <div class="bundle__decision">
+        <fieldset class="bundle__choices" id="strengths">
+          <legend>Choose Your Capsule&nbsp;Strength</legend>
+          <label class="strength-option">
+            <input type="radio" name="dhd-strength" value="50" checked data-total="$129.99" data-unit="$43.33" data-image="{{ 'dhd-jars50-3.webp' | asset_url }}" data-alt="Three 30-count Dandy 50 mg Baseline jars" data-href="{{ t50_3 }}">
+            <span class="strength-option__content">
+              <span class="strength-option__heading"><strong>50 mg <span>Baseline</span></strong><b><s aria-label="Was $64.99">$64.99</s> $43.33 <small>per jar</small></b></span>
+              <span class="strength-option__deal">3 jars</span>
+              <span class="strength-option__guide">50 mg of mitragynine per capsule, 30 capsules per jar. For adults new to&nbsp;botanicals.</span>
+            </span>
+          </label>
+          <label class="strength-option">
+            <input type="radio" name="dhd-strength" value="90" data-total="$149.99" data-unit="$50.00" data-image="{{ 'dhd-jars90-3.webp' | asset_url }}" data-alt="Three 30-count Dandy 90 mg Advanced jars" data-href="{{ t90_3 }}">
+            <span class="strength-option__content">
+              <span class="strength-option__heading"><strong>90 mg <span>Advanced</span></strong><b><s aria-label="Was $99.99">$99.99</s> $50.00 <small>per jar</small></b></span>
+              <span class="strength-option__deal">3 jars</span>
+              <span class="strength-option__guide">90 mg of mitragynine per capsule, 30 capsules per jar. For adults already familiar with&nbsp;botanicals.</span>
+            </span>
+          </label>
+        </fieldset>
+        <div class="bundle__fallback">
+          <h3>Choose your capsule strength</h3>
+          <p>50 mg Baseline: for adults new to botanicals. $43.33 per jar, discount already applied (normally $64.99). 3 jars.</p>
+          <a class="btn" href="{{ t50_3 }}">Choose 50 mg</a>
+          <p>90 mg Advanced: for adults already familiar with botanicals. $50.00 per jar, discount already applied (normally $99.99). 3 jars.</p>
+          <a class="btn" href="{{ t90_3 }}">Choose 90 mg</a>
+        </div>
+        <div class="guar" data-reveal>
+          <h3>Money&#8209;Back Guarantee</h3>
+          <div class="guar__body">
+<svg class="seal" viewBox="0 0 200 200" role="img" aria-label="30 Day Money Back Guarantee">
+        <circle cx="100" cy="100" r="96" fill="#102A40"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#F0C477" stroke-width="2"/>
+        <text class="seal__big" x="100" y="96" text-anchor="middle" fill="#FAF6EE">30</text>
+        <text class="seal__small" x="100" y="143" text-anchor="middle" fill="#F0C477">days</text>
+      </svg>
+            <div class="guar__copy">
+              <p>If you’re not satisfied with how Dandy feels, your first order is covered by a <strong>30-day money-back guarantee</strong>.</p>
+            </div>
+          </div>
+        </div>
+        <a class="btn bundle__cta" data-bundle-cta href="{{ t50_3 }}">Get My 3 Jar Offer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="letters letters--more col" aria-labelledby="more-title">
+<h2 id="more-title" data-reveal>More Reviews From People Like You</h2>
+<div class="letters__grid">
+<figure class="review review--short"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-lunchbox.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Tyler B.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Raleigh, NC</span><span class="review__meta">50 mg · Sep 6, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>The 50 mg capsules took the edge off my lower back after long days on the job. I finish work without moving like an old man.</p></blockquote></figure>
+<figure class="review review--short"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-console.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Marcus D.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Orlando, FL</span><span class="review__meta">90 mg · Aug 30, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>I bought the 90 mg capsules for my back after a friend recommended Dandy. I can work, drive home, and still move normally afterward.</p></blockquote></figure>
+<figure class="review review--short"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-palm-sq.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Greg T.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Richmond, VA</span><span class="review__meta">50 mg · Aug 16, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>My lower back and hips took a beating from years of physical work. The 50 mg capsules give me the relief to keep moving instead of sitting down.</p></blockquote></figure>
+<figure class="review review--short"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-nightstand.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Laura K.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Pittsburgh, PA</span><span class="review__meta">90 mg · Aug 11, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>I wake up stiff and used to dread the first few hours of work. The 90 mg capsules changed that. My back loosens up, and I stay in motion.</p></blockquote></figure>
+<figure class="review review--short"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-scrubs.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Hannah P.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Nashville, TN</span><span class="review__meta">50 mg · Aug 24, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>After a full shift on my feet, my knees used to be done. The 50 mg capsules help me finish the day and still have energy at home.</p></blockquote></figure>
+<figure class="review review--short"><div class="review__head"><img class="review__thumb" src="{{ 'dhd-r27-hand-counter-sq.webp' | asset_url }}" alt="" width="1200" height="1200" loading="lazy"><figcaption><b>Nicole S.</b> <span class="review__verified">Verified Buyer</span><span class="review__meta">Denver, CO</span><span class="review__meta">50 mg · Sep 1, 2026</span></figcaption></div><p class="review__stars" role="img" aria-label="5 out of 5 stars">★★★★★</p><blockquote><p>My shoulders used to stay tight all day. After trying the 50 mg capsules, I get through work with a lot less stiffness and tension.</p></blockquote></figure>
+</div>
+<a class="btn letters__cta" href="{{ t50_3 }}">Get My 3 Jar Offer</a>
+</section>
+
+
+{%- comment -%}
+  Phone and tablet sticky bar (R29). Hidden until the reader has scrolled into the mechanism section, hidden again
+  whenever any in-body button is on screen, and it jumps to the offer block rather than leaving the story. JS moves
+  it to <body> so no clipping context on the article can break position: fixed.
+{%- endcomment -%}
+<div class="sticky" data-dhd-sticky aria-hidden="true">
+  <div class="sticky__info">
+    <span><b>Get 3 Jars for&nbsp;<span data-bundle-total>$129.99</span></b><small>Free shipping for readers</small></span>
+  </div>
+  <a class="btn sticky__btn" href="#claim-offer">See My Offer</a>
+</div>
+
+</main>
+
+<footer class="foot">
+  <div class="col">
+    <p class="foot__title">Daily Health Dispatch</p>
+    <p class="foot__copy">&copy; <span id="current-year">2026</span> Daily Health Dispatch.</p>
+    <p class="foot__legal">This article is an advertorial sponsored by Dandy (ForeverDandy.com). Jack R. and Dale are fictional editorial characters, and the images, including review photos, are illustrations. The statements made regarding these products have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. All information presented here is not meant as a substitute for or alternative to information from healthcare practitioners. Please consult your healthcare professional about potential interactions or other possible complications before using any product. Dandy extract products are intended strictly for adults aged 21 and older. Do not use if pregnant, nursing, or operating heavy machinery. Delivery details are on the <a href="{{ shipping_url }}">shipping policy page</a>.</p>
+    <p class="foot__links dots"><span><a href="/pages/contact?view=dandy2-privacy">Privacy Policy</a></span><span><a href="/pages/contact?view=dandy2-terms">Terms of Service</a></span><span><a href="/pages/contact">Contact Editorial</a></span></p>
+  </div>
+</footer>
+
+</div>
+
+{% schema %}
+{
+  "name": "DHD advertorial",
+  "settings": [
+    { "type": "url", "id": "product_url", "label": "Capsules product page (both strengths)" },
+    { "type": "url", "id": "advanced_url", "label": "Separate 90mg page (only if not merged)" },
+    { "type": "text", "id": "discount_code", "label": "Reader discount code (auto-applied via /discount redirect)", "default": "DISPATCH10" },
+    { "type": "text", "id": "coa_url", "label": "COA / batch reports link" },
+    { "type": "text", "id": "shipping_url", "label": "Shipping page link" }
+  ],
+  "presets": [{ "name": "DHD advertorial" }]
+}
+{% endschema %}

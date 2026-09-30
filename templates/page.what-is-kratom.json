@@ -56,7 +56,7 @@
         "product": { "type": "card", "settings": { "icon": "package", "heading": "The product matters", "text": "<p>Format, composition, concentration, and serving can differ. Labels are not interchangeable.</p>" } },
         "person": { "type": "card", "settings": { "icon": "leaf", "heading": "The person matters", "text": "<p>Sensitivity, experience, food, and context can change how someone responds.</p>" } },
         "time": { "type": "card", "settings": { "icon": "calendar", "heading": "Time matters", "text": "<p>Follow the full labeled interval. Do not stack servings while waiting.</p>" } },
-        "proof": { "type": "card", "settings": { "icon": "lab", "heading": "Proof matters", "text": "<p>A real lot-linked report should identify the finished product, batch, lab, date, and actual scope.</p>", "link_label": "See the quality architecture", "link": "/COA" } }
+        "proof": { "type": "card", "settings": { "icon": "lab", "heading": "Proof matters", "text": "<p>A real lot-linked report should identify the finished product, batch, lab, date, and actual scope.</p>", "link_label": "See the quality architecture", "link": "/pages/lab-reports" } }
       },
       "block_order": ["product", "person", "time", "proof"],
       "settings": {

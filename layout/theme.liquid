@@ -6,6 +6,9 @@
   lang="{{ request.locale.iso_code }}"
 >
   <head>
+    {%- render 'dandy-bundle-gate' -%}
+    <meta name="facebook-domain-verification" content="kzhx8n5ete7v682aexc87bq2udf4n9" />
+    <meta name="google-site-verification" content="V0TtioAhYgddrQNMx7M0R1haV3r13Y2uVjFXUCjxsus" />
     {%- if settings.favicon != blank -%}
       <link
         rel="icon"
@@ -35,7 +38,14 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
+    <script src="{{ 'dandy-gummy-cart.js' | asset_url }}" defer></script>
     {{ content_for_header }}
+    {%- comment -%} Whop ads pixel (account biz_9EucgaXdTemeix). Source: docs.whop.com/developer/ads/platforms/shopify. Lives in layout/theme.liquid before </head>. {%- endcomment -%}
+    <script>
+    !function(w,d,s,u,n,a,b){if(w[n])return;a=w[n]={q:[],t:+new Date,s:[],o:u,track:function(){a.q.push([+new Date].concat([].slice.call(arguments)))},setScope:function(){a.s=[].slice.call(arguments).filter(function(x){return typeof x==="string"});a.q.push([+new Date,"setScope"].concat(a.s))},scope:function(){var c=[].slice.call(arguments);return{track:function(){a.q.push([+new Date].concat([].slice.call(arguments)).concat([{__scope:c}]))}}}};b=d.createElement(s);b.async=1;b.src=u+"/s.js";d.getElementsByTagName(s)[0].parentNode.insertBefore(b,d.getElementsByTagName(s)[0])}(window,document,"script","https://t.whop.tw","whop");
+    whop.setScope("biz_9EucgaXdTemeix");
+    whop.track("page");
+    </script>
   </head>
 
   <body class="dandy-theme page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
@@ -141,6 +151,9 @@
 
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
+    {% endif %}
+    {% if request.path == '/products/extract-capsules' %}
+      <script src="{{ 'dandy-jack-tracking.js' | asset_url }}" defer></script>
     {% endif %}
   </body>
 </html>

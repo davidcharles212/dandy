@@ -49,6 +49,9 @@
           {%- endform -%}
         </div>
         <hr class="dff__line">
+        {%- if section.settings.disclaimer != blank -%}
+          <p class="dff__disclaimer dff__copy--desktop">{{ section.settings.disclaimer | escape }}</p>
+        {%- endif -%}
         {%- if section.settings.copyright != blank -%}
           <p class="dff__copy dff__copy--desktop">{{ section.settings.copyright | escape }}</p>
         {%- endif -%}
@@ -78,9 +81,14 @@
         </div>
       {%- endfor -%}
 
-      {%- if section.settings.copyright != blank -%}
+      {%- if section.settings.copyright != blank or section.settings.disclaimer != blank -%}
         <hr class="dff__line dff__line--mobile">
-        <p class="dff__copy dff__copy--mobile">{{ section.settings.copyright | escape }}</p>
+        {%- if section.settings.disclaimer != blank -%}
+          <p class="dff__disclaimer dff__copy--mobile">{{ section.settings.disclaimer | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.copyright != blank -%}
+          <p class="dff__copy dff__copy--mobile">{{ section.settings.copyright | escape }}</p>
+        {%- endif -%}
       {%- endif -%}
     </div>
   </div>
@@ -312,6 +320,14 @@
     line-height: 18.2px;
     letter-spacing: -0.14px;
   }
+  .dff .dff__disclaimer {
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgb(255 249 240 / 0.62);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
 
   .dff__copy--desktop {
     display: none;
@@ -443,6 +459,7 @@
     { "type": "text", "id": "menu_2_title", "label": "Menu 2 heading", "default": "Know" },
     { "type": "link_list", "id": "menu_2", "label": "Menu 2" },
     { "type": "header", "content": "Bottom" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer" },
     { "type": "text", "id": "copyright", "label": "Copyright", "default": "© 2026 DANDY, All rights reserved." },
     { "type": "color", "id": "background_color", "label": "Background", "default": "#F4512B" }
   ],

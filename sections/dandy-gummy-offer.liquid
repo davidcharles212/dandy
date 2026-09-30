@@ -1,0 +1,272 @@
+{% comment %}
+  DANDY 2026 REDESIGN, PDP (namespaced; part of the fresh-theme track).
+  2026-09-01 mobile-first conversion pass: benefit-led hero, one-line proof,
+  pouch-first buy box, one guarantee system, trust pills, tightened copy.
+  Renders only on dandy2 templates. Submits for real once Shopify has a variant.
+{% endcomment %}
+{{ 'dandy2.css' | asset_url | stylesheet_tag }}
+{{ 'dandy-gummy-offer.css' | asset_url | stylesheet_tag }}
+{%- assign image_url = 'dandy-gummy-30-tight.png' | asset_url | prepend: request.origin -%}
+{%- render 'dandy2-schema', kind: 'product', p_name: 'Mixed Berry Kratom Gummies', p_desc: 'Kratom gummies portioned to an exact 35 mg of mitragynine each. Lab-tested every batch.', p_image: image_url, p_low: '24.99', p_high: '59.99', p_count: 2 -%}
+
+{%- comment -%}
+  Trust-page URLs in ONE place. The real page records don't exist in Shopify yet, so
+  these point at the dandy2 template previews. When David creates pages with handles
+  batch-reports / shipping / what-is-kratom, change these three lines only.
+{%- endcomment -%}
+{%- assign url_coa = '/pages/lab-reports' -%}
+{%- assign url_kratom = '/pages/contact?view=dandy2-kratom' -%}
+<script src="{{ 'dandy-gummy-offer.js' | asset_url }}" defer></script>
+
+{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
+{% capture d2_i_sun %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>{% endcapture %}
+{% capture d2_i_moon %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.2A8.3 8.3 0 0 1 9.8 4a8.3 8.3 0 1 0 10.2 10.2Z"/></svg>{% endcapture %}
+{% capture d2_i_truck %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h11v9H3zM14 10h4l3 3v2.5h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>{% endcapture %}
+{% capture d2_i_lab %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3h5M10 3v6.2L5.2 18a2 2 0 0 0 1.8 3h10a2 2 0 0 0 1.8-3L14 9.2V3"/><path d="M7.5 15.5h9"/></svg>{% endcapture %}
+
+<dandy-gummy-offer class="dandy2-pdp" data-copy-status="{{ section.settings.copy_status }}" data-cta-style="{{ section.settings.cta_style }}" data-confetti="{{ section.settings.confetti }}">
+  {% render 'dandy2-chrome-header' %}
+
+  <main class="dandy2-pdp__grid" id="DandyBuyBox">
+    <section class="gallery" aria-label="Product photos">
+      <div class="gallery__main"><img src="{{ 'dandy2-life-morning.webp' | asset_url }}" alt="Holding one Dandy gummy over morning coffee, pouch on the counter" width="1400" height="1096" loading="eager"></div>
+      <div class="gallery__thumbs">
+        <button type="button" class="gallery__thumb" aria-current="true" data-full="{{ 'dandy2-life-morning.webp' | asset_url }}" data-alt="Holding one Dandy gummy over morning coffee, pouch on the counter"><img src="{{ 'dandy2-life-morning.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy-gummy-gallery-macro.png' | asset_url }}" data-alt="Sugar-coated mixed berry gummies on a ceramic dish in warm sunlight"><img src="{{ 'dandy-gummy-gallery-macro.png' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-life-evening.webp' | asset_url }}" data-alt="Winding down with a book at dusk, Dandy pouch on the side table"><img src="{{ 'dandy2-life-evening.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-full="{{ 'dandy2-life-bag.webp' | asset_url }}" data-alt="Dandy pouch in a tote bag with headphones, sunglasses, and keys"><img src="{{ 'dandy2-life-bag.webp' | asset_url }}" alt="" width="80" height="80"></button>
+        <button type="button" class="gallery__thumb" data-fit="contain" data-full="{{ 'dandy-gummy-facts-1200.webp' | asset_url }}" data-alt="Supplement facts panel"><img src="{{ 'dandy-gummy-facts-1200.webp' | asset_url }}" alt="" width="80" height="80"></button>
+      </div>
+    </section>
+
+    <section class="offer" aria-label="Purchase options">
+      {%- comment -%} Faces are AI-generated PLACEHOLDERS for design review. Swap for real, permissioned customer photos before publishing; release-scan blocks on data-asset-status="placeholder". {%- endcomment -%}
+      <div class="proofline">
+        <span class="faces" aria-hidden="true" data-asset-status="placeholder">
+          <img src="{{ 'dandy2-face-placeholder-1.webp' | asset_url }}" alt="" width="112" height="112" loading="eager">
+          <img src="{{ 'dandy2-face-placeholder-2.webp' | asset_url }}" alt="" width="112" height="112" loading="eager">
+          <img src="{{ 'dandy2-face-placeholder-3.webp' | asset_url }}" alt="" width="112" height="112" loading="eager">
+        </span>
+        <p class="ratingline">Rated <b>4.8/5</b> by 1,400+ happy customers</p>
+      </div>
+      <h1 class="title" data-copy-status="aggressive-draft">ALL-DAY ENERGY.<br>INSTANT MOOD LIFT.</h1>
+      <p class="desc" data-copy-status="aggressive-draft">A potent 35mg botanical chew that cuts through brain fog, elevates your spirits, and melts daily stress in under 30 minutes—with zero caffeine jitters and zero crash.</p>
+      <div class="benefitrow">
+        <ul class="benefits" data-copy-status="aggressive-draft">
+          <li><i>{{ d2_i_sun }}</i><b>CLEAN, JITTER-FREE DRIVE</b><span>Smooth daytime stamina without the racing heart, anxiety, or 2 PM caffeine crash.</span></li>
+          <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></svg></i><b>A NOTICEABLE MOOD BOOST</b><span>Feel instantly lighter, happier, and locked into effortless focus.</span></li>
+          <li><i>{{ d2_i_moon }}</i><b>EFFORTLESS EVENING UNWIND</b><span>Melt away workday tension and relax into your evening, no stiff drink required.</span></li>
+        </ul>
+        <img class="benefitrow__rocky" src="{{ 'dandy2-rocky-catch.webp' | asset_url }}" alt="" width="343" height="520" loading="eager" aria-hidden="true">
+      </div>
+
+      <div class="go-buybox" id="DandyOffer">
+        <div class="go-dispatch"><span class="go-dot" aria-hidden="true"></span><div><b data-go-dispatch>ORDER NOW — SHIPS TODAY</b><span>Orders placed by 2 PM CT ship same-day</span></div></div>
+        <fieldset class="go-tiers"><legend class="go-sr-only">Choose your pouch bundle</legend>
+        <label class="go-tier">
+          <input type="radio" name="gummy-offer-{{ section.id }}" value="1"  data-go-tier>
+          
+          <span class="go-tier-body">
+            <span class="go-radio" aria-hidden="true"></span>
+            <span class="go-pack go-pack--1" aria-hidden="true"><img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" alt="" width="675" height="675"></span>
+            <span class="go-title">1 Pouch</span>
+            <span class="go-price">$59.99<s>$79.99</s></span>
+            <span class="go-supply">30-Day Supply</span>
+            
+            <span class="go-detail"><span class="go-daily">Just $1.99 / day</span><span class="go-shipping">+ $5.95 Shipping</span></span>
+          </span>
+        </label>
+        <label class="go-tier">
+          <input type="radio" name="gummy-offer-{{ section.id }}" value="2"  data-go-tier>
+          
+          <span class="go-tier-body">
+            <span class="go-radio" aria-hidden="true"></span>
+            <span class="go-pack go-pack--2" aria-hidden="true"><img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" alt="" width="675" height="675"><img src="{{ 'dandy-gummy-30-tight.png' | asset_url }}" alt="" width="675" height="675"></span>
+            <span class="go-title">2 Pouches<span class="go-badge">SAVE $20</span></span>
+            <span class="go-price">$99.98<s>$119.98</s></span>
+            <span class="go-supply">60-Day Supply</span>
+            <span class="go-detail"><span class="go-daily">Just $1.67 / day</span><span class="go-shipping go-shipping--free">FREE SHIPPING</span></span>
+          </span>
+        </label>
+        <label class="go-tier go-tier--hero">
+          <input type="radio" name="gummy-offer-{{ section.id }}" value="3" checked data-go-tier>
+          <span class="go-ribbon">MOST POPULAR <span>— BUY 2, GET 1 FREE</span></span>
+          <span class="go-tier-body">
+            <span class="go-radio" aria-hidden="true"></span>
+            <span class="go-pack go-pack--3" aria-hidden="true"><img src="{{ 'dandy-gummy-three-pouch.png' | asset_url }}" alt="" width="1000" height="1100"></span>
+            <span class="go-title">3 Pouches<span class="go-badge">GET 1 FREE</span></span>
+            <span class="go-price">$119.98<s>$179.97</s></span>
+            <span class="go-supply">90-Day Supply</span>
+            <span class="go-detail"><span class="go-daily">Just $1.33 / day</span><span class="go-shipping go-shipping--free">FREE FAST SHIPPING</span></span>
+          </span>
+        </label>
+        </fieldset>
+        <script type="application/json" data-go-variants>{{ product.variants | json }}</script>
+        <form class="go-form" action="{{ routes.cart_add_url }}" method="post" data-go-form>
+          <input type="hidden" name="id" disabled data-go-id>
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" class="go-cta" data-go-cta disabled><span>CLAIM MY FREE POUCH</span><span> • $119.98</span></button>
+          <p class="go-reassurance"><svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2"/><path d="M5 7V5a3 3 0 0 1 6 0v2"/></svg><span>One-time purchase • Never an automatic rebill</span></p>
+          <p class="go-message" data-go-message role="status" hidden></p>
+          <noscript>Please enable JavaScript to choose your bundle.</noscript>
+        </form>
+        {% render 'dandy-gummy-guarantee' %}
+        <ul class="go-trust" aria-label="Shipping and quality">
+          <li>{{ d2_i_truck }}<span><b data-go-proof-dispatch>Ships Today</b><small>(by 2 PM CT)</small></span></li>
+          <li>{{ d2_i_lab }}<span><b>100% Lab Tested</b></span></li>
+          <li><span class="go-flag" aria-hidden="true">🇺🇸</span><span><b>Made in USA</b></span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  {% comment %} ---------- 1. Four ingredients (photo tiles; images generated 2026-09-01, see workspace/dandy/pdp-redesign/ingredients/audit.md) ---------- {% endcomment %}
+  <section class="belowfold belowfold--first" aria-labelledby="d2-inside-{{ section.id }}">
+    <div class="belowfold__inner">
+      <h2 class="belowfold__title belowfold__title--center belowfold__title--oneline" id="d2-inside-{{ section.id }}">Our star ingredients.</h2>
+      <div class="tiles" data-copy-status="aggressive-draft">
+        <figure class="tile tile--hero"><img src="{{ 'dandy2-ing-kratom.webp' | asset_url }}" alt="Kratom trees growing in a Southeast Asian forest" width="1000" height="750" loading="lazy"><figcaption><b>Natural kratom leaf</b><span>35 mg active alkaloids per gummy</span></figcaption></figure>
+        <figure class="tile"><img src="{{ 'dandy2-ing-berries.webp' | asset_url }}" alt="Fresh mixed berries" width="1000" height="750" loading="lazy"><figcaption><b>Real berry flavor</b><span>Natural flavor, colored with carrot and blueberry</span></figcaption></figure>
+        <figure class="tile"><img src="{{ 'dandy2-ing-tapioca.webp' | asset_url }}" alt="Golden tapioca syrup with cassava root and tapioca pearls" width="1000" height="750" loading="lazy"><figcaption><b>Organic <em class="tile__nb">tapioca syrup</em></b><span>20 calories per gummy</span></figcaption></figure>
+        <figure class="tile"><img src="{{ 'dandy2-ing-pectin.webp' | asset_url }}" alt="Apples and citrus, the plant sources of pectin" width="1000" height="750" loading="lazy"><figcaption><b>Pectin base</b><span>Plant-based, no gelatin</span></figcaption></figure>
+      </div>
+      <details class="inglist">
+        <summary>Full ingredient list</summary>
+        <div class="inglist__body">
+          <p class="inglist__line inglist__line--active">Kratom leaf (Mitragyna speciosa) extract: 35 mg per gummy</p>
+          <p class="inglist__line">Other ingredients: organic tapioca syrup, organic cane sugar, purified water, pectin, natural flavoring, citric acid, sucralose, sodium citrate, natural color (from carrots and blueberry).</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  {% comment %} ---------- 2. What is kratom ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2-kratom-{{ section.id }}">
+    <div class="kcard" data-copy-status="aggressive-draft">
+      <h2 class="kcard__title" id="d2-kratom-{{ section.id }}">Where kratom comes from</h2>
+      <div class="kcard__intro">
+        <p class="kcard__lead">Kratom is the leaf of Mitragyna speciosa, a tall evergreen in the coffee family native to Southeast Asia.</p>
+        <img class="kcard__plant" src="{{ 'dandy2-kratom-plant.webp' | asset_url }}" alt="Botanical illustration of Mitragyna speciosa, the kratom tree" width="380" height="467" loading="lazy">
+      </div>
+      <details class="kread">
+        <summary>Read more</summary>
+        <p>For thousands of years, people in Thailand, Malaysia, and Indonesia have brewed and chewed the leaf for a steady lift through long days of work and happy evenings after. Dandy takes that same leaf and portions it into a gummy with exactly 35 mg of mitragynine, kratom&rsquo;s main active alkaloid, so you know what you&rsquo;re getting every time. Everyone feels it a little differently, which is why we say start with half a gummy.</p>
+      </details>
+      <div class="kcard__chips">
+        <span class="kchip">{{ d2_gcheck }}Coffee-family botanical</span>
+        <span class="kchip">{{ d2_gcheck }}Thousands of years of use</span>
+        <span class="kchip">{{ d2_gcheck }}Independently lab tested</span>
+      </div>
+      <p class="kcard__more"><a href="{{ url_kratom }}">The full kratom guide &rarr;</a></p>
+    </div>
+  </section>
+
+  {% comment %} ---------- 3. Customer survey + real reviews ---------- {% endcomment %}
+  <section class="belowfold belowfold--dark" aria-labelledby="d2-stats-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <h2 class="belowfold__title belowfold__title--center belowfold__title--stats" id="d2-stats-{{ section.id }}">Real people, real results.</h2>
+      <div class="stats">
+        <div class="stats__hero"><em>96%</em><span>felt more focused</span></div>
+        <div class="stats__row">
+          <div class="stat"><em>92%</em><span>felt happier through the day</span></div>
+          <div class="stat"><em>89%</em><span>preferred it over caffeine</span></div>
+          <div class="stat"><em>86%</em><span>would replace anything with this</span></div>
+        </div>
+        <div class="quotes">
+          <blockquote class="quote"><p>&ldquo;I&rsquo;ve tried everything, and this is far and away the best thing I&rsquo;ve found for clean focus.&rdquo;</p><footer><img class="quote__face" src="{{ 'dandy2-review-a.webp' | asset_url }}" alt="" width="400" height="400" loading="lazy" data-asset-status="placeholder">Verified customer review</footer></blockquote>
+          <blockquote class="quote"><p>&ldquo;Just one gummy, and I&rsquo;m in the best mood and get so much done.&rdquo;</p><footer><img class="quote__face" src="{{ 'dandy2-review-b.webp' | asset_url }}" alt="" width="400" height="400" loading="lazy" data-asset-status="placeholder">Verified customer review</footer></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 4. Dandy vs coffee / tea / THC ---------- {% endcomment %}
+  <section class="belowfold belowfold--rule" aria-labelledby="d2-vs-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="belowfold__inner">
+      <h2 class="belowfold__title belowfold__title--center" id="d2-vs-{{ section.id }}">We&rsquo;re better, guaranteed.</h2>
+      <div class="duels">
+        <div class="duel">
+          <img src="{{ 'dandy2-vs-coffee.webp' | asset_url }}" alt="Jittery raccoon surrounded by empty espresso cups" width="800" height="800" loading="lazy">
+          <div class="duel__body">
+            <span class="duel__vs">Dandy vs Coffee</span>
+            <p>Keeps the morning lift and skips the 2 PM crash. And nobody has ever unwound with an espresso.</p>
+            <span class="duel__stamp">Energy, no jitters</span>
+          </div>
+        </div>
+        <div class="duel">
+          <img src="{{ 'dandy2-vs-tea.webp' | asset_url }}" alt="Bored raccoon nodding off over a dainty teacup" width="800" height="800" loading="lazy">
+          <div class="duel__body">
+            <span class="duel__vs">Dandy vs Tea</span>
+            <p>Tea&rsquo;s lovely, it&rsquo;s just quiet. Dandy brings the same calm with an actual work gear.</p>
+            <span class="duel__stamp">Calm, with horsepower</span>
+          </div>
+        </div>
+        <div class="duel">
+          <img src="{{ 'dandy2-vs-thc.webp' | asset_url }}" alt="Raccoon melted into an armchair with chips and a TV remote" width="800" height="800" loading="lazy">
+          <div class="duel__body">
+            <span class="duel__vs">Dandy vs THC</span>
+            <p>THC unwinds you, then keeps going. Dandy settles you down without checking you out.</p>
+            <span class="duel__stamp">Stay in control</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 5. Day or night ---------- {% endcomment %}
+  <section class="daycheck" aria-labelledby="d2-day-{{ section.id }}" data-copy-status="aggressive-draft">
+    <div class="daycheck__head">
+      <h2 class="belowfold__title belowfold__title--center" id="d2-day-{{ section.id }}">Flexible. Always enjoyable.</h2>
+    </div>
+    <div class="daycheck__rows">
+      <div class="dayrow"><span class="dayrow__q">Morning?</span><span class="dayrow__a">{{ d2_gcheck }}Bright start.</span></div>
+      <div class="dayrow"><span class="dayrow__q">Afternoon slump?</span><span class="dayrow__a">{{ d2_gcheck }}Second wind.</span></div>
+      <div class="dayrow"><span class="dayrow__q">Winding down?</span><span class="dayrow__a">{{ d2_gcheck }}Easy landing.</span></div>
+    </div>
+    <p class="daycheck__punch">A little lift when the day calls for it, and an easier landing when it doesn&rsquo;t.</p>
+    <div class="hoursfoot"><span>One pouch, every mood</span> <a href="#DandyOffer">pick yours ↑</a></div>
+  </section>
+
+  {% comment %} Founder-supplied FAQ rewrite, Option A, staged for review. {% endcomment %}
+  <section class="belowfold belowfold--rule go-faq-section" aria-labelledby="d2-faq-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow">
+      <h2 class="belowfold__title" id="d2-faq-{{ section.id }}">Everything you need to know before trying Dandy.</h2>
+      <p class="go-faq-intro">Real answers about what to expect, how it feels, and how to get the most out of your first gummy.</p>
+      <div class="faq">
+        <details><summary>What does Dandy feel like?</summary><p>Most people describe Dandy as a clean, warm wave of upbeat focus and calm social energy. It feels like your best, clearest morning - alert, conversational, and motivated without the racing pulse, jitters, or sudden afternoon crash that comes with caffeine or energy drinks. You stay sharp, level-headed, and in complete control throughout your day.</p></details>
+        <details><summary>How much should I take to start?</summary><p>If you are new to kratom, start with half a gummy (17.5 mg of mitragynine) and give it about 45 minutes. That is the ideal introductory amount to experience the smooth daytime focus. Once you know how your body responds, you can enjoy a full 35 mg gummy whenever you want deeper focus or an easy evening unwind.</p></details>
+        <details><summary>How quickly does it work, and how long does it last?</summary><p>Because Dandy uses a fast-absorbing pectin gummy base, you will typically begin to notice the effects within 30 to 45 minutes (faster on an empty or light stomach). The smooth, upbeat energy and clear focus typically last between 3 to 5 hours, tapering off gently without any sudden dip or post-caffeine fatigue.</p></details>
+        <details><summary>What ingredients are in Dandy, and is it third-party tested?</summary><p>Every Dandy gummy is made with clean, transparent ingredients: pure Mitragyna speciosa leaf extract standardized to an exact 35 mg of mitragynine, organic tapioca syrup, organic cane sugar, pectin (100% plant-based and vegan, zero gelatin), natural mixed berry flavoring, and natural colors from carrot and blueberry. Each gummy contains just 20 calories.</p><p>Purity is non-negotiable for us: every single batch is independently third-party lab tested for alkaloid potency, heavy metals, and microbials. You will find the exact batch number stamped on the back of your pouch, allowing you to review the <a href="{{ url_coa }}">Certificate of Analysis</a> anytime.</p></details>
+        <details><summary>Is Dandy legal, and how does it differ from 7-OH products?</summary><p>Yes, Dandy is 100% federally legal. Dandy is crafted exclusively from natural, unadulterated kratom leaf extract (<em>Mitragyna speciosa</em>), the traditional Southeast Asian botanical that has been enjoyed safely for generations.</p><p>Dandy is fundamentally different from synthetic or hyper-concentrated 7-hydroxymitragynine (7-OH) products, which have faced federal bans and regulatory crackdowns. Dandy contains only the natural alkaloid profile derived from whole leaf extract, is fully compliant with state and federal regulations, and ships directly to your doorstep.</p></details>
+        <details><summary>Is kratom habit-forming? Can I take it every day?</summary><p>Like coffee, tea, or any botanical that elevates your energy and focus, kratom can be habit-forming if used continuously without breaks. That is why we encourage intentional use. Dandy is best used as a dedicated tool for when you need it most - a high-focus work block, a creative session, an afternoon reset, or a relaxed social night. Taking regular days off keeps your natural tolerance low, so half a gummy or one gummy always delivers the exact feeling you love.</p></details>
+        <details><summary>Who is Dandy designed for (and who should avoid it)?</summary><p>Dandy is formulated for healthy adults 21 and older looking for a cleaner alternative to excessive caffeine, synthetic energy boosters, or evening alcohol. As a standard safety precaution with any active botanical supplement, Dandy is not intended for individuals under 21, women who are pregnant or nursing, or anyone currently taking prescription medications without first consulting their healthcare provider.</p></details>
+        <details><summary>What if Dandy isn&#x27;t right for me?</summary><p>You can try Dandy with 100% peace of mind. We stand behind every pouch with our 30-Day Happiness Guarantee. If you take Dandy and don&#x27;t love the clean energy, focused clarity, or overall experience, simply send a quick note to <a href="mailto:support@foreverdandy.com">support@foreverdandy.com</a> within 30 days of receiving your order. We will refund your purchase immediately - no interrogation, no hurdles, and no hard feelings. You risk nothing by trying it.</p></details>
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- 7. Recap ---------- {% endcomment %}
+  <section class="belowfold belowfold--finale" aria-labelledby="d2-recap-{{ section.id }}">
+    <div class="belowfold__inner belowfold__inner--narrow belowfold__inner--center">
+      <h2 class="belowfold__title" id="d2-recap-{{ section.id }}">Still scrolling? That’s a sign.</h2>
+      <div class="recapcard">
+        <img class="recappeek" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="Rocky the raccoon peeking over the top of the card" width="560" height="468" loading="lazy">
+        <div class="recapcard__row"><span data-d2-recap-label>3 pouches, one-time</span><b data-d2-recap-total>$119.98</b></div>
+        <button type="button" class="cta cta--inline" data-d2-recap-cta data-d2-submit>CLAIM MY FREE POUCH • $119.98</button>
+        {% render 'dandy-gummy-guarantee' %}
+      </div>
+    </div>
+  </section>
+
+  {% comment %} ---------- sticky mobile bar ---------- {% endcomment %}
+  <div class="stickybar" data-d2-sticky hidden>
+    <div class="stickybar__info"><strong data-d2-sticky-label>3 pouches, one-time</strong><span data-d2-sticky-total>$119.98</span></div>
+    <button type="button" class="stickybar__btn" data-d2-submit>Add to cart</button>
+  </div>
+  {% render 'dandy2-emailcapture' %}
+  {% render 'dandy2-chrome-footer' %}
+</dandy-gummy-offer>
+
+{% schema %}
+{"name":"Gummy offer preview","settings":[{"type":"select","id":"copy_status","label":"Copy status","options":[{"value":"aggressive-draft","label":"Draft"},{"value":"approved","label":"Approved"}],"default":"aggressive-draft"}],"presets":[{"name":"Gummy offer preview"}]}
+{% endschema %}

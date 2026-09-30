@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "cshop",
+  "sections": {
+    "main": {
+      "type": "dandy-cshop-b",
+      "settings": {
+        "product_url": "/products/feel-good-gummies",
+        "offer_url": "/products/feel-good-gummies",
+        "deal_price": "$32.66 a pouch",
+        "deal_note": "Free shipping",
+        "video_base": "",
+        "coa_url": "/pages/lab-reports",
+        "review_count": "1,400+",
+        "reviews_url": "/products/feel-good-gummies#reviews"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,15 @@
+{%- comment -%}
+  Ajax endpoint for the Dandy side cart. assets/dandy2-cart-drawer.js refreshes the
+  drawer by requesting the current page with ?section_id=dandy2-cart-drawer and reading
+  the [data-dcart-inner] element out of the response. Without this section Shopify
+  returns 404 and the script falls back to downloading the whole page on every cart
+  write. The markup is the same snippet the page renders inside the drawer panel.
+{%- endcomment -%}
+{% render 'dandy2-cart-drawer-inner' %}
+
+{% schema %}
+{
+  "name": "Dandy cart drawer (ajax)",
+  "settings": []
+}
+{% endschema %}

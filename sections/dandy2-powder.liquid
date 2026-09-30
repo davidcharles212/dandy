@@ -18,7 +18,7 @@
   these point at the dandy2 template previews. When David creates pages with handles
   batch-reports / shipping / what-is-kratom, change these three lines only.
 {%- endcomment -%}
-{%- assign url_coa = '/pages/contact?view=dandy2-coa' -%}
+{%- assign url_coa = '/pages/lab-reports' -%}
 {%- assign url_ship = '/pages/contact?view=dandy2-shipping' -%}
 {%- assign url_kratom = '/pages/contact?view=dandy2-kratom' -%}
 
@@ -185,7 +185,7 @@
         <details><summary>Is powder stronger than the gummies?</summary><p>It isn’t a fair comparison and we won’t pretend otherwise. Powder is whole leaf measured in grams; gummies are a measured 35 mg of mitragynine each; capsules are an extract. Treat each as its own thing and start low on any of them.</p></details>
         <details><summary>How long does a pouch last?</summary><p>The label serving is 1 teaspoon (2.5&nbsp;g), so the 250&nbsp;g pouch holds <b>100 servings</b> and the 100&nbsp;g pouch holds <b>40</b>. How long that lasts depends on how often you reach for it.</p></details>
         <details><summary>How should I store it?</summary><p>Sealed, dry, out of sunlight. The pouch is resealable, press the seal fully closed and keep it away from steam and heat.</p></details>
-        <details><summary>Who shouldn’t take it?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. We don’t ship to 16 states, <a href="{{ url_ship }}">check yours</a>.</p></details>
+        <details><summary>Who shouldn’t take it?</summary><p>Anyone under 21, anyone pregnant or nursing, and anyone on medication without talking to their clinician first. We don’t ship to 17 states, <a href="{{ url_ship }}">check yours</a>.</p></details>
       </div>
     </div>
   </section>
@@ -230,12 +230,42 @@
   let vmap = [];
   try { vmap = JSON.parse(root.querySelector('[data-d2-pvariantmap]')?.textContent || '[]'); } catch {}
   const findV = (...tokens) => vmap.find(v => tokens.every(t => v.title.toLowerCase().includes(t)) && v.available && v.price > 0);
-  if (form) form.addEventListener('submit', (e) => {
-    if (form.dataset.buyable === 'true') return;
+  let adding = false;
+  if (form) form.addEventListener('submit', async (e) => {
+    // Without the Dandy side cart on the page, let the native form post to /cart.
+    if (form.dataset.buyable === 'true' && !document.querySelector('[data-d2-cart]')) return;
     e.preventDefault();
-    if (!note) return;
-    note.hidden = false;
-    note.textContent = 'Preview only, this size has no purchasable variant in Shopify yet.';
+    if (form.dataset.buyable !== 'true') {
+      if (!note) return;
+      note.hidden = false;
+      note.textContent = 'Preview only, this size has no purchasable variant in Shopify yet.';
+      return;
+    }
+    // Add in place and slide the side cart out, rather than loading the full cart page.
+    if (adding) return;
+    adding = true;
+    const button = form.querySelector('[type=submit]');
+    if (button) button.disabled = true;
+    if (note) note.hidden = true;
+    try {
+      const response = await fetch(`${window.Shopify?.routes?.root || '/'}cart/add.js`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ items: [{ id: Number(idField.value), quantity: 1 }] })
+      });
+      if (!response.ok) throw new Error('Cart add failed: ' + response.status);
+      await response.json();
+      document.dispatchEvent(new CustomEvent('d2:cart-open'));
+    } catch (error) {
+      console.error('Dandy powder add to cart failed', error);
+      if (note) {
+        note.hidden = false;
+        note.textContent = 'We couldn’t add this pouch. Please refresh and try again.';
+      }
+    } finally {
+      adding = false;
+      if (button) button.disabled = false;
+    }
   });
   const sync = () => {
     const size = sizes.find(i => i.checked)?.value || '100';
@@ -288,8 +318,12 @@
       setTimeout(() => rocky.classList.remove('is-in'), 4200);
     }, { threshold: 0.9 });
     io.observe(cta);
-    cta.addEventListener('mouseenter', () => rocky.classList.add('is-in'));
-    cta.addEventListener('mouseleave', () => rocky.classList.remove('is-in'));
+    // Hover only with a real pointer: on iPhones a tap fires mouseenter first, and Rocky
+    // fading in makes Safari treat that tap as a hover and drop the click.
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      cta.addEventListener('mouseenter', () => rocky.classList.add('is-in'));
+      cta.addEventListener('mouseleave', () => rocky.classList.remove('is-in'));
+    }
   }
   // how-to video: autoplay the loop unless the visitor prefers reduced motion
   const vid = root.querySelector('[data-d2-howto]');

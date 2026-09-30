@@ -1,0 +1,80 @@
+/* Candy shop landing, variant B (2026-09-13). Loaded after cshop.css by sections/dandy-cshop-b.liquid.
+   Changes against the live page: the hero carries the price line and links to the product page, the sticky bar
+   links to the product page, a gummy-versus-powder split frame opens the flavor band, the tasting board is one
+   frame on a light ground, a buy button sits after the format switch, and the alpha images ship at display size. */
+
+/* hero: the photo is a link; the price line sits between the lede and the button */
+.hero__media{display:block;color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.hero__deal{display:flex;align-items:center;flex-wrap:wrap;margin:14px 0 14px;font-family:var(--display);font-weight:800;text-transform:uppercase;color:var(--cream);font-size:clamp(26px,2.2vw,32px);line-height:1;letter-spacing:.01em}
+.hero__deal i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--cream);opacity:.55;margin:0 10px;flex:none}
+.hero__copy .hero__lede{margin-top:0}
+@media (max-width:900px){
+  .hero__deal{margin:10px 0 12px;font-size:26px}
+  .hero__cta{margin-top:14px}
+}
+
+/* split frame: Dandy in colour on the left, the old routine in grey on the right, one headline on the frame */
+.flavor{padding-top:0}
+.split{position:relative;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--brown);overflow:hidden}
+.split__half{position:relative;margin:0;overflow:hidden;background:var(--brown)}
+.split__half img{display:block;width:100%;height:clamp(440px,52vw,640px);object-fit:cover;object-position:50% 50%}
+.split__half--new{border-right:2px solid var(--cream)}
+.split__half--old img{filter:grayscale(1) contrast(.95) brightness(.88)}
+.split__cap{position:absolute;left:0;right:0;bottom:0;z-index:2;margin:0;padding:clamp(72px,12vw,140px) var(--pad) clamp(22px,3vw,34px);background:linear-gradient(to top,rgba(40,17,12,.94) 0,rgba(40,17,12,.7) 45%,rgba(40,17,12,0) 100%);color:var(--cream);font-family:var(--display);font-weight:800;font-size:clamp(32px,4.6vw,60px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase;text-shadow:0 4px 18px rgba(0,0,0,.55);text-wrap:balance}
+.split__cap span{display:block}
+@media (max-width:900px){
+  .split__half img{height:min(62vh,520px)}
+  .split__cap{font-size:clamp(30px,8.4vw,38px);padding-top:96px}
+}
+
+/* one tasting frame on the cream ground */
+.board--one{grid-template-columns:1fr;background:var(--cream)}
+.board--one .board__frame{width:min(560px,100%);margin:0 auto;padding-bottom:0;background:var(--cream)}
+.board--one .board__frame .caprow{color:var(--brown);padding-bottom:0}
+@media (max-width:900px){
+  .board--one .board__frame{width:100%}
+}
+
+/* buy button after the format switch */
+.midcta{display:flex;justify-content:center;padding:clamp(8px,2vw,24px) 0 clamp(44px,6vw,72px)}
+.midcta .btn--lg{width:100%;max-width:440px}
+@media (max-width:900px){
+  .midcta{padding-top:0;padding-bottom:44px}
+}
+
+/* short phones (375x667): the price line must not push the button under the fold */
+@media (max-width:900px) and (max-height:700px){
+  .hero__media{height:44vh}
+  .hero__copy{padding-top:12px}
+  .hero__deal{margin:8px 0 10px}
+}
+/* split left half: keep the whole wordmark in the 195 px strip */
+.split__half--new img{object-position:48% 50%}
+/* lead review photo: portrait source in a landscape frame; keep the gummy whole and crop the pouch top cleanly */
+.rev--photo .rev__photo{object-position:center 55%}
+
+/* under the split frame: the tasting loop, one caption line, then the first-bite row close behind it */
+.board--one{padding-bottom:0}
+.board--one .board__frame .caprow{padding-bottom:0;white-space:nowrap;font-size:clamp(12.5px,3.85vw,15px)}
+.flavor .ugcrow{margin-top:0;padding-top:clamp(28px,4vw,44px)}
+@media (max-width:860px){
+  .flavor .ugcrow{padding-top:26px;padding-bottom:28px}
+}
+
+/* customer clips at about two thirds of the viewport height instead of a full screen, on every row */
+@media (min-width:861px){
+  .ugcrow{grid-template-columns:1fr 300px}
+  .ugcrow .ugc{max-width:300px}
+}
+@media (max-width:860px){
+  .ugcrow .ugc{width:min(100%,calc(66vh * .5625));max-width:none;margin:0 auto}
+}
+
+/* everything renders on load: no scroll reveals, no fade-ins, underlines and strikes already drawn.
+   The hero settle, the loops and the sparkles stay. */
+[data-reveal]{opacity:1!important;transform:none!important;transition:none!important}
+.board__word{opacity:1!important;transform:none!important;transition:none!important}
+.strip__new{transform:none!important;transition:none!important}
+.callout{opacity:1!important;transform:none!important;transition:none!important}
+.scrawl path,.strip__word .strike path{stroke-dashoffset:0!important;animation:none!important}
+

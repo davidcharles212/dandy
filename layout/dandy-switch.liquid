@@ -2,6 +2,7 @@
 <html lang="{{ request.locale.iso_code }}">
 <head>
   <meta charset="utf-8">
+  {%- render 'dandy-bundle-gate' -%}
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>{{ page_title }}</title>
   {%- if page_description -%}<meta name="description" content="{{ page_description | escape }}">{%- endif -%}

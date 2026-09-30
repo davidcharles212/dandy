@@ -320,6 +320,10 @@ class DandyVirtualRouter extends HTMLElement {
       ['/pages/about-dandy', 'about'],
     ]);
     const route = routes.get(path);
+    if (route === "coa") {
+      window.location.replace("/pages/lab-reports" + window.location.search + window.location.hash);
+      return;
+    }
     const page = route ? this.querySelector(`[data-virtual-page="${route}"]`) : null;
     const fallback = this.querySelector('[data-virtual-fallback]');
     if (page) {

@@ -10,7 +10,23 @@
   assign strength_token = '-50'
   assign current_strength = '50'
   assign other_strength = '90'
-  if product.handle contains '90'
+  comment
+    A merged capsule product carries both strengths as a "Strength" option; its
+    media is tagged by alt text ("90 mg" in the alt marks a 90 mg shot).
+  endcomment
+  assign merged = false
+  if product.options_by_name['Strength']
+    assign merged = true
+  endif
+  assign is_90 = false
+  if merged
+    if product.selected_or_first_available_variant.option1 contains '90'
+      assign is_90 = true
+    endif
+  elsif product.handle contains '90'
+    assign is_90 = true
+  endif
+  if is_90
     assign strength_token = '-90'
     assign current_strength = '90'
     assign other_strength = '50'
@@ -34,7 +50,7 @@
     assign show_product_media = false
     assign sibling_handle = blank
   endif
-  if sibling_handle != blank
+  if sibling_handle != blank and merged == false
     assign sibling = all_products[sibling_handle]
   endif
   if sibling.handle == blank or sibling.handle == product.handle
@@ -160,9 +176,16 @@
         assign slide_index = forloop.index | plus: extra_count
         assign slide_label = 'accessibility.slide_status' | t: index: slide_index, length: media_count
         assign media_alt = media.alt | default: product.title
+        assign media_strength = gp_strength
+        if merged
+          assign media_strength = '50'
+          if media.alt contains '90 mg'
+            assign media_strength = '90'
+          endif
+        endif
         assign loading = 'lazy'
         assign priority = 'auto'
-        if forloop.index0 == start_index and extra_count == 0 and gallery_pass == 1
+        if forloop.index0 == start_index and extra_count == 0 and media_strength == current_strength
           assign loading = 'eager'
           assign priority = 'high'
         endif
@@ -172,8 +195,8 @@
         id="DandyMedia-{{ section.id }}-{{ media.id }}"
         data-dpg-slide
         data-media-id="{{ media.id }}"
-        data-dpg-strength="{{ gp_strength }}"
-        {%- if gallery_pass == 2 %} hidden{% endif %}
+        data-dpg-strength="{{ media_strength }}"
+        {%- if media_strength != current_strength %} hidden{% endif %}
         role="group"
         aria-roledescription="slide"
         aria-label="{{ slide_label | escape }}"
@@ -271,15 +294,24 @@
         {%- for media in gp.media -%}
           {%- assign thumb_index = forloop.index | plus: extra_count -%}
           {%- assign thumb_label = 'accessibility.slide_status' | t: index: thumb_index, length: media_count -%}
+          {%- liquid
+            assign media_strength = gp_strength
+            if merged
+              assign media_strength = '50'
+              if media.alt contains '90 mg'
+                assign media_strength = '90'
+              endif
+            endif
+          -%}
           <button
             type="button"
             class="dpg__thumb"
             data-dpg-thumb
-            data-dpg-strength="{{ gp_strength }}"
-            {%- if gallery_pass == 2 %} hidden{% endif %}
+            data-dpg-strength="{{ media_strength }}"
+            {%- if media_strength != current_strength %} hidden{% endif %}
             aria-controls="DandyMedia-{{ section.id }}-{{ media.id }}"
             aria-label="{{ thumb_label | escape }}"
-            {% if forloop.index0 == start_index and extra_count == 0 and gallery_pass == 1 %}
+            {% if forloop.index0 == start_index and extra_count == 0 and media_strength == current_strength %}
               aria-current="true"
             {% endif %}
           >

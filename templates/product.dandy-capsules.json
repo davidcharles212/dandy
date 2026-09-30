@@ -36,7 +36,7 @@
           "type": "_dandy-product-gallery",
           "static": true,
           "settings": {
-            "gallery_assets": "dandy-capgal-01{strength}.webp|A Dandy jar of extract capsules against a warm beige wall with soft leaf shadows, two capsules beside it, and three benefit labels: Eases Back & Joint Aches, A Lighter Mood, Stay Clear Headed\ndandy-capgal-03{strength}.webp|1 Dandy Capsule = Potency of 8–10 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of a row of ten darker raw-leaf capsules|1 Dandy Capsule = Potency of 16–18 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of two rows of nine darker raw-leaf capsules\ndandy-capgal-06{strength}.webp|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 50.8mg. Batch ID: N11395. A Dandy jar on a deep green background|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 91.3mg. Batch ID: N11396. A Dandy jar on a deep green background\ndandy-capgal-02.webp|Relief Right Where Your Body Needs It Most. A woman working the soil in a raised garden bed\ndandy-capgal-05.webp|Stop Choking Down Bitter Powder. No clumps, no shakers, no gagging. A hand holding one Dandy capsule above spilled kratom powder, a shaker and a glass of water\ndandy-capgal-07.webp|“Zero lower-back throbbing when I climbed out of the driver’s seat.” Gary P. A man standing by the open door of his pickup truck\ndandy-capgal-04.webp|What You’ll Feel & When. Within about 45 minutes. Notice how you stand and stretch. Use it when needed. A person stepping up stone stairs\ndandy-capgal-08.webp|30-Day 100% Satisfaction Guarantee. An opened shipping box with a jar in kraft paper fill",
+            "gallery_assets": "dandy-capgal-01{strength}.jpg|A Dandy jar of extract capsules against a warm beige wall with soft leaf shadows, two capsules beside it, and three benefit labels: Eases Back & Joint Aches, A Lighter Mood, Stay Clear Headed\ndandy-capgal-03{strength}.jpg|1 Dandy Capsule = Potency of 8–10 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of a row of ten darker raw-leaf capsules|1 Dandy Capsule = Potency of 16–18 Raw Leaf Capsules. Without the indigestible plant fiber. One clear Dandy capsule of fine green powder in front of two rows of nine darker raw-leaf capsules\ndandy-capgal-06{strength}.jpg|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 50.8mg. Batch ID: N11395. A Dandy jar on a deep green background|Exact Potency Verified. Every batch is tested by independent US laboratories. Active Mitragynine per capsule: 91.3mg. Batch ID: N11396. A Dandy jar on a deep green background\ndandy-capgal-02.jpg|Relief Right Where Your Body Needs It Most. A man at his workshop bench with one hand on a plank, a Dandy jar standing beside the tools\ndandy-capgal-05.jpg|Stop Choking Down Bitter Powder. No clumps, no shakers, no gagging. A hand holding one Dandy capsule above spilled kratom powder, a shaker and a glass of water\ndandy-capgal-07.jpg|“Zero lower back throbbing when I climbed out of the truck cab.” Gary P. A Dandy jar and two capsules on a deep green background\ndandy-capgal-04.jpg|What You’ll Feel & When. Within about 45 minutes. Notice how you stand and stretch. Use it when needed. A hand holding one capsule above the open Dandy jar\ndandy-capgal-08.jpg|30-Day 100% Satisfaction Guarantee. A Dandy jar standing in an open kraft shipping box, label to camera",
             "show_product_media": false,
             "asset_px": 1200
           },
@@ -61,9 +61,9 @@
             "header": {
               "type": "dandy-product-header",
               "settings": {
-                "title_override": "Extract capsules",
-                "tagline": "Relief for aching backs and stiff joints",
-                "subtitle_override": "STANDARDIZED MITRAGYNINE EXTRACT\n30 VEGAN CAPSULES PER JAR"
+                "title_override": "Mitragynine capsules",
+                "tagline": "Relief for stiff backs and joints",
+                "subtitle_override": "STANDARDIZED LEAF EXTRACT\n30 VEGAN CAPSULES PER JAR"
               },
               "blocks": {}
             },
@@ -72,7 +72,7 @@
               "settings": {
                 "benefit_icon": "shopify://shop_images/dandy-check-benefit.png",
                 "benefit_icon_asset": "",
-                "benefits_override": "Soothes the tension and wear your body carries\nA lift in mood, a clear head, and no drowsiness\nExact 50 mg or 90 mg per capsule\nVegan capsule, gentle on the stomach"
+                "benefits_override": "Soothes deep back and joint ache\nLifted mood, clear head, not drowsy\nExact 50 or 90 mg mitragynine\nGentle on your stomach every day"
               },
               "blocks": {}
             },
@@ -98,7 +98,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Dandy is made from Mitragyna speciosa leaf extract. The tree grows in Southeast Asia, belongs to the coffee family, and is commonly called kratom.</p><p>Mitragynine is its main alkaloid, and each capsule is standardized to exactly 50 or 90 mg.</p><p>Some gas station products sold as kratom use concentrated or synthetic compounds. They are not the same thing. Dandy adds nothing.</p>",
+                        "text": "<p>Mitragynine is the natural leaf alkaloid that relieves deep joint and back ache while keeping your head sharp and clear.</p><p>Dandy standardizes it to an exact 50 or 90 mg. No raw leaf powder, no bitter sludge, and no guessing.</p><p>It is never 7-OH. Dandy, raw powder, and synthetic 7-OH are three different things. We use only pure, unspiked leaf extract.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -136,49 +136,54 @@
                 "show_strength_switch": true,
                 "strength_legend": "1. Pick your strength",
                 "strength_50_label": "Everyday ease",
-                "strength_50_desc": "Stiffness any time of day, or new to this.",
+                "strength_50_desc": "Most people start here for daily wear",
                 "strength_50_url": "/products/extract-capsules",
                 "strength_90_label": "Heavy-duty",
-                "strength_90_desc": "Heavier wear, or you know how you respond.",
+                "strength_90_desc": "For heavier days or bigger bodies",
                 "strength_90_notice": "<p><strong>First time with Dandy?</strong> Start with 50 mg. 90 mg is for experienced users.</p>",
                 "strength_90_url": "/products/extract-capsules?variant=48042269769906",
-                "dispatch_headline": "ORDER NOW — SHIPS TODAY",
-                "dispatch_sub": "Plain, unmarked packaging",
+                "dispatch_headline": "",
+                "dispatch_sub": "",
                 "cutoff_hour": 14,
                 "tiers_legend": "2. Choose your jar bundle",
                 "capsules_per_jar": 30,
-                "default_tier": "3",
+                "default_tier": "2",
                 "per_day_prefix": "Just",
                 "tier_1_variant_title": "30-count / Single",
                 "tier_1_title": "1 Jar",
-                "tier_1_badge": "",
+                "tier_1_badge": "SAVE [pct]%",
                 "tier_1_shipping": "+ $5.95 Shipping",
                 "tier_1_cta": "ADD TO CART",
-                "tier_1_image_asset": "dandy-cap-tier-1{strength}.webp",
+                "tier_1_image_asset": "dandy-cap-tier-1{strength}.png",
                 "tier_1_hero": false,
                 "tier_1_ribbon": "",
                 "tier_2_variant_title": "30-count / 2-pack",
                 "tier_2_title": "2 Jars",
-                "tier_2_badge": "SAVE [save]",
+                "tier_2_badge": "SAVE [pct]%",
                 "tier_2_shipping": "FREE FAST SHIPPING",
                 "tier_2_cta": "ADD TO CART",
-                "tier_2_image_asset": "dandy-cap-tier-2{strength}.webp",
+                "tier_2_image_asset": "dandy-cap-tier-2{strength}.png",
                 "tier_2_hero": false,
                 "tier_2_ribbon": "",
                 "tier_3_variant_title": "30-count / 3-pack",
                 "tier_3_title": "3 Jars",
-                "tier_3_badge": "GET 1 FREE",
+                "tier_3_badge": "SAVE [pct]%",
                 "tier_3_shipping": "FREE FAST SHIPPING",
-                "tier_3_cta": "CLAIM MY FREE JAR",
-                "tier_3_image_asset": "dandy-cap-tier-3{strength}.webp",
+                "tier_3_cta": "ADD TO CART",
+                "tier_3_image_asset": "dandy-cap-tier-3{strength}.png",
                 "tier_3_hero": true,
-                "tier_3_ribbon": "MOST POPULAR — BUY 2, GET 1 FREE",
-                "reassurance": "One-time purchase • Never an automatic rebill",
+                "tier_3_ribbon": "MOST POPULAR",
+                "reassurance": "One-time order. No surprise subscriptions.",
                 "guarantee_heading": "30-Day 100% Satisfaction Guarantee",
-                "guarantee_text": "Every order is covered. <a href=\"/pages/contact?view=dandy2-returns\">See the refund policy</a> for how it works.",
-                "trust_1_sub": "(by 2 PM CT)",
+                "guarantee_text": "Not relieved? Send the remaining jar back within 30 days for a full refund.",
+                "trust_1_sub": "",
                 "trust_2": "100% Lab Tested",
-                "trust_3": "Made in USA"
+                "trust_3": "Made in USA",
+                "eta_show": true,
+                "sticky_title": "3 Jars",
+                "sticky_cta": "See bundles",
+                "show_sticky": true,
+                "trust_1": "Plain Packaging"
               },
               "blocks": {}
             },
@@ -214,7 +219,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Within 45 minutes, most people notice a warm, loosening sensation spreading through the lower back, neck and joints. The physical background noise of the day fades. Unlike sedating remedies, your head stays completely clear, sharp and focused.</p><p><strong>Acute Tension Melts.</strong> Active mitragynine engages comfort pathways. That familiar tight, grinding ache in your lumbar spine and knees begins to soften.</p>",
+                        "text": "<p>Within about 45 minutes, a warm loosening feeling spreads through your lower back, hips, and joints. The constant background ache of physical wear quiets down, letting you bend, lift, and walk without negotiating every step. Because pure mitragynine targets physical comfort pathways rather than sedating your brain, your mind stays completely clear, focused, and alert throughout your day.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -244,7 +249,7 @@
                 "ingredients": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Ingredients & testing",
+                    "heading": "Ingredients and testing",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -253,7 +258,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Each capsule contains pure standardized Mitragyna speciosa leaf extract (50 mg or 90 mg mitragynine), microcrystalline cellulose (a plant fiber for smooth, even absorption) and a vegan HPMC capsule shell. Nothing else.</p><p>Every batch is third-party tested for purity, heavy metals, microbials and precise alkaloid potency. The batch number is printed on the bottom of your jar so you can read its Certificate of Analysis.</p>",
+                        "text": "<p>Only three clean ingredients.</p><p><strong>Pure Mitragyna speciosa leaf extract.</strong> Standardized to an exact 50 mg or 90 mg of pure mitragynine.</p><p><strong>Microcrystalline cellulose.</strong> A plant fiber that ensures smooth dispersion and steady absorption.</p><p><strong>Vegan plant shell.</strong> Dissolves rapidly in the stomach with zero gelatin, zero dyes, and zero animal products.</p><p>No synthetics, no fillers, and no added chemicals. Every batch is tested by independent American laboratories for potency, heavy metals, and purity. Your jar includes a batch number linking to its public lab report.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -283,7 +288,7 @@
                 "shipping": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping and Returns",
+                    "heading": "Shipping and returns",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -292,7 +297,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Orders placed by 2 PM Central ship the same business day in plain, unmarked packaging. Free shipping on two jars or more.</p><p>Every order is covered by our 30-day, 100% satisfaction guarantee. <a href=\"/pages/contact?view=dandy2-returns\">See the refund policy</a> for how it works.</p>",
+                        "text": "<p>Orders placed before 2 PM Central ship the same business day in plain, discreet packaging. Free shipping applies to orders of two jars or more.</p><p>You have 30 days to try Dandy. If you are not satisfied with your relief, send the remaining jar back and our team will refund every cent. <a href=\"/pages/contact?view=dandy2-returns\">See the refund policy</a>.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -331,7 +336,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Swallow one capsule whole with a full glass of water, ideally on an empty or light stomach. Adults 21+ only.</p>",
+                        "text": "<p>Take one capsule with a full glass of water, ideally on an empty stomach or after a light snack. Most people feel physical ease within 45 minutes, lasting 4 to 6 hours. Start with one 50 mg capsule to find your baseline before considering 90 mg. Take it on heavy physical days, and take one or two days off each week. Adults 21 and older only.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -370,7 +375,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Concentrated mitragynine engages peripheral discomfort pathways to quiet stubborn pain at the source.</p><p><strong>Lower Lumbar Spine.</strong> Soothes deep spinal tension and stiffness.</p><p><strong>Knees & Joints.</strong> Supports smooth flexion, bending, and stair climbing.</p><p><strong>Hips & Pelvis.</strong> Relieves the deep, dull ache when rising from chairs.</p><p><strong>Hands & Wrists.</strong> Eases grip tightness and finger joint throbbing.</p><p><strong>Neck & Shoulders.</strong> Releases postural tightness and muscular strain.</p>",
+                        "text": "<p>Concentrated mitragynine delivers soothing physical relief directly to high wear areas.</p><p><strong>Lower Back.</strong> Eases the tight, locked sensation from driving, lifting, or long shifts.</p><p><strong>Knees and Hips.</strong> Takes the sharp grind out of standing up, bending down, and climbing stairs.</p><p><strong>Neck and Shoulders.</strong> Loosens muscular tension built up from desk work and poor posture.</p><p><strong>Hands and Wrists.</strong> Restores smooth, comfortable grip without stiff aching fingers.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -400,7 +405,7 @@
                 "extract": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Maximum Efficacy. Zero Plant Bloat.",
+                    "heading": "Why extract beats raw leaf",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -409,7 +414,7 @@
                     "content": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Why 50mg standardized extract delivers relief raw leaf powder can’t match. (Without the indigestible plant fiber, gut bloat, or nausea)</p><p><strong>Exact 50mg Active Alkaloids.</strong> Lab-calibrated for reliable, identical relief in every dose.</p><p><strong>Rapid 45 Minute Bioavailability.</strong> Fast-dissolving vegan shell releases pure extract directly for swift comfort.</p>",
+                        "text": "<p>Raw kratom powder requires swallowing five to eight grams of crude plant fiber. That indigestible cellulose sits heavy in the gut, causing nausea, gas, and stomach cramps.</p><p>Dandy extracts only the pure active mitragynine, leaving all bitter plant sludge behind. One small capsule provides the physical comfort of eight raw leaf pills, dissolves in minutes, and leaves your digestion completely at ease.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -481,61 +486,61 @@
         "review_1": {
           "type": "review",
           "settings": {
-            "quote": "“I’ve been framing houses and hanging drywall for over twenty years. By 2 PM my lower back and hips usually feel like they’re locked in a vice. I was taking 600–800 mg of ibuprofen twice a day just to finish the shift, and my stomach was paying for it every night. One 90 mg Dandy capsule with my morning thermos and the ache just drops to the background. No brain fog, no heavy sedative feeling, just smooth physical ease. My crew noticed I stopped limping to the truck at 5 PM.”",
+            "quote": "“I stand on hard concrete flooring six days a week. Usually by two in the afternoon my knees and lower back are throbbing. Took one fifty milligram capsule with breakfast. By lunch the tightness was gone and my head felt completely clear and awake. No drowsy feeling at all.”",
             "author": "Marcus T.",
             "show_verified": true,
-            "headline": "Replaced 6 ibuprofen a day. My stomach finally gets a break.",
-            "product": "90 mg Heavy-Duty"
+            "headline": "My back stopped talking to me by noon",
+            "product": "50 mg Capsules"
           }
         },
         "review_2": {
           "type": "review",
           "settings": {
-            "quote": "“Ten hours a day hunched over two monitors turned my neck and trapezius muscles into concrete. By 3 PM every day I’d get that dull tension headache creeping up into my temples. Muscle relaxers knock me out cold, and CBD gummies did nothing. Took one 50 mg capsule around noon with a full glass of water. Forty-five minutes later, my shoulders just dropped two inches away from my ears. My brain stayed totally sharp and clear. I’m already on my third jar.”",
-            "author": "Sarah L.",
+            "quote": "“I stirred green powder into warm water for three years. It tasted like bitter swamp dirt and upset my stomach every single morning. This gives me the exact same physical ease in one clean swallow with zero taste and zero nausea. I am never going back to raw powder.”",
+            "author": "Jason M.",
             "show_verified": true,
-            "headline": "The knot between my shoulder blades is finally gone.",
-            "product": "50 mg Everyday Ease"
+            "headline": "Done with the shaker cup and muddy sink",
+            "product": "50 mg Capsules"
           }
         },
         "review_3": {
           "type": "review",
           "settings": {
-            "quote": "“Years of half-marathons and weekend carpentry caught up to my knees and lower spine. Getting out of bed in the morning used to take 10 minutes of slow stretching just to walk down the stairs normally. A friend recommended Dandy instead of standard joint supplements that take three months to do nothing. Took one capsule right when I woke up. By the time the coffee pot was done, that grinding stiffness was completely dialed down. This is the real deal.”",
+            "quote": "“My hips and knees get stiff if I sit longer than twenty minutes. Usually standing up requires two tries and both hands on the armrests. After about forty minutes with Dandy I just stood up without thinking about it. That alone was worth the purchase.”",
             "author": "David R.",
             "show_verified": true,
-            "headline": "First time in five years I stood up out of bed without groaning.",
-            "product": "50 mg Everyday Ease"
+            "headline": "Getting out of the low chair without groaning",
+            "product": "50 mg Capsules"
           }
         },
         "review_4": {
           "type": "review",
           "settings": {
-            "quote": "“I’ve used raw kratom powder for workout recovery and sore joints for three years, but the toss-and-wash method was pure torture. Choking down six grams of foul, sandy sludge or swallowing 10 giant horse pills gave me constant nausea. One tiny Dandy capsule is standardized, completely tasteless, and works faster and smoother than raw leaf ever did. Zero stomach burn. Never going back to messy powder.”",
-            "author": "Jason M.",
+            "quote": "“Eight hours at a computer screen leaves my neck and shoulders in knots. Most things that loosen muscles put me straight to sleep on the sofa. Dandy took the tight band out of my shoulders while I stayed sharp enough to finish my spreadsheets and drive home safely.”",
+            "author": "Sarah L.",
             "show_verified": true,
-            "headline": "Finally done choking down green dirt.",
-            "product": "50 mg Everyday Ease"
+            "headline": "Neck tension melted without any brain fog",
+            "product": "50 mg Capsules"
           }
         },
         "review_5": {
           "type": "review",
           "settings": {
-            "quote": "“Twelve-hour hospital shifts on hard linoleum will destroy your feet and lower spine. Most drugstore pills wear off after three hours and leave you in a daze. The 90 mg capsule carries me through the entire back half of my shift without any drowsiness or jitters. I come home with enough physical ease to actually cook dinner and play with my kids instead of collapsing onto the couch.”",
+            "quote": "“Usually after a full day on my feet at work I collapse into my chair and stay there until bedtime. Took one capsule around lunchtime and spent two full hours pruning flower beds after dinner. My body felt loose and comfortable the whole evening.”",
             "author": "Elena K.",
             "show_verified": true,
-            "headline": "Still standing tall at hour eleven.",
-            "product": "90 mg Heavy-Duty"
+            "headline": "Still had energy left for the garden",
+            "product": "50 mg Capsules"
           }
         },
         "review_6": {
           "type": "review",
           "settings": {
-            "quote": "“I had never taken kratom before and was nervous about feeling weird, jittery, or out of control. The 50 mg capsule was exactly as advertised: calm, warm physical loosening without any head fog. It felt like someone simply turned down the volume on all the daily wear-and-tear in my neck and lower back. Subscribed to the 3-jar bundle.”",
+            "quote": "“I haul heavy building materials all day. My shoulders and lower back take a beating. The ninety milligram gives me deep physical comfort that lasts through a ten hour shift without making me clumsy or slow. My body simply feels normal again.”",
             "author": "Brent W.",
             "show_verified": true,
-            "headline": "Skeptical first-timer. Completely won over.",
-            "product": "50 mg Everyday Ease"
+            "headline": "The ninety milligram takes care of hard days",
+            "product": "90 mg Capsules"
           }
         }
       },
@@ -561,13 +566,13 @@
         "badge_2_value": "50/90",
         "badge_2_label": "MG, EXACT\nPER CAPSULE",
         "pouch_image": "",
-        "pouch_image_asset": "dandy-cap-review-top.webp",
+        "pouch_image_asset": "dandy-cap-review-top.jpg",
         "pouch_image_mobile": "",
-        "pouch_image_mobile_asset": "dandy-cap-review-top.webp",
+        "pouch_image_mobile_asset": "dandy-cap-review-top.jpg",
         "pouch_cutout_mobile": "",
         "pouch_cutout_mobile_asset": "",
         "person_image": "",
-        "person_image_asset": "dandy-cap-spotlight.webp",
+        "person_image_asset": "dandy-cap-spotlight.jpg",
         "background_color": "#164020",
         "outside_color": "#fff9f0",
         "clamp_words": 40,
@@ -584,12 +589,12 @@
           "settings": {
             "variant": "caffeine",
             "title": "Over-the-counter pills: Mute it",
-            "description": "Mutes the symptom for an hour or two and taxes the body to do it.",
+            "description": "Dulls the sensation briefly while wearing heavily on your stomach lining.",
             "items": "Stomach burn\nFoggy, drowsy\nWears off fast",
             "icon": "",
             "icon_asset": "dandy-cap-icon-x.svg",
             "image": "",
-            "image_asset": "dandy-cap-reframe-otc.webp",
+            "image_asset": "dandy-cap-reframe-otc.png",
             "art_portrait": true
           }
         },
@@ -598,14 +603,14 @@
           "settings": {
             "variant": "dandy",
             "title": "Dandy: Move again",
-            "description": "Standardized extract that works across multiple natural pathways, so the body eases while the head stays sharp.",
+            "description": "Pure plant extract that calms physical tension so your body loosens and your head stays clear.",
             "items": "Deep muscle ease\nJoint comfort\nClear head\nLighter mood",
             "icon": "",
             "icon_asset": "dandy-cap-icon-check.svg",
             "image": "",
-            "image_asset": "dandy-cap-reframe-dandy.webp",
+            "image_asset": "dandy-cap-reframe-dandy.png",
             "art_portrait": true,
-            "motion_before_asset": "dandy-cap-reframe-otc.webp",
+            "motion_before_asset": "dandy-cap-reframe-otc.png",
             "motion_pulse_x": 50,
             "motion_pulse_y": 12
           }
@@ -619,10 +624,10 @@
       "settings": {
         "eyebrow": "",
         "heading": "When the discomfort stops, you get your day back.",
-        "body": "When you're dealing with nagging physical ache, you don't just lose comfort. You lose patience, energy and presence.\n\nMost people settle for options that either burn their stomach lining or numb their brain. Dandy is built to do neither.",
+        "body": "Nagging physical wear steals more than your comfort. It steals your patience, your focus, and your energy.\n\nMost remedies make you choose between stomach burn and mental fog. Dandy is engineered so you never have to settle.",
         "background_color": "#fff9f0",
         "show_wedge": true,
-        "next_color": "#164020"
+        "next_color": "#e8f1e4"
       }
     },
     "grimace": {
@@ -632,33 +637,33 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-ritual-1.webp",
+            "image_asset": "dandy-cap-ritual-1.jpg",
             "image_mobile": "",
-            "image_mobile_asset": "dandy-cap-ritual-1.webp",
+            "image_mobile_asset": "dandy-cap-ritual-1.jpg",
             "title": "No clumps, no shakers, no gagging",
-            "text": "Raw kratom powder tastes like bitter, muddy dirt and clings to your throat. Dandy isolates the pure active alkaloids into a tasteless vegan capsule that goes down in two seconds."
+            "text": "Raw leaf powder tastes like bitter mud and coats the back of your throat. Dandy extracts the pure active mitragynine into a tasteless plant capsule that slides down in two seconds."
           }
         },
         "card_2": {
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-ritual-2.webp",
+            "image_asset": "dandy-cap-ritual-2.jpg",
             "image_mobile": "",
-            "image_mobile_asset": "dandy-cap-ritual-2.webp",
+            "image_mobile_asset": "dandy-cap-ritual-2.jpg",
             "title": "No $15 mystery shots",
-            "text": "Liquid extract shots hit hard, taste like battery acid, and cost upwards of $15 to $20 a bottle at smoke shops. Dandy delivers calibrated, laboratory-standardized relief for a fraction of the cost."
+            "text": "Smoke shop liquid shots taste like battery acid, hit with jarring spikes, and cost twenty dollars a bottle. Dandy delivers smooth, laboratory-tested physical ease at a fraction of the daily cost."
           }
         },
         "card_3": {
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-ritual-3.webp",
+            "image_asset": "dandy-cap-ritual-3.jpg",
             "image_mobile": "",
-            "image_mobile_asset": "dandy-cap-ritual-3.webp",
+            "image_mobile_asset": "dandy-cap-ritual-3.jpg",
             "title": "One capsule, not ten",
-            "text": "Standard raw-leaf capsules force you to swallow 6 to 10 giant horse pills packed with raw plant cellulose that upsets your stomach lining. Dandy concentrates that entire handful into a single measured capsule."
+            "text": "Unrefined leaf capsules force you to choke down eight giant horse pills packed with raw plant fiber that upsets your stomach. Dandy concentrates that entire handful into one small measured capsule."
           }
         }
       },
@@ -671,8 +676,8 @@
       "settings": {
         "heading": "The relief you need. None of the disgusting rituals.",
         "heading_mobile": "ALL THE RELIEF.\nNONE OF THE GAGGING.",
-        "body": "Most ways to take kratom make you pay a tax: choking down clumped mud, drinking chemical shots that burn your throat, or swallowing 8 giant horse pills. Dandy gives you pure, standardized relief in one clean capsule.",
-        "background_color": "#164020"
+        "body": "Traditional kratom forces you to pay a steep tax: choking down bitter swamp mud, drinking burning chemical shots, or swallowing a fistful of giant horse pills. Dandy delivers calibrated, laboratory relief in one small swallow.",
+        "background_color": "#e8f1e4"
       }
     },
     "compare": {
@@ -682,9 +687,9 @@
           "type": "item",
           "settings": {
             "title": "OTC painkillers",
-            "text": "Can take the edge off for an hour or two, but regular use is notorious for wearing on the stomach lining, gut and liver. And zero mood support.",
+            "text": "They can dull the ache for a short window, but regular use is notorious for wearing down your stomach lining and gut. Plus they do nothing for your daily energy or mood.",
             "image": "",
-            "image_asset": "dandy-cap-compare-otc.webp",
+            "image_asset": "dandy-cap-compare-otc.png",
             "desktop_column": "left",
             "img_width": 115,
             "img_height": 88,
@@ -699,9 +704,9 @@
           "type": "item",
           "settings": {
             "title": "CBD & hemp capsules",
-            "text": "Fine for general wellness, but most people find CBD underwhelming when real physical tension and joint stiffness strike. You need something you can actually feel.",
+            "text": "Helpful for light relaxation, but most people find CBD underwhelming when stubborn back tension and joint stiffness flare up. You need something you can actually feel working.",
             "image": "",
-            "image_asset": "dandy-cap-compare-cbd.webp",
+            "image_asset": "dandy-cap-compare-cbd.png",
             "desktop_column": "left",
             "img_width": 124,
             "img_height": 122,
@@ -716,9 +721,9 @@
           "type": "item",
           "settings": {
             "title": "Muscle relaxers & sedatives",
-            "text": "They quiet the pain by switching off your nervous system. Great if you want to fall asleep on the couch at 2 PM. Useless if you need to work, drive or parent.",
+            "text": "They ease tension by switching off your alert nervous system. Fine if you plan on sleeping on the couch all afternoon, but useless if you need to work, drive, or take care of family.",
             "image": "",
-            "image_asset": "dandy-cap-compare-rx.webp",
+            "image_asset": "dandy-cap-compare-rx.png",
             "desktop_column": "left",
             "img_width": 105,
             "img_height": 93,
@@ -733,9 +738,9 @@
           "type": "item",
           "settings": {
             "title": "Raw-leaf kratom capsules",
-            "text": "Unstandardized powder packed into giant shells. Six to ten horse pills a dose, potency that swings batch to batch, and rarely tested for heavy metals.",
+            "text": "Crude powder scooped into giant shells. You have to swallow eight large pills per dose, the strength swings wildly from jar to jar, and unrefined leaf is rarely screened for heavy metals.",
             "image": "",
-            "image_asset": "dandy-cap-compare-raw.webp",
+            "image_asset": "dandy-cap-compare-raw.png",
             "desktop_column": "right",
             "img_width": 107,
             "img_height": 98,
@@ -750,20 +755,20 @@
           "type": "difference",
           "settings": {
             "title": "The Dandy difference",
-            "heading": "PHARMACEUTICAL-GRADE CONSISTENCY.\nPLANT-DERIVED RELIEF.",
+            "heading": "EXACT STRENGTH. REAL RELIEF.\nCLEAR HEAD.",
             "heading_mobile": "Exact strength. Real relief. Clear head.",
-            "text": "Standardized to an exact 50 mg or 90 mg of mitragynine. Deep physical relief you feel within 45 minutes, with a clean, uplifting focus that keeps you in the game.",
-            "points": "Exact 50 mg or 90 mg, every capsule\nRelief within 45 minutes\nZero grogginess or brain fog\nOne small capsule, no sludge",
+            "text": "Standardized to an exact 50 mg or 90 mg of natural mitragynine. Delivers physical comfort within 45 minutes, paired with clean, steady focus that lets you tackle your day.",
+            "points": "Exact 50 mg or 90 mg in every capsule\nNoticeable physical comfort within 45 minutes\nZero mental grogginess or drowsiness\nOne small capsule with zero plant sludge",
             "icon": "",
             "icon_asset": "dandy-cap-icon-check-leaf.svg",
             "image": "",
-            "image_asset": "dandy-cap-jar-90.webp",
+            "image_asset": "dandy-cap-jar-90.png",
             "image_2": "",
-            "image_2_asset": "dandy-cap-jar-50.webp",
+            "image_2_asset": "dandy-cap-jar-50.png",
             "mobile_peek_image": "",
-            "mobile_peek_image_asset": "dandy-cap-jar-50.webp",
+            "mobile_peek_image_asset": "dandy-cap-jar-50.png",
             "mobile_image": "",
-            "mobile_image_asset": "dandy-cap-jar-50.webp"
+            "mobile_image_asset": "dandy-cap-jar-50.png"
           }
         }
       },
@@ -778,8 +783,8 @@
       "settings": {
         "heading": "Why Dandy isn’t like the rest",
         "heading_mobile": "Why Dandy isn’t\nlike the rest.",
-        "body": "Most options make you choose between a burned stomach, a foggy head or a fistful of bitter horse pills. Dandy delivers deep physical ease and a clear head in one measured capsule.",
-        "background_color": "#164020",
+        "body": "Most remedies force a compromise: irritate your stomach, fog your mind, or choke down bitter powder. Dandy delivers deep physical comfort and steady focus in one calibrated capsule.",
+        "background_color": "#e8f1e4",
         "show_wedge": true,
         "next_color": "#fff9f0",
         "art_contain": true
@@ -792,36 +797,36 @@
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-1.webp",
+            "image_asset": "dandy-cap-moment-1.jpg",
             "title": "Loosen stiff joints",
-            "text": "Get moving without that first creaky half hour of tight joints and a locked lower back."
+            "text": "Get moving without that first creaky half hour."
           }
         },
         "card_2": {
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-2.webp",
+            "image_asset": "dandy-cap-moment-2.jpg",
             "title": "End the day\nstill standing",
-            "text": "Physical endurance that carries you through long shifts, workouts and weekend projects with something left over."
+            "text": "Finish long physical days with comfort to spare."
           }
         },
         "card_3": {
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-3.webp",
+            "image_asset": "dandy-cap-moment-3.jpg",
             "title": "Stand up like it's nothing",
-            "text": "Out of the chair, off the floor, up the stairs. The small moves stop being a negotiation."
+            "text": "Chairs, floors, and stairs stop being negotiations."
           }
         },
         "card_4": {
           "type": "card",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-moment-4.webp",
+            "image_asset": "dandy-cap-moment-4.jpg",
             "title": "Clear head, all day",
-            "text": "Ease in the body without fog in the mind, whatever the day asks."
+            "text": "Full physical ease with zero mental fog."
           }
         }
       },
@@ -835,7 +840,7 @@
       "settings": {
         "heading": "Move freely. Stay in the game.",
         "heading_mobile": "Move freely.\nStay in the game.",
-        "body": "Not a numbing blanket. A warm, loosening ease that lets you get on with a physical day.",
+        "body": "Not a dulling fog. A warm, loosening ease that lets you get through a physical day.",
         "body_mobile": "The warm, loosening ease is what makes the rest of the day feel different.",
         "background_color": "#fff9f0"
       }
@@ -847,27 +852,27 @@
         "heading_small": "What's in a",
         "heading_large": "Dandy?",
         "item_1_title": "STANDARDIZED MITRAGYNINE EXTRACT",
-        "item_1_text": "Exactly 50 mg or 90 mg of mitragynine, standardized so every capsule delivers the same ease.",
+        "item_1_text": "Standardized to an exact 50 or 90 mg so every capsule delivers the same reliable ease.",
         "item_1_image": "",
-        "item_1_image_asset": "dandy-cap-ing-extract.webp",
+        "item_1_image_asset": "dandy-cap-ing-extract.png",
         "item_2_title": "MICROCRYSTALLINE CELLULOSE",
-        "item_2_text": "A plant fiber that keeps the dose evenly dispersed and smoothly absorbed.",
+        "item_2_text": "Natural plant fiber that keeps the extract evenly dispersed for gentle, smooth digestion.",
         "item_2_image": "",
-        "item_2_image_asset": "dandy-cap-ing-cellulose.webp",
-        "item_3_title": "VEGAN HPMC SHELL",
-        "item_3_text": "Plant-cellulose capsule that dissolves in minutes. No gelatin, dyes or preservatives. Smooth size 00 capsule. Easy to swallow. Zero bitter taste.",
+        "item_2_image_asset": "dandy-cap-ing-cellulose.png",
+        "item_3_title": "VEGAN PLANT SHELL",
+        "item_3_text": "Pure plant cellulose that dissolves in ten minutes. Zero gelatin, artificial dyes, or fillers.",
         "item_3_image": "",
-        "item_3_image_asset": "dandy-cap-ing-shell.webp",
+        "item_3_image_asset": "dandy-cap-ing-shell.png",
         "button_label": "View this batch's lab report",
-        "ingredients": "<p><strong>Triple-Tested Purity. Zero Compromises.</strong></p><p>Every batch is tested by independent US laboratories before it ever reaches your doorstep. Independently Verified by ISO-Certified US Labs.</p><p><strong>Batch #N11395: 100% Pass</strong><br/>Active Mitragynine: 50.8 mg<br/>Heavy Metals (Lead, Arsenic, Cadmium): None detected<br/>Microbial &amp; Solvent Screen: 100% clean<br/>Zero Heavy Metals (Tested to Parts-Per-Billion)<br/>cGMP Certified Facility</p><p>Kratom leaf (Mitragyna speciosa) extract, standardized to 50 mg or 90 mg mitragynine per capsule.<br/><br/>Other ingredients: microcrystalline cellulose, vegan capsule (hydroxypropyl methylcellulose). 0 g sugar. 0 calories. 100% Vegan &amp; Non-GMO.</p>",
+        "ingredients": "<p><strong>Lab tested, every batch.</strong></p><p>Every single production batch is verified by independent American laboratories for exact alkaloid potency, heavy metals, pesticides, and purity before it ever reaches your door.</p><p><strong>Batch #N11395: 100% Pass</strong><br/>Active Mitragynine: 50.8 mg<br/>Heavy Metals (Lead, Arsenic, Cadmium): None detected<br/>Microbial &amp; Solvent Screen: 100% clean</p><p>Kratom leaf (Mitragyna speciosa) extract, standardized to 50 mg or 90 mg mitragynine per capsule.<br/><br/>Other ingredients: microcrystalline cellulose, vegan capsule (hydroxypropyl methylcellulose). 0 g sugar. 0 calories. 100% Vegan &amp; Non-GMO.</p>",
         "button_link": "",
         "product_image": "",
-        "product_image_asset": "dandy-cap-jar-caps-50.webp",
+        "product_image_asset": "dandy-cap-jar-caps-50.png",
         "product_image_mobile": "",
-        "product_image_mobile_asset": "dandy-cap-jar-caps-50.webp",
+        "product_image_mobile_asset": "dandy-cap-jar-caps-50.png",
         "hand_image": "",
         "hand_image_asset": "",
-        "card_color": "#164020",
+        "card_color": "#e8f1e4",
         "background_color": "#fff9f0",
         "art_contain": true
       }
@@ -879,7 +884,7 @@
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-1.webp",
+            "image_asset": "dandy-cap-start-1.jpg",
             "label": "Start with one 50 mg",
             "text": "One capsule with a full glass of water.",
             "text_mobile": "",
@@ -892,7 +897,7 @@
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-2.webp",
+            "image_asset": "dandy-cap-start-2.jpg",
             "label": "Wait 45 minutes",
             "text": "Let it settle in before deciding on more.",
             "text_mobile": "",
@@ -905,26 +910,26 @@
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-3.webp",
+            "image_asset": "dandy-cap-start-3.jpg",
             "label": "Check in",
             "text": "Notice how you stand and stretch.",
             "text_mobile": "",
             "text_width_mobile": 134,
-            "overlay": 42,
-            "overlay_mobile": 42
+            "overlay": 50,
+            "overlay_mobile": 58
           }
         },
         "step_4": {
           "type": "step",
           "settings": {
             "image": "",
-            "image_asset": "dandy-cap-start-4.webp",
+            "image_asset": "dandy-cap-start-4.jpg",
             "label": "Use it with intention",
             "text": "Use it when needed, with days off.",
             "text_mobile": "",
             "text_width_mobile": 134,
-            "overlay": 36,
-            "overlay_mobile": 36
+            "overlay": 52,
+            "overlay_mobile": 58
           }
         }
       },
@@ -1054,10 +1059,10 @@
         "no_icon": "",
         "no_icon_asset": "dandy-cap-icon-x.svg",
         "pouch_image": "",
-        "pouch_image_asset": "dandy-cap-jar-tilt-50.webp",
+        "pouch_image_asset": "dandy-cap-jar-tilt-50.png",
         "background_color": "#fff9f0",
         "show_wedge": true,
-        "next_color": "#164020",
+        "next_color": "#e8f1e4",
         "art_contain": true
       }
     },
@@ -1067,36 +1072,36 @@
         "video_1": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-1.webp",
+            "poster_asset": "dandy-cap-videos-1.jpg",
             "video_asset": "",
-            "quote": "“Replaced 6 ibuprofen a day. My stomach finally gets a break.”",
+            "quote": "“No more burning stomach just to get through a shift. My back feels loose and easy.”",
             "name": "Marcus T."
           }
         },
         "video_2": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-2.webp",
+            "poster_asset": "dandy-cap-videos-2.jpg",
             "video_asset": "",
-            "quote": "“Finally done choking down green dirt.”",
+            "quote": "“Done choking down bitter green sludge every morning. One clean capsule and I am good.”",
             "name": "Jason M."
           }
         },
         "video_3": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-3.webp",
+            "poster_asset": "dandy-cap-videos-3.jpg",
             "video_asset": "",
-            "quote": "“The knot between my shoulder blades is finally gone.”",
+            "quote": "“The stubborn knot between my shoulder blades finally relaxed. My head stayed sharp all day.”",
             "name": "Sarah L."
           }
         },
         "video_4": {
           "type": "video",
           "settings": {
-            "poster_asset": "dandy-cap-videos-4.webp",
+            "poster_asset": "dandy-cap-videos-4.jpg",
             "video_asset": "",
-            "quote": "“Skeptical first-timer. Completely won over.”",
+            "quote": "“I was skeptical before my first jar. Now I keep one in my truck for long physical shifts.”",
             "name": "Brent W."
           }
         }
@@ -1113,8 +1118,8 @@
         "heading_mobile": "How people\ndo Dandy.",
         "body": "Job sites at 11 AM, post-workout evenings, and the moment you stop noticing your back.",
         "gummies_image": "",
-        "gummies_image_asset": "dandy-cap-jar-caps-50.webp",
-        "background_color": "#164020",
+        "gummies_image_asset": "dandy-cap-jar-caps-50.png",
+        "background_color": "#e8f1e4",
         "verified_label": "Verified Buyer",
         "verified_icon": "",
         "verified_icon_asset": "dandy-cap-icon-verified.svg",
@@ -1128,63 +1133,70 @@
           "type": "question",
           "settings": {
             "question": "What does taking a Dandy capsule feel like?",
-            "answer": "<p>Most people describe a deep, warm release of physical tension across the lower back, neck and joints, paired with a calm, alert clarity. Within 45 minutes the nagging physical background noise softens. Unlike sedating remedies or muscle relaxers, there's no brain fog, heavy eyelids or couch-lock. Your head stays sharp while your body feels loose and easy to move in.</p>"
+            "answer": "<p>Most people describe a warm, soothing release of tension across their lower back, knees, and joints within about 45 minutes. The constant background ache of physical wear quiets down so moving feels natural again. Unlike sedating remedies, Dandy does not cause heavy eyelids or brain fog. Your mind stays clear, sharp, and alert while your body feels loose and comfortable.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
             "question": "Which strength should I start with, 50 mg or 90 mg?",
-            "answer": "<p>New to kratom, or after everyday relief from desk stiffness, workouts or general wear-and-tear? Start with <strong>50 mg</strong>. One capsule is the ideal baseline.</p><p>Persistent, intense physical discomfort, demanding physical shifts, or experienced routines? Choose <strong>90 mg</strong>. Either way, start with a single capsule and a full glass of water.</p>"
+            "answer": "<p>If you are new to kratom extract, or dealing with everyday physical stiffness from desk work, gardening, or moderate daily wear, start with 50 mg. One 50 mg capsule is the ideal baseline for most adults.</p><p>If you have persistent, heavy physical ache, work demanding twelve hour shifts on your feet, or need stronger support for heavier days or bigger bodies, choose 90 mg. Either way, always start with a single capsule and a full glass of water.</p>"
           }
         },
         "q3": {
           "type": "question",
           "settings": {
             "question": "How quickly does it work, and how long does it last?",
-            "answer": "<p>The vegan HPMC shell breaks down in the stomach within about 10 minutes. Most people feel the physical unwinding within 45 minutes, a little faster on an empty or light stomach. The ease and clear focus typically last 4 to 6 hours, tapering off gently with no crash or rebound stiffness.</p>"
+            "answer": "<p>The vegan plant shell dissolves in your stomach in about ten minutes. Most people feel physical ease spreading through their joints and muscles within 40 to 45 minutes, slightly faster on an empty stomach. The physical comfort and clear focus generally last four to six hours, tapering off smoothly with zero afternoon crash and no rebound stiffness.</p>"
           }
         },
         "q4": {
           "type": "question",
           "settings": {
-            "question": "What's in each capsule, and is it tested?",
-            "answer": "<p>A minimalist formula: pure <em>Mitragyna speciosa</em> leaf extract standardized to an exact 50 mg or 90 mg of mitragynine, microcrystalline cellulose (plant fiber for even dispersion), and a vegan plant-cellulose (HPMC) shell. Zero gelatin, zero sugar, zero fillers, zero calories.</p><p>Every batch is independently third-party tested by an accredited ISO lab for alkaloid potency, heavy metals, pesticides and microbials. The batch number is printed on the bottom of your jar and links to its full Certificate of Analysis.</p>"
+            "question": "What is in each capsule, and is it tested?",
+            "answer": "<p>A strictly minimalist formula: pure Mitragyna speciosa leaf extract standardized to an exact 50 mg or 90 mg of natural mitragynine, microcrystalline cellulose (a natural plant fiber for smooth absorption), and a vegan plant capsule shell.</p><p>Zero sugar, zero gelatin, zero synthetic additives, and zero calories. Every batch is independently tested by accredited American laboratories for exact alkaloid potency, heavy metals, pesticides, and microbial purity. The batch number on your jar links directly to its lab report online.</p>"
           }
         },
         "q5": {
           "type": "question",
           "settings": {
             "question": "Is Dandy legal, and how is it different from 7-OH products?",
-            "answer": "<p>Yes, Dandy is federally legal. It's made exclusively from natural, unadulterated Southeast Asian kratom leaf extract, a botanical in the coffee family with centuries of traditional use for physical endurance and comfort.</p><p>Dandy is fundamentally different from synthetic or hyper-concentrated 7-hydroxymitragynine (7-OH) tablets and gas-station shots, which have faced regulatory bans. Dandy contains only the natural leaf alkaloid profile, dominated by mitragynine with minor alkaloids below 1%, and ships legally to your door in the states where kratom is regulated for adults 21+.</p>"
+            "answer": "<p>Yes, Dandy is federally legal and protected for adult purchase across the United States. A growing number of states, including Utah, Arizona, Georgia, Florida, Texas, and Colorado, have passed the Kratom Consumer Protection Act to secure adult access to pure, tested leaf products.</p><p>Dandy contains exclusively natural, unadulterated Southeast Asian leaf extract centered on mitragynine. It is completely different from chemically altered or synthetic 7-hydroxymitragynine (7-OH) pills and gas station shots. We never alter, concentrate 7-OH, or spike our products.</p>"
           }
         },
         "q6": {
           "type": "question",
           "settings": {
-            "question": "Is kratom habit-forming? Can I take it every day?",
-            "answer": "<p>Like coffee, tea or any botanical that provides noticeable physical support, kratom can be habit-forming with continuous use. That's why we advocate intentional relief: take it on heavy physical days, after hard workouts, or when stiffness flares. One or two days off per week keeps your receptors responsive so a single capsule keeps delivering, without needing more.</p>"
+            "question": "Can I take Dandy capsules every day?",
+            "answer": "<p>Like coffee, alcohol, or THC, botanical products require adult responsibility and intentional use. While Dandy can be taken as part of a regular routine, we recommend using it when your body actually asks for relief, like after heavy physical shifts or hard yard work. Taking one or two rest days each week keeps your body responsive so a single capsule continues delivering the same steady ease.</p>"
           }
         },
         "q7": {
           "type": "question",
           "settings": {
             "question": "Who are Dandy capsules for, and who should avoid them?",
-            "answer": "<p>Healthy adults 21 and older who need serious physical comfort from joint stiffness, muscular strain or demanding physical lifestyles, without the fog of sedatives or the stomach irritation of over-the-counter pills.</p><p>Not for anyone under 21, anyone pregnant or nursing, or anyone taking prescription medication without first consulting their physician.</p>"
+            "answer": "<p>Dandy is designed for healthy adults 21 and older dealing with persistent physical wear, joint stiffness, and muscular fatigue who want dependable relief without stomach upset or mental fog.</p><p>Dandy is not intended for anyone under 21, women who are pregnant or nursing, or anyone with serious underlying medical conditions. If you are taking prescription medications, always speak with your physician before introducing any new botanical supplement.</p>"
           }
         },
         "q8": {
           "type": "question",
           "settings": {
-            "question": "What if Dandy doesn't relieve my discomfort?",
-            "answer": "<p>You're covered by our 30-day, 100% satisfaction guarantee on every order. <a href=\"/pages/contact?view=dandy2-returns\">See the refund policy</a> for how it works.</p>"
+            "question": "What if Dandy does not relieve my physical discomfort?",
+            "answer": "<p>You are protected by our 30-day money-back guarantee. If you do not experience noticeable relief in your joints and muscles, simply contact our support team within 30 days and send the remaining jar back. We will refund every cent of your purchase price immediately.</p>"
           }
         },
         "q_powder": {
           "type": "question",
           "settings": {
             "question": "How is Dandy different from raw kratom powder?",
-            "answer": "<p>Everything you want from the leaf. None of the mess, nausea, or bitter sludge.</p><p><strong>Raw Kratom Powder &amp; Bulk Leaf</strong><br/>Taste &amp; Ingestion — Vile Bitter Sludge: Gags your throat, coats your teeth, bitter aftertaste.<br/>Digestive Impact — Heavy Gut Bloat: 5–8g of raw plant fiber causes nausea &amp; constipation.<br/>Dosing Accuracy — Unpredictable Guesswork: Scoops vary wildly in potency from bag to bag.<br/>Convenience — Messy Preparation: Shakers, scales, spills, and green powder everywhere.</p><p><strong>Dandy Standardized 50mg Extract</strong><br/>Zero Taste, Zero Odor: Smooth size 00 capsule slides down effortlessly.<br/>Exact 50mg Mitragynine: Lab-calibrated consistency in every single capsule.<br/>10-Second Routine: Pop one capsule with water&nbsp;and&nbsp;go.</p>"
+            "answer": "<p>Raw leaf powder requires drinking or swallowing grams of unrefined, bitter plant dirt that frequently causes nausea and stomach bloat. On top of that, crude ground powder varies wildly in potency from bag to bag.</p><p>Dandy uses a specialized clean extraction process that separates pure mitragynine from the indigestible plant fibers. You get an exact, laboratory-measured dose in one small, tasteless capsule that goes down in seconds with zero stomach irritation.</p>"
+          }
+        },
+        "q_drugtest": {
+          "type": "question",
+          "settings": {
+            "question": "Will Dandy show up on a drug test?",
+            "answer": "<p>Standard drug screens do not look for mitragynine. Mitragynine is an active botanical alkaloid that is chemically distinct from the substances tested on standard employment screens. Common 5-panel, 10-panel, and 12-panel workplace drug tests screen for opioids, amphetamines, cannabinoids, cocaine, and phencyclidine. Natural mitragynine does not trigger a positive result on those standard panels. If your employer runs specialized expanded botanical screenings, check their specific policy.</p>"
           }
         }
       },
@@ -1197,7 +1209,8 @@
         "q5",
         "q6",
         "q7",
-        "q8"
+        "q8",
+        "q_drugtest"
       ],
       "name": "Dandy FAQ",
       "settings": {
@@ -1217,49 +1230,49 @@
         "t1": {
           "type": "review",
           "settings": {
-            "quote": "“Swallowed one capsule before a 6-hour road trip. Zero lower-back throbbing when I climbed out of the driver’s seat. Unheard of for me.”",
+            "quote": "“Took one capsule before a six hour drive. Zero lower back throbbing when I climbed out of the truck cab. Unheard of for me on trips like that.”",
             "name": "Gary P."
           }
         },
         "t2": {
           "type": "review",
           "settings": {
-            "quote": "“CBD did nothing. Prescriptions turned me into a zombie. Dandy takes the sharp edge off my joint stiffness while my brain stays 100% locked in.”",
+            "quote": "“CBD did nothing for me and muscle rubs only masked the surface. Dandy takes the sharp edge off my joint stiffness while my brain stays completely awake and clear.”",
             "name": "Karen B."
           }
         },
         "t3": {
           "type": "review",
           "settings": {
-            "quote": "“The 90 mg is a lifesaver for roofing in 90-degree summer heat. Muscles stay loose, no cramping, and zero stomach burn.”",
+            "quote": "“The ninety milligram jar is essential for roofing in ninety degree summer heat. Muscles stay loose, no cramping, and zero stomach burn all shift.”",
             "name": "Tyler S."
           }
         },
         "t4": {
           "type": "review",
           "settings": {
-            "quote": "“I can actually bend down and garden for three hours on Saturday without having to lie flat on an ice pack all Sunday morning.”",
+            "quote": "“I can bend down and weed flower beds for three hours on Saturday without spending all Sunday morning flat on an ice pack. My knees feel remarkably calm.”",
             "name": "Diane M."
           }
         },
         "t5": {
           "type": "review",
           "settings": {
-            "quote": "“No green powder dusting my kitchen counter. No measuring spoons. Just one clean capsule with water and the physical tension melts away.”",
+            "quote": "“No green powder dusting my kitchen counters. No measuring spoons or bitter drinks. Just one clean capsule with water and physical tension melts away.”",
             "name": "Chris V."
           }
         },
         "t6": {
           "type": "review",
           "settings": {
-            "quote": "“I work 14-hour days on a commercial fishing rig. The 90 mg keeps my hands and back working smoothly without dulling my reflexes.”",
+            "quote": "“I work fourteen hour days out on the water. The ninety milligram keeps my hands and back moving smoothly without dulling my reflexes at all.”",
             "name": "Luke D."
           }
         },
         "t7": {
           "type": "review",
           "settings": {
-            "quote": "“Fast shipping, arrived in a plain brown box, and the physical comfort was noticeable within 45 minutes. Already reordered.”",
+            "quote": "“Fast delivery, arrived in a plain brown box, and the physical comfort was noticeable within forty minutes. Already ordered my second bundle.”",
             "name": "Rachel H."
           }
         }
@@ -1296,7 +1309,7 @@
       "settings": {
         "tagline": "Kratom made fine and Dandy.",
         "newsletter_heading": "Stay in the know",
-        "newsletter_text": "Good emails. No inbox nonsense.",
+        "newsletter_text": "Good emails on healthy movement, physical relief, and zero inbox junk.",
         "placeholder": "Enter your email",
         "button_label": "Sign Up",
         "success_text": "Thanks for signing up!",
@@ -1304,8 +1317,9 @@
         "menu_1": "shop",
         "menu_2_title": "Know",
         "menu_2": "know",
-        "copyright": "© 2026 DANDY, All rights reserved.",
-        "background_color": "#164020"
+        "copyright": "© 2026 DANDY. All rights reserved.",
+        "background_color": "#164020",
+        "disclaimer": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Must be 21 years of age or older to purchase. Not for sale to minors or where prohibited by local law. Consult your physician before using any botanical product, especially if taking prescription medications or during pregnancy."
       }
     }
   },

@@ -25,6 +25,11 @@
   assign effective_page_title = page_title_override | default: page_title
   assign effective_page_description = page_description_override | default: page_description
   assign effective_canonical_url = canonical_url_override | default: canonical_url
+  if template.suffix == 'dandy2-coa' or template.suffix == 'batch-reports' or template.suffix == 'quality-and-testing'
+    assign effective_page_title = 'Lab Reports & Batch Verification'
+    assign effective_page_description = 'Browse Dandy potency reports by product and report ID. Read the measured results and open the original lab PDFs.'
+    assign effective_canonical_url = request.origin | append: '/pages/lab-reports'
+  endif
   assign og_title = effective_page_title | default: shop.name
   assign og_url = effective_canonical_url | default: request.origin
   assign og_type = 'website'

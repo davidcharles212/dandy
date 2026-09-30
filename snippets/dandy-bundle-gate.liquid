@@ -1,0 +1,61 @@
+{%- comment -%}
+  Bundle gate (David, 2026-09-29). The gummy and capsule PDPs sell one pouch or jar with a quantity
+  stepper. The 2- and 3-pack tiers show only to a shopper whose landing URL carried a UTM
+  parameter (any utm_*: paid ads, email, SMS, affiliates), or that came from a landing-page
+  bundle button (?bundle=2 or 3, also ?qty=). A click id alone does not qualify.
+
+  Rendered at the top of <head> in every layout that traffic can land on, so a shopper who
+  lands on an advertorial and clicks through to a PDP keeps the bundles. Internal links that carry
+  UTMs (the quiz result links) also qualify. A qualifying visit is
+  remembered for 90 days (localStorage plus a first-party cookie; Safari may clear script-set
+  storage sooner for visitors who do not come back within 7 days). The script sets
+  html.dandy-bundles-on before first paint; the buy boxes hide tiers 2 and 3 without that class.
+
+  QA override: ?dandy_bundles=on shows the bundles on this browser for 90 days, ?dandy_bundles=off clears it.
+{%- endcomment -%}
+<script>
+  (function () {
+    var KEY = 'dandy_bundles';
+    var TTL = 90 * 24 * 60 * 60 * 1000;
+    var root = document.documentElement;
+    var now = Date.now();
+    function remember() {
+      var until = now + TTL;
+      try { localStorage.setItem(KEY, String(until)); } catch (e) { console.warn('dandy bundle gate: localStorage unavailable', e); }
+      document.cookie = KEY + '=' + until + '; max-age=' + Math.round(TTL / 1000) + '; path=/; SameSite=Lax';
+    }
+    function forget() {
+      try { localStorage.removeItem(KEY); } catch (e) { console.warn('dandy bundle gate: localStorage unavailable', e); }
+      document.cookie = KEY + '=; max-age=0; path=/; SameSite=Lax';
+    }
+    function stored() {
+      var until = 0;
+      try { until = Number(localStorage.getItem(KEY)) || 0; } catch (e) { console.warn('dandy bundle gate: localStorage unavailable', e); }
+      if (!until) {
+        var m = document.cookie.match(/(?:^|;\s*)dandy_bundles=(\d+)/);
+        until = m ? Number(m[1]) : 0;
+      }
+      return until > now;
+    }
+    try {
+      var p = new URLSearchParams(location.search);
+      var get = function (k) { return (p.get(k) || '').toLowerCase(); };
+      var override = get('dandy_bundles');
+      if (override === 'off') forget();
+      if (override === 'on') remember();
+
+      // Any visit that carries a UTM (David, 2026-09-29: "any click with a utm on it").
+      var hasUtm = false;
+      p.forEach(function (value, key) {
+        if (value && key.toLowerCase().indexOf('utm_') === 0) hasUtm = true;
+      });
+      // A landing-page button that sells a bundle (?bundle=3, ?qty=2) shows that bundle too (David, 2026-09-29).
+      var bundle = get('bundle') || get('qty');
+      if (hasUtm || bundle === '2' || bundle === '3') remember();
+
+      if (override !== 'off' && stored()) root.classList.add('dandy-bundles-on');
+    } catch (e) {
+      console.error('dandy bundle gate failed; bundles stay hidden', e);
+    }
+  })();
+</script>

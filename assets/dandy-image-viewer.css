@@ -1,0 +1,49 @@
+.dandy-image-stage { position: relative; }
+.dandy-image-open {
+  position: absolute; inset: 0; width: 100%; height: 100%; padding: 0;
+  border: 0; border-radius: inherit; background: transparent; cursor: zoom-in;
+  touch-action: pan-y pinch-zoom;
+}
+.dandy-image-open:focus-visible { outline: 3px solid #4a291d; outline-offset: -5px; }
+.dandy-image-viewer {
+  --image-ratio: 1;
+  box-sizing: border-box; position: fixed; inset: 0; margin: 0;
+  width: 100%; height: 100%; height: 100dvh; max-width: none; max-height: none;
+  padding: max(48px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  border: 0; background: transparent; color: #4a291d; overflow: hidden;
+  overscroll-behavior: contain; touch-action: pinch-zoom;
+}
+.dandy-image-viewer[open] { display: grid; place-items: center; }
+.dandy-image-viewer::backdrop {
+  background: rgb(250 239 230 / 50%);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  animation: dandy-image-backdrop-in 300ms ease both;
+}
+.dandy-image-viewer [hidden] { display: none !important; }
+.dandy-image-viewer__photo {
+  position: relative; width: min(100%, 960px, calc(70dvh * var(--image-ratio)));
+  animation: dandy-image-in 400ms cubic-bezier(.25,.46,.45,.94) both;
+}
+.dandy-image-viewer [data-image] {
+  display: block; width: 100%; height: auto; max-width: 100%; max-height: 70dvh;
+  border-radius: 12px; object-fit: contain; touch-action: pinch-zoom;
+}
+.dandy-image-viewer [data-close] {
+  appearance: none; position: absolute; top: -24px; right: 16px; z-index: 1;
+  display: grid; place-items: center; width: 48px; height: 48px; min-width: 48px;
+  margin: 0; padding: 0; border: 0; border-radius: 0;
+  background: transparent; color: #4a291d; cursor: pointer; outline: none;
+}
+.dandy-image-viewer [data-close] svg { display: block; width: 48px; height: 48px; }
+.dandy-image-viewer[data-keyboard="true"] [data-close]:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.dandy-image-viewer [data-error] { padding: 16px; border-radius: 12px; background: #fffaf0; font: 16px/1.4 sans-serif; }
+.dandy-image-viewer.is-closing .dandy-image-viewer__photo { animation: dandy-image-out 180ms ease both; }
+.dandy-image-viewer.is-closing::backdrop { animation: dandy-image-backdrop-out 180ms ease both; }
+@keyframes dandy-image-in { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes dandy-image-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(6px) scale(.98); } }
+@keyframes dandy-image-backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dandy-image-backdrop-out { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .dandy-image-viewer__photo, .dandy-image-viewer::backdrop,
+  .dandy-image-viewer.is-closing .dandy-image-viewer__photo, .dandy-image-viewer.is-closing::backdrop { animation: none; }
+}

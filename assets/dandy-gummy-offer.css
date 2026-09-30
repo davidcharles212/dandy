@@ -1,0 +1,93 @@
+/* Gummy offer, September 2026. Scoped to the review template. */
+:root { --go-space-xs: 8px; --go-space-s: 12px; --go-space-m: 20px; --go-space-l: 28px; }
+dandy-gummy-offer { display: block; }
+dandy-gummy-offer .go-buybox * { min-width: 0; }
+.go-buybox { min-width: 0; scroll-margin-top: 20px; }
+.go-dispatch { display: flex; align-items: center; justify-content: center; gap: 10px; padding: var(--go-space-s); margin-bottom: var(--go-space-s); background: #edf6e9; border-radius: 10px; color: #064c26; }
+.go-dot { width: 10px; height: 10px; flex: 0 0 10px; border-radius: 50%; background: #268548; box-shadow: 0 0 0 4px #d4e9cc; }
+.go-dispatch b { display: block; font-size: 16px; font-weight: 800; line-height: 1.3; }
+.go-dispatch div > span { display: block; font-size: 13px; line-height: 1.5; }
+.go-tiers { display: grid; gap: var(--go-space-s); border: 0; padding: 0; margin: 0; min-width: 0; }
+.go-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.dandy2-pdp .go-tier { position: relative; display: block; border: 2px solid #cbbfb8; border-radius: 12px; background: #fff; cursor: pointer; transition: border-color 140ms, background-color 140ms; overflow: hidden; }
+.go-tier > input { position: absolute; top: 50%; left: 12px; opacity: 0; width: 22px; height: 22px; margin: 0; }
+.dandy2-pdp .go-tier:has(input:checked) { border-color: #f04b23; box-shadow: 0 0 0 2px #f04b23, 0 0 0 5px #ffede6; background: #fcf0e5; }
+.go-tier:has(input:focus-visible) { outline: 2px dashed #28110c; outline-offset: 6px; }
+.go-tier:hover { border-color: #6b4a3d; }
+.go-tier-body { display: grid; grid-template-columns: 20px 86px minmax(0, 1fr) auto; grid-template-rows: auto auto auto auto; column-gap: 8px; row-gap: 5px; align-items: center; padding: var(--go-space-s) 12px; }
+.go-radio { grid-column: 1; grid-row: 1 / 4; width: 20px; height: 20px; border: 2px solid #ad9c92; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+.go-tier:has(input:checked) .go-radio { border-color: #28110c; }
+.go-tier:has(input:checked) .go-radio::after { content: ''; width: 10px; height: 10px; background: #28110c; border-radius: 50%; }
+.go-pack { grid-column: 2; grid-row: 1 / 4; position: relative; display: flex; align-items: center; justify-content: center; width: 86px; height: 78px; }
+.go-pack img { display: block; width: 88px; height: auto; object-fit: contain; flex: 0 0 auto; }
+.go-pack--2 img { width: 68px; margin: 0 -13px; }
+.go-pack--3 { height: 96px; }
+.go-pack--3 img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; margin: 0; }
+.go-title { grid-column: 3 / -1; grid-row: 1; display: flex; align-items: center; gap: 7px; font-size: 21px; font-weight: 800; line-height: 1.15; white-space: nowrap; }
+.go-price { grid-column: 4; grid-row: 2 / 4; align-self: center; text-align: right; font-size: 23px; font-weight: 800; line-height: 1.15; font-variant-numeric: tabular-nums; letter-spacing: -.5px; white-space: nowrap; }
+.go-price s { display: block; color: #817269; font-size: 15px; font-weight: 500; letter-spacing: 0; line-height: 1.5; text-decoration-thickness: 1px; }
+.go-supply { grid-column: 3; grid-row: 2; justify-self: start; font-size: 13px; line-height: 1.4; padding: 2px 7px; border-radius: 20px; background: #f0ebe7; white-space: nowrap; }
+.go-badge { display: inline-block; border-radius: 4px; background: #eee7df; padding: 2px 6px; font-size: 11px; line-height: 1.4; font-weight: 800; white-space: nowrap; }
+.go-detail { grid-column: 2 / -1; grid-row: 4; display: flex; justify-content: space-between; align-items: center; gap: 5px; padding-top: 4px; font-size: 13px; line-height: 1.4; }
+.go-daily { white-space: nowrap; }
+.go-shipping { white-space: nowrap; font-size: 13px; }
+.go-shipping--free { color: #16a34a; font-weight: 800; }
+.go-tier--hero { border-color: #9c5434; }
+.go-ribbon { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: var(--go-space-xs) 6px; background: #28110c; color: white; font-size: 14px; font-weight: 800; line-height: 1.25; text-align: center; }
+.go-tier--hero .go-badge { color: #fff; background: #064c26; }
+.go-tier--hero .go-daily { color: #9c3417; font-weight: 800; }
+.go-form { margin: var(--go-space-s) 0 0; }
+.go-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: 4px; width: 100%; min-height: 64px; padding: 13px 10px; border: 2px solid #28110c; border-radius: 10px; background: #f04b23; box-shadow: 0 4px 0 #28110c; color: #28110c; cursor: pointer; font-family: var(--d2-display); font-size: 23px; font-weight: 800; line-height: 1.1; }
+.go-cta span { white-space: nowrap; }
+.go-cta:hover { background: #f66036; }
+.go-cta:active { transform: translateY(2px); box-shadow: 0 2px 0 #28110c; }
+.go-cta:focus-visible { outline: 3px solid #064c26; outline-offset: 5px; }
+.go-cta:disabled { cursor: wait; opacity: .65; }
+.go-message { margin: var(--go-space-s) 0 0; font-size: 15px; line-height: 1.45; color: #8e2d18; }
+.go-message[hidden] { display: none; }
+.go-reassurance { display: flex; justify-content: center; align-items: center; gap: 4px; margin: var(--go-space-xs) 0 0; color: #6b7280; text-align: center; font-size: 12px; line-height: 1.4; white-space: nowrap; }
+.go-reassurance svg { flex: 0 0 12px; }
+.dandy2-pdp .daycheck + .go-faq-section { padding-top: var(--go-space-l); }
+.go-faq-intro { margin: 0 0 var(--go-space-m); font-size: 17px; line-height: 1.5; text-wrap: pretty; }
+.dandy2-pdp .go-faq-section .faq p { font-size: 17px; line-height: 1.5; }
+.dandy2-pdp .go-faq-section .faq p + p { margin-top: var(--go-space-s); }
+.go-guarantee { display: flex; gap: 12px; align-items: flex-start; margin-top: var(--go-space-m); padding: 14px 16px; border: 1px solid #efe6de; border-radius: 12px; background: #faf6f3; text-align: left; color: #28110c; }
+.go-guarantee > svg { display: block; flex: 0 0 32px; margin: 0; color: #386446; }
+.go-guarantee > div { min-width: 0; }
+.go-guarantee h2 { margin: 0; font-family: var(--d2-body); font-size: 14px; font-weight: 800; line-height: 1.3; letter-spacing: -.15px; text-transform: none; text-wrap: pretty; }
+.go-guarantee p { margin: 6px 0 0; font-size: 12.5px; line-height: 1.4; text-wrap: pretty; }
+.go-trust { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: var(--go-space-s) 0 0; padding: var(--go-space-s) 0; border-top: 1px solid #efe6de; border-bottom: 1px solid #efe6de; list-style: none; }
+.go-trust li { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 0 4px; text-align: center; }
+.go-trust li + li { border-left: 1px solid #efe6de; }
+.go-trust li > svg, .go-flag { display: block; width: 20px; height: 20px; flex: 0 0 20px; color: #386446; line-height: 20px; }
+.go-trust b { display: block; font-size: 11px; line-height: 1.35; font-weight: 700; white-space: nowrap; }
+.go-trust small { display: block; margin-top: 2px; font-size: 10px; line-height: 1.3; color: #725c4f; }
+@media (min-width: 600px) {
+  .go-tier-body { grid-template-columns: 22px 100px minmax(0, 1fr) auto; column-gap: 12px; padding: 16px; }
+  .go-pack { width: 100px; height: 86px; }
+  .go-pack img { width: 96px; }
+  .go-pack--2 img { width: 76px; }
+  .go-pack--3 { height: 106px; }
+  .go-pack--3 img { width: auto; }
+  .go-trust b { font-size: 12px; }
+  .go-trust small { font-size: 11px; }
+  .go-title { font-size: 24px; }
+  .go-price { font-size: 26px; }
+  .go-supply { font-size: 14px; }
+  .go-badge { font-size: 12px; }
+  .go-detail { font-size: 15px; }
+  .go-shipping { font-size: 13px; }
+  .go-ribbon { font-size: 16px; }
+  .go-dispatch b { font-size: 18px; }
+  .go-dispatch div > span { font-size: 14px; }
+  .go-cta { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) { .go-tier { transition: none; } }
+
+@media (max-width: 599px) {
+  dandy-gummy-offer .dandy2-pdp__grid { padding-left: 16px; padding-right: 16px; grid-template-columns: minmax(0, 1fr); }
+  dandy-gummy-offer .gallery, dandy-gummy-offer .offer { min-width: 0; }
+  .go-cta { font-size: 23px; column-gap: 3px; }
+  dandy-gummy-offer .stickybar { gap: 12px; }
+  dandy-gummy-offer .stickybar__btn { white-space: normal; max-width: 205px; font-size: 18px; line-height: 1.15; }
+}

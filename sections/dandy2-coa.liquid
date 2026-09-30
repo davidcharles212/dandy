@@ -1,55 +1,118 @@
-{% comment %}
-  DANDY 2026, LAB REPORTS / COA page.
-  Most-linked trust page on the site. Batch numbers and report links are
-  PLACEHOLDERS until David supplies the real COA files and batch records.
-{% endcomment %}
 {{ 'dandy2.css' | asset_url | stylesheet_tag }}
-{% capture d2_gcheck %}<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#064C26" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>{% endcapture %}
-<div class="dandy2-pdp dandy2-doc">
+{{ 'dandy-coa.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'dandy-coa.js' | asset_url }}" defer></script>
+<div class="dandy2-pdp dandy2-doc dandy-coa">
   {% render 'dandy2-chrome-header' %}
   <main class="doc" id="DandyMain">
     <header class="doc__head">
-      <p class="steplabel steplabel--center">Proof, not vibes</p>
-      <h1 class="belowfold__title belowfold__title--center">Every batch, on the record.</h1>
-      <p class="doc__lede">Each production batch is screened by an independent lab before it’s packed. The batch number is printed on your pouch, match it here and read exactly what was measured.</p>
+      <h1 class="belowfold__title belowfold__title--center">Lab reports &amp; batch verification</h1>
+      <p class="doc__lede">Find the potency report for your gummies, capsules or leaf powder. Check mitragynine content and the alkaloid profile, then download the full report.</p>
     </header>
 
     <section class="doc__block">
-      <h2>What every batch is tested for</h2>
+      <h2>What these reports show</h2>
       <div class="testgrid">
-        <div class="testcard"><h3>Identity</h3><p>Confirms the material is <i>Mitragyna speciosa</i> and not an adulterant or substitute.</p></div>
-        <div class="testcard"><h3>Mitragynine content</h3><p>The actual measured potency, this is what makes “35 mg” a fact rather than a claim.</p></div>
-        <div class="testcard"><h3>Heavy metals</h3><p>Lead, arsenic, cadmium, and mercury, screened against established limits.</p></div>
-        <div class="testcard"><h3>Microbials</h3><p>Total plate count, yeast and mould, E. coli, and salmonella.</p></div>
+        <div class="testcard"><h3>Potency per serving</h3><p>See the measured milligrams of mitragynine per gummy, capsule or powder serving.</p></div>
+        <div class="testcard"><h3>Alkaloid profile</h3><p>The results also include 7-hydroxymitragynine, mitraphylline, speciogynine and speciociliatine.</p></div>
+        <div class="testcard"><h3>Product &amp; report ID</h3><p>Each PDF identifies the tested sample and its batch ID, so you can check the source.</p></div>
+        <div class="testcard"><h3>Original lab documents</h3><p>Download the original quality control report with its alkaloid measurements and sample details.</p></div>
       </div>
     </section>
 
     <section class="doc__block doc__block--band">
-      <h2>Find your batch</h2>
-      <p>Look for the batch number printed near the seal on the back of your pouch, then open the matching report.</p>
-      <div class="batchtable" data-copy-status="pending-legal">
-        <div class="batchrow batchrow--head"><span>Batch</span><span>Product</span><span>Tested</span><span>Report</span></div>
-        <div class="batchrow"><span>[BATCH_ID]</span><span>Mixed berry gummies · 35 mg</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
-        <div class="batchrow"><span>[BATCH_ID]</span><span>Raw leaf powder</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
-        <div class="batchrow"><span>[BATCH_ID]</span><span>Extract capsules · 50 mg</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
-        <div class="batchrow"><span>[BATCH_ID]</span><span>Extract capsules · 90 mg</span><span>[DATE]</span><span><a href="#">Open PDF</a></span></div>
+      <h2>Find a report</h2>
+      <p>Look for the lot code on your package, then search by product or report ID. Need help matching the code? <a href="mailto:support@foreverdandy.com">Email a photo of your package stamp</a>.</p>
+      <div class="coa-tools" hidden>
+        <fieldset class="coa-filters"><legend>Filter by product</legend>
+          <button type="button" data-coa-filter="all" aria-pressed="true">All reports</button>
+          <button type="button" data-coa-filter="gummies" aria-pressed="false">Gummies</button>
+          <button type="button" data-coa-filter="capsules" aria-pressed="false">Capsules</button>
+          <button type="button" data-coa-filter="powder" aria-pressed="false">Powder</button>
+        </fieldset>
+        <label class="coa-search">Search by product or report ID<input type="search" id="CoaSearch" placeholder="e.g. N11271" autocomplete="off" aria-controls="CoaReports"></label>
+        <p id="CoaResultCount" role="status" aria-live="polite"></p>
       </div>
-      <p class="doc__note">Batch records and report PDFs are pending from production, this table is wired and will populate as each batch is released.</p>
+      <div class="batchtable" id="CoaReports" role="table" aria-label="Potency reports" aria-describedby="DandyCoaDateNote">
+        <div class="batchrow batchrow--head" role="row"><span role="columnheader">Report ID</span><span role="columnheader">Product</span><span role="columnheader">Data date</span><span role="columnheader">Report</span></div>
+        <div class="batchrow" data-coa-category="gummies" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11271</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'feel-good-gummies', decorative: true %}</span><span>Mixed berry gummies · 35 mg<small class="coa-potency">Measured: 36.6 mg / gummy</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-26">Aug 26, 2026</time></span><span role="cell"><a href="{{ 'N11271.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11271, mixed berry gummies, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/feel-good-gummies">Shop gummies</a></span></div>
+        <div class="batchrow" data-coa-category="gummies" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11272</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'feel-good-gummies', decorative: true %}</span><span>Mixed berry gummies · 35 mg<small class="coa-potency">Measured: 36.5 mg / gummy</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-18">Aug 18, 2026</time></span><span role="cell"><a href="{{ 'N11272.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11272, mixed berry gummies, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/feel-good-gummies">Shop gummies</a></span></div>
+        <div class="batchrow" data-coa-category="powder" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11270</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'premium-kratom-leaf-powder', decorative: true %}</span><span>Raw leaf powder · 250 g<small class="coa-potency">Measured: 34.4 mg / serving</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-28">Aug 28, 2026</time></span><span role="cell"><a href="{{ 'N11270.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11270, raw leaf powder, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/premium-kratom-leaf-powder">Shop powder</a></span></div>
+        <div class="batchrow" data-coa-category="capsules" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11273</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'extract-capsules', decorative: true %}</span><span>Extract capsules · 50 mg<small class="coa-potency">Measured: 48.8 mg / capsule</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-31">Aug 31, 2026</time></span><span role="cell"><a href="{{ 'N11273.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11273, 50 mg extract capsules, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/extract-capsules">Shop capsules</a></span></div>
+        <div class="batchrow" data-coa-category="capsules" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11395</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'extract-capsules', decorative: true %}</span><span>Extract capsules · 50 mg<small class="coa-potency">Measured: 50.8 mg / capsule</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-31">Aug 31, 2026</time></span><span role="cell"><a href="{{ 'N11395.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11395, 50 mg extract capsules, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/extract-capsules">Shop capsules</a></span></div>
+        <div class="batchrow" data-coa-category="capsules" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11275</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'extract-capsules-90mg', decorative: true %}</span><span>Extract capsules · 90 mg<small class="coa-potency">Measured: 89.5 mg / capsule</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-31">Aug 31, 2026</time></span><span role="cell"><a href="{{ 'N11275.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11275, 90 mg extract capsules, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/extract-capsules?variant=48042269769906">Shop capsules</a></span></div>
+        <div class="batchrow" data-coa-category="capsules" role="row"><span role="cell"><span class="coa-mobile-label">Report ID </span>N11396</span><span role="cell" class="coa-product"><span class="coa-product-thumb">{% render 'dandy-coa-product-image', product_handle: 'extract-capsules-90mg', decorative: true %}</span><span>Extract capsules · 90 mg<small class="coa-potency">Measured: 91.3 mg / capsule</small></span></span><span role="cell"><span class="coa-mobile-label">Data date </span><time datetime="2026-08-31">Aug 31, 2026</time></span><span role="cell"><a href="{{ 'N11396.pdf' | asset_url }}" target="_blank" rel="noopener" aria-label="Open PDF N11396, 90 mg extract capsules, in a new tab">Open PDF</a><a class="coa-shop-link" href="/products/extract-capsules?variant=48042269769906">Shop capsules</a></span></div>
+      </div>
+      <p id="CoaEmpty" hidden>No matching report. Try another product or report ID, or <a href="mailto:support@foreverdandy.com">contact us</a> for help.</p>
+      <p class="doc__note" id="DandyCoaDateNote">Data date comes from the report's data-file timestamp. Use the batch ID printed in the PDF to identify each report.</p>
     </section>
 
     <section class="doc__block">
-      <h2>How to read a report</h2>
-      <ul class="doclist">
-        <li>{{ d2_gcheck }} <b>Check the product and date match your pouch.</b> A report for a different batch tells you nothing about yours.</li>
-        <li>{{ d2_gcheck }} <b>Find the analyte table.</b> It lists what was measured, the result, and the limit, “ND” means none detected.</li>
-        <li>{{ d2_gcheck }} <b>Look at scope.</b> A report only covers what it says it covers; a certificate that tests one thing isn’t a clean bill of health for everything.</li>
-        <li>{{ d2_gcheck }} <b>Check who issued it.</b> Independent third-party labs only, we don’t self-certify.</li>
-      </ul>
-      <p class="doc__note">Can’t find your batch or think something looks off? <a href="/pages/contact">Email us</a> and we’ll send the report directly.</p>
+      <h2>How to read your Dandy lab report</h2>
+      <div class="coa-guide">
+        <ol>
+          <li><b>Start with the sample.</b> Check the product description, batch ID and sample weight at the top of the PDF.</li>
+          <li><b>Find Total MIT.</b> The comments show milligrams of mitragynine per gummy or capsule. The mg/g column measures concentration by weight.</li>
+          <li><b>Review the alkaloid table.</b> Find the measured concentration of each alkaloid in the mg/g column. The 7-Hydroxy result in report N11271 reads 0.0000 mg/g.</li>
+        </ol>
+        <figure class="coa-example">
+          <figcaption>Inside report N11271</figcaption>
+          <dl><div><dt>Batch ID</dt><dd>N11271</dd></div><div><dt>Total MIT / gummy</dt><dd>36.6 mg</dd></div><div><dt>7-Hydroxy</dt><dd>0.0000 mg/g</dd></div></dl>
+          <a href="{{ 'N11271.pdf' | asset_url }}" target="_blank" rel="noopener">View the original PDF</a>
+        </figure>
+      </div>
+      <details class="coa-report-note"><summary>About the source reports</summary><p>Outpost Brands Quality Control issued these potency reports. N11270 and N11272 name Ollie Botanical in the sample description. For help matching a report to your package, <a href="mailto:support@foreverdandy.com">send our team a photo of the lot code</a>.</p><p>The PDFs record 7-Hydroxy as 0.0000 mg/g. They do not state a detection limit or certify the absence of synthetic additives.</p></details>
+      <p class="doc__note">These documents report potency and alkaloid measurements. For identity, heavy-metal or microbial testing records, <a href="mailto:support@foreverdandy.com">contact our team</a>.</p>
+    </section>
+    <section class="doc__block coa-shop-section">
+      <div class="coa-shop-header">
+        <h2>Experience verified quality</h2>
+        <p>Backed by our <a href="/pages/contact?view=dandy2-returns">30-day money-back guarantee</a>.</p>
+      </div>
+      <div class="coa-product-grid">
+        {% assign coa_gummy_handle = 'feel-good-gummies' %}{% assign coa_handles = coa_gummy_handle | append: ',extract-capsules,premium-kratom-leaf-powder' | split: ',' %}
+        {% for handle in coa_handles %}
+          {% assign coa_product = all_products[handle] %}
+          {% case handle %}
+            {% when 'feel-good-gummies' %}
+              {% assign coa_badge = '35 mg MIT' %}
+              {% assign coa_description = 'Smooth, upbeat focus in a legitimately great-tasting pectin gummy.' %}
+              {% assign coa_cta = 'Shop Gummies' %}
+            {% when 'extract-capsules' %}
+              {% assign coa_badge = '50 mg MIT' %}
+              {% assign coa_description = 'Clean, portable extract capsules for steady clarity.' %}
+              {% assign coa_cta = 'Shop Capsules' %}
+            {% else %}
+              {% assign coa_badge = 'Micro-milled leaf' %}
+              {% assign coa_description = 'Traditional full-spectrum leaf powder, finely milled for smooth blending.' %}
+              {% assign coa_cta = 'Shop Powder' %}
+          {% endcase %}
+          {% if coa_product != blank %}
+            <article class="coa-card">
+              <div class="coa-card__media">
+                <span class="coa-card__badge">{{ coa_badge }}</span>
+                {% render 'dandy-coa-product-image', product_handle: handle %}
+              </div>
+              <div class="coa-card__content">
+                <h3 class="coa-card__title">{{ coa_product.title }}</h3>
+                <p class="coa-card__sizes">{{ coa_product.options_with_values.first.values | join: ' / ' }}</p>
+                <p class="coa-card__desc">{{ coa_description }}</p>
+                <div class="coa-card__footer">
+                  <span class="coa-card__price">From {{ coa_product.price_min | money }}</span>
+                  <a href="{{ coa_product.url }}" class="coa-card__btn">{{ coa_cta }} <span aria-hidden="true">→</span></a>
+                </div>
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
     </section>
   </main>
   {% render 'dandy2-chrome-footer' %}
 </div>
+{% stylesheet %}
+  .dandy2-doc .batchrow.batchrow--head > span:nth-child(3) { color: inherit; }
+  .dandy2-doc .batchrow time { white-space: nowrap; }
+{% endstylesheet %}
 {% schema %}
 { "name": "Dandy 2026 lab reports", "settings": [], "presets": [{ "name": "Dandy 2026 lab reports" }] }
 {% endschema %}
