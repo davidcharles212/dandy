@@ -48,22 +48,45 @@
         -%}
         <{{ card_tag }} class="dpv__card{% if card_tag == 'figure' %} dpv__card--quote{% endif %}" data-dpv-card {{ block.shopify_attributes }}>
           {%- if block.settings.video != blank -%}
-            {{ block.settings.video | video_tag: image_size: '1100x', class: 'dpv__video', loop: true, muted: true, playsinline: true, controls: false, preload: 'metadata' }}
+            {%- comment -%}
+              A video that has never played paints only its poster, so the poster is a real
+              img layer over the video. The poster attribute is removed so that, if the image
+              request fails, the video's own first frame shows instead of an empty tile.
+            {%- endcomment -%}
+            {%- capture dpv_video -%}
+              {{ block.settings.video | video_tag: image_size: '1100x', class: 'dpv__video', loop: true, muted: true, playsinline: true, controls: false, preload: 'metadata' }}
+            {%- endcapture -%}
+            {%- liquid
+              assign dpv_poster_url = blank
+              if dpv_video contains ' poster="'
+                assign dpv_poster_url = dpv_video | split: ' poster="' | last | split: '"' | first
+                assign dpv_poster_attr = ' poster="' | append: dpv_poster_url | append: '"'
+                assign dpv_video = dpv_video | remove: dpv_poster_attr
+              endif
+            -%}
+            {{ dpv_video }}
+            {%- if block.settings.poster != blank -%}
+              {{ block.settings.poster | image_url: width: 1100 | image_tag: widths: '450, 700, 1100', sizes: '(min-width: 1280px) 337px, 225px', alt: '', loading: 'lazy', class: 'dpv__poster' }}
+            {%- elsif dpv_poster_url != blank -%}
+              <img src="{{ dpv_poster_url }}" alt="" loading="lazy" class="dpv__poster">
+            {%- elsif block.settings.poster_asset != blank -%}
+              <img src="{{ block.settings.poster_asset | asset_url }}" alt="" loading="lazy" class="dpv__poster">
+            {%- endif -%}
           {%- elsif block.settings.video_asset != blank -%}
             <video
               class="dpv__video"
               muted
               playsinline
               loop
-              preload="metadata"
-              {% if block.settings.poster != blank %}
-                poster="{{ block.settings.poster | image_url: width: 1100 }}"
-              {% elsif block.settings.poster_asset != blank %}
-                poster="{{ block.settings.poster_asset | asset_url }}"
-              {% endif %}
+              preload="{% if block.settings.poster == blank and block.settings.poster_asset == blank %}auto{% else %}metadata{% endif %}"
             >
               <source src="{{ block.settings.video_asset | asset_url }}" type="video/mp4">
             </video>
+            {%- if block.settings.poster != blank -%}
+              {{ block.settings.poster | image_url: width: 1100 | image_tag: widths: '450, 700, 1100', sizes: '(min-width: 1280px) 337px, 225px', alt: '', loading: 'lazy', class: 'dpv__poster' }}
+            {%- elsif block.settings.poster_asset != blank -%}
+              <img src="{{ block.settings.poster_asset | asset_url }}" alt="" loading="lazy" class="dpv__poster">
+            {%- endif -%}
           {%- elsif block.settings.poster != blank -%}
             {{ block.settings.poster | image_url: width: 1100 | image_tag: widths: '450, 700, 1100', sizes: '(min-width: 1280px) 337px, 225px', alt: '', loading: 'lazy', class: 'dpv__video' }}
           {%- elsif block.settings.poster_asset != blank -%}
@@ -157,8 +180,28 @@
 
         this.onMedia = (event) => {
           const card = event.target.closest('[data-dpv-card]');
-          if (card) card.classList.toggle('is-playing', event.type === 'play');
+          if (!card) return;
+          card.classList.toggle('is-playing', event.type === 'play');
+          if (event.type === 'play') card.classList.add('has-played');
         };
+
+        // A poster that fails to load steps aside so the video's first frame shows.
+        this.querySelectorAll('.dpv__poster').forEach((poster) => {
+          const fail = () => {
+            poster.hidden = true;
+            const video = poster.closest('[data-dpv-card]')?.querySelector('video');
+            if (video && video.preload !== 'auto') {
+              // Step off frame 0, which is black on some clips.
+              video.addEventListener('loadeddata', () => {
+                if (video.paused && video.currentTime === 0) video.currentTime = 0.5;
+              }, { once: true });
+              video.preload = 'auto';
+              video.load();
+            }
+          };
+          if (poster.complete && poster.naturalWidth === 0 && poster.currentSrc) fail();
+          else poster.addEventListener('error', fail, { once: true });
+        });
 
         this.viewport.addEventListener('scroll', this.onScroll, { passive: true });
         this.addEventListener('click', this.onClick);
@@ -337,7 +380,7 @@
     height: 304px;
     overflow: hidden;
     border-radius: 8px 8px 32px 8px;
-    background: transparent;
+    background: var(--dandy-accent-deep, #a02508);
     box-shadow: 4px 4px 0 var(--dandy-accent-deep, #a02508);
     cursor: pointer;
     scroll-snap-align: start;
@@ -352,6 +395,20 @@
     object-fit: cover;
   }
 
+  .dpv .dpv__poster {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .dpv .dpv__poster[hidden],
+  .dpv__card.has-played .dpv__poster {
+    display: none;
+  }
   .dpv .dpv__play {
     position: absolute;
     top: 134px;

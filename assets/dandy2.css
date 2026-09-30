@@ -1659,3 +1659,142 @@ html.d2age-lock { overflow: hidden; }
   .dandy2-pdp .daycheck + .belowfold--rule { padding-top: 58px; }
   .dandy2-pdp .faq summary { font-size: clamp(16px, 4.7vw, 18px); text-wrap: balance; }
 }
+
+/* ============================================================
+   HOME CLEANUP (2026-09-12): quieter finish on the homepage only.
+   Scoped to .dandy2-home so the PDPs sharing this sheet keep
+   their approved treatment. Thick brown borders become hairlines,
+   hard offset shadows go, buttons sit flat, labels drop to
+   sentence case, and the section eyebrows and tag pill are gone
+   from the markup. */
+.dandy2-home { --hc-line: rgb(40 17 12 / 14%); --hc-line-soft: rgb(40 17 12 / 9%); }
+.dandy2-home .hhero__art img { border: 0; box-shadow: none; }
+.dandy2-home .cta, .dandy2-home .fcard__bd .cta, .dandy2-home .stickybar__btn { border: 0; box-shadow: none; }
+.dandy2-home .cta:hover, .dandy2-home .stickybar__btn:hover { transform: none; box-shadow: none; }
+.dandy2-home .cta--ghost { border: 1.5px solid var(--d2-brown); box-shadow: none; }
+.dandy2-home .hhero__sub { display: none; }
+.dandy2-home .hhero__trust { margin-top: 2px; }
+.dandy2-home .marquee { border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .steplabel, .dandy2-home .k2tag { display: none; }
+.dandy2-home .fcard { border: 1px solid var(--hc-line); box-shadow: none; background: var(--d2-white); }
+.dandy2-home .fcard--hero { background: var(--d2-white); }
+.dandy2-home .fcard__img { border-bottom: 1px solid var(--hc-line-soft); }
+.dandy2-home .fcard__best { font-family: var(--d2-body); font-weight: 500; font-size: 14px; letter-spacing: 0; text-transform: none; color: var(--d2-brown-50); }
+.dandy2-home .fcard__bd .cta { border-width: 0; box-shadow: none; }
+.dandy2-home .fdots i.is-on { background: var(--d2-brown); }
+.dandy2-home .qa { gap: 0; border-top: 1px solid var(--hc-line); }
+.dandy2-home .qitem { border: 0; border-bottom: 1px solid var(--hc-line); border-radius: 0; background: transparent; box-shadow: none; }
+.dandy2-home .qitem[open] { background: transparent; }
+.dandy2-home .qitem summary { padding: 15px 2px; font-family: var(--d2-body); font-weight: 600; font-size: 17px; text-transform: none; letter-spacing: 0; }
+.dandy2-home .qitem summary::after { color: var(--d2-brown); font-weight: 600; }
+.dandy2-home .qitem p { padding: 0 2px 16px; font-size: 15px; }
+.dandy2-home .qitem p + p { margin-top: -6px; }
+.dandy2-home .dose__row { border: 1px solid var(--hc-line); box-shadow: none; }
+.dandy2-home .dose__amt b { color: var(--d2-brown); }
+.dandy2-home .dose__fill { border: 1px solid rgb(40 17 12 / 22%); }
+.dandy2-home .dose__fill::after { border-right: 0; }
+.dandy2-home .dose__key { border: 0; }
+.dandy2-home .warnbar { border: 0; border-left: 2px solid var(--hc-line); border-radius: 0; background: transparent; box-shadow: none; }
+.dandy2-home .promise { border-top: 1px solid var(--hc-line); }
+.dandy2-home .promise__truck { border: 0; }
+.dandy2-home .recapcard { border: 1px solid var(--hc-line); box-shadow: none; }
+.dandy2-home .belowfold--finale .recapcard { box-shadow: none; }
+.dandy2-home .gseal { border-width: 1px; }
+.dandy2-home .belowfold--rule { border-top-width: 1px; border-top-color: var(--hc-line); }
+@media (min-width: 801px) {
+  .dandy2-home .qitem summary { padding: 17px 2px; font-size: 18px; }
+  .dandy2-home .qitem p { padding: 0 2px 18px; }
+}
+.dandy2-home .d2head__cart, .dandy2-home .d2head__burger { border-width: 1px; border-color: var(--hc-line); box-shadow: none; }
+.dandy2-home .d2head__cta { border: 0; box-shadow: none; }
+
+/* HOME CLEANUP round 2: fact-led hero props (no icons, sentence case), the format rail stacks at phone width so all three formats are on screen, promise band facts settled. */
+.dandy2-home .hhero__benefits--facts { gap: 10px; margin: 4px 0 6px; }
+.dandy2-home .hhero__benefits--facts li { grid-template-columns: 1fr; gap: 1px; padding-left: 14px; border-left: 2px solid rgb(40 17 12 / 14%); }
+.dandy2-home .hhero__benefits--facts b { font-family: var(--d2-body); font-weight: 700; font-size: 16px; line-height: 1.3; text-transform: none; letter-spacing: 0; }
+.dandy2-home .hhero__benefits--facts span { font-size: 14px; line-height: 1.4; color: var(--d2-brown-50); }
+.dandy2-home .hhero__benefits--facts a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-home .ratingline { font-family: var(--d2-body); font-weight: 600; font-size: 15px; letter-spacing: 0; text-transform: none; }
+.dandy2-home .ratingline b { color: var(--d2-brown); }
+.dandy2-home .frail { display: grid; grid-template-columns: 1fr; gap: 14px; overflow: visible; scroll-snap-type: none; padding: 0 18px; }
+.dandy2-home .fcard { flex: initial; }
+.dandy2-home .fdots { display: none; }
+@media (min-width: 801px) {
+  .dandy2-home .frail { grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 0 24px; }
+  .dandy2-home .hhero__benefits--facts b { font-size: 17px; }
+  .dandy2-home .hhero__benefits--facts span { font-size: 15px; }
+}
+
+/* HOME CLEANUP round 3: header rule and the ticker band go quiet. */
+.dandy2-home .d2head { border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .marquee { background: var(--d2-cream, #FAF5F0); color: var(--d2-brown); border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .marquee__track span { font-weight: 700; font-size: 15px; letter-spacing: .06em; }
+
+/* HOME CLEANUP round 4: three one-line hero facts so the CTA clears the fold at 390, finish the shadow and border sweep (email capture, finale band, footer, sticky bar), readable labels, all FAQ rows closed. */
+.dandy2-home .hhero__benefits--facts { gap: 8px; margin: 2px 0 4px; }
+.dandy2-home .hhero__benefits--facts li { padding-left: 0; border-left: 0; }
+.dandy2-home .hhero__benefits--facts b { font-weight: 600; font-size: 15.5px; line-height: 1.35; }
+.dandy2-home .hhero__benefits--facts b a { color: var(--d2-green-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.dandy2-home .hhero { gap: 14px; }
+.dandy2-home .warnbar { border-left: 0; padding-left: 0; }
+.dandy2-home .fcard { border-color: rgb(40 17 12 / 18%); }
+.dandy2-home .fcard__best { color: rgb(40 17 12 / 72%); }
+.dandy2-home .belowfold--finale { border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); }
+.dandy2-home .d2cap { border-top: 1px solid var(--hc-line); }
+.dandy2-home .d2cap input, .dandy2-home .d2cap__row input { border-width: 1px; box-shadow: none; }
+.dandy2-home .d2cap .cta, .dandy2-home .d2cap button.cta, .dandy2-home .d2cap__row .cta { border: 0; box-shadow: none; }
+.dandy2-home .d2cap .cta:hover { transform: none; box-shadow: none; }
+.dandy2-home .d2foot { border-top: 1px solid var(--hc-line); }
+.dandy2-home .d2foot__legal { border-top: 1px solid var(--hc-line); }
+.dandy2-home .stickybar { border: 0; border-top: 1px solid var(--hc-line); box-shadow: 0 -6px 20px rgb(40 17 12 / 6%); }
+.dandy2-home .gseal__mark small { font-size: 12px; letter-spacing: .06em; }
+.dandy2-home .dose__lbl { font-size: 13px; }
+@media (min-width: 801px) { .dandy2-home .hhero__benefits--facts b { font-size: 17px; } .dandy2-home .dose__lbl { font-size: 13px; } }
+
+/* HOME CLEANUP round 7: line icons on the hero facts, and the proof strip moved up under the lineup as icon rows. */
+.dandy2-home .hhero__benefits--facts li { grid-template-columns: 24px 1fr; gap: 0 10px; align-items: center; }
+.dandy2-home .hhero__benefits--facts i { grid-row: auto; display: block; width: 24px; height: 24px; }
+.dandy2-home .hhero__benefits--facts i svg, .dandy2-home .promise--facts i svg { display: block; width: 24px; height: 24px; fill: none; stroke: #064C26; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.dandy2-home .promise--facts { border-top: 1px solid var(--hc-line); border-bottom: 1px solid var(--hc-line); background: #FAF5F0; padding: 22px 18px; margin-top: 26px; }
+.dandy2-home .promise--facts .promise__inner { display: block; }
+.dandy2-home .promise--facts .promise__cols { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.dandy2-home .promise--facts .promise__cols > div { display: grid; grid-template-columns: 24px 1fr; gap: 0 12px; align-items: center; padding: 0; border: 0; }
+.dandy2-home .promise--facts .promise__cols i { display: block; width: 24px; height: 24px; }
+.dandy2-home .promise--facts .promise__cols b { display: inline; font-family: var(--d2-body); font-weight: 600; font-size: 16px; text-transform: none; letter-spacing: 0; line-height: 1.3; margin: 0 8px 0 0; }
+.dandy2-home .promise--facts .promise__cols > div > span > span { display: inline; font-size: 15px; font-weight: 400; color: rgb(40 17 12 / 72%); margin: 0; }
+@media (min-width: 801px) {
+  .dandy2-home .promise--facts { padding: 26px 24px; margin-top: 34px; }
+  .dandy2-home .promise--facts .promise__inner { max-width: 1200px; margin: 0 auto; }
+  .dandy2-home .promise--facts .promise__cols { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .dandy2-home .promise--facts .promise__cols b { display: block; margin: 0; }
+  .dandy2-home .promise--facts .promise__cols > div > span > span { display: block; margin-top: 2px; }
+}
+/* round 7c: icon sits on the first line of a wrapped fact; single hairline between the strip and the next section */
+.dandy2-home .hhero__benefits--facts li { align-items: start; }
+.dandy2-home .hhero__benefits--facts i { margin-top: -1.5px; }
+.dandy2-home .promise--facts { border-bottom: 0; }
+
+/* ---------- email capture, 2026-09-19 cleanup: light modal, one orange button, stacked form ---------- */
+.dandy2-pdp .d2cap__h .d2cap__lead { display: block; font-size: .6em; line-height: 1.05; letter-spacing: .02em; margin-bottom: 4px; }
+.dandy2-pdp .d2cap__h em { display: block; }
+.dandy2-pdp .d2modal { background: rgb(40 17 12 / 62%); padding: 16px; }
+.dandy2-pdp .d2modal__box { max-width: 400px; background: #FFF8F1; color: var(--d2-brown); border: 0; border-radius: 28px; box-shadow: 0 24px 60px rgb(40 17 12 / 35%); padding: 64px 24px 18px; }
+.dandy2-pdp .d2modal__rocky { top: -58px; width: 140px; }
+.dandy2-pdp .d2modal__x { top: 12px; right: 12px; width: 40px; height: 40px; border-radius: 50%; background: rgb(40 17 12 / 7%); color: var(--d2-brown); font-size: 24px; display: grid; place-items: center; padding: 0 0 2px; }
+.dandy2-pdp .d2modal__x:hover { background: rgb(40 17 12 / 13%); }
+.dandy2-pdp .d2modal__box .d2cap__h { margin: 0 0 10px; font-size: clamp(38px, 11vw, 46px); text-wrap: balance; }
+.dandy2-pdp .d2modal__box .d2cap__sub { font-size: 16px; font-weight: 500; color: var(--d2-brown); text-wrap: pretty; }
+.dandy2-pdp .d2modal__box .d2cap__form { margin-top: 18px; }
+.dandy2-pdp .d2modal__box .d2cap__row { grid-template-columns: 1fr; gap: 10px; }
+.dandy2-pdp .d2modal__box .d2cap__row input { min-height: 54px; border: 1.5px solid var(--d2-brown-50); background: var(--d2-white); text-align: center; }
+.dandy2-pdp .d2modal__box .d2cap__row input:focus { outline: 0; border-color: var(--d2-brown); box-shadow: 0 0 0 3px var(--d2-orange-20); }
+.dandy2-pdp .d2modal__box .d2cap__row .cta { width: 100%; min-width: 0; min-height: 54px; background: var(--d2-orange); color: var(--d2-brown); border: 0; box-shadow: none; }
+.dandy2-pdp .d2modal__box .d2cap__row .cta:hover { transform: none; box-shadow: none; filter: brightness(1.05); }
+.dandy2-pdp .d2modal__box .d2cap__ok { border: 0; background: var(--d2-orange-5); font-size: 16px; padding: 14px 16px; }
+.dandy2-pdp .d2modal__box .d2cap__fine { margin-top: 12px; font-size: 13px; opacity: .7; }
+.dandy2-pdp .d2modal__no { margin-top: 2px; color: var(--d2-brown); font-size: 14px; font-weight: 500; opacity: .7; }
+.dandy2-pdp .d2modal__no:hover { opacity: 1; }
+.dandy2-pdp .d2modal__box .d2cap__ok { margin: 4px 0 0; background: none; padding: 0; font-weight: 500; text-wrap: balance; }
+.dandy2-pdp .d2modal__box .d2cap__ok b { display: block; margin-bottom: 6px; font-size: 30px; letter-spacing: .02em; text-transform: uppercase; line-height: 1; }
+.dandy2-pdp .d2modal__box .d2modal__shop { margin: 18px 0 8px; width: 100%; min-height: 54px; background: var(--d2-orange); color: var(--d2-brown); border: 0; box-shadow: none; text-decoration: none; }
+.dandy2-pdp .d2modal__box .d2modal__shop:hover { transform: none; box-shadow: none; filter: brightness(1.05); }

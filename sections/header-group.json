@@ -11,25 +11,49 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "dandy_announcement_bar_Q7e4RC": {
-      "type": "dandy-announcement-bar",
-      "name": "Dandy announcement bar",
+    "dandy_announcement": {
+      "type": "dandy-announcement",
       "settings": {
-        "text": "Free shipping on 3+ packs",
+        "text": "FREE SHIPPING ON ORDERS OVER $99",
         "link": "",
-        "show_default_icon": true,
-        "background_color": "#f4512b",
-        "text_color": "#fff9f0"
+        "claim_ids": "C-09 C-16",
+        "copy_status": "aggressive-draft"
       }
     },
-    "dandy_header_restyle_wcEV8J": {
-      "type": "dandy-header-restyle",
-      "name": "Dandy header restyle",
-      "settings": {}
+    "dandy_header": {
+      "type": "dandy-header",
+      "blocks": {
+        "shop": {
+          "type": "link",
+          "settings": { "label": "Shop", "link": "shopify://collections/all" }
+        },
+        "gummies": {
+          "type": "link",
+          "settings": { "label": "Gummies", "link": "/products/feel-good-gummies" }
+        },
+        "learn": {
+          "type": "link",
+          "settings": { "label": "Learn", "link": "/learn" }
+        },
+        "quality": {
+          "type": "link",
+          "settings": { "label": "COA", "link": "/pages/lab-reports" }
+        },
+        "faq": {
+          "type": "link",
+          "settings": { "label": "FAQ", "link": "/pages/faq" }
+        },
+        "about": {
+          "type": "link",
+          "settings": { "label": "About", "link": "/about" }
+        }
+      },
+      "block_order": ["shop", "gummies", "learn", "quality", "faq", "about"],
+      "settings": {
+        "shop_label": "Shop gummies",
+        "shop_link": "/products/feel-good-gummies"
+      }
     }
   },
-  "order": [
-    "dandy_announcement_bar_Q7e4RC",
-    "dandy_header_restyle_wcEV8J"
-  ]
+  "order": ["dandy_announcement", "dandy_header"]
 }

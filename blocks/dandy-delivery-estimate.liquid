@@ -1,6 +1,8 @@
 {%- liquid
   assign variant = closest.product.selected_or_first_available_variant
   assign business_days = block.settings.business_days
+  assign mode = block.settings.display_mode
+  assign static_mobile = block.settings.static_text_mobile | default: block.settings.static_text
 
   assign ts = 'now' | date: '%s' | plus: 0
   assign added = 0
@@ -25,15 +27,74 @@
       assign strftime = '%A, %b %-d'
   endcase
   assign fallback_date = ts | date: strftime
+
+  comment
+    Cutoff mode. The store runs on America/Chicago, so 'now' is already US Central.
+    A: Monday to Saturday before the cutoff hour, ships today, live countdown to the cutoff.
+    B: Monday to Friday from the cutoff hour, ships tomorrow morning.
+    C: Saturday from the cutoff hour through Sunday, ships first thing Monday.
+    JS (dandy-pdp.js) recomputes the same three states in the visitor's browser and ticks the countdown.
+  endcomment
+  assign cutoff_hour = block.settings.cutoff_hour | default: 14
+  assign cutoff_minutes = cutoff_hour | times: 60
+  assign now_weekday = 'now' | date: '%u' | plus: 0
+  assign now_minutes = 'now' | date: '%H' | plus: 0 | times: 60
+  assign now_min_part = 'now' | date: '%M' | plus: 0
+  assign now_minutes = now_minutes | plus: now_min_part
+  assign cutoff_state = 'monday'
+  if now_weekday <= 6 and now_minutes < cutoff_minutes
+    assign cutoff_state = 'today'
+  elsif now_weekday <= 5
+    assign cutoff_state = 'tomorrow'
+  endif
+  case cutoff_state
+    when 'today'
+      assign cutoff_text = block.settings.cutoff_today_text
+    when 'tomorrow'
+      assign cutoff_text = block.settings.cutoff_tomorrow_text
+    else
+      assign cutoff_text = block.settings.cutoff_monday_text
+  endcase
+  assign remaining = cutoff_minutes | minus: now_minutes
+  if remaining < 0
+    assign remaining = 0
+  endif
+  assign rem_h = remaining | divided_by: 60
+  assign rem_m = remaining | modulo: 60
+  assign countdown = ''
+  if rem_h > 0
+    assign countdown = rem_h | append: ' hr'
+    if rem_h != 1
+      assign countdown = countdown | append: 's'
+    endif
+    assign countdown = countdown | append: ' '
+  endif
+  assign countdown = countdown | append: rem_m | append: ' min'
+  if rem_m != 1
+    assign countdown = countdown | append: 's'
+  endif
 -%}
+
+{%- if mode == 'cutoff' -%}
+  {%- style -%}
+    .dandy-delivery__clause { display: inline-block; }
+    .dandy-delivery__countdown { font-weight: 600; font-variant-numeric: tabular-nums; }
+  {%- endstyle -%}
+{%- endif -%}
 
 <dandy-delivery-estimate
   class="dandy-delivery"
   data-dandy-block="delivery-{{ block.id }}"
+  data-mode="{{ mode }}"
   data-business-days="{{ business_days }}"
   data-skip-weekends="{{ block.settings.skip_weekends }}"
   data-date-format="{{ block.settings.date_format }}"
   data-locale="{{ request.locale.iso_code }}-{{ localization.country.iso_code }}"
+  data-cutoff-hour="{{ cutoff_hour }}"
+  data-cutoff-timezone="{{ shop.iana_timezone | default: 'America/Chicago' }}"
+  data-cutoff-today="{{ block.settings.cutoff_today_text | escape }}"
+  data-cutoff-tomorrow="{{ block.settings.cutoff_tomorrow_text | escape }}"
+  data-cutoff-monday="{{ block.settings.cutoff_monday_text | escape }}"
   {{ block.shopify_attributes }}
 >
   {%- if variant.available -%}
@@ -45,8 +106,33 @@
       {%- else -%}
         {{ ' ' }}
       {%- endif -%}
-      {{ block.settings.delivery_label }}
-      <span class="dandy-delivery__date" data-delivery-date>{{ fallback_date }}</span>
+      {%- if mode == 'static' -%}
+        <span class="dandy-delivery__static dandy-delivery__static--desktop">{{ block.settings.static_text }}</span>
+        <span class="dandy-delivery__static dandy-delivery__static--mobile">{{ static_mobile | escape | newline_to_br }}</span>
+      {%- elsif mode == 'cutoff' -%}
+        <span class="dandy-delivery__cutoff" data-cutoff-line data-cutoff-state="{{ cutoff_state }}">
+          {%- comment -%} *text* renders bold; [countdown] is the live timer. Clauses split at ": " so neither wraps mid-line. {%- endcomment -%}
+          {%- assign clauses = cutoff_text | split: ': ' -%}
+          {%- for clause in clauses -%}
+            <span class="dandy-delivery__clause">
+              {%- assign parts = clause | split: '*' -%}
+              {%- for part in parts -%}
+                {%- assign odd = forloop.index0 | modulo: 2 -%}
+                {%- assign piece = part | escape -%}
+                {%- if part contains '[countdown]' -%}
+                  {%- assign piece = part | escape | replace: '[countdown]', '<span class="dandy-delivery__countdown" data-cutoff-countdown>' | append: countdown | append: '</span>' -%}
+                {%- endif -%}
+                {%- if odd == 1 -%}<strong>{{ piece }}</strong>{%- else -%}{{ piece }}{%- endif -%}
+              {%- endfor -%}
+              {%- unless forloop.last -%}:{%- endunless -%}
+            </span>
+            {%- unless forloop.last -%}{{ ' ' }}{%- endunless -%}
+          {%- endfor -%}
+        </span>
+      {%- else -%}
+        {{ block.settings.delivery_label }}
+        <span class="dandy-delivery__date" data-delivery-date>{{ fallback_date }}</span>
+      {%- endif -%}
     </p>
   {%- else -%}
     <span class="dandy-delivery__dot dandy-delivery__dot--unavailable" aria-hidden="true"></span>
@@ -61,6 +147,25 @@
   "name": "Dandy delivery estimate",
   "tag": null,
   "settings": [
+    {
+      "type": "select",
+      "id": "display_mode",
+      "label": "Delivery line",
+      "options": [
+        { "value": "estimate", "label": "Estimated delivery date" },
+        { "value": "static", "label": "Static shipping line" },
+        { "value": "cutoff", "label": "Same-day cutoff with countdown" }
+      ],
+      "default": "estimate"
+    },
+    { "type": "text", "id": "static_text", "label": "Static line (desktop)", "default": "Ships within 24 business hours (Same-day before 2 PM CT)", "info": "Used when the delivery line is set to Static." },
+    { "type": "textarea", "id": "static_text_mobile", "label": "Static line (mobile)", "info": "Optional. Press Enter to set the line break. Uses the desktop line when empty." },
+    { "type": "header", "content": "Same-day cutoff" },
+    { "type": "range", "id": "cutoff_hour", "label": "Cutoff hour (store time, 24h)", "min": 0, "max": 23, "step": 1, "default": 14, "info": "Store time is US Central. Before this hour Monday to Saturday the line shows a live countdown and 'ships today'." },
+    { "type": "text", "id": "cutoff_today_text", "label": "Before cutoff, Monday to Saturday", "default": "Ships *TODAY*: order within [countdown]", "info": "*text* renders bold. [countdown] is the live hours and minutes to the cutoff." },
+    { "type": "text", "id": "cutoff_tomorrow_text", "label": "After cutoff, Monday to Friday", "default": "Ships *tomorrow morning*: order now" },
+    { "type": "text", "id": "cutoff_monday_text", "label": "Saturday after cutoff and Sunday", "default": "Ships *first thing Monday*: order now" },
+    { "type": "header", "content": "Labels" },
     { "type": "text", "id": "in_stock_label", "label": "In stock label", "default": "In stock" },
     { "type": "text", "id": "separator", "label": "Separator", "default": " - " },
     { "type": "text", "id": "delivery_label", "label": "Delivery label", "default": "Delivered to you by" },

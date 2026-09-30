@@ -3,7 +3,10 @@
   // cross-document (MPA) View Transitions implementation that can freeze or
   // white-screen the storefront on navigation. June 2026 testing.
   // Remove check if every resolved.
-  if (isMetaInAppBrowser()) {
+  // Dandy: page-to-page transitions are off for every browser. While the incoming page's
+  // transition runs, taps land on the transition layer and are dropped, so a shopper's first
+  // tap after arriving from another page did nothing (2026-09-13).
+  if (isMetaInAppBrowser() || true) {
     disableCrossDocumentViewTransitions();
   }
 

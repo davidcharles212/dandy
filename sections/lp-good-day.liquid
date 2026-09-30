@@ -1,5 +1,5 @@
 
-  <div class="announcement">For adults 21+ &nbsp;•&nbsp; Free shipping on subscriptions and 3+ packs &nbsp;•&nbsp; 30-day guarantee</div>
+  <div class="announcement">For adults 21+ &nbsp;•&nbsp; Free shipping on 2+ pouches &nbsp;•&nbsp; <span class="nowrap">30-day guarantee</span></div>
   <nav class="nav" aria-label="Main navigation">
     <a href="https://foreverdandy.com" aria-label="Dandy home"><img class="logo" src="{{ 'lp-good-day-dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="96" height="36"></a>
     <span class="nav-note">Mixed Berry Functional Gummies</span>
@@ -87,7 +87,7 @@
           <h2>35 mg. One gummy. Zero guessing.</h2>
           <p>Every Dandy gummy contains 35 mg of mitragynine. One gummy is one serving. Every batch is independently tested for identity, potency, heavy metals, and microbials.</p>
           <p><strong>New to Dandy?</strong> Start with half a gummy and give it about 45 minutes. Everyone feels it a little differently.</p>
-          <a class="btn light" href="/pages/contact?view=dandy2-coa">See batch results <span aria-hidden="true">→</span></a>
+          <a class="btn light" href="/pages/lab-reports">See batch results <span aria-hidden="true">→</span></a>
         </div>
         <div class="facts"><img src="{{ 'lp-good-day-dandy-facts.webp' | asset_url }}" alt="Dandy supplement facts showing one gummy per serving and 35 mg mitragynine" width="1008" height="394"></div>
       </div>
@@ -110,11 +110,10 @@
           <div class="offer-visual"><span class="offer-sticker">30-day<br>guarantee</span><img src="{{ 'lp-good-day-dandy-pouch.png' | asset_url }}" alt="Dandy Mixed Berry Gummies pouch" width="675" height="675"></div>
           <div class="offer-copy">
             <h2>Make your day fine and Dandy.</h2>
-            <p>Choose the easy monthly ritual or start with a sampler. You can adjust your choice on the Dandy shop.</p>
-            <button class="option selected" type="button" data-label="Start monthly" aria-pressed="true"><span class="radio"></span><span><strong>Monthly supply</strong><small>30 gummies • free shipping • save 20%</small></span><span class="price">$47.99</span></button>
-            <button class="option" type="button" data-label="Try the sampler" aria-pressed="false"><span class="radio"></span><span><strong>Sampler</strong><small>10 gummies • one-time purchase</small></span><span class="price">$24.99</span></button>
-            <a id="offerCta" class="btn offer-cta" href="https://foreverdandy.com/products/mixed-berry-kratom-gummies">Start monthly <span aria-hidden="true">→</span></a>
-            <div class="offer-notes"><span>Secure checkout</span><span>Skip or cancel anytime</span><span>Third-party tested</span></div>
+            <p>Mixed Berry Gummies, 30 to a pouch. Pick how many on the next page.</p>
+            <div class="offer-deal"><strong>From $32.66 a pouch</strong><span>Buy 2 pouches, get the third free. Free&nbsp;shipping on 2 or more.</span></div>
+            <a class="btn offer-cta" href="https://foreverdandy.com/products/feel-good-gummies">Get mine now <span aria-hidden="true">→</span></a>
+            <div class="offer-notes offer-notes--two"><span>Secure checkout</span><span>Third-party tested</span></div>
           </div>
         </div>
         <div class="responsible">
@@ -129,16 +128,7 @@
   <footer class="site-footer">
     <div class="footer-inner"><img src="{{ 'lp-good-day-dandy-wordmark.svg' | asset_url }}" alt="Dandy" width="96" height="36"><p class="legal">For adults 21+. Read and follow the product label. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. © 2026 ForeverDandy.</p></div>
   </footer>
-  <a class="sticky" href="#shop"><span>Mixed Berry Gummies<br><strong>From $24.99</strong></span><strong>Choose yours →</strong></a>
-  <script>
-    const options = document.querySelectorAll('.option');
-    const cta = document.getElementById('offerCta');
-    options.forEach(option => option.addEventListener('click', () => {
-      options.forEach(item => { item.classList.remove('selected'); item.setAttribute('aria-pressed','false'); });
-      option.classList.add('selected'); option.setAttribute('aria-pressed','true');
-      cta.firstChild.nodeValue = option.dataset.label + ' ';
-    }));
-  </script>
+  <a class="sticky" href="#shop"><span>Mixed Berry Gummies<br><strong>$32.66 a pouch</strong></span><strong>Get mine now →</strong></a>
 
 {% schema %}
 {

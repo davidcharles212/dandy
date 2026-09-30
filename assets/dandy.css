@@ -2507,4 +2507,3 @@ input:checked + .dandy-radio::after {
 @media (max-width: 800px) {
   .dandy-image-banner__media img { object-position: 72% 60%; }
 }
-

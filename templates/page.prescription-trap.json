@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "dhd",
+  "sections": {
+    "main": {
+      "type": "dhd-advertorial",
+      "settings": {
+        "product_url": "/products/extract-capsules",
+        "discount_code": "DISPATCH10",
+        "coa_url": "/pages/contact?view=dandy2-coa",
+        "shipping_url": "/pages/contact?view=dandy2-shipping"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

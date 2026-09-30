@@ -4,6 +4,11 @@
   @param {object} [product] - The product object, available on product pages.
 {% enddoc %}
 
+{% if request.page_type == 'product' %}
+  {{ 'dandy-image-viewer.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'dandy-image-viewer.js' | asset_url }}" defer></script>
+{% endif %}
+
 <script
   src="{{ 'dandy.js' | asset_url }}"
   type="module"

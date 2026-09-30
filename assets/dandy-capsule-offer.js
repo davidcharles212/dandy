@@ -5,6 +5,7 @@
    present in the DOM (the links still work as plain navigation without JS). */
 (() => {
   const money = (cents) => '$' + (cents / 100).toFixed(2);
+  const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   class DandyCapsuleOffer extends HTMLElement {
     connectedCallback() {
@@ -17,14 +18,40 @@
       if (!this.form || !this.button || this.fieldsets.length === 0) return;
 
       this.strength = this.dataset.strength || '50';
+      // Bundle gate (snippets/dandy-bundle-gate.liquid): without html.dandy-bundles-on only the 1 jar
+      // tier is on offer, bought in any quantity through the stepper.
+      this.gated = this.hasAttribute('data-bundle-gate') && !document.documentElement.classList.contains('dandy-bundles-on');
+      this.qtyInput = this.gated ? this.querySelector('[data-co-qty-input]') : null;
+      this.reader = this.readerActive();
+      this.applyReader();
       this.collectInputs();
       if (this.inputs.length === 0) return;
       this.applyDefault();
+
+      // One product, one URL: ?strength=90 (or 50) picks the strength when no ?variant= already decided it server-side.
+      const params = new URLSearchParams(window.location.search);
+      const wantedStrength = params.get('strength');
+      if (this.hasAttribute('data-merged') && !params.get('variant') && /^(50|90)$/.test(wantedStrength || '')
+        && wantedStrength !== this.strength && this.fieldsetFor(wantedStrength)) {
+        this.switchStrength(wantedStrength, { keepUrl: true });
+      }
 
       this.addEventListener('change', (event) => {
         if (event.target.matches('[data-co-tier]')) this.sync();
       });
       this.form.addEventListener('submit', (event) => { event.preventDefault(); this.add(); });
+      if (this.qtyInput) {
+        this.querySelectorAll('[data-co-qty-step]').forEach((btn) => {
+          btn.addEventListener('click', () => this.setQty(this.qty + Number(btn.dataset.coQtyStep)));
+        });
+        this.qtyInput.addEventListener('change', () => this.setQty(this.qtyInput.value));
+        this.qtyInput.addEventListener('input', () => { if (this.qtyInput.value !== '') this.setQty(this.qtyInput.value, { keepTyping: true }); });
+        this.setQty(1);
+        // The sticky bar is still inside the block here; setupSticky moves it to <body> later.
+        const cta = this.querySelector('[data-co-sticky-cta]');
+        const single = this.dataset.stickyCtaSingle;
+        if (cta && single) cta.textContent = single;
+      }
 
       this.querySelectorAll('[data-co-strength]').forEach((link) => {
         link.addEventListener('click', (event) => {
@@ -47,16 +74,117 @@
         const head = this.querySelector('[data-co-dispatch]');
         if (head) head.textContent = head.textContent.replace(/TODAY|TOMORROW|MONDAY/, when);
         const proof = this.querySelector('[data-co-proof-dispatch]');
-        if (proof) proof.textContent = 'Ships ' + when.charAt(0) + when.slice(1).toLowerCase();
+        if (proof) {
+          proof.textContent = 'Ships ' + when.charAt(0) + when.slice(1).toLowerCase();
+          const deadline = proof.nextElementSibling;
+          if (deadline && deadline.tagName === 'SMALL') deadline.hidden = !today;
+        }
       };
       this.tick();
-      this.timer = setInterval(this.tick, 30000);
+      this.timer = setInterval(() => { this.tick(); this.renderEta(); }, 30000);
+      this.renderEta();
+      this.setupSticky();
       this.sync();
     }
 
     disconnectedCallback() {
       clearInterval(this.timer);
+      if (this.onStickyScroll) {
+        window.removeEventListener('scroll', this.onStickyScroll);
+        window.removeEventListener('resize', this.onStickyScroll);
+      }
+      this.cartObserver?.disconnect();
+      this.sticky?.remove();
       this.initialized = false;
+    }
+
+    // Dispatch line: today on a weekday before the Central cutoff, otherwise tomorrow or the next weekday by name.
+    renderEta() {
+      const text = this.querySelector('[data-co-eta-text]');
+      if (!text) return;
+      const cutoff = Number(this.dataset.cutoffHour) || 14;
+      const parts = Object.fromEntries(new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Chicago', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', hourCycle: 'h23'
+      }).formatToParts(new Date()).map((p) => [p.type, p.value]));
+      // A UTC midnight date carries the Central calendar day, so day arithmetic never crosses a DST edge.
+      const today = new Date(Date.UTC(Number(parts.year), Number(parts.month) - 1, Number(parts.day)));
+      const isWeekday = (d) => d.getUTCDay() !== 0 && d.getUTCDay() !== 6;
+      if (isWeekday(today) && Number(parts.hour) < cutoff) {
+        const label = cutoff > 12 ? (cutoff - 12) + ' PM' : cutoff === 12 ? '12 PM' : cutoff + ' AM';
+        text.textContent = 'Ships today if you order by ' + label + ' CT';
+        return;
+      }
+      const ship = new Date(today);
+      do { ship.setUTCDate(ship.getUTCDate() + 1); } while (!isWeekday(ship));
+      text.textContent = ship - today === 86400000
+        ? 'Ships tomorrow'
+        : 'Ships ' + new Intl.DateTimeFormat('en-US', { timeZone: 'UTC', weekday: 'long' }).format(ship);
+    }
+
+    // Phone sticky bar: shown once the bundle cards are above the screen; its button brings them back into view.
+    setupSticky() {
+      const bar = this.querySelector('[data-co-sticky]');
+      if (!bar) return;
+      this.sticky = bar;
+      document.body.appendChild(bar);
+      bar.querySelector('[data-co-sticky-cta]')?.addEventListener('click', () => {
+        const target = this.fieldsetFor(this.strength) || this;
+        const top = target.getBoundingClientRect().top + window.scrollY - 16;
+        window.scrollTo({ top, behavior: reduceMotion() ? 'auto' : 'smooth' });
+      });
+      let queued = false;
+      this.onStickyScroll = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          this.updateSticky();
+        });
+      };
+      window.addEventListener('scroll', this.onStickyScroll, { passive: true });
+      window.addEventListener('resize', this.onStickyScroll, { passive: true });
+      // The side cart locks the page with a class on <html>; hide the bar the moment it opens, not on the next scroll.
+      this.cartObserver = new MutationObserver(this.onStickyScroll);
+      this.cartObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      this.updateSticky();
+    }
+
+    updateSticky() {
+      const bar = this.sticky;
+      if (!bar) return;
+      const target = this.fieldsetFor(this.strength) || this;
+      const past = target.getBoundingClientRect().bottom < 0;
+      const phone = window.matchMedia('(max-width: 1099px)').matches;
+      const cartOpen = document.documentElement.classList.contains('dcart-lock');
+      const show = past && phone && !cartOpen;
+      if (show) bar.hidden = false;
+      bar.classList.toggle('is-visible', show);
+      bar.toggleAttribute('inert', !show);
+      if (!show && !bar.hidden) {
+        clearTimeout(this.stickyHide);
+        this.stickyHide = setTimeout(() => { if (!bar.classList.contains('is-visible')) bar.hidden = true; }, 250);
+      }
+    }
+
+    renderStickyOffer() {
+      const bar = this.sticky;
+      if (!bar) return;
+      const inputs = this.inputs;
+      // The largest bundle of the current strength carries the bar; the sub line is its total, read from the
+      // variant price on the tier input (reader price when the voucher is active), never a hardcoded figure.
+      let best = null;
+      inputs.forEach((input) => {
+        const jars = Number(input.value) || 1;
+        const cents = this.reader ? Number(input.dataset.readerPrice) : Number(input.dataset.price);
+        if (!best || jars > best.jars) best = { input, jars, cents };
+      });
+      const title = bar.querySelector('[data-co-sticky-title]');
+      if (title && best && best.input.dataset.label) title.textContent = best.input.dataset.label;
+      const sub = bar.querySelector('[data-co-sticky-sub]');
+      if (sub && best) sub.textContent = money(best.cents * (this.gated ? this.qty : 1));
+      const img = best && best.input.closest('[data-co-tier-card]')?.querySelector('.co-pack img');
+      const stickyImg = bar.querySelector('.co-sticky__pack img');
+      if (img && stickyImg && stickyImg.src !== img.src) stickyImg.src = img.currentSrc || img.src;
     }
 
     fieldsetFor(strength) {
@@ -66,11 +194,62 @@
     collectInputs() {
       const active = this.fieldsetFor(this.strength) || this.fieldsets[0];
       this.inputs = active ? [...active.querySelectorAll('[data-co-tier]')] : [];
+      if (this.gated) this.inputs = this.inputs.filter((i) => i.value === '1');
+    }
+
+    get qty() {
+      return this.qtyInput ? Math.min(10, Math.max(1, parseInt(this.qtyInput.value, 10) || 1)) : 1;
+    }
+
+    setQty(value, options = {}) {
+      if (!this.qtyInput) return;
+      const next = Math.min(10, Math.max(1, parseInt(value, 10) || 1));
+      if (!options.keepTyping || String(next) !== this.qtyInput.value) this.qtyInput.value = String(next);
+      const hidden = this.querySelector('[data-co-qty-value]');
+      if (hidden) hidden.value = String(next);
+      const down = this.querySelector('[data-co-qty-step="-1"]');
+      const up = this.querySelector('[data-co-qty-step="1"]');
+      if (down) down.disabled = next <= 1;
+      if (up) up.disabled = next >= 10;
+      if (this.inputs && this.inputs.length) this.sync();
+    }
+
+    readerActive() {
+      const code = (this.dataset.readerCode || '').trim().toUpperCase();
+      if (!code) return false;
+      const match = document.cookie.match(/(?:^|;\s*)discount_code=([^;]*)/);
+      let cookie = '';
+      try {
+        cookie = match ? decodeURIComponent(match[1]) : '';
+      } catch (error) {
+        console.error('Dandy capsule offer: unreadable discount_code cookie', error);
+      }
+      const param = new URLSearchParams(window.location.search).get('discount') || '';
+      return cookie.trim().toUpperCase() === code || param.trim().toUpperCase() === code;
+    }
+
+    applyReader() {
+      const notice = this.querySelector('[data-co-reader]');
+      if (notice) notice.hidden = !this.reader;
+      if (!this.reader) return;
+      this.querySelectorAll('[data-co-now], [data-co-daily]').forEach((el) => { el.textContent = el.dataset.reader; });
+      this.querySelectorAll('[data-co-was]').forEach((el) => {
+        el.textContent = el.dataset.reader;
+        el.hidden = !el.dataset.reader;
+      });
     }
 
     applyDefault() {
-      // The configured default wins over stale campaign URLs.
-      const wanted = this.dataset.defaultTier;
+      // A campaign link that names the tier it sold (bundle=, qty= or variant=) is honoured when it
+      // matches a rendered tier of the current strength; the configured default still wins for anything else.
+      // A tier the shopper tapped before this script loaded stays selected.
+      if (this.inputs.some((i) => i.checked && !i.defaultChecked)) return;
+      const params = new URLSearchParams(window.location.search);
+      const bundle = params.get('bundle') || params.get('qty');
+      const variant = params.get('variant');
+      const match = (bundle && this.inputs.find((i) => i.value === bundle))
+        || (variant && this.inputs.find((i) => i.dataset.variantId === variant));
+      const wanted = match ? match.value : this.dataset.defaultTier;
       if (wanted && this.inputs.some((i) => i.value === wanted)) {
         this.inputs.forEach((i) => { i.checked = i.value === wanted; });
       } else if (!this.inputs.some((i) => i.checked)) {
@@ -78,7 +257,7 @@
       }
     }
 
-    switchStrength(next) {
+    switchStrength(next, options = {}) {
       const target = this.fieldsetFor(next);
       if (!target) return;
       this.fieldsets.forEach((f) => {
@@ -104,6 +283,8 @@
       });
 
       this.querySelectorAll('[data-co-notice-90]').forEach((n) => { n.hidden = next !== '90'; });
+      const hint = this.querySelector('[data-co-hint]');
+      if (hint && hint.getAttribute('data-hint-' + next)) hint.textContent = hint.getAttribute('data-hint-' + next);
 
       // Strength-specific page text (snippets/dandy-strength-text.liquid): 50 mg phrases carry their 90 mg twin.
       document.querySelectorAll('[data-dandy-st-' + next + ']').forEach((el) => {
@@ -118,11 +299,14 @@
         if (prev && document.title.includes(prev)) document.title = document.title.replace(prev, title);
       }
 
-      if (url && window.history && history.replaceState) {
+      if (url && !options.keepUrl && window.history && history.replaceState) {
         try {
           const u = new URL(url, location.origin);
-          // Keep preview/session params (preview_theme_id etc.) the shopper arrived with.
-          new URLSearchParams(location.search).forEach((v, k) => { if (!u.searchParams.has(k)) u.searchParams.set(k, v); });
+          // Keep preview/session params (preview_theme_id etc.) the shopper arrived with; the new link's
+          // variant decides strength, so a stale strength= must not survive the switch.
+          new URLSearchParams(location.search).forEach((v, k) => {
+            if (k !== 'strength' && !u.searchParams.has(k)) u.searchParams.set(k, v);
+          });
           history.replaceState(history.state, '', u.pathname + u.search + location.hash);
         } catch (error) {
           console.error('Dandy capsule offer: could not update the URL', error);
@@ -143,14 +327,17 @@
       const id = this.querySelector('[data-co-id]');
       id.value = input.dataset.variantId || '';
       this.querySelector('[data-co-cta-text]').textContent = input.dataset.cta || 'ADD TO CART';
-      this.querySelector('[data-co-cta-price]').textContent = ' • ' + money(Number(input.dataset.price) || 0);
+      const shown = this.reader ? Number(input.dataset.readerPrice) : Number(input.dataset.price);
+      this.querySelector('[data-co-cta-price]').textContent = ' • ' + money((shown || Number(input.dataset.price) || 0) * this.qty);
       this.querySelectorAll('[data-co-tier-card]').forEach((card) => {
         card.toggleAttribute('data-selected', card.contains(input));
       });
       this.message.hidden = true;
+      this.renderStickyOffer();
+      this.updateSticky();
       this.dispatchEvent(new CustomEvent('dandy:capsule-offer-change', {
         bubbles: true,
-        detail: { variantId: id.value, price: Number(input.dataset.price) || 0, label: input.dataset.label, strength: this.strength }
+        detail: { variantId: id.value, price: Number(input.dataset.price) || 0, label: input.dataset.label, strength: this.strength, quantity: this.qty }
       }));
     }
 
@@ -178,11 +365,13 @@
         const response = await fetch(this.form.action.replace(/\/add\/?$/, '/add.js'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({ items: [{ id: variant.id, quantity: 1 }] })
+          body: JSON.stringify({ items: [{ id: variant.id, quantity: this.qty }] })
         });
         if (!response.ok) throw new Error('Cart add failed: ' + response.status);
         await response.json();
-        window.location.href = this.dataset.cartUrl || '/cart';
+        // Open the side cart in place. Only a layout without the Dandy cart drawer goes to the cart page.
+        if (document.querySelector('[data-d2-cart]')) document.dispatchEvent(new CustomEvent('d2:cart-open'));
+        else window.location.href = this.dataset.cartUrl || '/cart';
       } catch (error) {
         console.error('Dandy capsule add to cart failed', error);
         this.message.textContent = 'We couldn’t add this bundle. Please refresh and try again.';

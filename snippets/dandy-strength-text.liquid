@@ -15,7 +15,11 @@
   assign st_out = text
   if template.suffix == 'dandy-capsules' and st_out contains '50'
     assign st_is_90 = false
-    if product.handle contains '90'
+    if product.options_by_name['Strength']
+      if product.selected_or_first_available_variant.option1 contains '90'
+        assign st_is_90 = true
+      endif
+    elsif product.handle contains '90'
       assign st_is_90 = true
     endif
     assign st_pairs = 'Why 50mg standardized extract=Why 90mg standardized extract|Exact 50mg Active Alkaloids=Exact 90mg Active Alkaloids|Dandy Standardized 50mg Extract=Dandy Standardized 90mg Extract|Exact 50mg Mitragynine:=Exact 90mg Mitragynine:|Batch #N11395: 100% Pass=Batch #N11396: 100% Pass|Active Mitragynine: 50.8 mg=Active Mitragynine: 91.3 mg' | split: '|'

@@ -1,0 +1,410 @@
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(about-kratom-barlow-400.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(about-kratom-barlow-500.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(about-kratom-barlow-600.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(about-kratom-barlow-700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(about-kratom-barlow-800.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(about-kratom-barlow-condensed-700.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(about-kratom-barlow-condensed-800.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Pass 2: one cream canvas and one tactile geometry scale.
+   Layout rhythm: desktop section 40px / mobile 24px; component gaps 24–32px.
+   Motion inventory: 140ms CTA hover displacement and user-triggered anchor scroll.
+   No entrance reveals, loops or animated layout; reduced motion removes displacement. */
+:root {
+  --ak-brown: #28110c;
+  --ak-orange: #f04b23;
+  --ak-cream: #fff8f1;
+  --ak-peach: #ffc5aa;
+  --ak-green: #064c26;
+  --ak-white: #fff;
+  --ak-border: 3px solid var(--ak-brown);
+  --ak-radius: 24px;
+  --ak-shadow: 5px 5px 0 var(--ak-brown);
+  --ak-showcase-shadow: 8px 8px 0 var(--ak-brown);
+  --ak-section-space: 40px;
+  --ak-gap: 28px;
+  --ak-section-end-space: 12px;
+  --ak-hero-space: 48px;
+  --ak-hero-end-space: 28px;
+  --ak-footer-space: 28px;
+}
+#AboutKratom {
+  color: var(--ak-brown);
+  background: var(--ak-cream);
+  font-family: Barlow, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+#AboutKratom .ak-main * { box-sizing: border-box; }
+#AboutKratom .ak-main { background: var(--ak-cream); overflow: clip; }
+#AboutKratom .ak-wrap { width: min(1320px, calc(100% - 96px)); margin-inline: auto; }
+#AboutKratom .ak-main h1,
+#AboutKratom .ak-main h2,
+#AboutKratom .ak-main h3 {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-weight: 800;
+  letter-spacing: .02em;
+  line-height: 1.06;
+  color: inherit;
+  text-wrap: balance;
+  margin: 0;
+}
+#AboutKratom .ak-main h1 { font-size: clamp(54px, 5.7vw, 84px); }
+#AboutKratom .ak-main h2 { font-size: clamp(42px, 4.1vw, 64px); max-width: 1100px; margin-bottom: 28px; }
+#AboutKratom .ak-main h2 small { font-size: .57em; display: inline-block; margin-top: 12px; line-height: 1.12; }
+#AboutKratom .ak-main h3 { font-size: 30px; }
+#AboutKratom .ak-main p { margin: 0 0 20px; }
+#AboutKratom .ak-main p:last-child { margin-bottom: 0; }
+#AboutKratom .ak-main a { color: inherit; text-underline-offset: 4px; }
+#AboutKratom .ak-main img { display: block; max-width: 100%; object-fit: contain; }
+#AboutKratom .ak-main :focus-visible { outline: 3px solid var(--ak-green); outline-offset: 5px; }
+#AboutKratom .ak-main .ak-lead { font-size: 21px; line-height: 1.5; }
+#AboutKratom .ak-announcement {
+  padding: 13px 24px;
+  background: var(--ak-brown);
+  color: var(--ak-cream);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+#AboutKratom .ak-announcement span { padding-inline: 12px; }
+#AboutKratom .ak-section {
+  padding-block: var(--ak-section-space) var(--ak-section-end-space);
+  border-top: var(--ak-border);
+  scroll-margin-top: 32px;
+}
+#AboutKratom .ak-pill,
+#AboutKratom .ak-number,
+#AboutKratom .ak-format-badge,
+#AboutKratom .ak-rule-badge {
+  display: inline-block;
+  width: fit-content;
+  border: var(--ak-border);
+  border-radius: 999px;
+  padding: 6px 13px;
+  background: var(--ak-peach);
+  color: var(--ak-brown);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  line-height: 1.4;
+}
+#AboutKratom .ak-pill { margin-bottom: 20px; }
+#AboutKratom .ak-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; }
+#AboutKratom .ak-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 13px 19px;
+  border: var(--ak-border);
+  border-radius: 12px;
+  background: var(--ak-orange);
+  box-shadow: 4px 4px 0 var(--ak-brown);
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  transition: transform 140ms cubic-bezier(.22,1,.36,1);
+}
+#AboutKratom .ak-button-outline { background: var(--ak-white); }
+#AboutKratom .ak-button:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ak-brown); background: var(--ak-peach); }
+
+/* A single copy column beside an upright, grounded product showcase. */
+#AboutKratom .ak-hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px 48px; align-items: center; padding-block: var(--ak-hero-space) var(--ak-hero-end-space); }
+#AboutKratom .ak-hero-heading h1 { margin-bottom: 26px; }
+#AboutKratom .ak-hero-heading h1 span { color: var(--ak-orange); }
+#AboutKratom .ak-hero-copy p { max-width: 620px; font-size: 18px; line-height: 1.55; }
+#AboutKratom .ak-hero-art {
+  position: relative;
+  background: var(--ak-white);
+  border: var(--ak-border);
+  border-radius: var(--ak-radius);
+  box-shadow: var(--ak-showcase-shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#AboutKratom .ak-hero-leaf { position: absolute; inset: 16px auto auto 4%; width: 72%; height: 78%; opacity: .18; pointer-events: none; z-index: 0; }
+#AboutKratom .ak-art-stamp {
+  order: 0;
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  border: var(--ak-border);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--ak-brown);
+  background: var(--ak-orange);
+  padding: 24px 15px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#AboutKratom .ak-art-stamp small { font-size: 12px; display: block; margin-top: 6px; }
+#AboutKratom .ak-hero-products {
+  order: 1;
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+  border-bottom: var(--ak-border);
+  padding: 0 0 12px;
+}
+#AboutKratom .ak-hero-products a { display: flex; align-items: end; justify-content: center; text-decoration: none; }
+#AboutKratom .ak-trust { grid-column: 1/-1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 20px; padding-top: 20px; border-top: var(--ak-border); font-size: 14px; font-weight: 700; }
+#AboutKratom .ak-trust span { color: var(--ak-green); }
+
+/* Source packshots remain unaltered. These bounded viewports remove only source
+   canvas padding, so products have comparable visual weight without tilted art. */
+#AboutKratom .ak-packshot { position: relative; display: block; width: 100%; aspect-ratio: 430 / 640; overflow: hidden; background: var(--ak-white); }
+#AboutKratom .ak-packshot img { position: absolute; max-width: none; object-fit: fill; }
+#AboutKratom .ak-packshot-gummies img { width: 156.977%; height: 105.469%; left: -29.07%; top: -3.125%; }
+#AboutKratom .ak-packshot-powder img { width: 232.558%; height: 156.25%; left: -66.279%; top: -27.344%; }
+#AboutKratom .ak-packshot-capsules { aspect-ratio: 1000 / 955; }
+#AboutKratom .ak-packshot-capsules img { width: 204.8%; height: 214.45%; left: -53.5%; top: -59.162%; }
+
+/* Story and authentic specimen sit together; Rocky has a real baseline. */
+#AboutKratom .ak-origin-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 28px 48px; align-items: start; }
+#AboutKratom .ak-prose { max-width: 760px; }
+#AboutKratom .ak-botanical-photo { margin: 0; border: var(--ak-border); border-radius: var(--ak-radius); box-shadow: var(--ak-shadow); overflow: hidden; }
+#AboutKratom .ak-botanical-photo img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+#AboutKratom .ak-origin-aside { grid-column: 1/-1; display: grid; grid-template-columns: 150px 1fr; align-items: center; gap: 28px; padding: 28px; background: var(--ak-peach); border: var(--ak-border); border-radius: var(--ak-radius); box-shadow: var(--ak-shadow); }
+#AboutKratom .ak-mascot-dock { display: flex; align-items: end; justify-content: center; border-bottom: var(--ak-border); }
+#AboutKratom .ak-origin-aside .ak-rocky { width: 150px; height: auto; }
+#AboutKratom .ak-callout h3 { margin-bottom: 14px; }
+#AboutKratom .ak-callout p { max-width: 860px; }
+
+/* Editorial lead and the three concrete Dandy standards. */
+#AboutKratom .ak-prose-wide { max-width: 820px; }
+#AboutKratom .ak-pillars,
+#AboutKratom .ak-gears,
+#AboutKratom .ak-format-grid,
+#AboutKratom .ak-close-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ak-gap); margin-top: 28px; }
+#AboutKratom .ak-pillars article,
+#AboutKratom .ak-gears article,
+#AboutKratom .ak-rules li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--ak-white);
+  border: var(--ak-border);
+  border-radius: var(--ak-radius);
+  box-shadow: var(--ak-shadow);
+  padding: 28px 24px;
+}
+#AboutKratom .ak-number { font-family: "Barlow Condensed", sans-serif; font-size: 18px; margin-bottom: 20px; }
+#AboutKratom .ak-pillars h3,
+#AboutKratom .ak-gears h3 { margin-bottom: 20px; }
+#AboutKratom .ak-pillars article > a { margin-top: auto; font-weight: 700; }
+
+/* Three delineated steps, with original format-specific servings underneath. */
+#AboutKratom .ak-dose h2 span { color: var(--ak-orange); }
+#AboutKratom .ak-dose > .ak-wrap > p { max-width: 820px; }
+#AboutKratom .ak-spectrum { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 28px 0 0; padding: 28px; background: var(--ak-white); border: var(--ak-border); border-radius: var(--ak-radius); box-shadow: var(--ak-shadow); }
+#AboutKratom .ak-spectrum li { display: flex; flex-direction: column; }
+#AboutKratom .ak-meter-level { font-size: 12px; font-weight: 800; letter-spacing: .04em; }
+#AboutKratom .ak-meter-bar { display: block; height: 20px; border: var(--ak-border); border-radius: 999px; background: var(--ak-peach); margin-block: 12px 18px; }
+#AboutKratom .ak-spectrum li:nth-child(2) .ak-meter-bar { background: var(--ak-orange); }
+#AboutKratom .ak-spectrum li:nth-child(3) .ak-meter-bar { background: var(--ak-brown); }
+#AboutKratom .ak-spectrum strong { display: block; font-family: "Barlow Condensed", sans-serif; font-size: 28px; line-height: 1.1; margin-bottom: 6px; }
+#AboutKratom .ak-spectrum li > span:last-child { font-size: 15px; }
+#AboutKratom .ak-gears strong { display: block; }
+#AboutKratom .ak-serving { line-height: 2.4; }
+#AboutKratom .ak-serving strong { line-height: 1.6; margin-bottom: 8px; }
+#AboutKratom .ak-serving-pill { display: inline-block; border: var(--ak-border); border-radius: 999px; background: var(--ak-cream); padding: 6px 10px; font-size: 14px; font-weight: 600; line-height: 1.35; }
+#AboutKratom .ak-note { margin-top: 28px; background: var(--ak-white); border: var(--ak-border); border-radius: var(--ak-radius); box-shadow: var(--ak-shadow); padding: 24px 28px; font-size: 16px; }
+
+/* Consistent product stages, natural title and badge height, no prose columns. */
+#AboutKratom .ak-format,
+#AboutKratom .ak-close-card { border: var(--ak-border); box-shadow: var(--ak-shadow); border-radius: var(--ak-radius); background: var(--ak-white); overflow: hidden; display: flex; flex-direction: column; }
+#AboutKratom .ak-format-badge-row { padding: 20px 20px 0; }
+#AboutKratom .ak-format-badge { font-family: "Barlow Condensed", sans-serif; font-size: 15px; padding: 6px 10px; text-wrap: balance; }
+#AboutKratom .ak-product-image,
+#AboutKratom .ak-close-image { background: var(--ak-white); display: flex; align-items: center; justify-content: center; aspect-ratio: 1; padding: 24px; }
+#AboutKratom .ak-product-image .ak-packshot,
+#AboutKratom .ak-close-image .ak-packshot { width: 54%; }
+#AboutKratom .ak-product-image .ak-packshot-capsules,
+#AboutKratom .ak-close-image .ak-packshot-capsules { width: 72%; }
+#AboutKratom .ak-format-body { display: flex; flex-direction: column; flex: 1; padding: 24px; }
+#AboutKratom .ak-format-body h3 { font-size: 35px; }
+#AboutKratom .ak-format dl { margin: 22px 0; }
+#AboutKratom .ak-format dl > div { padding-bottom: 14px; }
+#AboutKratom .ak-format dl > div:last-child { padding-bottom: 0; }
+#AboutKratom .ak-format dt { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+#AboutKratom .ak-format dd { margin: 4px 0 0; font-size: 16px; }
+#AboutKratom .ak-format ul { padding-left: 20px; margin: 0 0 24px; font-size: 16px; }
+#AboutKratom .ak-format li { margin-bottom: 10px; }
+#AboutKratom .ak-format-body > p { font-size: 16px; }
+#AboutKratom .ak-format .ak-button { margin-top: auto; font-size: 16px; }
+#AboutKratom .ak-warning { margin-top: 32px; border: var(--ak-border); background: var(--ak-peach); padding: 28px; border-radius: var(--ak-radius); box-shadow: 6px 6px 0 var(--ak-orange); }
+#AboutKratom .ak-warning h3 { margin-bottom: 18px; }
+#AboutKratom .ak-safety-badge { background: var(--ak-white); }
+#AboutKratom .ak-warning ul { padding-left: 22px; margin-bottom: 20px; }
+
+/* Four readable rulebook cards. Badge text is in the HTML. */
+#AboutKratom .ak-responsible > .ak-wrap > p { max-width: 860px; }
+#AboutKratom .ak-rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ak-gap); padding: 0; list-style: none; margin: 28px 0 0; }
+#AboutKratom .ak-rule-badge { background: var(--ak-orange); font-size: 16px; margin-bottom: 20px; }
+#AboutKratom .ak-rules h3 { margin-bottom: 18px; }
+
+/* Native FAQ interactions, with the same complete captured answers. */
+#AboutKratom .ak-faq { max-width: 1050px; }
+#AboutKratom .ak-faq details { border-bottom: var(--ak-border); padding: 0; }
+#AboutKratom .ak-faq details:first-child { border-top: var(--ak-border); }
+#AboutKratom .ak-faq summary { cursor: pointer; list-style: none; position: relative; padding: 24px 50px 24px 0; font-size: 23px; font-weight: 700; line-height: 1.25; }
+#AboutKratom .ak-faq summary::-webkit-details-marker { display: none; }
+#AboutKratom .ak-faq summary::after { content: "+"; position: absolute; right: 4px; top: 20px; font-size: 32px; font-weight: 500; }
+#AboutKratom .ak-faq details[open] summary::after { content: "−"; }
+#AboutKratom .ak-faq details p { padding-right: 48px; margin-bottom: 24px; }
+
+/* Promise dock and a complete shopping decision at the end of the guide. */
+#AboutKratom .ak-guarantee { display: grid; grid-template-columns: 230px 1fr; gap: 32px; background: var(--ak-white); border: var(--ak-border); border-radius: var(--ak-radius); box-shadow: var(--ak-showcase-shadow); padding: 32px; align-items: center; }
+#AboutKratom .ak-guarantee-dock { display: flex; flex-direction: column; align-items: center; }
+#AboutKratom .ak-guarantee-dock .ak-pill { text-align: center; }
+#AboutKratom .ak-guarantee .ak-rocky { width: 190px; height: auto; }
+#AboutKratom .ak-guarantee h3 { font-size: 48px; margin-bottom: 18px; }
+#AboutKratom .ak-proof { color: var(--ak-green); font-weight: 700; }
+#AboutKratom .ak-close-card-body { display: flex; flex-direction: column; flex: 1; padding: 0 24px 24px; }
+#AboutKratom .ak-close-card h3 { font-size: 34px; margin-bottom: 14px; }
+#AboutKratom .ak-main .ak-close-price { font-family: "Barlow Condensed", sans-serif; font-size: 30px; font-weight: 800; line-height: 1.15; margin-bottom: 12px; }
+#AboutKratom .ak-main .ak-close-count { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+#AboutKratom .ak-close-description { font-size: 15px; }
+#AboutKratom .ak-close-card .ak-button { margin-top: auto; }
+#AboutKratom .ak-regulatory { padding-block: var(--ak-footer-space); font-size: 12px; line-height: 1.65; }
+
+@media (max-width: 1000px) {
+  #AboutKratom .ak-wrap { width: calc(100% - 48px); }
+  #AboutKratom .ak-hero { column-gap: 28px; }
+  #AboutKratom .ak-origin-grid { column-gap: 32px; }
+  #AboutKratom .ak-format-grid { gap: 20px; }
+  #AboutKratom .ak-format-body,
+  #AboutKratom .ak-pillars article,
+  #AboutKratom .ak-gears article { padding: 22px 20px; }
+  #AboutKratom .ak-format-body h3 { font-size: 31px; }
+  #AboutKratom .ak-guarantee { grid-template-columns: 180px 1fr; gap: 24px; padding: 28px; }
+}
+@media (max-width: 760px) {
+  :root { --ak-radius: 16px; --ak-section-space: 24px; --ak-section-end-space: 0px; --ak-hero-space: 28px; --ak-hero-end-space: 24px; --ak-footer-space: 8px; --ak-gap: 24px; }
+  #AboutKratom { font-size: 16px; }
+  #AboutKratom .ak-wrap { width: calc(100% - 40px); }
+  #AboutKratom .ak-announcement { font-size: 11px; line-height: 1.6; padding: 10px 20px; text-wrap: balance; }
+  #AboutKratom .ak-announcement span { padding-inline: 4px; }
+  #AboutKratom .ak-main h1 { font-size: clamp(36px, 11.3vw, 54px); text-wrap: pretty; }
+  #AboutKratom .ak-main h2 { font-size: 42px; margin-bottom: 24px; }
+  #AboutKratom .ak-main h2 small { font-size: 24px; }
+  #AboutKratom .ak-main .ak-lead { font-size: 20px; }
+  #AboutKratom .ak-hero { grid-template-columns: 1fr; gap: 24px; }
+  #AboutKratom .ak-hero-text { display: contents; }
+  #AboutKratom .ak-hero-heading { order: 0; }
+  #AboutKratom .ak-hero-heading h1 { margin-bottom: 0; }
+  #AboutKratom .ak-hero-art { order: 1; padding: 18px; margin-right: 5px; }
+  #AboutKratom .ak-hero-copy { order: 2; }
+  #AboutKratom .ak-hero-copy p { font-size: 17px; }
+  #AboutKratom .ak-pill { font-size: 11px; padding: 6px 12px; margin-bottom: 18px; }
+  #AboutKratom .ak-art-stamp { font-size: 16px; padding: 18px 13px; margin-bottom: 16px; }
+  #AboutKratom .ak-art-stamp small { font-size: 11px; }
+  #AboutKratom .ak-hero-products { gap: 10px; padding-bottom: 8px; }
+  #AboutKratom .ak-trust { order: 3; justify-content: flex-start; gap: 10px 18px; font-size: 13px; padding-top: 4px; }
+  #AboutKratom .ak-actions { display: grid; grid-template-columns: 1fr; margin-top: 24px; }
+  #AboutKratom .ak-origin-grid,
+  #AboutKratom .ak-pillars,
+  #AboutKratom .ak-gears,
+  #AboutKratom .ak-format-grid,
+  #AboutKratom .ak-rules,
+  #AboutKratom .ak-close-links { grid-template-columns: 1fr; gap: 24px; }
+  /* The following grid owns the mobile gap; do not collapse it with prose margins. */
+  #AboutKratom .ak-formats > .ak-wrap > p,
+  #AboutKratom .ak-responsible > .ak-wrap > p { margin-bottom: 0; }
+  /* Count card padding as part of the gap after editorial copy. */
+  #AboutKratom .ak-pillars { margin-top: 12px; }
+  #AboutKratom .ak-rules { margin-top: 4px; }
+  #AboutKratom .ak-origin-aside { grid-template-columns: 1fr; padding: 24px; gap: 20px; }
+  #AboutKratom .ak-origin-aside .ak-mascot-dock { width: 116px; justify-self: center; }
+  #AboutKratom .ak-origin-aside .ak-rocky { width: 112px; }
+  #AboutKratom .ak-pillars article,
+  #AboutKratom .ak-gears article,
+  #AboutKratom .ak-rules li { padding: 24px; }
+  #AboutKratom .ak-spectrum { grid-template-columns: 1fr; gap: 22px; padding: 24px; margin-top: 12px; }
+  #AboutKratom .ak-spectrum li { display: grid; grid-template-columns: 1fr; }
+  #AboutKratom .ak-meter-bar { margin-block: 8px 12px; height: 16px; }
+  #AboutKratom .ak-note { padding: 24px; margin-top: 24px; }
+  #AboutKratom .ak-format-grid { margin-top: 8px; }
+  #AboutKratom .ak-format-badge-row { padding: 20px 24px 0; }
+  #AboutKratom .ak-format-body { padding: 8px 24px 24px; }
+  #AboutKratom .ak-format-body h3 { font-size: 36px; }
+  #AboutKratom .ak-format dl { margin-block: 20px; }
+  #AboutKratom .ak-format .ak-button { margin-top: 8px; }
+  #AboutKratom .ak-warning { padding: 24px; margin-top: 24px; }
+  #AboutKratom .ak-faq summary { font-size: 20px; padding-block: 22px; }
+  #AboutKratom .ak-faq details p { padding-right: 0; }
+  #AboutKratom .ak-guarantee { grid-template-columns: 1fr; padding: 24px; gap: 24px; }
+  #AboutKratom .ak-guarantee-dock { flex-direction: row; gap: 16px; justify-content: center; align-items: end; }
+  #AboutKratom .ak-guarantee-dock .ak-pill { margin: 0 0 16px; width: 140px; }
+  #AboutKratom .ak-guarantee .ak-rocky { width: 104px; }
+  #AboutKratom .ak-guarantee h3 { font-size: 42px; }
+  #AboutKratom .ak-close-links { margin-top: 24px; }
+  #AboutKratom .ak-close-card-body { padding: 0 24px 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #AboutKratom .ak-button { transition: none; }
+  #AboutKratom .ak-button:hover { transform: none; }
+}
+/* Preserve the verified contrast fix in isolated live chrome. */
+#AboutKratom .d2head__ann,
+#AboutKratom .d2head__cta { color: var(--ak-brown); }

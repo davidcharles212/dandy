@@ -1,10 +1,10 @@
 {%- liquid
-  assign product_url = section.settings.product_url | default: '/products/mixed-berry-kratom-gummies'
-  assign offer_url = section.settings.offer_url | default: '/products/mixed-berry-kratom-gummies?variant=47958360031410'
+  assign product_url = section.settings.product_url | default: '/products/feel-good-gummies'
+  assign offer_url = section.settings.offer_url | default: product_url
   assign video_base = section.settings.video_base
-  assign coa_url = section.settings.coa_url | default: '/pages/contact?view=dandy2-coa'
+  assign coa_url = section.settings.coa_url | default: '/pages/lab-reports'
   assign review_count = section.settings.review_count | default: '1,400+'
-  assign reviews_url = section.settings.reviews_url | default: '/products/mixed-berry-kratom-gummies#reviews'
+  assign reviews_url = section.settings.reviews_url | default: '/products/feel-good-gummies#reviews'
   if video_base == blank
     assign v01m = 'cshop-ugc-01.mp4' | asset_url
     assign v01q = 'cshop-ugc-01.mov' | asset_url
@@ -395,8 +395,8 @@
       <img class="seal" src="{{ 'cshop-seal.webp' | asset_url }}" alt="30-day money-back guarantee seal" width="559" height="560" loading="lazy">
     </div>
     <div class="wrap offer__copy">
-      <h2>A 30-day supply for as little as <mark class="hi">$35.99 per pouch.<svg class="scrawl" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></mark></h2>
-      <p class="offer__lede">With free shipping. Save 40%.</p>
+      <h2>A 30-day supply for as little as <mark class="hi">$32.66 per pouch.<svg class="scrawl" viewBox="0 0 320 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 10c38-6 76-5 114-4 46 1 88-5 134-3 22 1 42 3 64 6"/></svg></mark></h2>
+      <p class="offer__lede">With free shipping. Buy 2 pouches, get the third free.</p>
       <p class="offer__guar">Try the gummies for 30 days. If Dandy isn’t for you, we refund you.</p>
       <a class="btn btn--lg offer__cta" href="{{ offer_url }}">Try Mixed Berry Gummies</a>
     </div>
@@ -441,7 +441,7 @@
 </footer>
 
 <div class="sticky" aria-hidden="true">
-  <div class="sticky__info"><img src="{{ 'cshop-cta-gummy.webp' | asset_url }}" alt="" width="40" height="40"><span><b>Kratom Gummies</b><small>From $35.99 per pouch · 30-day guarantee</small></span></div>
+  <div class="sticky__info"><img src="{{ 'cshop-cta-gummy.webp' | asset_url }}" alt="" width="40" height="40"><span><b>Kratom Gummies</b><small>From $32.66 per pouch · 30-day guarantee</small></span></div>
   <a class="btn" href="#offer">Get mine now</a>
 </div>
 
@@ -451,16 +451,16 @@
 {
   "name": "Candy shop landing",
   "settings": [
-    { "type": "url", "id": "product_url", "label": "Product page", "info": "Defaults to /products/mixed-berry-kratom-gummies" },
-    { "type": "text", "id": "offer_url", "label": "Offer CTA destination", "info": "Product page with the stock-up option preselected. Defaults to the 5-pack variant.", "default": "/products/mixed-berry-kratom-gummies?variant=47958360031410" },
+    { "type": "url", "id": "product_url", "label": "Product page", "info": "Defaults to /products/feel-good-gummies" },
+    { "type": "text", "id": "offer_url", "label": "Offer CTA destination", "info": "Defaults to the product page, which opens on the 3-pouch offer." },
     { "type": "text", "id": "video_base", "label": "External base URL for clips and loops (optional)", "info": "Leave blank to serve the clips and loops from this theme's assets (cshop-ugc-0N and cshop-*-loop as .mov and .mp4). Set a URL to serve ugc-0N and the loops from another host." },
     { "type": "video", "id": "clip_01", "label": "Clip 1: first bite (Shopify Files)", "info": "Optional. Upload the clip under Content > Files and pick it here; Shopify then streams it. Leave empty to use the copy bundled in the theme." },
     { "type": "video", "id": "clip_02", "label": "Clip 2: powder to gummy (Shopify Files)" },
     { "type": "video", "id": "clip_04", "label": "Clip 4: three parts of the day (Shopify Files)" },
     { "type": "video", "id": "clip_05", "label": "Clip 5: unboxing (Shopify Files)" },
-    { "type": "text", "id": "coa_url", "label": "Lab reports (COA) page URL", "default": "/pages/contact?view=dandy2-coa" },
+    { "type": "text", "id": "coa_url", "label": "Lab reports (COA) page URL", "default": "/pages/lab-reports" },
     { "type": "text", "id": "review_count", "label": "Buyer count shown in the rating line", "default": "1,400+" },
-    { "type": "text", "id": "reviews_url", "label": "Link for the proof line (full review set)", "default": "/products/mixed-berry-kratom-gummies#reviews" }
+    { "type": "text", "id": "reviews_url", "label": "Link for the proof line (full review set)", "default": "/products/feel-good-gummies#reviews" }
   ]
 }
 {% endschema %}

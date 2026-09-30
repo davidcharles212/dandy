@@ -13,6 +13,8 @@
   endif
 
   assign units = 0
+  assign has_pack = false
+  assign gummy_singles = 0
   assign has_sub = false
   assign compare_total = 0
   assign upsell_key = ''
@@ -46,7 +48,7 @@
     -%}
     {%- render 'dandy2-cart-line',
       key: 'demo-1',
-      url: '/products/mixed-berry-kratom-gummies',
+      url: '/products/feel-good-gummies',
       image_src: demo_img,
       title: 'Mixed Berry Kratom Gummies',
       meta: 'Single pouch',
@@ -102,6 +104,12 @@
               endif
             endif
           endfor
+          if pack_n >= 2
+            assign has_pack = true
+          endif
+          if pack_n == 1 and item.product.handle == 'feel-good-gummies' and item.variant.title contains '30-count'
+            assign gummy_singles = gummy_singles | plus: item.quantity
+          endif
           assign line_units = item.quantity | times: pack_n
           assign units = units | plus: line_units
           if upsell_key == blank and item.product.selling_plan_groups.size > 0
@@ -192,7 +200,13 @@
 
 {%- liquid
   assign free_ship = false
-  if total >= free_ship_threshold or has_sub or units >= 3
+  comment
+    Multi-packs ship free at checkout whatever their total (2-pouch $79.99, 3-pouch $97.99), so a pack line unlocks the bar.
+  endcomment
+  comment
+    Two single 30-count gummy pouches become the 3-pouch pack at checkout (assets/dandy-gummy-cart.js), which ships free.
+  endcomment
+  if total >= free_ship_threshold or has_sub or units >= 3 or has_pack or gummy_singles >= 2
     assign free_ship = true
   endif
   assign ship_remaining = free_ship_threshold | minus: total
@@ -320,7 +334,7 @@
 
       {%- if show_state_note -%}
         <p class="dcart__legal">
-          21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MS, ND, NE, RI, TN, UT, VT, WV or WI,
+          21+ only. We can’t ship to AL, AR, CA, CT, IN, KS, LA, MA, MS, ND, NE, RI, TN, UT, VT, WV or WI,
           <a href="/pages/contact?view=dandy2-shipping">check before you pay</a>.
         </p>
       {%- endif -%}
@@ -331,7 +345,7 @@
       <p class="dcart__empty-title">Rocky checked. It’s empty.</p>
       <a class="dcart__cta" href="{{ routes.root_url }}#shop"><span class="dcart-t">Shop the lineup</span></a>
       <div class="dcart__picks">
-        <a href="/products/mixed-berry-kratom-gummies"><b>Gummies</b><span>from $24.99</span></a>
+        <a href="/products/feel-good-gummies"><b>Gummies</b><span>from $24.99</span></a>
         <a href="/products/premium-kratom-leaf-powder"><b>Powder</b><span>from $34.99</span></a>
         <a href="/products/extract-capsules-50mg"><b>Capsules</b><span>from $28.99</span></a>
       </div>

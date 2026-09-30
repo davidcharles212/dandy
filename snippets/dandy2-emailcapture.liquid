@@ -1,12 +1,9 @@
 {% comment %}
-  DANDY 2026, email capture (10% off first order).
+  DANDY 2026, email capture (sale-price signup; no code is revealed).
   Uses Shopify's real customer form so addresses land in Admin > Customers with the
-  "newsletter" tag. The discount CODE ITSELF must be created in Shopify Admin
-  (Discounts > Amount off order, 10%, one use per customer, first order only), 
-  the code string is set once in `d2_promo_code` below.
-  Renders as an inline footer band plus a one-time modal (scroll-triggered, dismissible).
+  "newsletter" tag. No discount code is shown: the discount is the sale price already on the site.
+  Renders as an inline footer band plus a one-time modal (opens after 60s of browsing, dismissible).
 {% endcomment %}
-{%- assign d2_promo_code = 'DANDY10' -%}
 {%- comment -%}
   KLAVIYO (option B): set both IDs and every signup posts straight to the Klaviyo
   list via their client API, with the Shopify customer form kept as an automatic
@@ -17,12 +14,11 @@
 {%- assign klaviyo_company_id = 'YiLVXU' -%}
 {%- assign klaviyo_list_id = 'SE5gg9' -%}
 
-<section class="d2cap" aria-labelledby="d2cap-h" data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}" data-code="{{ d2_promo_code }}">
+<section class="d2cap" aria-labelledby="d2cap-h" data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}">
   <div class="d2cap__inner">
     <div class="d2cap__copy">
-      <p class="d2cap__kick">First order</p>
-      <h2 class="d2cap__h" id="d2cap-h">Take <em>10% off.</em></h2>
-      <p class="d2cap__sub">One email, one code, no spam beyond the occasional batch report and restock note.</p>
+      <h2 class="d2cap__h" id="d2cap-h"><span class="d2cap__lead">Enter your email and&nbsp;get</span> <em>up&nbsp;to&nbsp;57%&nbsp;off.</em></h2>
+      <p class="d2cap__sub">One email, no spam beyond the occasional batch report and restock note.</p>
     </div>
     {%- comment -%}
       Explicit id matters: Shopify's default is id="contact_form", which is also the
@@ -33,36 +29,32 @@
       <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off">
       <label class="d2cap__label" for="d2cap-email">Email address</label>
       <div class="d2cap__row">
-        <input id="d2cap-email" type="email" name="contact[email]" placeholder="you@email.com" required autocomplete="email">
-        <button type="submit" class="cta">Get 10% off</button>
+        <input id="d2cap-email" type="email" name="contact[email]" placeholder="Enter your email" required autocomplete="email">
+        <button type="submit" class="cta">Claim up to 57% off</button>
       </div>
       {%- if form.posted_successfully? -%}
-        <p class="d2cap__ok">Thanks, your code is <b>{{ d2_promo_code }}</b>. Use it at checkout on your first order.</p>
+        <p class="d2cap__ok"><b>You are in.</b> Sale pricing is active sitewide. No code needed.</p>
       {%- elsif form.errors -%}
         <p class="d2cap__err">{{ form.errors.messages.email | default: 'That email didn’t look right, try again.' }}</p>
       {%- endif -%}
-      <p class="d2cap__fine">21+ only. Unsubscribe anytime. Code applies to your first order.</p>
     {%- endform -%}
   </div>
 </section>
 
-<div class="d2modal" data-d2-modal data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}" data-code="{{ d2_promo_code }}" hidden role="dialog" aria-modal="true" aria-labelledby="d2modal-h">
+<div class="d2modal" data-d2-modal data-d2-klaviyo data-company="{{ klaviyo_company_id }}" data-list="{{ klaviyo_list_id }}" hidden role="dialog" aria-modal="true" aria-labelledby="d2modal-h">
   <div class="d2modal__box">
     <button type="button" class="d2modal__x" data-d2-modal-close aria-label="Close">×</button>
     <img class="d2modal__rocky" src="{{ 'dandy2-rocky-peek.webp' | asset_url }}" alt="" width="560" height="468" aria-hidden="true">
-    <p class="d2cap__kick">Before you go</p>
-    <h2 class="d2cap__h" id="d2modal-h"><em>10% off</em> your first order.</h2>
-    <p class="d2cap__sub">Rocky insisted. Drop your email and the code is yours.</p>
+    <h2 class="d2cap__h" id="d2modal-h"><span class="d2cap__lead">Enter your email and&nbsp;get</span> <em>up&nbsp;to&nbsp;57%&nbsp;off.</em></h2>
     {%- form 'customer', id: 'D2CapModalForm', class: 'd2cap__form' -%}
       <input type="hidden" name="contact[tags]" value="newsletter,dandy2-10off,modal">
       <label class="d2cap__label" for="d2modal-email">Email address</label>
       <div class="d2cap__row">
-        <input id="d2modal-email" type="email" name="contact[email]" placeholder="you@email.com" required autocomplete="email">
-        <button type="submit" class="cta">Get the code</button>
+        <input id="d2modal-email" type="email" name="contact[email]" placeholder="Enter your email" required autocomplete="email">
+        <button type="submit" class="cta">Claim up to 57% off</button>
       </div>
-      <p class="d2cap__fine">21+ only. Unsubscribe anytime.</p>
     {%- endform -%}
-    <button type="button" class="d2modal__no" data-d2-modal-close>No thanks, I’ll pay full price</button>
+    <button type="button" class="d2modal__no" data-d2-modal-close>No thanks, continue shopping</button>
   </div>
 </div>
 
@@ -70,7 +62,7 @@
 (() => {
   // Klaviyo direct subscribe: intercept both capture forms when IDs are configured
   document.querySelectorAll('[data-d2-klaviyo]').forEach(scope => {
-    const company = scope.dataset.company, list = scope.dataset.list, code = scope.dataset.code;
+    const company = scope.dataset.company, list = scope.dataset.list;
     if (!company || !list) return; // not configured: native Shopify form handles it
     scope.querySelectorAll('form').forEach(form => {
       const onSubmit = async (e) => {
@@ -96,8 +88,18 @@
           if (!r.ok && r.status !== 202) throw new Error('klaviyo ' + r.status);
           let ok = form.querySelector('.d2cap__ok');
           if (!ok) { ok = document.createElement('p'); ok.className = 'd2cap__ok'; form.appendChild(ok); }
-          ok.innerHTML = `Thanks! Your code is <b>${code}</b>. It's on its way to your inbox too.`;
-          form.querySelector('.d2cap__row')?.setAttribute('hidden', '');
+          ok.innerHTML = '<b>You are in.</b> Sale pricing is active sitewide. No code needed.';
+          const row = form.querySelector('.d2cap__row');
+          if (row) { row.setAttribute('hidden', ''); row.style.display = 'none'; } // the row's display rule outranks [hidden]
+          const label = form.querySelector('.d2cap__label');
+          if (label) { label.setAttribute('hidden', ''); label.style.display = 'none'; }
+          const no = form.closest('[data-d2-modal]') && form.closest('[data-d2-modal]').querySelector('.d2modal__no');
+          if (no) {
+            no.hidden = true; no.style.display = 'none';
+            const shop = document.createElement('a');
+            shop.className = 'cta d2modal__shop'; shop.href = '{{ routes.all_products_collection_url }}'; shop.textContent = 'Shop the sale';
+            form.appendChild(shop);
+          }
           try { localStorage.setItem('d2capture', Date.now()); } catch {}
         } catch {
           // Klaviyo unreachable: fall back to the native Shopify customer form
@@ -122,12 +124,13 @@
   m.querySelectorAll('[data-d2-modal-close]').forEach(b => b.addEventListener('click', close));
   m.addEventListener('click', e => { if (e.target === m) close(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !m.hidden) close(); });
-  // fire once the visitor is genuinely engaged: 45% down the page, or exit intent on desktop
-  const onScroll = () => {
-    const d = (scrollY + innerHeight) / document.body.scrollHeight;
-    if (d > 0.45) { open(); removeEventListener('scroll', onScroll); }
-  };
-  addEventListener('scroll', onScroll, { passive: true });
-  document.addEventListener('mouseout', e => { if (!e.relatedTarget && e.clientY < 10) open(); });
+  // fire only after DELAY of browsing time, counted from the first page of the visit
+  // (sessionStorage), so moving between pages does not restart the clock. If the age
+  // gate is still up at that point, wait for it to clear.
+  const DELAY = 60000, START = 'd2captureStart';
+  let start;
+  try { start = +sessionStorage.getItem(START) || 0; if (!start) { start = Date.now(); sessionStorage.setItem(START, start); } } catch { start = Date.now(); }
+  const tryOpen = () => { if (document.querySelector('[data-d2-age]')) return setTimeout(tryOpen, 2000); open(); };
+  setTimeout(tryOpen, Math.max(0, start + DELAY - Date.now()));
 })();
 </script>

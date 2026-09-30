@@ -13,12 +13,12 @@
     "main": {
       "type": "dandy-cshop",
       "settings": {
-        "product_url": "/products/mixed-berry-kratom-gummies",
+        "product_url": "/products/feel-good-gummies",
         "video_base": "",
-        "coa_url": "/pages/contact?view=dandy2-coa",
+        "coa_url": "/pages/lab-reports",
         "review_count": "1,400+",
-        "reviews_url": "/products/mixed-berry-kratom-gummies#reviews",
-        "offer_url": "/products/mixed-berry-kratom-gummies?variant=47958360031410"
+        "reviews_url": "/products/feel-good-gummies#reviews",
+        "offer_url": "/products/feel-good-gummies"
       }
     }
   },

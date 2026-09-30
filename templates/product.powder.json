@@ -167,7 +167,7 @@
         "heading": "Trust should have a trail.",
         "text": "This module is reserved for the actual sourcing, processing, and finished-product evidence behind the selected lot.",
         "link_label": "See quality and testing",
-        "link": "/COA",
+        "link": "/pages/lab-reports",
         "claim_ids": "C-10 C-11 C-12",
         "copy_status": "missing-final-proof"
       }
